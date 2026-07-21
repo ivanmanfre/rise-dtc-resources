@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /dashboard/
 
-Sitemap: https://ivanmanfredi.com/sitemap.xml
+Sitemap: https://resources.risedtc.com/scan/sitemap.xml
