@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Week 1 | RISE DTC</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0e1512">
+<meta name="author" content="RISE DTC">
+<link rel="icon" type="image/png" sizes="32x32" href="../rise-dtc-return-rate-rescue/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #ffc71d;
+  --gold-deep: #a17a00;
+  --ink: #0e1512;
+  --ink-2: #17211c;
+  --surface: #ffffff;
+  --surface-2: #f6f5f2;
+  --muted: #8a8f98;
+  --text: #23281f;
+  --line: #e4e2dc;
+  --amber: #c8811a;
+  --amber-bg: #fff2da;
+  --red: #b23b2f;
+  --red-bg: #fdece9;
+  --green: #4d6a52;
+  --green-bg: #eaf1ea;
+  --radius: 4px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Manrope', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--surface);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3, .chip, .lane-title, .num-badge { font-family: 'Sora', system-ui, sans-serif; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+/* hero */
+.hero { background: linear-gradient(180deg, var(--ink-2), var(--ink)); color: #fff; padding: 44px 0 48px; }
+.hero-logo img { height: 34px; width: auto; display: block; margin-bottom: 30px; }
+.hero-eyebrow {
+  font-family: 'Sora', sans-serif; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; margin: 0 0 10px;
+}
+.hero h1 {
+  font-size: clamp(1.9rem, 6.5vw, 2.7rem); font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.12; margin: 0 0 16px; color: #fff;
+}
+.hero .sub { color: rgba(255,255,255,.82); font-size: 1.05rem; max-width: 56ch; margin: 0 0 22px; }
+.hero-chip {
+  display: inline-block; background: rgba(255,199,29,.12); border: 1px solid var(--gold);
+  color: var(--gold); font-family: 'Sora', sans-serif; font-weight: 600; font-size: .82rem;
+  letter-spacing: .06em; text-transform: uppercase; padding: 7px 14px; border-radius: var(--radius);
+}
+
+/* sections */
+section { padding: 40px 0 8px; }
+.eyebrow {
+  font-family: 'Sora', sans-serif; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold-deep); margin: 0 0 8px;
+}
+h2 { font-size: clamp(1.35rem, 4.5vw, 1.7rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.18; margin: 0 0 14px; color: var(--ink); }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 26px 0 10px; color: var(--ink); }
+p { margin: 0 0 14px; }
+.divider { border: 0; border-top: 1px solid var(--line); margin: 34px 0 0; }
+
+/* go card (section 0) */
+.go-card {
+  background: linear-gradient(180deg, var(--ink-2), var(--ink)); color: rgba(255,255,255,.88);
+  border-radius: var(--radius); padding: 24px 22px; border-left: 4px solid var(--gold);
+}
+.go-card h2 { color: #fff; }
+.go-card .eyebrow { color: var(--gold); }
+.go-card strong { color: var(--gold); }
+.go-card p { color: rgba(255,255,255,.85); }
+.go-card p:last-child { margin-bottom: 0; }
+
+/* chips */
+.chip {
+  display: inline-block; font-weight: 700; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: var(--radius); vertical-align: middle;
+}
+.chip-notarmed { background: var(--ink); color: var(--gold); border: 1px solid var(--gold); }
+.chip-live { background: var(--green-bg); color: var(--green); }
+.chip-src { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); font-weight: 600; letter-spacing: .04em; text-transform: none; font-size: .74rem; }
+.chip-calls { background: var(--green-bg); color: var(--green); border: 1px solid transparent; }
+.chip-launch { background: var(--amber-bg); color: var(--amber); border: 1px solid transparent; }
+
+/* tables */
+.tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--radius); }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; min-width: 620px; }
+th {
+  text-align: left; font-family: 'Sora', sans-serif; font-size: .72rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); font-weight: 600;
+  padding: 10px 12px; background: var(--surface-2); border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.brand { font-weight: 700; color: var(--ink); white-space: nowrap; }
+td.nowrap { white-space: nowrap; }
+.tbl-note { font-size: .82rem; color: var(--muted); margin-top: 10px; }
+
+/* lanes */
+.lane {
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 6px; margin: 0 0 16px;
+  background: var(--surface);
+}
+.lane-head { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 12px; }
+.lane-title { font-weight: 700; font-size: 1rem; color: var(--ink); margin: 0; }
+.msg { border-left: 2px solid var(--gold); background: var(--surface-2); padding: 10px 14px; border-radius: 0 var(--radius) var(--radius) 0; margin: 0 0 10px; font-size: .93rem; }
+.msg .msg-label { display: block; font-family: 'Sora', sans-serif; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-bottom: 3px; }
+.lane-note { font-size: .85rem; color: var(--muted); margin: 0 0 12px; }
+
+/* flag callout */
+.flag {
+  background: var(--amber-bg); border: 1px solid var(--amber); border-left: 5px solid var(--amber);
+  border-radius: var(--radius); padding: 18px 18px 14px; margin: 22px 0;
+}
+.flag .flag-label {
+  font-family: 'Sora', sans-serif; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--amber); font-weight: 700; margin: 0 0 8px;
+}
+.flag p { margin-bottom: 10px; }
+.flag .quote { font-style: italic; color: var(--ink); }
+.flag-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.flag-opts span {
+  font-family: 'Sora', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--surface); border: 1px solid var(--amber); color: var(--amber);
+  padding: 6px 12px; border-radius: var(--radius);
+}
+
+/* caps strip */
+.caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 18px 0 6px; }
+.cap { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.cap .cap-num { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); display: block; }
+.cap .cap-label { font-size: .78rem; color: var(--muted); }
+.zero-line { font-size: .92rem; padding-left: 14px; border-left: 2px solid var(--gold); margin: 14px 0 0; }
+
+/* LM cards */
+.lm-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+.lm-card .lm-day { font-family: 'Sora', sans-serif; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin: 0 0 6px; }
+.lm-card h3 { margin: 0 0 8px; }
+.lm-card p { margin-bottom: 10px; }
+.lm-card a.lm-link { color: var(--gold-deep); font-weight: 700; word-break: break-all; }
+
+/* checklist */
+.asks { list-style: none; counter-reset: ask; padding: 0; margin: 0; }
+.asks li {
+  counter-increment: ask; position: relative; padding: 14px 0 14px 46px; border-bottom: 1px solid var(--line);
+}
+.asks li:last-child { border-bottom: 0; }
+.asks li::before {
+  content: counter(ask); position: absolute; left: 0; top: 12px;
+  width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--gold);
+  font-family: 'Sora', sans-serif; font-weight: 700; font-size: .88rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.asks li strong { color: var(--ink); }
+code { background: var(--surface-2); border: 1px solid var(--line); border-radius: 3px; padding: 1px 6px; font-size: .88em; }
+
+/* footer */
+.rise-footer { background: var(--ink); color: rgba(255,255,255,.7); margin-top: 46px; padding: 28px 0; }
+.foot-inner { display: flex; align-items: center; gap: 16px; }
+.foot-inner img { height: 24px; width: auto; }
+.foot-text p { margin: 0; font-size: .82rem; }
+.foot-pillar { color: var(--gold); font-weight: 700; }
+
+@media (max-width: 480px) {
+  section { padding: 32px 0 6px; }
+  .hero { padding: 34px 0 38px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────── HERO ─────────── -->
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-logo"><img src="data:image/png;base64,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" alt="RISE DTC"></span>
+    <p class="hero-eyebrow">RISE DTC · Growth Engine</p>
+    <h1>Week 1 at RISE DTC</h1>
+    <p class="sub">Everything below is staged and waiting on you. Nothing sends, posts, or emails anyone until you say go. This page is your one sitting: read top to bottom, then reply in Slack with what's approved and what to change.</p>
+    <span class="hero-chip">Nothing sends until you say go</span>
+  </div>
+</header>
+
+<!-- ─────────── 0. RISK ACK ─────────── -->
+<section id="go">
+  <div class="wrap">
+    <div class="go-card">
+      <p class="eyebrow">0 · The one line I need back first</p>
+      <h2>Your written OK on outreach risk</h2>
+      <p>LinkedIn actions from your seat (connection requests, DMs, InMails) always carry some platform risk, especially on a fresh Premium trial seat. We ramp slowly and stay under sane caps, but I want your explicit written OK before any cold outreach leaves your account.</p>
+      <p>Reply <strong>"yes, go"</strong> in Slack and cold goes live on the schedule below. Until then only content publishes, outreach stays off.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 1. ICP ─────────── -->
+<section id="icp">
+  <div class="wrap">
+    <p class="eyebrow">1 · Your ICP list</p>
+    <h2>80 brands, these 10 first</h2>
+    <p>Locked from our call: Shopify DTC, around $20k+ a month in sales, apparel first, then beauty and wellness. Every brand on the list was store-verified (Shopify + live Meta ads checked).</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th>Brand</th><th>Vertical</th><th>Founder</th><th>Live ads</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="brand">GOPURE</td><td>Beauty</td><td class="nowrap">Alex Keyan</td><td class="nowrap">50,000+</td><td>Established skincare DTC, founder active on LinkedIn, heavy Meta advertiser.</td></tr>
+          <tr><td class="brand">Wythe</td><td>Apparel</td><td class="nowrap">Leo Yang</td><td class="nowrap">~140</td><td>NY heritage apparel, founder-led, real spend behind the ads.</td></tr>
+          <tr><td class="brand">Apoth&eacute;kary</td><td>Wellness</td><td class="nowrap">Shizu Okusa</td><td class="nowrap">~140</td><td>Fast-growing wellness DTC, founder with a strong audience plus real ad activity.</td></tr>
+          <tr><td class="brand">Mockingbird</td><td>Home CPG</td><td class="nowrap">Eric Osman</td><td class="nowrap">~840</td><td>Baby and stroller DTC, founder-led, scaled ad footprint.</td></tr>
+          <tr><td class="brand">Naked Wardrobe</td><td>Apparel</td><td class="nowrap">Shirin Kaviani</td><td class="nowrap">~860</td><td>Well-known LA women's apparel, founder-led, heavy ad activity.</td></tr>
+          <tr><td class="brand">Dixxon Flannel Co.</td><td>Apparel</td><td class="nowrap">Danny Dreyer</td><td class="nowrap">~83</td><td>Flannel brand with a cult following, Meta pixel live plus active ads.</td></tr>
+          <tr><td class="brand">Purity Cosmetics (100% PURE)</td><td>Beauty</td><td class="nowrap">Richard Kostick</td><td class="nowrap">50,000+</td><td>Clean beauty at scale, founder visible on LinkedIn, heavy advertiser.</td></tr>
+          <tr><td class="brand">Skin Rocks</td><td>Beauty</td><td class="nowrap">Caroline Hirons</td><td class="nowrap">~2,100</td><td>Caroline Hirons' skincare brand, huge personal brand, big ad footprint.</td></tr>
+          <tr><td class="brand">TLF Apparel</td><td>Apparel</td><td class="nowrap">Chris Ferguson</td><td class="nowrap">~11</td><td>Activewear DTC, founder-led, small but real active-ad footprint.</td></tr>
+          <tr><td class="brand">Cheekbone Beauty</td><td>Beauty</td><td class="nowrap">Jenn Harper</td><td class="nowrap">~230</td><td>Indigenous-owned cosmetics, award-winning founder, active ads confirmed.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note">Live ads = active Meta ads counted at check time. Every founder profile was pulled live and verified.</p>
+
+    <p style="margin-top:16px;">Full list: 80 brands grouped by vertical, attached in Slack as a CSV. Skim the 10 above, flag anything that feels off, and tell me if a vertical is missing. Your client list (for the client-engager lane) is still open on your side; send brand names + founder profiles whenever ready.</p>
+    <hr class="divider">
+  </div>
+</section>
+
+<!-- ─────────── 2. OUTREACH ─────────── -->
+<section id="outreach">
+  <div class="wrap">
+    <p class="eyebrow">2 · Outreach</p>
+    <h2>The exact messages, lane by lane</h2>
+    <p><strong>Nothing below sends until your written go.</strong> Every first message per lane passes you before the lane ever runs. Placeholders like {first} and {brand} fill from each prospect's real store and profile; thin data holds the send.</p>
+
+    <div class="lane">
+      <div class="lane-head">
+        <p class="lane-title">Warm: people who engage your posts</p>
+        <span class="chip chip-notarmed">Not armed · nothing sends until your written go</span>
+      </div>
+      <div class="msg"><span class="msg-label">Connection note</span>"Hey {first}, you keep showing up around my posts so figured I'd actually say hi 🙂"</div>
+      <div class="msg"><span class="msg-label">DM 1 (no links, ever, in a first DM)</span>"Glad we connected {first} 🙂 Saw you run {brand}, had a quick look at the store. Couple things jumped out, margins mostly. Want me to send what I found?"</div>
+      <div class="msg"><span class="msg-label">DM 2 (when they bite, or 3 days later)</span>"Made you that scan of {brand}. Store, ads angle, where the profit's leaking: {scan link}"</div>
+      <div class="msg"><span class="msg-label">DM 3 (5 days, soft close)</span>"No stress either way {first}. If profit on the store ever gets annoying, grab a slot whenever: {booking link}"</div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <p class="lane-title">Client engager: people around your clients' brands</p>
+        <span class="chip chip-notarmed">Not armed · nothing sends until your written go</span>
+      </div>
+      <p class="lane-note">Needs two things from you first: your client list, and an OK on each client name we mention.</p>
+      <div class="msg"><span class="msg-label">Connection note</span>"Hey {first}, keep seeing you around {Brand}. We run their growth at RISE. Figured I'd say hi 🙂"</div>
+      <div class="msg"><span class="msg-label">DM 1</span>"Glad we connected {first} 🙂 Since you know {Brand}, that's us behind their growth. Had a look at {brand} too and a couple things jumped out. Want me to send it over?"</div>
+      <p class="lane-note">DM 2 and 3: same as Warm.</p>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <p class="lane-title">Cold, via DTC voices' audiences</p>
+        <span class="chip chip-notarmed">Not armed · nothing sends until your written go</span>
+      </div>
+      <div class="msg"><span class="msg-label">Connection note</span>"Hey {first}, saw you around {Voice}'s stuff so same world as us. I run RISE, we grow Shopify brands. Worth a hello 🙂"</div>
+      <div class="msg"><span class="msg-label">DM 1</span>"Glad we connected {first} 🙂 Looked at {brand} real quick, 3 things I'd go after: → {finding} → {finding} → {finding}. Already ran the full scan if you want it."</div>
+      <p class="lane-note">DM 2 and 3: same as Warm.</p>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <p class="lane-title">Cold, straight from the list</p>
+        <span class="chip chip-notarmed">Not armed · nothing sends until your written go</span>
+      </div>
+      <p class="lane-note">Stays fully off until your "yes, go" from section 0. When it runs, it uses the same message shapes as above.</p>
+    </div>
+
+    <div class="flag">
+      <p class="flag-label">Needs your explicit yes or no</p>
+      <p>The cold connection note currently name-drops a client: <span class="quote">"I run growth for DTC brands, Tenth Street Hats is one of ours."</span></p>
+      <p>Approve it, swap the name, or cut it.</p>
+      <div class="flag-opts"><span>Yes, keep it</span><span>Swap the name</span><span>Cut it</span></div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <p class="lane-title">InMails (your 30 Premium credits per month)</p>
+        <span class="chip chip-notarmed">Not armed · nothing sends until your written go</span>
+      </div>
+      <p class="lane-note">Only for high-fit founders where the connect isn't landing. One message, same close:</p>
+      <div class="msg"><span class="msg-label">InMail</span>"Hey {first}, saw you around {Voice}'s stuff, same world as us. I run RISE, we grow Shopify brands on a performance model. Had a look at {brand} before writing this and a couple things jumped out, margins mostly. Already ran the full breakdown. Want me to send it over?"</div>
+    </div>
+
+    <h3>Caps as agreed on the call</h3>
+    <div class="caps">
+      <div class="cap"><span class="cap-num">~400</span><span class="cap-label">connection requests a month</span></div>
+      <div class="cap"><span class="cap-num">30</span><span class="cap-label">InMails (50 once Sales Nav lands)</span></div>
+      <div class="cap"><span class="cap-num">50 to 100</span><span class="cap-label">emails a month</span></div>
+    </div>
+    <p class="zero-line">Current month: <strong>0 sent everywhere</strong>, verifiably.</p>
+    <hr class="divider">
+  </div>
+</section>
+
+<!-- ─────────── 3. CONTENT ─────────── -->
+<section id="content">
+  <div class="wrap">
+    <p class="eyebrow">3 · Content</p>
+    <h2>What posts this week</h2>
+    <p>Your review queue holds 12 posts, all waiting on the board and publishing only through your approval flow. Four came straight out of your own sales calls, your words and your stories, plus the launch posts for both lead magnets. Cadence as locked: 5 posts + 2 lead magnets a week, one post a day.</p>
+
+    <h3>The week's two fixed slots</h3>
+    <div class="tbl-scroll">
+      <table style="min-width:520px;">
+        <thead><tr><th>Day</th><th>Post</th><th>Goes with</th></tr></thead>
+        <tbody>
+          <tr><td class="nowrap"><strong>Wednesday</strong></td><td>The Return Rate Rescue launch post</td><td>Return Rate Rescue goes live on your resources</td></tr>
+          <tr><td class="nowrap"><strong>Friday</strong></td><td>The Ad Account Report Card launch post</td><td>The Ad Account Report Card goes live on your resources</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note" style="margin-bottom:18px;">The rest of the week fills from the queue below. Publish order is set on the board, and you approve everything there.</p>
+
+    <h3>In your review queue</h3>
+    <div class="tbl-scroll">
+      <table style="min-width:520px;">
+        <thead><tr><th>Post</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Most agencies get paid whether you win or not</td><td><span class="chip chip-src chip-calls">from your calls</span></td></tr>
+          <tr><td>Why we only take clients above 60% margin</td><td><span class="chip chip-src chip-calls">from your calls</span></td></tr>
+          <tr><td>Growing ad spend is not the same thing as growing profit</td><td><span class="chip chip-src chip-calls">from your calls</span></td></tr>
+          <tr><td>Don't run ads on broken tracking</td><td><span class="chip chip-src chip-calls">from your calls</span></td></tr>
+          <tr><td>The Return Rate Rescue launch post</td><td><span class="chip chip-src chip-launch">lead magnet launch</span></td></tr>
+          <tr><td>The Ad Account Report Card launch post</td><td><span class="chip chip-src chip-launch">lead magnet launch</span></td></tr>
+          <tr><td>The RISE DTC AI Kit launch post</td><td><span class="chip chip-src chip-launch">lead magnet launch</span></td></tr>
+          <tr><td>Your agency invoice is the only line item in your P&amp;L that never changes with results</td><td><span class="chip chip-src">strategy</span></td></tr>
+          <tr><td>The best thing we ever did was get a whole lot pickier</td><td><span class="chip chip-src">strategy</span></td></tr>
+          <tr><td>Apparel founders: returns are eating the growth your ads just bought</td><td><span class="chip chip-src">strategy</span></td></tr>
+          <tr><td>The honest version of how we scaled Tenth Street Hats</td><td><span class="chip chip-src">strategy</span></td></tr>
+          <tr><td>Revenue is up, the bank account is flat</td><td><span class="chip chip-src">strategy</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:16px;">On the board you can now remove any scheduled post (the slot stays open and you can post your own that day), restore it, or swap in a replacement from the bench. Removing never deletes, it just frees the day.</p>
+    <hr class="divider">
+  </div>
+</section>
+
+<!-- ─────────── 4. LEAD MAGNETS ─────────── -->
+<section id="lm">
+  <div class="wrap">
+    <p class="eyebrow">4 · Lead magnets</p>
+    <h2>Wednesday and Friday</h2>
+
+    <div class="lm-card">
+      <p class="lm-day">Wednesday <span class="chip chip-live" style="margin-left:8px;">Live</span></p>
+      <h3>Return Rate Rescue</h3>
+      <p>Live on resources.risedtc.com, your booking link on every step. Returns playbook for apparel-heavy DTC.</p>
+      <a class="lm-link" href="https://resources.risedtc.com/rise-dtc-return-rate-rescue/" target="_blank" rel="noopener">resources.risedtc.com/rise-dtc-return-rate-rescue</a>
+    </div>
+
+    <div class="lm-card">
+      <p class="lm-day">Friday <span class="chip chip-live" style="margin-left:8px;">Live</span></p>
+      <h3>The Ad Account Report Card</h3>
+      <p>A pack of Claude skills, RISE-branded: a founder connects their ad account to Claude and gets a graded report card of the account, line by line. Built the way Matt suggested: runs on Claude's own connectors, nothing to install, and the output is usable, not a PDF.</p>
+      <a class="lm-link" href="https://resources.risedtc.com/rise-dtc-ad-account-report-card/" target="_blank" rel="noopener">resources.risedtc.com/rise-dtc-ad-account-report-card</a>
+    </div>
+
+    <p>Later options already covered: Apparel Growth Benchmark, Creative Fatigue X-Ray.</p>
+    <hr class="divider">
+  </div>
+</section>
+
+<!-- ─────────── 5. ASKS ─────────── -->
+<section id="asks">
+  <div class="wrap">
+    <p class="eyebrow">5 · What I need from you</p>
+    <h2>The whole list</h2>
+    <ol class="asks">
+      <li><strong>"yes, go" on outreach risk</strong> (section 0)</li>
+      <li><strong>ICP list:</strong> gut-check the 10, flag anything off (section 1)</li>
+      <li><strong>The Tenth Street name-drop line:</strong> yes / swap / cut (section 2)</li>
+      <li><strong>Your client list</strong> for the client-engager lane</li>
+      <li><strong>Review the posts</strong> in the board queue (they publish on your approval flow only)</li>
+      <li><strong>Photos</strong> when you get a chance, the board has an upload spot</li>
+      <li><strong>One DNS nit:</strong> the DKIM record for risedtc.com was pasted with a leading tab, so email verification is stuck. Re-paste the value starting exactly at <code>p=</code> and it clears.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="rise-footer">
+  <div class="wrap foot-inner">
+    <img src="data:image/png;base64,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" alt="RISE DTC">
+    <div class="foot-text">
+      <p class="foot-pillar">Part of the RISE Method.</p>
+      <p>Week 1 brief · prepared for Mattan and Matt</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
