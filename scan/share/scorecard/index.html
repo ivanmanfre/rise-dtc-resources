@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Are you Agent-Ready? — The Agent-Ready Scorecard | Manfredi</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A 2-minute self-check against the four preconditions every AI deployment needs before it ships. Twelve questions, three per precondition. Get your score, a per-precondition breakdown, and a personalized 30-day roadmap." />
+
+  <link rel="canonical" href="https://ivanmanfredi.com/scorecard" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Are you Agent-Ready? — The Agent-Ready Scorecard" />
+  <meta property="og:description" content="A 2-minute self-check against the four preconditions every AI deployment needs before it ships." />
+  <meta property="og:image" content="https://ivanmanfredi.com/og-scorecard.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://ivanmanfredi.com/scorecard" />
+  <meta property="og:site_name" content="Iván Manfredi" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Are you Agent-Ready? — The Agent-Ready Scorecard" />
+  <meta name="twitter:description" content="A 2-minute self-check against the four preconditions every AI deployment needs before it ships." />
+  <meta name="twitter:image" content="https://ivanmanfredi.com/og-scorecard.png" />
+
+  <style>
+    body {
+      margin: 0; padding: 0; background: #F7F4EF; color: #1A1A1A;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      display: flex; align-items: center; justify-content: center; min-height: 100vh;
+    }
+    .wrap { max-width: 540px; padding: 48px 24px; text-align: center; }
+    h1 {
+      font-family: Georgia, 'DM Serif Display', serif;
+      font-size: 48px; font-weight: 400; font-style: italic;
+      line-height: 1.05; margin: 0 0 24px;
+    }
+    p { font-size: 17px; line-height: 1.6; color: #4A4A48; margin: 0 0 32px; }
+    a {
+      display: inline-block; background: #4C6E3D; color: #fff;
+      padding: 14px 28px; text-decoration: none; font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .meta {
+      font-family: 'Courier New', ui-monospace, monospace;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+      color: #888; margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Are you Agent-Ready?</h1>
+    <p>Twelve questions. Two minutes. A verdict and a 30-day roadmap.</p>
+    <a href="https://ivanmanfredi.com/scorecard" id="cta">Take the Scorecard →</a>
+    <p class="meta">Loading…</p>
+  </main>
+  <script>
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var ref = params.get('ref');
+        var target = '/scorecard' + (ref ? ('?ref=' + encodeURIComponent(ref)) : '');
+        // Bots & scrapers don't run this. Real browsers redirect.
+        setTimeout(function () { window.location.replace(target); }, 80);
+        document.getElementById('cta').setAttribute('href', target);
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

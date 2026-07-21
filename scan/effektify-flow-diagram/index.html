@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Effektify — Platform Signup Flow | Manfredi</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Proposed architecture for the Effektify platform signup integration: webhook → HubSpot match → Airtable." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <link rel="canonical" href="https://ivanmanfredi.com/effektify-flow-diagram" />
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <style>
+    body {
+      margin: 0; padding: 0;
+      background: #F7F4EF; color: #1A1A1A;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .meta-top {
+      font-family: 'Courier New', ui-monospace, monospace;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+      color: #8A8A86;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: Georgia, 'DM Serif Display', serif;
+      font-size: 40px; font-weight: 400;
+      line-height: 1.1; margin: 0 0 12px;
+    }
+    h1 em { font-style: italic; }
+    .subtitle {
+      font-size: 16px; color: #4A4A48; margin: 0 0 40px;
+      max-width: 640px;
+    }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E8E2D6;
+      border-radius: 4px;
+      padding: 32px 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .brief {
+      background: #FFFFFF;
+      border: 1px solid #E8E2D6;
+      border-radius: 4px;
+      padding: 40px 44px;
+      margin: 0 0 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .brief-section + .brief-section {
+      margin-top: 36px;
+      padding-top: 36px;
+      border-top: 1px solid #EFE9DD;
+    }
+    .brief-label {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 15px;
+      color: #4C6E3D;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+    .brief-body p {
+      margin: 0 0 16px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #2A2A28;
+    }
+    .brief-body p:last-child { margin-bottom: 0; }
+    .brief-body .lead-in {
+      font-size: 19px;
+      color: #1A1A1A;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .brief-body ol {
+      margin: 14px 0 18px;
+      padding-left: 24px;
+      font-size: 17px;
+      color: #2A2A28;
+      line-height: 1.65;
+    }
+    .brief-body ol li { margin-bottom: 10px; }
+    .brief-body strong { color: #1A1A1A; font-weight: 600; }
+    .brief-body code {
+      background: #F7F4EF;
+      padding: 2px 7px;
+      border-radius: 2px;
+      font-size: 15px;
+      font-family: 'Courier New', ui-monospace, monospace;
+    }
+    .brief-q {
+      display: block;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 19px;
+      color: #1A1A1A;
+      margin: 28px 0 10px;
+    }
+    .brief-q:first-child { margin-top: 0; }
+    @media (max-width: 600px) {
+      .brief { padding: 26px 22px; }
+      .brief-body p, .brief-body ol { font-size: 16px; }
+      .brief-body .lead-in, .brief-q { font-size: 17px; }
+    }
+    .diagram {
+      display: flex; justify-content: center;
+      margin: 8px 0 24px;
+    }
+    .diagram .mermaid { max-width: 100%; }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      justify-content: center;
+      padding-top: 20px;
+      border-top: 1px solid #EFE9DD;
+      font-size: 13px; color: #4A4A48;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .swatch {
+      width: 12px; height: 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .swatch.core { background: #E8F0E2; border-color: #4C6E3D; }
+    .swatch.decision { background: #F4ECDC; border-color: #B89556; }
+    .swatch.optional { background: #FAF6EC; border-color: #B89556; border-style: dashed; }
+    .notes {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: #FFFFFF;
+      border-left: 3px solid #4C6E3D;
+      border-radius: 2px;
+    }
+    .notes h2 {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 400;
+      margin: 0 0 12px;
+      color: #1A1A1A;
+    }
+    .notes p { margin: 0 0 10px; font-size: 14px; color: #4A4A48; }
+    .notes p:last-child { margin: 0; }
+    .notes strong { color: #1A1A1A; font-weight: 600; }
+    .footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid #E8E2D6;
+      font-family: 'Courier New', ui-monospace, monospace;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+      color: #8A8A86;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer a { color: #4C6E3D; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      h1 { font-size: 30px; }
+      .card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="meta-top">Effektify · Signup Flow</p>
+    <h1>Platform signup → <em>HubSpot match</em> → Airtable</h1>
+    <p class="subtitle">
+      How the new platform signup integration would work end-to-end. The n8n endpoint receives webhook events from your platform, classifies the user against existing HubSpot records, and writes the result into your Airtable workflow.
+    </p>
+
+    <div class="brief">
+      <div class="brief-section">
+        <div class="brief-label">Original brief · Emil</div>
+        <div class="brief-body">
+          <p class="lead-in">Import all new users who sign up to the platform into HubSpot and Airtable, on an ongoing basis.</p>
+          <p>Set up a webhook that sends new signup data to our developers, who'll forward it into the Airtable / n8n setup.</p>
+          <p>Run the same check against existing customers and contacts in HubSpot, so we can tell whether a new signup is already a customer, lead, or contact.</p>
+          <p><strong>In short:</strong></p>
+          <ol>
+            <li>A webhook for all new platform signups</li>
+            <li>The relevant user / company data included in the webhook</li>
+            <li>Match new signups against existing HubSpot records</li>
+            <li>Data sent into the Airtable / n8n workflow</li>
+          </ol>
+        </div>
+      </div>
+      <div class="brief-section">
+        <div class="brief-label">What I sent back · Iván</div>
+        <div class="brief-body">
+          <p class="lead-in">Happy to help on this. I'll set up an n8n webhook endpoint and send the URL to you or your devs, so they can POST signup data to it whenever a new user signs up.</p>
+          <p>Two things to clarify before I quote.</p>
+
+          <span class="brief-q">1. Match behavior</span>
+          <p>When we find an existing HubSpot record (contact / lead / customer), should we:</p>
+          <ol>
+            <li>Just tag the Airtable row with the matched record link,</li>
+            <li>Also update the HubSpot record (e.g., set a "Signed up to platform" property),</li>
+            <li>Or also create a new contact in HubSpot if there's no match?</li>
+          </ol>
+
+          <span class="brief-q">2. Slack notification</span>
+          <p>Do you want a Slack ping for new signups, same as the Leads flow? If yes, same channel or a dedicated <code>#signups</code> one? Anything you want highlighted in the message (matched HubSpot status, plan signed up for, etc.)?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart TB
+    A["New user signs up<br/>on Effektify platform"]
+    A -->|"webhook POST"| B["n8n endpoint<br/>(URL provided to your devs)"]
+    B --> C["Search HubSpot<br/>Contact · Lead · Customer"]
+    C --> D{"Match found?"}
+    D -->|"Yes"| E["Classify status:<br/>customer / lead / contact"]
+    D -->|"No"| F["Tag as new signup"]
+    E --> G["Write to Airtable<br/>Signups tab<br/>+ matched HubSpot link"]
+    F --> G
+    G -.->|"Option 2"| H["Update existing<br/>HubSpot record<br/>'Signed up to platform'"]
+    G -.->|"Option 3"| I["Create new<br/>HubSpot contact<br/>(if no match)"]
+    G --> J["Slack notification<br/>(optional)"]
+    H --> J
+    I --> J
+
+    classDef core fill:#E8F0E2,stroke:#4C6E3D,stroke-width:1.5px,color:#1A1A1A
+    classDef optional fill:#FAF6EC,stroke:#B89556,stroke-width:1px,stroke-dasharray:4,color:#1A1A1A
+    classDef decision fill:#F4ECDC,stroke:#B89556,stroke-width:1.5px,color:#1A1A1A
+
+    class A,B,C,E,F,G core
+    class D decision
+    class H,I,J optional
+        </pre>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="swatch core"></span>Core (always runs)</div>
+        <div class="legend-item"><span class="swatch decision"></span>Decision point</div>
+        <div class="legend-item"><span class="swatch optional"></span>Optional / your call</div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <h2>Two open decisions</h2>
+      <p><strong>Match behavior</strong> — Option 1 = just tag in Airtable. Option 2 = also update HubSpot. Option 3 = also create new HubSpot contact when no match exists.</p>
+      <p><strong>Slack notification</strong> — separate decision. Same channel as the Leads flow, or a dedicated one. Let me know what (if anything) you want highlighted in the message.</p>
+    </div>
+
+    <div class="footer">
+      <span>Iván Manfredi · Independent AI &amp; automation</span>
+      <a href="https://ivanmanfredi.com">ivanmanfredi.com</a>
+    </div>
+  </main>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        background: '#FFFFFF',
+        primaryColor: '#E8F0E2',
+        primaryBorderColor: '#4C6E3D',
+        primaryTextColor: '#1A1A1A',
+        lineColor: '#7A7A75',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
+      },
+      flowchart: { curve: 'basis', padding: 24, useMaxWidth: true }
+    });
+  </script>
+</body>
+</html>
