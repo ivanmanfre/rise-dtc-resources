@@ -30,10 +30,7 @@
   h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 8px}
   .loom{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--nav);background:#eaf2fc;border:1px solid #d3e4fa;border-radius:6px;padding:4px 9px;margin:0 0 16px}
   .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:56ch}
-  .setup{
-    display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);
-    border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub);
-  }
+  .setup{display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub)}
   .setup b{color:var(--ink);font-weight:600}
 
   .ref{display:block;margin:14px 0 8px;border:1px solid #d3e4fa;background:#f4f9ff;border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub)}
@@ -44,14 +41,11 @@
   .rule{border:0;border-top:1px solid var(--line);margin:38px 0}
 
   .cue{display:flex;align-items:center;gap:9px;margin:30px 0 15px}
-  .cue .tag{
-    font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-    padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;background:var(--nav);
-  }
+  .cue .tag{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;background:var(--nav)}
   .cue .what{font-size:13.5px;color:var(--faint);font-weight:500}
   .cue .what b{color:var(--sub);font-weight:600}
 
-  .line{font-size:24px;line-height:1.36;font-weight:500;color:var(--ink);margin:0 0 4px}
+  .line{font-size:23px;line-height:1.38;font-weight:500;color:var(--ink);margin:0 0 4px}
   .line b{font-weight:700}
   .beat{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:12px 0 12px;display:flex;align-items:center;gap:8px}
   .beat::before{content:"";width:22px;height:1px;background:var(--line)}
@@ -62,7 +56,7 @@
   @media (max-width:480px){
     .wrap{padding:44px 20px 72px}
     h1{font-size:31px}
-    .line{font-size:21px}
+    .line{font-size:20px}
   }
   @media print{body{color:#000}.wrap{padding:0}.cue .tag{color:#000;background:#fff;border:1px solid #000}}
 </style>
@@ -73,71 +67,77 @@
   <p class="kicker">RISE DTC</p>
   <h1>Welcome video</h1>
   <span class="loom">Record as a Loom</span>
-  <p class="intro">A quick screen-share tour of your own site, two to three minutes. Share your screen once, keep the camera bubble on, and just click through the pages as you talk. The blue tags tell you where to click next.</p>
-  <div class="setup"><b>Setup:</b> open Loom, share the tab with <b>risedtc.com</b> in it, camera bubble <b>bottom-left</b> so it doesn't cover the page. Keep the screen shared the whole way, no stopping. If you fumble a line, keep going, the slightly-unpolished feel is the point.</div>
+  <p class="intro">A screen-share walkthrough of your own site, three to four minutes. Same shape as the Lemonade example below: who you are, who you help, the model, how you work, then the ask. Share your screen once, camera bubble on, and just talk it through.</p>
+  <div class="setup"><b>Setup:</b> open Loom, share the tab with <b>risedtc.com</b>, camera bubble <b>bottom-left</b> so it doesn't cover the page. Keep the screen shared the whole way. This is a guide, not a word-for-word script, so say it your way. Fumbles are fine, they make it human.</div>
 
   <div class="ref"><b>Example thank-you video, for guidance →</b> another founder walking his own site on a casual screen-share, camera on, human, a little unpolished. Same thing we're doing here. Watch it first: <a href="https://www.lemonade.io/thank-you-page" target="_blank" rel="noopener">lemonade.io/thank-you-page</a> (scroll down to the video).</div>
 
   <hr class="rule" />
 
   <div class="cue"><span class="tag">Open</span><span class="what"><b>risedtc.com</b> — your homepage</span></div>
-  <p class="line">Hey guys, so I'm Mattan, one of the co-founders here at <b>RISE DTC</b>.</p>
-  <p class="line">First off, thanks so much for being here, I really appreciate it.</p>
-  <p class="line">I just wanna take a couple minutes to walk you through who we are and what we actually do.</p>
+  <p class="line">Hey guys, hope you're doing well. I'm Mattan, one of the co-founders here at <b>RISE DTC</b>.</p>
+  <p class="line">I put together this quick video to give you a bit more context on what we actually do, who we're a good fit for, and what it looks like to work with us.</p>
   <div class="beat">beat</div>
-  <p class="line">So we're the world's first performance-only growth partner for DTC brands.</p>
-  <p class="line">And what that means is simple. Forget retainers, forget management fees, forget paying an agency for <b>effort</b>.</p>
-  <p class="line">We only make money when you actually grow. If you don't win, we don't.</p>
-  <div class="beat">beat</div>
-  <p class="line">I built RISE because I got tired of watching brands pay agencies whether the numbers moved or not.</p>
-  <p class="line">So we flipped it.</p>
+  <p class="line">So, short version: RISE is the world's first performance-only growth partner for DTC brands.</p>
+  <p class="line">We work with Shopify brands doing real volume, usually twenty grand a month in sales and up, that are serious about scaling.</p>
+  <p class="line">And if you're a founder who's tired of paying an agency whether the numbers move or not, you're in the right place.</p>
 
-  <div class="cue"><span class="tag">Scroll</span><span class="what">slowly down through <b>The RISE Method</b> as you talk</span></div>
-  <p class="line">So let me actually show you how this works, because this is where we're pretty different from a normal agency.</p>
-  <p class="line">It comes down to three things, and honestly they build on each other.</p>
+  <div class="cue"><span class="tag">Scroll</span><span class="what">down the homepage as you talk through the pains</span></div>
+  <p class="line">Usually brands come to us when one of a few things is going on.</p>
+  <p class="line">Maybe you're spending real money on ads, but honestly you can't tell if you're making a profit at the end of the month.</p>
+  <p class="line">Or you're growing on the top line, but your margins keep getting thinner as you scale.</p>
+  <p class="line">Or your ad account feels like a black box, and every agency you talk to blames something different.</p>
   <div class="beat">beat</div>
-  <p class="line">The first one is your <b>financial health</b>, and this is the part almost everyone else skips.</p>
-  <p class="line">Most agencies only look at what's happening inside the ad platform. Your ROAS, your cost per click, all that.</p>
-  <p class="line">But none of that actually tells you if you're making money.</p>
-  <p class="line">So before we spend a single dollar on ads, we go into your numbers and figure out where you're actually making money, and where you're losing it.</p>
-  <p class="line">Returns, discounts, shipping, all the things that add up on every order that you don't always catch. We look at all of it.</p>
-  <div class="beat">beat</div>
-  <p class="line">Once we actually know your numbers, then we get into the <b>creative</b>.</p>
-  <p class="line">And this one's big, because the creative is what actually drives the sales now.</p>
-  <p class="line">Our team builds the ads, the thumb-stopping, scroll-breaking stuff, the kind that gets someone to stop and actually buy.</p>
-  <p class="line">And we're testing constantly, because whatever worked last month always gets tired.</p>
-  <div class="beat">beat</div>
-  <p class="line">Then the third piece is the <b>media buying</b> itself.</p>
-  <p class="line">We run your ads across every network, Meta, TikTok, Google, all of it.</p>
-  <p class="line">And we manage the whole thing to one number, your actual <b>profit</b>.</p>
-  <p class="line">That's the number that decides whether you're winning, and it's the one most agencies won't even look at.</p>
-  <div class="beat">beat</div>
-  <p class="line">And all the tech that makes this run, the tracking, the reporting, our own AI, it's all included. No surprise invoices.</p>
+  <p class="line">If any of that sounds familiar, this is exactly the stuff we fix.</p>
+
+  <div class="cue"><span class="tag">Scroll</span><span class="what">to the stats / logos — quick credibility</span></div>
+  <p class="line">Quick bit about us. Between me and the team, we've got over twenty years in DTC.</p>
+  <p class="line">We've run ads for more than 150 brands and driven north of $725 million in revenue.</p>
+  <p class="line">So we've seen how this works at basically every stage, and we built RISE out of all of it.</p>
 
   <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/solutions</b> — the performance chart</span></div>
-  <p class="line">Now this is the part that makes most people move to us. Let me show you the actual math.</p>
-  <p class="line">Say your baseline is <b>twenty grand</b> a month. We scale you to <b>thirty</b>.</p>
-  <p class="line">That's ten thousand in new revenue, right there.</p>
-  <p class="line">We pull out ad spend, discounts, returns, and that leaves <b>six thousand</b>, the real growth.</p>
-  <p class="line">Our fee is twenty percent of that. So on ten grand of growth, we make <b>twelve hundred</b>.</p>
-  <p class="line">And if you don't grow above your baseline? Our fee is <b>zero</b>. We carry the risk with you.</p>
+  <p class="line">Now, our whole promise comes down to one thing: we only make money when you actually grow.</p>
+  <p class="line">No retainers, no percentage of your ad spend, no creative fees.</p>
+  <p class="line">Let me show you exactly how that works, it's real simple.</p>
+  <p class="line">Say your baseline is <b>twenty grand</b> a month, and we scale you to <b>thirty</b>.</p>
+  <p class="line">That's ten thousand in new revenue.</p>
+  <p class="line">We take out your ad spend, discounts and returns, and that leaves <b>six thousand</b>.</p>
+  <p class="line">Our fee is twenty percent of that, so <b>twelve hundred</b> bucks.</p>
+  <p class="line">And if you don't grow above your baseline? We make nothing. We carry that risk with you.</p>
+
+  <div class="cue"><span class="tag">Scroll</span><span class="what">to <b>The RISE Method</b> — the three parts</span></div>
+  <p class="line">So how do we actually get you there? We break it into three parts.</p>
   <div class="beat">beat</div>
-  <p class="line">And we move fast. We start optimizing inside <b>48 hours</b>, no waiting on learning phases.</p>
+  <p class="line">The first, and honestly the one most agencies skip, is your numbers.</p>
+  <p class="line">It kind of scares me how little most brands know about their real profit.</p>
+  <p class="line">Everyone stares at ROAS in the ad platform, but that number hides your returns, discounts, shipping, all of it.</p>
+  <p class="line">So before we touch an ad, we get into your actual economics and figure out what a customer is really worth, and what we can afford to pay to get one.</p>
+  <div class="beat">beat</div>
+  <p class="line">Second is the creative, and this is what actually drives the sales now.</p>
+  <p class="line">Our team builds the ads, the thumb-stopping, scroll-breaking stuff, and we're testing new angles every week, because whatever's working today gets tired fast.</p>
+  <div class="beat">beat</div>
+  <p class="line">Third is the media buying itself.</p>
+  <p class="line">We run your ads across every network, Meta, TikTok, Google, and we manage the whole thing to one number: your actual profit.</p>
+  <p class="line">And the tech behind all of it, the tracking, the reporting, our own AI, that's all included.</p>
+
+  <div class="cue"><span class="tag">Stay</span><span class="what">on the page — the execution bit</span></div>
+  <p class="line">Once that's set, we get to work. We're in the account every week, cutting what's not landing and doubling down on what is.</p>
+  <p class="line">And we start optimizing inside <b>48 hours</b>, no sitting around waiting on learning phases.</p>
 
   <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/clients</b> — case studies</span></div>
   <p class="line">Now, you don't have to take my word for any of this.</p>
-  <p class="line">We've got loads of brands this is working for right now, and the case studies are all over the site.</p>
-  <p class="line">I won't go through them here, but go check them out. Mama Coco, Josie Maran, a bunch more.</p>
-  <p class="line">There's a lot of proof that this works.</p>
+  <p class="line">We've got a ton of brands this is working for right now, and the case studies are all over the site.</p>
+  <p class="line">I won't go through them here, but go have a look. Mama Coco, Josie Maran, a bunch more.</p>
+  <p class="line">There's plenty of proof that this works.</p>
 
   <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/schedule</b> — booking page</span></div>
-  <p class="line">So look, if this sounds like something that might help where you're at with your business, book a call with us right here.</p>
+  <p class="line">So look, if this sounds like something that might help where you're at, book a call with us right here.</p>
   <p class="line">Maybe you just wanna hear more about how we do what we do. Or you want a free read of your ad account. Either way.</p>
-  <p class="line">Please do reach out, we'd love to get to work with you.</p>
-  <p class="line">Thanks so much for watching. Talk soon.</p>
+  <p class="line">Please do reach out, we'd genuinely love to get to work with you.</p>
+  <p class="line">Cheers guys, talk soon.</p>
 
   <hr class="rule" />
-  <p class="foot"><b>Before you roll:</b> test your audio on headphones, bad audio is the only thing that reads as cheap. Have the four pages open in tabs so you click straight through. One relaxed pass beats a perfect one.</p>
+  <p class="foot"><b>Before you roll:</b> test your audio on headphones, bad audio is the only thing that reads as cheap. Have your four tabs open (home, solutions, clients, schedule) so you click straight through. One relaxed pass beats a perfect one.</p>
 
 </div>
 </body>
