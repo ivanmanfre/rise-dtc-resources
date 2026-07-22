@@ -38,9 +38,14 @@
   .ref a{color:var(--nav);font-weight:600;text-decoration:none;border-bottom:1px solid #bcd8f8}
   .ref a:hover{border-bottom-color:var(--nav)}
 
-  .rule{border:0;border-top:1px solid var(--line);margin:38px 0}
+  .rule{border:0;border-top:1px solid var(--line);margin:34px 0}
 
-  .cue{display:flex;align-items:center;gap:9px;margin:30px 0 15px}
+  .sec{display:flex;align-items:baseline;gap:11px;margin:46px 0 2px}
+  .sec:first-of-type{margin-top:0}
+  .sec .n{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+  .sec .name{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-0.015em}
+
+  .cue{display:flex;align-items:center;gap:9px;margin:12px 0 15px}
   .cue .tag{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;background:var(--nav)}
   .cue .what{font-size:13.5px;color:var(--faint);font-weight:500}
   .cue .what b{color:var(--sub);font-weight:600}
@@ -57,6 +62,7 @@
     .wrap{padding:44px 20px 72px}
     h1{font-size:31px}
     .line{font-size:20px}
+    .sec .name{font-size:16px}
   }
   @media print{body{color:#000}.wrap{padding:0}.cue .tag{color:#000;background:#fff;border:1px solid #000}}
 </style>
@@ -74,6 +80,7 @@
 
   <hr class="rule" />
 
+  <div class="sec"><span class="n">01</span><span class="name">Who we are</span></div>
   <div class="cue"><span class="tag">Open</span><span class="what"><b>risedtc.com</b> — your homepage</span></div>
   <p class="line">Hey guys, hope you're doing well. I'm Mattan, one of the co-founders here at <b>RISE DTC</b>.</p>
   <p class="line">I put together this quick video to give you a bit more context on what we actually do, who we're a good fit for, and what it looks like to work with us.</p>
@@ -82,6 +89,7 @@
   <p class="line">We work with Shopify brands doing real volume, usually twenty grand a month in sales and up, that are serious about scaling.</p>
   <p class="line">And if you're a founder who's tired of paying an agency whether the numbers move or not, you're in the right place.</p>
 
+  <div class="sec"><span class="n">02</span><span class="name">Why brands come to us</span></div>
   <div class="cue"><span class="tag">Scroll</span><span class="what">down the homepage as you talk through the pains</span></div>
   <p class="line">Usually brands come to us when one of a few things is going on.</p>
   <p class="line">Maybe you're spending real money on ads, but honestly you can't tell if you're making a profit at the end of the month.</p>
@@ -90,11 +98,13 @@
   <div class="beat">beat</div>
   <p class="line">If any of that sounds familiar, this is exactly the stuff we fix.</p>
 
+  <div class="sec"><span class="n">03</span><span class="name">About us</span></div>
   <div class="cue"><span class="tag">Scroll</span><span class="what">to the stats / logos — quick credibility</span></div>
   <p class="line">Quick bit about us. Between me and the team, we've got over twenty years in DTC.</p>
   <p class="line">We've run ads for more than 150 brands and driven north of $725 million in revenue.</p>
   <p class="line">So we've seen how this works at basically every stage, and we built RISE out of all of it.</p>
 
+  <div class="sec"><span class="n">04</span><span class="name">The model</span></div>
   <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/solutions</b> — the performance chart</span></div>
   <p class="line">Now, our whole promise comes down to one thing: we only make money when you actually grow.</p>
   <p class="line">No retainers, no percentage of your ad spend, no creative fees.</p>
@@ -105,6 +115,7 @@
   <p class="line">Our fee is twenty percent of that, so <b>twelve hundred</b> bucks.</p>
   <p class="line">And if you don't grow above your baseline? We make nothing. We carry that risk with you.</p>
 
+  <div class="sec"><span class="n">05</span><span class="name">How we do it</span></div>
   <div class="cue"><span class="tag">Scroll</span><span class="what">to <b>The RISE Method</b> — the three parts</span></div>
   <p class="line">So how do we actually get you there? We break it into three parts.</p>
   <div class="beat">beat</div>
@@ -120,16 +131,19 @@
   <p class="line">We run your ads across every network, Meta, TikTok, Google, and we manage the whole thing to one number: your actual profit.</p>
   <p class="line">And the tech behind all of it, the tracking, the reporting, our own AI, that's all included.</p>
 
+  <div class="sec"><span class="n">06</span><span class="name">Once you're in</span></div>
   <div class="cue"><span class="tag">Stay</span><span class="what">on the page — the execution bit</span></div>
   <p class="line">Once that's set, we get to work. We're in the account every week, cutting what's not landing and doubling down on what is.</p>
   <p class="line">And we start optimizing inside <b>48 hours</b>, no sitting around waiting on learning phases.</p>
 
+  <div class="sec"><span class="n">07</span><span class="name">The proof</span></div>
   <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/clients</b> — case studies</span></div>
   <p class="line">Now, you don't have to take my word for any of this.</p>
   <p class="line">We've got a ton of brands this is working for right now, and the case studies are all over the site.</p>
   <p class="line">I won't go through them here, but go have a look. Mama Coco, Josie Maran, a bunch more.</p>
   <p class="line">There's plenty of proof that this works.</p>
 
+  <div class="sec"><span class="n">08</span><span class="name">The ask</span></div>
   <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/schedule</b> — booking page</span></div>
   <p class="line">So look, if this sounds like something that might help where you're at, book a call with us right here.</p>
   <p class="line">Maybe you just wanna hear more about how we do what we do. Or you want a free read of your ad account. Either way.</p>
