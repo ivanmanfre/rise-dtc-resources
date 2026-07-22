@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RISE DTC — Thank-You Video Script</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#14110e;
+    --muted:#6b6459;
+    --line:#e7e1d6;
+    --paper:#faf7f1;
+    --card:#ffffff;
+    --accent:#c8452a;      /* warm RISE red-clay */
+    --accent-soft:#fbeee9;
+    --say:#0f7a5a;         /* verbatim = green "say this" */
+    --say-soft:#e9f5ef;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;
+    font-size:18px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 24px 96px}
+  .kicker{
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 10px;
+  }
+  h1{
+    font-family:'DM Serif Display',Georgia,serif;
+    font-weight:400;font-size:clamp(34px,6vw,52px);line-height:1.05;
+    margin:0 0 14px;letter-spacing:-.01em;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{font-size:19px;color:var(--muted);margin:0 0 8px;max-width:60ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 40px;
+  }
+  .pill{
+    font-size:13px;font-weight:600;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-radius:999px;
+    padding:7px 14px;
+  }
+  .howto{
+    background:var(--accent-soft);border:1px solid #f1d8cf;border-radius:14px;
+    padding:20px 22px;margin:0 0 44px;font-size:16px;color:#5b3a30;
+  }
+  .howto b{color:var(--accent)}
+  .beat{margin:0 0 40px;padding:0 0 8px}
+  .beat-head{display:flex;align-items:baseline;gap:14px;margin:0 0 16px}
+  .beat-num{
+    font-family:'DM Serif Display',serif;font-size:15px;font-style:italic;
+    color:var(--accent);white-space:nowrap;padding-top:2px;
+  }
+  .beat-title{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:0}
+  .beat-title small{font-weight:500;color:var(--muted);font-size:15px;margin-left:8px}
+  /* verbatim "say this" block */
+  .say{
+    position:relative;background:var(--say-soft);border-left:4px solid var(--say);
+    border-radius:0 12px 12px 0;padding:20px 22px;margin:0 0 12px;
+    font-size:23px;line-height:1.45;font-weight:600;color:#0c3d2d;
+  }
+  .say::before{
+    content:"SAY THIS";position:absolute;top:-10px;left:18px;
+    background:var(--say);color:#fff;font-size:10px;font-weight:700;
+    letter-spacing:.12em;padding:3px 8px;border-radius:999px;
+  }
+  .direction{font-size:15px;color:var(--muted);font-style:italic;margin:0 0 8px}
+  /* riff talking points */
+  .riff{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:8px 20px;margin:0;
+  }
+  .riff .lbl{
+    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin:12px 0 2px;
+  }
+  ul{margin:8px 0 14px;padding-left:22px}
+  li{margin:0 0 8px}
+  hr{border:0;border-top:1px solid var(--line);margin:52px 0}
+  .section-h{
+    font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;
+    margin:0 0 18px;letter-spacing:-.01em;
+  }
+  .notes li{color:#3f3a33}
+  .crib{
+    background:#14110e;color:#efe9df;border-radius:16px;padding:26px 28px;margin-top:16px;
+  }
+  .crib .section-h{color:#fff}
+  .crib li{color:#d8cfc0;margin-bottom:10px}
+  .crib b{color:#f0a58f}
+  .foot{margin-top:56px;font-size:13px;color:var(--muted);text-align:center}
+  @media print{
+    body{background:#fff;font-size:14px}
+    .wrap{padding:0}
+    .say{font-size:18px}
+    .crib{background:#fff;color:#000;border:1px solid #000}
+    .crib li,.crib b,.crib .section-h{color:#000}
+    a[href]::after{content:""}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">RISE DTC · Founder Video</p>
+  <h1>Your <em>thank-you</em> video, in one take.</h1>
+  <p class="lede">Record this once. It plays on every page a new brand owner lands on after they reach out. Warm, founder-to-camera, 60–90 seconds.</p>
+
+  <div class="meta">
+    <span class="pill">⏱ 60–90 seconds</span>
+    <span class="pill">🎥 Phone or webcam, eye level</span>
+    <span class="pill">💡 Window light in front of you</span>
+    <span class="pill">🔁 3 takes, keep the warmest</span>
+  </div>
+
+  <div class="howto">
+    <b>How to read this:</b> The <b>green “SAY THIS”</b> blocks are word-for-word — say those close to verbatim so the open and close land. Everything in the white boxes is talking points: say them your way, into the lens, like you’re talking to one person. Don’t read those flat. The only middle part to get precise is the model, and those are your own site’s words.
+  </div>
+
+  <!-- BEAT 1 -->
+  <div class="beat">
+    <div class="beat-head"><span class="beat-num">Beat 1</span><h2 class="beat-title">Open <small>~10s</small></h2></div>
+    <div class="say">“Hey, it’s Mattan, founder of RISE DTC. First off, thank you. You just did the one thing most brand owners never get around to, so you’re already ahead of the pack. Quick minute on who we are and what happens next.”</div>
+    <p class="direction">Smile, relaxed, like you’re glad they showed up. This line has to feel human — don’t rush it.</p>
+  </div>
+
+  <!-- BEAT 2 -->
+  <div class="beat">
+    <div class="beat-head"><span class="beat-num">Beat 2</span><h2 class="beat-title">Who we are <small>your words · ~20s</small></h2></div>
+    <div class="riff">
+      <p class="lbl">Riff on these</p>
+      <ul>
+        <li>You’ve run Meta ads for 20+ years, 150+ DTC brands, $725M in attributed revenue.</li>
+        <li>RISE exists because you got tired of watching agencies get paid whether the brand grew or not.</li>
+        <li>You built the thing you wished existed when you were in their seat.</li>
+      </ul>
+    </div>
+    <p class="direction">Personal, not a stat dump. Pick one or two numbers you actually feel and say them like they mean something.</p>
+  </div>
+
+  <!-- BEAT 3 -->
+  <div class="beat">
+    <div class="beat-head"><span class="beat-num">Beat 3</span><h2 class="beat-title">The model <small>the differentiator · say it precisely</small></h2></div>
+    <div class="say">“We’re the world’s first performance-only growth partner for DTC brands. No retainers, no percentage of ad spend, no creative fees. We only earn when we generate measurable growth for your brand. If you don’t win, we don’t win.”</div>
+    <div class="riff">
+      <p class="lbl">Then one line, your voice</p>
+      <ul>
+        <li>Every other agency bills you whether the number moves or not. You wanted skin in the game, so you put it there.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BEAT 4 -->
+  <div class="beat">
+    <div class="beat-head"><span class="beat-num">Beat 4</span><h2 class="beat-title">What happens next <small>your words · ~15s</small></h2></div>
+    <div class="riff">
+      <p class="lbl">Keep it evergreen — works on any page</p>
+      <ul>
+        <li>“If we’ve got a call booked, come with your real numbers — ad spend, revenue, where you feel stuck. I’ll tell you straight whether we can move them.”</li>
+        <li>“If you grabbed a resource, it’s in your inbox — use it, and reach out when you want a second set of eyes on the account.”</li>
+      </ul>
+    </div>
+    <p class="direction">Say the version that fits, or say both loosely. Don’t overthink which page it’s on.</p>
+  </div>
+
+  <!-- BEAT 5 -->
+  <div class="beat">
+    <div class="beat-head"><span class="beat-num">Beat 5</span><h2 class="beat-title">Close <small>~8s</small></h2></div>
+    <div class="say">“Either way, I’m glad you’re here. Let’s go find the growth that’s already sitting in your account. Talk soon.”</div>
+    <p class="direction">End on the smile. Don’t add a tagline after this — let it land and stop.</p>
+  </div>
+
+  <hr />
+
+  <h3 class="section-h">A few things before you hit record</h3>
+  <ul class="notes">
+    <li><b>Tone:</b> you’re talking to one founder over coffee, not presenting. Warmth beats polish on these.</li>
+    <li><b>Don’t:</b> read it robotically, sit too far back, or add a hard pitch. The video builds trust; the call does the selling.</li>
+    <li><b>If it runs long:</b> cut Beat 2 down. Never cut the model or the open/close.</li>
+    <li><b>Optional:</b> record a second 8-second tail that’s call-specific (“looking forward to our call, one ask before we talk…”) and we’ll swap it onto the booked-call page only. Not needed for v1.</li>
+  </ul>
+
+  <div class="crib">
+    <h3 class="section-h">Model crib — your own site’s words</h3>
+    <p style="color:#bcae9c;margin-top:0">If you blank on Beat 3, these are the lines to hit:</p>
+    <ul>
+      <li><b>“world’s first Performance-Only Growth Partner for DTC Brands”</b></li>
+      <li><b>“NO retainers, NO percentage of ad spend, NO creative fees”</b></li>
+      <li><b>“We only earn when we generate measurable growth. If you don’t win, neither do we.”</b></li>
+      <li>Pillars: Profit Over Sales · Creative That Converts · Optimized Media Buying (powered by RISE AI)</li>
+      <li>Proof: $725M attributed revenue · 150+ DTC brands · 20+ years Meta ads</li>
+    </ul>
+  </div>
+
+  <p class="foot">RISE DTC · founder welcome video · v1</p>
+
+</div>
+</body>
+</html>
