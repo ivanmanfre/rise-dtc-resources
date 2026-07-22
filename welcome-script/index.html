@@ -10,53 +10,58 @@
 <style>
   :root{
     --ink:#0e0e10;
-    --sub:#57565b;
-    --faint:#8e8d93;
-    --line:#ececef;
+    --sub:#5a5960;
+    --faint:#9a99a0;
+    --line:#ececed;
     --bg:#ffffff;
-    --chip:#f4f4f6;
     --accent:#d8402a;
+    --screen:#1466c4;
+    --chipbg:#f5f5f7;
   }
   *{box-sizing:border-box}
   body{
     margin:0;background:var(--bg);color:var(--ink);
     font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
-    letter-spacing:-0.006em;
+    -webkit-font-smoothing:antialiased;letter-spacing:-0.01em;
   }
-  .wrap{max-width:600px;margin:0 auto;padding:64px 26px 96px}
+  .wrap{max-width:640px;margin:0 auto;padding:60px 26px 100px}
 
   .kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
-  h1{font-weight:700;font-size:40px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 14px}
-  .intro{font-size:16px;color:var(--sub);margin:0 0 10px;max-width:52ch}
+  h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 14px}
+  .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:54ch}
   .setup{
-    display:inline-flex;gap:8px;align-items:center;margin:20px 0 52px;
-    background:var(--chip);border:1px solid var(--line);border-radius:10px;
-    padding:11px 14px;font-size:14px;color:var(--sub);font-weight:500;
+    display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);
+    border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.5;color:var(--sub);
   }
   .setup b{color:var(--ink);font-weight:600}
 
-  .beat{padding:0 0 34px;margin:0 0 34px;border-bottom:1px solid var(--line)}
-  .beat:last-of-type{border-bottom:0}
-  .screen{
-    display:inline-flex;align-items:center;gap:7px;
-    font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--faint);margin:0 0 14px;
-  }
-  .screen .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
-  .say{font-size:20px;line-height:1.42;font-weight:500;color:var(--ink);margin:0}
-  .say + .say{margin-top:12px}
-  .quote{color:var(--ink);font-weight:600}
-  .aside{font-size:14px;color:var(--faint);margin:12px 0 0}
+  .rule{border:0;border-top:1px solid var(--line);margin:40px 0}
 
-  .foot{margin-top:12px;font-size:14px;color:var(--faint);line-height:1.55}
+  /* cue rows */
+  .cue{display:flex;align-items:center;gap:9px;margin:30px 0 16px}
+  .cue .tag{
+    font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;
+  }
+  .cue.face .tag{background:var(--accent)}
+  .cue.screen .tag{background:var(--screen)}
+  .cue .what{font-size:13.5px;color:var(--faint);font-weight:500}
+
+  /* teleprompter lines */
+  .line{font-size:26px;line-height:1.34;font-weight:500;color:var(--ink);margin:0 0 4px}
+  .line b{font-weight:700}
+  .beat{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:12px 0 12px;display:flex;align-items:center;gap:8px}
+  .beat::before{content:"";width:22px;height:1px;background:var(--line)}
+
+  .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--faint);line-height:1.55}
+  .foot b{color:var(--sub);font-weight:600}
 
   @media (max-width:480px){
-    .wrap{padding:46px 20px 68px}
-    h1{font-size:33px}
-    .say{font-size:18px}
+    .wrap{padding:44px 20px 72px}
+    h1{font-size:31px}
+    .line{font-size:22px}
   }
-  @media print{body{color:#000}.wrap{padding:0}}
+  @media print{body{color:#000}.wrap{padding:0}.cue .tag{color:#000;background:#fff;border:1px solid #000}}
 </style>
 </head>
 <body>
@@ -64,36 +69,47 @@
 
   <p class="kicker">RISE DTC</p>
   <h1>Welcome video</h1>
-  <p class="intro">Record it as a screen share of risedtc.com with your camera in the corner. About 60 seconds. These are the beats, say them your way.</p>
-  <div class="setup">🖥 &nbsp;<span><b>Setup:</b> your site open, webcam bubble bottom-right, talk to the lens like one person is watching.</span></div>
+  <p class="intro">Record it as a screen share of your <b>/solutions/</b> page, camera bubble in the corner, walking through the performance-model chart. About 75 seconds. Read it your way, the pauses matter more than the words.</p>
+  <div class="setup"><b>Setup:</b> record the screen and your voice separately if you can, then lay the voice over the screen after. Talk like one brand owner is sitting across from you. Big words in <b>bold</b> get the lift.</div>
 
-  <div class="beat">
-    <div class="screen"><span class="dot"></span>Camera only, no screen yet</div>
-    <p class="say">Hey, Mattan here, founder of RISE. Thanks for reaching out. Give me sixty seconds and I'll walk you through exactly how we work.</p>
-  </div>
+  <hr class="rule" />
 
-  <div class="beat">
-    <div class="screen"><span class="dot"></span>Share screen — homepage hero</div>
-    <p class="say">Point at the headline: <span class="quote">"Stop paying agencies before they perform."</span> That line is the whole company. You should not pay an agency until they've actually grown your brand.</p>
-  </div>
+  <div class="cue face"><span class="tag">Face</span><span class="what">on camera, screen not shared yet</span></div>
+  <p class="line">Hey, Mattan here, founder of <b>RISE</b>.</p>
+  <p class="line">Let me show you exactly how we get <b>paid</b>.</p>
+  <p class="line">Honestly it's the whole reason brands move to us.</p>
+  <div class="beat">beat</div>
+  <p class="line">Forget retainers, management fees, paying for <b>effort</b>.</p>
+  <p class="line">We only make money when <b>you</b> grow.</p>
+  <p class="line">Let me put the real numbers on screen.</p>
 
-  <div class="beat">
-    <div class="screen"><span class="dot"></span>Scroll to "The RISE Method"</div>
-    <p class="say">Here's how we're different. No retainers, no percentage of ad spend, no creative fees. We only get paid when we generate real growth for you. If you don't win, we don't.</p>
-    <p class="say">Run your finger across the three: profit over sales, creative that converts, and media buying run by our own AI. That's the machine.</p>
-  </div>
+  <div class="cue screen"><span class="tag">Screen</span><span class="what">share /solutions/, performance-model chart, full view 2s</span></div>
+  <p class="line">So say your baseline is <b>twenty grand</b> a month.</p>
+  <p class="line">We scale you to <b>thirty</b>.</p>
+  <p class="line">That's <b>ten thousand</b> in new revenue, right there.</p>
+  <div class="beat">beat</div>
+  <p class="line">Now watch, this is the fair part.</p>
+  <p class="line">We take that ten grand and pull <b>out</b></p>
+  <p class="line">your ad spend, your discounts, your returns.</p>
+  <p class="line">On this example that leaves <b>six thousand</b>.</p>
+  <p class="line">We call it the net performance <b>pool</b>.</p>
+  <div class="beat">beat</div>
+  <p class="line">Our fee is twenty percent of <b>that</b> pool.</p>
+  <p class="line">So on ten grand of growth, we make <b>twelve hundred</b>.</p>
 
-  <div class="beat">
-    <div class="screen"><span class="dot"></span>Back to camera</div>
-    <p class="say">If we've got a call booked, bring your real numbers, ad spend and revenue, and I'll tell you straight whether we can move them. If you grabbed a resource, it's already in your inbox.</p>
-  </div>
+  <div class="cue face"><span class="tag">Face</span><span class="what">back to camera</span></div>
+  <p class="line">And if you <b>don't</b> grow above your baseline?</p>
+  <div class="beat">beat</div>
+  <p class="line">Our fee is <b>zero</b>. We carry the risk with you.</p>
+  <p class="line">No retainers, no percentage of your ad spend, no creative fees.</p>
+  <p class="line">Creative, tech, the AI, it's all <b>in</b> there.</p>
+  <div class="beat">beat</div>
+  <p class="line">So that's the model. If we've got a call booked,</p>
+  <p class="line">bring your real numbers and I'll build <b>your</b> version of this.</p>
+  <p class="line">Either way, glad you're here. Talk soon.</p>
 
-  <div class="beat">
-    <div class="screen"><span class="dot"></span>Camera, then stop</div>
-    <p class="say">That's the model. Glad you reached out. Talk soon.</p>
-  </div>
-
-  <p class="foot">Warm and blunt beats polished. Do two or three takes, keep the one that sounds most like you.</p>
+  <hr class="rule" />
+  <p class="foot"><b>Before you roll:</b> test your audio on headphones first, bad audio is the only thing that reads as cheap. Camera at eye level, light facing you. Shoot the opening two or three times, then one safety take of the whole thing.</p>
 
 </div>
 </body>
