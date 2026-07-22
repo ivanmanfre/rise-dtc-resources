@@ -15,7 +15,7 @@
     --line:#ececed;
     --bg:#ffffff;
     --accent:#d8402a;
-    --screen:#1466c4;
+    --nav:#1466c4;
     --chipbg:#f5f5f7;
   }
   *{box-sizing:border-box}
@@ -27,28 +27,26 @@
   .wrap{max-width:640px;margin:0 auto;padding:60px 26px 100px}
 
   .kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
-  h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 14px}
-  .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:54ch}
+  h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 8px}
+  .loom{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--nav);background:#eaf2fc;border:1px solid #d3e4fa;border-radius:6px;padding:4px 9px;margin:0 0 16px}
+  .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:56ch}
   .setup{
     display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);
-    border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.5;color:var(--sub);
+    border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub);
   }
   .setup b{color:var(--ink);font-weight:600}
 
-  .rule{border:0;border-top:1px solid var(--line);margin:40px 0}
+  .rule{border:0;border-top:1px solid var(--line);margin:38px 0}
 
-  /* cue rows */
-  .cue{display:flex;align-items:center;gap:9px;margin:30px 0 16px}
+  .cue{display:flex;align-items:center;gap:9px;margin:30px 0 15px}
   .cue .tag{
-    font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-    padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;
+    font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;background:var(--nav);
   }
-  .cue.face .tag{background:var(--accent)}
-  .cue.screen .tag{background:var(--screen)}
   .cue .what{font-size:13.5px;color:var(--faint);font-weight:500}
+  .cue .what b{color:var(--sub);font-weight:600}
 
-  /* teleprompter lines */
-  .line{font-size:26px;line-height:1.34;font-weight:500;color:var(--ink);margin:0 0 4px}
+  .line{font-size:24px;line-height:1.36;font-weight:500;color:var(--ink);margin:0 0 4px}
   .line b{font-weight:700}
   .beat{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:12px 0 12px;display:flex;align-items:center;gap:8px}
   .beat::before{content:"";width:22px;height:1px;background:var(--line)}
@@ -59,7 +57,7 @@
   @media (max-width:480px){
     .wrap{padding:44px 20px 72px}
     h1{font-size:31px}
-    .line{font-size:22px}
+    .line{font-size:21px}
   }
   @media print{body{color:#000}.wrap{padding:0}.cue .tag{color:#000;background:#fff;border:1px solid #000}}
 </style>
@@ -69,52 +67,52 @@
 
   <p class="kicker">RISE DTC</p>
   <h1>Welcome video</h1>
-  <p class="intro">Loom-style video for the resource thank-you page: one relaxed take, screen share of your <b>/solutions/</b> page with your webcam bubble in the corner, walking through the performance-model chart. About 90 seconds. This is a guide, not a script, so talk it your way. A stumble or two is fine, that's what makes it feel real.</p>
-  <div class="setup"><b>Setup:</b> open Loom or Riverside, share your <b>/solutions/</b> page, keep the camera bubble on, and just talk through it live in one take. No teleprompter, no re-dos for tiny slips. Talk like one brand owner is sitting across from you. The <b>bold</b> words are only where to lean in.</div>
+  <span class="loom">Record as a Loom</span>
+  <p class="intro">A quick screen-share tour of your own site, about two minutes. Share your screen once, keep the camera bubble on, and just click through the pages as you talk. The blue tags tell you where to click next.</p>
+  <div class="setup"><b>Setup:</b> open Loom, share the tab with <b>risedtc.com</b> in it, camera bubble bottom-right. Keep the screen shared the whole way, no stopping. If you fumble a line, keep going, the slightly-unpolished feel is the point.</div>
 
   <hr class="rule" />
 
-  <div class="cue face"><span class="tag">Face</span><span class="what">on camera, screen not shared yet</span></div>
+  <div class="cue"><span class="tag">Open</span><span class="what"><b>risedtc.com</b> — your homepage</span></div>
   <p class="line">Hey, Mattan here, founder of <b>RISE</b>.</p>
-  <p class="line">Your resource is on its way, should hit your inbox in a few minutes.</p>
-  <p class="line">While you wait, let me show you how we actually get <b>paid</b>.</p>
-  <p class="line">Honestly it's the whole reason brands move to us.</p>
+  <p class="line">Your resource is on its way, it'll hit your inbox in a few minutes.</p>
+  <p class="line">While you wait, let me give you the quick tour of what we do.</p>
   <div class="beat">beat</div>
+  <p class="line">We're the world's first performance-only growth partner for DTC brands.</p>
   <p class="line">Forget retainers, management fees, paying for <b>effort</b>.</p>
   <p class="line">We only make money when <b>you</b> grow.</p>
-  <p class="line">Let me put the real numbers on screen.</p>
 
-  <div class="cue screen"><span class="tag">Screen</span><span class="what">share /solutions/, performance-model chart, full view 2s</span></div>
-  <p class="line">So say your baseline is <b>twenty grand</b> a month.</p>
-  <p class="line">We scale you to <b>thirty</b>.</p>
-  <p class="line">That's <b>ten thousand</b> in new revenue, right there.</p>
+  <div class="cue"><span class="tag">Scroll</span><span class="what">down to <b>The RISE Method</b></span></div>
+  <p class="line">It's three things, and they run in this order.</p>
+  <p class="line">First, financial health. Profit comes down to math.</p>
+  <p class="line">We find where the money's actually <b>leaking</b>.</p>
+  <p class="line">Then creative that converts, thumb-stopping ads built off your numbers.</p>
+  <p class="line">Then we run the media across every network, all of it built around <b>profit</b>.</p>
   <div class="beat">beat</div>
-  <p class="line">Now watch, this is the fair part.</p>
-  <p class="line">We take that ten grand and pull <b>out</b></p>
-  <p class="line">your ad spend, your discounts, your returns.</p>
-  <p class="line">On this example that leaves <b>six thousand</b>.</p>
-  <p class="line">We call it the net performance <b>pool</b>.</p>
-  <div class="beat">beat</div>
-  <p class="line">Our fee is twenty percent of <b>that</b> pool.</p>
-  <p class="line">So on ten grand of growth, we make <b>twelve hundred</b>.</p>
+  <p class="line">The tracking, the reporting, our own AI, it's all <b>included</b>.</p>
 
-  <div class="cue face"><span class="tag">Face</span><span class="what">back to camera</span></div>
-  <p class="line">And if you <b>don't</b> grow above your baseline?</p>
+  <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/solutions</b> — the performance chart</span></div>
+  <p class="line">Here's the part that makes people move to us.</p>
+  <p class="line">Say your baseline is <b>twenty grand</b> a month, we scale you to <b>thirty</b>.</p>
+  <p class="line">That's ten thousand in new revenue.</p>
+  <p class="line">Pull out ad spend, discounts, returns, and that leaves <b>six thousand</b>.</p>
+  <p class="line">Our fee is twenty percent of that, so <b>twelve hundred</b>.</p>
+  <p class="line">And if you don't grow above your baseline, our fee is <b>zero</b>.</p>
   <div class="beat">beat</div>
-  <p class="line">Our fee is <b>zero</b>. We carry the risk with you.</p>
-  <p class="line">No retainers, no percentage of your ad spend, no creative fees.</p>
-  <p class="line">Creative, tech, the AI, it's all <b>in</b> there.</p>
-  <div class="beat">beat</div>
-  <p class="line">So that's the model. And you don't have to take my word for it.</p>
-  <p class="line">$725M in revenue, 150+ brands, case studies all over the site.</p>
-  <p class="line">Go dig into them.</p>
-  <div class="beat">beat</div>
-  <p class="line">If this sounds like where you're at, book a call.</p>
+  <p class="line">We start optimizing inside <b>48 hours</b>, no waiting on learning phases.</p>
+
+  <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/clients</b> — case studies</span></div>
+  <p class="line">And you don't have to take my word for it.</p>
+  <p class="line">$725M in revenue, 150+ brands, case studies right here.</p>
+  <p class="line">Mama Coco, Josie Maran, go dig into them.</p>
+
+  <div class="cue"><span class="tag">Go to</span><span class="what"><b>risedtc.com/schedule</b> — booking page</span></div>
+  <p class="line">If this sounds like where you're at, book a call right here.</p>
   <p class="line">Or if you'd rather, we'll do a free read of your ad account first.</p>
   <p class="line">Either way, reach out. We'd love to get to work. Talk soon.</p>
 
   <hr class="rule" />
-  <p class="foot"><b>Before you roll:</b> test your audio on headphones first, bad audio is the only thing that reads as cheap. Good light facing you, camera near eye level. Then just talk. If you fumble a line, keep going, worst case you do one more full pass. The slightly-unpolished Loom feel is the point.</p>
+  <p class="foot"><b>Before you roll:</b> test your audio on headphones, bad audio is the only thing that reads as cheap. Have the four pages open in tabs so you click straight through. One relaxed pass beats a perfect one.</p>
 
 </div>
 </body>
