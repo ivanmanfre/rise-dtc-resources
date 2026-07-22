@@ -29,6 +29,14 @@
   .kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
   h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 8px}
   .loom{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--nav);background:#eaf2fc;border:1px solid #d3e4fa;border-radius:6px;padding:4px 9px;margin:0 0 16px}
+
+  .tools{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap;align-items:center}
+  .tools button{font-family:inherit;font-size:13px;font-weight:600;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 13px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+  .tools button:hover{border-color:var(--nav);color:var(--nav)}
+  .tools button.on{background:var(--nav);color:#fff;border-color:var(--nav)}
+  .tools .note{font-size:12.5px;color:var(--faint);margin-left:2px}
+  body.editing .line,body.editing .sec .name{outline:1px dashed #cdd7e6;outline-offset:4px;border-radius:3px;cursor:text}
+  body.editing .line:focus,body.editing .sec .name:focus{outline:2px solid var(--nav);background:#f7fbff}
   .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:56ch}
   .setup{display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub)}
   .setup b{color:var(--ink);font-weight:600}
@@ -75,6 +83,13 @@
   <span class="loom">Record as a Loom</span>
   <p class="intro">A screen-share walkthrough of your own site, three to four minutes. Same shape as the Lemonade example below: who you are, who you help, the model, how you work, then the ask. Share your screen once, camera bubble on, and just talk it through.</p>
   <div class="setup"><b>Setup:</b> open Loom, share the tab with <b>risedtc.com</b>, camera bubble <b>bottom-left</b> so it doesn't cover the page. Keep the screen shared the whole way. This is a guide, not a word-for-word script, so say it your way. Fumbles are fine, they make it human.</div>
+
+  <div class="tools">
+    <button id="editBtn" type="button">✎ Edit script</button>
+    <button id="copyBtn" type="button">⧉ Copy script</button>
+    <button id="resetBtn" type="button">↺ Reset</button>
+    <span class="note" id="savedNote"></span>
+  </div>
 
   <div class="ref"><b>Example thank-you video, for guidance →</b> another founder walking his own site on a casual screen-share, camera on, human, a little unpolished. Same thing we're doing here. Watch it first: <a href="https://www.lemonade.io/thank-you-page" target="_blank" rel="noopener">lemonade.io/thank-you-page</a> (scroll down to the video).</div>
 
@@ -154,5 +169,48 @@
   <p class="foot"><b>Before you roll:</b> test your audio on headphones, bad audio is the only thing that reads as cheap. Have your four tabs open (home, solutions, clients, schedule) so you click straight through. One relaxed pass beats a perfect one.</p>
 
 </div>
+<script>
+(function(){
+  var KEY='rise-welcome-script-v2';
+  var editables=[].slice.call(document.querySelectorAll('.line, .sec .name'));
+  editables.forEach(function(el,i){ el.dataset.e=i; });
+  var note=document.getElementById('savedNote');
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  editables.forEach(function(el,i){ if(saved[i]!=null) el.innerHTML=saved[i]; });
+  if(Object.keys(saved).length) note.textContent='your edited copy is loaded';
+  function save(){
+    var map={};
+    editables.forEach(function(el,i){ map[i]=el.innerHTML; });
+    try{ localStorage.setItem(KEY, JSON.stringify(map)); }catch(e){}
+    note.textContent='saved on this device';
+  }
+  var editBtn=document.getElementById('editBtn');
+  editBtn.addEventListener('click',function(){
+    var on=document.body.classList.toggle('editing');
+    editBtn.classList.toggle('on',on);
+    editBtn.textContent = on ? '✓ Done' : '✎ Edit script';
+    editables.forEach(function(el){ el.contentEditable = on ? 'true' : 'false'; });
+    note.textContent = on ? 'click any line to rewrite it' : 'edits saved';
+  });
+  document.addEventListener('input',function(){ if(document.body.classList.contains('editing')) save(); });
+  document.getElementById('copyBtn').addEventListener('click',function(){
+    var parts=[];
+    [].slice.call(document.querySelectorAll('.sec .name, .line')).forEach(function(el){
+      if(el.classList.contains('name')) parts.push('\n== '+el.innerText.trim()+' ==');
+      else parts.push(el.innerText.trim());
+    });
+    var txt=parts.join('\n').replace(/\n{3,}/g,'\n\n').trim();
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ note.textContent='script copied to clipboard'; },function(){ note.textContent='copy blocked, try again'; });
+    } else { note.textContent='copy not supported in this browser'; }
+  });
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Reset to the original script? Your edits on this device will be lost.')) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    location.reload();
+  });
+})();
+</script>
 </body>
 </html>
