@@ -45,18 +45,19 @@
   "resource_headline": "Here's everything inside.",
   "thank_you": {
     "eyebrow": "You're in",
-    "headline": "Your pack is in your inbox{name}.",
+    "headline": "Your pack is on its way{name}.",
     "kit_label": "Open the pack",
-    "body": "We just sent it to your email so you can come back to it any time. Open it there, or jump straight in below. When you want your account read and run for you instead of by you, Rise is one call away.",
+    "body": "It's landing in your inbox now, so it's there any time you need it. While you wait, here's a good way to spend two minutes, Mattan walks you through how RISE actually works 👇",
     "bullets": [
       "A letter grade on every line item that decides whether your spend makes money",
       "A scale-hold-cut call on your budget, sized in flat dollars, against your own breakeven",
       "A refresh brief for the ads going stale, ready to hand a creator"
     ],
     "cta_url": "https://meetings.hubspot.com/mattan5/rise-intro-call--li",
-    "cta_label": "Book your Rise call",
-    "cta_note": "30 minutes with Rise. We'll read your account together and tell you what we'd fix first, and if you can do it yourself we'll tell you that too.",
+    "cta_label": "Book your RISE call",
+    "cta_note": "30 minutes with RISE. Once you've watched, grab a time and we'll read your account together and tell you what we'd fix first. If you can do it yourself, we'll tell you that too.",
     "video_slot": true,
+    "video_embed": null,
     "video_url": null
   },
   "files": [
