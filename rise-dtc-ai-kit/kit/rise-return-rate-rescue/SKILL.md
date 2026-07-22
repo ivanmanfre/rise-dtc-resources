@@ -5,7 +5,11 @@ description: Use when a DTC founder wants to know exactly how many dollars retur
 
 # Return Rate Rescue
 
-Part of the Rise DTC AI Kit, RISE Method, Financial Health pillar.
+**You paste:** 8 numbers straight from Shopify (orders, AOV, return rate, shipping and handling costs).
+**You get back:** the dollar figure returns cost you per year, split into its 4 leaks, plus a 3-move rescue plan ranked by recovered dollars.
+**Time:** about 2 minutes in any Claude chat. Every figure shows its arithmetic.
+
+Part of the RISE DTC AI Kit, RISE Method, Financial Health pillar.
 
 ## What this does
 

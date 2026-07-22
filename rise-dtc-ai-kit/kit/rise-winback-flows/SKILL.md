@@ -1,9 +1,13 @@
 ---
 name: rise-winback-flows
-description: Use when a DTC founder wants to build or fix a retention flow, a post-purchase sequence, a winback sequence for lapsed customers, or a save for abandoned checkouts. Triggers on "write my winback flow", "customers aren't buying again", "build a post-purchase sequence", "second order is low", "I have a list of lapsed customers". Part of the Rise DTC AI Kit, Retention pillar (RISE Method). NOT for acquisition ads or one-off broadcasts, this is lifecycle flows only. NOT for inventing benchmark stats, every number in the output comes from the founder.
+description: Use when a DTC founder wants to build or fix a retention flow, a post-purchase sequence, a winback sequence for lapsed customers, or a save for abandoned checkouts. Triggers on "write my winback flow", "customers aren't buying again", "build a post-purchase sequence", "second order is low", "I have a list of lapsed customers". Part of the RISE DTC AI Kit, Retention pillar (RISE Method). NOT for acquisition ads or one-off broadcasts, this is lifecycle flows only. NOT for inventing benchmark stats, every number in the output comes from the founder.
 ---
 
 # Winback Flows, RISE Method, Retention
+
+**You answer:** 7 quick questions about your product, repeat cycle, and the churn point you want to attack.
+**You get back:** post-purchase and winback sequences ready to paste into Klaviyo or Postscript, with entry/exit rules and the recovery math.
+**Time:** about 5 minutes in any Claude chat. Projections use your numbers only.
 
 When a founder invokes this, you build them a retention flow they can hand
 straight to Klaviyo, Postscript, or whatever ESP/SMS tool they run. You write

@@ -5,6 +5,10 @@ description: Use when a DTC founder pastes a product page (title, description, c
 
 # PDP Doctor, RISE Method, Conversion pillar
 
+**You paste:** one product page (title + description), its return rate, and the top return reason in your customers' words.
+**You get back:** a rewritten title, description, fit or usage block, FAQ, and 3 A/B test ideas, all aimed at selling more and returning less.
+**Time:** about 3 minutes in any Claude chat. Nothing invented, gaps get flagged.
+
 ## What this does
 
 Takes one product detail page and rewrites it to do two jobs at once: sell it

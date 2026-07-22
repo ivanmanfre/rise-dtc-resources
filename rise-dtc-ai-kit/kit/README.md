@@ -1,4 +1,4 @@
-# Rise DTC AI Kit
+# RISE DTC AI Kit
 
 Five Claude skills for running the money side of a DTC brand. Each one takes
 numbers or copy you already have and hands back work you can use the same day:
@@ -6,7 +6,12 @@ a dollar-sized returns plan, a rewritten product page, ad angles pulled from
 your reviews, a retention flow, and a Monday triage that tells you which of the
 other four to run first.
 
-Built for Rise DTC clients. Claude does the work on every one of these.
+Built by the RISE DTC team, the performance-only growth partner behind 150+
+DTC brands. Claude does the work on every one of these; you bring the numbers.
+
+If you only run one thing today: open **rise-weekly-triage**, paste last
+week's Shopify numbers, and it hands you the 3 leaks costing you the most,
+in dollars, routed to the skill that fixes each.
 
 ## The five skills
 
@@ -49,5 +54,5 @@ it tells you what's missing instead of guessing.
 
 ## Questions
 
-This kit was built for you by Rise DTC. If you want a skill tuned to your store
+This kit was built for you by RISE DTC. If you want a skill tuned to your store
 or a new one built for a problem that isn't here, that's what the team is for.

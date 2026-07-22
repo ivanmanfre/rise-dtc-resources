@@ -5,7 +5,11 @@ description: Use when you've got a pile of customer reviews (Shopify, Judge.me, 
 
 # Review-to-Angles Miner
 
-Part of the Rise DTC AI Kit, RISE Method, Acquisition pillar.
+**You paste:** 15 or more real customer reviews (Shopify, Judge.me, Loox, Yotpo, DMs, support tickets).
+**You get back:** 5 ad angles, 10 hooks, and 3 UGC creator briefs, every single line traced to a review a customer actually wrote.
+**Time:** about 3 minutes in any Claude chat. Thin evidence gets named, never padded.
+
+Part of the RISE DTC AI Kit, RISE Method, Acquisition pillar.
 
 ## What this does
 

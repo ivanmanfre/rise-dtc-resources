@@ -1,9 +1,13 @@
 ---
 name: rise-weekly-triage
-description: Use every Monday when you're staring at last week's Shopify numbers and don't know what to fix first, sessions, conversion rate, orders, revenue, AOV, returns, ad spend, top products, week-over-week deltas. Paste the numbers and get back the 3 things actually costing you money, ranked, with the dollar size of each and the one action to take this week. This is the router for the rest of the Rise DTC AI Kit, it tells you which other skill to run next.
+description: Use every Monday when you're staring at last week's Shopify numbers and don't know what to fix first, sessions, conversion rate, orders, revenue, AOV, returns, ad spend, top products, week-over-week deltas. Paste the numbers and get back the 3 things actually costing you money, ranked, with the dollar size of each and the one action to take this week. This is the router for the rest of the RISE DTC AI Kit, it tells you which other skill to run next.
 ---
 
 # Rise Weekly Triage, RISE Method, operating cadence
+
+**You paste:** last week's store numbers next to the prior week (sessions, conversion, revenue, returns, spend).
+**You get back:** the 3 things costing you the most money, sized in dollars with the math shown, each routed to the kit skill that fixes it.
+**Time:** about 2 minutes every Monday. This is the skill to run first.
 
 ## What this does
 
@@ -13,7 +17,7 @@ hands back a ranked "fix this first" list. Nothing here is a benchmark or an
 industry average, every number in the output comes out of arithmetic done on
 what you pasted.
 
-This is the Monday cadence skill in the Rise DTC AI Kit. It doesn't fix returns,
+This is the Monday cadence skill in the RISE DTC AI Kit. It doesn't fix returns,
 rewrite a PDP, mine reviews, or build a winback flow. It tells you which of
 those four jobs to run this week and why, in dollar terms. Works as a Claude
 Code skill or pasted into a Claude chat.
