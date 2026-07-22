@@ -6,50 +6,57 @@
 <title>RISE DTC — Welcome Video</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --ink:#171310;
-    --muted:#8a8175;
-    --line:#ece6da;
-    --paper:#faf7f1;
-    --accent:#c8452a;
-    --say-bg:#fff;
+    --ink:#0e0e10;
+    --sub:#57565b;
+    --faint:#8e8d93;
+    --line:#ececef;
+    --bg:#ffffff;
+    --chip:#f4f4f6;
+    --accent:#d8402a;
   }
   *{box-sizing:border-box}
   body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:'Inter',system-ui,-apple-system,sans-serif;
-    line-height:1.55;font-size:18px;-webkit-font-smoothing:antialiased;
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
+    letter-spacing:-0.006em;
   }
-  .wrap{max-width:620px;margin:0 auto;padding:72px 28px 100px}
-  .kicker{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
-  h1{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:46px;line-height:1.02;margin:0 0 18px;letter-spacing:-.01em}
-  .legend{font-size:15px;color:var(--muted);margin:0 0 56px}
-  .legend b{color:var(--ink);font-weight:600}
+  .wrap{max-width:600px;margin:0 auto;padding:64px 26px 96px}
 
-  .beat{margin:0 0 46px}
-  .label{display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
-  .label .n{font-family:'DM Serif Display',serif;font-style:italic;font-size:16px;color:var(--accent)}
-  .label .t{font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-transform:uppercase}
-
-  .say{
-    font-family:'DM Serif Display',Georgia,serif;font-weight:400;
-    font-size:25px;line-height:1.4;color:var(--ink);
-    border-left:3px solid var(--accent);padding:2px 0 2px 22px;margin:0;
+  .kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+  h1{font-weight:700;font-size:40px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 14px}
+  .intro{font-size:16px;color:var(--sub);margin:0 0 10px;max-width:52ch}
+  .setup{
+    display:inline-flex;gap:8px;align-items:center;margin:20px 0 52px;
+    background:var(--chip);border:1px solid var(--line);border-radius:10px;
+    padding:11px 14px;font-size:14px;color:var(--sub);font-weight:500;
   }
-  ul{list-style:none;margin:0;padding:0}
-  li{position:relative;padding:0 0 0 22px;margin:0 0 12px;font-size:18px;color:#332d26}
-  li::before{content:"";position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55}
+  .setup b{color:var(--ink);font-weight:600}
 
-  .foot{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  .beat{padding:0 0 34px;margin:0 0 34px;border-bottom:1px solid var(--line)}
+  .beat:last-of-type{border-bottom:0}
+  .screen{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 14px;
+  }
+  .screen .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .say{font-size:20px;line-height:1.42;font-weight:500;color:var(--ink);margin:0}
+  .say + .say{margin-top:12px}
+  .quote{color:var(--ink);font-weight:600}
+  .aside{font-size:14px;color:var(--faint);margin:12px 0 0}
+
+  .foot{margin-top:12px;font-size:14px;color:var(--faint);line-height:1.55}
 
   @media (max-width:480px){
-    .wrap{padding:52px 22px 72px}
-    h1{font-size:38px}
-    .say{font-size:22px;padding-left:18px}
+    .wrap{padding:46px 20px 68px}
+    h1{font-size:33px}
+    .say{font-size:18px}
   }
-  @media print{body{background:#fff}.wrap{padding:0}}
+  @media print{body{color:#000}.wrap{padding:0}}
 </style>
 </head>
 <body>
@@ -57,41 +64,36 @@
 
   <p class="kicker">RISE DTC</p>
   <h1>Welcome video</h1>
-  <p class="legend">One take, 60 to 90 seconds. <b>Big lines: say word-for-word.</b> Bullets: your own words, into the lens.</p>
+  <p class="intro">Record it as a screen share of risedtc.com with your camera in the corner. About 60 seconds. These are the beats, say them your way.</p>
+  <div class="setup">🖥 &nbsp;<span><b>Setup:</b> your site open, webcam bubble bottom-right, talk to the lens like one person is watching.</span></div>
 
   <div class="beat">
-    <div class="label"><span class="n">1</span><span class="t">Open</span></div>
-    <p class="say">"Hey, it's Mattan, founder of RISE DTC. First off, thank you. You just did the one thing most brand owners never get around to, so you're already ahead of the pack. Quick minute on who we are and what happens next."</p>
+    <div class="screen"><span class="dot"></span>Camera only, no screen yet</div>
+    <p class="say">Hey, Mattan here, founder of RISE. Thanks for reaching out. Give me sixty seconds and I'll walk you through exactly how we work.</p>
   </div>
 
   <div class="beat">
-    <div class="label"><span class="n">2</span><span class="t">Who we are</span></div>
-    <ul>
-      <li>20+ years running Meta ads, 150+ DTC brands, $725M in attributed revenue.</li>
-      <li>RISE exists because you got tired of agencies getting paid whether the brand grew or not.</li>
-      <li>You built the thing you wished existed when you were in their seat.</li>
-    </ul>
+    <div class="screen"><span class="dot"></span>Share screen — homepage hero</div>
+    <p class="say">Point at the headline: <span class="quote">"Stop paying agencies before they perform."</span> That line is the whole company. You should not pay an agency until they've actually grown your brand.</p>
   </div>
 
   <div class="beat">
-    <div class="label"><span class="n">3</span><span class="t">The model</span></div>
-    <p class="say">"We're the world's first performance-only growth partner for DTC brands. No retainers, no percentage of ad spend, no creative fees. We only earn when we generate measurable growth for your brand. If you don't win, we don't win."</p>
+    <div class="screen"><span class="dot"></span>Scroll to "The RISE Method"</div>
+    <p class="say">Here's how we're different. No retainers, no percentage of ad spend, no creative fees. We only get paid when we generate real growth for you. If you don't win, we don't.</p>
+    <p class="say">Run your finger across the three: profit over sales, creative that converts, and media buying run by our own AI. That's the machine.</p>
   </div>
 
   <div class="beat">
-    <div class="label"><span class="n">4</span><span class="t">What's next</span></div>
-    <ul>
-      <li>Booked a call? Come with your real numbers: ad spend, revenue, where you feel stuck. I'll tell you straight if we can move them.</li>
-      <li>Grabbed a resource? It's in your inbox. Reach out when you want a second set of eyes on the account.</li>
-    </ul>
+    <div class="screen"><span class="dot"></span>Back to camera</div>
+    <p class="say">If we've got a call booked, bring your real numbers, ad spend and revenue, and I'll tell you straight whether we can move them. If you grabbed a resource, it's already in your inbox.</p>
   </div>
 
   <div class="beat">
-    <div class="label"><span class="n">5</span><span class="t">Close</span></div>
-    <p class="say">"Either way, I'm glad you're here. Let's go find the growth that's already sitting in your account. Talk soon."</p>
+    <div class="screen"><span class="dot"></span>Camera, then stop</div>
+    <p class="say">That's the model. Glad you reached out. Talk soon.</p>
   </div>
 
-  <p class="foot">Phone at eye level, light in front of you, warm not polished. Three takes, keep the best one.</p>
+  <p class="foot">Warm and blunt beats polished. Do two or three takes, keep the one that sounds most like you.</p>
 
 </div>
 </body>
