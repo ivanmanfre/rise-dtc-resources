@@ -83,7 +83,7 @@
         '<div class="lmk-dl-copy">' +
           '<div class="lmk-dl-label">' + L.esc(data.format_label || "AI Kit") + '</div>' +
           '<h2 class="lmk-dl-h">The whole system, <em>one folder</em></h2>' +
-          '<p class="lmk-dl-p">' + files.length + " files" + (editable > 0 ? ". " + editable + " you customize, the rest works" : ", every one of them working") + " out of the box. Browse every file below before you download. Nothing is hidden behind the ZIP.</p>" +
+          '<p class="lmk-dl-p">' + files.length + " files" + ((data.client && editable === 0) ? ", every one of them working" : ". " + editable + " you customize, the rest works") + " out of the box. Browse every file below before you download. Nothing is hidden behind the ZIP.</p>" +
         '</div>' +
         '<div class="lmk-dl-action">' +
           '<button class="lmc-btn lmk-dl-btn" type="button">Download the kit <span aria-hidden="true">↓</span></button>' +
@@ -170,6 +170,8 @@
   }
 
   function buildClientFooter(data) {
+    // Client surfaces only: ivan/legacy pages (no data.client, no data.footer) render no footer.
+    if (!data.footer && !data.client) return null;
     var f = data.footer || {};
     var c = data.client || {};
     var site = f.site || c.site;
@@ -341,7 +343,8 @@
       root.appendChild(buildResourceView(data));
       var closeU = buildClientClosing(data, "unlocked");
       if (closeU) root.appendChild(closeU);
-      root.appendChild(buildClientFooter(data));
+      var footU = buildClientFooter(data);
+      if (footU) root.appendChild(footU);
       L.observeReveal(root, ".lmk-reveal");
       revealSafety(root);
       L.beacon("ai-kit", "view", { answers: { via: "unlock" } });
@@ -369,7 +372,8 @@
     root.appendChild(landing);
     var closeL = buildClientClosing(data, "landing");
     if (closeL) root.appendChild(closeL);
-    root.appendChild(buildClientFooter(data));
+    var footL = buildClientFooter(data);
+    if (footL) root.appendChild(footL);
 
     L.observeReveal(root, ".lmk-reveal");
     revealSafety(root);
