@@ -535,7 +535,7 @@
 
   /* ─────────────────────────── Gate (landing) ─────────────────────────── */
   var capture = { email: "", store_url: "", revenue_band: "" };
-  function emailValid(e) { return /[^@\s]+@[^@\s]+\.[^@\s]+/.test(e || ""); }
+  function emailValid(e) { e = String(e || "").trim(); return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(e); }
 
   function wireGate() {
     var form = $("gate-form");
@@ -596,6 +596,7 @@
         '<a class="ty-cta" href="' + BOOKING_URL + '" target="_blank" rel="noopener">Book your Rise call <span aria-hidden="true">&rarr;</span></a>' +
         '<p class="ty-note">30 minutes with Rise. We tell you which cost line to fix first, and if you can do it yourself we say so.</p>' +
       '</div>';
+    try { history.pushState(null, "", "?thanks=1"); } catch (_) {}
     showView("thankyou-view");
     window.scrollTo(0, 0);
     var open = v.querySelector(".ty-open");

@@ -447,7 +447,7 @@
   }
 
   /* ─────────────────────────── Gate ─────────────────────────── */
-  function emailValid(e) { return /[^@\s]+@[^@\s]+\.[^@\s]+/.test(e || ""); }
+  function emailValid(e) { e = String(e || "").trim(); return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(e); }
   function storeValid(u) { return /^[a-z0-9.-]+\.[a-z]{2,}/i.test((u || "").replace(/^https?:\/\//i, "").replace(/^www\./i, "")); }
   function domainFromUrl(u) {
     try {
