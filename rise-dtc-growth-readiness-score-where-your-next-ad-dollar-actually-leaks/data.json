@@ -644,5 +644,8 @@
   "description": "In 30 minutes we will show you the two leaks to fix first, based on your score and your stage. No pitch deck, just the sequencing.",
   "button": "Book a call",
   "url": "https://meetings.hubspot.com/mattan5/rise-intro-call--li"
+ },
+ "thank_you": {
+  "video_embed": "https://www.loom.com/embed/f16ae87afdee4f9bb996b2480062b038"
  }
 }

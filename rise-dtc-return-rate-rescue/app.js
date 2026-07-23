@@ -495,6 +495,14 @@
       state.storeUrl = store;
       $("gate").hidden = true;
       $("plan").hidden = false;
+      // R2 (2026-07-23): founder video on the post-capture reveal (this page's thank-you moment).
+      if (!document.getElementById("ty-video-rr")) {
+        var __tv = document.createElement("div");
+        __tv.id = "ty-video-rr";
+        __tv.innerHTML = "<p style=\"margin:0 0 10px;font-weight:600\">You are in. Your rescue plan is below, and a copy heads to your inbox. Two minutes on how RISE actually works, from Mattan \ud83d\udc47</p>" + "<div class=\"ty-video\" style=\"position:relative;padding-bottom:56.25%;height:0;margin:22px 0 26px;border-radius:12px;overflow:hidden;background:#000\"><iframe src=\"https://www.loom.com/embed/f16ae87afdee4f9bb996b2480062b038\" title=\"Mattan walks you through how RISE works\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe></div>";
+        var __plan = $("plan");
+        __plan.insertBefore(__tv, __plan.firstChild);
+      }
       $("plan-title").textContent = "Rescue plan, written for " + domainFromUrl(store);
       $("plan").scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
       runPlan(state);
