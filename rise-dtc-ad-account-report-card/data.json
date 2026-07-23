@@ -20,8 +20,7 @@
   "button": "Send me the pack",
   "name_placeholder": "First name",
   "email_placeholder": "you@yourstore.com",
-  "store_placeholder": "yourstore.com (optional)",
-  "note": "Goes to sending you the pack, and prepping your account if you book a call. Nothing else."
+  "store_placeholder": "yourstore.com (optional)"
  },
  "quick_start": [
   {

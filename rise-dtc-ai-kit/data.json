@@ -20,8 +20,7 @@
   "button": "Send me the kit",
   "name_placeholder": "First name",
   "email_placeholder": "you@yourstore.com",
-  "store_placeholder": "yourstore.com (optional)",
-  "note": "Sent from mattanupdates@risedtc.com. Goes to sending you the kit, and prepping your store if you book a call. Nothing else."
+  "store_placeholder": "yourstore.com (optional)"
  },
  "quick_start": [
   {
