@@ -7,124 +7,120 @@
 <title>RISE DTC — Video Scripts, Batch 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --ink:#0e0e10;
-    --sub:#5a5960;
-    --faint:#9a99a0;
-    --line:#ececed;
+    --ink:#1f1f1f;
+    --sub:#5a5a5a;
+    --faint:#9b9b9b;
+    --line:#ececec;
     --bg:#ffffff;
-    --accent:#d8402a;
-    --nav:#1466c4;
+    --gold:#ffc71d;
+    --goldsoft:#fff7dd;
+    --goldline:#f4dc8a;
     --chipbg:#f5f5f7;
   }
   *{box-sizing:border-box}
   body{
     margin:0;background:var(--bg);color:var(--ink);
-    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    -webkit-font-smoothing:antialiased;letter-spacing:-0.01em;
+    font-family:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:640px;margin:0 auto;padding:60px 26px 100px}
+  .wrap{max-width:660px;margin:0 auto;padding:54px 26px 100px}
 
-  .kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
-  h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 8px}
-  .chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--nav);background:#eaf2fc;border:1px solid #d3e4fa;border-radius:6px;padding:4px 9px;margin:0 6px 16px 0}
-  .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:56ch}
-  .setup{display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub)}
-  .setup b{color:var(--ink);font-weight:600}
+  .logo{height:30px;display:block;margin:0 0 26px}
+  h1{font-family:'Sora',sans-serif;font-weight:700;font-size:36px;line-height:1.08;letter-spacing:-0.02em;margin:0 0 14px}
+  h1 .hl{background:linear-gradient(transparent 55%, var(--gold) 55%, var(--gold) 94%, transparent 94%)}
+  .chip{display:inline-block;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:4px;padding:5px 10px;margin:0 6px 16px 0}
+  .intro{font-size:15.5px;line-height:1.6;color:var(--sub);margin:0 0 8px;max-width:58ch}
+  .setup{display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);border-radius:4px;padding:14px 17px;font-size:14px;line-height:1.6;color:var(--sub)}
+  .setup b{color:var(--ink);font-weight:700}
   .setup ul{margin:8px 0 0 18px;padding:0}
   .setup li{margin:4px 0}
 
   .tools{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap;align-items:center}
-  .tools button,.vidtools button{font-family:inherit;font-size:13px;font-weight:600;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 13px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
-  .tools button:hover,.vidtools button:hover{border-color:var(--nav);color:var(--nav)}
-  .tools button.on{background:var(--nav);color:#fff;border-color:var(--nav)}
-  .vidtools button.prompt{border-color:var(--accent);color:var(--accent)}
-  .vidtools button.prompt:hover{background:var(--accent);color:#fff}
+  .tools button,.vidtools button{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:4px;padding:9px 14px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+  .tools button:hover,.vidtools button:hover{border-color:var(--ink);color:var(--ink)}
+  .tools button.on{background:var(--ink);color:var(--gold);border-color:var(--ink)}
+  .vidtools button.prompt{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .vidtools button.prompt:hover{background:var(--ink);border-color:var(--ink);color:var(--gold)}
   .tools .note{font-size:12.5px;color:var(--faint);margin-left:2px}
-  body.editing .line,body.editing .sec .name{outline:1px dashed #cdd7e6;outline-offset:4px;border-radius:3px;cursor:text}
-  body.editing .line:focus,body.editing .sec .name:focus{outline:2px solid var(--nav);background:#f7fbff}
+  body.editing .line,body.editing .sec .name{outline:1px dashed var(--goldline);outline-offset:4px;border-radius:3px;cursor:text}
+  body.editing .line:focus,body.editing .sec .name:focus{outline:2px solid var(--gold);background:var(--goldsoft)}
 
   .rule{border:0;border-top:1px solid var(--line);margin:34px 0}
 
   .video{margin-top:54px}
   .sec{display:flex;align-items:baseline;gap:11px;margin:0 0 2px}
-  .sec .n{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em;white-space:nowrap}
-  .sec .name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-0.015em}
-  .specrow{font-size:12.5px;color:var(--faint);font-weight:500;margin:5px 0 12px}
-  .specrow b{color:var(--sub);font-weight:600}
+  .sec .n{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:var(--ink);letter-spacing:.05em;white-space:nowrap;background:var(--gold);border-radius:3px;padding:3px 7px}
+  .sec .name{font-family:'Sora',sans-serif;font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-0.015em}
+  .specrow{font-size:12.5px;color:var(--faint);font-weight:500;margin:7px 0 12px}
+  .specrow b{color:var(--sub);font-weight:700}
 
   .vidtools{display:flex;gap:8px;margin:10px 0 16px;flex-wrap:wrap}
 
-  .preview{margin:0 0 16px;padding:11px 14px;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;cursor:pointer}
-  .preview .pv-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:0 0 5px;display:flex;justify-content:space-between;gap:8px}
-  .preview .pv-t .pv-more{color:var(--nav);text-transform:none;letter-spacing:0;font-weight:600}
+  .preview{margin:0 0 16px;padding:11px 14px;background:var(--chipbg);border:1px solid var(--line);border-radius:4px;cursor:pointer}
+  .preview .pv-t{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 5px;display:flex;justify-content:space-between;gap:8px}
+  .preview .pv-t .pv-more{color:var(--ink);text-transform:none;letter-spacing:0;font-weight:700}
   .preview .pv-body{font-size:13.5px;line-height:1.55;color:var(--sub);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .preview.expanded .pv-body{display:block;-webkit-line-clamp:unset;overflow:visible}
-  .preview .pv-body .pv-beat{color:var(--accent);font-weight:700}
+  .preview .pv-body .pv-beat{color:#c79a00;font-weight:700}
 
-  .hookbox{border:1px solid #d3e4fa;background:#f4f9ff;border-radius:11px;padding:13px 16px;margin:0 0 18px}
-  .hookbox .hb-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--nav);margin:0 0 8px}
-  .hookbox .hk{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:500;margin:0 0 9px}
+  .hookbox{border:1px solid var(--goldline);background:var(--goldsoft);border-radius:4px;padding:14px 17px;margin:0 0 18px}
+  .hookbox .hb-t{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8a6d00;margin:0 0 8px}
+  .hookbox .hk{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:600;margin:0 0 10px}
   .hookbox .hk:last-child{margin-bottom:0}
-  .hookbox .os{display:block;font-size:12px;color:var(--faint);font-weight:600;margin-top:2px}
+  .hookbox .os{display:block;font-size:12px;color:#8a6d00;font-weight:600;margin-top:2px}
 
-  .cue{display:flex;align-items:center;gap:9px;margin:12px 0 15px}
-  .cue .tag{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;background:var(--nav)}
-  .cue .what{font-size:13.5px;color:var(--faint);font-weight:500}
-  .cue .what b{color:var(--sub);font-weight:600}
+  .line{font-size:22px;line-height:1.42;font-weight:500;color:var(--ink);margin:0 0 5px}
+  .line b{font-weight:800;background:linear-gradient(transparent 62%, var(--gold) 62%, var(--gold) 96%, transparent 96%)}
+  .beat{font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:12px 0;display:flex;align-items:center;gap:8px}
+  .beat::before{content:"";width:22px;height:2px;background:var(--gold)}
 
-  .line{font-size:23px;line-height:1.38;font-weight:500;color:var(--ink);margin:0 0 4px}
-  .line b{font-weight:700}
-  .beat{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:12px 0 12px;display:flex;align-items:center;gap:8px}
-  .beat::before{content:"";width:22px;height:1px;background:var(--line)}
-
-  .after{margin:20px 0 0;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:13.5px;line-height:1.55;color:var(--sub)}
-  .after b{color:var(--ink);font-weight:600}
-  .after .k{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:10px 0 3px}
+  .after{margin:20px 0 0;background:var(--chipbg);border:1px solid var(--line);border-radius:4px;padding:13px 16px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+  .after .k{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:10px 0 3px}
   .after .k:first-child{margin-top:0}
 
-  .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--faint);line-height:1.55}
-  .foot b{color:var(--sub);font-weight:600}
+  .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--faint);line-height:1.6}
+  .foot b{color:var(--sub);font-weight:700}
 
   /* ---------- teleprompter overlay ---------- */
-  #tp{position:fixed;inset:0;background:#000;color:#fff;z-index:50;display:none;flex-direction:column;overflow:hidden}
+  #tp{position:fixed;inset:0;background:#0b0b0b;color:#fff;z-index:50;display:none;flex-direction:column;overflow:hidden}
   #tp.open{display:flex}
-  #tp .tp-bar{position:absolute;top:0;left:0;right:0;display:flex;gap:10px;align-items:center;padding:12px 16px;z-index:3;background:linear-gradient(#000,rgba(0,0,0,0));transition:opacity .3s}
+  #tp .tp-bar{position:absolute;top:0;left:0;right:0;display:flex;gap:10px;align-items:center;padding:12px 16px;z-index:3;background:linear-gradient(#0b0b0b,rgba(11,11,11,0));transition:opacity .3s}
   #tp.rolling .tp-bar{opacity:0;pointer-events:none}
-  #tp .tp-bar button{font-family:inherit;font-size:13px;font-weight:600;color:#ddd;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 13px;cursor:pointer}
+  #tp .tp-bar button{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:#ddd;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:8px 13px;cursor:pointer}
   #tp .tp-bar button:hover{background:rgba(255,255,255,.16)}
   #tp .tp-bar .sp{font-size:12.5px;color:#999;min-width:74px;text-align:center}
-  #tp .tp-bar .ttl{font-size:12.5px;color:#888;margin-left:auto;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-  #tp .readline{position:absolute;left:0;right:0;top:24vh;height:0;border-top:2px solid rgba(216,64,42,.75);z-index:2;pointer-events:none}
-  #tp .readline::before{content:"";position:absolute;left:10px;top:-6px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid rgba(216,64,42,.9)}
+  #tp .tp-bar .ttl{font-family:'Sora',sans-serif;font-size:12px;color:#8a6d00;margin-left:auto;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+  #tp .readline{position:absolute;left:0;right:0;top:24vh;height:0;border-top:2px solid rgba(255,199,29,.8);z-index:2;pointer-events:none}
+  #tp .readline::before{content:"";position:absolute;left:10px;top:-6px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid rgba(255,199,29,.95)}
   #tp .tp-scroll{position:absolute;inset:0;overflow:hidden}
   #tp .tp-track{position:absolute;left:50%;transform:translateX(-50%);width:min(760px,92vw);padding:26vh 0 90vh;will-change:transform}
-  #tp .tp-track p{font-size:var(--tpfs,44px);line-height:1.45;font-weight:600;margin:0 0 .55em;text-align:center;color:#f2f2f2}
-  #tp .tp-track p b{color:#fff;border-bottom:3px solid rgba(216,64,42,.8)}
-  #tp .tp-track .tbeat{font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:#d8402a;text-align:center;margin:1em 0;font-weight:700}
+  #tp .tp-track p{font-family:'Manrope',sans-serif;font-size:var(--tpfs,44px);line-height:1.45;font-weight:600;margin:0 0 .55em;text-align:center;color:#f2f2f2}
+  #tp .tp-track p b{color:#fff;border-bottom:3px solid rgba(255,199,29,.85)}
+  #tp .tp-track .tbeat{font-family:'Sora',sans-serif;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);text-align:center;margin:1em 0;font-weight:700}
   #tp .tp-hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:12.5px;color:#777;z-index:3;transition:opacity .3s}
   #tp.rolling .tp-hint{opacity:0}
   #tp.mirror .tp-track{transform:translateX(-50%) scaleX(-1)}
 
   @media (max-width:480px){
-    .wrap{padding:44px 20px 72px}
-    h1{font-size:31px}
-    .line{font-size:20px}
-    .sec .name{font-size:17px}
+    .wrap{padding:40px 20px 72px}
+    h1{font-size:29px}
+    .line{font-size:19px}
+    .sec .name{font-size:16px}
     #tp .tp-track p{font-size:var(--tpfs,30px)}
   }
-  @media print{body{color:#000}.wrap{padding:0}.cue .tag{color:#000;background:#fff;border:1px solid #000}.vidtools,#tp{display:none!important}}
+  @media print{body{color:#000}.wrap{padding:0}.vidtools,#tp,.preview{display:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <p class="kicker">RISE DTC</p>
-  <h1>Video scripts, batch one</h1>
-  <span class="chip">5 videos</span><span class="chip">One recording session</span><span class="chip">60 to 90 seconds each</span>
-  <p class="intro">Five talking-head scripts, built from your own sales calls and your real client numbers. Record them back to back in one sitting, we release one per week. Every script opens on the claim in the first three seconds and ends on a question for the comments.</p>
+  <img class="logo" src="/assets/rise-dtc-logo-blk.png" alt="RISE DTC" />
+  <h1>Video scripts, batch one.<br><span class="hl">Straight from your own calls.</span></h1>
+  <span class="chip">6 videos</span><span class="chip">One recording session</span><span class="chip">60 to 90 sec each</span>
+  <p class="intro">Every script below is built from things you actually said on your sales and audit calls: your diagnostics, your numbers, your rulings. Record them back to back in one sitting, we release one per week. Each one opens on the claim in the first three seconds and ends on a question for the comments.</p>
 
   <div class="setup"><b>The one-sitting setup:</b> phone on a tripod at eye level, 4 to 8 feet back, shoot vertical. Face a window, overheads off. Mic 15 to 25 cm away, test on headphones before the first real take: bad audio is the only thing that reads as cheap. Then per video:
     <ul>
@@ -146,15 +142,233 @@
   <hr class="rule" />
 
   <!-- ================= VIDEO 1 ================= -->
-  <div class="video" data-dur="60" data-title="Dropshippers">
-    <div class="sec"><span class="n">WEEK 1</span><span class="name">Why we turn down dropshippers</span></div>
-    <p class="specrow"><b>60 seconds.</b> The point-of-view video. It runs first because it says out loud who RISE is for.</p>
+  <div class="video" data-dur="75" data-title="Pause the winners">
+    <div class="sec"><span class="n">WEEK 1</span><span class="name">I told a founder to pause campaigns that were making money</span></div>
+    <p class="specrow"><b>75 seconds.</b> From your intro call ruling: profitable spend on bad conversion data trains Meta wrong, so even the winners compound the mistake.</p>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
       <div class="hb-t">Hook, record 2 or 3 of these, keep the body identical</div>
+      <p class="hk">Last month I told a founder to pause campaigns that were MAKING money.<span class="os">On-screen text: I paused his profitable campaigns. On purpose.</span></p>
+      <p class="hk">There's a situation where profitable ads are still the wrong ads to run.<span class="os">On-screen text: When profitable ads are the wrong ads</span></p>
+      <p class="hk">His ROAS was fine. I still told him to shut it all off.<span class="os">On-screen text: ROAS was fine. I said shut it off.</span></p>
+    </div>
+    <div class="script">
+      <p class="line">Last month I told a founder to pause campaigns that were <b>making money</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">His conversion tracking was wrong. Purchases firing at the wrong moment, values off.</p>
+      <p class="line">And here's why that matters more than this month's profit.</p>
+      <div class="beat">beat</div>
+      <p class="line">Meta optimizes off the conversion data <b>you</b> feed it.</p>
+      <p class="line">Feed it wrong information, and it goes looking for more of the wrong people.</p>
+      <p class="line">You're literally feeding Meta the wrong information to optimize off of. That's <b>ludicrous</b> to do.</p>
+      <div class="beat">beat</div>
+      <p class="line">And it snowballs. The data gets worse, so the results get worse.</p>
+      <p class="line">So you pull back spend. So performance falls further.</p>
+      <p class="line">And then one day you say Meta <b>stopped working</b>, and someone tells you to go try TikTok ads.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Meta didn't stop working. The data feeding it did.</p>
+      <div class="beat">beat</div>
+      <p class="line">So yes, even if you're making money, I would pause.</p>
+      <p class="line">There's no way you should run campaigns without proper conversion tracking underneath them.</p>
+      <p class="line">Fix the tracking, reconcile it against your real Shopify orders, <b>then</b> turn the spend back on.</p>
+      <div class="beat">long beat</div>
+      <p class="line">When's the last time you checked what your pixel is actually sending back?</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>I paused his profitable campaigns. On purpose.
+      <span class="k">Post caption, no links</span>Profitable campaigns on broken tracking still train Meta wrong. When did you last reconcile your pixel against real orders?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 2 ================= -->
+  <div class="video" data-dur="60" data-title="The 30-second ROAS check">
+    <div class="sec"><span class="n">WEEK 2</span><span class="name">The number inside Meta is wrong 99% of the time</span></div>
+    <p class="specrow"><b>60 seconds.</b> Your line from the intro calls, plus the one-toggle check you run on audits. This is the give-away-the-diagnostic video.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">The ROAS you see inside Meta is wrong 99% of the time.<span class="os">On-screen text: Your ROAS is wrong 99% of the time</span></p>
+      <p class="hk">Here's a 30-second check that shows you your real ROAS. Your agency won't love it.<span class="os">On-screen text: The 30-second ROAS check</span></p>
+      <p class="hk">You told me you're at a 4 ROAS. You're probably not.<span class="os">On-screen text: "We're at a 4 ROAS." Probably not.</span></p>
+    </div>
+    <div class="script">
+      <p class="line">The ROAS you see inside Meta is wrong <b>99%</b> of the time.</p>
+      <div class="beat">beat</div>
+      <p class="line">Here's one big reason. View-through conversions.</p>
+      <p class="line">Somebody gets <b>served</b> your ad, never clicks it, buys the next day because Google or your email sent them.</p>
+      <p class="line">Meta claims that sale.</p>
+      <div class="beat">beat</div>
+      <p class="line">So here's the 30-second check. Open Ads Manager.</p>
+      <p class="line">Switch the attribution setting to <b>7-day click only</b>.</p>
+      <p class="line">Now look at your purchases again.</p>
+      <div class="beat">beat</div>
+      <p class="line">We do this on audits and sometimes <b>half</b> the conversions disappear.</p>
+      <div class="beat">long beat</div>
+      <p class="line">And understand why nobody showed you this.</p>
+      <p class="line">The inflated number is advantageous for Meta. And honestly, it's advantageous for your <b>agency</b> to report on too.</p>
+      <div class="beat">beat</div>
+      <p class="line">The only number I actually trust is your real Shopify checkouts against your ad spend.</p>
+      <p class="line">Dollar for dollar, in the back end.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Run the toggle today. What percent of your conversions survived the click-only view?</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>Your ROAS is wrong 99% of the time
+      <span class="k">Post caption, no links</span>One attribution toggle in Ads Manager. Sometimes half the reported conversions disappear. What % of yours survive it?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 3 ================= -->
+  <div class="video" data-dur="75" data-title="The 50-creatives myth">
+    <div class="sec"><span class="n">WEEK 3</span><span class="name">Everyone read the Meta update as "run 50 ads a month"</span></div>
+    <p class="specrow"><b>75 seconds.</b> Your most repeated conviction across the calls: the Andromeda creative-volume craze, refuted by your own accounts through Black Friday.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">Everyone read Meta's big update as: you need 50 ads a month now. We beat that model without doing it.<span class="os">On-screen text: The 50-ads-a-month myth</span></p>
+      <p class="hk">Brands come to us asking for 40 creatives a month in the contract. I talk them out of it.<span class="os">On-screen text: You don't need 40 creatives a month</span></p>
+      <p class="hk">In 2020 brands printed money with the worst creative you've ever seen. Remember that before you 10x your ad output.<span class="os">On-screen text: 2020: worst creative, best results. Why?</span></p>
+    </div>
+    <div class="script">
+      <p class="line">Everyone read Meta's Andromeda update the same way: you're running 20 creatives, now you need <b>200</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">Brands literally come to us saying, we'd love your help, and we also need 40 pieces of creative a month.</p>
+      <div class="beat">beat</div>
+      <p class="line">We've beat that model many, many times in the last 90 to 180 days. Without the volume.</p>
+      <div class="beat">beat</div>
+      <p class="line">Our cadence is simple. Introduce <b>three</b> ads at a time.</p>
+      <p class="line">Keep the winner. Introduce three more.</p>
+      <p class="line">And the winners <b>stick</b>. Consistent performance for months, straight through Black Friday and holiday.</p>
+      <div class="beat">beat</div>
+      <p class="line">Five strong concepts with variants can carry an account to fifteen, twenty k a month in spend.</p>
+      <div class="beat">long beat</div>
+      <p class="line">And keep some perspective. Brands were running the <b>worst</b> creative you've ever seen in 2020 and making money hand over fist.</p>
+      <p class="line">What changed since then is tracking, competition, and costs. Your creative count won't buy that era back.</p>
+      <div class="beat">beat</div>
+      <p class="line">Yes, it's a creative game. It's just an <b>iteration</b> game, and everyone's playing it as a volume game.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Check your account: is your best ad older than 90 days and still winning? Tell me below.</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>The 50-ads-a-month myth
+      <span class="k">Post caption, no links</span>Three ads in, keep the winner, three more. Winners held through Black Friday. Is your best ad older than 90 days?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 4 ================= -->
+  <div class="video" data-dur="90" data-title="Agency math">
+    <div class="sec"><span class="n">WEEK 4</span><span class="name">The day you hire an agency, the ROAS you need goes up</span></div>
+    <p class="specrow"><b>90 seconds.</b> The math you admitted "shooting myself in the foot" saying out loud, plus your 1.4 / 1.7 kill-and-scale line. Do this one on the notebook.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">I run an agency, and here's math I'm probably shooting myself in the foot by showing you.<span class="os">On-screen text: The math agencies don't show you</span></p>
+      <p class="hk">The day you hire an agency, the ROAS you need goes UP. Nobody does that math in front of you.<span class="os">On-screen text: Hiring an agency raises your break-even</span></p>
+      <p class="hk">Your ad account has one number that decides everything. Most founders never calculate it.<span class="os">On-screen text: The one number that decides everything</span></p>
+    </div>
+    <div class="script">
+      <p class="line">I run an agency. And I'm probably shooting myself in the foot here, but it's true.</p>
+      <div class="beat">beat</div>
+      <p class="line">The day you hire an agency, the ROAS you need goes <b>up</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">Say the fees come to three thousand a month. That's now part of your acquisition cost.</p>
+      <p class="line">Whatever you pay in ad spend, plus whatever the agency gets paid, all of it has to be profitable <b>now</b>.</p>
+      <p class="line">So your break-even moved. And almost nobody runs that math in front of you before you sign.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Here's how we handle it. Every brand has <b>one</b> computable number.</p>
+      <div class="beat">beat, write it as you say it</div>
+      <p class="line">Take your gross margin per order. Subtract every fee, including ours.</p>
+      <p class="line">What's left tells you the return on ad spend where you break even.</p>
+      <div class="beat">beat</div>
+      <p class="line">For one of our brands that number works out so that anything under a <b>1.4</b>, don't run the ad.</p>
+      <p class="line">Anything above a <b>1.7</b>, scale to the moon.</p>
+      <p class="line">One percent below the line, not another dollar. Five percent above it, push hard.</p>
+      <p class="line">It's binary. There's a calculation for this. It's never a vibe.</p>
+      <div class="beat">long beat</div>
+      <p class="line">So before you sign with anyone, including us: ask them to compute <b>your</b> break-even, fees included, in front of you.</p>
+      <p class="line">If they can't do it in one email, you have your answer.</p>
+      <div class="beat">beat</div>
+      <p class="line">Do you know your number? Drop your margin below and I'll show you the math.</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>The math agencies don't show you
+      <span class="k">Post caption, no links</span>Fees are part of your CAC, so hiring help moves your break-even ROAS. Ask any agency to compute your number, fees included, before you sign.
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 5 ================= -->
+  <div class="video" data-dur="75" data-title="The $40M AI mistake">
+    <div class="sec"><span class="n">WEEK 5</span><span class="name">We grew a brand to almost $40M. Then they went heavy on AI creative.</span></div>
+    <p class="specrow"><b>75 seconds.</b> Your war story from the calls, paired with what you're seeing on UGC across accounts. Only you can tell this one.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">We grew a brand from a garage to almost $40 million. Then they went heavy on AI creative.<span class="os">On-screen text: $40M brand. Then AI creative happened.</span></p>
+      <p class="hk">One of the biggest brands we ever built is in trouble, and the reason is in your ad account too.<span class="os">On-screen text: The AI creative trap</span></p>
+      <p class="hk">Consumers can't tell what's real anymore. Your ad performance already shows it.<span class="os">On-screen text: "You don't know what's real anymore"</span></p>
+    </div>
+    <div class="script">
+      <p class="line">We grew a brand from a mom-and-pop shipping out of their garage to almost <b>$40 million</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">Then they went heavy on AI creative.</p>
+      <p class="line">And they are in <b>big trouble</b> right now.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Look, AI is here to stay. We use it every day.</p>
+      <p class="line">But in ad creative it's becoming <b>obnoxiously</b> abused.</p>
+      <p class="line">You don't know what's real anymore. And neither does your customer.</p>
+      <div class="beat">beat</div>
+      <p class="line">If the consumer doesn't resonate with what's being put out there, they don't convert. They don't buy the product. Simple as that.</p>
+      <div class="beat">beat</div>
+      <p class="line">And we're seeing it in the data across our accounts.</p>
+      <p class="line">UGC performance has come <b>down</b> hard in the last 60 to 90 days.</p>
+      <p class="line">People stopped trusting that the person in the video is a real customer. Because half the time now, they're not.</p>
+      <div class="beat">long beat</div>
+      <p class="line">What still converts: your real product, real people who actually use it, and a <b>mix</b> of formats you keep iterating.</p>
+      <p class="line">The stuff only your brand could have made.</p>
+      <div class="beat">beat</div>
+      <p class="line">Go look at your last ten ads. How many could only <b>you</b> have made?</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>$40M brand. Then AI creative happened.
+      <span class="k">Post caption, no links</span>UGC performance dropped across our accounts in 60-90 days. Trust is the asset. How many of your last 10 ads could only your brand have made?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 6 ================= -->
+  <div class="video" data-dur="60" data-title="Dropshippers">
+    <div class="sec"><span class="n">WEEK 6</span><span class="name">Why we turn down dropshippers</span></div>
+    <p class="specrow"><b>60 seconds.</b> The positioning video: who RISE says no to, with the margin math out loud.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
       <p class="hk">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
       <p class="hk">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
       <p class="hk">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
@@ -190,196 +404,6 @@
   </div>
 
   <hr class="rule" />
-
-  <!-- ================= VIDEO 2 ================= -->
-  <div class="video" data-dur="60" data-title="The Profit Gap">
-    <div class="sec"><span class="n">WEEK 2</span><span class="name">The Profit Gap</span></div>
-    <p class="specrow"><b>60 seconds.</b> Your signature concept, named on camera. This is the idea you repeat until people quote it back to you.</p>
-    <div class="vidtools">
-      <button class="prompt" type="button">▶ Teleprompter</button>
-      <button class="copyone" type="button">⧉ Copy this script</button>
-    </div>
-    <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">Revenue is the most dangerous number in DTC.<span class="os">On-screen text: Revenue is the most dangerous number in DTC</span></p>
-      <p class="hk">A brand doubles revenue and keeps LESS money. Here's how.<span class="os">On-screen text: Double the revenue. Flat bank account.</span></p>
-      <p class="hk">You cannot pay rent with a ratio.<span class="os">On-screen text: You can't pay rent with a ratio</span></p>
-    </div>
-    <div class="script">
-      <p class="line">Revenue is the most <b>dangerous</b> number in DTC.</p>
-      <div class="beat">beat</div>
-      <p class="line">Here's what I mean. A brand doubles revenue.</p>
-      <p class="line">Doubles ad spend, doubles product cost, doubles fulfillment to move all that extra volume.</p>
-      <div class="beat">beat</div>
-      <p class="line">Top line looks <b>incredible</b>. The bank account? <b>Flat.</b></p>
-      <p class="line">Sometimes worse than the smaller year before.</p>
-      <div class="beat">beat</div>
-      <p class="line">We call it The <b>Profit Gap</b>. The distance between the revenue you brag about and the dollars you actually keep.</p>
-      <div class="beat">long beat</div>
-      <p class="line">And most agencies <b>love</b> that gap.</p>
-      <p class="line">Their fee is a percentage of your ad spend. So they get paid <b>more</b> to grow a number that doesn't grow your bank account.</p>
-      <div class="beat">beat</div>
-      <p class="line">You cannot pay rent with a ratio. You pay it with <b>flat dollars</b>.</p>
-      <div class="beat">beat</div>
-      <p class="line">So before you scale another dollar of ad spend: know your true gross margin, know your real cost to acquire a customer.</p>
-      <p class="line">And only scale when each new dollar returns more than a dollar in <b>profit</b>.</p>
-      <div class="beat">beat</div>
-      <p class="line">Not more revenue. Profit.</p>
-      <div class="beat">long beat</div>
-      <p class="line">When did you last check the gap on your own brand? Tell me below.</p>
-    </div>
-    <div class="after">
-      <span class="k">Cover frame text</span>The Profit Gap
-      <span class="k">Post caption, no links</span>The Profit Gap: the distance between the revenue you brag about and the dollars you keep. When did you last measure yours?
-    </div>
-  </div>
-
-  <hr class="rule" />
-
-  <!-- ================= VIDEO 3 ================= -->
-  <div class="video" data-dur="90" data-title="Margin math">
-    <div class="sec"><span class="n">WEEK 3</span><span class="name">Run this margin math before you hire any agency</span></div>
-    <p class="specrow"><b>90 seconds.</b> The participation video. Viewers run the numbers on their own brand while they watch. Do the math on the notebook as you talk.</p>
-    <div class="vidtools">
-      <button class="prompt" type="button">▶ Teleprompter</button>
-      <button class="copyone" type="button">⧉ Copy this script</button>
-    </div>
-    <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">"Pay us only when we grow you." Founders love hearing that. Almost nobody checks the math.<span class="os">On-screen text: Run this math BEFORE you hire any agency</span></p>
-      <p class="hk">Before you sign with any performance agency, run this one number first.<span class="os">On-screen text: The number that decides if "pay when you grow" is fair</span></p>
-      <p class="hk">Same top line. Completely different business. Here's the math that splits them.<span class="os">On-screen text: $10k of new revenue. Two very different outcomes.</span></p>
-    </div>
-    <div class="script">
-      <p class="line">"Pay us only when we <b>grow</b> you."</p>
-      <div class="beat">beat</div>
-      <p class="line">Founders love hearing that. Almost nobody checks whether their own numbers can <b>support</b> it.</p>
-      <p class="line">So before you sign with any performance agency, run this math on <b>yourself</b> first.</p>
-      <div class="beat">beat</div>
-      <p class="line">Start with what you <b>keep</b> on one order. Not what you charge.</p>
-      <div class="beat">beat, write it as you say it</div>
-      <p class="line">Say you sell a product for fifty dollars, and it costs you <b>forty</b> to make and land.</p>
-      <p class="line">That's ten dollars of gross margin per order. <b>Thin.</b></p>
-      <div class="beat">beat</div>
-      <p class="line">Now an agency grows you from twenty k to thirty k a month. Sounds great.</p>
-      <p class="line">But that extra ten k in revenue only threw off maybe <b>two k</b> in real profit, once you subtract product cost, ad spend, discounts and returns.</p>
-      <div class="beat">long beat</div>
-      <p class="line">There's almost nothing there to reinvest. Let alone to share with a partner.</p>
-      <p class="line">Everyone ends up fighting over scraps that were never really there.</p>
-      <div class="beat">beat</div>
-      <p class="line">Now flip it. Same brand, but you own or manufacture, and you keep <b>sixty percent</b> or more of each order.</p>
-      <p class="line">That same ten k of new revenue carries <b>real</b> profit underneath it.</p>
-      <div class="beat">beat</div>
-      <p class="line">Same top line. Completely <b>different</b> business.</p>
-      <div class="beat">beat</div>
-      <p class="line">That's the number that decides whether "pay when you grow" is a fair deal or a trap.</p>
-      <p class="line">And it has nothing to do with which agency you pick.</p>
-      <div class="beat">long beat</div>
-      <p class="line">So, honest question: do you actually know what you keep per order, after product, shipping and fees?</p>
-      <p class="line">Drop it below. I'll tell you if the math works.</p>
-    </div>
-    <div class="after">
-      <span class="k">Cover frame text</span>Run this math BEFORE you hire any agency
-      <span class="k">Post caption, no links</span>Ran this on a call with a founder last week. The math takes 5 minutes and it decides everything. What do you keep per order after product, shipping and fees?
-    </div>
-  </div>
-
-  <hr class="rule" />
-
-  <!-- ================= VIDEO 4 ================= -->
-  <div class="video" data-dur="75" data-title="Gobi Heat">
-    <div class="sec"><span class="n">WEEK 4</span><span class="name">The seasonal brand nobody wants</span></div>
-    <p class="specrow"><b>75 seconds.</b> The proof video. It lands in week four, after three weeks of point of view. The story is the seasonal window, the Gobi Heat numbers are the receipt.</p>
-    <div class="vidtools">
-      <button class="prompt" type="button">▶ Teleprompter</button>
-      <button class="copyone" type="button">⧉ Copy this script</button>
-    </div>
-    <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">Most agencies love a seasonal brand. More budget in a tiny window, same fee either way.<span class="os">On-screen text: Why agencies LOVE seasonal brands</span></p>
-      <p class="hk">75% of this brand's year happens in 4 months. Miss the window, miss the year.<span class="os">On-screen text: 75% of the year in a 4-month window</span></p>
-      <p class="hk">We cut $100k of their ad spend. Orders went UP 251%.<span class="os">On-screen text: Cut $100k in spend. Orders up 251%.</span></p>
-    </div>
-    <div class="script">
-      <p class="line">Most agencies <b>love</b> a seasonal brand. More budget to burn in a tiny window, same fee either way.</p>
-      <div class="beat">beat</div>
-      <p class="line">Gobi Heat sells heated clothing for brutal cold.</p>
-      <p class="line">Seventy-five percent of their whole year happens in a <b>four-month</b> window.</p>
-      <p class="line">Miss the window, miss the <b>year</b>.</p>
-      <div class="beat">beat</div>
-      <p class="line">When they came to us, they were pouring budget into channels with no clear read on what was actually working.</p>
-      <div class="beat">beat</div>
-      <p class="line">So we didn't start with the ads. We fixed the <b>visibility</b> first, then the spend.</p>
-      <div class="beat">beat</div>
-      <p class="line">Rebuilt attribution so every dollar traced back to an order.</p>
-      <p class="line">Killed the channels quietly bleeding money.</p>
-      <p class="line">Then scaled the winners <b>hard</b> the moment the window opened.</p>
-      <div class="beat">long beat, numbers on the notebook</div>
-      <p class="line">What that did: cut a hundred thousand dollars in wasted ad spend.</p>
-      <p class="line">Two hundred fifty-one percent more orders, year over year. Cost per order down <b>sixty-one</b> percent.</p>
-      <div class="beat">beat</div>
-      <p class="line">Ad spend went from five k to four hundred k plus per month. <b>Profitably.</b></p>
-      <div class="beat">beat</div>
-      <p class="line">The lesson isn't "spend more."</p>
-      <p class="line">A seasonal brand can't afford a single dollar it can't trace. Fix the visibility before you fix the spend.</p>
-      <div class="beat">long beat</div>
-      <p class="line">If your year rides on a window, do you know which channels actually filled it last season?</p>
-    </div>
-    <div class="after">
-      <span class="k">Cover frame text</span>Cut $100k in ad spend. Orders up 251%.
-      <span class="k">Post caption, no links</span>Seasonal brands can't afford a dollar they can't trace. If your year rides on a window, which channel actually filled it last season?
-    </div>
-  </div>
-
-  <hr class="rule" />
-
-  <!-- ================= VIDEO 5 ================= -->
-  <div class="video" data-dur="75" data-title="Broken tracking">
-    <div class="sec"><span class="n">WEEK 5</span><span class="name">Don't run ads on broken tracking</span></div>
-    <p class="specrow"><b>75 seconds.</b> The client story. This topic already ran as a text post and worked, the video version is the re-test.</p>
-    <div class="vidtools">
-      <button class="prompt" type="button">▶ Teleprompter</button>
-      <button class="copyone" type="button">⧉ Copy this script</button>
-    </div>
-    <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">This brand was about to scale ads on a purchase event that fired on add-to-cart.<span class="os">On-screen text: They were about to scale a pixel that was lying</span></p>
-      <p class="hk">Meta was optimizing toward a customer that didn't exist.<span class="os">On-screen text: Meta was chasing a phantom buyer</span></p>
-      <p class="hk">We didn't touch their ads. We opened Events Manager first.<span class="os">On-screen text: We didn't touch the ads. We opened Events Manager.</span></p>
-    </div>
-    <div class="script">
-      <p class="line">This brand came to us last month wanting to <b>scale</b>.</p>
-      <p class="line">Spend up, ROAS looking healthy, ready to push more budget that week.</p>
-      <div class="beat">beat</div>
-      <p class="line">We didn't touch the ads. We opened their <b>Events Manager</b> first.</p>
-      <div class="beat">beat</div>
-      <p class="line">Their purchase event was firing on <b>add to cart</b>, not the real order.</p>
-      <p class="line">And every order passed the same <b>flat value</b>, no matter what the customer actually spent.</p>
-      <div class="beat">beat</div>
-      <p class="line">Here's why that kills you. Meta learns who to go find from the value your pixel sends back.</p>
-      <p class="line">Feed it one flat number on every order, and it can't tell a forty-dollar sale from a <b>four-hundred</b>-dollar one.</p>
-      <div class="beat">beat</div>
-      <p class="line">For weeks it had been optimizing toward a customer that didn't <b>exist</b>.</p>
-      <p class="line">And they were about to fund it to go find thousands more just like that phantom buyer.</p>
-      <div class="beat">long beat</div>
-      <p class="line">Scale that, and you don't dilute the mistake. You buy it in <b>bulk</b>.</p>
-      <div class="beat">beat</div>
-      <p class="line">So we killed the spend for a week.</p>
-      <p class="line">Fixed the event to fire once, on the real purchase, carrying the <b>true</b> order value.</p>
-      <p class="line">Reconciled the pixel against Shopify's actual orders. <b>Then</b> we scaled.</p>
-      <div class="beat">beat</div>
-      <p class="line">Half an hour. Same day. No agency required.</p>
-      <p class="line">Go read your pixel against your Shopify orders before you touch the creative.</p>
-      <div class="beat">long beat</div>
-      <p class="line">When's the last time you actually checked yours?</p>
-    </div>
-    <div class="after">
-      <span class="k">Cover frame text</span>Don't scale a pixel that's lying
-      <span class="k">Post caption, no links</span>Half an hour, same day, no agency required. When did you last reconcile your pixel against real Shopify orders?
-    </div>
-  </div>
-
-  <hr class="rule" />
   <p class="foot"><b>How to use the teleprompter:</b> hit ▶ Teleprompter on any script, it goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrow keys nudge speed, A and D change text size, M mirrors the text for a beam-splitter rig, Esc closes. Edits you make on this page flow straight into the prompter. <b>After each video goes live:</b> reply to every comment in the first hour, and send us which hook take you used so the winners shape batch two.</p>
 
 </div>
@@ -404,8 +428,8 @@
 
 <script>
 (function(){
-  /* ---------- edit-in-place + copy (same pattern as /welcome-script/) ---------- */
-  var KEY='rise-video-batch1-v1';
+  /* ---------- edit-in-place + copy ---------- */
+  var KEY='rise-video-batch1-v2';
   var editables=[].slice.call(document.querySelectorAll('.line, .sec .name'));
   editables.forEach(function(el,i){ el.dataset.e=i; });
   var note=document.getElementById('savedNote');
@@ -439,7 +463,7 @@
     [].slice.call(document.querySelectorAll('.video')).forEach(function(v){
       parts.push('== '+v.querySelector('.sec .name').innerText.trim()+' ==\n'+scriptText(v));
     });
-    copyTxt(parts.join('\n\n'), 'all five scripts copied');
+    copyTxt(parts.join('\n\n'), 'all six scripts copied');
   });
   [].slice.call(document.querySelectorAll('.copyone')).forEach(function(btn){
     btn.addEventListener('click',function(){
