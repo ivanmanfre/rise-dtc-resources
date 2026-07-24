@@ -68,7 +68,10 @@
 
   .hookbox{border:1px solid var(--goldline);background:var(--goldsoft);border-radius:4px;padding:14px 17px;margin:0 0 18px}
   .hookbox .hb-t{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8a6d00;margin:0 0 8px}
-  .hookbox .hk{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:600;margin:0 0 10px}
+  .hookbox .hk{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:600;margin:0 0 7px;cursor:pointer;border:1px solid transparent;border-radius:4px;padding:8px 11px;transition:border-color .15s,background .15s}
+  .hookbox .hk:hover{border-color:var(--goldline);background:#fff}
+  .hookbox .hk.sel{background:#fff;border-color:var(--ink)}
+  .hookbox .hk.sel::before{content:"✓ ";font-weight:800}
   .hookbox .hk:last-child{margin-bottom:0}
   .hookbox .os{display:block;font-size:12px;color:#8a6d00;font-weight:600;margin-top:2px}
 
@@ -80,6 +83,10 @@
   .after{margin:20px 0 0;background:var(--chipbg);border:1px solid var(--line);border-radius:4px;padding:13px 16px;font-size:13.5px;line-height:1.55;color:var(--sub)}
   .after .k{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:10px 0 3px}
   .after .k:first-child{margin-top:0}
+
+  .source{margin:12px 0 0;border-left:3px solid var(--gold);background:#fffdf3;border-radius:0 4px 4px 0;padding:12px 16px;font-size:13.5px;line-height:1.6;color:var(--sub)}
+  .source .src-t{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8a6d00;margin:0 0 6px}
+  .source .cite{display:block;font-family:'Sora',sans-serif;font-size:11px;font-weight:600;color:var(--faint);margin-top:6px}
 
   .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--faint);line-height:1.6}
   .foot b{color:var(--sub);font-weight:700}
@@ -150,13 +157,13 @@
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these, keep the body identical</div>
-      <p class="hk">Last month I told a founder to pause campaigns that were MAKING money.<span class="os">On-screen text: I paused his profitable campaigns. On purpose.</span></p>
-      <p class="hk">There's a situation where profitable ads are still the wrong ads to run.<span class="os">On-screen text: When profitable ads are the wrong ads</span></p>
-      <p class="hk">His ROAS was fine. I still told him to shut it all off.<span class="os">On-screen text: ROAS was fine. I said shut it off.</span></p>
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="Last month I told a founder to pause campaigns that were &lt;b&gt;making money&lt;/b&gt;.">Last month I told a founder to pause campaigns that were MAKING money.<span class="os">On-screen text: I paused his profitable campaigns. On purpose.</span></p>
+      <p class="hk" data-line="There's a situation where profitable ads are still the &lt;b&gt;wrong&lt;/b&gt; ads to run.">There's a situation where profitable ads are still the wrong ads to run.<span class="os">On-screen text: When profitable ads are the wrong ads</span></p>
+      <p class="hk" data-line="His ROAS was fine. I still told him to &lt;b&gt;shut it all off&lt;/b&gt;.">His ROAS was fine. I still told him to shut it all off.<span class="os">On-screen text: ROAS was fine. I said shut it off.</span></p>
     </div>
     <div class="script">
-      <p class="line">Last month I told a founder to pause campaigns that were <b>making money</b>.</p>
+      <p class="line hookline">Last month I told a founder to pause campaigns that were <b>making money</b>.</p>
       <div class="beat">beat</div>
       <p class="line">His conversion tracking was wrong. Purchases firing at the wrong moment, values off.</p>
       <p class="line">And here's why that matters more than this month's profit.</p>
@@ -181,6 +188,7 @@
       <span class="k">Cover frame text</span>I paused his profitable campaigns. On purpose.
       <span class="k">Post caption, no links</span>Profitable campaigns on broken tracking still train Meta wrong. When did you last reconcile your pixel against real orders?
     </div>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"You're literally feeding Meta the wrong information to optimize off of, like that's ludicrous to do. Even if you guys are making money, I would pause these campaigns. Like there's no way you could run campaigns without proper conversion tracking."<span class="cite">You, on an intro call · June 30, 2026</span></div>
   </div>
 
   <hr class="rule" />
@@ -194,13 +202,13 @@
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">The ROAS you see inside Meta is wrong 99% of the time.<span class="os">On-screen text: Your ROAS is wrong 99% of the time</span></p>
-      <p class="hk">Here's a 30-second check that shows you your real ROAS. Your agency won't love it.<span class="os">On-screen text: The 30-second ROAS check</span></p>
-      <p class="hk">You told me you're at a 4 ROAS. You're probably not.<span class="os">On-screen text: "We're at a 4 ROAS." Probably not.</span></p>
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="The ROAS you see inside Meta is wrong &lt;b&gt;99%&lt;/b&gt; of the time.">The ROAS you see inside Meta is wrong 99% of the time.<span class="os">On-screen text: Your ROAS is wrong 99% of the time</span></p>
+      <p class="hk" data-line="Here's a 30-second check that shows you your &lt;b&gt;real&lt;/b&gt; ROAS. Your agency won't love it.">Here's a 30-second check that shows you your real ROAS. Your agency won't love it.<span class="os">On-screen text: The 30-second ROAS check</span></p>
+      <p class="hk" data-line="You told me you're at a 4 ROAS. You're probably &lt;b&gt;not&lt;/b&gt;.">You told me you're at a 4 ROAS. You're probably not.<span class="os">On-screen text: "We're at a 4 ROAS." Probably not.</span></p>
     </div>
     <div class="script">
-      <p class="line">The ROAS you see inside Meta is wrong <b>99%</b> of the time.</p>
+      <p class="line hookline">The ROAS you see inside Meta is wrong <b>99%</b> of the time.</p>
       <div class="beat">beat</div>
       <p class="line">Here's one big reason. View-through conversions.</p>
       <p class="line">Somebody gets <b>served</b> your ad, never clicks it, buys the next day because Google or your email sent them.</p>
@@ -224,6 +232,7 @@
       <span class="k">Cover frame text</span>Your ROAS is wrong 99% of the time
       <span class="k">Post caption, no links</span>One attribution toggle in Ads Manager. Sometimes half the reported conversions disappear. What % of yours survive it?
     </div>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"The in-platform data that you see in Meta is 99% of the time not the right number. And we can help with that, come up with what is the real number."<span class="cite">You, on an intro call · May 5, 2026</span>"In platform data, I would not rely on that much, actually. It's advantageous generally for meta themselves and for the agency to report on."<span class="cite">You, on an intro call · May 7, 2026</span></div>
   </div>
 
   <hr class="rule" />
@@ -237,13 +246,13 @@
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">Everyone read Meta's big update as: you need 50 ads a month now. We beat that model without doing it.<span class="os">On-screen text: The 50-ads-a-month myth</span></p>
-      <p class="hk">Brands come to us asking for 40 creatives a month in the contract. I talk them out of it.<span class="os">On-screen text: You don't need 40 creatives a month</span></p>
-      <p class="hk">In 2020 brands printed money with the worst creative you've ever seen. Remember that before you 10x your ad output.<span class="os">On-screen text: 2020: worst creative, best results. Why?</span></p>
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="Everyone read Meta's Andromeda update the same way: you're running 20 creatives, now you need &lt;b&gt;200&lt;/b&gt;.">Everyone read Meta's big update as: you need 50 ads a month now. We beat that model without doing it.<span class="os">On-screen text: The 50-ads-a-month myth</span></p>
+      <p class="hk" data-line="Brands come to us asking for &lt;b&gt;40 creatives a month&lt;/b&gt; in the contract. I talk them out of it.">Brands come to us asking for 40 creatives a month in the contract. I talk them out of it.<span class="os">On-screen text: You don't need 40 creatives a month</span></p>
+      <p class="hk" data-line="In 2020 brands printed money with the &lt;b&gt;worst&lt;/b&gt; creative you've ever seen.">In 2020 brands printed money with the worst creative you've ever seen. Remember that before you 10x your ad output.<span class="os">On-screen text: 2020: worst creative, best results. Why?</span></p>
     </div>
     <div class="script">
-      <p class="line">Everyone read Meta's Andromeda update the same way: you're running 20 creatives, now you need <b>200</b>.</p>
+      <p class="line hookline">Everyone read Meta's Andromeda update the same way: you're running 20 creatives, now you need <b>200</b>.</p>
       <div class="beat">beat</div>
       <p class="line">Brands literally come to us saying, we'd love your help, and we also need 40 pieces of creative a month.</p>
       <div class="beat">beat</div>
@@ -260,12 +269,13 @@
       <div class="beat">beat</div>
       <p class="line">Yes, it's a creative game. It's just an <b>iteration</b> game, and everyone's playing it as a volume game.</p>
       <div class="beat">long beat</div>
-      <p class="line">Check your account: is your best ad older than 90 days and still winning? Tell me below.</p>
+      <p class="line">Check your account: is your best ad older than 90 days and still winning?</p>
     </div>
     <div class="after">
       <span class="k">Cover frame text</span>The 50-ads-a-month myth
       <span class="k">Post caption, no links</span>Three ads in, keep the winner, three more. Winners held through Black Friday. Is your best ad older than 90 days?
     </div>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"I think people got a little fixated on, I'm running 20 creatives, no, I need to be running 200 creatives. It hasn't improved so much of what you feed Meta as algorithm in terms of performance. You got to keep the winners, introduce new ones to replace the losers."<span class="cite">You, on an intro call · April 22, 2026</span>"Our overall strategy for ad sets are introducing three ads at a time, keeping a winner, and then introducing three more."<span class="cite">You, on an intro call · April 20, 2026</span></div>
   </div>
 
   <hr class="rule" />
@@ -279,13 +289,13 @@
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">I run an agency, and here's math I'm probably shooting myself in the foot by showing you.<span class="os">On-screen text: The math agencies don't show you</span></p>
-      <p class="hk">The day you hire an agency, the ROAS you need goes UP. Nobody does that math in front of you.<span class="os">On-screen text: Hiring an agency raises your break-even</span></p>
-      <p class="hk">Your ad account has one number that decides everything. Most founders never calculate it.<span class="os">On-screen text: The one number that decides everything</span></p>
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="I run an agency. And I'm probably shooting myself in the foot here, but it's true.">I run an agency, and here's math I'm probably shooting myself in the foot by showing you.<span class="os">On-screen text: The math agencies don't show you</span></p>
+      <p class="hk" data-line="The day you hire an agency, the ROAS you need goes &lt;b&gt;up&lt;/b&gt;. Nobody runs that math in front of you.">The day you hire an agency, the ROAS you need goes UP. Nobody does that math in front of you.<span class="os">On-screen text: Hiring an agency raises your break-even</span></p>
+      <p class="hk" data-line="Your ad account has &lt;b&gt;one number&lt;/b&gt; that decides everything. Almost nobody calculates it.">Your ad account has one number that decides everything. Most founders never calculate it.<span class="os">On-screen text: The one number that decides everything</span></p>
     </div>
     <div class="script">
-      <p class="line">I run an agency. And I'm probably shooting myself in the foot here, but it's true.</p>
+      <p class="line hookline">I run an agency. And I'm probably shooting myself in the foot here, but it's true.</p>
       <div class="beat">beat</div>
       <p class="line">The day you hire an agency, the ROAS you need goes <b>up</b>.</p>
       <div class="beat">beat</div>
@@ -303,15 +313,17 @@
       <p class="line">One percent below the line, not another dollar. Five percent above it, push hard.</p>
       <p class="line">It's binary. There's a calculation for this. It's never a vibe.</p>
       <div class="beat">long beat</div>
-      <p class="line">So before you sign with anyone, including us: ask them to compute <b>your</b> break-even, fees included, in front of you.</p>
+      <p class="line">So before you sign with anyone, including us:</p>
+      <p class="line">ask them to compute <b>your</b> break-even, fees included, in front of you.</p>
       <p class="line">If they can't do it in one email, you have your answer.</p>
       <div class="beat">beat</div>
-      <p class="line">Do you know your number? Drop your margin below and I'll show you the math.</p>
+      <p class="line">Do you know your number? Put your gross margin in the comments and I'll run the math on it.</p>
     </div>
     <div class="after">
       <span class="k">Cover frame text</span>The math agencies don't show you
       <span class="k">Post caption, no links</span>Fees are part of your CAC, so hiring help moves your break-even ROAS. Ask any agency to compute your number, fees included, before you sign.
     </div>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"I'm just sort of shooting myself in the foot, but I think it's true... I would want to make that whatever you pay in ad spend and whatever we get paid, we have to make that profitable now. So the ROAS actually needs to be higher, not just to break even on you doing it yourself."<span class="cite">You, on a proposal call · December 12, 2025</span>"We will exactly know, like, anything under a 1.4, don't run the ad, you know, like, anything above 1.7, like, scaled to the moon kind of thing. There's a calculation for this."<span class="cite">You, on an intro call · February 3, 2026</span></div>
   </div>
 
   <hr class="rule" />
@@ -325,13 +337,13 @@
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">We grew a brand from a garage to almost $40 million. Then they went heavy on AI creative.<span class="os">On-screen text: $40M brand. Then AI creative happened.</span></p>
-      <p class="hk">One of the biggest brands we ever built is in trouble, and the reason is in your ad account too.<span class="os">On-screen text: The AI creative trap</span></p>
-      <p class="hk">Consumers can't tell what's real anymore. Your ad performance already shows it.<span class="os">On-screen text: "You don't know what's real anymore"</span></p>
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="We grew a brand from a mom-and-pop shipping out of their garage to almost &lt;b&gt;$40 million&lt;/b&gt;.">We grew a brand from a garage to almost $40 million. Then they went heavy on AI creative.<span class="os">On-screen text: $40M brand. Then AI creative happened.</span></p>
+      <p class="hk" data-line="One of the biggest brands we ever built is in &lt;b&gt;big trouble&lt;/b&gt;, and the reason is in your ad account too.">One of the biggest brands we ever built is in trouble, and the reason is in your ad account too.<span class="os">On-screen text: The AI creative trap</span></p>
+      <p class="hk" data-line="Consumers can't tell what's &lt;b&gt;real&lt;/b&gt; anymore. Your ad performance already shows it.">Consumers can't tell what's real anymore. Your ad performance already shows it.<span class="os">On-screen text: "You don't know what's real anymore"</span></p>
     </div>
     <div class="script">
-      <p class="line">We grew a brand from a mom-and-pop shipping out of their garage to almost <b>$40 million</b>.</p>
+      <p class="line hookline">We grew a brand from a mom-and-pop shipping out of their garage to almost <b>$40 million</b>.</p>
       <div class="beat">beat</div>
       <p class="line">Then they went heavy on AI creative.</p>
       <p class="line">And they are in <b>big trouble</b> right now.</p>
@@ -355,6 +367,7 @@
       <span class="k">Cover frame text</span>$40M brand. Then AI creative happened.
       <span class="k">Post caption, no links</span>UGC performance dropped across our accounts in 60-90 days. Trust is the asset. How many of your last 10 ads could only your brand have made?
     </div>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"We grew them to, like, almost 40 million from, like, a mom-and-pop shipping out of their garage. They went heavy on AI, and, like, they are in big trouble."<span class="cite">You, on an intro call · March 3, 2026</span>"We've seen the performance of UGC come down in the last like 60 to 90 days. And I don't think consumers really trust as much anymore what's real and not."<span class="cite">You, on an intro call · September 24, 2025</span></div>
   </div>
 
   <hr class="rule" />
@@ -368,13 +381,13 @@
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">Hook, record 2 or 3 of these</div>
-      <p class="hk">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
-      <p class="hk">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
-      <p class="hk">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="We turn down most of the dropshippers who come to us.">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
+      <p class="hk" data-line="Your business might be fine. The problem is your &lt;b&gt;margins&lt;/b&gt;, and our whole model runs on them.">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
+      <p class="hk" data-line="We'd both be fighting over &lt;b&gt;scraps&lt;/b&gt;.">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
     </div>
     <div class="script">
-      <p class="line">We turn down most of the dropshippers who come to us.</p>
+      <p class="line hookline">We turn down most of the dropshippers who come to us.</p>
       <div class="beat">beat</div>
       <p class="line">Their business is usually <b>fine</b>. The problem is margins. And our whole model runs on them.</p>
       <div class="beat">beat</div>
@@ -395,16 +408,17 @@
       <p class="line">Sixty-five percent gross margins or more, you own or manufacture your product, and you're doing twenty-five k plus a month.</p>
       <p class="line">If that's you, this model works <b>beautifully</b>.</p>
       <div class="beat">long beat</div>
-      <p class="line">Agree or disagree: should agencies turn down brands they can't grow profitably?</p>
+      <p class="line">So, should an agency say no to brands it can't grow profitably? I'm genuinely asking.</p>
     </div>
     <div class="after">
       <span class="k">Cover frame text</span>Why we say NO to dropshippers
       <span class="k">Post caption, no links</span>We got picky on purpose. Agree or disagree: should an agency turn down brands it can't grow profitably?
     </div>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"We need folks that have 60, 65% gross margins or more on the product itself, in order for the performance model to sort of shake out."<span class="cite">You, on an intro call · July 16, 2026</span></div>
   </div>
 
   <hr class="rule" />
-  <p class="foot"><b>How to use the teleprompter:</b> hit ▶ Teleprompter on any script, it goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrow keys nudge speed, A and D change text size, M mirrors the text for a beam-splitter rig, Esc closes. Edits you make on this page flow straight into the prompter. <b>After each video goes live:</b> reply to every comment in the first hour, and send us which hook take you used so the winners shape batch two.</p>
+  <p class="foot"><b>Picking the hook:</b> one hook is wired into each script; tap a different option and it swaps into the first line everywhere, including the prompter. <b>How to use the teleprompter:</b> hit ▶ Teleprompter on any script, it goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrow keys nudge speed, A and D change text size, M mirrors the text for a beam-splitter rig, Esc closes. Edits you make on this page flow straight into the prompter. <b>After each video goes live:</b> reply to every comment in the first hour, and send us which hook take you used so the winners shape batch two.</p>
 
 </div>
 
@@ -502,6 +516,25 @@
       var on=pv.classList.toggle('expanded');
       pv.querySelector('.pv-more').textContent = on ? 'tap to collapse' : 'tap to expand';
     });
+  });
+
+  /* ---------- hook selection ---------- */
+  var HK='rise-video-batch1-hooksel';
+  var hsel={};
+  try{ hsel=JSON.parse(localStorage.getItem(HK)||'{}'); }catch(e){}
+  [].slice.call(document.querySelectorAll('.video')).forEach(function(v,vi){
+    var opts=[].slice.call(v.querySelectorAll('.hookbox .hk'));
+    var hookline=v.querySelector('.hookline');
+    if(!opts.length||!hookline) return;
+    function applyHook(i,persist){
+      opts.forEach(function(o,j){ o.classList.toggle('sel', j===i); });
+      var t=opts[i].getAttribute('data-line');
+      if(t) hookline.innerHTML=t;
+      if(persist){ hsel[vi]=i; try{ localStorage.setItem(HK, JSON.stringify(hsel)); }catch(e){} }
+      v.dispatchEvent(new Event('input'));
+    }
+    opts.forEach(function(o,i){ o.addEventListener('click',function(){ applyHook(i,true); }); });
+    if(hsel[vi]!=null && hsel[vi]<opts.length) applyHook(hsel[vi],false);
   });
 
   /* ---------- teleprompter ---------- */
