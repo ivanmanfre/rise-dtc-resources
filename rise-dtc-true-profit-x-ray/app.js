@@ -590,11 +590,9 @@
         '<img class="ty-logo" src="./assets/rise-logo-white.png" alt="RISE DTC">' +
         '<p class="ty-eyebrow">You are in</p>' +
         '<h2 class="ty-h">Your X-Ray is ready' + namePart + '.</h2>' +
-        '<p class="ty-body">Open it right here and swap in your numbers. A copy is on its way to your inbox too, so you can come back to it any time. While you wait, two minutes on how RISE actually works, from Mattan 👇</p>' +
+        '<p class="ty-body">Open it right here and swap in your numbers. A copy is on its way to your inbox too, so you can come back to it any time. Here\'s a good way to spend that time 👇</p>' +
         "<div class=\"ty-video\" style=\"position:relative;padding-bottom:56.25%;height:0;margin:22px 0 26px;border-radius:12px;overflow:hidden;background:#000\"><video src=\"https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-videos/rise-dtc/rise-method-and-fees.mp4\" title=\"Mattan walks you through how RISE works\" controls playsinline preload=\"metadata\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#000\"></video></div>" +
         '<div class="ty-actions"><a class="ty-open" href="?unlocked=1">Open the X-Ray <span aria-hidden="true">&rarr;</span></a></div>' +
-        '<a class="ty-cta" href="' + BOOKING_URL + '" target="_blank" rel="noopener">Book your Rise call <span aria-hidden="true">&rarr;</span></a>' +
-        '<p class="ty-note">30 minutes with Rise. We tell you which cost line to fix first, and if you can do it yourself we say so.</p>' +
       '</div>';
     try { history.pushState(null, "", "?thanks=1"); } catch (_) {}
     showView("thankyou-view");
