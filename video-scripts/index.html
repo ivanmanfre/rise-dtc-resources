@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>RISE DTC — Video Scripts, Batch 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0e0e10;
+    --sub:#5a5960;
+    --faint:#9a99a0;
+    --line:#ececed;
+    --bg:#ffffff;
+    --accent:#d8402a;
+    --nav:#1466c4;
+    --chipbg:#f5f5f7;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;letter-spacing:-0.01em;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:60px 26px 100px}
+
+  .kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+  h1{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.03em;margin:0 0 8px}
+  .chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--nav);background:#eaf2fc;border:1px solid #d3e4fa;border-radius:6px;padding:4px 9px;margin:0 6px 16px 0}
+  .intro{font-size:15.5px;line-height:1.5;color:var(--sub);margin:0 0 8px;max-width:56ch}
+  .setup{display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:14px;line-height:1.55;color:var(--sub)}
+  .setup b{color:var(--ink);font-weight:600}
+  .setup ul{margin:8px 0 0 18px;padding:0}
+  .setup li{margin:4px 0}
+
+  .tools{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap;align-items:center}
+  .tools button,.vidtools button{font-family:inherit;font-size:13px;font-weight:600;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 13px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+  .tools button:hover,.vidtools button:hover{border-color:var(--nav);color:var(--nav)}
+  .tools button.on{background:var(--nav);color:#fff;border-color:var(--nav)}
+  .vidtools button.prompt{border-color:var(--accent);color:var(--accent)}
+  .vidtools button.prompt:hover{background:var(--accent);color:#fff}
+  .tools .note{font-size:12.5px;color:var(--faint);margin-left:2px}
+  body.editing .line,body.editing .sec .name{outline:1px dashed #cdd7e6;outline-offset:4px;border-radius:3px;cursor:text}
+  body.editing .line:focus,body.editing .sec .name:focus{outline:2px solid var(--nav);background:#f7fbff}
+
+  .rule{border:0;border-top:1px solid var(--line);margin:34px 0}
+
+  .video{margin-top:54px}
+  .sec{display:flex;align-items:baseline;gap:11px;margin:0 0 2px}
+  .sec .n{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em;white-space:nowrap}
+  .sec .name{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-0.015em}
+  .specrow{font-size:12.5px;color:var(--faint);font-weight:500;margin:5px 0 12px}
+  .specrow b{color:var(--sub);font-weight:600}
+
+  .vidtools{display:flex;gap:8px;margin:10px 0 16px;flex-wrap:wrap}
+
+  .hookbox{border:1px solid #d3e4fa;background:#f4f9ff;border-radius:11px;padding:13px 16px;margin:0 0 18px}
+  .hookbox .hb-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--nav);margin:0 0 8px}
+  .hookbox .hk{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:500;margin:0 0 9px}
+  .hookbox .hk:last-child{margin-bottom:0}
+  .hookbox .os{display:block;font-size:12px;color:var(--faint);font-weight:600;margin-top:2px}
+
+  .cue{display:flex;align-items:center;gap:9px;margin:12px 0 15px}
+  .cue .tag{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:6px;color:#fff;white-space:nowrap;background:var(--nav)}
+  .cue .what{font-size:13.5px;color:var(--faint);font-weight:500}
+  .cue .what b{color:var(--sub);font-weight:600}
+
+  .line{font-size:23px;line-height:1.38;font-weight:500;color:var(--ink);margin:0 0 4px}
+  .line b{font-weight:700}
+  .beat{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:12px 0 12px;display:flex;align-items:center;gap:8px}
+  .beat::before{content:"";width:22px;height:1px;background:var(--line)}
+
+  .after{margin:20px 0 0;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:13.5px;line-height:1.55;color:var(--sub)}
+  .after b{color:var(--ink);font-weight:600}
+  .after .k{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:10px 0 3px}
+  .after .k:first-child{margin-top:0}
+
+  .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--faint);line-height:1.55}
+  .foot b{color:var(--sub);font-weight:600}
+
+  /* ---------- teleprompter overlay ---------- */
+  #tp{position:fixed;inset:0;background:#000;color:#fff;z-index:50;display:none;flex-direction:column;overflow:hidden}
+  #tp.open{display:flex}
+  #tp .tp-bar{position:absolute;top:0;left:0;right:0;display:flex;gap:10px;align-items:center;padding:12px 16px;z-index:3;background:linear-gradient(#000,rgba(0,0,0,0));transition:opacity .3s}
+  #tp.rolling .tp-bar{opacity:0;pointer-events:none}
+  #tp .tp-bar button{font-family:inherit;font-size:13px;font-weight:600;color:#ddd;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 13px;cursor:pointer}
+  #tp .tp-bar button:hover{background:rgba(255,255,255,.16)}
+  #tp .tp-bar .sp{font-size:12.5px;color:#999;min-width:74px;text-align:center}
+  #tp .tp-bar .ttl{font-size:12.5px;color:#888;margin-left:auto;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  #tp .readline{position:absolute;left:0;right:0;top:24vh;height:0;border-top:2px solid rgba(216,64,42,.75);z-index:2;pointer-events:none}
+  #tp .readline::before{content:"";position:absolute;left:10px;top:-6px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid rgba(216,64,42,.9)}
+  #tp .tp-scroll{position:absolute;inset:0;overflow:hidden}
+  #tp .tp-track{position:absolute;left:50%;transform:translateX(-50%);width:min(760px,92vw);padding:26vh 0 90vh;will-change:transform}
+  #tp .tp-track p{font-size:var(--tpfs,44px);line-height:1.45;font-weight:600;margin:0 0 .55em;text-align:center;color:#f2f2f2}
+  #tp .tp-track p b{color:#fff;border-bottom:3px solid rgba(216,64,42,.8)}
+  #tp .tp-track .tbeat{font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:#d8402a;text-align:center;margin:1em 0;font-weight:700}
+  #tp .tp-hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:12.5px;color:#777;z-index:3;transition:opacity .3s}
+  #tp.rolling .tp-hint{opacity:0}
+  #tp.mirror .tp-track{transform:translateX(-50%) scaleX(-1)}
+
+  @media (max-width:480px){
+    .wrap{padding:44px 20px 72px}
+    h1{font-size:31px}
+    .line{font-size:20px}
+    .sec .name{font-size:17px}
+    #tp .tp-track p{font-size:var(--tpfs,30px)}
+  }
+  @media print{body{color:#000}.wrap{padding:0}.cue .tag{color:#000;background:#fff;border:1px solid #000}.vidtools,#tp{display:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">RISE DTC</p>
+  <h1>Video scripts, batch one</h1>
+  <span class="chip">5 videos</span><span class="chip">One recording session</span><span class="chip">60 to 90 seconds each</span>
+  <p class="intro">Five talking-head scripts, built from your own sales calls and your real client numbers. Record them back to back in one sitting, we release one per week. Every script opens on the claim in the first three seconds and ends on a question for the comments.</p>
+
+  <div class="setup"><b>The one-sitting setup:</b> phone on a tripod at eye level, 4 to 8 feet back, shoot vertical. Face a window, overheads off. Mic 15 to 25 cm away, test on headphones before the first real take: bad audio is the only thing that reads as cheap. Then per video:
+    <ul>
+      <li>Record the <b>hook 2 or 3 ways</b>, then the body, then one safety take.</li>
+      <li>Keep a <b>notebook or iPad on the desk</b> and write the numbers as you say them. Same desk every video.</li>
+      <li>Raw beats polished here. One relaxed pass, fumbles left in, reads human and performs better.</li>
+    </ul>
+  </div>
+
+  <div class="setup"><b>Publishing, every video:</b> post 4:5 vertical with captions on, most people watch muted. No links in the post or comments. Say the ask out loud on camera. Reply to comments in the first hour, that window decides the reach. One video per week, Tuesday to Thursday.</div>
+
+  <div class="tools">
+    <button id="editBtn" type="button">✎ Edit scripts</button>
+    <button id="copyAllBtn" type="button">⧉ Copy everything</button>
+    <button id="resetBtn" type="button">↺ Reset</button>
+    <span class="note" id="savedNote"></span>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 1 ================= -->
+  <div class="video" data-dur="60" data-title="Dropshippers">
+    <div class="sec"><span class="n">WEEK 1</span><span class="name">Why we turn down dropshippers</span></div>
+    <p class="specrow"><b>60 seconds.</b> The point-of-view video. It runs first because it says out loud who RISE is for.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these, keep the body identical</div>
+      <p class="hk">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
+      <p class="hk">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
+      <p class="hk">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
+    </div>
+    <div class="script">
+      <p class="line">We turn down most of the dropshippers who come to us.</p>
+      <div class="beat">beat</div>
+      <p class="line">Their business is usually <b>fine</b>. The problem is margins. And our whole model runs on them.</p>
+      <div class="beat">beat</div>
+      <p class="line">We only get paid when we actually <b>grow</b> you. A cut of the incremental growth, nothing off the top.</p>
+      <p class="line">So run the numbers with me, because this is exactly where dropshipping falls apart.</p>
+      <div class="beat">beat</div>
+      <p class="line">Say we grow a brand from twenty k to thirty k a month. Ten k in new revenue.</p>
+      <p class="line">Take out the three k it burned in ad spend, discounts and returns, and you're left with <b>six k</b>.</p>
+      <p class="line">We take twenty percent of that. We make twelve hundred, the founder keeps four thousand eight hundred.</p>
+      <p class="line">That only works if there's <b>real margin</b> under the sale.</p>
+      <div class="beat">beat</div>
+      <p class="line">Now run the same ten k for a dropshipper.</p>
+      <p class="line">Product and shipping already eat most of it. Shopify skims its cut on every order. Ad spend lands on top.</p>
+      <p class="line">By the time you reach real incremental profit, there's almost <b>nothing</b> left to split.</p>
+      <div class="beat">long beat</div>
+      <p class="line">We'd both be fighting over scraps. That's why we got picky.</p>
+      <div class="beat">beat</div>
+      <p class="line">Sixty-five percent gross margins or more, you own or manufacture your product, and you're doing twenty-five k plus a month.</p>
+      <p class="line">If that's you, this model works <b>beautifully</b>.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Agree or disagree: should agencies turn down brands they can't grow profitably?</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>Why we say NO to dropshippers
+      <span class="k">Post caption, no links</span>We got picky on purpose. Agree or disagree: should an agency turn down brands it can't grow profitably?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 2 ================= -->
+  <div class="video" data-dur="60" data-title="The Profit Gap">
+    <div class="sec"><span class="n">WEEK 2</span><span class="name">The Profit Gap</span></div>
+    <p class="specrow"><b>60 seconds.</b> Your signature concept, named on camera. This is the idea you repeat until people quote it back to you.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">Revenue is the most dangerous number in DTC.<span class="os">On-screen text: Revenue is the most dangerous number in DTC</span></p>
+      <p class="hk">A brand doubles revenue and keeps LESS money. Here's how.<span class="os">On-screen text: Double the revenue. Flat bank account.</span></p>
+      <p class="hk">You cannot pay rent with a ratio.<span class="os">On-screen text: You can't pay rent with a ratio</span></p>
+    </div>
+    <div class="script">
+      <p class="line">Revenue is the most <b>dangerous</b> number in DTC.</p>
+      <div class="beat">beat</div>
+      <p class="line">Here's what I mean. A brand doubles revenue.</p>
+      <p class="line">Doubles ad spend, doubles product cost, doubles fulfillment to move all that extra volume.</p>
+      <div class="beat">beat</div>
+      <p class="line">Top line looks <b>incredible</b>. The bank account? <b>Flat.</b></p>
+      <p class="line">Sometimes worse than the smaller year before.</p>
+      <div class="beat">beat</div>
+      <p class="line">We call it The <b>Profit Gap</b>. The distance between the revenue you brag about and the dollars you actually keep.</p>
+      <div class="beat">long beat</div>
+      <p class="line">And most agencies <b>love</b> that gap.</p>
+      <p class="line">Their fee is a percentage of your ad spend. So they get paid <b>more</b> to grow a number that doesn't grow your bank account.</p>
+      <div class="beat">beat</div>
+      <p class="line">You cannot pay rent with a ratio. You pay it with <b>flat dollars</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">So before you scale another dollar of ad spend: know your true gross margin, know your real cost to acquire a customer.</p>
+      <p class="line">And only scale when each new dollar returns more than a dollar in <b>profit</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">Not more revenue. Profit.</p>
+      <div class="beat">long beat</div>
+      <p class="line">When did you last check the gap on your own brand? Tell me below.</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>The Profit Gap
+      <span class="k">Post caption, no links</span>The Profit Gap: the distance between the revenue you brag about and the dollars you keep. When did you last measure yours?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 3 ================= -->
+  <div class="video" data-dur="90" data-title="Margin math">
+    <div class="sec"><span class="n">WEEK 3</span><span class="name">Run this margin math before you hire any agency</span></div>
+    <p class="specrow"><b>90 seconds.</b> The participation video. Viewers run the numbers on their own brand while they watch. Do the math on the notebook as you talk.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">"Pay us only when we grow you." Founders love hearing that. Almost nobody checks the math.<span class="os">On-screen text: Run this math BEFORE you hire any agency</span></p>
+      <p class="hk">Before you sign with any performance agency, run this one number first.<span class="os">On-screen text: The number that decides if "pay when you grow" is fair</span></p>
+      <p class="hk">Same top line. Completely different business. Here's the math that splits them.<span class="os">On-screen text: $10k of new revenue. Two very different outcomes.</span></p>
+    </div>
+    <div class="script">
+      <p class="line">"Pay us only when we <b>grow</b> you."</p>
+      <div class="beat">beat</div>
+      <p class="line">Founders love hearing that. Almost nobody checks whether their own numbers can <b>support</b> it.</p>
+      <p class="line">So before you sign with any performance agency, run this math on <b>yourself</b> first.</p>
+      <div class="beat">beat</div>
+      <p class="line">Start with what you <b>keep</b> on one order. Not what you charge.</p>
+      <div class="beat">beat, write it as you say it</div>
+      <p class="line">Say you sell a product for fifty dollars, and it costs you <b>forty</b> to make and land.</p>
+      <p class="line">That's ten dollars of gross margin per order. <b>Thin.</b></p>
+      <div class="beat">beat</div>
+      <p class="line">Now an agency grows you from twenty k to thirty k a month. Sounds great.</p>
+      <p class="line">But that extra ten k in revenue only threw off maybe <b>two k</b> in real profit, once you subtract product cost, ad spend, discounts and returns.</p>
+      <div class="beat">long beat</div>
+      <p class="line">There's almost nothing there to reinvest. Let alone to share with a partner.</p>
+      <p class="line">Everyone ends up fighting over scraps that were never really there.</p>
+      <div class="beat">beat</div>
+      <p class="line">Now flip it. Same brand, but you own or manufacture, and you keep <b>sixty percent</b> or more of each order.</p>
+      <p class="line">That same ten k of new revenue carries <b>real</b> profit underneath it.</p>
+      <div class="beat">beat</div>
+      <p class="line">Same top line. Completely <b>different</b> business.</p>
+      <div class="beat">beat</div>
+      <p class="line">That's the number that decides whether "pay when you grow" is a fair deal or a trap.</p>
+      <p class="line">And it has nothing to do with which agency you pick.</p>
+      <div class="beat">long beat</div>
+      <p class="line">So, honest question: do you actually know what you keep per order, after product, shipping and fees?</p>
+      <p class="line">Drop it below. I'll tell you if the math works.</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>Run this math BEFORE you hire any agency
+      <span class="k">Post caption, no links</span>Ran this on a call with a founder last week. The math takes 5 minutes and it decides everything. What do you keep per order after product, shipping and fees?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 4 ================= -->
+  <div class="video" data-dur="75" data-title="Gobi Heat">
+    <div class="sec"><span class="n">WEEK 4</span><span class="name">The seasonal brand nobody wants</span></div>
+    <p class="specrow"><b>75 seconds.</b> The proof video. It lands in week four, after three weeks of point of view. The story is the seasonal window, the Gobi Heat numbers are the receipt.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">Most agencies love a seasonal brand. More budget in a tiny window, same fee either way.<span class="os">On-screen text: Why agencies LOVE seasonal brands</span></p>
+      <p class="hk">75% of this brand's year happens in 4 months. Miss the window, miss the year.<span class="os">On-screen text: 75% of the year in a 4-month window</span></p>
+      <p class="hk">We cut $100k of their ad spend. Orders went UP 251%.<span class="os">On-screen text: Cut $100k in spend. Orders up 251%.</span></p>
+    </div>
+    <div class="script">
+      <p class="line">Most agencies <b>love</b> a seasonal brand. More budget to burn in a tiny window, same fee either way.</p>
+      <div class="beat">beat</div>
+      <p class="line">Gobi Heat sells heated clothing for brutal cold.</p>
+      <p class="line">Seventy-five percent of their whole year happens in a <b>four-month</b> window.</p>
+      <p class="line">Miss the window, miss the <b>year</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">When they came to us, they were pouring budget into channels with no clear read on what was actually working.</p>
+      <div class="beat">beat</div>
+      <p class="line">So we didn't start with the ads. We fixed the <b>visibility</b> first, then the spend.</p>
+      <div class="beat">beat</div>
+      <p class="line">Rebuilt attribution so every dollar traced back to an order.</p>
+      <p class="line">Killed the channels quietly bleeding money.</p>
+      <p class="line">Then scaled the winners <b>hard</b> the moment the window opened.</p>
+      <div class="beat">long beat, numbers on the notebook</div>
+      <p class="line">What that did: cut a hundred thousand dollars in wasted ad spend.</p>
+      <p class="line">Two hundred fifty-one percent more orders, year over year. Cost per order down <b>sixty-one</b> percent.</p>
+      <div class="beat">beat</div>
+      <p class="line">Ad spend went from five k to four hundred k plus per month. <b>Profitably.</b></p>
+      <div class="beat">beat</div>
+      <p class="line">The lesson isn't "spend more."</p>
+      <p class="line">A seasonal brand can't afford a single dollar it can't trace. Fix the visibility before you fix the spend.</p>
+      <div class="beat">long beat</div>
+      <p class="line">If your year rides on a window, do you know which channels actually filled it last season?</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>Cut $100k in ad spend. Orders up 251%.
+      <span class="k">Post caption, no links</span>Seasonal brands can't afford a dollar they can't trace. If your year rides on a window, which channel actually filled it last season?
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 5 ================= -->
+  <div class="video" data-dur="75" data-title="Broken tracking">
+    <div class="sec"><span class="n">WEEK 5</span><span class="name">Don't run ads on broken tracking</span></div>
+    <p class="specrow"><b>75 seconds.</b> The client story. This topic already ran as a text post and worked, the video version is the re-test.</p>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">Hook, record 2 or 3 of these</div>
+      <p class="hk">This brand was about to scale ads on a purchase event that fired on add-to-cart.<span class="os">On-screen text: They were about to scale a pixel that was lying</span></p>
+      <p class="hk">Meta was optimizing toward a customer that didn't exist.<span class="os">On-screen text: Meta was chasing a phantom buyer</span></p>
+      <p class="hk">We didn't touch their ads. We opened Events Manager first.<span class="os">On-screen text: We didn't touch the ads. We opened Events Manager.</span></p>
+    </div>
+    <div class="script">
+      <p class="line">This brand came to us last month wanting to <b>scale</b>.</p>
+      <p class="line">Spend up, ROAS looking healthy, ready to push more budget that week.</p>
+      <div class="beat">beat</div>
+      <p class="line">We didn't touch the ads. We opened their <b>Events Manager</b> first.</p>
+      <div class="beat">beat</div>
+      <p class="line">Their purchase event was firing on <b>add to cart</b>, not the real order.</p>
+      <p class="line">And every order passed the same <b>flat value</b>, no matter what the customer actually spent.</p>
+      <div class="beat">beat</div>
+      <p class="line">Here's why that kills you. Meta learns who to go find from the value your pixel sends back.</p>
+      <p class="line">Feed it one flat number on every order, and it can't tell a forty-dollar sale from a <b>four-hundred</b>-dollar one.</p>
+      <div class="beat">beat</div>
+      <p class="line">For weeks it had been optimizing toward a customer that didn't <b>exist</b>.</p>
+      <p class="line">And they were about to fund it to go find thousands more just like that phantom buyer.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Scale that, and you don't dilute the mistake. You buy it in <b>bulk</b>.</p>
+      <div class="beat">beat</div>
+      <p class="line">So we killed the spend for a week.</p>
+      <p class="line">Fixed the event to fire once, on the real purchase, carrying the <b>true</b> order value.</p>
+      <p class="line">Reconciled the pixel against Shopify's actual orders. <b>Then</b> we scaled.</p>
+      <div class="beat">beat</div>
+      <p class="line">Half an hour. Same day. No agency required.</p>
+      <p class="line">Go read your pixel against your Shopify orders before you touch the creative.</p>
+      <div class="beat">long beat</div>
+      <p class="line">When's the last time you actually checked yours?</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>Don't scale a pixel that's lying
+      <span class="k">Post caption, no links</span>Half an hour, same day, no agency required. When did you last reconcile your pixel against real Shopify orders?
+    </div>
+  </div>
+
+  <hr class="rule" />
+  <p class="foot"><b>How to use the teleprompter:</b> hit ▶ Teleprompter on any script, it goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrow keys nudge speed, A and D change text size, M mirrors the text for a beam-splitter rig, Esc closes. Edits you make on this page flow straight into the prompter. <b>After each video goes live:</b> reply to every comment in the first hour, and send us which hook take you used so the winners shape batch two.</p>
+
+</div>
+
+<!-- teleprompter overlay -->
+<div id="tp">
+  <div class="tp-bar">
+    <button id="tpPlay" type="button">▶ Start</button>
+    <button id="tpSlow" type="button">− slower</button>
+    <span class="sp" id="tpSpeed">100%</span>
+    <button id="tpFast" type="button">+ faster</button>
+    <button id="tpSmall" type="button">A−</button>
+    <button id="tpBig" type="button">A+</button>
+    <button id="tpMirror" type="button">⇋ Mirror</button>
+    <button id="tpClose" type="button">✕ Close</button>
+    <span class="ttl" id="tpTitle"></span>
+  </div>
+  <div class="readline"></div>
+  <div class="tp-scroll"><div class="tp-track" id="tpTrack"></div></div>
+  <div class="tp-hint">space or tap = pause · ← → = speed · A / D = text size · esc = close</div>
+</div>
+
+<script>
+(function(){
+  /* ---------- edit-in-place + copy (same pattern as /welcome-script/) ---------- */
+  var KEY='rise-video-batch1-v1';
+  var editables=[].slice.call(document.querySelectorAll('.line, .sec .name'));
+  editables.forEach(function(el,i){ el.dataset.e=i; });
+  var note=document.getElementById('savedNote');
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  editables.forEach(function(el,i){ if(saved[i]!=null) el.innerHTML=saved[i]; });
+  if(Object.keys(saved).length) note.textContent='your edited copy is loaded';
+  function save(){
+    var map={};
+    editables.forEach(function(el,i){ map[i]=el.innerHTML; });
+    try{ localStorage.setItem(KEY, JSON.stringify(map)); }catch(e){}
+    note.textContent='saved on this device';
+  }
+  var editBtn=document.getElementById('editBtn');
+  editBtn.addEventListener('click',function(){
+    var on=document.body.classList.toggle('editing');
+    editBtn.classList.toggle('on',on);
+    editBtn.textContent = on ? '✓ Done' : '✎ Edit scripts';
+    editables.forEach(function(el){ el.contentEditable = on ? 'true' : 'false'; });
+    note.textContent = on ? 'click any line to rewrite it' : 'edits saved';
+  });
+  document.addEventListener('input',function(){ if(document.body.classList.contains('editing')) save(); });
+
+  function scriptText(video){
+    var parts=[];
+    [].slice.call(video.querySelectorAll('.line')).forEach(function(el){ parts.push(el.innerText.trim()); });
+    return parts.join('\n');
+  }
+  document.getElementById('copyAllBtn').addEventListener('click',function(){
+    var parts=[];
+    [].slice.call(document.querySelectorAll('.video')).forEach(function(v){
+      parts.push('== '+v.querySelector('.sec .name').innerText.trim()+' ==\n'+scriptText(v));
+    });
+    copyTxt(parts.join('\n\n'), 'all five scripts copied');
+  });
+  [].slice.call(document.querySelectorAll('.copyone')).forEach(function(btn){
+    btn.addEventListener('click',function(){
+      copyTxt(scriptText(btn.closest('.video')), 'script copied');
+    });
+  });
+  function copyTxt(txt, ok){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ note.textContent=ok; },function(){ note.textContent='copy blocked, try again'; });
+    } else { note.textContent='copy not supported in this browser'; }
+  }
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Reset every script to the original? Your edits on this device will be lost.')) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    location.reload();
+  });
+
+  /* ---------- teleprompter ---------- */
+  var tp=document.getElementById('tp'), track=document.getElementById('tpTrack'),
+      playBtn=document.getElementById('tpPlay'), speedEl=document.getElementById('tpSpeed'),
+      titleEl=document.getElementById('tpTitle');
+  var pos=0, pxPerSec=0, mult=1, playing=false, raf=null, lastT=0, fs=44;
+
+  function openTP(video){
+    track.innerHTML='';
+    [].slice.call(video.querySelectorAll('.script > *')).forEach(function(el){
+      if(el.classList.contains('beat')){
+        var d=document.createElement('div'); d.className='tbeat'; d.textContent='· '+el.innerText.trim()+' ·';
+        track.appendChild(d);
+      } else if(el.classList.contains('line')){
+        var p=document.createElement('p'); p.innerHTML=el.innerHTML;
+        track.appendChild(p);
+      }
+    });
+    titleEl.textContent=video.dataset.title||'';
+    tp.classList.add('open'); tp.classList.remove('rolling');
+    document.body.style.overflow='hidden';
+    pos=0; mult=1; playing=false; updSpeed();
+    track.style.setProperty('--tpfs', fs+'px');
+    requestAnimationFrame(function(){
+      var dur=parseInt(video.dataset.dur,10)||60;
+      var dist=track.scrollHeight - (window.innerHeight*0.24);
+      pxPerSec = dist / dur;
+      render();
+    });
+    playBtn.textContent='▶ Start';
+    if(tp.requestFullscreen){ tp.requestFullscreen().catch(function(){}); }
+  }
+  function closeTP(){
+    stop();
+    tp.classList.remove('open');
+    document.body.style.overflow='';
+    if(document.fullscreenElement && document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
+  }
+  function render(){ track.style.transform='translateX(-50%) translate3d(0,'+(-pos)+'px,0)'; }
+  function step(t){
+    if(!playing) return;
+    if(lastT) pos += pxPerSec*mult*((t-lastT)/1000);
+    lastT=t;
+    if(pos >= track.scrollHeight){ stop(); return; }
+    render();
+    raf=requestAnimationFrame(step);
+  }
+  function start(){ playing=true; lastT=0; tp.classList.add('rolling'); playBtn.textContent='❚❚ Pause'; raf=requestAnimationFrame(step); }
+  function stop(){ playing=false; tp.classList.remove('rolling'); playBtn.textContent='▶ Start'; if(raf) cancelAnimationFrame(raf); }
+  function toggle(){ playing ? stop() : start(); }
+  function updSpeed(){ speedEl.textContent=Math.round(mult*100)+'%'; }
+  function setFS(v){ fs=Math.max(22,Math.min(72,v)); track.style.setProperty('--tpfs', fs+'px'); }
+
+  [].slice.call(document.querySelectorAll('.vidtools .prompt')).forEach(function(btn){
+    btn.addEventListener('click',function(){ openTP(btn.closest('.video')); });
+  });
+  playBtn.addEventListener('click',toggle);
+  document.getElementById('tpClose').addEventListener('click',closeTP);
+  document.getElementById('tpSlow').addEventListener('click',function(){ mult=Math.max(.4,mult-.1); updSpeed(); });
+  document.getElementById('tpFast').addEventListener('click',function(){ mult=Math.min(2.5,mult+.1); updSpeed(); });
+  document.getElementById('tpSmall').addEventListener('click',function(){ setFS(fs-4); });
+  document.getElementById('tpBig').addEventListener('click',function(){ setFS(fs+4); });
+  document.getElementById('tpMirror').addEventListener('click',function(){ tp.classList.toggle('mirror'); });
+  tp.querySelector('.tp-scroll').addEventListener('click',function(){ toggle(); });
+  document.addEventListener('keydown',function(e){
+    if(!tp.classList.contains('open')) return;
+    if(e.code==='Space'){ e.preventDefault(); toggle(); }
+    else if(e.key==='Escape'){ closeTP(); }
+    else if(e.key==='ArrowRight'||e.key==='ArrowUp'){ e.preventDefault(); mult=Math.min(2.5,mult+.1); updSpeed(); }
+    else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ e.preventDefault(); mult=Math.max(.4,mult-.1); updSpeed(); }
+    else if(e.key==='a'||e.key==='A'){ setFS(fs-4); }
+    else if(e.key==='d'||e.key==='D'){ setFS(fs+4); }
+    else if(e.key==='m'||e.key==='M'){ tp.classList.toggle('mirror'); }
+  });
+})();
+</script>
+</body>
+</html>
