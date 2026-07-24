@@ -499,7 +499,7 @@
       if (!document.getElementById("ty-video-rr")) {
         var __tv = document.createElement("div");
         __tv.id = "ty-video-rr";
-        __tv.innerHTML = "<p style=\"margin:0 0 10px;font-weight:600\">You are in. Your rescue plan is below, and a copy heads to your inbox. Two minutes on how RISE actually works, from Mattan \ud83d\udc47</p>" + "<div class=\"ty-video\" style=\"position:relative;padding-bottom:56.25%;height:0;margin:22px 0 26px;border-radius:12px;overflow:hidden;background:#000\"><iframe src=\"https://www.loom.com/embed/f16ae87afdee4f9bb996b2480062b038\" title=\"Mattan walks you through how RISE works\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe></div>";
+        __tv.innerHTML = "<p style=\"margin:0 0 10px;font-weight:600\">You are in. Your rescue plan is below, and a copy heads to your inbox. Two minutes on how RISE actually works, from Mattan \ud83d\udc47</p>" + "<div class=\"ty-video\" style=\"position:relative;padding-bottom:56.25%;height:0;margin:22px 0 26px;border-radius:12px;overflow:hidden;background:#000\"><video src=\"https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-videos/rise-dtc/rise-method-and-fees.mp4\" title=\"Mattan walks you through how RISE works\" controls playsinline preload=\"metadata\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#000\"></video></div>";
         var __plan = $("plan");
         __plan.insertBefore(__tv, __plan.firstChild);
       }

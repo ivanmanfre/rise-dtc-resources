@@ -55,7 +55,7 @@
   "store_placeholder": "yourstore.com (optional)"
  },
  "thank_you": {
-  "video_embed": "https://www.loom.com/embed/f16ae87afdee4f9bb996b2480062b038",
+  "video_embed": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-videos/rise-dtc/rise-method-and-fees.mp4",
   "body": "Your kit is on its way from mattanupdates@risedtc.com. The first send sometimes lands in spam, worth a peek.",
   "video_lead": "Mattan walks you through how RISE actually works 👇"
  }

@@ -56,7 +56,7 @@
   "cta_label": "Book your RISE call",
   "cta_note": "30 minutes with RISE. Once you've watched, grab a time and we'll tell you what we'd run first. If you can do it yourself, we'll tell you that too.",
   "video_slot": true,
-  "video_embed": "https://www.loom.com/embed/f16ae87afdee4f9bb996b2480062b038",
+  "video_embed": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-videos/rise-dtc/rise-method-and-fees.mp4",
   "video_url": null,
   "video_lead": "Mattan walks you through how RISE actually works 👇"
  },
