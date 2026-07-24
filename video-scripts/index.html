@@ -57,6 +57,13 @@
 
   .vidtools{display:flex;gap:8px;margin:10px 0 16px;flex-wrap:wrap}
 
+  .preview{margin:0 0 16px;padding:11px 14px;background:var(--chipbg);border:1px solid var(--line);border-radius:11px;cursor:pointer}
+  .preview .pv-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:0 0 5px;display:flex;justify-content:space-between;gap:8px}
+  .preview .pv-t .pv-more{color:var(--nav);text-transform:none;letter-spacing:0;font-weight:600}
+  .preview .pv-body{font-size:13.5px;line-height:1.55;color:var(--sub);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .preview.expanded .pv-body{display:block;-webkit-line-clamp:unset;overflow:visible}
+  .preview .pv-body .pv-beat{color:var(--accent);font-weight:700}
+
   .hookbox{border:1px solid #d3e4fa;background:#f4f9ff;border-radius:11px;padding:13px 16px;margin:0 0 18px}
   .hookbox .hb-t{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--nav);margin:0 0 8px}
   .hookbox .hk{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:500;margin:0 0 9px}
@@ -448,6 +455,29 @@
     if(!confirm('Reset every script to the original? Your edits on this device will be lost.')) return;
     try{ localStorage.removeItem(KEY); }catch(e){}
     location.reload();
+  });
+
+  /* ---------- quick-read previews ---------- */
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  [].slice.call(document.querySelectorAll('.video')).forEach(function(v){
+    var pv=document.createElement('div'); pv.className='preview';
+    pv.innerHTML='<div class="pv-t"><span>Quick read, the whole script</span><span class="pv-more">tap to expand</span></div><div class="pv-body"></div>';
+    var tools=v.querySelector('.vidtools');
+    tools.parentNode.insertBefore(pv, tools.nextSibling);
+    function build(){
+      var parts=[];
+      [].slice.call(v.querySelectorAll('.script > *')).forEach(function(el){
+        if(el.classList.contains('beat')) parts.push('<span class="pv-beat">·</span>');
+        else if(el.classList.contains('line')) parts.push(esc(el.innerText.trim()));
+      });
+      pv.querySelector('.pv-body').innerHTML=parts.join(' ');
+    }
+    build();
+    v.addEventListener('input', build);
+    pv.addEventListener('click', function(){
+      var on=pv.classList.toggle('expanded');
+      pv.querySelector('.pv-more').textContent = on ? 'tap to collapse' : 'tap to expand';
+    });
   });
 
   /* ---------- teleprompter ---------- */
