@@ -11,7 +11,15 @@
   /* Gated board embed. The framed app shows its own email + 6-digit-code sign-in
      screen when there is no session; the code is redeemed IN the frame, so login
      completes here on resources.risedtc.com without leaving the page. */
-  #frame { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  #frame { position: fixed; inset: 0 0 44px 0; width: 100%; height: calc(100% - 44px); border: 0; display: block; }
+  #scriptsbar {
+    position: fixed; left: 0; right: 0; bottom: 0; height: 44px; z-index: 3;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: #fff; border-top: 1px solid #ececec; text-decoration: none;
+    font: 700 13px 'Manrope', system-ui, sans-serif; color: #1f1f1f;
+  }
+  #scriptsbar .pill { background: #ffc71d; border-radius: 4px; padding: 3px 9px; font: 600 10.5px 'Sora', system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+  #scriptsbar:hover { background: #fff7dd; }
   #splash {
     position: fixed; inset: 0; display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: .75rem; background: #fff;
@@ -33,6 +41,7 @@
   <iframe id="frame" title="RISE DTC Content Desk"
     src="https://ivanmanfredi.com/client/risedtc-com"
     allow="clipboard-write"></iframe>
+  <a id="scriptsbar" href="/video-scripts/"><span class="pill">Video scripts</span> your talking-head scripts, teleprompter included →</a>
   <script>
     var f = document.getElementById('frame'), s = document.getElementById('splash');
     f.addEventListener('load', function () { s.classList.add('hide'); });
