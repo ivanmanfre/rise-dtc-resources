@@ -28,7 +28,12 @@
   }
   .wrap{max-width:660px;margin:0 auto;padding:54px 26px 100px}
 
-  .logo{height:30px;display:block;margin:0 0 26px}
+  .brandrow{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 26px}
+  .logo{height:30px;display:block}
+  .ios{font-family:'Sora',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);text-decoration:none;white-space:nowrap}
+  .ios b{color:var(--ink);font-weight:700}
+  .ios:hover b{border-bottom:2px solid var(--gold)}
+
   h1{font-family:'Sora',sans-serif;font-weight:700;font-size:36px;line-height:1.08;letter-spacing:-0.02em;margin:0 0 14px}
   h1 .hl{background:linear-gradient(transparent 55%, var(--gold) 55%, var(--gold) 94%, transparent 94%)}
   .chip{display:inline-block;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:4px;padding:5px 10px;margin:0 6px 16px 0}
@@ -59,6 +64,11 @@
 
   .vidtools{display:flex;gap:8px;margin:10px 0 16px;flex-wrap:wrap}
 
+  .source{margin:0 0 14px;border-left:3px solid var(--gold);background:#fffdf3;border-radius:0 4px 4px 0;padding:12px 16px;font-size:13.5px;line-height:1.6;color:var(--sub)}
+  .source .src-t{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8a6d00;margin:0 0 6px}
+  .source .cite{display:block;font-family:'Sora',sans-serif;font-size:11px;font-weight:600;color:var(--faint);margin:6px 0 10px}
+  .source .cite:last-child{margin-bottom:0}
+
   .preview{margin:0 0 16px;padding:11px 14px;background:var(--chipbg);border:1px solid var(--line);border-radius:4px;cursor:pointer}
   .preview .pv-t{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 5px;display:flex;justify-content:space-between;gap:8px}
   .preview .pv-t .pv-more{color:var(--ink);text-transform:none;letter-spacing:0;font-weight:700}
@@ -84,10 +94,6 @@
   .after .k{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:10px 0 3px}
   .after .k:first-child{margin-top:0}
 
-  .source{margin:12px 0 0;border-left:3px solid var(--gold);background:#fffdf3;border-radius:0 4px 4px 0;padding:12px 16px;font-size:13.5px;line-height:1.6;color:var(--sub)}
-  .source .src-t{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8a6d00;margin:0 0 6px}
-  .source .cite{display:block;font-family:'Sora',sans-serif;font-size:11px;font-weight:600;color:var(--faint);margin-top:6px}
-
   .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--faint);line-height:1.6}
   .foot b{color:var(--sub);font-weight:700}
 
@@ -99,7 +105,7 @@
   #tp .tp-bar button{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:#ddd;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:8px 13px;cursor:pointer}
   #tp .tp-bar button:hover{background:rgba(255,255,255,.16)}
   #tp .tp-bar .sp{font-size:12.5px;color:#999;min-width:74px;text-align:center}
-  #tp .tp-bar .ttl{font-family:'Sora',sans-serif;font-size:12px;color:#8a6d00;margin-left:auto;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+  #tp .tp-bar .ttl{font-family:'Sora',sans-serif;font-size:12px;margin-left:auto;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
   #tp .readline{position:absolute;left:0;right:0;top:24vh;height:0;border-top:2px solid rgba(255,199,29,.8);z-index:2;pointer-events:none}
   #tp .readline::before{content:"";position:absolute;left:10px;top:-6px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid rgba(255,199,29,.95)}
   #tp .tp-scroll{position:absolute;inset:0;overflow:hidden}
@@ -124,20 +130,23 @@
 <body>
 <div class="wrap">
 
-  <img class="logo" src="/assets/rise-dtc-logo-blk.png" alt="RISE DTC" />
+  <div class="brandrow">
+    <img class="logo" src="/assets/rise-dtc-logo-blk.png" alt="RISE DTC" />
+    <a class="ios" href="https://www.inboundonsteroids.com" target="_blank" rel="noopener">prepared by <b>INBOUNDONSTEROIDS</b></a>
+  </div>
   <h1>Video scripts, batch one.<br><span class="hl">Straight from your own calls.</span></h1>
-  <span class="chip">6 videos</span><span class="chip">One recording session</span><span class="chip">60 to 90 sec each</span>
-  <p class="intro">Every script below is built from things you actually said on your sales and audit calls: your diagnostics, your numbers, your rulings. Record them back to back in one sitting, we release one per week. Each one opens on the claim in the first three seconds and ends on a question for the comments.</p>
+  <span class="chip">6 videos</span><span class="chip">One recording session</span><span class="chip">Covers the next 4-5 weeks</span>
+  <p class="intro">Every script below starts from something you actually said on a sales or audit call: the verbatim quote and the call it came from sit at the top of each one. Record them all in one sitting, we release them one at a time over the coming weeks. Each opens on the claim in the first three seconds and ends on a question or a check the viewer can run.</p>
 
-  <div class="setup"><b>The one-sitting setup:</b> phone on a tripod at eye level, 4 to 8 feet back, shoot vertical. Face a window, overheads off. Mic 15 to 25 cm away, test on headphones before the first real take: bad audio is the only thing that reads as cheap. Then per video:
+  <div class="setup"><b>The shoot, selfie-style:</b> hold the phone at arm's length, a touch above eye level, and talk to it like you're leaving someone a voice note. Walking, in the car, at the desk, anywhere real. Raw handheld is outperforming studio-look video on LinkedIn right now, and the full-screen vertical video feed favors it. Per video:
     <ul>
       <li>Record the <b>hook 2 or 3 ways</b>, then the body, then one safety take.</li>
-      <li>Keep a <b>notebook or iPad on the desk</b> and write the numbers as you say them. Same desk every video.</li>
-      <li>Raw beats polished here. One relaxed pass, fumbles left in, reads human and performs better.</li>
+      <li><b>Wind and echo</b> are the only real killers: shoot a 10-second test, listen on headphones, then go.</li>
+      <li>The agency-math video is the one <b>desk take</b>: notebook or iPad in frame, write the numbers as you say them.</li>
     </ul>
   </div>
 
-  <div class="setup"><b>Publishing, every video:</b> post 4:5 vertical with captions on, most people watch muted. No links in the post or comments. Say the ask out loud on camera. Reply to comments in the first hour, that window decides the reach. One video per week, Tuesday to Thursday.</div>
+  <div class="setup"><b>Publishing, every video:</b> shoot vertical, captions on, most people watch muted. No links in the post or comments. Say the ask out loud on camera. Reply to comments in the first hour, that window decides the reach. Release roughly one per week, Tuesday to Thursday.</div>
 
   <div class="tools">
     <button id="editBtn" type="button">✎ Edit scripts</button>
@@ -148,142 +157,102 @@
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 1 ================= -->
-  <div class="video" data-dur="75" data-title="Pause the winners">
-    <div class="sec"><span class="n">WEEK 1</span><span class="name">I told a founder to pause campaigns that were making money</span></div>
-    <p class="specrow"><b>75 seconds.</b> From your intro call ruling: profitable spend on bad conversion data trains Meta wrong, so even the winners compound the mistake.</p>
+  <!-- ================= VIDEO 1 — Q4 ramp ================= -->
+  <div class="video" data-dur="75" data-title="The Q4 ramp">
+    <div class="sec"><span class="n">VIDEO 1</span><span class="name">The December money gets made in the summer</span></div>
+    <p class="specrow"><b>75 seconds.</b> The timely one: any brand with a Q4 window needs this in the next few weeks, so it releases first.</p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"[She] did, I don't know, $400,000 in ad spend in December of last year. And then in the summer, she spends like nine grand on ads... she has a window to strike and make all her money."<span class="cite">Partnership call with Chris · May 26, 2026</span>"You don't want to start that when you're actually wanting to sell. You want to start about a month or maybe two months prior... we started in June, as opposed to starting in October. And then October, November, December, part of January is where you strike."<span class="cite">Breef intro call · February 26, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
       <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
-      <p class="hk sel" data-line="Last month I told a founder to pause campaigns that were &lt;b&gt;making money&lt;/b&gt;.">Last month I told a founder to pause campaigns that were MAKING money.<span class="os">On-screen text: I paused his profitable campaigns. On purpose.</span></p>
-      <p class="hk" data-line="There's a situation where profitable ads are still the &lt;b&gt;wrong&lt;/b&gt; ads to run.">There's a situation where profitable ads are still the wrong ads to run.<span class="os">On-screen text: When profitable ads are the wrong ads</span></p>
-      <p class="hk" data-line="His ROAS was fine. I still told him to &lt;b&gt;shut it all off&lt;/b&gt;.">His ROAS was fine. I still told him to shut it all off.<span class="os">On-screen text: ROAS was fine. I said shut it off.</span></p>
+      <p class="hk sel" data-line="One of our brands spends nine grand on ads in July. In December, &lt;b&gt;four hundred thousand&lt;/b&gt;.">One of our brands spends nine grand on ads in July. In December, four hundred thousand.<span class="os">On-screen text: $9k in July. $400k in December.</span></p>
+      <p class="hk" data-line="If your sales live in Q4, your ad ramp already started... like, &lt;b&gt;now&lt;/b&gt;.">If your sales live in Q4, your ad ramp already started... like, now.<span class="os">On-screen text: Q4 brands: the ramp starts NOW</span></p>
+      <p class="hk" data-line="Seasonal brands lose the year in &lt;b&gt;September&lt;/b&gt;. Nobody tells them.">Seasonal brands lose the year in September. Nobody tells them.<span class="os">On-screen text: Miss the window, miss the year</span></p>
     </div>
     <div class="script">
-      <p class="line hookline">Last month I told a founder to pause campaigns that were <b>making money</b>.</p>
+      <p class="line hookline">One of our brands spends nine grand on ads in July. In December, <b>four hundred thousand</b>.</p>
+      <p class="line">She has a window to strike and make all her money.</p>
       <div class="beat">beat</div>
-      <p class="line">His conversion tracking was wrong. Purchases firing at the wrong moment, values off.</p>
-      <p class="line">And here's why that matters more than this month's profit.</p>
+      <p class="line">And honestly, that December money gets made in the <b>summer</b>.</p>
+      <p class="line">You don't want to start when you're actually wanting to sell.</p>
+      <p class="line">You want to start a month, maybe two months prior.</p>
+      <p class="line">Last year we started her ramp in <b>June</b> instead of October. And we really did well, because we were ahead of it.</p>
       <div class="beat">beat</div>
-      <p class="line">Meta optimizes off the conversion data <b>you</b> feed it.</p>
-      <p class="line">Feed it wrong information, and it goes looking for more of the wrong people.</p>
-      <p class="line">You're literally feeding Meta the wrong information to optimize off of. That's <b>ludicrous</b> to do.</p>
+      <p class="line">The reason is Meta. It can't absorb a forty x jump in spend cold.</p>
+      <p class="line">It needs those months of cheaper signals through spring and summer,</p>
+      <p class="line">so the moment the season opens, it already knows who <b>buys</b>.</p>
       <div class="beat">beat</div>
-      <p class="line">And it snowballs. The data gets worse, so the results get worse.</p>
-      <p class="line">So you pull back spend. So performance falls further.</p>
-      <p class="line">And then one day you say Meta <b>stopped working</b>, and someone tells you to go try TikTok ads.</p>
+      <p class="line">You cannot be in test, learn, trial mode come October 1st. That cannot be the case.</p>
+      <p class="line">You come into that window <b>guns blazing</b>. Miss the window, miss the year.</p>
+      <div class="beat">beat, calendar on the notebook if you want</div>
+      <p class="line">So the calendar looks like: smaller spend now, roughly ten k in September,</p>
+      <p class="line">and end of October through December, that's <b>go time</b>.</p>
       <div class="beat">long beat</div>
-      <p class="line">Meta didn't stop working. The data feeding it did.</p>
-      <div class="beat">beat</div>
-      <p class="line">So yes, even if you're making money, I would pause.</p>
-      <p class="line">There's no way you should run campaigns without proper conversion tracking underneath them.</p>
-      <p class="line">Fix the tracking, reconcile it against your real Shopify orders, <b>then</b> turn the spend back on.</p>
-      <div class="beat">long beat</div>
-      <p class="line">When's the last time you checked what your pixel is actually sending back?</p>
+      <p class="line">If your year lives in Q4, open last year's account and look at what month the ramp actually started.</p>
     </div>
     <div class="after">
-      <span class="k">Cover frame text</span>I paused his profitable campaigns. On purpose.
-      <span class="k">Post caption, no links</span>Profitable campaigns on broken tracking still train Meta wrong. When did you last reconcile your pixel against real orders?
+      <span class="k">Cover frame text</span>$9k in July. $400k in December.
+      <span class="k">Post caption, no links</span>The December money gets made in the summer. Meta needs months of cheap signal before it can absorb a 40x ramp. What month did your ramp start last year?
     </div>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"You're literally feeding Meta the wrong information to optimize off of, like that's ludicrous to do. Even if you guys are making money, I would pause these campaigns. Like there's no way you could run campaigns without proper conversion tracking."<span class="cite">You, on an intro call · June 30, 2026</span></div>
   </div>
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 2 ================= -->
-  <div class="video" data-dur="60" data-title="The 30-second ROAS check">
-    <div class="sec"><span class="n">WEEK 2</span><span class="name">The number inside Meta is wrong 99% of the time</span></div>
-    <p class="specrow"><b>60 seconds.</b> Your line from the intro calls, plus the one-toggle check you run on audits. This is the give-away-the-diagnostic video.</p>
+  <!-- ================= VIDEO 2 — Dropshippers ================= -->
+  <div class="video" data-dur="60" data-title="Dropshippers">
+    <div class="sec"><span class="n">VIDEO 2</span><span class="name">Why we turn down dropshippers</span></div>
+    <p class="specrow"><b>60 seconds.</b> The point-of-view video: says out loud who RISE is for. The margin math also works as a text post.</p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"We need folks that have 60, 65% gross margins or more on the product itself, in order for the performance model to sort of shake out."<span class="cite">Zoom call with John · July 16, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
       <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
-      <p class="hk sel" data-line="The ROAS you see inside Meta is wrong &lt;b&gt;99%&lt;/b&gt; of the time.">The ROAS you see inside Meta is wrong 99% of the time.<span class="os">On-screen text: Your ROAS is wrong 99% of the time</span></p>
-      <p class="hk" data-line="Here's a 30-second check that shows you your &lt;b&gt;real&lt;/b&gt; ROAS. Your agency won't love it.">Here's a 30-second check that shows you your real ROAS. Your agency won't love it.<span class="os">On-screen text: The 30-second ROAS check</span></p>
-      <p class="hk" data-line="You told me you're at a 4 ROAS. You're probably &lt;b&gt;not&lt;/b&gt;.">You told me you're at a 4 ROAS. You're probably not.<span class="os">On-screen text: "We're at a 4 ROAS." Probably not.</span></p>
+      <p class="hk sel" data-line="We turn down most of the dropshippers who come to us.">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
+      <p class="hk" data-line="Your business might be fine. The problem is your &lt;b&gt;margins&lt;/b&gt;, and our whole model runs on them.">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
+      <p class="hk" data-line="We'd both be fighting over &lt;b&gt;scraps&lt;/b&gt;.">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
     </div>
     <div class="script">
-      <p class="line hookline">The ROAS you see inside Meta is wrong <b>99%</b> of the time.</p>
+      <p class="line hookline">We turn down most of the dropshippers who come to us.</p>
       <div class="beat">beat</div>
-      <p class="line">Here's one big reason. View-through conversions.</p>
-      <p class="line">Somebody gets <b>served</b> your ad, never clicks it, buys the next day because Google or your email sent them.</p>
-      <p class="line">Meta claims that sale.</p>
+      <p class="line">Their business is usually <b>fine</b>. The problem is margins. And our whole model runs on them.</p>
       <div class="beat">beat</div>
-      <p class="line">So here's the 30-second check. Open Ads Manager.</p>
-      <p class="line">Switch the attribution setting to <b>7-day click only</b>.</p>
-      <p class="line">Now look at your purchases again.</p>
+      <p class="line">We only get paid when we actually <b>grow</b> you. A cut of the incremental growth, nothing off the top.</p>
+      <p class="line">So run the numbers with me, because this is exactly where dropshipping falls apart.</p>
       <div class="beat">beat</div>
-      <p class="line">We do this on audits and sometimes <b>half</b> the conversions disappear.</p>
+      <p class="line">Say we grow a brand from twenty k to thirty k a month. Ten k in new revenue.</p>
+      <p class="line">Take out the three k it burned in ad spend, discounts and returns, and you're left with <b>six k</b>.</p>
+      <p class="line">We take twenty percent of that. We make twelve hundred, the founder keeps four thousand eight hundred.</p>
+      <p class="line">That only works if there's <b>real margin</b> under the sale.</p>
+      <div class="beat">beat</div>
+      <p class="line">Now run the same ten k for a dropshipper.</p>
+      <p class="line">Product and shipping already eat most of it. Shopify skims its cut on every order. Ad spend lands on top.</p>
+      <p class="line">By the time you reach real incremental profit, there's almost <b>nothing</b> left to split.</p>
       <div class="beat">long beat</div>
-      <p class="line">And understand why nobody showed you this.</p>
-      <p class="line">The inflated number is advantageous for Meta. And honestly, it's advantageous for your <b>agency</b> to report on too.</p>
+      <p class="line">We'd both be fighting over scraps. That's why we got picky.</p>
       <div class="beat">beat</div>
-      <p class="line">The only number I actually trust is your real Shopify checkouts against your ad spend.</p>
-      <p class="line">Dollar for dollar, in the back end.</p>
+      <p class="line">Sixty-five percent gross margins or more, you own or manufacture your product, and you're doing twenty-five k plus a month.</p>
+      <p class="line">If that's you, this model works <b>beautifully</b>.</p>
       <div class="beat">long beat</div>
-      <p class="line">Run the toggle today. What percent of your conversions survived the click-only view?</p>
+      <p class="line">So, should an agency say no to brands it can't grow profitably? I'm genuinely asking.</p>
     </div>
     <div class="after">
-      <span class="k">Cover frame text</span>Your ROAS is wrong 99% of the time
-      <span class="k">Post caption, no links</span>One attribution toggle in Ads Manager. Sometimes half the reported conversions disappear. What % of yours survive it?
+      <span class="k">Cover frame text</span>Why we say NO to dropshippers
+      <span class="k">Post caption, no links</span>We got picky on purpose. Agree or disagree: should an agency turn down brands it can't grow profitably?
     </div>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"The in-platform data that you see in Meta is 99% of the time not the right number. And we can help with that, come up with what is the real number."<span class="cite">You, on an intro call · May 5, 2026</span>"In platform data, I would not rely on that much, actually. It's advantageous generally for meta themselves and for the agency to report on."<span class="cite">You, on an intro call · May 7, 2026</span></div>
   </div>
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 3 ================= -->
-  <div class="video" data-dur="75" data-title="The 50-creatives myth">
-    <div class="sec"><span class="n">WEEK 3</span><span class="name">Everyone read the Meta update as "run 50 ads a month"</span></div>
-    <p class="specrow"><b>75 seconds.</b> Your most repeated conviction across the calls: the Andromeda creative-volume craze, refuted by your own accounts through Black Friday.</p>
-    <div class="vidtools">
-      <button class="prompt" type="button">▶ Teleprompter</button>
-      <button class="copyone" type="button">⧉ Copy this script</button>
-    </div>
-    <div class="hookbox">
-      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
-      <p class="hk sel" data-line="Everyone read Meta's Andromeda update the same way: you're running 20 creatives, now you need &lt;b&gt;200&lt;/b&gt;.">Everyone read Meta's big update as: you need 50 ads a month now. We beat that model without doing it.<span class="os">On-screen text: The 50-ads-a-month myth</span></p>
-      <p class="hk" data-line="Brands come to us asking for &lt;b&gt;40 creatives a month&lt;/b&gt; in the contract. I talk them out of it.">Brands come to us asking for 40 creatives a month in the contract. I talk them out of it.<span class="os">On-screen text: You don't need 40 creatives a month</span></p>
-      <p class="hk" data-line="In 2020 brands printed money with the &lt;b&gt;worst&lt;/b&gt; creative you've ever seen.">In 2020 brands printed money with the worst creative you've ever seen. Remember that before you 10x your ad output.<span class="os">On-screen text: 2020: worst creative, best results. Why?</span></p>
-    </div>
-    <div class="script">
-      <p class="line hookline">Everyone read Meta's Andromeda update the same way: you're running 20 creatives, now you need <b>200</b>.</p>
-      <div class="beat">beat</div>
-      <p class="line">Brands literally come to us saying, we'd love your help, and we also need 40 pieces of creative a month.</p>
-      <div class="beat">beat</div>
-      <p class="line">We've beat that model many, many times in the last 90 to 180 days. Without the volume.</p>
-      <div class="beat">beat</div>
-      <p class="line">Our cadence is simple. Introduce <b>three</b> ads at a time.</p>
-      <p class="line">Keep the winner. Introduce three more.</p>
-      <p class="line">And the winners <b>stick</b>. Consistent performance for months, straight through Black Friday and holiday.</p>
-      <div class="beat">beat</div>
-      <p class="line">Five strong concepts with variants can carry an account to fifteen, twenty k a month in spend.</p>
-      <div class="beat">long beat</div>
-      <p class="line">And keep some perspective. Brands were running the <b>worst</b> creative you've ever seen in 2020 and making money hand over fist.</p>
-      <p class="line">What changed since then is tracking, competition, and costs. Your creative count won't buy that era back.</p>
-      <div class="beat">beat</div>
-      <p class="line">Yes, it's a creative game. It's just an <b>iteration</b> game, and everyone's playing it as a volume game.</p>
-      <div class="beat">long beat</div>
-      <p class="line">Check your account: is your best ad older than 90 days and still winning?</p>
-    </div>
-    <div class="after">
-      <span class="k">Cover frame text</span>The 50-ads-a-month myth
-      <span class="k">Post caption, no links</span>Three ads in, keep the winner, three more. Winners held through Black Friday. Is your best ad older than 90 days?
-    </div>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"I think people got a little fixated on, I'm running 20 creatives, no, I need to be running 200 creatives. It hasn't improved so much of what you feed Meta as algorithm in terms of performance. You got to keep the winners, introduce new ones to replace the losers."<span class="cite">You, on an intro call · April 22, 2026</span>"Our overall strategy for ad sets are introducing three ads at a time, keeping a winner, and then introducing three more."<span class="cite">You, on an intro call · April 20, 2026</span></div>
-  </div>
-
-  <hr class="rule" />
-
-  <!-- ================= VIDEO 4 ================= -->
+  <!-- ================= VIDEO 3 — Agency math ================= -->
   <div class="video" data-dur="90" data-title="Agency math">
-    <div class="sec"><span class="n">WEEK 4</span><span class="name">The day you hire an agency, the ROAS you need goes up</span></div>
-    <p class="specrow"><b>90 seconds.</b> The math you admitted "shooting myself in the foot" saying out loud, plus your 1.4 / 1.7 kill-and-scale line. Do this one on the notebook.</p>
+    <div class="sec"><span class="n">VIDEO 3</span><span class="name">The day you hire an agency, the ROAS you need goes up</span></div>
+    <p class="specrow"><b>90 seconds.</b> The math you called shooting yourself in the foot, plus your 1.4 / 1.7 kill-and-scale line. The one desk take: write the numbers as you say them.</p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"I'm just sort of shooting myself in the foot, but I think it's true... I would want to make that whatever you pay in ad spend and whatever we get paid, we have to make that profitable now. So the ROAS actually needs to be higher, not just to break even on you doing it yourself."<span class="cite">Zoom call with Monica · December 12, 2025</span>"We will exactly know, like, anything under a 1.4, don't run the ad, you know, like, anything above 1.7, like, scaled to the moon kind of thing. There's a calculation for this."<span class="cite">Intro call with Emily · February 3, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
@@ -323,15 +292,15 @@
       <span class="k">Cover frame text</span>The math agencies don't show you
       <span class="k">Post caption, no links</span>Fees are part of your CAC, so hiring help moves your break-even ROAS. Ask any agency to compute your number, fees included, before you sign.
     </div>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"I'm just sort of shooting myself in the foot, but I think it's true... I would want to make that whatever you pay in ad spend and whatever we get paid, we have to make that profitable now. So the ROAS actually needs to be higher, not just to break even on you doing it yourself."<span class="cite">You, on a proposal call · December 12, 2025</span>"We will exactly know, like, anything under a 1.4, don't run the ad, you know, like, anything above 1.7, like, scaled to the moon kind of thing. There's a calculation for this."<span class="cite">You, on an intro call · February 3, 2026</span></div>
   </div>
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 5 ================= -->
+  <!-- ================= VIDEO 4 — $40M AI ================= -->
   <div class="video" data-dur="75" data-title="The $40M AI mistake">
-    <div class="sec"><span class="n">WEEK 5</span><span class="name">We grew a brand to almost $40M. Then they went heavy on AI creative.</span></div>
-    <p class="specrow"><b>75 seconds.</b> Your war story from the calls, paired with what you're seeing on UGC across accounts. Only you can tell this one.</p>
+    <div class="sec"><span class="n">VIDEO 4</span><span class="name">We grew a brand to almost $40M. Then they went heavy on AI creative.</span></div>
+    <p class="specrow"><b>75 seconds.</b> Your war story, paired with what you're seeing on UGC across accounts. Only you can tell this one.</p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"We grew them to, like, almost 40 million from, like, a mom-and-pop shipping out of their garage. They went heavy on AI, and, like, they are in big trouble."<span class="cite">Intro call with Michael · March 3, 2026</span>"We've seen the performance of UGC come down in the last like 60 to 90 days. And I don't think consumers really trust as much anymore what's real and not."<span class="cite">Intro call, Ingenious · September 24, 2025</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
@@ -367,54 +336,93 @@
       <span class="k">Cover frame text</span>$40M brand. Then AI creative happened.
       <span class="k">Post caption, no links</span>UGC performance dropped across our accounts in 60-90 days. Trust is the asset. How many of your last 10 ads could only your brand have made?
     </div>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"We grew them to, like, almost 40 million from, like, a mom-and-pop shipping out of their garage. They went heavy on AI, and, like, they are in big trouble."<span class="cite">You, on an intro call · March 3, 2026</span>"We've seen the performance of UGC come down in the last like 60 to 90 days. And I don't think consumers really trust as much anymore what's real and not."<span class="cite">You, on an intro call · September 24, 2025</span></div>
   </div>
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 6 ================= -->
-  <div class="video" data-dur="60" data-title="Dropshippers">
-    <div class="sec"><span class="n">WEEK 6</span><span class="name">Why we turn down dropshippers</span></div>
-    <p class="specrow"><b>60 seconds.</b> The positioning video: who RISE says no to, with the margin math out loud.</p>
+  <!-- ================= VIDEO 5 — ROAS toggle ================= -->
+  <div class="video" data-dur="60" data-title="The 30-second ROAS check">
+    <div class="sec"><span class="n">VIDEO 5</span><span class="name">The number inside Meta is wrong 99% of the time</span></div>
+    <p class="specrow"><b>60 seconds.</b> The give-away-the-diagnostic video: the 7-day-click toggle you run on audits.</p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"The in-platform data that you see in Meta is 99% of the time not the right number. And we can help with that, come up with what is the real number."<span class="cite">Intro call with Paige · May 5, 2026</span>"In platform data, I would not rely on that much, actually. It's advantageous generally for meta themselves and for the agency to report on."<span class="cite">Intro call with Brooke · May 7, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
       <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
-      <p class="hk sel" data-line="We turn down most of the dropshippers who come to us.">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
-      <p class="hk" data-line="Your business might be fine. The problem is your &lt;b&gt;margins&lt;/b&gt;, and our whole model runs on them.">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
-      <p class="hk" data-line="We'd both be fighting over &lt;b&gt;scraps&lt;/b&gt;.">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
+      <p class="hk sel" data-line="The ROAS you see inside Meta is wrong &lt;b&gt;99%&lt;/b&gt; of the time.">The ROAS you see inside Meta is wrong 99% of the time.<span class="os">On-screen text: Your ROAS is wrong 99% of the time</span></p>
+      <p class="hk" data-line="Here's a 30-second check that shows you your &lt;b&gt;real&lt;/b&gt; ROAS. Your agency won't love it.">Here's a 30-second check that shows you your real ROAS. Your agency won't love it.<span class="os">On-screen text: The 30-second ROAS check</span></p>
+      <p class="hk" data-line="You told me you're at a 4 ROAS. You're probably &lt;b&gt;not&lt;/b&gt;.">You told me you're at a 4 ROAS. You're probably not.<span class="os">On-screen text: "We're at a 4 ROAS." Probably not.</span></p>
     </div>
     <div class="script">
-      <p class="line hookline">We turn down most of the dropshippers who come to us.</p>
+      <p class="line hookline">The ROAS you see inside Meta is wrong <b>99%</b> of the time.</p>
       <div class="beat">beat</div>
-      <p class="line">Their business is usually <b>fine</b>. The problem is margins. And our whole model runs on them.</p>
+      <p class="line">One big reason is view-through conversions.</p>
+      <p class="line">Somebody gets <b>served</b> your ad, never clicks it, buys the next day because Google or your email sent them.</p>
+      <p class="line">Meta claims that sale.</p>
       <div class="beat">beat</div>
-      <p class="line">We only get paid when we actually <b>grow</b> you. A cut of the incremental growth, nothing off the top.</p>
-      <p class="line">So run the numbers with me, because this is exactly where dropshipping falls apart.</p>
+      <p class="line">So here's the check we run on audits. Open Ads Manager.</p>
+      <p class="line">Switch the attribution setting to <b>7-day click only</b>.</p>
+      <p class="line">Now look at your purchases again.</p>
       <div class="beat">beat</div>
-      <p class="line">Say we grow a brand from twenty k to thirty k a month. Ten k in new revenue.</p>
-      <p class="line">Take out the three k it burned in ad spend, discounts and returns, and you're left with <b>six k</b>.</p>
-      <p class="line">We take twenty percent of that. We make twelve hundred, the founder keeps four thousand eight hundred.</p>
-      <p class="line">That only works if there's <b>real margin</b> under the sale.</p>
-      <div class="beat">beat</div>
-      <p class="line">Now run the same ten k for a dropshipper.</p>
-      <p class="line">Product and shipping already eat most of it. Shopify skims its cut on every order. Ad spend lands on top.</p>
-      <p class="line">By the time you reach real incremental profit, there's almost <b>nothing</b> left to split.</p>
+      <p class="line">Sometimes <b>half</b> the conversions are just... gone.</p>
       <div class="beat">long beat</div>
-      <p class="line">We'd both be fighting over scraps. That's why we got picky.</p>
+      <p class="line">And look, nobody's in a rush to show you this.</p>
+      <p class="line">The inflated number works out well for Meta. And honestly, it works out well for your <b>agency</b> to report on too.</p>
       <div class="beat">beat</div>
-      <p class="line">Sixty-five percent gross margins or more, you own or manufacture your product, and you're doing twenty-five k plus a month.</p>
-      <p class="line">If that's you, this model works <b>beautifully</b>.</p>
+      <p class="line">The only number I actually trust is your real Shopify checkouts against your ad spend.</p>
+      <p class="line">Dollar for dollar, in the back end.</p>
       <div class="beat">long beat</div>
-      <p class="line">So, should an agency say no to brands it can't grow profitably? I'm genuinely asking.</p>
+      <p class="line">Flip it on your account. Takes thirty seconds. See how much disappears.</p>
     </div>
     <div class="after">
-      <span class="k">Cover frame text</span>Why we say NO to dropshippers
-      <span class="k">Post caption, no links</span>We got picky on purpose. Agree or disagree: should an agency turn down brands it can't grow profitably?
+      <span class="k">Cover frame text</span>Your ROAS is wrong 99% of the time
+      <span class="k">Post caption, no links</span>One attribution toggle in Ads Manager. Sometimes half the reported conversions disappear. What % of yours survive it?
     </div>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"We need folks that have 60, 65% gross margins or more on the product itself, in order for the performance model to sort of shake out."<span class="cite">You, on an intro call · July 16, 2026</span></div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- ================= VIDEO 6 — Underspend tell ================= -->
+  <div class="video" data-dur="60" data-title="The underspend tell">
+    <div class="sec"><span class="n">VIDEO 6</span><span class="name">Your agency underspending is a worse sign than overspending</span></div>
+    <p class="specrow"><b>60 seconds.</b> The insider tell: how to read an agency from its own invoice, from someone who runs one.</p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"If they were spending all the money and you were still getting poor results, that would be, you know, sort of a red flag from the other side. We've seen a lot of folks actually want to spend the money because that's how they get paid. But if they're underspending, there's probably a reason for that as well."<span class="cite">Zoom call, Relay · November 24, 2025</span>"Now in a regular model, an agency model, they would never do that because by cutting spend, they get paid less."<span class="cite">Zoom call with Brooke · June 24, 2026</span></div>
+    <div class="vidtools">
+      <button class="prompt" type="button">▶ Teleprompter</button>
+      <button class="copyone" type="button">⧉ Copy this script</button>
+    </div>
+    <div class="hookbox">
+      <div class="hb-t">The hook. One is wired into the script. Tap another to swap it in, then record it 2 or 3 ways.</div>
+      <p class="hk sel" data-line="Your agency underspending your budget is a &lt;b&gt;worse&lt;/b&gt; sign than overspending it.">Your agency underspending your budget is a worse sign than overspending it.<span class="os">On-screen text: Underspending is the red flag</span></p>
+      <p class="hk" data-line="You approved ten k a month. They spent &lt;b&gt;seven&lt;/b&gt;. That's the tell.">You approved ten k a month. They spent seven. That's the tell.<span class="os">On-screen text: The invoice tell nobody checks</span></p>
+      <p class="hk" data-line="Agencies get paid to spend your money. So when they &lt;b&gt;don't&lt;/b&gt; spend it...">Agencies get paid to spend your money. So when they don't spend it...<span class="os">On-screen text: When agencies DON'T spend your money</span></p>
+    </div>
+    <div class="script">
+      <p class="line hookline">Your agency underspending your budget is a <b>worse</b> sign than overspending it.</p>
+      <div class="beat">beat</div>
+      <p class="line">Sounds backwards, so let me walk you through it.</p>
+      <p class="line">Most agencies get paid a percentage of ad spend.</p>
+      <p class="line">And we've seen a lot of folks actually <b>want</b> to spend the money, because that's how they get paid.</p>
+      <div class="beat">beat</div>
+      <p class="line">If they were spending all the money and you were still getting poor results, that's sort of a red flag from the other side.</p>
+      <p class="line">But if they're <b>underspending</b>? There's probably a reason for that as well.</p>
+      <p class="line">Usually it means they can't find performance at your budget.</p>
+      <p class="line">And parking the money quietly looks better than showing you a worse number.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Same incentive explains the opposite behavior too.</p>
+      <p class="line">In a regular agency model, they would <b>never</b> cut your spend. By cutting spend, they get paid less.</p>
+      <p class="line">So the account only ever grows... whether it should or not.</p>
+      <div class="beat">beat</div>
+      <p class="line">Five-minute check. Pull your last three invoices.</p>
+      <p class="line">Line up what they actually spent against what you <b>authorized</b>.</p>
+      <p class="line">The gap, whichever direction, is the conversation to have with them this week.</p>
+    </div>
+    <div class="after">
+      <span class="k">Cover frame text</span>Underspending is the red flag
+      <span class="k">Post caption, no links</span>Agencies paid on % of spend want to spend it all. When they consistently don't, there's a reason. Check your last 3 invoices against what you authorized.
+    </div>
   </div>
 
   <hr class="rule" />
@@ -443,7 +451,7 @@
 <script>
 (function(){
   /* ---------- edit-in-place + copy ---------- */
-  var KEY='rise-video-batch1-v2';
+  var KEY='rise-video-batch1-v3';
   var editables=[].slice.call(document.querySelectorAll('.line, .sec .name'));
   editables.forEach(function(el,i){ el.dataset.e=i; });
   var note=document.getElementById('savedNote');
@@ -519,7 +527,7 @@
   });
 
   /* ---------- hook selection ---------- */
-  var HK='rise-video-batch1-hooksel';
+  var HK='rise-video-batch1-hooksel2';
   var hsel={};
   try{ hsel=JSON.parse(localStorage.getItem(HK)||'{}'); }catch(e){}
   [].slice.call(document.querySelectorAll('.video')).forEach(function(v,vi){
