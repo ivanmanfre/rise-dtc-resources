@@ -373,7 +373,7 @@
        ============================================================ -->
 
   <hr class="rule" />
-  <p class="foot"><b>Teleprompter:</b> ▶ goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrows nudge speed, A and D change text size, M mirrors for a beam-splitter rig, Esc closes. Edits on this page flow straight into the prompter.</p>
+  <p class="foot"><b>Teleprompter:</b> ▶ goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrows nudge speed, A and D change text size, R restarts from the top, W jumps back a few seconds, M mirrors for a beam-splitter rig, Esc closes. Edits on this page flow straight into the prompter.</p>
 
 </div>
 
@@ -381,6 +381,8 @@
 <div id="tp">
   <div class="tp-bar">
     <button id="tpPlay" type="button">▶ Start</button>
+    <button id="tpRestart" type="button">⟲ Restart</button>
+    <button id="tpBack" type="button">↑ Back</button>
     <button id="tpSlow" type="button">− slower</button>
     <span class="sp" id="tpSpeed">100%</span>
     <button id="tpFast" type="button">+ faster</button>
@@ -392,7 +394,7 @@
   </div>
   <div class="readline"></div>
   <div class="tp-scroll"><div class="tp-track" id="tpTrack"></div></div>
-  <div class="tp-hint">space or tap = pause · ← → = speed · A / D = text size · esc = close</div>
+  <div class="tp-hint">space or tap = pause · R = restart · W = back · scroll = move · ← → = speed · A / D = size · esc = close</div>
 </div>
 
 <script>
@@ -559,6 +561,15 @@
   document.getElementById('tpSmall').addEventListener('click',function(){ setFS(fs-4); });
   document.getElementById('tpBig').addEventListener('click',function(){ setFS(fs+4); });
   document.getElementById('tpMirror').addEventListener('click',function(){ tp.classList.toggle('mirror'); });
+  function restart(){ stop(); pos=0; render(); }
+  function back(){ pos=Math.max(0, pos - pxPerSec*4); render(); }
+  document.getElementById('tpRestart').addEventListener('click',restart);
+  document.getElementById('tpBack').addEventListener('click',back);
+  tp.querySelector('.tp-scroll').addEventListener('wheel',function(e){
+    e.preventDefault();
+    pos=Math.max(0, Math.min(track.scrollHeight, pos + e.deltaY));
+    render();
+  },{passive:false});
   tp.querySelector('.tp-scroll').addEventListener('click',function(){ toggle(); });
   document.addEventListener('keydown',function(e){
     if(!tp.classList.contains('open')) return;
@@ -569,6 +580,8 @@
     else if(e.key==='a'||e.key==='A'){ setFS(fs-4); }
     else if(e.key==='d'||e.key==='D'){ setFS(fs+4); }
     else if(e.key==='m'||e.key==='M'){ tp.classList.toggle('mirror'); }
+    else if(e.key==='r'||e.key==='R'){ restart(); }
+    else if(e.key==='w'||e.key==='W'){ back(); }
   });
 })();
 </script>
