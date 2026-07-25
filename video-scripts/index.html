@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>RISE DTC · Video Scripts, Batch 1</title>
+<title>RISE DTC · Video Scripts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -37,12 +37,13 @@
   h1{font-family:'Sora',sans-serif;font-weight:700;font-size:36px;line-height:1.08;letter-spacing:-0.02em;margin:0 0 14px}
   h1 .hl{background:linear-gradient(transparent 55%, var(--gold) 55%, var(--gold) 94%, transparent 94%)}
   .chip{display:inline-block;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:4px;padding:5px 10px;margin:0 6px 16px 0}
-  .intro{font-size:15.5px;line-height:1.6;color:var(--sub);margin:0 0 8px;max-width:58ch}
-  .setup{display:block;margin:18px 0 8px;background:var(--chipbg);border:1px solid var(--line);border-radius:4px;padding:14px 17px;font-size:14px;line-height:1.6;color:var(--sub)}
-  .setup b{color:var(--ink);font-weight:700}
-  .setup ul{margin:8px 0 0 18px;padding:0}
-  .setup li{margin:4px 0}
-  .setup ul.arrows{list-style:none;margin-left:2px}
+
+  .toc{margin:10px 0 0;border:1px solid var(--line);border-radius:4px;padding:13px 16px}
+  .toc .toc-t{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 8px}
+  .toc a{display:flex;gap:10px;align-items:baseline;font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:5px 0}
+  .toc a:hover .toc-name{border-bottom:2px solid var(--gold)}
+  .toc .toc-n{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:var(--faint);min-width:18px}
+  .toc .toc-dur{font-size:12px;color:var(--faint);font-weight:500;margin-left:auto;white-space:nowrap}
 
   .tools{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap;align-items:center}
   .tools button,.vidtools button{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:4px;padding:9px 14px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
@@ -125,7 +126,7 @@
     .sec .name{font-size:16px}
     #tp .tp-track p{font-size:var(--tpfs,30px)}
   }
-  @media print{body{color:#000}.wrap{padding:0}.vidtools,#tp,.preview{display:none!important}}
+  @media print{body{color:#000}.wrap{padding:0}.vidtools,#tp,.preview,.toc{display:none!important}}
 </style>
 </head>
 <body>
@@ -135,27 +136,10 @@
     <img class="logo" src="/assets/rise-dtc-logo-blk.png" alt="RISE DTC" />
     <a class="ios" href="https://www.inboundonsteroids.com" target="_blank" rel="noopener">prepared by <b>INBOUNDONSTEROIDS</b></a>
   </div>
-  <h1>Video scripts, batch one.<br><span class="hl">Straight from your own calls.</span></h1>
-  <span class="chip">4 videos</span><span class="chip">One recording session</span><span class="chip">Covers the next 4-5 weeks</span>
-  <p class="intro">Every script here starts from something you said on a real call. The exact quote and the call it came from sit on top of each script, so you can check nothing was invented. Record all four in one sitting; we release them one at a time over the next month or so. The claim lands in the first three seconds, and each one ends with something the viewer can answer or go check.</p>
+  <h1>Your video scripts.<br><span class="hl">Straight from your own calls.</span></h1>
+  <span class="chip" id="countChip">Scripts</span><span class="chip">Batch-record in one sitting</span>
 
-  <div class="setup"><b>The shoot, selfie-style:</b> phone at arm's length, a touch above eye level, and talk to it like a voice note to a client. In the car or out walking both work great. The raw handheld look is beating studio-look video on LinkedIn right now, and the vertical video feed favors it. Per video:
-    <ul>
-      <li>Record the <b>hook 2 or 3 ways</b>, then the body, then one safety take.</li>
-      <li><b>Wind and echo</b> are the only audio killers. Shoot a 10-second test and listen back on headphones before the real take.</li>
-      <li>The agency-math one is the only <b>desk take</b>: notebook or iPad in frame, write the numbers as you say them.</li>
-    </ul>
-  </div>
-
-  <div class="setup"><b>Publishing, every video:</b>
-    <ul class="arrows">
-      <li>→ shoot vertical, captions on (most people watch muted)</li>
-      <li>→ zero links in the post or the comments</li>
-      <li>→ say the ask on camera</li>
-      <li>→ reply to every comment in the first hour</li>
-      <li>→ roughly one video per week, Tuesday to Thursday</li>
-    </ul>
-  </div>
+  <div class="toc" id="toc"><div class="toc-t">The scripts</div></div>
 
   <div class="tools">
     <button id="editBtn" type="button">✎ Edit scripts</button>
@@ -166,17 +150,17 @@
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 2 — Dropshippers ================= -->
-  <div class="video" data-dur="60" data-title="Dropshippers">
+  <!-- ================= Dropshippers ================= -->
+  <div class="video" data-id="dropshippers" data-dur="60" data-title="Dropshippers">
     <div class="sec"><span class="n">VIDEO 1</span><span class="name">Why we turn down dropshippers</span></div>
-    <p class="specrow"><b>60 seconds.</b> The point-of-view video: says out loud who RISE is for. The margin math also works as a text post.</p>
+    <p class="specrow"><b>60 seconds.</b></p>
     <div class="source"><span class="src-t">Verbatim, where this came from</span>"We need folks that have 60, 65% gross margins or more on the product itself, in order for the performance model to sort of shake out."<span class="cite">Zoom call with John · July 16, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">One hook is live in the script. Tap another to swap it. Record the keeper 2 or 3 ways.</div>
+      <div class="hb-t">One hook is live in the script. Tap another to swap it.</div>
       <p class="hk sel" data-line="We turn down most of the dropshippers who come to us.">We turn down most of the dropshippers who come to us.<span class="os">On-screen text: Why we say NO to dropshippers</span></p>
       <p class="hk" data-line="Your business might be fine. The problem is your &lt;b&gt;margins&lt;/b&gt;, and our whole model runs on them.">Your business might be fine. The problem is your margins, and our whole model runs on them.<span class="os">On-screen text: It's not you. It's your margins.</span></p>
       <p class="hk" data-line="We'd both be fighting over &lt;b&gt;scraps&lt;/b&gt;.">We'd both be fighting over scraps.<span class="os">On-screen text: Fighting over scraps</span></p>
@@ -213,17 +197,17 @@
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 3 — Agency math ================= -->
-  <div class="video" data-dur="90" data-title="Agency math">
+  <!-- ================= Agency math ================= -->
+  <div class="video" data-id="agency-math" data-dur="90" data-title="Agency math">
     <div class="sec"><span class="n">VIDEO 2</span><span class="name">The day you hire an agency, the ROAS you need goes up</span></div>
-    <p class="specrow"><b>90 seconds.</b> The math you called shooting yourself in the foot, plus your 1.4 / 1.7 kill-and-scale line. The one desk take: write the numbers as you say them.</p>
+    <p class="specrow"><b>90 seconds.</b> Desk take if you want: write the numbers as you say them.</p>
     <div class="source"><span class="src-t">Verbatim, where this came from</span>"I'm just sort of shooting myself in the foot, but I think it's true... I would want to make that whatever you pay in ad spend and whatever we get paid, we have to make that profitable now. So the ROAS actually needs to be higher, not just to break even on you doing it yourself."<span class="cite">Zoom call with Monica · December 12, 2025</span>"We will exactly know, like, anything under a 1.4, don't run the ad, you know, like, anything above 1.7, like, scaled to the moon kind of thing. There's a calculation for this."<span class="cite">Intro call with Emily · February 3, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">One hook is live in the script. Tap another to swap it. Record the keeper 2 or 3 ways.</div>
+      <div class="hb-t">One hook is live in the script. Tap another to swap it.</div>
       <p class="hk sel" data-line="I run an agency. And I'm probably shooting myself in the foot here, but it's true.">I run an agency, and here's math I'm probably shooting myself in the foot by showing you.<span class="os">On-screen text: The math agencies don't show you</span></p>
       <p class="hk" data-line="The day you hire an agency, the ROAS you need goes &lt;b&gt;up&lt;/b&gt;. Nobody runs that math in front of you.">The day you hire an agency, the ROAS you need goes UP. Nobody does that math in front of you.<span class="os">On-screen text: Hiring an agency raises your break-even</span></p>
       <p class="hk" data-line="Your ad account has &lt;b&gt;one number&lt;/b&gt; that decides everything. Almost nobody calculates it.">Your ad account has one number that decides everything. Most founders never calculate it.<span class="os">On-screen text: The one number that decides everything</span></p>
@@ -261,17 +245,17 @@
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 4 — $40M AI ================= -->
-  <div class="video" data-dur="75" data-title="The $40M AI mistake">
+  <!-- ================= $40M AI ================= -->
+  <div class="video" data-id="40m-ai" data-dur="75" data-title="The $40M AI mistake">
     <div class="sec"><span class="n">VIDEO 3</span><span class="name">We grew a brand to almost $40M. Then they went heavy on AI creative.</span></div>
-    <p class="specrow"><b>75 seconds.</b> Your war story, plus the UGC drop you're seeing across accounts.</p>
+    <p class="specrow"><b>75 seconds.</b></p>
     <div class="source"><span class="src-t">Verbatim, where this came from</span>"We grew them to, like, almost 40 million from, like, a mom-and-pop shipping out of their garage. They went heavy on AI, and, like, they are in big trouble."<span class="cite">Intro call with Michael · March 3, 2026</span>"We've seen the performance of UGC come down in the last like 60 to 90 days. And I don't think consumers really trust as much anymore what's real and not."<span class="cite">Intro call, Ingenious · September 24, 2025</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">One hook is live in the script. Tap another to swap it. Record the keeper 2 or 3 ways.</div>
+      <div class="hb-t">One hook is live in the script. Tap another to swap it.</div>
       <p class="hk sel" data-line="We grew a brand from a mom-and-pop shipping out of their garage to almost &lt;b&gt;$40 million&lt;/b&gt;.">We grew a brand from a garage to almost $40 million. Then they went heavy on AI creative.<span class="os">On-screen text: $40M brand. Then AI creative happened.</span></p>
       <p class="hk" data-line="One of the biggest brands we ever built is in &lt;b&gt;big trouble&lt;/b&gt;, and the reason is in your ad account too.">One of the biggest brands we ever built is in trouble, and the reason is in your ad account too.<span class="os">On-screen text: The AI creative trap</span></p>
       <p class="hk" data-line="Consumers can't tell what's &lt;b&gt;real&lt;/b&gt; anymore. Your ad performance already shows it.">Consumers can't tell what's real anymore. Your ad performance already shows it.<span class="os">On-screen text: "You don't know what's real anymore"</span></p>
@@ -305,46 +289,61 @@
 
   <hr class="rule" />
 
-  <!-- ================= VIDEO 1 — Q4 ramp ================= -->
-  <div class="video" data-dur="60" data-title="The Q4 ramp">
-    <div class="sec"><span class="n">VIDEO 4</span><span class="name">The December money gets made in the summer</span></div>
-    <p class="specrow"><b>60 seconds.</b> The timely one: one brand, one idea. Anyone selling in Q4 needs the start date, and it passed.</p>
-    <div class="source"><span class="src-t">Verbatim, where this came from</span>"[She] did, I don't know, $400,000 in ad spend in December of last year. And then in the summer, she spends like nine grand on ads... she has a window to strike and make all her money."<span class="cite">Partnership call with Chris · May 26, 2026</span>"You don't want to start that when you're actually wanting to sell. You want to start about a month or maybe two months prior... we started in June, as opposed to starting in October. And then October, November, December, part of January is where you strike."<span class="cite">Breef intro call · February 26, 2026</span></div>
+  <!-- ================= Scoreboard ================= -->
+  <div class="video" data-id="scoreboard" data-dur="60" data-title="The scoreboard">
+    <div class="sec"><span class="n">VIDEO 4</span><span class="name">Our real scoreboard: eight out of ten</span></div>
+    <p class="specrow"><b>60 seconds.</b></p>
+    <div class="source"><span class="src-t">Verbatim, where this came from</span>"And I have to admit, like we've won like eight out of 10 times, you know, and out of the eight, like if we have three that are Grand Slam, you know, then everything computes and makes sense. The two that we didn't win at, we just didn't win enough. We actually did improve, but it wasn't enough that like we were actually making more than what we should have just charged in our regular tiers."<span class="cite">Intro call with Austin · May 6, 2026</span></div>
     <div class="vidtools">
       <button class="prompt" type="button">▶ Teleprompter</button>
       <button class="copyone" type="button">⧉ Copy this script</button>
     </div>
     <div class="hookbox">
-      <div class="hb-t">One hook is live in the script. Tap another to swap it. Record the keeper 2 or 3 ways.</div>
-      <p class="hk sel" data-line="One of our brands spends nine grand on ads in July. In December, &lt;b&gt;four hundred thousand&lt;/b&gt;.">One of our brands spends nine grand on ads in July. In December, four hundred thousand.<span class="os">On-screen text: $9k in July. $400k in December.</span></p>
-      <p class="hk" data-line="If your sales live in Q4, your ad ramp already started... like, &lt;b&gt;now&lt;/b&gt;.">If your sales live in Q4, your ad ramp already started... like, now.<span class="os">On-screen text: Q4 brands: the ramp starts NOW</span></p>
-      <p class="hk" data-line="Every seasonal brand calls an agency in October. That's already &lt;b&gt;too late&lt;/b&gt;.">Every seasonal brand calls an agency in October. That's already too late.<span class="os">On-screen text: October is already too late</span></p>
+      <div class="hb-t">One hook is live in the script. Tap another to swap it.</div>
+      <p class="hk sel" data-line="We only get paid when clients grow. So here's our actual scoreboard: &lt;b&gt;eight out of ten&lt;/b&gt;.">We only get paid when clients grow. So here's our actual scoreboard: eight out of ten.<span class="os">On-screen text: Our real scoreboard: 8 out of 10</span></p>
+      <p class="hk" data-line="Every agency shows you the wins. Let me show you our two &lt;b&gt;losses&lt;/b&gt;.">Every agency shows you the wins. Let me show you our two losses.<span class="os">On-screen text: Our two losses</span></p>
+      <p class="hk" data-line="I have to admit... we've won &lt;b&gt;eight out of ten&lt;/b&gt; times. Here's what the other two looked like.">I have to admit... we've won eight out of ten times. Here's what the other two looked like.<span class="os">On-screen text: 8 wins. 2 that didn't pay off.</span></p>
     </div>
     <div class="script">
-      <p class="line hookline">One of our brands spends nine grand on ads in July. In December, <b>four hundred thousand</b>.</p>
-      <p class="line">Same brand. Her whole year happens around Christmas.</p>
-      <p class="line">She has a window to strike and make all her money.</p>
+      <p class="line hookline">We only get paid when clients grow. So here's our actual scoreboard: <b>eight out of ten</b>.</p>
       <div class="beat">beat</div>
-      <p class="line">Every seasonal brand calls an agency in <b>October</b>. And that's already too late.</p>
-      <p class="line">You don't want to start when you're actually wanting to sell.</p>
-      <p class="line">You want to start a month, maybe <b>two months</b> prior.</p>
+      <p class="line">People ask what happens when it doesn't work. Fair question... the risk sits with us.</p>
+      <p class="line">So, honestly: we've won like eight out of ten times.</p>
       <div class="beat">beat</div>
-      <p class="line">We started her ads in <b>June</b> this year. Small budget.</p>
-      <p class="line">Those summer months are how Meta figures out who actually buys, while the clicks are cheap.</p>
-      <p class="line">Then the season opens, and you pour the real money on an account that already <b>knows</b> what it's doing.</p>
+      <p class="line">And out of the eight, if we have three that are <b>grand slams</b>, everything computes and makes sense.</p>
       <div class="beat">beat</div>
-      <p class="line">Last year that was the whole difference. We were ahead of it, and we really did well.</p>
+      <p class="line">The two we didn't win at? We just didn't win <b>enough</b>.</p>
+      <p class="line">We actually did improve them.</p>
+      <p class="line">But not enough that our cut beat what we would have just charged as a regular fee.</p>
       <div class="beat">long beat</div>
-      <p class="line">If your sales happen in Q4... your start date is not October. It already passed, or it's <b>right now</b>.</p>
+      <p class="line">Which means even our losses look like this: the brand still grew, and paid <b>less</b> than a normal retainer would have cost.</p>
+      <p class="line">That downside landed on us. That's the deal we signed up for.</p>
+      <div class="beat">beat</div>
+      <p class="line">So next time an agency pitches you performance-only, ask for the scoreboard.</p>
+      <p class="line">Wins, pushes, and who ate it when it didn't work.</p>
+      <div class="beat">long beat</div>
+      <p class="line">Ours is <b>eight and two</b>. Ask the next agency you talk to for theirs.</p>
     </div>
     <div class="after">
-      <span class="k">Cover frame text</span>$9k in July. $400k in December.
-      <span class="k">Post caption, no links</span>She spends $9k on ads in July and $400k in December. The December money gets made in the summer. If Q4 is your season, the start date is now.
+      <span class="k">Cover frame text</span>Our real scoreboard: 8 out of 10
+      <span class="k">Post caption, no links</span>Performance-only means the risk is ours. 8 wins, 2 where the brand improved but our cut never beat a normal fee. Ask any performance agency for their scoreboard.
     </div>
   </div>
 
+  <!-- ============================================================
+       ADDING A NEW SCRIPT: copy any .video block above and paste it
+       before this comment, preceded by an <hr class="rule" />. Set:
+       - data-id   : unique slug (storage keys hang off it, never reuse)
+       - data-dur  : target seconds (drives the teleprompter pace)
+       - data-title: short label shown in the prompter bar
+       - title, source quote + cite, three hooks (first keeps class
+         "hk sel"; data-line is what swaps into the script), script
+         lines (first keeps class "line hookline"), cover + caption.
+       Numbering, the count chip and the index update automatically.
+       ============================================================ -->
+
   <hr class="rule" />
-  <p class="foot"><b>Picking the hook:</b> one hook is wired into each script; tap a different option and it swaps into the first line everywhere, including the prompter. <b>How to use the teleprompter:</b> hit ▶ Teleprompter on any script, it goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrow keys nudge speed, A and D change text size, M mirrors the text for a beam-splitter rig, Esc closes. Edits you make on this page flow straight into the prompter. <b>After each video goes live:</b> reply to every comment in the first hour, and send us which hook take you used. The winners decide batch two.</p>
+  <p class="foot"><b>Hooks:</b> tap a different option and it swaps into the first line everywhere, including the prompter. <b>Teleprompter:</b> ▶ goes fullscreen and scrolls at that video's pace. Space or tap pauses, arrows nudge speed, A and D change text size, M mirrors for a beam-splitter rig, Esc closes. Edits on this page flow straight into the prompter.</p>
 
 </div>
 
@@ -368,18 +367,41 @@
 
 <script>
 (function(){
-  /* ---------- edit-in-place + copy ---------- */
-  var KEY='rise-video-batch1-v4';
-  var editables=[].slice.call(document.querySelectorAll('.line, .sec .name'));
-  editables.forEach(function(el,i){ el.dataset.e=i; });
+  var videos=[].slice.call(document.querySelectorAll('.video'));
   var note=document.getElementById('savedNote');
+
+  /* ---------- auto numbering, count chip, index ---------- */
+  videos.forEach(function(v,i){
+    v.id='v-'+(v.dataset.id||i);
+    var n=v.querySelector('.sec .n');
+    if(n) n.textContent='VIDEO '+(i+1);
+  });
+  document.getElementById('countChip').textContent=videos.length+' scripts';
+  var toc=document.getElementById('toc');
+  videos.forEach(function(v,i){
+    var a=document.createElement('a');
+    a.href='#'+v.id;
+    a.innerHTML='<span class="toc-n">'+(i+1)+'</span><span class="toc-name">'+v.querySelector('.sec .name').innerText+'</span><span class="toc-dur">'+(v.dataset.dur||'')+'s</span>';
+    toc.appendChild(a);
+  });
+
+  /* ---------- edit-in-place, keyed per script so future additions never shift ---------- */
+  var KEY='rise-video-scripts-lib-v1';
   var saved={};
   try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
-  editables.forEach(function(el,i){ if(saved[i]!=null) el.innerHTML=saved[i]; });
+  function vEditables(v){ return [].slice.call(v.querySelectorAll('.line, .sec .name')); }
+  videos.forEach(function(v){
+    vEditables(v).forEach(function(el,i){
+      var k=(v.dataset.id||'')+':'+i;
+      if(saved[k]!=null) el.innerHTML=saved[k];
+    });
+  });
   if(Object.keys(saved).length) note.textContent='your edited copy is loaded';
   function save(){
     var map={};
-    editables.forEach(function(el,i){ map[i]=el.innerHTML; });
+    videos.forEach(function(v){
+      vEditables(v).forEach(function(el,i){ map[(v.dataset.id||'')+':'+i]=el.innerHTML; });
+    });
     try{ localStorage.setItem(KEY, JSON.stringify(map)); }catch(e){}
     note.textContent='saved on this device';
   }
@@ -388,11 +410,12 @@
     var on=document.body.classList.toggle('editing');
     editBtn.classList.toggle('on',on);
     editBtn.textContent = on ? '✓ Done' : '✎ Edit scripts';
-    editables.forEach(function(el){ el.contentEditable = on ? 'true' : 'false'; });
+    videos.forEach(function(v){ vEditables(v).forEach(function(el){ el.contentEditable = on ? 'true' : 'false'; }); });
     note.textContent = on ? 'click any line to rewrite it' : 'edits saved';
   });
   document.addEventListener('input',function(){ if(document.body.classList.contains('editing')) save(); });
 
+  /* ---------- copy ---------- */
   function scriptText(video){
     var parts=[];
     [].slice.call(video.querySelectorAll('.line')).forEach(function(el){ parts.push(el.innerText.trim()); });
@@ -400,10 +423,10 @@
   }
   document.getElementById('copyAllBtn').addEventListener('click',function(){
     var parts=[];
-    [].slice.call(document.querySelectorAll('.video')).forEach(function(v){
+    videos.forEach(function(v){
       parts.push('== '+v.querySelector('.sec .name').innerText.trim()+' ==\n'+scriptText(v));
     });
-    copyTxt(parts.join('\n\n'), 'all four scripts copied');
+    copyTxt(parts.join('\n\n'), 'all '+videos.length+' scripts copied');
   });
   [].slice.call(document.querySelectorAll('.copyone')).forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -423,7 +446,7 @@
 
   /* ---------- quick-read previews ---------- */
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  [].slice.call(document.querySelectorAll('.video')).forEach(function(v){
+  videos.forEach(function(v){
     var pv=document.createElement('div'); pv.className='preview';
     pv.innerHTML='<div class="pv-t"><span>Quick read, the whole script</span><span class="pv-more">tap to expand</span></div><div class="pv-body"></div>';
     var tools=v.querySelector('.vidtools');
@@ -444,11 +467,12 @@
     });
   });
 
-  /* ---------- hook selection ---------- */
-  var HK='rise-video-batch1-hooksel3';
+  /* ---------- hook selection, keyed per script ---------- */
+  var HK='rise-video-scripts-lib-hooks-v1';
   var hsel={};
   try{ hsel=JSON.parse(localStorage.getItem(HK)||'{}'); }catch(e){}
-  [].slice.call(document.querySelectorAll('.video')).forEach(function(v,vi){
+  videos.forEach(function(v){
+    var vid=v.dataset.id||'';
     var opts=[].slice.call(v.querySelectorAll('.hookbox .hk'));
     var hookline=v.querySelector('.hookline');
     if(!opts.length||!hookline) return;
@@ -456,11 +480,11 @@
       opts.forEach(function(o,j){ o.classList.toggle('sel', j===i); });
       var t=opts[i].getAttribute('data-line');
       if(t) hookline.innerHTML=t;
-      if(persist){ hsel[vi]=i; try{ localStorage.setItem(HK, JSON.stringify(hsel)); }catch(e){} }
+      if(persist){ hsel[vid]=i; try{ localStorage.setItem(HK, JSON.stringify(hsel)); }catch(e){} }
       v.dispatchEvent(new Event('input'));
     }
     opts.forEach(function(o,i){ o.addEventListener('click',function(){ applyHook(i,true); }); });
-    if(hsel[vi]!=null && hsel[vi]<opts.length) applyHook(hsel[vi],false);
+    if(hsel[vid]!=null && hsel[vid]<opts.length) applyHook(hsel[vid],false);
   });
 
   /* ---------- teleprompter ---------- */
