@@ -6,7 +6,7 @@
 <title>CPC Calculator: Cost Per Click + Max CPC | RISE DTC</title>
 <meta name="description" content="Free CPC calculator. Work cost per click forward from spend and clicks, or back from the most a click can afford to cost once returns are counted, apparel benchmarks included." />
 <link rel="canonical" href="https://resources.risedtc.com/tools/cpc-calculator/" />
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#1f1f1f" />
 <meta property="og:title" content="CPC Calculator: Cost Per Click + Max CPC" />
 <meta property="og:description" content="Cost per click both directions, plus the ceiling a click can cost before the order stops paying for itself after returns. Free, no signup, math printed under every answer." />
 <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="stylesheet" href="../assets/tools.css" />
 <style>
@@ -39,26 +39,43 @@
 <body>
 <a class="skip" href="#calculator">Skip to the calculator</a>
 
-<!-- ============================ app bar ============================ -->
-<div class="appbar">
-  <div class="wrap appbar-in">
-    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
-    <span class="titles">
-      <span class="t1">CPC and Max Affordable CPC</span>
-      <span class="t2">Tool 14 of 22, ad metrics</span>
-    </span>
-    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
-</div>
+</header>
 
 <!-- ============================ hero + cockpit ============================ -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Free calculator, no signup</p>
-    <h1>What should a click <span class="hl">actually cost you?</span></h1>
+<section class="inkband on-ink tool">
+  <div class="bg" style="background-image:url('../assets/case-dickies.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 15 of 25 &middot; Paid ads &middot; free, no signup</p>
+    <h1>What should a click <span class="gold-word">actually cost you?</span></h1>
     <p class="lede">Go forward from spend and clicks, or back from the most a click can cost before returns eat the order.</p>
-  </section>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="cpc-calculator"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Spend over clicks with a division rule, and the cost of one click marked in gold"><rect class="k" x="8" y="5" width="104" height="16" rx="2"/><rect class="f6" x="9" y="6" width="102" height="14"/><text class="lbw" x="14" y="15.4">SPEND</text><rect class="f" x="8" y="28" width="104" height="3.6" rx="1.8"/><g class="f6"><rect x="8" y="38" width="4.4" height="14" rx="1"/><rect x="18.4" y="38" width="4.4" height="14" rx="1"/><rect x="28.8" y="38" width="4.4" height="14" rx="1"/><rect x="39.2" y="38" width="4.4" height="14" rx="1"/><rect x="49.6" y="38" width="4.4" height="14" rx="1"/><rect x="60" y="38" width="4.4" height="14" rx="1"/><rect x="70.4" y="38" width="4.4" height="14" rx="1"/><rect x="80.8" y="38" width="4.4" height="14" rx="1"/></g><text class="lb" x="8" y="61">CLICKS</text><line class="k2" x1="87" y1="45" x2="93" y2="45"/><rect class="g" x="93" y="36" width="19" height="18" rx="2"/><text class="lb" x="97" y="48">$ / 1</text><path class="gk" d="M93 58 h19"/></svg></span>
+      <span class="hf-cap">Clicks converging, cost against the ceiling</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#paid">Paid ads</a> / <span>CPC and Max Affordable CPC</span></p>
+</section>
 
+<div class="wrap">
   <div class="cockpit" id="calculator">
 
     <!-- ---------------------------- inputs ---------------------------- -->
@@ -202,6 +219,21 @@
 
   </div>
 </div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-dickies.jpg" alt="Dickies, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"40% reduction in CPA"</p>
+        <p class="cs-meta"><b>Dickies</b>. Cost per acquisition comes down when the click gets cheaper or the page converts harder. The figure is quoted from the case page on <a href="https://risedtc.com/projects/dickies/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="case_dickies">risedtc.com/projects/dickies</a>, which also publishes "$1M+ profitable ad spend".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/dickies/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="case_dickies_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================ scenario spread ============================ -->
 <section class="blk grey" id="scenSection" style="display:none">
@@ -397,19 +429,25 @@
     <div class="finalcta on-ink">
       <h2>Want this run on <span class="hl">your numbers?</span></h2>
       <p>From week one we run this math on live ad platform and Shopify data, then work the lines that move it: the return rate, the contribution margin and what a click is actually allowed to cost. Book a 30 minute intro call and we will walk your funnel economics together.</p>
-      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
     </div>
   </div>
 </section>
 
-<footer class="rise">
-  <div class="wrap">
-    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
-    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
-    <div class="meta">
-      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
-      <span><a href="../">All 22 tools</a></span>
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
     </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/cpc-calculator/</span>
   </div>
 </footer>
 
@@ -436,6 +474,7 @@
 </script>
 
 <script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
 <script src="../assets/formulas-adsemail.js"></script>
 <script src="../assets/tools.js"></script>
 <script>

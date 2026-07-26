@@ -6,7 +6,7 @@
 <title>Free Shipping Threshold Calculator (Returns-Adjusted) | RISE DTC</title>
 <meta name="description" content="Free returns-adjusted free shipping threshold calculator. Enter AOV, margin, shipping cost, reach and the bracketing return rate, and see whether your threshold pays for itself, with every line of the arithmetic printed." />
 <link rel="canonical" href="https://resources.risedtc.com/tools/free-shipping-threshold/" />
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#1f1f1f" />
 <meta property="og:title" content="Free Shipping Threshold Calculator (Returns-Adjusted)" />
 <meta property="og:description" content="Whether your free shipping threshold pays for itself once the bracketing return is priced in. Free, no signup, arithmetic printed under every answer." />
 <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="stylesheet" href="../assets/tools.css" />
 <script>window.__lm_slug = "rise-dtc-tools-free-shipping-threshold";</script>
@@ -27,26 +27,43 @@
 <body>
 <a class="skip" href="#calculator">Skip to the calculator</a>
 
-<!-- ============================ app bar ============================ -->
-<div class="appbar">
-  <div class="wrap appbar-in">
-    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
-    <span class="titles">
-      <span class="t1">Free Shipping Threshold</span>
-      <span class="t2">Tool 03 of 22, unit economics</span>
-    </span>
-    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
-</div>
+</header>
 
 <!-- ============================ hero + cockpit ============================ -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Free calculator, no signup</p>
-    <h1>Set a free shipping threshold <span class="hl">that pays for itself.</span></h1>
+<section class="inkband on-ink tool">
+  <div class="bg" style="background-image:url('../assets/case-dickies.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 03 of 25 &middot; Unit economics &middot; free, no signup</p>
+    <h1>Set a free shipping threshold <span class="gold-word">that pays for itself.</span></h1>
     <p class="lede">The shopper who adds one item to clear the threshold often sends it back. This prices that trade before the number goes live.</p>
-  </section>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="free-shipping-threshold"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A profit curve crossing zero at the cart value where free shipping starts to pay"><line class="k2" x1="10" y1="7" x2="10" y2="58.8"/><line class="k2" x1="10" y1="58.8" x2="114" y2="58.8"/><line class="d" x1="10" y1="35" x2="114" y2="35"/><path class="k" d="M13 52 C31 50 45 45 62 35 C78 25 96 16 112 11"/><line class="gd" x1="62" y1="9" x2="62" y2="58.8"/><circle class="g" cx="62" cy="35" r="3.6"/><text class="lb" x="14" y="32">0</text><text class="lb" x="66" y="15">CART</text></svg></span>
+      <span class="hf-cap">Threshold curve crossing zero</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#uniteco">Unit economics</a> / <span>Free Shipping Threshold</span></p>
+</section>
 
+<div class="wrap">
   <div class="cockpit" id="calculator">
 
     <!-- ---------------------------- inputs ---------------------------- -->
@@ -180,6 +197,21 @@
 
   </div>
 </div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-dickies.jpg" alt="Dickies, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"33% increase in AOV"</p>
+        <p class="cs-meta"><b>Dickies</b>. A threshold that holds is one of the levers that moves average order value. The figure is quoted from the case page on <a href="https://risedtc.com/projects/dickies/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="case_dickies">risedtc.com/projects/dickies</a>, which also publishes "40% reduction in CPA".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/dickies/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="case_dickies_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================ scenario spread ============================ -->
 <section class="blk grey">
@@ -363,19 +395,25 @@
     <div class="finalcta on-ink">
       <h2>Want this run on <span class="hl">your numbers?</span></h2>
       <p>From week one we run this math on live Shopify and ad data, then work the lines that move it: the threshold, the bracketing return rate and the margin behind it. Book a 30 minute intro call and we will walk your shipping economics together.</p>
-      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
     </div>
   </div>
 </section>
 
-<footer class="rise">
-  <div class="wrap">
-    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
-    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
-    <div class="meta">
-      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
-      <span><a href="../">All 22 tools</a></span>
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
     </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/free-shipping-threshold/</span>
   </div>
 </footer>
 
@@ -401,6 +439,7 @@
 </script>
 
 <script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
 <script src="../assets/formulas-uniteco.js"></script>
 <script src="../assets/tools.js"></script>
 <script>
