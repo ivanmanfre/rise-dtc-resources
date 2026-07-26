@@ -89,6 +89,45 @@
     return String(roundHalfUp(x, 2));
   }
 
+  /* -- locale-tolerant money / percent parser ---------------------------- *
+   * Pinned by spec-blended-roas.json. Rules, in order:
+   *   1. trim; 2. strip currency symbols and every whitespace char (NBSP too);
+   *   3. if BOTH '.' and ',' are present, the one that occurs LAST is the
+   *      decimal separator and every instance of the other is deleted;
+   *   4. a lone ',' is a DECIMAL separator only when exactly 1 or 2 digits
+   *      follow it to the end of the string, otherwise it is a thousands
+   *      separator and is deleted; 5. mirror rule for a lone '.';
+   *   6. anything still non-numeric returns null — never NaN on screen.
+   * Known and deliberate limit: '1.234' parses to 1234, not 1.234. That is the
+   * standard heuristic and it is correct for a 2dp money field with min step 1.
+   * Do NOT "fix" it into a locale bug.                                       */
+  function parseAmount(v) {
+    if (v === null || v === undefined) { return null; }
+    if (typeof v === 'number') { return isFinite(v) ? v : null; }
+    var s = String(v).trim()
+      .replace(/[$\u20AC\u00A3\u00A5]/g, '')
+      .replace(/[\s\u00A0\u202F]/g, '');
+    if (s === '') { return null; }
+
+    var lastDot = s.lastIndexOf('.');
+    var lastComma = s.lastIndexOf(',');
+    var dec = null;
+    if (lastDot !== -1 && lastComma !== -1) {
+      dec = Math.max(lastDot, lastComma);
+    } else if (lastComma !== -1) {
+      dec = /,\d{1,2}$/.test(s) ? lastComma : null;
+    } else if (lastDot !== -1) {
+      dec = /\.\d{1,2}$/.test(s) ? lastDot : null;
+    }
+
+    var head = (dec === null ? s : s.slice(0, dec)).replace(/[.,]/g, '');
+    var tail = (dec === null ? '' : s.slice(dec + 1)).replace(/[.,]/g, '');
+    var clean = dec === null ? head : head + '.' + tail;
+    if (!/^[+-]?\d*\.?\d*$/.test(clean) || !/\d/.test(clean)) { return null; }
+    var n = Number(clean);
+    return isFinite(n) ? n : null;
+  }
+
   /* -- statistics: A&S 7.1.26 erf, pinned by name and constants ---------- *
    * Abramowitz & Stegun 7.1.26, odd-extended. Max absolute error 1.5e-7.
    * Pinned here (rather than delegating to any engine builtin) so the
@@ -1381,11 +1420,289 @@
   };
 
   /* ------------------------------------------------------------------ *
+   * 12. blended-roas-calculator
+   *
+   * Source of truth: phase1-newtool-specs/spec-blended-roas.json.
+   *
+   * This tool answers a COMPOSITION question, not a margin one: what share of
+   * the revenue behind the ratio is paid-driven, what the ratio becomes once
+   * refunded revenue is removed, and how far the platforms' own ROAS sits above
+   * the number the whole store produced. It takes NO contribution-margin input
+   * and publishes NO break-even floor — the floor is margin-derived and it
+   * belongs to mer-calculator. If anyone ever adds cm_pct here, this tool has
+   * become a duplicate of mer-calculator and should be cut instead.
+   * ------------------------------------------------------------------ */
+
+  // Canonical flag order, so the emitted array is deterministic and testable.
+  var BLENDED_FLAG_ORDER = [
+    'parts_exceed_total', 'paid_dependency_clamped', 'derived_remainder_clamped',
+    'nonpaid_clamped', 'range_collapsed', 'range_floor_clipped',
+    'platform_claim_exceeds_total', 'resellable_not_entered'
+  ];
+
+  // The tool's own line, not a cited benchmark: above this share of revenue the
+  // blended figure stops carrying information the ad account did not already
+  // carry. Labelled as a judgment call on the page.
+  var PAID_CARRIES_PCT = 70;
+
+  RISE_TOOLS['blended-roas-calculator'] = {
+    compute: function (inputs) {
+      var i = inputs || {};
+
+      // Every field goes through the locale-tolerant parser before it is a
+      // number. Optional fields stay null when blank — never substituted with 0.
+      var R = parseAmount(i.total_revenue);
+      if (R === null) { R = 0; }
+      var S = parseAmount(i.total_ad_spend);
+      if (S === null) { S = 0; }
+      var P = parseAmount(i.paid_revenue);
+      var E = parseAmount(i.email_revenue);
+      var O = parseAmount(i.organic_direct_revenue);
+      var rPct = parseAmount(i.return_rate_pct);
+      if (rPct === null) { rPct = 0; }
+      var kPct = parseAmount(i.resellable_pct);
+      var resellableEntered = kPct !== null;
+      var PR = parseAmount(i.platform_reported_roas);
+
+      var r = rPct / 100;
+      var k = resellableEntered ? kPct / 100 : 0;
+
+      // Kept factor: the share of booked revenue that is never given back and
+      // never written off. Refunded revenue on goods that return to full-price
+      // stock is DEFERRED, not destroyed, so it stays inside f. At k = 1 the
+      // factor is exactly 1 and every returns-adjusted output collapses onto
+      // its unadjusted twin — the same collapse true-profit-per-order uses.
+      var f = 1 - r * (1 - k);
+
+      var hasSpend = S > 0;
+      var hasRevenue = R > 0;
+
+      // This half stays useful with no ad spend entered, so it is never gated.
+      var netKept = R * f;
+      var lostToReturns = R * r * (1 - k);
+
+      var blended = hasSpend ? R / S : null;
+      var raBlended = hasSpend ? R * f / S : null;
+      var dragX = hasSpend ? lostToReturns / S : null;
+
+      // The single guessed input is the return rate, so the adjusted ratio
+      // ships as a band at +/- 5 percentage POINTS (identical to
+      // mer-calculator). The pessimistic end takes the HIGHER return rate.
+      var rPess = Math.min(1, r + 0.05);
+      var rOpt = Math.max(0, r - 0.05);
+      var raLow = hasSpend ? R * (1 - rPess * (1 - k)) / S : null;
+      var raHigh = hasSpend ? R * (1 - rOpt * (1 - k)) / S : null;
+
+      var paidRoas = (hasSpend && P !== null) ? P / S : null;
+      var raPaidRoas = (hasSpend && P !== null) ? P * f / S : null;
+
+      // The ladder reads the RAW dependency; the page prints the clamped one,
+      // so a 120% dependency still trips the tier it should.
+      var depRaw = (P !== null && hasRevenue) ? P / R * 100 : null;
+      var dep = depRaw === null ? null : clamp(depRaw, 0, 100);
+      var depClamped = depRaw !== null && (depRaw > 100 || depRaw < 0);
+
+      var emailShare = (E !== null && hasRevenue) ? E / R * 100 : null;
+
+      // Organic is derived as the remainder ONLY when at least one of the two
+      // rows above it was filled. Deriving it from nothing would print
+      // "100% organic", a claim the user never made.
+      var organicEntered = O !== null;
+      var organicDerived = false;
+      var remainderClamped = false;
+      var oEff = null;
+      if (organicEntered) {
+        oEff = O;
+      } else if (hasRevenue && (P !== null || E !== null)) {
+        organicDerived = true;
+        oEff = R - (P === null ? 0 : P) - (E === null ? 0 : E);
+        if (oEff < 0) { oEff = 0; remainderClamped = true; }
+      }
+      var organicShare = (oEff !== null && hasRevenue) ? oEff / R * 100 : null;
+
+      var nonpaid = null;
+      var nonpaidClamped = false;
+      if (P !== null && hasRevenue) {
+        nonpaid = R - P;
+        if (nonpaid < 0) { nonpaid = 0; nonpaidClamped = true; }
+      }
+
+      // Entered parts are NEVER rescaled to fit the total. A contradiction gets
+      // named and measured; silently normalising a user's numbers teaches
+      // nothing.
+      var partsEntered = 0;
+      var partsSum = 0;
+      if (P !== null) { partsSum += P; partsEntered++; }
+      if (E !== null) { partsSum += E; partsEntered++; }
+      if (organicEntered) { partsSum += O; partsEntered++; }
+      var partsExceed = partsEntered > 0 && (partsSum - R) > 1e-9;
+      var partsOverflow = partsExceed ? partsSum - R : 0;
+
+      // Platform block is hidden entirely when the platforms' ROAS is blank,
+      // and null (not zero) when there is no spend to measure it against.
+      var platformEntered = PR !== null;
+      var claimedRevenue = null;
+      var claimedShare = null;
+      var vsBlended = null;
+      var vsPaid = null;
+      var overstatement = null;
+      var claimExceeds = false;
+      if (platformEntered && hasSpend) {
+        claimedRevenue = PR * S;
+        claimedShare = hasRevenue ? claimedRevenue / R * 100 : null;
+        vsBlended = blended === null ? null : PR - blended;
+        vsPaid = paidRoas === null ? null : PR - paidRoas;
+        overstatement = (paidRoas !== null && paidRoas > 0) ? PR / paidRoas : null;
+        claimExceeds = claimedShare !== null && claimedShare > 100;
+      }
+
+      var rangeCollapsed = raLow !== null && raHigh !== null &&
+        Math.abs(raHigh - raLow) < 1e-9;
+      var rangeFloorClipped = hasSpend && (r - 0.05) < 0;
+
+      /* -- verdict ladder ------------------------------------------------ *
+       * Three tier classes, used exactly as ltv / contribution-margin /
+       * conversion-rate-calculator use them.                                */
+      var tier, tierLabel, verdictBand;
+      if (!hasSpend || blended === null) {
+        tier = 't-fix';
+        tierLabel = 'ENTER AD SPEND';
+        verdictBand = 'No ad spend in this period, so blended ROAS is undefined.';
+      } else if (raBlended < 1) {
+        tier = 't-not';
+        tierLabel = 'BELOW ONE TO ONE';
+        verdictBand = 'After refunds, every dollar of ad spend brings back less than a dollar of kept revenue.';
+      } else if (depRaw !== null && depRaw >= PAID_CARRIES_PCT) {
+        tier = 't-fix';
+        tierLabel = 'PAID CARRIES THE STORE';
+        verdictBand = 'The blended number is close to the paid number, so it is not telling you anything the ad account was not already telling you.';
+      } else {
+        tier = 't-safe';
+        tierLabel = 'BLEND HOLDS';
+        verdictBand = 'Kept revenue clears ad spend and the non-paid channels are carrying a real share of it.';
+      }
+
+      // A tier is a money verdict; an attribution gap is a measurement problem.
+      // Separate chips, and this one never moves the tier.
+      var attributionNote = claimExceeds
+        ? 'Your platforms claim more revenue than the store booked.'
+        : null;
+
+      var flagSet = {
+        parts_exceed_total: partsExceed,
+        paid_dependency_clamped: depClamped,
+        derived_remainder_clamped: remainderClamped,
+        nonpaid_clamped: nonpaidClamped,
+        range_collapsed: rangeCollapsed,
+        range_floor_clipped: rangeFloorClipped,
+        platform_claim_exceeds_total: claimExceeds,
+        resellable_not_entered: !resellableEntered
+      };
+      var flags = [];
+      for (var fi = 0; fi < BLENDED_FLAG_ORDER.length; fi++) {
+        if (flagSet[BLENDED_FLAG_ORDER[fi]]) { flags.push(BLENDED_FLAG_ORDER[fi]); }
+      }
+
+      var notes = [];
+      if (!hasSpend) {
+        notes.push('Kept revenue and the cost of returns still compute without ad spend; every ratio on this page does not.');
+      }
+      if (!hasRevenue) {
+        notes.push('Enter revenue above 0 to see the channel split.');
+      }
+      if (P === null) {
+        notes.push('Add the revenue you attribute to paid to see how much of this the ads are carrying.');
+      }
+      if (P === null && E === null && !organicEntered) {
+        notes.push('Fill at least one channel row to see the split.');
+      }
+      if (!resellableEntered) {
+        notes.push('resellable share not entered, treated as none');
+      }
+      if (partsExceed) {
+        notes.push('Your channel rows add up to ' + fmtNum(partsOverflow) +
+          ' more than total revenue. Nothing has been rescaled.');
+      }
+      if (rangeCollapsed) {
+        notes.push(k >= 1
+          ? 'At 100% resellable there is nothing for the return rate to move.'
+          : 'Every scenario returns the same number, so the band collapses to a point.');
+      }
+      if (rangeFloorClipped) {
+        notes.push('A return rate cannot go below zero, so the optimistic end is your entered number.');
+      }
+      if (platformEntered && hasSpend && P === 0) {
+        notes.push('Your platforms report a ROAS against paid revenue you have recorded as zero.');
+      }
+
+      var raw = {
+        kept_factor: f,
+        net_kept_revenue: netKept,
+        revenue_lost_to_returns: lostToReturns,
+        blended_roas: blended,
+        ra_blended_roas: raBlended,
+        ra_blended_roas_low: raLow,
+        ra_blended_roas_high: raHigh,
+        returns_drag_x: dragX,
+        paid_roas: paidRoas,
+        ra_paid_roas: raPaidRoas,
+        paid_dependency_pct_raw: depRaw,
+        paid_dependency_pct: dep,
+        nonpaid_revenue: nonpaid,
+        email_revenue_share_pct: emailShare,
+        organic_direct_revenue: oEff,
+        organic_direct_share_pct: organicShare,
+        parts_sum: partsEntered > 0 ? partsSum : null,
+        parts_overflow: partsOverflow,
+        platform_claimed_revenue: claimedRevenue,
+        platform_claimed_share_of_total_pct: claimedShare,
+        platform_vs_blended_delta: vsBlended,
+        platform_vs_paid_delta: vsPaid,
+        platform_overstatement_x: overstatement
+      };
+
+      var display = {
+        blended_roas: r2(blended),
+        ra_blended_roas: r2(raBlended),
+        ra_blended_roas_low: r2(raLow),
+        ra_blended_roas_high: r2(raHigh),
+        ra_blended_roas_range: rPair(raLow, raHigh, 2),
+        returns_drag_x: r2(dragX),
+        net_kept_revenue: r2(netKept),
+        revenue_lost_to_returns: r2(lostToReturns),
+        paid_roas: r2(paidRoas),
+        ra_paid_roas: r2(raPaidRoas),
+        paid_dependency_pct: r2(dep),
+        paid_dependency_pct_raw: r2(depRaw),
+        nonpaid_revenue: r2(nonpaid),
+        email_revenue_share_pct: r2(emailShare),
+        organic_direct_revenue: r2(oEff),
+        organic_direct_share_pct: r2(organicShare),
+        organic_direct_derived: organicDerived,
+        parts_overflow: r2(partsOverflow),
+        platform_claimed_revenue: r2(claimedRevenue),
+        platform_claimed_share_of_total_pct: r2(claimedShare),
+        platform_vs_blended_delta: r2(vsBlended),
+        platform_vs_paid_delta: r2(vsPaid),
+        platform_overstatement_x: r2(overstatement),
+        tier: tier,
+        tier_label: tierLabel,
+        verdict_band: verdictBand,
+        attribution_note: attributionNote,
+        flags: flags
+      };
+
+      return Object.assign({}, display, { raw: raw, display: display, notes: notes });
+    }
+  };
+
+  /* ------------------------------------------------------------------ *
    * Shared helpers exposed for the tool pages and the test runner
    * ------------------------------------------------------------------ */
 
   RISE_TOOLS._helpers = RISE_TOOLS._helpers || {};
   RISE_TOOLS._helpers.roundHalfUp = roundHalfUp;
+  RISE_TOOLS._helpers.parseAmount = parseAmount;
   RISE_TOOLS._helpers.erf = erf;
   RISE_TOOLS._helpers.normalCdf = normalCdf;
   RISE_TOOLS._helpers.cmRateRa = cmRateRa;

@@ -183,12 +183,15 @@
 
   /* ============================================================ gate mode */
 
-  var GATES = { ungated: 1, email_to_save: 1, email_to_see: 1 };
+  /* email_to_run is the AI class: the page stays fully visible and the email is
+     what buys the model call. It never blurs anything, so it needs no branch
+     beyond being a legal value here and a body class the stylesheet can read. */
+  var GATES = { ungated: 1, email_to_save: 1, email_to_see: 1, email_to_run: 1 };
 
   function applyGate(gate) {
     var g = GATES[gate] ? gate : 'ungated';
     var b = document.body;
-    b.classList.remove('gate-ungated', 'gate-email_to_save', 'gate-email_to_see');
+    b.classList.remove('gate-ungated', 'gate-email_to_save', 'gate-email_to_see', 'gate-email_to_run');
     b.classList.add('gate-' + g);
     return g;
   }

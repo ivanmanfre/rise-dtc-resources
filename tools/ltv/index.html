@@ -6,7 +6,7 @@
 <title>LTV Calculator (Returns and Exchange Adjusted) | RISE DTC</title>
 <meta name="description" content="Free customer lifetime value calculator, returns and exchange adjusted. Enter AOV, return rate, exchange share, purchase frequency, lifespan and contribution margin, and see LTV, the LTV to CAC ratio and the range behind it, with every line of the arithmetic printed." />
 <link rel="canonical" href="https://resources.risedtc.com/tools/ltv/" />
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#1f1f1f" />
 <meta property="og:title" content="LTV Calculator (Returns and Exchange Adjusted)" />
 <meta property="og:description" content="What one customer is worth once refunds are removed and exchanges are kept, with the LTV to CAC ratio and the math printed." />
 <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="stylesheet" href="../assets/tools.css" />
 <script>window.__lm_slug = "rise-dtc-tools-ltv";</script>
@@ -27,26 +27,43 @@
 <body>
 <a class="skip" href="#calculator">Skip to the calculator</a>
 
-<!-- ============================ app bar ============================ -->
-<div class="appbar">
-  <div class="wrap appbar-in">
-    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
-    <span class="titles">
-      <span class="t1">Customer Lifetime Value</span>
-      <span class="t2">Tool 06 of 22, unit economics</span>
-    </span>
-    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
-</div>
+</header>
 
 <!-- ============================ hero + cockpit ============================ -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Free calculator, no signup</p>
-    <h1>What is a customer <span class="hl">actually worth?</span></h1>
+<section class="inkband on-ink tool">
+  <div class="bg" style="background-image:url('../assets/case-tenth-street-hats.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 06 of 25 &middot; Unit economics &middot; free, no signup</p>
+    <h1>What is a customer <span class="gold-word">actually worth?</span></h1>
     <p class="lede">A returned order costs you the sale, unless it comes back as an exchange instead.</p>
-  </section>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="ltv"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Repeat order bars decaying under a rising cumulative value curve"><line class="d" x1="6" y1="58.8" x2="114" y2="58.8"/><rect class="f6" x="10" y="24.8" width="11" height="34"/><rect class="f6" x="27" y="35.8" width="11" height="23"/><rect class="f6" x="44" y="43.8" width="11" height="15"/><rect class="f6" x="61" y="48.8" width="11" height="10"/><rect class="f6" x="78" y="51.8" width="11" height="7"/><rect class="f6" x="95" y="53.8" width="11" height="5"/><path class="gk" d="M15.5 45 C30 37 40 29 49.5 25 S 80 19 100.5 17"/><circle class="g" cx="15.5" cy="45" r="2.4"/><circle class="g" cx="49.5" cy="25" r="2.4"/><circle class="g" cx="100.5" cy="17" r="2.4"/></svg></span>
+      <span class="hf-cap">Repeat orders decaying under a cumulative curve</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#uniteco">Unit economics</a> / <span>Customer Lifetime Value</span></p>
+</section>
 
+<div class="wrap">
   <div class="cockpit" id="calculator">
 
     <!-- ---------------------------- inputs ---------------------------- -->
@@ -178,6 +195,21 @@
 
   </div>
 </div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-tenth-street-hats.jpg" alt="Tenth Street Hats, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"16+ profitable quarters"</p>
+        <p class="cs-meta"><b>Tenth Street Hats</b>. Sixteen profitable quarters is what lifetime value looks like when the repeat curve holds. The figure is quoted from the case page on <a href="https://risedtc.com/projects/tenth-street-hats/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="case_tenth_street_hats">risedtc.com/projects/tenth-street-hats</a>, which also publishes "CTV increases for 50%+ of customers".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/tenth-street-hats/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="case_tenth_street_hats_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================ scenario spread ============================ -->
 <section class="blk grey">
@@ -360,19 +392,25 @@
     <div class="finalcta on-ink">
       <h2>Want this run on <span class="hl">your numbers?</span></h2>
       <p>From week one we run this math on live Shopify and retention data, then work the levers that move it: the exchange share, the purchase frequency and what you pay to acquire. Book a 30 minute intro call and we will walk your lifetime value math together.</p>
-      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
     </div>
   </div>
 </section>
 
-<footer class="rise">
-  <div class="wrap">
-    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
-    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
-    <div class="meta">
-      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
-      <span><a href="../">All 22 tools</a></span>
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
     </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/ltv/</span>
   </div>
 </footer>
 
@@ -398,6 +436,7 @@
 </script>
 
 <script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
 <script src="../assets/formulas-uniteco.js"></script>
 <script src="../assets/tools.js"></script>
 <script>
