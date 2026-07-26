@@ -6,7 +6,7 @@
 <title>CTR Calculator: Click-Through Rate + A/B Test</title>
 <meta name="description" content="Free CTR calculator with a built-in two-proportion A/B significance test. Enter impressions and clicks for two creatives and see whether the gap is real, plus the sample size the test still needs." />
 <link rel="canonical" href="https://resources.risedtc.com/tools/ctr-calculator/" />
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#1f1f1f" />
 <meta property="og:title" content="CTR Calculator: Click-Through Rate + A/B Test" />
 <meta property="og:description" content="Click-through rate for two creatives, and the two-proportion test that says whether the gap between them is signal or noise." />
 <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="stylesheet" href="../assets/tools.css" />
 <style>
@@ -40,26 +40,43 @@
 <body>
 <a class="skip" href="#calculator">Skip to the calculator</a>
 
-<!-- ============================ app bar ============================ -->
-<div class="appbar">
-  <div class="wrap appbar-in">
-    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
-    <span class="titles">
-      <span class="t1">CTR + A/B Significance</span>
-      <span class="t2">Tool 16 of 22, ad metrics</span>
-    </span>
-    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
-</div>
+</header>
 
 <!-- ============================ hero + cockpit ============================ -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Free calculator, no signup</p>
-    <h1>Is that click-through gap <span class="hl">real yet?</span></h1>
+<section class="inkband on-ink tool">
+  <div class="bg bg-tsh" style="background-image:url('../assets/case-tenth-street-hats.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 17 of 25 &middot; Paid ads &middot; free, no signup</p>
+    <h1>Is that click-through gap <span class="gold-word">real yet?</span></h1>
     <p class="lede">Click-through rate for two creatives, and the two-proportion test that says whether the gap between them is signal or noise.</p>
-  </section>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="ctr-calculator"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Two click-through rates with confidence whiskers still overlapping"><line class="k2" x1="12" y1="8" x2="12" y2="58.8"/><rect class="f6" x="12" y="16" width="48" height="10"/><path class="k2" d="M48 21 H74 M48 16.5 v9 M74 16.5 v9"/><rect class="g" x="12" y="40" width="66" height="10"/><path class="k2" d="M66 45 H92 M66 40.5 v9 M92 40.5 v9"/><rect class="gd" x="66" y="12" width="8" height="42"/><text class="lb" x="14" y="13">A</text><text class="lb" x="14" y="37">B</text></svg></span>
+      <span class="hf-cap">Two rates, confidence whiskers still overlapping</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#paid">Paid ads</a> / <span>CTR and A/B Significance</span></p>
+</section>
 
+<div class="wrap">
   <div class="cockpit" id="calculator">
 
     <!-- ---------------------------- inputs ---------------------------- -->
@@ -194,6 +211,21 @@
 
   </div>
 </div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-tenth-street-hats.jpg" alt="Tenth Street Hats, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"800%+ ROAS on ad revenue"</p>
+        <p class="cs-meta"><b>Tenth Street Hats</b>. Returns like that are built from creative tests that were called only once the gap was real. The figure is quoted from the case page on <a href="https://risedtc.com/projects/tenth-street-hats/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="case_tenth_street_hats">risedtc.com/projects/tenth-street-hats</a>, which also publishes "CTV increases for 50%+ of customers".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/tenth-street-hats/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="case_tenth_street_hats_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================ scenario spread ============================ -->
 <section class="blk grey">
@@ -373,19 +405,25 @@
     <div class="finalcta on-ink">
       <h2>Want this run on <span class="hl">your numbers?</span></h2>
       <p>From week one we run this test on live ad-account data, then work the creative that actually clears the bar instead of the one that only looks bigger on a slide. Book a 30 minute intro call and we will walk your current tests together.</p>
-      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
     </div>
   </div>
 </section>
 
-<footer class="rise">
-  <div class="wrap">
-    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
-    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
-    <div class="meta">
-      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
-      <span><a href="../">All 22 tools</a></span>
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
     </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/ctr-calculator/</span>
   </div>
 </footer>
 
@@ -411,6 +449,7 @@
 </script>
 
 <script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
 <script src="../assets/formulas-adsemail.js"></script>
 <script src="../assets/tools.js"></script>
 <script>

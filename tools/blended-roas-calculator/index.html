@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blended ROAS Calculator: MER, Returns &amp; Paid Dependency | RISE DTC</title>
+<meta name="description" content="Free blended ROAS calculator. Enter revenue, ad spend, your channel split and your return rate, and see one ratio across every channel, the same ratio on the revenue you keep, and how much of the store paid is carrying." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/blended-roas-calculator/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="Blended ROAS Calculator: MER, Returns &amp; Paid Dependency" />
+<meta property="og:description" content="One ROAS across every channel, the same number after refunds, and how much of the store the ads are actually carrying. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/blended-roas-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Blended ROAS Calculator: MER, Returns &amp; Paid Dependency" />
+<meta name="twitter:description" content="One ROAS across every channel, the same number after refunds, and the paid share of the store printed next to it. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-blended-roas-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=blended-roas-calculator" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=blended-roas-calculator" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=blended-roas-calculator" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero + cockpit ============================ -->
+<section class="inkband on-ink tool">
+  <div class="bg" style="background-image:url('../assets/case-dickies.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 13 of 25 &middot; Paid ads &middot; free, no signup</p>
+    <h1>What is your blended ROAS <span class="gold-word">after the refunds?</span></h1>
+    <p class="lede">One ratio across every channel, recomputed on the revenue you keep, with the paid share of the store printed beside it.</p>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="blended-roas-calculator"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Channel revenue stacked over one spend bar, with refunded revenue notched out"><rect class="f" x="10" y="9" width="41" height="14"/><rect class="f6" x="51" y="9" width="27" height="14"/><rect class="h" x="78" y="9" width="21" height="14"/><rect class="gd" x="99" y="9" width="11" height="14"/><line class="gd" x1="99" y1="23" x2="110" y2="9"/><rect class="k" x="10" y="9" width="100" height="14" rx="1.4"/><rect class="f" x="10" y="31" width="100" height="2.6" rx="1.3"/><rect class="g" x="10" y="41" width="42" height="17" rx="2"/><text class="lb" x="14" y="52.6">SPEND</text></svg></span>
+      <span class="hf-cap">Channel revenue stacked over one spend bar</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#paid">Paid ads</a> / <span>Blended ROAS Calculator</span></p>
+</section>
+
+<div class="wrap">
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="total_revenue">Total revenue this period, every channel</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="total_revenue" data-min="0" data-max="100000000" data-step="100" value="250000" /></span>
+          </div>
+          <input type="range" id="total_revenue_r" min="0" max="100000000" step="100" value="250000" aria-label="Total revenue slider" />
+          <p class="f-cap">Gross revenue booked for the period, before refunds. Your sales dashboard prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="total_ad_spend">Total ad spend this period, every paid channel</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="total_ad_spend" data-min="0" data-max="20000000" data-step="100" value="50000" /></span>
+          </div>
+          <input type="range" id="total_ad_spend_r" min="0" max="20000000" step="100" value="50000" aria-label="Total ad spend slider" />
+          <p class="f-cap">Meta, Google, TikTok, affiliates, all of it. Every platform your bank account paid.</p>
+        </div>
+
+        <div class="field" id="paidField">
+          <div class="f-top">
+            <label class="f-label" for="paid_revenue">Revenue you attribute to paid <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="paid_revenue_on" checked aria-label="Include paid revenue" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="paid_revenue" data-min="0" data-max="100000000" data-step="100" value="120000" /></span>
+            </span>
+          </div>
+          <input type="range" id="paid_revenue_r" min="0" max="100000000" step="100" value="120000" aria-label="Paid revenue slider" />
+          <p class="f-cap">Your own attribution, not the platform's. Switch it off and every paid-dependency line reads as not entered instead of zero.</p>
+        </div>
+
+        <div class="field" id="emailField">
+          <div class="f-top">
+            <label class="f-label" for="email_revenue">Revenue you attribute to email and SMS <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="email_revenue_on" checked aria-label="Include email and SMS revenue" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="email_revenue" data-min="0" data-max="100000000" data-step="100" value="45000" /></span>
+            </span>
+          </div>
+          <input type="range" id="email_revenue_r" min="0" max="100000000" step="100" value="45000" aria-label="Email and SMS revenue slider" />
+          <p class="f-cap">Flows and campaigns combined, as your email platform reports them.</p>
+        </div>
+
+        <div class="field is-off" id="organicField">
+          <div class="f-top">
+            <label class="f-label" for="organic_direct_revenue">Organic, direct and everything else <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="organic_direct_revenue_on" aria-label="Enter organic and direct revenue" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="organic_direct_revenue" data-min="0" data-max="100000000" data-step="100" value="85000" /></span>
+            </span>
+          </div>
+          <input type="range" id="organic_direct_revenue_r" min="0" max="100000000" step="100" value="85000" aria-label="Organic and direct revenue slider" />
+          <p class="f-cap">Off by default. Left off, this row is derived as the remainder once one of the two rows above is filled, and the label absorbs anything you did not enter.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and refund rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return rate slider" />
+          <p class="f-cap">Share of booked revenue that gets refunded. Revenue-weighted, since this page works in dollars rather than in orders.</p>
+        </div>
+
+        <div class="field" id="resellField">
+          <div class="f-top">
+            <label class="f-label" for="resellable_pct">Returned goods that go back to full price <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="resellable_pct_on" checked aria-label="Include resellable share" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="resellable_pct" data-min="0" data-max="100" data-step="1" value="40" /><span class="u">%</span></span>
+            </span>
+          </div>
+          <input type="range" id="resellable_pct_r" min="0" max="100" step="1" value="40" aria-label="Resellable share slider" />
+          <p class="f-cap">Those units sell again at the same price, so their revenue is deferred rather than lost. Switch this off and the page treats the share as none and says so.</p>
+        </div>
+
+        <div class="field is-off" id="platformField">
+          <div class="f-top">
+            <label class="f-label" for="platform_reported_roas">ROAS your ad platforms report <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="platform_reported_roas_on" aria-label="Compare against platform reported ROAS" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="platform_reported_roas" data-min="0" data-max="100" data-step="0.01" value="3.10" /><span class="u">x</span></span>
+            </span>
+          </div>
+          <input type="range" id="platform_reported_roas_r" min="0" max="100" step="0.01" value="3.10" aria-label="Platform reported ROAS slider" />
+          <p class="f-cap">The platforms' own claimed revenue over the same total ad spend. Off by default, and the whole comparison block stays off the page with it.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Blended ROAS after returns</p>
+        <p class="bignum" id="bigNum">0.00<span class="per">x</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="chip ghost" id="attrChip" style="display:none;border-color:rgba(255,255,255,.34);color:rgba(255,255,255,.82)">Attribution gap</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>0.00x</b> and <b>0.00x</b></span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the revenue comes from <span id="wfScale">of $250,000.00 booked</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="paid" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="email" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="organic" style="background:var(--grey-4)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold row below is the share of that revenue you attribute to paid.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Paid</span><span class="vl" id="lg_paid">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Email and SMS</span><span class="vl" id="lg_email">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-4)"></span><span class="nm" id="lg_organic_nm">Organic, direct and everything else</span><span class="vl" id="lg_organic">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Paid dependency</span><span class="vl" id="lg_result">0.00%</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What moves this number</span>
+          <p id="bindMain">Refunds take a share of the ratio.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindNote" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-gobi-heat.jpg" alt="Gobi Heat, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"251% increase in orders YoY"</p>
+        <p class="cs-meta"><b>Gobi Heat</b>. Orders rising while cost per order falls is the shape a blended ROAS should show. The figure is quoted from the case page on <a href="https://risedtc.com/projects/gobi-heat/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=blended-roas-calculator" target="_blank" rel="noopener" data-cta="case_gobi_heat">risedtc.com/projects/gobi-heat</a>, which also publishes "61% decrease in cost per order".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/gobi-heat/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=blended-roas-calculator" target="_blank" rel="noopener" data-cta="case_gobi_heat_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>One of those inputs is a guess</h2>
+    <p class="sec-sub">Revenue and ad spend are both looked up, so the ratio itself carries no band. The return rate is the number most operators estimate, so the returns-adjusted ratio is recomputed with that rate five points higher and five points lower, and both ends are printed here.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">0.00x</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.00x</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">0.00x</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is the whole store for one period. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Share of revenue you keep</span><span class="mv" id="m_f">0.0000</span><span class="mx" id="mx_f"></span></div>
+      <div class="mrow"><span class="mn">Net kept revenue</span><span class="mv" id="m_kept">$0.00</span><span class="mx" id="mx_kept"></span></div>
+      <div class="mrow"><span class="mn">Revenue lost to returns</span><span class="mv" id="m_lost">$0.00</span><span class="mx" id="mx_lost"></span></div>
+      <div class="mrow sum"><span class="mn">Blended ROAS</span><span class="mv" id="m_blended">0.00x</span><span class="mx" id="mx_blended"></span></div>
+      <div class="mrow sum final"><span class="mn">Blended ROAS after returns</span><span class="mv" id="m_ra">0.00x</span><span class="mx" id="mx_ra"></span></div>
+      <div class="mrow"><span class="mn">What refunds cost the ratio</span><span class="mv" id="m_drag">0.00x</span><span class="mx" id="mx_drag"></span></div>
+      <div class="mrow"><span class="mn">Paid ROAS, your attribution</span><span class="mv" id="m_paid">0.00x</span><span class="mx" id="mx_paid"></span></div>
+      <div class="mrow"><span class="mn">Paid ROAS after returns</span><span class="mv" id="m_rapaid">0.00x</span><span class="mx" id="mx_rapaid"></span></div>
+      <div class="mrow"><span class="mn">Paid dependency</span><span class="mv" id="m_dep">0.00%</span><span class="mx" id="mx_dep"></span></div>
+      <div class="mrow"><span class="mn">Revenue outside paid</span><span class="mv" id="m_nonpaid">$0.00</span><span class="mx" id="mx_nonpaid"></span></div>
+      <div class="mrow"><span class="mn">Email and SMS share</span><span class="mv" id="m_email">0.00%</span><span class="mx" id="mx_email"></span></div>
+      <div class="mrow"><span class="mn" id="m_organic_nm">Organic, direct and everything else</span><span class="mv" id="m_organic">$0.00</span><span class="mx" id="mx_organic"></span></div>
+      <div class="mrow" id="row_claimed"><span class="mn">Revenue your platforms claim</span><span class="mv" id="m_claimed">$0.00</span><span class="mx" id="mx_claimed"></span></div>
+      <div class="mrow" id="row_share"><span class="mn">Share of booked revenue they claim</span><span class="mv" id="m_share">0.00%</span><span class="mx" id="mx_share"></span></div>
+      <div class="mrow" id="row_vsb"><span class="mn">Their claim against the blended number</span><span class="mv" id="m_vsb">0.00x</span><span class="mx" id="mx_vsb"></span></div>
+      <div class="mrow" id="row_vsp"><span class="mn">Their claim against your paid ROAS</span><span class="mv" id="m_vsp">0.00x</span><span class="mx" id="mx_vsp"></span></div>
+      <div class="mrow" id="row_over"><span class="mn">How far their claim sits above yours</span><span class="mv" id="m_over">0.00x</span><span class="mx" id="mx_over"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>The return rate here is revenue-weighted.</b> A refund removes the full order value from revenue, and this page works in dollars rather than in orders. MER Calculator and CPA Calculator weight the same input by order, and each of those pages says so.</li>
+      <li><b>Returned goods that go back to full-price stock will sell again at the same price</b>, so their revenue is deferred rather than destroyed. That is why the resellable share sits inside the kept factor, and why a 100% share collapses the adjustment to nothing.</li>
+      <li><b>This is a revenue view.</b> Return shipping, restocking labor and the markdown on units that cannot be resold are costs, so they live in True Profit Per Order and MER Calculator instead.</li>
+      <li><b>Total ad spend is every paid channel</b>, which makes blended ROAS on this page the same arithmetic as MER. The page states the equivalence and prints one number.</li>
+      <li><b>Attribution is yours.</b> The platform figure is treated as a claim to measure against, and it never enters the numerator of anything above it.</li>
+      <li><b>Entered channel rows are never rescaled.</b> When they add up to more than total revenue, the page prints the overflow and names the contradiction instead of quietly normalizing your numbers.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What other people's ratios look like</h2>
+    <p class="sec-sub">These are other people's numbers on other people's stores. They set context for the ratio; the decision still comes from your own margin, which is what MER Calculator prices. Each row prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Blended MER by brand revenue band, DTC</span>
+      <p class="quote">"$1M-$5M brands: blended MER 1.5 to 2.5. $5M-$10M brands: 2.5 to 3.5. $10M-$25M brands: 3.0 to 4.5. $25M-$100M brands: 3.5 to 6.0 or higher. Subscription/high-LTV brands intentionally run lower (1.5 to 2.5)"</p>
+      <span class="cite">Eightx &middot; 2026 article, agency's own working benchmarks, no fixed historical study window stated &middot; <a href="https://eightx.co/blog/what-is-mer-marketing-efficiency-ratio" target="_blank" rel="noopener">eightx.co</a></span>
+      <span class="cite">Publisher is an agency stating its own working ranges rather than a measured panel.</span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">General "good MER" heuristic</span>
+      <p class="quote">"A good MER benchmark often falls around 5.0 or higher, meaning your business is generating $5 in revenue for every $1 spent on marketing."</p>
+      <span class="cite">Northbeam &middot; definitional benchmark page, not tied to a study period &middot; <a href="https://www.northbeam.io/blog/marketing-efficiency-ratio-mer-roas" target="_blank" rel="noopener">northbeam.io</a></span>
+      <span class="cite">Northbeam's own page caveats that good MER varies widely by industry, business model and growth stage. That caveat is why this tool publishes no floor of its own.</span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Platform-reported ROAS, Meta ecommerce</span>
+      <p class="quote">"Meta (Facebook/Instagram) ecommerce ROAS: median 1.86 (all industries); Apparel &amp; Accessories ROAS 2.18"</p>
+      <span class="cite">Triple Whale &middot; January 1 to December 31, 2025, approximately 35,000 brands &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+      <span class="cite">Median, not mean. Triple Whale separately reports a 2.98x average skewed by top performers. This row exists so the platform comparison block above has a reference point for what platforms typically claim.</span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Platform-reported ROAS, TikTok ecommerce</span>
+      <p class="quote">"TikTok ecommerce ROAS: median 2.21 (all industries); Apparel &amp; Accessories ROAS 2.49"</p>
+      <span class="cite">Triple Whale &middot; January 1 to December 31, 2025 &middot; <a href="https://www.triplewhale.com/blog/tiktok-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+      <span class="cite">Same vendor and the same panel methodology as the Meta row, which is the only reason the two are shown side by side.</span>
+    </div>
+
+    <p class="srcnote">None of these four rows is adjusted for returns, and none of them is a floor. There is no published blended-ROAS threshold that holds independently of margin, because the floor is margin-derived, and MER Calculator is where it gets priced. The 70% paid-dependency line in the verdict above is this tool's own judgment call, and it is labelled that way everywhere it appears.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>One ratio, and the two questions it hides</h2>
+    <div class="prose">
+      <p>Blended ROAS on this page is total revenue divided by total ad spend. Every channel sits in the numerator, every paid channel sits in the denominator, and no attribution model touches either one. That is the same arithmetic marketing efficiency ratio describes, so the two names point at one number here, and the page says so. It is a useful number precisely because it is hard to argue with: your bank statement produced the denominator and your sales dashboard produced the numerator.</p>
+
+      <p>What it hides is composition and refunds. The numerator counts revenue that was booked, including the orders a customer sends back three weeks later, and it counts revenue that arrived through email, through organic search and through people who typed the domain in directly. A ratio built that way can move for reasons that have nothing to do with the ad account. A strong email month lifts it. A refund wave two weeks after a launch drops it. This page separates both effects out and prints them next to the headline instead of leaving them inside it.</p>
+
+      <h3>Where the returns adjustment comes from</h3>
+      <p>Refunds are handled with one factor. Take the return rate, multiply by the share of returned goods that cannot go back to full price, and subtract the result from one. That is the share of booked revenue that is never given back and never written off, and multiplying it through gives the kept revenue behind the ratio. Goods that do return to full-price stock will sell again at the same price, so their revenue is deferred rather than destroyed, which is why the resellable share sits inside the factor. At a 100% resellable share the factor is exactly one, the adjustment contributes nothing, and the returns-adjusted ratio lands exactly on the raw one. That collapse is deliberate, and it is the same one True Profit Per Order uses.</p>
+
+      <p>The difference between the two ratios gets a line of its own, printed in x rather than as a percentage, because that is the unit an operator already thinks in. On the numbers this page opens with, a store books a 5.00x blend and keeps 4.25x of it, so refunds cost that account three quarters of a point of ROAS before any optimization was ever attempted.</p>
+
+      <h3>Paid dependency, and when the blend stops carrying information</h3>
+      <p>The second question is how much of the revenue behind the ratio the ads are actually carrying. Enter the revenue you attribute to paid and the page prints it as a share of the total. When that share is low, the blended number is telling you something the ad account never could: other channels are carrying real weight, and the ad spend is being measured against a business that partly runs without it. When the share climbs, the blended number converges on the paid number, and the two stop being independent readings of anything.</p>
+
+      <p>This tool draws that line at 70%, and that threshold is a judgment call made here rather than a figure quoted from a publisher. No source states a paid-dependency benchmark for DTC, so the page labels its own line as its own line. Above it, the verdict says paid carries the store, and the reading to take is that the blend has stopped adding information on top of what the platform dashboard was already reporting.</p>
+
+      <p>When the paid revenue row is left empty, the dependency step is skipped entirely and the page asks for the number instead of assuming a zero. An empty field is an unknown, and printing 0% paid would be a claim you never made. The same rule governs the organic and direct row: it is derived as the remainder only once one of the two rows above it is filled, and its label then absorbs anything else you left out.</p>
+
+      <h3>What the ad platforms claim</h3>
+      <p>Switch on the platform ROAS row and the page multiplies it by the same ad spend to get the revenue your platforms are claiming, then measures that claim two ways: against the whole store's blended ratio, and against your own paid ROAS. The second comparison is the one worth watching, since both sides of it are measuring the same spend against the same intended slice of revenue. When the platforms' claimed revenue exceeds what the store booked, a separate chip appears next to the verdict. It never moves the tier. A tier is a money verdict and an attribution gap is a measurement problem, so they get separate chips and separate readings.</p>
+
+      <h3>What this page deliberately does not print</h3>
+      <p>There is no break-even floor anywhere on this page. A floor comes out of your contribution margin after returns, and that calculation belongs to MER Calculator, which prices it from the margin you enter there. Costs are absent for the same reason: return shipping, restocking labor and the markdown on units that cannot be resold are real, and they live in True Profit Per Order, which carries them per order. This page stays a revenue view on purpose, so that every number on it can be traced back to two figures your accounting already agrees on.</p>
+
+      <p>Three dials move the answer once you have it. The return rate, which sizing guidance and product photography both touch upstream of any ad decision. The resellable share, which is a returns-grading question. And the split between paid and everything else, which is the slowest of the three to move and the one that decides how much the blended ratio was ever worth reading.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Is blended ROAS the same thing as MER?</summary>
+        <div class="fa">On this page, yes. Total revenue over total ad spend is the arithmetic both names describe, so the tool states the equivalence and moves on to the two things the single ratio leaves out: what refunds take off it, and how much of the revenue behind it your ads are carrying. MER Calculator answers the other question, which is what ratio your margin requires before the spend pays for itself.</div>
+      </details>
+      <details>
+        <summary>Why does a ROAS calculator ask for a return rate?</summary>
+        <div class="fa">Because the numerator is booked revenue, and a share of booked revenue goes back to the customer. The returns-adjusted ratio recomputes the same division on the revenue you keep, and the gap between the two is printed in x so you can see what refunds cost the headline. Enter a zero return rate and the two ratios sit on top of each other, which is exactly what should happen.</div>
+      </details>
+      <details>
+        <summary>What is the resellable share doing inside a revenue ratio?</summary>
+        <div class="fa">A refund removes revenue whatever happens to the goods, but a returned unit that goes straight back into full-price stock will sell again at the same price, so that revenue is deferred to a later period rather than destroyed. Treating it that way is what makes the adjustment collapse exactly at a 100% resellable share, and it keeps this page consistent with True Profit Per Order. Leave the row switched off and the page treats the share as none and prints that alongside the adjusted number.</div>
+      </details>
+      <details>
+        <summary>What blended ROAS should I be aiming for?</summary>
+        <div class="fa">This page publishes no target, because a blended-ROAS floor that holds independently of margin does not exist. Your floor comes from your contribution margin after returns, and MER Calculator computes it from the margin and return rate you enter there. The published figures quoted further up this page are context for what other stores report, and they are not a threshold to clear.</div>
+      </details>
+      <details>
+        <summary>My channel rows add up to more than my total revenue. What happened?</summary>
+        <div class="fa">Usually double-counted attribution: an order that email and paid both claim gets counted once in each row. The page prints the overflow in dollars and leaves your entries exactly as you typed them, since rescaling them silently would hide the contradiction. Paid dependency is held at 100% for display when it computes above that, while the verdict reads the unclamped figure, so a store at 120% still trips the tier it should.</div>
+      </details>
+      <details>
+        <summary>My platforms report a higher ROAS than the store produced. Which one is right?</summary>
+        <div class="fa">Both are measuring what they were built to measure. The platforms count conversions their models attribute to their own ads, with view-through windows and cross-device matching inside the number. The store counts revenue that landed in the bank. When the platforms' claimed revenue exceeds what the store booked, the page raises a separate chip next to the verdict and leaves the tier alone, because the money verdict and the measurement warning are two different readings and collapsing them into one chip would lose both.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Four tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="ctaband">
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <div class="cb-in on-ink">
+    <p class="sec-eyebrow" style="color:var(--gold)">Ready when you are</p>
+    <h2>Want this run on <span class="hl">your numbers?</span></h2>
+    <p>From week one we run this split on live Shopify and ad data, then work the lines that move it: the return rate, the resellable share and how much of the store the ads are carrying. Book a 30 minute intro call and we will walk your blended number together.</p>
+    <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=blended-roas-calculator" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/blended-roas-calculator/</span>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Blended ROAS after returns</span>
+  <span class="mv" id="mbarNum">0.00x</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Is blended ROAS the same thing as MER?","acceptedAnswer":{"@type":"Answer","text":"On this page, yes. Total revenue over total ad spend is the arithmetic both names describe, so the tool states the equivalence and moves on to the two things the single ratio leaves out: what refunds take off it, and how much of the revenue behind it your ads are carrying. MER Calculator answers the other question, which is what ratio your margin requires before the spend pays for itself."}},
+    {"@type":"Question","name":"Why does a ROAS calculator ask for a return rate?","acceptedAnswer":{"@type":"Answer","text":"Because the numerator is booked revenue, and a share of booked revenue goes back to the customer. The returns-adjusted ratio recomputes the same division on the revenue you keep, and the gap between the two is printed in x so you can see what refunds cost the headline. Enter a zero return rate and the two ratios sit on top of each other, which is exactly what should happen."}},
+    {"@type":"Question","name":"What is the resellable share doing inside a revenue ratio?","acceptedAnswer":{"@type":"Answer","text":"A refund removes revenue whatever happens to the goods, but a returned unit that goes straight back into full-price stock will sell again at the same price, so that revenue is deferred to a later period rather than destroyed. Treating it that way is what makes the adjustment collapse exactly at a 100% resellable share, and it keeps this page consistent with True Profit Per Order. Leave the row switched off and the page treats the share as none and prints that alongside the adjusted number."}},
+    {"@type":"Question","name":"What blended ROAS should I be aiming for?","acceptedAnswer":{"@type":"Answer","text":"This page publishes no target, because a blended-ROAS floor that holds independently of margin does not exist. Your floor comes from your contribution margin after returns, and MER Calculator computes it from the margin and return rate you enter there. The published figures quoted further up this page are context for what other stores report, and they are not a threshold to clear."}},
+    {"@type":"Question","name":"My channel rows add up to more than my total revenue. What happened?","acceptedAnswer":{"@type":"Answer","text":"Usually double-counted attribution: an order that email and paid both claim gets counted once in each row. The page prints the overflow in dollars and leaves your entries exactly as you typed them, since rescaling them silently would hide the contradiction. Paid dependency is held at 100% for display when it computes above that, while the verdict reads the unclamped figure, so a store at 120% still trips the tier it should."}},
+    {"@type":"Question","name":"My platforms report a higher ROAS than the store produced. Which one is right?","acceptedAnswer":{"@type":"Answer","text":"Both are measuring what they were built to measure. The platforms count conversions their models attribute to their own ads, with view-through windows and cross-device matching inside the number. The store counts revenue that landed in the bank. When the platforms' claimed revenue exceeds what the store booked, the page raises a separate chip next to the verdict and leaves the tier alone, because the money verdict and the measurement warning are two different readings and collapsing them into one chip would lose both."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'blended-roas-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    total_revenue: 250000, total_ad_spend: 50000, return_rate_pct: 25,
+    paid_revenue: 120000, email_revenue: 45000, organic_direct_revenue: 85000,
+    resellable_pct: 40, platform_reported_roas: 3.10,
+    paid_revenue_on: true, email_revenue_on: true, organic_direct_revenue_on: false,
+    resellable_pct_on: true, platform_reported_roas_on: false
+  };
+  var KEYS = ['total_revenue', 'total_ad_spend', 'return_rate_pct'];
+  var OPT_KEYS = ['paid_revenue', 'email_revenue', 'organic_direct_revenue', 'resellable_pct', 'platform_reported_roas'];
+  var ALL_KEYS = KEYS.concat(OPT_KEYS);
+  var OPT_FIELD = {
+    paid_revenue: 'paidField', email_revenue: 'emailField', organic_direct_revenue: 'organicField',
+    resellable_pct: 'resellField', platform_reported_roas: 'platformField'
+  };
+  var SEGS = ['paid', 'email', 'organic'];
+  var PLATFORM_ROWS = ['row_claimed', 'row_share', 'row_vsb', 'row_vsp', 'row_over'];
+  var CROSS = ['mer-calculator', 'cpa-calculator', 'break-even-roas', 'true-profit-per-order'];
+  var GLYPH = {
+    'mer-calculator': 'MER', 'cpa-calculator': 'CPA',
+    'break-even-roas': 'ROAS', 'true-profit-per-order': 'TPO'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function n4(x){ return T.roundDp(x, 4).toFixed(4); }
+  function xr(v){ return v === null ? null : T.ratio(v) + 'x'; }
+  function pc2(v){ return v === null ? null : pct(v, 2); }
+  function has(flags, name){ return flags && flags.indexOf(name) >= 0; }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    ALL_KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    OPT_KEYS.forEach(function(k){ i[k + '_on'] = el(k + '_on').checked; });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  /* An optional row that is switched off goes to the formula as null, never as
+     zero. The library treats 0 as a real entered value everywhere. */
+  function computeInputs(i){
+    return {
+      total_revenue: i.total_revenue,
+      total_ad_spend: i.total_ad_spend,
+      paid_revenue: i.paid_revenue_on ? i.paid_revenue : null,
+      email_revenue: i.email_revenue_on ? i.email_revenue : null,
+      organic_direct_revenue: i.organic_direct_revenue_on ? i.organic_direct_revenue : null,
+      return_rate_pct: i.return_rate_pct,
+      resellable_pct: i.resellable_pct_on ? i.resellable_pct : null,
+      platform_reported_roas: i.platform_reported_roas_on ? i.platform_reported_roas : null
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var raw = o.raw;
+    var flags = o.flags || [];
+    var r = i.return_rate_pct / 100;
+    var k = ci.resellable_pct === null ? 0 : ci.resellable_pct / 100;
+    var platformOn = ci.platform_reported_roas !== null;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = o.ra_blended_roas === null
+      ? 'No ad spend<span class="per">so the ratio is undefined</span>'
+      : (T.ratio(o.ra_blended_roas) + '<span class="per">x</span>');
+    el('mbarNum').textContent = o.ra_blended_roas === null ? '(no ad spend)' : T.ratio(o.ra_blended_roas) + 'x';
+
+    ['tierChip', 'mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + o.tier;
+      t.textContent = o.tier_label;
+    });
+
+    /* the attribution chip is separate from the tier and never changes it */
+    el('attrChip').style.display = o.attribution_note ? '' : 'none';
+
+    if (o.ra_blended_roas_low === null) {
+      el('rangeLine').innerHTML = 'Enter ad spend above zero and the band appears here.';
+    } else if (has(flags, 'range_collapsed')) {
+      el('rangeLine').innerHTML = 'Five points either side of your return rate returns the same <b>' +
+        xr(o.ra_blended_roas) + '</b>';
+    } else {
+      el('rangeLine').innerHTML = 'Somewhere between <b>' + xr(o.ra_blended_roas_low) +
+        '</b> and <b>' + xr(o.ra_blended_roas_high) + '</b>';
+    }
+
+    /* Channel composition bar, scaled to revenue booked. When the entered rows
+       add up to more than the total, the bar scales to the parts instead and
+       the white mark sits at the revenue the store actually booked, with the
+       overflow drawn past it. Entered values are never rescaled. */
+    var vPaid = ci.paid_revenue === null ? 0 : ci.paid_revenue;
+    var vEmail = ci.email_revenue === null ? 0 : ci.email_revenue;
+    var vOrganic = raw.organic_direct_revenue === null ? 0 : raw.organic_direct_revenue;
+    var anyChannel = ci.paid_revenue !== null || ci.email_revenue !== null || ci.organic_direct_revenue !== null;
+    var partsTotal = vPaid + vEmail + vOrganic;
+    var over = has(flags, 'parts_exceed_total');
+    var scale = over ? Math.max(partsTotal, i.total_revenue) : i.total_revenue;
+    if (scale <= 0) scale = 1;
+
+    var vals = { paid: vPaid, email: vEmail, organic: vOrganic };
+    var bar = el('wfBar');
+    SEGS.forEach(function(key){
+      var w = anyChannel ? (vals[key] / scale * 100) : 0;
+      bar.querySelector('.seg[data-k="' + key + '"]').style.width = (w < 0 ? 0 : w) + '%';
+    });
+    var markPct = i.total_revenue / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = over ? 'block' : 'none';
+    el('wfShort').style.display = over ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + money(i.total_revenue) + ' booked';
+    el('wfMarkCap').textContent = !anyChannel
+      ? 'Switch on one channel row and this bar splits your revenue by source.'
+      : (over
+        ? 'The white line is the revenue you booked. Everything past it is what your channel rows add up to on top.'
+        : 'The gold row below is the share of that revenue you attribute to paid.');
+
+    el('lg_paid').textContent = ci.paid_revenue === null ? 'not entered' : money(ci.paid_revenue);
+    el('lg_email').textContent = ci.email_revenue === null ? 'not entered' : money(ci.email_revenue);
+    el('lg_organic').textContent = raw.organic_direct_revenue === null ? 'not entered' : money(raw.organic_direct_revenue);
+    el('lg_organic_nm').textContent = o.organic_direct_derived
+      ? 'Organic, direct and anything not entered above'
+      : 'Organic, direct and everything else';
+    el('lg_result').textContent = o.paid_dependency_pct === null ? 'not entered' : pc2(o.paid_dependency_pct);
+
+    /* what moves the number */
+    el('bindMain').innerHTML = o.returns_drag_x === null
+      ? 'Enter ad spend above zero to see what refunds cost the ratio.'
+      : 'Refunds take <b>' + xr(o.returns_drag_x) + '</b> off the ratio, from ' + xr(o.blended_roas) +
+        ' booked down to ' + xr(o.ra_blended_roas) + ' kept.';
+
+    if (o.paid_dependency_pct === null) {
+      el('bindFix').textContent = 'Add the revenue you attribute to paid to see how much of this the ads are carrying.';
+    } else {
+      var depLine = 'Paid carries ' + pc2(o.paid_dependency_pct) + ' of booked revenue';
+      if (o.nonpaid_revenue !== null) {
+        depLine += ', and ' + money(o.nonpaid_revenue) + ' arrives outside your paid attribution';
+      }
+      depLine += '. ';
+      depLine += (o.raw.paid_dependency_pct_raw >= 70)
+        ? 'At or above 70% this tool stops treating the blend as new information. No publisher states a paid-dependency benchmark, so the 70% line is ours and the page says so.'
+        : 'This tool draws its own line at 70%. No publisher states a paid-dependency benchmark, so the page labels that line as its own judgment call.';
+      el('bindFix').textContent = depLine;
+    }
+
+    if (!platformOn) {
+      el('bindDrag').textContent = 'Switch on the platform ROAS row to measure what your ad platforms claim against what the store booked.';
+    } else if (o.platform_vs_blended_delta === null) {
+      el('bindDrag').textContent = 'The platform comparison needs ad spend above zero to compute.';
+    } else {
+      var d = o.platform_vs_blended_delta;
+      el('bindDrag').textContent = 'Your platforms report ' + xr(ci.platform_reported_roas) + ', which sits ' +
+        xr(Math.abs(d)) + (d >= 0 ? ' above ' : ' below ') + 'the ' + xr(o.blended_roas) +
+        ' the whole store produced, and claims ' + money(o.platform_claimed_revenue) + ' of revenue.';
+    }
+
+    var extra = [];
+    if (o.attribution_note) { extra.push(o.attribution_note); }
+    if (has(flags, 'parts_exceed_total')) {
+      extra.push('Your channel rows add up to ' + money(o.parts_overflow) + ' more than total revenue, and nothing has been rescaled.');
+    }
+    if (has(flags, 'derived_remainder_clamped')) {
+      extra.push('The derived remainder computed below zero, so it is held at $0.00.');
+    }
+    if (has(flags, 'resellable_not_entered')) {
+      extra.push('Resellable share is not entered, so it is treated as none.');
+    }
+    if (has(flags, 'range_floor_clipped')) {
+      extra.push('A return rate cannot go below zero, so the optimistic end of the band is your entered rate.');
+    }
+    var note = el('bindNote');
+    if (extra.length) {
+      note.hidden = false;
+      note.textContent = extra.slice(0, 2).join(' ');
+    } else {
+      note.hidden = true;
+    }
+
+    /* scenario spread, on the returns-adjusted ratio */
+    el('scLow').textContent = xr(o.ra_blended_roas_low) || 'no ad spend';
+    el('scMid').textContent = xr(o.ra_blended_roas) || 'no ad spend';
+    el('scHigh').textContent = xr(o.ra_blended_roas_high) || 'no ad spend';
+    el('scLow').classList.toggle('neg', o.ra_blended_roas_low !== null && o.ra_blended_roas_low < 1);
+    el('scMid').classList.toggle('neg', o.ra_blended_roas !== null && o.ra_blended_roas < 1);
+    el('scHigh').classList.toggle('neg', o.ra_blended_roas_high !== null && o.ra_blended_roas_high < 1);
+    el('scLowA').textContent = 'Return rate ' + pct(Math.min(100, i.return_rate_pct + 5), 1);
+    el('scMidA').textContent = 'Return rate ' + pct(i.return_rate_pct, 1);
+    el('scHighA').textContent = 'Return rate ' + pct(Math.max(0, i.return_rate_pct - 5), 1);
+    el('scenNote').textContent = has(flags, 'range_collapsed')
+      ? (k >= 1
+        ? 'At 100% resellable there is nothing for the return rate to move, so all three read the same.'
+        : 'Every scenario returns the same number here, so the band collapses to a point.')
+      : (has(flags, 'range_floor_clipped')
+        ? 'A return rate cannot go below zero, so the optimistic end is your entered rate and the band is one-sided on purpose.'
+        : 'If the whole band sits below 1.00x, the estimate has stopped being the question. If it straddles 1.00x, pull the real return rate from Shopify before you change the budget.');
+
+    /* substituted arithmetic, one line per row */
+    el('m_f').textContent = n4(raw.kept_factor);
+    el('mx_f').innerHTML = '1 - ' + n2(r) + ' x (1 - ' + n2(k) + ') = ' + n4(raw.kept_factor) +
+      '  <em>the share of booked revenue that is never refunded and never written off</em>';
+
+    el('m_kept').textContent = money(o.net_kept_revenue);
+    el('mx_kept').innerHTML = money(i.total_revenue) + ' x ' + n4(raw.kept_factor) + ' = ' + money(o.net_kept_revenue) +
+      '  <em>the revenue sitting behind the adjusted ratio</em>';
+
+    el('m_lost').textContent = money(o.revenue_lost_to_returns);
+    el('mx_lost').innerHTML = money(i.total_revenue) + ' x ' + n2(r) + ' x (1 - ' + n2(k) + ') = ' + money(o.revenue_lost_to_returns) +
+      '  <em>refunded revenue on goods that cannot go back to full price</em>';
+
+    el('m_blended').textContent = xr(o.blended_roas) || 'no ad spend entered';
+    el('mx_blended').innerHTML = o.blended_roas !== null
+      ? (money(i.total_revenue) + ' / ' + money(i.total_ad_spend) + ' = ' + xr(o.blended_roas) +
+        '  <em>every channel over every paid channel, which is MER by another name</em>')
+      : '<em>ad spend is zero, so this ratio is undefined</em>';
+
+    el('m_ra').textContent = xr(o.ra_blended_roas) || 'no ad spend entered';
+    el('mx_ra').innerHTML = o.ra_blended_roas !== null
+      ? (money(o.net_kept_revenue) + ' / ' + money(i.total_ad_spend) + ' = ' + xr(o.ra_blended_roas) +
+        '  <em>the same division run on the revenue you keep</em>')
+      : '<em>ad spend is zero, so this ratio is undefined</em>';
+
+    el('m_drag').textContent = xr(o.returns_drag_x) || 'not available';
+    el('mx_drag').innerHTML = o.returns_drag_x !== null
+      ? (xr(o.blended_roas) + ' - ' + xr(o.ra_blended_roas) + ' = ' + xr(o.returns_drag_x) +
+        '  <em>what refunds cost the headline ratio, in x</em>')
+      : '<em>needs ad spend above zero on both ratios</em>';
+
+    el('m_paid').textContent = xr(o.paid_roas) || 'not entered';
+    el('mx_paid').innerHTML = o.paid_roas !== null
+      ? (money(ci.paid_revenue) + ' / ' + money(i.total_ad_spend) + ' = ' + xr(o.paid_roas) +
+        '  <em>your own attribution over the same spend</em>')
+      : '<em>the paid revenue row is off, so this stays out of the page instead of reading as zero</em>';
+
+    el('m_rapaid').textContent = xr(o.ra_paid_roas) || 'not entered';
+    el('mx_rapaid').innerHTML = o.ra_paid_roas !== null
+      ? (money(ci.paid_revenue) + ' x ' + n4(raw.kept_factor) + ' / ' + money(i.total_ad_spend) + ' = ' + xr(o.ra_paid_roas) +
+        '  <em>the same kept factor applied to the paid slice</em>')
+      : '<em>needs the paid revenue row and ad spend above zero</em>';
+
+    el('m_dep').textContent = pc2(o.paid_dependency_pct) || 'not entered';
+    el('mx_dep').innerHTML = o.paid_dependency_pct !== null
+      ? (money(ci.paid_revenue) + ' / ' + money(i.total_revenue) + ' x 100 = ' + pc2(o.paid_dependency_pct) +
+        (has(flags, 'paid_dependency_clamped')
+          ? '  <em>held at 100% for display; the verdict reads the unclamped ' + pc2(o.paid_dependency_pct_raw) + '</em>'
+          : '  <em>how much of the store the ads are carrying</em>'))
+      : '<em>needs the paid revenue row and revenue above zero</em>';
+
+    el('m_nonpaid').textContent = o.nonpaid_revenue === null ? 'not entered' : money(o.nonpaid_revenue);
+    el('mx_nonpaid').innerHTML = o.nonpaid_revenue !== null
+      ? (money(i.total_revenue) + ' - ' + money(ci.paid_revenue) + ' = ' + money(o.nonpaid_revenue) +
+        (has(flags, 'nonpaid_clamped')
+          ? '  <em>paid revenue runs above total revenue, so this is held at $0.00</em>'
+          : '  <em>revenue arriving outside your paid attribution</em>'))
+      : '<em>needs the paid revenue row and revenue above zero</em>';
+
+    el('m_email').textContent = pc2(o.email_revenue_share_pct) || 'not entered';
+    el('mx_email').innerHTML = o.email_revenue_share_pct !== null
+      ? (money(ci.email_revenue) + ' / ' + money(i.total_revenue) + ' x 100 = ' + pc2(o.email_revenue_share_pct) +
+        '  <em>the email and SMS slice of booked revenue</em>')
+      : '<em>the email row is off, so its share stays out of the page</em>';
+
+    el('m_organic_nm').textContent = o.organic_direct_derived
+      ? 'Organic, direct and anything not entered above'
+      : 'Organic, direct and everything else';
+    el('m_organic').textContent = raw.organic_direct_revenue === null ? 'not entered' : money(raw.organic_direct_revenue);
+    el('mx_organic').innerHTML = raw.organic_direct_revenue === null
+      ? '<em>switch on one channel row above and this either derives as the remainder or takes what you enter</em>'
+      : (o.organic_direct_derived
+        ? (money(i.total_revenue) + ' - ' + money(ci.paid_revenue === null ? 0 : ci.paid_revenue) + ' - ' +
+           money(ci.email_revenue === null ? 0 : ci.email_revenue) + ' = ' + money(raw.organic_direct_revenue) +
+           '  <em>derived as the remainder, at ' + (pc2(o.organic_direct_share_pct) || 'no share') + ' of booked revenue</em>')
+        : (money(raw.organic_direct_revenue) + ' as entered' +
+           '  <em>your own figure, at ' + (pc2(o.organic_direct_share_pct) || 'no share') + ' of booked revenue</em>'));
+
+    /* the platform block is hidden entirely when the row is off, never zeroed */
+    PLATFORM_ROWS.forEach(function(id){ el(id).style.display = platformOn ? '' : 'none'; });
+    if (platformOn) {
+      el('m_claimed').textContent = o.platform_claimed_revenue === null ? 'not available' : money(o.platform_claimed_revenue);
+      el('mx_claimed').innerHTML = o.platform_claimed_revenue !== null
+        ? (xr(ci.platform_reported_roas) + ' x ' + money(i.total_ad_spend) + ' = ' + money(o.platform_claimed_revenue) +
+          '  <em>the revenue your platforms are claiming for the same spend</em>')
+        : '<em>needs ad spend above zero</em>';
+
+      el('m_share').textContent = pc2(o.platform_claimed_share_of_total_pct) || 'not available';
+      el('mx_share').innerHTML = o.platform_claimed_share_of_total_pct !== null
+        ? (money(o.platform_claimed_revenue) + ' / ' + money(i.total_revenue) + ' x 100 = ' + pc2(o.platform_claimed_share_of_total_pct) +
+          (has(flags, 'platform_claim_exceeds_total')
+            ? '  <em>above 100%, so the platforms claim more revenue than the store booked</em>'
+            : '  <em>how much of booked revenue the platforms claim</em>'))
+        : '<em>needs revenue above zero</em>';
+
+      el('m_vsb').textContent = xr(o.platform_vs_blended_delta) || 'not available';
+      el('mx_vsb').innerHTML = o.platform_vs_blended_delta !== null
+        ? (xr(ci.platform_reported_roas) + ' - ' + xr(o.blended_roas) + ' = ' + xr(o.platform_vs_blended_delta) +
+          '  <em>their claim against the whole store</em>')
+        : '<em>needs a blended ratio to compare against</em>';
+
+      el('m_vsp').textContent = xr(o.platform_vs_paid_delta) || 'not available';
+      el('mx_vsp').innerHTML = o.platform_vs_paid_delta !== null
+        ? (xr(ci.platform_reported_roas) + ' - ' + xr(o.paid_roas) + ' = ' + xr(o.platform_vs_paid_delta) +
+          '  <em>their claim against your own paid attribution, which is the comparison that matters</em>')
+        : '<em>needs the paid revenue row switched on</em>';
+
+      el('m_over').textContent = xr(o.platform_overstatement_x) || 'not available';
+      el('mx_over').innerHTML = o.platform_overstatement_x !== null
+        ? (xr(ci.platform_reported_roas) + ' / ' + xr(o.paid_roas) + ' = ' + xr(o.platform_overstatement_x) +
+          '  <em>how many times their claimed return covers the one you recorded</em>')
+        : '<em>your platforms report a ROAS against paid revenue you have recorded as zero, so this cannot divide</em>';
+    }
+
+    /* state note */
+    var touched = ALL_KEYS.some(function(key){ return i[key] !== DEFAULTS[key]; }) ||
+      OPT_KEYS.some(function(key){ return i[key + '_on'] !== DEFAULTS[key + '_on']; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  ALL_KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  OPT_KEYS.forEach(function(k){
+    el(k + '_on').addEventListener('change', function(){
+      el(OPT_FIELD[k]).classList.toggle('is-off', !this.checked);
+      paint();
+    });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    ALL_KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    OPT_KEYS.forEach(function(k){
+      el(k + '_on').checked = DEFAULTS[k + '_on'];
+      el(OPT_FIELD[k]).classList.toggle('is-off', !DEFAULTS[k + '_on']);
+    });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(ALL_KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        blended_roas: lastOut.blended_roas,
+        ra_blended_roas: lastOut.ra_blended_roas,
+        ra_blended_roas_range: lastOut.ra_blended_roas_range,
+        returns_drag_x: lastOut.returns_drag_x,
+        net_kept_revenue: lastOut.net_kept_revenue,
+        revenue_lost_to_returns: lastOut.revenue_lost_to_returns,
+        paid_roas: lastOut.paid_roas,
+        ra_paid_roas: lastOut.ra_paid_roas,
+        paid_dependency_pct: lastOut.paid_dependency_pct,
+        nonpaid_revenue: lastOut.nonpaid_revenue,
+        email_revenue_share_pct: lastOut.email_revenue_share_pct,
+        organic_direct_revenue: lastOut.organic_direct_revenue,
+        organic_direct_share_pct: lastOut.organic_direct_share_pct,
+        platform_claimed_revenue: lastOut.platform_claimed_revenue,
+        platform_claimed_share_of_total_pct: lastOut.platform_claimed_share_of_total_pct,
+        platform_vs_blended_delta: lastOut.platform_vs_blended_delta,
+        platform_vs_paid_delta: lastOut.platform_vs_paid_delta,
+        platform_overstatement_x: lastOut.platform_overstatement_x,
+        tier: lastOut.tier,
+        tier_label: lastOut.tier_label,
+        verdict_band: lastOut.verdict_band,
+        flags: lastOut.flags
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

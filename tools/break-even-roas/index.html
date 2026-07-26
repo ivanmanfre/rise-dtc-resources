@@ -6,7 +6,7 @@
 <title>Break-Even ROAS Calculator (Returns-Adjusted) | RISE DTC</title>
 <meta name="description" content="Free break-even ROAS calculator, returns adjusted. Enter AOV, contribution margin, return rate, return cost and your target net margin, and see the ROAS you actually need, with every line of the arithmetic printed." />
 <link rel="canonical" href="https://resources.risedtc.com/tools/break-even-roas/" />
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#1f1f1f" />
 <meta property="og:title" content="Break-Even ROAS Calculator (Returns-Adjusted)" />
 <meta property="og:description" content="The ROAS you actually need, once returns are inside your margin. Free, no signup, arithmetic printed under every answer." />
 <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="stylesheet" href="../assets/tools.css" />
 <script>window.__lm_slug = "rise-dtc-tools-break-even-roas";</script>
@@ -27,26 +27,42 @@
 <body>
 <a class="skip" href="#calculator">Skip to the calculator</a>
 
-<!-- ============================ app bar ============================ -->
-<div class="appbar">
-  <div class="wrap appbar-in">
-    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
-    <span class="titles">
-      <span class="t1">Break-Even ROAS</span>
-      <span class="t2">Tool 05 of 22, unit economics</span>
-    </span>
-    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
-</div>
+</header>
 
-<!-- ============================ hero + cockpit ============================ -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Free calculator, no signup</p>
-    <h1>What ROAS do you <span class="hl">actually need?</span></h1>
+<section class="inkband on-ink tool">
+  <div class="bg bg-tsh" style="background-image:url('../assets/case-tenth-street-hats.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 05 of 25 &middot; Unit economics &middot; free, no signup</p>
+    <h1>What ROAS do you <span class="gold-word">actually need?</span></h1>
     <p class="lede">Ad platforms report ROAS before a single refund lands, and the returns that follow come out of your margin.</p>
-  </section>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="break-even-roas"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A revenue bar over a spend bar with the break-even ratio marked on a scale"><rect class="k" x="10" y="11" width="94" height="11" rx="1.4"/><rect class="f6" x="10.8" y="11.8" width="92.4" height="9.4"/><rect class="f" x="10" y="26" width="34" height="11" rx="1.4"/><line class="k2" x1="10" y1="47" x2="112" y2="47"/><line class="k2" x1="10" y1="47" x2="10" y2="51"/><line class="k2" x1="30.4" y1="47" x2="30.4" y2="51"/><line class="k2" x1="50.8" y1="47" x2="50.8" y2="51"/><line class="k2" x1="71.2" y1="47" x2="71.2" y2="51"/><line class="k2" x1="91.6" y1="47" x2="91.6" y2="51"/><line class="k2" x1="112" y1="47" x2="112" y2="51"/><line class="gd" x1="71.2" y1="41" x2="71.2" y2="14"/><path class="g" d="M71.2 45 l5 -7 h-10z"/><text class="lb" x="8" y="60">1x</text><text class="lb" x="104" y="60">6x</text></svg></span>
+      <span class="hf-cap">Revenue over spend against a break-even tick</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#uniteco">Unit economics</a> / <span>Break-Even ROAS</span></p>
+</section>
 
+<div class="wrap">
   <div class="cockpit" id="calculator">
 
     <!-- ---------------------------- inputs ---------------------------- -->
@@ -166,6 +182,21 @@
 
   </div>
 </div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-tenth-street-hats.jpg" alt="Tenth Street Hats, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"800%+ ROAS on ad revenue"</p>
+        <p class="cs-meta"><b>Tenth Street Hats</b>. The break-even ROAS this page prints is the floor a published number like that has to clear first. The figure is quoted from the case page on <a href="https://risedtc.com/projects/tenth-street-hats/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="case_tenth_street_hats">risedtc.com/projects/tenth-street-hats</a>, which also publishes "16+ profitable quarters".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/tenth-street-hats/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="case_tenth_street_hats_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================ scenario spread ============================ -->
 <section class="blk grey">
@@ -351,19 +382,25 @@
     <div class="finalcta on-ink">
       <h2>Want this run on <span class="hl">your numbers?</span></h2>
       <p>From week one we run this math on live Shopify and ad account data, then work the lines that move it: the margin, the return rate and what you pay to acquire. Book a 30 minute intro call and we will walk your break-even ROAS together.</p>
-      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
     </div>
   </div>
 </section>
 
-<footer class="rise">
-  <div class="wrap">
-    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
-    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
-    <div class="meta">
-      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
-      <span><a href="../">All 22 tools</a></span>
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
     </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/break-even-roas/</span>
   </div>
 </footer>
 
@@ -390,6 +427,7 @@
 </script>
 
 <script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
 <script src="../assets/formulas-uniteco.js"></script>
 <script src="../assets/tools.js"></script>
 <script>

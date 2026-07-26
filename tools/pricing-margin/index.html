@@ -6,7 +6,7 @@
 <title>Markup and Margin Calculator (Returns-Adjusted) | RISE DTC</title>
 <meta name="description" content="Free markup and margin calculator, returns adjusted. Enter landed cost, price, fulfilment cost, return rate and resellable share, and see your markup, gross margin, the margin you actually realize after returns, and the price your target margin needs." />
 <link rel="canonical" href="https://resources.risedtc.com/tools/pricing-margin/" />
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#1f1f1f" />
 <meta property="og:title" content="Markup and Margin Calculator (Returns-Adjusted)" />
 <meta property="og:description" content="Markup, gross margin, and the margin you actually bank after returns, plus what returns add to the price your target margin needs. Free, no signup, arithmetic printed under every answer." />
 <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="stylesheet" href="../assets/tools.css" />
 <script>window.__lm_slug = "rise-dtc-tools-pricing-margin";</script>
@@ -27,26 +27,43 @@
 <body>
 <a class="skip" href="#calculator">Skip to the calculator</a>
 
-<!-- ============================ app bar ============================ -->
-<div class="appbar">
-  <div class="wrap appbar-in">
-    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
-    <span class="titles">
-      <span class="t1">Pricing and Margin</span>
-      <span class="t2">Tool 11 of 22, unit economics</span>
-    </span>
-    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
-</div>
+</header>
 
 <!-- ============================ hero + cockpit ============================ -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Free calculator, no signup</p>
-    <h1>What markup and margin do you <span class="hl">actually keep?</span></h1>
+<section class="inkband on-ink tool">
+  <div class="bg" style="background-image:url('../assets/case-dickies.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">Tool 11 of 25 &middot; Unit economics &middot; free, no signup</p>
+    <h1>What markup and margin do you <span class="gold-word">actually keep?</span></h1>
     <p class="lede">Markup and gross margin look fine on paper. Returns decide what the price actually earns you.</p>
-  </section>
+    <div class="herofig">
+      <span class="hf-fig" data-sch="pricing-margin"><svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A price column of cost under margin, read against a target on a ruler"><rect class="g" x="14" y="10" width="38" height="19" rx="1.4"/><rect class="h" x="14" y="29" width="38" height="29.8"/><rect class="k" x="14" y="10" width="38" height="48.8" rx="1.4"/><line class="k2" x1="14" y1="29" x2="52" y2="29"/><line class="k2" x1="76" y1="10" x2="76" y2="58.8"/><line class="k2" x1="76" y1="10" x2="82" y2="10"/><line class="k2" x1="76" y1="22" x2="82" y2="22"/><line class="k2" x1="76" y1="34" x2="82" y2="34"/><line class="k2" x1="76" y1="46" x2="82" y2="46"/><line class="k2" x1="76" y1="58.8" x2="82" y2="58.8"/><line class="gd" x1="54" y1="22" x2="66" y2="22"/><path class="g" d="M74 22 l-7 -4.6 v9.2z"/></svg></span>
+      <span class="hf-cap">Price stack read against a target ruler</span>
+    </div>
+  </div>
+  <p class="crumb"><a href="../">Tools</a> / <a href="../#uniteco">Unit economics</a> / <span>Pricing and Margin</span></p>
+</section>
 
+<div class="wrap">
   <div class="cockpit" id="calculator">
 
     <!-- ---------------------------- inputs ---------------------------- -->
@@ -183,6 +200,21 @@
 
   </div>
 </div>
+
+<!-- ============================ after-verdict case card ============================ -->
+<section class="casestrip on-ink">
+  <div class="wrap">
+    <div class="cs-in">
+      <figure class="cs-shot"><img src="../assets/case-dickies.jpg" alt="Dickies, a RISE DTC client" /></figure>
+      <div>
+        <p class="cs-k">Published result &middot; Apparel</p>
+        <p class="cs-stat">"33% increase in AOV"</p>
+        <p class="cs-meta"><b>Dickies</b>. Price and margin are the two dials underneath a move in order value. The figure is quoted from the case page on <a href="https://risedtc.com/projects/dickies/?utm_source=tools&amp;utm_medium=proof&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="case_dickies">risedtc.com/projects/dickies</a>, which also publishes "40% reduction in CPA".</p>
+      </div>
+      <a class="btn-gold shelf" href="https://risedtc.com/projects/dickies/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="case_dickies_btn"><span class="cv" aria-hidden="true">&rsaquo;</span>Read the case</a>
+    </div>
+  </div>
+</section>
 
 <!-- ============================ scenario spread ============================ -->
 <section class="blk grey">
@@ -369,19 +401,25 @@
     <div class="finalcta on-ink">
       <h2>Want this run on <span class="hl">your own catalog?</span></h2>
       <p>From week one we run this math on live Shopify and returns data, then work the lines that move it: the return rate, the resellable share and the price your target margin really needs. Book a 30 minute intro call and we will walk your pricing together.</p>
-      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener">Book an intro call</a>
+      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
     </div>
   </div>
 </section>
 
-<footer class="rise">
-  <div class="wrap">
-    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
-    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
-    <div class="meta">
-      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
-      <span><a href="../">All 22 tools</a></span>
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
     </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators, every one of them returns adjusted.<br />
+      <a href="../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/pricing-margin/</span>
   </div>
 </footer>
 
@@ -407,6 +445,7 @@
 </script>
 
 <script src="../assets/tools-config.js"></script>
+<script src="../assets/schematics.js"></script>
 <script src="../assets/formulas-uniteco.js"></script>
 <script src="../assets/tools.js"></script>
 <script>
