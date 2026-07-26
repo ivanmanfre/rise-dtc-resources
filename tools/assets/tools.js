@@ -87,9 +87,10 @@
         for (var k in extra) { if (Object.prototype.hasOwnProperty.call(extra, k)) body[k] = extra[k]; }
       }
       var json = JSON.stringify(body);
-      if (navigator.sendBeacon) {
-        try { navigator.sendBeacon(BEACON_URL, new Blob([json], { type: 'application/json' })); } catch (e) {}
-      }
+      /* keepalive fetch is the ONLY primary send. Firing sendBeacon alongside
+         it double-counts every event when the endpoint accepts both (verified
+         live 2026-07-26: two identical lm_events rows 150ms apart). sendBeacon
+         runs only as the fallback when fetch itself throws. */
       fetch(BEACON_URL, {
         method: 'POST',
         headers: {
@@ -99,7 +100,11 @@
         },
         body: json,
         keepalive: true
-      })['catch'](function () {});
+      })['catch'](function () {
+        if (navigator.sendBeacon) {
+          try { navigator.sendBeacon(BEACON_URL, new Blob([json], { type: 'application/json' })); } catch (e) {}
+        }
+      });
     } catch (e) {}
   }
 
