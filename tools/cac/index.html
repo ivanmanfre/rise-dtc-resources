@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CAC Calculator: Blended vs Per-Channel | RISE DTC</title>
+<meta name="description" content="Free CAC calculator for ecommerce. Enter ad spend, other acquisition costs, new customers and platform-reported conversions, and see your blended CAC, per-channel CAC and the attribution gap, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/cac/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="CAC Calculator: Blended vs Per-Channel" />
+<meta property="og:description" content="Blended CAC, per-channel CAC, and the gap between what your ad platform claims and what your bank account shows. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/cac/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CAC Calculator: Blended vs Per-Channel" />
+<meta name="twitter:description" content="Blended CAC, per-channel CAC, and the attribution gap. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-cac";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cac" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Customer Acquisition Cost</span>
+      <span class="t2">Tool 07 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What is your CAC <span class="hl">actually costing you?</span></h1>
+    <p class="lede">Ad platforms report the conversions they believe they caused. This one divides every acquisition dollar you spent by the customers who actually arrived.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="total_ad_spend">Total ad spend</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="total_ad_spend" data-min="0" data-max="10000000" data-step="100" value="40000" /></span>
+          </div>
+          <input type="range" id="total_ad_spend_r" min="0" max="10000000" step="100" value="40000" aria-label="Total ad spend slider" />
+          <p class="f-cap">Every paid channel, for one period.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="other_acq_costs">Other acquisition costs <span class="opt">optional</span></label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="other_acq_costs" data-min="0" data-max="1000000" data-step="100" value="4000" /></span>
+          </div>
+          <input type="range" id="other_acq_costs_r" min="0" max="1000000" step="100" value="4000" aria-label="Other acquisition costs slider" />
+          <p class="f-cap">Agency retainer, creative, affiliate fees, acquisition tooling. Set to 0 if none of this applies.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="new_customers">New customers</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="new_customers" data-min="0" data-max="1000000" data-step="1" value="900" /><span class="u">customers</span></span>
+          </div>
+          <input type="range" id="new_customers_r" min="0" max="1000000" step="1" value="900" aria-label="New customers slider" />
+          <p class="f-cap">From your store, not your ad account. Exclude first orders that were fully refunded: they never became customers.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="platform_reported_conversions">Conversions your ad platforms report <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="platform_reported_conversions" data-min="0" data-max="1000000" data-step="1" value="1400" /><span class="u">conversions</span></span>
+          </div>
+          <input type="range" id="platform_reported_conversions_r" min="0" max="1000000" step="1" value="1400" aria-label="Platform reported conversions slider" />
+          <p class="f-cap">Set to 0 if you do not have this yet. It only sizes the attribution gap below.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="channel_a_spend">Channel A spend <span class="opt">optional</span></label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="channel_a_spend" data-min="0" data-max="10000000" data-step="100" value="26000" /></span>
+          </div>
+          <input type="range" id="channel_a_spend_r" min="0" max="10000000" step="100" value="26000" aria-label="Channel A spend slider" />
+          <p class="f-cap">What Channel A spent in the same period as the total above.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="channel_a_customers">Channel A new customers <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="channel_a_customers" data-min="0" data-max="1000000" data-step="1" value="520" /><span class="u">customers</span></span>
+          </div>
+          <input type="range" id="channel_a_customers_r" min="0" max="1000000" step="1" value="520" aria-label="Channel A new customers slider" />
+          <p class="f-cap">New customers Channel A gets credit for.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="channel_b_spend">Channel B spend <span class="opt">optional</span></label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="channel_b_spend" data-min="0" data-max="10000000" data-step="100" value="14000" /></span>
+          </div>
+          <input type="range" id="channel_b_spend_r" min="0" max="10000000" step="100" value="14000" aria-label="Channel B spend slider" />
+          <p class="f-cap">What Channel B spent in the same period.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="channel_b_customers">Channel B new customers <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="channel_b_customers" data-min="0" data-max="1000000" data-step="1" value="260" /><span class="u">customers</span></span>
+          </div>
+          <input type="range" id="channel_b_customers_r" min="0" max="1000000" step="1" value="260" aria-label="Channel B new customers slider" />
+          <p class="f-cap">New customers Channel B gets credit for. Whatever is left over after both channels counts as unattributed.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the example numbers</button>
+          <span class="state" id="stateNote">running on the example numbers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Blended CAC</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per customer</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> per customer</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where your new customers came from <span id="wfScale">of 900 new customers</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="channel_a" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="channel_b" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="unattributed" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the new customers you entered above.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Channel A</span><span class="vl" id="lg_channel_a">0</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Channel B</span><span class="vl" id="lg_channel_b">0</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_unattributed_nm">Unattributed</span><span class="vl" id="lg_unattributed">0</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What the gap is telling you</span>
+          <p id="bindMain">Enter your numbers to see the attribution gap.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>The customer count is the guess</h2>
+    <p class="sec-sub">The new customer count is the dirtiest number in DTC: attribution windows, guest checkout duplicates and first orders that were fully refunded all move it. Here is the same acquisition cost recomputed with the count flexed 20% in each direction, holding spend fixed, so you can see how much of the answer rests on the count.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one new customer, for the period you entered above. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Media spend</span><span class="mv" id="m_media">$0.00</span><span class="mx" id="mx_media"><em>every paid channel, one period</em></span></div>
+      <div class="mrow"><span class="mn">Other acquisition costs</span><span class="mv" id="m_other">$0.00</span><span class="mx" id="mx_other"><em>agency retainer, creative, affiliate fees, acquisition tooling</em></span></div>
+      <div class="mrow sum"><span class="mn">Total acquisition cost</span><span class="mv" id="m_total">$0.00</span></div>
+      <div class="mrow"><span class="mn">New customers</span><span class="mv" id="m_customers">0</span><span class="mx" id="mx_customers"><em>from your store, refunds excluded</em></span></div>
+      <div class="mrow sum final"><span class="mn">Blended CAC</span><span class="mv" id="m_blended">$0.00</span><span class="mx" id="mx_blended"></span></div>
+      <div class="mrow"><span class="mn">Media-only CAC</span><span class="mv" id="m_media_only">$0.00</span><span class="mx" id="mx_media_only"></span></div>
+      <div id="attrRows">
+        <div class="mrow"><span class="mn">Platform-reported CAC</span><span class="mv" id="m_platform">$0.00</span><span class="mx" id="mx_platform"></span></div>
+        <div class="mrow"><span class="mn">Attribution gap</span><span class="mv" id="m_gap">0.0%</span><span class="mx" id="mx_gap"></span></div>
+        <div class="mrow"><span class="mn">Overstatement factor</span><span class="mv" id="m_over">1.00x</span><span class="mx" id="mx_over"></span></div>
+      </div>
+      <div class="mrow"><span class="mn">Channel A CAC</span><span class="mv" id="m_a">$0.00</span><span class="mx" id="mx_a"></span></div>
+      <div class="mrow"><span class="mn">Channel B CAC</span><span class="mv" id="m_b">$0.00</span><span class="mx" id="mx_b"></span></div>
+      <div class="mrow"><span class="mn">Unattributed customers</span><span class="mv" id="m_unattr">0</span><span class="mx" id="mx_unattr"></span></div>
+      <div class="mrow"><span class="mn">Customers per $10,000</span><span class="mv" id="m_per10k">0</span><span class="mx" id="mx_per10k"></span></div>
+      <div class="mrow"><span class="mn">Customers per $100,000</span><span class="mv" id="m_per100k">0</span><span class="mx" id="mx_per100k"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>CAC carries no returns term of its own.</b> You paid the acquisition cost whether or not the first order came back, so returns show up nowhere in the arithmetic above.</li>
+      <li><b>New customers must exclude first orders that were fully refunded.</b> A refunded first order never became a customer, and leaving it in the count understates every CAC on this page.</li>
+      <li><b>The range flexes the new customer count, not the spend.</b> Spend is the one number here that is a fact, read straight off your ad accounts and your bank statement.</li>
+      <li><b>Channel A and Channel B are read as a subset of your totals.</b> Whatever is left over after both channels counts as unattributed, and a negative unattributed line means one of the numbers above does not reconcile.</li>
+      <li><b>Platform-reported conversions are the platform's own count, not your customer count.</b> Leaving that field at 0 hides the attribution block instead of dividing by zero.</li>
+      <li><b>Customers per budget round down.</b> You cannot buy a fraction of one.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why two brands spending the same amount can post very different CAC</h2>
+    <div class="prose">
+      <p>An apparel brand running a size run from XS to 3XL sees a wider spread of guest checkouts, duplicate accounts and refunded first orders than almost any other category, and every one of those artifacts moves the new customer count before it ever reaches this calculator. Two brands can spend the identical forty thousand dollars in a month and post very different blended CAC, not because one bought cheaper clicks, but because one of them counted a customer whose only order came back as a refund. That single exclusion, applied or skipped, moves the denominator enough to change the answer.</p>
+
+      <p>This page keeps three CAC numbers separate on purpose. Blended CAC divides every dollar spent, media plus agency retainers plus creative plus affiliate fees, by new customers. Media-only CAC divides only the media line by the same customers, which reads cheaper because it leaves the fixed costs sitting around the media buy out of the count. Platform-reported CAC divides your media spend by the conversions the ad platform's own dashboard credits itself, on its own attribution window. All three are correct arithmetic. Only blended CAC is the number your bank account agrees with, which is why it is the headline on this page and the other two sit underneath it as context.</p>
+
+      <h3>Why CAC carries no returns line</h3>
+      <p>Every other calculator in this set spends a paragraph on what happens to a returned order. This one does not, on purpose. You paid the ad, the agency retainer and the affiliate fee the moment you spent them, and whether the customer's first order later comes back changes nothing about what you already paid to acquire that person. Returns enter this page in exactly one place: the new customer count itself. A shopper whose only order was fully refunded never became a customer, and the field above tells you to leave that person out. Get that exclusion wrong and every CAC figure on this page reads too low, quietly, with no error message to catch it.</p>
+
+      <h3>What the channel split is actually for</h3>
+      <p>Channel A and Channel B are meant to be read as pieces of the totals above them, not as a separate calculation. Enter what each channel spent and how many new customers it is credited with, and the difference between the total and the two channels becomes the unattributed bucket: organic search, direct traffic, referral, or a channel you have not split out yet. On an apparel brand with a strong repeat customer base, that unattributed share is often the cheapest acquisition you have, because it is customers finding the brand without a click being paid for. When the two channels alone add up to more spend or more customers than the totals you entered, the page flags it as a data error rather than quietly turning the unattributed line negative and moving on.</p>
+
+      <h3>Why the attribution gap is a definition problem</h3>
+      <p>Ad platforms attribute a conversion inside a window they define, often crediting a view or a click from several days before the purchase, and two platforms will both claim the same sale if both ran an ad the shopper saw. Your store counts the same sale exactly once. Neither number is wrong. They are measuring different things, and the overstatement factor on this page exists to put a figure on the size of that difference for your own account rather than leaving it as a vague sense that the ads dashboard looks too good. There is no publicly verified figure for a typical apparel CAC, for the size of the post-attribution-change gap across brands, or for the organic share of new customers that met our sourcing bar, so this page prints none of the three. Every number here comes from what you enter.</p>
+
+      <h3>Reading the range instead of the point estimate</h3>
+      <p>The spread above flexes only the new customer count, twenty percent lower and twenty percent higher, and holds spend fixed. That choice is deliberate: spend is a fact, cleared through your card processor or your ad account ledger, while the customer count is where guest checkout duplicates and refund timing create genuine room to be wrong. Your real CAC sits somewhere in that range. The point estimate in the middle is the least useful number on this page, useful mainly as the midpoint of a range you should actually be reading.</p>
+
+      <h3>What CAC leaves unanswered</h3>
+      <p>A blended CAC tells you what a customer cost. Whether the acquisition made money depends on what that customer is worth, after returns, product cost, shipping and card fees are counted on the order that bought them, and that is a separate question this page does not answer. Answering it needs the CAC figure above alongside a contribution margin figure from elsewhere in this set. Run the number here next to true profit per order and break-even ROAS before deciding whether the acquisition cost is a problem or a strength.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why is my blended CAC higher than what the ad platform reports?</summary>
+        <div class="fa">Ad platforms report the conversions their own attribution window credits to a click or a view, often extending several days past the purchase and crediting touches other platforms also claim. Blended CAC divides everything you spent by the new customers your store actually recorded, with no overlap and no attribution window. The gap between the two numbers is the platform overstatement, and this calculator prints it as a factor so you can see exactly how much cheaper the platform claims you are.</div>
+      </details>
+      <details>
+        <summary>Should I budget off blended CAC or media-only CAC?</summary>
+        <div class="fa">Blended CAC, because it is the number your bank account agrees with. Media-only CAC leaves out agency retainers, creative production, affiliate fees and acquisition tooling, so it always reads lower than the true cost of a customer. Media-only CAC still has a use: it isolates what the media buy itself is doing, separate from the fixed costs sitting around it.</div>
+      </details>
+      <details>
+        <summary>What counts as a new customer in this calculator?</summary>
+        <div class="fa">A first-time buyer your store recorded in the period, with fully refunded first orders removed. A customer whose only order came back is not a customer yet, and leaving that order in the count quietly lowers your CAC by counting an acquisition that never landed. Pull the count from your store, not from an ad platform's conversion tally.</div>
+      </details>
+      <details>
+        <summary>My channel spend and channel customers do not add up to my totals. What does that mean?</summary>
+        <div class="fa">Channel A and Channel B are meant to be a subset of the totals you entered above them, with whatever is left over counted as unattributed: organic, direct, referral, or a channel you have not split out yet. When the two channels alone add up to more spend or more customers than your total, one of the numbers is wrong, and this calculator flags it rather than quietly absorbing the difference into a negative unattributed line.</div>
+      </details>
+      <details>
+        <summary>Why does the range only move the customer count and not the spend?</summary>
+        <div class="fa">Spend is the one number in this calculator that is a fact: it is what cleared your card or your ad account ledger. The new customer count is where guest checkout duplicates, attribution windows and refunded first orders create room to be wrong, so the range flexes that count twenty percent in each direction and holds spend fixed. Your real CAC sits between the low and high figures, and the point estimate in the middle is the least useful number on this page.</div>
+      </details>
+      <details>
+        <summary>Does a low CAC mean the acquisition is profitable?</summary>
+        <div class="fa">CAC alone does not confirm profitability, because it measures what a customer cost to acquire and says nothing about what that customer is worth once returns, product cost, shipping and card fees are counted. A CAC that looks cheap can still sit on an order that loses money if the contribution margin behind it is thin. Run this number next to true profit per order and break-even ROAS before you read it as good news.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on your live ad accounts and store data, then work the number that moves it: the channel split, the attribution gap and what you actually pay to acquire a customer. Book a 30 minute intro call and we will walk your acquisition cost together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cac" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Blended CAC</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why is my blended CAC higher than what the ad platform reports?","acceptedAnswer":{"@type":"Answer","text":"Ad platforms report the conversions their own attribution window credits to a click or a view, often extending several days past the purchase and crediting touches other platforms also claim. Blended CAC divides everything you spent by the new customers your store actually recorded, with no overlap and no attribution window. The gap between the two numbers is the platform overstatement, and this calculator prints it as a factor so you can see exactly how much cheaper the platform claims you are."}},
+    {"@type":"Question","name":"Should I budget off blended CAC or media-only CAC?","acceptedAnswer":{"@type":"Answer","text":"Blended CAC, because it is the number your bank account agrees with. Media-only CAC leaves out agency retainers, creative production, affiliate fees and acquisition tooling, so it always reads lower than the true cost of a customer. Media-only CAC still has a use: it isolates what the media buy itself is doing, separate from the fixed costs sitting around it."}},
+    {"@type":"Question","name":"What counts as a new customer in this calculator?","acceptedAnswer":{"@type":"Answer","text":"A first-time buyer your store recorded in the period, with fully refunded first orders removed. A customer whose only order came back is not a customer yet, and leaving that order in the count quietly lowers your CAC by counting an acquisition that never landed. Pull the count from your store, not from an ad platform's conversion tally."}},
+    {"@type":"Question","name":"My channel spend and channel customers do not add up to my totals. What does that mean?","acceptedAnswer":{"@type":"Answer","text":"Channel A and Channel B are meant to be a subset of the totals you entered above them, with whatever is left over counted as unattributed: organic, direct, referral, or a channel you have not split out yet. When the two channels alone add up to more spend or more customers than your total, one of the numbers is wrong, and this calculator flags it rather than quietly absorbing the difference into a negative unattributed line."}},
+    {"@type":"Question","name":"Why does the range only move the customer count and not the spend?","acceptedAnswer":{"@type":"Answer","text":"Spend is the one number in this calculator that is a fact: it is what cleared your card or your ad account ledger. The new customer count is where guest checkout duplicates, attribution windows and refunded first orders create room to be wrong, so the range flexes that count twenty percent in each direction and holds spend fixed. Your real CAC sits between the low and high figures, and the point estimate in the middle is the least useful number on this page."}},
+    {"@type":"Question","name":"Does a low CAC mean the acquisition is profitable?","acceptedAnswer":{"@type":"Answer","text":"CAC alone does not confirm profitability, because it measures what a customer cost to acquire and says nothing about what that customer is worth once returns, product cost, shipping and card fees are counted. A CAC that looks cheap can still sit on an order that loses money if the contribution margin behind it is thin. Run this number next to true profit per order and break-even ROAS before you read it as good news."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'cac';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, count = T.count, ratio = T.ratio;
+
+  var DEFAULTS = {
+    total_ad_spend: 40000, other_acq_costs: 4000, new_customers: 900,
+    platform_reported_conversions: 1400, channel_a_spend: 26000, channel_a_customers: 520,
+    channel_b_spend: 14000, channel_b_customers: 260
+  };
+  var KEYS = ['total_ad_spend','other_acq_costs','new_customers','platform_reported_conversions',
+    'channel_a_spend','channel_a_customers','channel_b_spend','channel_b_customers'];
+  var SEGS = ['channel_a','channel_b','unattributed'];
+  var CROSS = ['true-profit-per-order','break-even-roas','ltv-cac-payback','contribution-margin','aov','cpa-calculator'];
+  var GLYPH = {
+    'true-profit-per-order':'TPO','break-even-roas':'ROAS','ltv-cac-payback':'LTV',
+    'contribution-margin':'CM','aov':'AOV','cpa-calculator':'CPA'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function dash(v){ return v === null ? '-' : v; }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      total_ad_spend: i.total_ad_spend, other_acq_costs: i.other_acq_costs,
+      new_customers: i.new_customers, platform_reported_conversions: i.platform_reported_conversions,
+      channel_a_spend: i.channel_a_spend, channel_a_customers: i.channel_a_customers,
+      channel_b_spend: i.channel_b_spend, channel_b_customers: i.channel_b_customers
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var hasCustomers = i.new_customers > 0;
+    var hasAttribution = i.platform_reported_conversions > 0;
+    var blended = o.blended_cac;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = (blended === null ? '-' : money(blended)) + '<span class="per"> per customer</span>';
+    el('mbarNum').textContent = blended === null ? '-' : money(blended);
+
+    var tierText, tierCls;
+    if (!hasCustomers) { tierText = 'NEED A COUNT'; tierCls = 't-fix'; }
+    else if (o.data_error_flag) { tierText = 'CHECK YOUR NUMBERS'; tierCls = 't-not'; }
+    else { tierText = 'NUMBERS CHECK OUT'; tierCls = 't-safe'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + tierCls;
+      t.textContent = tierText;
+    });
+
+    el('rangeLine').innerHTML = (o.blended_cac_low === null)
+      ? 'Enter your new customer count above to see the range.'
+      : 'Your real CAC sits between <b>' + money(o.blended_cac_low) + '</b> and <b>' + money(o.blended_cac_high) +
+        '</b> per customer; the point estimate is the least useful number on this page.';
+
+    /* wf bar: where the new customers came from, by channel. When the two
+       channels alone outrun the total you entered, the bar overruns and the
+       overrun is drawn as the shortfall, the same convention as the profit
+       calculator's negative case. */
+    var aC = i.channel_a_customers, bC = i.channel_b_customers;
+    var unatt = o.unattributed_customers;
+    var negC = unatt < 0;
+    var channelSum = aC + bC;
+    var scaleC = negC ? channelSum : i.new_customers;
+    if (scaleC <= 0) scaleC = 1;
+
+    var vals = { channel_a: aC, channel_b: bC, unattributed: negC ? 0 : unatt };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scaleC * 100) + '%';
+    });
+    var markPct = i.new_customers / scaleC * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = negC ? 'block' : 'none';
+    el('wfShort').style.display = negC ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + count(i.new_customers) + ' new customers';
+    el('wfMarkCap').textContent = negC
+      ? 'The white line is the new customers you entered above. The channels alone run past it.'
+      : 'The gold band is customers this calculator cannot attribute to either channel.';
+
+    el('lg_channel_a').textContent = count(aC);
+    el('lg_channel_b').textContent = count(bC);
+    el('lg_unattributed').textContent = negC ? count(Math.abs(unatt)) : count(unatt);
+    el('lg_unattributed_nm').textContent = negC ? 'Short by' : 'Unattributed (organic, untracked)';
+
+    /* binding: the attribution gap first, then the channel comparison, or
+       the data-error message when the channel totals do not reconcile */
+    if (hasAttribution && o.attribution_gap_pct !== null) {
+      el('bindMain').innerHTML = 'The platforms claim <b>' + count(i.platform_reported_conversions) +
+        '</b> conversions against <b>' + count(i.new_customers) + '</b> new customers your store recorded, a gap of ' +
+        pct(o.attribution_gap_pct) + '.';
+      el('bindFix').textContent = 'Blended CAC is ' + money(o.blended_cac) + '. Platform-reported CAC is ' +
+        money(o.platform_reported_cac) + ', ' + ratio(o.overstatement_factor) + 'x cheaper than what you actually paid.';
+    } else {
+      el('bindMain').textContent = 'Enter what your ad platforms report above to size the attribution gap.';
+      el('bindFix').textContent = 'Until then, blended CAC and media-only CAC below are the only two figures on this page.';
+    }
+
+    if (o.data_error_flag) {
+      el('bindDrag').innerHTML = 'Channel A and Channel B together add up to more spend or more customers than the totals you entered. ' +
+        'Unattributed customers reads <b>' + count(unatt) + '</b>. Check the numbers above.';
+    } else if (o.channel_a_cac !== null && o.channel_b_cac !== null) {
+      var aWorse = o.channel_a_cac >= o.channel_b_cac;
+      var hi = aWorse ? 'A' : 'B', lo = aWorse ? 'B' : 'A';
+      var hiCac = aWorse ? o.channel_a_cac : o.channel_b_cac;
+      var loCac = aWorse ? o.channel_b_cac : o.channel_a_cac;
+      el('bindDrag').innerHTML = 'Channel ' + hi + ' runs <b>' + money(hiCac) + '</b> per customer against ' +
+        money(loCac) + ' for Channel ' + lo + '.';
+    } else if (o.channel_a_cac !== null || o.channel_b_cac !== null) {
+      el('bindDrag').textContent = 'Enter spend and customers for the other channel to compare acquisition cost between them.';
+    } else {
+      el('bindDrag').textContent = 'Enter channel spend and channel customers above to compare acquisition cost by channel.';
+    }
+
+    var rep = el('bindRepeat');
+    if (o.customers_per_10k !== null) {
+      rep.hidden = false;
+      rep.textContent = 'At this blended rate, a $10,000 budget buys about ' + count(o.customers_per_10k) +
+        ' customers, and $100,000 buys about ' + count(o.customers_per_100k) + '.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread: pessimistic column carries the higher CAC figure,
+       optimistic the lower, both flexing the new customer count only */
+    el('scLow').textContent  = o.blended_cac_high === null ? '-' : money(o.blended_cac_high);
+    el('scMid').textContent  = o.blended_cac_mid  === null ? '-' : money(o.blended_cac_mid);
+    el('scHigh').textContent = o.blended_cac_low  === null ? '-' : money(o.blended_cac_low);
+    el('scLowA').textContent  = 'New customers 20% lower: ' + count(i.new_customers * 0.8);
+    el('scMidA').textContent  = 'As entered: ' + count(i.new_customers);
+    el('scHighA').textContent = 'New customers 20% higher: ' + count(i.new_customers * 1.2);
+    el('scenNote').textContent = (blended === null)
+      ? 'New customers is at 0, so there is no range to show yet. Enter your count above.'
+      : 'This spread comes entirely from how confident you are in the new customer count. If it swings your CAC further than you are comfortable with, tighten that number before anything else.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    var totalSpend = i.total_ad_spend + i.other_acq_costs;
+    el('m_media').textContent = money(i.total_ad_spend);
+    el('m_other').textContent = money(i.other_acq_costs);
+    el('m_total').textContent = money(totalSpend);
+    el('m_customers').textContent = count(i.new_customers);
+    el('m_blended').textContent = blended === null ? '-' : money(blended);
+    el('m_blended').classList.toggle('neg', false);
+    el('mx_blended').innerHTML = (blended === null)
+      ? '<em>enter your new customer count to see this line</em>'
+      : money(totalSpend) + ' / ' + count(i.new_customers) + ' = ' + money(blended) +
+        '  <em>every dollar spent, divided by every customer it bought</em>';
+
+    el('m_media_only').textContent = o.media_only_cac === null ? '-' : money(o.media_only_cac);
+    el('mx_media_only').innerHTML = (o.media_only_cac === null)
+      ? '<em>enter your new customer count to see this line</em>'
+      : money(i.total_ad_spend) + ' / ' + count(i.new_customers) + ' = ' + money(o.media_only_cac) +
+        '  <em>same customers, without the other acquisition costs added in</em>';
+
+    el('attrRows').hidden = !hasAttribution;
+    if (hasAttribution) {
+      el('m_platform').textContent = o.platform_reported_cac === null ? '-' : money(o.platform_reported_cac);
+      el('mx_platform').innerHTML = (o.platform_reported_cac === null) ? '' :
+        money(i.total_ad_spend) + ' / ' + count(i.platform_reported_conversions) + ' = ' + money(o.platform_reported_cac) +
+        '  <em>what the ad platform\'s own dashboard would show</em>';
+
+      el('m_gap').textContent = o.attribution_gap_pct === null ? '-' : pct(o.attribution_gap_pct);
+      el('mx_gap').innerHTML = (o.attribution_gap_pct === null) ? '' :
+        '(' + count(i.platform_reported_conversions) + ' - ' + count(i.new_customers) + ') / ' + count(i.new_customers) +
+        ' x 100 = ' + pct(o.attribution_gap_pct) + '  <em>how many more conversions the platform claims than your store recorded</em>';
+
+      el('m_over').textContent = o.overstatement_factor === null ? '-' : ratio(o.overstatement_factor) + 'x';
+      el('mx_over').innerHTML = (o.overstatement_factor === null) ? '' :
+        money(blended) + ' / ' + money(o.platform_reported_cac) + ' = ' + ratio(o.overstatement_factor) +
+        'x  <em>how much cheaper the platform claims you are</em>';
+    }
+
+    el('m_a').textContent = o.channel_a_cac === null ? '-' : money(o.channel_a_cac);
+    el('mx_a').innerHTML = (o.channel_a_cac !== null)
+      ? money(i.channel_a_spend) + ' / ' + count(i.channel_a_customers) + ' = ' + money(o.channel_a_cac) + '  <em>Channel A only</em>'
+      : (i.channel_a_spend > 0
+        ? '<em>spend without customers is not a CAC, it is a loss</em>'
+        : '<em>no Channel A spend entered</em>');
+
+    el('m_b').textContent = o.channel_b_cac === null ? '-' : money(o.channel_b_cac);
+    el('mx_b').innerHTML = (o.channel_b_cac !== null)
+      ? money(i.channel_b_spend) + ' / ' + count(i.channel_b_customers) + ' = ' + money(o.channel_b_cac) + '  <em>Channel B only</em>'
+      : (i.channel_b_spend > 0
+        ? '<em>spend without customers is not a CAC, it is a loss</em>'
+        : '<em>no Channel B spend entered</em>');
+
+    el('m_unattr').textContent = count(unatt);
+    el('mx_unattr').innerHTML = count(i.new_customers) + ' - ' + count(aC) + ' - ' + count(bC) + ' = ' + count(unatt) +
+      (o.data_error_flag
+        ? '  <em>negative means channel spend or channel customers exceed your totals, fix the inputs above</em>'
+        : '  <em>organic, direct, referral or a channel not split out yet</em>');
+
+    el('m_per10k').textContent = o.customers_per_10k === null ? '-' : count(o.customers_per_10k);
+    el('mx_per10k').innerHTML = (o.customers_per_10k === null)
+      ? '<em>needs a blended CAC above zero</em>'
+      : 'floor(10,000 / ' + money(blended) + ') = ' + count(o.customers_per_10k) + '  <em>at this blended rate</em>';
+
+    el('m_per100k').textContent = o.customers_per_100k === null ? '-' : count(o.customers_per_100k);
+    el('mx_per100k').innerHTML = (o.customers_per_100k === null)
+      ? '<em>needs a blended CAC above zero</em>'
+      : 'floor(100,000 / ' + money(blended) + ') = ' + count(o.customers_per_100k) + '  <em>at this blended rate</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the example numbers';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        blended_cac: lastOut.blended_cac === null ? null : T.round2(lastOut.blended_cac),
+        media_only_cac: lastOut.media_only_cac === null ? null : T.round2(lastOut.media_only_cac),
+        platform_reported_cac: lastOut.platform_reported_cac === null ? null : T.round2(lastOut.platform_reported_cac),
+        attribution_gap_pct: lastOut.attribution_gap_pct === null ? null : T.roundDp(lastOut.attribution_gap_pct, 1),
+        overstatement_factor: lastOut.overstatement_factor === null ? null : T.round2(lastOut.overstatement_factor),
+        channel_a_cac: lastOut.channel_a_cac === null ? null : T.round2(lastOut.channel_a_cac),
+        channel_b_cac: lastOut.channel_b_cac === null ? null : T.round2(lastOut.channel_b_cac),
+        unattributed_spend: T.round2(lastOut.unattributed_spend),
+        unattributed_customers: lastOut.unattributed_customers,
+        data_error_flag: lastOut.data_error_flag,
+        blended_cac_low: lastOut.blended_cac_low === null ? null : T.round2(lastOut.blended_cac_low),
+        blended_cac_high: lastOut.blended_cac_high === null ? null : T.round2(lastOut.blended_cac_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

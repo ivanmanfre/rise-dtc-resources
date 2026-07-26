@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meta Ads Budget Calculator: Prospecting vs Retargeting | RISE DTC</title>
+<meta name="description" content="Free Meta ads budget calculator. Enter your new-customer target, then a CPM, CTR and conversion rate for prospecting and retargeting, and see the monthly budget as a range with a returns-adjusted break-even check and every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/meta-ads-budget-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Meta Ads Budget Calculator: Prospecting vs Retargeting" />
+<meta property="og:description" content="The budget your new-customer target really needs, split across prospecting and retargeting instead of one blended guess. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/meta-ads-budget-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Meta Ads Budget Calculator: Prospecting vs Retargeting" />
+<meta name="twitter:description" content="The budget your new-customer target really needs, split across prospecting and retargeting. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-meta-ads-budget-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=meta-ads-budget-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Meta Ads Budget</span>
+      <span class="t2">Tool 18 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What Meta budget does your <span class="hl">customer target</span> need?</h1>
+    <p class="lede">Prospecting and retargeting buy customers at very different prices.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">11 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="target_new_customers">New customers you want this month</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="target_new_customers" data-min="1" data-max="1000000" data-step="1" value="300" /></span>
+          </div>
+          <input type="range" id="target_new_customers_r" min="10" max="2000" step="10" value="300" aria-label="New customers target slider" />
+          <p class="f-cap">First orders from people who have not bought before. The slider covers 10 to 2,000, and you can type any target up to 1,000,000.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="retargeting_share_pct">Share of budget to retargeting</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="retargeting_share_pct" data-min="0" data-max="40" data-step="1" value="20" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="retargeting_share_pct_r" min="0" max="40" step="1" value="20" aria-label="Retargeting share slider" />
+          <p class="f-cap">The field stops at 40, and anything above 40 gets clamped to 40 before the math runs. Past 30 the panel says so.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="prospecting_cpm">Prospecting CPM</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="prospecting_cpm" data-min="0.1" data-max="500" data-step="0.5" value="15" /></span>
+          </div>
+          <input type="range" id="prospecting_cpm_r" min="0.5" max="100" step="0.5" value="15" aria-label="Prospecting CPM slider" />
+          <p class="f-cap">Cost per 1,000 impressions to cold audiences. The published medians are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="prospecting_ctr_pct">Prospecting CTR</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="prospecting_ctr_pct" data-min="0" data-max="25" data-step="0.05" value="1.4" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="prospecting_ctr_pct_r" min="0" max="25" step="0.05" value="1.4" aria-label="Prospecting CTR slider" />
+          <p class="f-cap">Share of impressions that produce a click, read from your own account rather than the platform average.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="prospecting_cvr_pct">Prospecting conversion rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="prospecting_cvr_pct" data-min="0" data-max="30" data-step="0.05" value="2.2" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="prospecting_cvr_pct_r" min="0" max="30" step="0.05" value="2.2" aria-label="Prospecting conversion rate slider" />
+          <p class="f-cap">Share of those clicks that end in an order. This dial and the retargeting one below carry the budget range.</p>
+        </div>
+
+        <div class="field" id="rtCpmField">
+          <div class="f-top">
+            <label class="f-label" for="retargeting_cpm">Retargeting CPM</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="retargeting_cpm" data-min="0.1" data-max="500" data-step="0.5" value="22" /></span>
+          </div>
+          <input type="range" id="retargeting_cpm_r" min="0.5" max="100" step="0.5" value="22" aria-label="Retargeting CPM slider" />
+          <p class="f-cap">Small warm audiences usually clear at a higher CPM than cold ones. Set the share above to zero and these three fields sit out of the math.</p>
+        </div>
+
+        <div class="field" id="rtCtrField">
+          <div class="f-top">
+            <label class="f-label" for="retargeting_ctr_pct">Retargeting CTR</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="retargeting_ctr_pct" data-min="0" data-max="25" data-step="0.05" value="2" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="retargeting_ctr_pct_r" min="0" max="25" step="0.05" value="2" aria-label="Retargeting CTR slider" />
+          <p class="f-cap">People who already saw the product click more often, which is half of why retargeting looks cheap.</p>
+        </div>
+
+        <div class="field" id="rtCvrField">
+          <div class="f-top">
+            <label class="f-label" for="retargeting_cvr_pct">Retargeting conversion rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="retargeting_cvr_pct" data-min="0" data-max="40" data-step="0.05" value="5.5" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="retargeting_cvr_pct_r" min="0" max="40" step="0.05" value="5.5" aria-label="Retargeting conversion rate slider" />
+          <p class="f-cap">The other half. This page counts every retargeting conversion as a new customer, which is generous and is stated in the assumptions.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="contribution_per_order">Contribution per order before returns</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="contribution_per_order" data-min="0" data-max="5000" data-step="1" value="55" /></span>
+          </div>
+          <input type="range" id="contribution_per_order_r" min="0" max="500" step="1" value="55" aria-label="Contribution per order slider" />
+          <p class="f-cap">AOV minus product cost, card fees, pick and pack, and outbound shipping. The slider covers $0 to $500, and you can type up to $5,000.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return rate slider" />
+          <p class="f-cap">Share of orders that come back. On apparel this is the dial that decides how much budget you can actually afford.</p>
+        </div>
+
+        <div class="field" id="returnCostField">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_per_return">Cost to handle one return <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="return_cost_on" checked aria-label="Include return handling cost" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_per_return" data-min="0" data-max="500" data-step="1" value="10" /></span>
+            </span>
+          </div>
+          <input type="range" id="return_cost_per_return_r" min="0" max="100" step="1" value="10" aria-label="Return handling cost slider" />
+          <p class="f-cap">Return label plus inspection plus repack. Switch it off and the ceiling is computed with a zero handling cost, flagged in the panel.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Monthly Meta budget</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> a month</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> per month</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the budget sits <span id="wfScale">against a $0.00 ceiling</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="prospecting" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="retargeting" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="headroom" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the budget your unit economics can carry.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Prospecting budget</span><span class="vl" id="lg_prospecting">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Retargeting budget</span><span class="vl" id="lg_retargeting">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:#ffffff"></span><span class="nm">Affordable ceiling after returns</span><span class="vl" id="lg_ceiling">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Headroom on the first order</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What decides this number</span>
+          <p id="bindMain">Retargeting buys orders more cheaply than prospecting.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindWarn" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>The two conversion rates are a guess</h2>
+    <p class="sec-sub">Budget moves inversely with the conversion rates, so flexing both by 20% gives the exact ends of the range rather than a simulation. The break-even check is drawn against both ends, so you can see the case where the plan pays at the optimistic rate and loses money at the pessimistic one.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Both rates 20% worse</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Both rates 20% better</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one month of spend against one new-customer target. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Prospecting cost per order</span><span class="mv" id="m_cacp">$0.00</span><span class="mx" id="mx_cacp"></span></div>
+      <div class="mrow"><span class="mn">Retargeting cost per order</span><span class="mv" id="m_cacr">$0.00</span><span class="mx" id="mx_cacr"></span></div>
+      <div class="mrow"><span class="mn">Blended cost per order</span><span class="mv" id="m_cacb">$0.00</span><span class="mx" id="mx_cacb"></span></div>
+      <div class="mrow sum"><span class="mn">Budget the target requires</span><span class="mv" id="m_budget">$0.00</span></div>
+      <div class="mrow"><span class="mn">Prospecting budget</span><span class="mv" id="m_bp">$0.00</span><span class="mx" id="mx_bp"></span></div>
+      <div class="mrow"><span class="mn">Retargeting budget</span><span class="mv" id="m_br">$0.00</span><span class="mx" id="mx_br"></span></div>
+      <div class="mrow"><span class="mn">Orders from prospecting</span><span class="mv" id="m_op">0.00</span><span class="mx" id="mx_op"></span></div>
+      <div class="mrow"><span class="mn">Orders from retargeting</span><span class="mv" id="m_or">0.00</span><span class="mx" id="mx_or"></span></div>
+      <div class="mrow"><span class="mn">Contribution per order after returns</span><span class="mv" id="m_raco">$0.00</span><span class="mx" id="mx_raco"></span></div>
+      <div class="mrow sum"><span class="mn">Affordable budget at break-even</span><span class="mv" id="m_ceiling">$0.00</span><span class="mx" id="mx_ceiling"></span></div>
+      <div class="mrow sum final"><span class="mn">Headroom on the first order</span><span class="mv" id="m_net">$0.00</span></div>
+      <div class="mrow"><span class="mn">Budget range from the rate flex</span><span class="mv" id="m_range">$0.00</span><span class="mx" id="mx_range"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>The break-even ceiling runs on contribution after returns.</b> Contribution is multiplied by the share of orders that stay sold, and the handling cost of the ones that come back is subtracted, so the affordable budget falls as the return rate rises.</li>
+      <li><b>Every retargeting conversion counts as a new customer at face value.</b> That is generous, and it is one reason the budget range on this page matters more than the single figure.</li>
+      <li><b>CPM, CTR and conversion rate are held constant across the spend level.</b> The model is linear in budget, so a plan that doubles spend should be rechecked at the CPM that doubled spend actually clears.</li>
+      <li><b>Repeat orders are out of scope.</b> This is a first-order break-even. The lifetime question belongs to the CPA and payback tools.</li>
+      <li><b>Retargeting share is capped at 40%.</b> Anything above that is clamped before the math runs, and the panel names the clamp instead of hiding it.</li>
+      <li><b>At a zero retargeting share the three retargeting fields are ignored entirely</b>, even when they are filled in, and the retargeting cost per order reads as not used.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. Every split, order count and range end is computed from the unrounded budget, which is why the two order lines still add back to your target.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where the CPM, CTR and rate dials come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Meta CPM, ecommerce median</span>
+      <p class="quote">"CPM: $14.19 (median, all industries, Facebook/Meta ecommerce ads)"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 (nearly 35,000 brands) &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Meta CPM, year over year</span>
+      <p class="quote">"Every single industry saw CPM increase year-over-year; platform-wide CPM increase of roughly +20% in 2025"</p>
+      <span class="cite">Triple Whale &middot; full-year 2025 vs full-year 2024 &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel on Meta, full metric set</span>
+      <p class="quote">"Apparel &amp; Accessories: CTR 2.25% (+15.65% YoY), CVR 1.46% (+9.39% YoY), CPA $36.76 (+1.62% YoY), ROAS 2.18 (+3.9% YoY)"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Meta CTR, ecommerce median</span>
+      <p class="quote">"CTR 2.19% (median, all industries, 2025)"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 (~35,000 brands) &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel on Meta, second methodology</span>
+      <p class="quote">"Apparel/Fashion &amp; Jewelry (Traffic objective): CTR 1.29%, CPC $0.86"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 1, 2024 to June 30, 2025 &middot; <a href="https://www.wordstream.com/blog/facebook-ads-benchmarks-2025" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Meta ROAS, median and apparel</span>
+      <p class="quote">"Meta (Facebook/Instagram) ecommerce ROAS: median 1.86 (all industries); Apparel &amp; Accessories ROAS 2.18"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 (~35,000 brands) &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <p class="srcnote">The two apparel CTR figures come from different methods, one aggregating attribution-platform accounts and one surveying ad accounts, which is why 2.25% and 1.29% sit so far apart. Both are printed so you can see the spread before you pick a number. Every published figure here is a blended account average across prospecting and retargeting together. There is no published prospecting-versus-retargeting split we could verify, so this page prints none, and both segments stay yours to fill in from your own account.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why one blended CPM sizes an apparel budget wrong</h2>
+    <div class="prose">
+      <p>A Meta budget is a purchase order for orders. You are buying impressions, a share of those impressions become clicks, and a share of those clicks become customers. Multiply the three together and you get the only number that decides the budget: how many orders one dollar of spend buys. Divide your target by that number and you have the month's spend. All of that is arithmetic. The reason budgets still come out wrong is that most planning runs it once, on one blended CPM, one blended CTR and one blended conversion rate, when the account is actually buying from two very different audiences.</p>
+
+      <p>Cold prospecting reaches people who have never seen the product. The CPM is usually lower, because the audience is large, and the conversion rate is usually much lower, because the visit is a first meeting. Retargeting reaches a small pool of people who already viewed a product or abandoned a cart. The CPM is usually higher, because the pool is small and everyone is bidding on it, and the conversion rate is far higher, because the decision was already halfway made. Blend those two and the average hides both. The blended cost per order looks reachable while the prospecting half of the account, which is where growth actually comes from, sits well above it.</p>
+
+      <h3>Retargeting looks cheap because it takes credit for demand you already paid for</h3>
+      <p>A retargeting conversion is a person your prospecting spend, your organic content or your email list already produced. This calculator counts every one of those conversions as a new customer at face value, which is the generous reading, and it caps the retargeting share of the budget at 40% with a notice past 30%. Both guardrails exist for the same reason: the cheaper cost per order in retargeting comes from a pool that prospecting refills. Move budget into retargeting and the cost per order on the panel drops while the pool shrinks under it, which is the shape of a plan that reports well for a month and stalls in the second. The honest use of the retargeting share is to model what you are already doing, then watch what the blended figure does when you set the share to zero.</p>
+
+      <h3>What returns do to the ceiling</h3>
+      <p>The second half of this page is the break-even check, and it runs on contribution after returns rather than gross contribution. Contribution is multiplied by the share of orders that stay sold, then the handling cost of the returns you will actually get is subtracted. On apparel that gap is large. At a $55 contribution and a 25% return and exchange rate with $10 to process each return, the figure the ceiling is built on is $38.75, roughly 30% below the gross number. Running the same plan on gross contribution would tell an apparel brand it can afford about a third more budget than it can, and that error compounds every month the plan stays in place.</p>
+
+      <p>The ceiling itself is your target multiplied by that returns-adjusted contribution. It is the budget at which the contribution from the new customers you bought exactly pays for the spend that bought them, on the first order only. Headroom is the gap between that ceiling and the budget your rates require. Positive headroom means the month pays for itself before any repeat order arrives. Negative headroom means you are buying the first order at a loss and betting on the second, which is a defensible plan when you have measured repeat behavior and a poor one when you have not.</p>
+
+      <h3>What the campaign consolidations mean for the split</h3>
+      <p>Meta has spent several years pushing accounts toward fewer, larger campaigns, with broad targeting and automated placement, and the shopping campaign types that sit at the top of that push do not hand you a clean prospecting-versus-retargeting split at all. Inside one consolidated campaign the delivery system decides how much of your budget lands on people who already know you. The controls you keep are the existing-customer setting inside those campaigns, exclusion audiences on the campaigns you still run manually, and the split between the consolidated campaign and everything outside it.</p>
+
+      <p>That makes pricing the two audiences separately more useful, not less. Pull a breakdown of the last 30 days by audience or by campaign, work out the impressions, clicks and orders each side produced, and enter those. What you get back is the price the account is paying for each kind of customer, and how much of your month's budget is being spent to reach people you already reached. If the consolidated campaign is quietly running at 35% retargeting, the panel says so, and the cost per new customer you thought you were paying moves.</p>
+
+      <h3>Why the range is the answer, and the single figure is the headline</h3>
+      <p>Conversion rate is the input founders guess hardest and the one the budget is most sensitive to. Budget moves inversely with it: a rate 20% lower needs a budget 25% higher for the same target. So this page flexes both segment rates 20% in each direction and prints the two ends exactly, then draws the break-even ceiling against both. The default state of this page is the interesting one. The plan clears break-even if the rates hold, and loses money if they come in 20% light. That is the real position most apparel plans are in, and it is invisible when the budget is quoted as a single number in a deck.</p>
+
+      <p>Three dials move the answer. Conversion rate, which is a product page, sizing guidance and offer question before it is a media question. CPM and CTR, which are creative questions, and where the published figures show every industry paying more each year. And contribution after returns, which is where an apparel brand usually finds the largest single move, because a few points off the return rate raises the ceiling on every order in the month at once.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this budget</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does the affordable budget use contribution after returns?</summary>
+        <div class="fa">Because the orders that come back do not pay for the ads that bought them. The ceiling multiplies your contribution by the share of orders that stay sold, then subtracts what it costs to handle the returns you will get. At a $55 contribution with a 25% return rate and $10 of handling, the ceiling is built on $38.75 per order rather than $55.00. Running it on gross contribution would size an apparel budget roughly a third too high.</div>
+      </details>
+      <details>
+        <summary>Why is the retargeting share capped at 40%?</summary>
+        <div class="fa">Retargeting converts a pool that prospecting refills, so its cheap cost per order is partly borrowed from spend you already made. Above 40% of the budget the model stops being a plan for finding new customers, so the field stops there and anything higher is clamped before the math runs. Past 30% the panel prints a notice that you are paying to reach people you already reached. The cap is a guardrail on the model, and your account can still be told to do anything you want.</div>
+      </details>
+      <details>
+        <summary>Meta runs one consolidated campaign for me. How do I split prospecting and retargeting?</summary>
+        <div class="fa">Pull the last 30 days broken out by audience or by campaign, and count impressions, clicks and orders on each side. Enter those as the two segments and the retargeting share as the portion of spend that landed on people who already knew you. Inside a consolidated campaign you do not set that split directly, which is exactly why it is worth measuring: the existing-customer setting and your exclusion audiences are the only controls, and the panel tells you what the current mix is costing per new customer.</div>
+      </details>
+      <details>
+        <summary>Why does the budget move so much when I change conversion rate by a few tenths?</summary>
+        <div class="fa">Budget is inversely proportional to conversion rate. Going from 2.2% to 1.76%, a drop of 20%, raises the budget needed for the same target by 25%. That is why this page prints the range instead of a single figure, and why both ends are checked against the break-even ceiling. If the plan clears at one end and loses at the other, the next step is measuring the rate, not moving the budget.</div>
+      </details>
+      <details>
+        <summary>Does this count repeat orders?</summary>
+        <div class="fa">No. This is a first-order break-even, so the ceiling only counts the contribution of the order you just bought. A brand with measured repeat behavior can afford to spend past this ceiling on purpose, and the CPA and payback tools are where that case gets modelled. Starting from the first-order number keeps the decision honest, because repeat rates are usually assumed rather than measured.</div>
+      </details>
+      <details>
+        <summary>What CPM, CTR and conversion rate should I enter?</summary>
+        <div class="fa">Your own, pulled per segment from the last 30 days. The published figures quoted on this page are blended account averages across prospecting and retargeting together, so they sanity-check your entry rather than replace it. If you have no split yet, run the page once at a zero retargeting share to price cold traffic alone, then again with your real mix, and compare the two cost-per-order figures.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the break-even check, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your account?</span></h2>
+      <p>From week one we run this split on live Meta and Shopify data, then work the lines that move it: the conversion rate on the product page, the creative that sets your CPM, and the return rate under the ceiling. Book a 30 minute intro call and we will walk your budget together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=meta-ads-budget-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Monthly Meta budget</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does the affordable budget use contribution after returns?","acceptedAnswer":{"@type":"Answer","text":"Because the orders that come back do not pay for the ads that bought them. The ceiling multiplies your contribution by the share of orders that stay sold, then subtracts what it costs to handle the returns you will get. At a $55 contribution with a 25% return rate and $10 of handling, the ceiling is built on $38.75 per order rather than $55.00. Running it on gross contribution would size an apparel budget roughly a third too high."}},
+    {"@type":"Question","name":"Why is the retargeting share capped at 40%?","acceptedAnswer":{"@type":"Answer","text":"Retargeting converts a pool that prospecting refills, so its cheap cost per order is partly borrowed from spend you already made. Above 40% of the budget the model stops being a plan for finding new customers, so the field stops there and anything higher is clamped before the math runs. Past 30% the panel prints a notice that you are paying to reach people you already reached. The cap is a guardrail on the model, and your account can still be told to do anything you want."}},
+    {"@type":"Question","name":"Meta runs one consolidated campaign for me. How do I split prospecting and retargeting?","acceptedAnswer":{"@type":"Answer","text":"Pull the last 30 days broken out by audience or by campaign, and count impressions, clicks and orders on each side. Enter those as the two segments and the retargeting share as the portion of spend that landed on people who already knew you. Inside a consolidated campaign you do not set that split directly, which is exactly why it is worth measuring: the existing-customer setting and your exclusion audiences are the only controls, and the panel tells you what the current mix is costing per new customer."}},
+    {"@type":"Question","name":"Why does the budget move so much when I change conversion rate by a few tenths?","acceptedAnswer":{"@type":"Answer","text":"Budget is inversely proportional to conversion rate. Going from 2.2% to 1.76%, a drop of 20%, raises the budget needed for the same target by 25%. That is why this page prints the range instead of a single figure, and why both ends are checked against the break-even ceiling. If the plan clears at one end and loses at the other, the next step is measuring the rate, not moving the budget."}},
+    {"@type":"Question","name":"Does this count repeat orders?","acceptedAnswer":{"@type":"Answer","text":"No. This is a first-order break-even, so the ceiling only counts the contribution of the order you just bought. A brand with measured repeat behavior can afford to spend past this ceiling on purpose, and the CPA and payback tools are where that case gets modelled. Starting from the first-order number keeps the decision honest, because repeat rates are usually assumed rather than measured."}},
+    {"@type":"Question","name":"What CPM, CTR and conversion rate should I enter?","acceptedAnswer":{"@type":"Answer","text":"Your own, pulled per segment from the last 30 days. The published figures quoted on this page are blended account averages across prospecting and retargeting together, so they sanity-check your entry rather than replace it. If you have no split yet, run the page once at a zero retargeting share to price cold traffic alone, then again with your real mix, and compare the two cost-per-order figures."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'meta-ads-budget-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, ratio = T.ratio, count = T.count;
+
+  var DEFAULTS = {
+    target_new_customers: 300, retargeting_share_pct: 20,
+    prospecting_cpm: 15, prospecting_ctr_pct: 1.4, prospecting_cvr_pct: 2.2,
+    retargeting_cpm: 22, retargeting_ctr_pct: 2, retargeting_cvr_pct: 5.5,
+    contribution_per_order: 55, return_rate_pct: 25, return_cost_per_return: 10,
+    return_cost_on: true
+  };
+  var KEYS = ['target_new_customers','retargeting_share_pct','prospecting_cpm','prospecting_ctr_pct',
+    'prospecting_cvr_pct','retargeting_cpm','retargeting_ctr_pct','retargeting_cvr_pct',
+    'contribution_per_order','return_rate_pct','return_cost_per_return'];
+  var SEGS = ['prospecting','retargeting','headroom'];
+  var RT_FIELDS = ['rtCpmField','rtCtrField','rtCvrField'];
+  var CROSS = ['cpa-calculator','cpm-calculator','ctr-calculator','break-even-roas','google-ads-budget-calculator','true-profit-per-order'];
+  var GLYPH = {
+    'cpa-calculator':'CPA','cpm-calculator':'CPM','ctr-calculator':'CTR',
+    'break-even-roas':'ROAS','google-ads-budget-calculator':'GOOG','true-profit-per-order':'NET'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function n4(x){ return T.roundDp(x, 4).toFixed(4); }
+  function n6(x){ return T.roundDp(x, 6).toFixed(6); }
+  function m(x){ return x === null ? 'not usable' : money(x); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.return_cost_on = el('return_cost_on').checked;
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      target_new_customers: i.target_new_customers,
+      retargeting_share_pct: i.retargeting_share_pct,
+      prospecting_cpm: i.prospecting_cpm,
+      prospecting_ctr_pct: i.prospecting_ctr_pct,
+      prospecting_cvr_pct: i.prospecting_cvr_pct,
+      retargeting_cpm: i.retargeting_cpm,
+      retargeting_ctr_pct: i.retargeting_ctr_pct,
+      retargeting_cvr_pct: i.retargeting_cvr_pct,
+      contribution_per_order: i.contribution_per_order,
+      return_rate_pct: i.return_rate_pct,
+      return_cost_per_return: i.return_cost_on ? i.return_cost_per_return : null
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* verdict tiers, read off the compute outputs, never recomputed */
+  function tierFor(raw){
+    if (raw.total_budget === null) return { label: 'NEEDS A LIVE SEGMENT', cls: 't-not' };
+    if (raw.raco <= 0) return { label: 'NO AFFORDABLE BUDGET', cls: 't-not' };
+    if (raw.net_low > 0 && raw.net_high > 0) return { label: 'CLEARS BOTH ENDS', cls: 't-safe' };
+    if (raw.net_low <= 0 && raw.net_high <= 0) return { label: 'OVER THE CEILING', cls: 't-not' };
+    return { label: 'DEPENDS ON THE RATE', cls: 't-fix' };
+  }
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    var raw = o.raw;
+    lastInputs = ci; lastOut = o;
+
+    var s = o.retarget_share_used_pct / 100;
+    var r = i.return_rate_pct / 100;
+    var ctrP = i.prospecting_ctr_pct / 100, cvrP = i.prospecting_cvr_pct / 100;
+    var ctrR = i.retargeting_ctr_pct / 100, cvrR = i.retargeting_cvr_pct / 100;
+    var returnCost = i.return_cost_on ? i.return_cost_per_return : 0;
+    var live = raw.total_budget !== null;
+    var over = live && raw.net_first_order < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = live
+      ? money(raw.total_budget) + '<span class="per"> a month</span>'
+      : 'Not computable<span class="per"> one segment has to be live</span>';
+    el('mbarNum').textContent = live ? money(raw.total_budget) : 'Not computable';
+
+    var tier = tierFor(raw);
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + tier.cls;
+      t.textContent = tier.label;
+    });
+
+    el('rangeLine').innerHTML = live
+      ? 'Somewhere between <b>' + money(raw.budget_low) + '</b> and <b>' + money(raw.budget_high) + '</b> per month'
+      : 'At least one segment needs a CPM, CTR and conversion rate above 0';
+
+    /* budget bar. The two segment budgets stack, the white line is the
+       affordable ceiling, and anything past it is drawn as the overrun. */
+    var bp = live ? raw.budget_prospecting : 0;
+    var br = live ? raw.budget_retargeting : 0;
+    var ceiling = raw.max_affordable_budget;
+    var scale = Math.max(live ? raw.total_budget : 0, ceiling, 1);
+    var vals = {
+      prospecting: bp,
+      retargeting: br,
+      headroom: (live && !over) ? (ceiling - raw.total_budget) : 0
+    };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (Math.max(0, vals[k]) / scale * 100) + '%';
+    });
+    var markPct = T.clamp(ceiling / scale * 100, 0, 100);
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = live ? 'block' : 'none';
+    el('wfShort').style.display = over ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'against a ' + money(ceiling) + ' ceiling';
+    el('wfMarkCap').textContent = !live
+      ? 'Enter a CPM, CTR and conversion rate above zero for at least one segment.'
+      : (over
+        ? 'The white line is the affordable ceiling. Everything past it is spend the first order does not repay.'
+        : 'The gold band is the headroom under your ceiling.');
+
+    el('lg_prospecting').textContent = live ? money(bp) : money(0);
+    el('lg_retargeting').textContent = live ? money(br) : money(0);
+    el('lg_ceiling').textContent     = money(ceiling);
+    el('lg_result').textContent      = live ? money(Math.abs(raw.net_first_order)) : 'not computable';
+    el('lg_result_nm').textContent   = over ? 'Over the ceiling by' : 'Headroom on the first order';
+
+    /* what decides the number */
+    if (!live) {
+      el('bindMain').textContent = 'No segment converts yet, so there is no budget to size.';
+    } else if (raw.cac_prospecting !== null && raw.cac_retargeting !== null) {
+      el('bindMain').innerHTML = 'Retargeting buys an order for <b>' + money(raw.cac_retargeting) +
+        '</b> against <b>' + money(raw.cac_prospecting) + '</b> in prospecting, and you are sending ' +
+        pct(o.retarget_share_used_pct, 0) + ' of the budget there.';
+    } else if (raw.cac_prospecting !== null) {
+      el('bindMain').innerHTML = 'The whole plan runs on prospecting at <b>' + money(raw.cac_prospecting) +
+        '</b> per order.';
+    } else {
+      el('bindMain').innerHTML = 'Prospecting produces no orders at these rates, so retargeting at <b>' +
+        money(raw.cac_retargeting) + '</b> per order is carrying the entire target.';
+    }
+    el('bindFix').textContent = live
+      ? (over
+        ? 'The budget clears the ceiling by ' + money(Math.abs(raw.net_first_order)) +
+          '. Break-even needs a blended cost per order at or under ' + money(raw.raco) + ', and you are at ' +
+          money(raw.blended_cac) + '.'
+        : 'Break-even needs a blended cost per order at or under ' + money(raw.raco) + ', and you are at ' +
+          money(raw.blended_cac) + '.')
+      : '';
+    el('bindDrag').textContent = 'Returns take contribution from ' + money(i.contribution_per_order) +
+      ' to ' + money(raw.raco) + ' per order, and the ceiling is built on the ' + money(raw.raco) + ' figure.';
+
+    var warn = el('bindWarn');
+    if (o.warnings && o.warnings.length) {
+      warn.hidden = false;
+      warn.textContent = 'Flagged: ' + o.warnings.join('. ') + '.';
+    } else {
+      warn.hidden = true;
+    }
+
+    /* scenario spread: the pessimistic end is the larger budget */
+    el('scLow').textContent  = live ? money(raw.budget_high) : 'not computable';
+    el('scMid').textContent  = live ? money(raw.total_budget) : 'not computable';
+    el('scHigh').textContent = live ? money(raw.budget_low) : 'not computable';
+    el('scLow').classList.toggle('neg',  live && raw.net_high < 0);
+    el('scMid').classList.toggle('neg',  live && raw.net_first_order < 0);
+    el('scHigh').classList.toggle('neg', live && raw.net_low < 0);
+    el('scLowA').textContent  = live ? 'Against the ceiling: ' + money(raw.net_high) : '';
+    el('scMidA').textContent  = live ? 'Against the ceiling: ' + money(raw.net_first_order) : '';
+    el('scHighA').textContent = live ? 'Against the ceiling: ' + money(raw.net_low) : '';
+    el('scenNote').textContent = !live
+      ? 'At least one segment needs a CPM, CTR and conversion rate above zero before the spread means anything.'
+      : (raw.net_low > 0 && raw.net_high < 0
+        ? 'This plan pays for itself if the rates hold and loses money if they come in 20% light. Measure the rate before you set the budget.'
+        : 'Both ends of the spread land on the same side of the ceiling, so the conversion-rate guess is not what decides this plan.');
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_cacp').textContent = m(raw.cac_prospecting);
+    el('mx_cacp').innerHTML  = '1000 x ' + n4(ctrP) + ' x ' + n4(cvrP) + ' / ' + money(i.prospecting_cpm) + ' = ' +
+      n6(raw.k_p === null ? 0 : raw.k_p) + ' orders per dollar' +
+      '  <em>a thousand impressions buy this many clicks, and this share of them order</em>';
+    el('m_cacr').textContent = s > 0 ? m(raw.cac_retargeting) : 'not used';
+    el('mx_cacr').innerHTML  = s > 0
+      ? '1000 x ' + n4(ctrR) + ' x ' + n4(cvrR) + ' / ' + money(i.retargeting_cpm) + ' = ' +
+        n6(raw.k_r === null ? 0 : raw.k_r) + ' orders per dollar' +
+        '  <em>higher CPM, higher conversion rate, on a pool prospecting refills</em>'
+      : '<em>the retargeting share is zero, so these three fields sit out of the math entirely</em>';
+    el('m_cacb').textContent = m(raw.blended_cac);
+    el('mx_cacb').innerHTML  = '(1 - ' + n2(s) + ') x ' + n6(raw.k_p === null ? 0 : raw.k_p) + ' + ' + n2(s) + ' x ' +
+      n6(raw.k_r === null ? 0 : raw.k_r) + ' = ' + n6(raw.k_blend) + ' orders per dollar' +
+      '  <em>the two segments weighted by the split you set</em>';
+    el('m_budget').textContent = live ? money(raw.total_budget) : 'not computable';
+    el('m_bp').textContent   = live ? money(bp) : money(0);
+    el('mx_bp').innerHTML    = (live ? money(raw.total_budget) : money(0)) + ' x ' + n2(1 - s) + ' = ' + money(bp) +
+      '  <em>what lands on people who have not seen you</em>';
+    el('m_br').textContent   = live ? money(br) : money(0);
+    el('mx_br').innerHTML    = (live ? money(raw.total_budget) : money(0)) + ' x ' + n2(s) + ' = ' + money(br) +
+      '  <em>what lands on people who already viewed or abandoned</em>';
+    el('m_op').textContent   = live ? ratio(raw.orders_prospecting) : ratio(0);
+    el('mx_op').innerHTML    = money(bp) + ' x ' + n6(raw.k_p === null ? 0 : raw.k_p) + ' = ' +
+      ratio(live ? raw.orders_prospecting : 0);
+    el('m_or').textContent   = live ? ratio(raw.orders_retargeting) : ratio(0);
+    el('mx_or').innerHTML    = money(br) + ' x ' + n6(raw.k_r === null ? 0 : raw.k_r) + ' = ' +
+      ratio(live ? raw.orders_retargeting : 0) + '  <em>the two order lines add back to your target</em>';
+    el('m_raco').textContent = money(raw.raco);
+    el('mx_raco').innerHTML  = money(i.contribution_per_order) + ' x (1 - ' + n2(r) + ') - ' + money(returnCost) +
+      ' x ' + n2(r) + ' = ' + money(raw.raco) +
+      '  <em>what one order leaves once the returns you will get are paid for</em>';
+    el('m_ceiling').textContent = money(ceiling);
+    el('mx_ceiling').innerHTML  = count(i.target_new_customers) + ' x ' + money(raw.raco) + ' = ' + money(ceiling) +
+      '  <em>the budget at which the first orders exactly pay for the spend that bought them</em>';
+    el('m_net').textContent  = live ? money(raw.net_first_order) : 'not computable';
+    el('m_net').classList.toggle('neg', over);
+    el('m_range').textContent = live ? money(raw.budget_high) : money(0);
+    el('mx_range').innerHTML  = live
+      ? money(raw.total_budget) + ' / 1.2 = ' + money(raw.budget_low) + ' and ' + money(raw.total_budget) +
+        ' / 0.8 = ' + money(raw.budget_high) +
+        '  <em>budget moves inversely with the conversion rates, so both ends are exact</em>'
+      : '<em>no budget to flex until one segment converts</em>';
+
+    /* the retargeting fields go quiet at a zero share */
+    RT_FIELDS.forEach(function(id){ el(id).classList.toggle('is-off', s === 0); });
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) || i.return_cost_on !== DEFAULTS.return_cost_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), sl = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v) && sl) sl.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    if (sl) sl.addEventListener('input', function(){ n.value = T.numStr(sl.value); paint(); });
+  });
+
+  el('return_cost_on').addEventListener('change', function(){
+    el('returnCostField').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    el('return_cost_on').checked = DEFAULTS.return_cost_on;
+    el('returnCostField').classList.toggle('is-off', !DEFAULTS.return_cost_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        retarget_share_used_pct: lastOut.retarget_share_used_pct,
+        cac_prospecting: lastOut.cac_prospecting,
+        cac_retargeting: lastOut.cac_retargeting,
+        blended_cac: lastOut.blended_cac,
+        total_budget: lastOut.total_budget,
+        budget_prospecting: lastOut.budget_prospecting,
+        budget_retargeting: lastOut.budget_retargeting,
+        orders_prospecting: lastOut.orders_prospecting,
+        orders_retargeting: lastOut.orders_retargeting,
+        raco: lastOut.raco,
+        max_affordable_budget: lastOut.max_affordable_budget,
+        net_first_order: lastOut.net_first_order,
+        budget_low: lastOut.budget_low,
+        budget_high: lastOut.budget_high,
+        net_low: lastOut.net_low,
+        net_high: lastOut.net_high,
+        warnings: lastOut.warnings
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Email List Value Calculator: Value Per Subscriber | RISE DTC</title>
+<meta name="description" content="Free email list value calculator. Enter list size, active share, flow and campaign revenue, margin and return rate, and see what a subscriber is worth once the dead ones come out of the count, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/email-list-value-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Email List Value Calculator: Value Per Subscriber" />
+<meta property="og:description" content="What a subscriber is worth once the dead ones come out of the count, and what ten more points of active share would be worth. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/email-list-value-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Email List Value Calculator: Value Per Subscriber" />
+<meta name="twitter:description" content="What a subscriber is worth once the dead ones come out of the count. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-email-list-value-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=email-list-value-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Email List Value</span>
+      <span class="t2">Tool 21 of 22, email</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What is your email list <span class="hl">actually worth?</span></h1>
+    <p class="lede">Most list value tools spread revenue across every subscriber on the list. This one uses only the subscribers still opening email.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="list_size">Total subscribers</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="list_size" data-min="0" data-max="50000000" data-step="100" value="60000" /><span class="u">subs</span></span>
+          </div>
+          <input type="range" id="list_size_r" min="0" max="50000000" step="100" value="60000" aria-label="Total subscribers slider" />
+          <p class="f-cap">Everyone on the list, active and not. Your ESP dashboard prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="active_share_pct">Share engaged in the last 90 days</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="active_share_pct" data-min="0" data-max="100" data-step="1" value="30" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="active_share_pct_r" min="0" max="100" step="1" value="30" aria-label="Active share slider" />
+          <p class="f-cap">Opened or clicked in 90 days. This is the input a flat list tool skips, and it decides the answer.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="flow_revenue_90d">Flow revenue, last 90 days</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="flow_revenue_90d" data-min="0" data-max="50000000" data-step="100" value="42000" /></span>
+          </div>
+          <input type="range" id="flow_revenue_90d_r" min="0" max="50000000" step="100" value="42000" aria-label="Flow revenue slider" />
+          <p class="f-cap">Welcome, abandoned cart, post-purchase and the rest of your automated flows.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="campaign_revenue_90d">Campaign revenue, last 90 days</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="campaign_revenue_90d" data-min="0" data-max="50000000" data-step="100" value="28000" /></span>
+          </div>
+          <input type="range" id="campaign_revenue_90d_r" min="0" max="50000000" step="100" value="28000" aria-label="Campaign revenue slider" />
+          <p class="f-cap">One-off sends, launches and promotions you scheduled by hand.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin before returns</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="0" data-max="100" data-step="0.5" value="55" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="0" max="100" step="0.5" value="55" aria-label="Contribution margin slider" />
+          <p class="f-cap">Revenue left after product cost, shipping and processing, before returns are taken out.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return rate slider" />
+          <p class="f-cap">Share of email-driven orders that come back. The published figures sit further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="winback_uplift_pts">Points of active share you think you can win back</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="winback_uplift_pts" data-min="1" data-max="30" data-step="1" value="10" /><span class="u">pts</span></span>
+          </div>
+          <input type="range" id="winback_uplift_pts_r" min="1" max="30" step="1" value="10" aria-label="Winback uplift points slider" />
+          <p class="f-cap">This is the plan. It drives the range in the verdict.</p>
+        </div>
+
+        <div class="field" id="returnCostField">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_pct">Net cost of a returned order <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="return_cost_on" checked aria-label="Include net cost of a returned order" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_pct" data-min="0" data-max="50" data-step="0.5" value="12" /><span class="u">%</span></span>
+            </span>
+          </div>
+          <input type="range" id="return_cost_pct_r" min="0" max="50" step="0.5" value="12" aria-label="Return cost percent slider" />
+          <p class="f-cap">Return label, inspection and repack, as a share of the order. Switch it off and it is treated as zero.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Value per active subscriber, 90 days</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per active subscriber</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Winning back active share would add somewhere between <b>$0.00</b> and <b>$0.00</b></span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">How the list breaks down <span id="wfScale">of 60,000 total subscribers</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="inactive" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="active" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort" style="display:none"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line marks the winback target.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Inactive subscribers</span><span class="vl" id="lg_inactive">0</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm">Active subscribers, last 90 days</span><span class="vl" id="lg_active">0</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What decides the number</span>
+          <p id="bindMain">Active share decides how far the same revenue gets divided.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>The winback number is a plan you set</h2>
+    <p class="sec-sub">Reactivated subscribers are assumed to spend like today's actives, which is a ceiling rather than a forecast. Here is today's list value next to the honest band of what winning back your target would add on top of it.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Half-rate winback</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">List value today</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Full-rate winback, the ceiling</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is the last 90 days of email revenue, split across the list that produced it. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Active subscribers, last 90 days</span><span class="mv" id="m_active">0</span><span class="mx" id="mx_active"></span></div>
+      <div class="mrow"><span class="mn">Inactive subscribers</span><span class="mv" id="m_inactive">0</span><span class="mx" id="mx_inactive"></span></div>
+      <div class="mrow"><span class="mn">Email revenue, last 90 days</span><span class="mv" id="m_gross">$0.00</span><span class="mx" id="mx_gross"></span></div>
+      <div class="mrow"><span class="mn">Naive value per subscriber</span><span class="mv" id="m_naive">$0.00</span><span class="mx" id="mx_naive"></span></div>
+      <div class="mrow sum final"><span class="mn">Value per active subscriber</span><span class="mv" id="m_activeval">$0.00</span><span class="mx" id="mx_activeval"></span></div>
+      <div class="mrow"><span class="mn">Flow share of the 90 days</span><span class="mv" id="m_split">0.00%</span><span class="mx" id="mx_split"></span></div>
+      <div class="mrow"><span class="mn">Contribution, 90 days, returns adjusted</span><span class="mv" id="m_contrib">$0.00</span><span class="mx" id="mx_contrib"></span></div>
+      <div class="mrow sum"><span class="mn">Contribution per active subscriber</span><span class="mv" id="m_contribactive">$0.00</span><span class="mx" id="mx_contribactive"></span></div>
+      <div class="mrow"><span class="mn">Annualised, per active subscriber</span><span class="mv" id="m_annual">$0.00</span><span class="mx" id="mx_annual"></span></div>
+      <div class="mrow"><span class="mn">Winback target, active share</span><span class="mv" id="m_scenshare">0.00%</span><span class="mx" id="mx_scenshare"></span></div>
+      <div class="mrow"><span class="mn">Contribution at the target</span><span class="mv" id="m_scencontrib">$0.00</span><span class="mx" id="mx_scencontrib"></span></div>
+      <div class="mrow sum"><span class="mn">Value of the winback, on top of today</span><span class="mv" id="m_uplift">$0.00</span><span class="mx" id="mx_uplift"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>All 90-day email revenue is assumed produced by the active segment.</b> Inactive subscribers are assumed to contribute nothing, which is why the per-active number is the honest one.</li>
+      <li><b>Newly reactivated subscribers are assumed to monetise like today's actives.</b> That is a ceiling rather than a forecast, and the range above exists because of it.</li>
+      <li><b>The headline number is returns-adjusted contribution, not revenue.</b> The naive gross figure is printed too because it is what every other list value tool reports, and the gap between the two is the point.</li>
+      <li><b>The annualised line scales 90 days by 365 / 90 with no seasonality</b>, and it says so instead of implying a forecast.</li>
+      <li><b>Leave the return cost switch off and it is treated as zero</b>, flagged in the note under the field.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where three outside numbers on this page come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">List decay, industry wide</span>
+      <p class="quote">"At least 23% of an email list degrades yearly"</p>
+      <span class="cite">ZeroBounce, Email List Decay Report &middot; January 1 to December 31, 2025, tracked since 2021 (22% in 2022, 25% in 2023, 28% in 2024, 23% in 2025) &middot; <a href="https://www.zerobounce.net/email-list-decay" target="_blank" rel="noopener">zerobounce.net</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Open rate, apparel and clothing</span>
+      <p class="quote">"Clothing &amp; accessories campaigns: 33.1% open rate (all-industry campaign average 31%, top 10% brands hit 45.1%)"</p>
+      <span class="cite">Klaviyo &middot; 2026 benchmark report, based on data from 183,000+ Klaviyo brands &middot; <a href="https://www.klaviyo.com/uk/blog/email-marketing-benchmarks-open-click-and-conversion-rates" target="_blank" rel="noopener">klaviyo.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Click rate, apparel campaigns and flows</span>
+      <p class="quote">"Clothing &amp; accessories campaign click rate: 1.83%; clothing &amp; accessories flow click rate: 5.54%"</p>
+      <span class="cite">Klaviyo &middot; 2026 benchmark report (183,000+ brands) &middot; <a href="https://www.klaviyo.com/uk/blog/email-marketing-benchmarks-open-click-and-conversion-rates" target="_blank" rel="noopener">klaviyo.com</a></span>
+    </div>
+
+    <p class="srcnote">These three figures are here to sanity-check the dials above, not to replace them. The list decay figure is a reason to recheck active share every few months rather than trust a number from last year. The apparel click figures show flows outrunning campaigns on click rate by roughly three to one, which lines up with the flow share this calculator asks for. There is no published figure we could verify for how much of a dormant list is realistically winnable back, so that dial stays yours to set.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>What the average subscriber value hides</h2>
+    <div class="prose">
+      <p>The oldest question in email marketing is what a subscriber is worth, and the oldest wrong answer is to divide ninety days of email revenue by however many names sit on the list. That division always produces a real number, and it is almost always the wrong one, because a list built up over two or three years carries thousands of addresses that have not opened anything in months. Averaging revenue across a list like that credits the silent majority with the same value as the customer opening every send, and the flat number that comes out the other end understates what the engaged core is worth while overstating what the list as a whole is worth to anyone deciding whether to keep growing it.</p>
+
+      <p>Apparel lists make the problem easy to see, because apparel brands acquire subscribers fast and lose their attention just as fast. A discount popup during a seasonal spike pulls names in quickly, and a large share of them came for the discount, bought once if at all, and never opened another email. Run that pattern through enough seasons and the list keeps growing while the flat revenue-per-subscriber number falls, which reads on a dashboard as the list getting worse, when what actually happened is the active core stayed roughly the same size while a large inactive tail got bolted on beside it.</p>
+
+      <h3>Why active share is the input this page adds</h3>
+      <p>Every input on this page except one shows up on some version of a list ROI tool. Active share does not, and it is the one that moves the answer the most. This calculator asks what portion of the list opened or clicked in the last ninety days, splits the list into active and inactive on that basis, and reports two per-subscriber numbers side by side: the naive rate, gross revenue divided by the whole list, and the honest rate, the same revenue divided only by the subscribers who are still there. On a list with a thirty percent active share, the honest number runs more than three times the naive one, because the entire ninety days of revenue is being credited to less than a third of the names on the file. Neither number is fake. They answer two different questions, and only the active rate is useful for pricing a re-engagement campaign or a list-growth spend.</p>
+
+      <h3>Flow and campaign revenue stay separate, then get consolidated on purpose</h3>
+      <p>The ninety-day revenue figure on this page consolidates flow revenue, the welcome series, abandoned cart, post-purchase and the rest of the automated sequences, with campaign revenue, the one-off sends scheduled by hand. They are entered separately because they behave differently. Flow revenue keeps arriving on autopilot whether or not a campaign went out that week. Campaign revenue depends entirely on what got sent and when. The page reports the split as a share of the ninety-day total specifically so a consolidated dollar figure never hides which engine is actually doing the work. The example loaded into the fields above splits $42,000 of flow revenue against $28,000 of campaign revenue, so flow carries 60% of the ninety-day total. A list weighted that way is durable in a way a list living on weekly discount blasts is not, and the two brands can carry the exact same total revenue number while sitting on very different footing.</p>
+
+      <h3>Where returns sit inside the contribution number</h3>
+      <p>List value on this page is reported as returns-adjusted contribution rather than gross revenue, for the same reason every other calculator on this site treats returns as part of the arithmetic rather than a footnote. A kept order returns its full contribution margin. A returned order returns none of it and still costs a share of the order value to process, the label, the inspection, the restock. The contribution rate is built from both facts at once, so the contribution figure is what the list's revenue actually turns into after refunds and handling. The naive per-subscriber figure is printed too, because it is the number every other list value tool reports, and the gap between the two is exactly the point of building this one.</p>
+
+      <h3>Why the winback number comes back as a range</h3>
+      <p>The points-of-active-share dial is the plan you set, and the page treats it that way. Winning back ten points of active share is priced against the assumption that a reactivated subscriber spends exactly like today's actives do, which is the arithmetic ceiling and almost certainly optimistic. A subscriber who went quiet for ninety days and came back is not the same subscriber as one who never left, so the range on this page runs from half that ceiling to the full ceiling. The honest read leans toward the low end, and the high end is the best case a winback campaign could plausibly hit rather than a number to plan a quarter around.</p>
+
+      <h3>What this changes about the winback decision</h3>
+      <p>The naive per-subscriber rate makes every list look similar: a bigger list is a bigger number, full stop. The active-share rate makes the real decision visible. A list at thirty percent active with a strong revenue-per-active number is carrying a large inactive tail that a sunset flow or a targeted winback campaign can either reactivate or remove, and either move raises the average without touching a single dollar of revenue. A list already sitting at ninety percent active has almost nothing left to win back, and the honest answer there is that the next dollar of value comes from list growth rather than list health. Both are correct reads of the same ninety-day revenue number, and the flat rate this page replaces cannot tell them apart.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does this divide by active subscribers instead of the whole list?</summary>
+        <div class="fa">Because inactive subscribers are not producing any of the ninety-day revenue in this model, so crediting them anyway understates what the engaged core is actually worth. This page reports both numbers side by side, the flat rate any list ROI tool reports and the active rate, so you can see how much of the gap between them is dead weight.</div>
+      </details>
+      <details>
+        <summary>What counts as an active subscriber?</summary>
+        <div class="fa">Anyone who opened or clicked in the last ninety days. It is the one input a flat list value tool leaves out, and it is the input that decides the whole answer, because it sets how many names the ninety days of revenue actually gets divided across.</div>
+      </details>
+      <details>
+        <summary>Why is the winback value a range instead of one number?</summary>
+        <div class="fa">Winning back points of active share is priced against the assumption that a reactivated subscriber spends exactly like today's actives do, which is a ceiling rather than a forecast. Someone who went quiet and came back is not the same as someone who never left, so this page publishes half that ceiling as the low end and the full ceiling as the high end, rather than a single number that would be false precision.</div>
+      </details>
+      <details>
+        <summary>Why are flow and campaign revenue entered separately if they get added together?</summary>
+        <div class="fa">Because they behave differently even though the calculator consolidates them into one ninety-day total. Flow revenue keeps arriving on autopilot from the welcome, abandoned cart and post-purchase sequences. Campaign revenue depends entirely on what got sent that week. Reporting the split as a share of the total shows which engine your list actually runs on, without hiding that split inside a single consolidated dollar figure.</div>
+      </details>
+      <details>
+        <summary>Why does the contribution number treat returns as a cost, on top of the lost revenue?</summary>
+        <div class="fa">A returned order gives back none of its contribution margin and still costs a share of the order value to process, the label, the inspection, the restock. This page's contribution rate is built from both facts, kept orders paying full margin and returned orders costing you twice, so the contribution figure reflects what the list's revenue actually turns into rather than what it looks like before refunds and handling are taken out.</div>
+      </details>
+      <details>
+        <summary>What happens if my active share is zero or my email revenue is zero?</summary>
+        <div class="fa">The per-active numbers and the winback range go blank rather than showing a zero, because dividing revenue across zero active subscribers has no real answer. The naive whole-list rate still prints, since revenue divided by list size is defined even when the active share and revenue are both zero.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on email spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your list?</span></h2>
+      <p>From week one we run this math on your live ESP and Shopify data, then work the levers that move it: the active share, the flow and campaign split, and what a winback campaign is really worth before it ships. Book a 30 minute intro call and we will walk your list math together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=email-list-value-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Value per active subscriber</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does this divide by active subscribers instead of the whole list?","acceptedAnswer":{"@type":"Answer","text":"Because inactive subscribers are not producing any of the ninety-day revenue in this model, so crediting them anyway understates what the engaged core is actually worth. This page reports both numbers side by side, the flat rate any list ROI tool reports and the active rate, so you can see how much of the gap between them is dead weight."}},
+    {"@type":"Question","name":"What counts as an active subscriber?","acceptedAnswer":{"@type":"Answer","text":"Anyone who opened or clicked in the last ninety days. It is the one input a flat list value tool leaves out, and it is the input that decides the whole answer, because it sets how many names the ninety days of revenue actually gets divided across."}},
+    {"@type":"Question","name":"Why is the winback value a range instead of one number?","acceptedAnswer":{"@type":"Answer","text":"Winning back points of active share is priced against the assumption that a reactivated subscriber spends exactly like today's actives do, which is a ceiling rather than a forecast. Someone who went quiet and came back is not the same as someone who never left, so this page publishes half that ceiling as the low end and the full ceiling as the high end, rather than a single number that would be false precision."}},
+    {"@type":"Question","name":"Why are flow and campaign revenue entered separately if they get added together?","acceptedAnswer":{"@type":"Answer","text":"Because they behave differently even though the calculator consolidates them into one ninety-day total. Flow revenue keeps arriving on autopilot from the welcome, abandoned cart and post-purchase sequences. Campaign revenue depends entirely on what got sent that week. Reporting the split as a share of the total shows which engine your list actually runs on, without hiding that split inside a single consolidated dollar figure."}},
+    {"@type":"Question","name":"Why does the contribution number treat returns as a cost, on top of the lost revenue?","acceptedAnswer":{"@type":"Answer","text":"A returned order gives back none of its contribution margin and still costs a share of the order value to process, the label, the inspection, the restock. This page's contribution rate is built from both facts, kept orders paying full margin and returned orders costing you twice, so the contribution figure reflects what the list's revenue actually turns into rather than what it looks like before refunds and handling are taken out."}},
+    {"@type":"Question","name":"What happens if my active share is zero or my email revenue is zero?","acceptedAnswer":{"@type":"Answer","text":"The per-active numbers and the winback range go blank rather than showing a zero, because dividing revenue across zero active subscribers has no real answer. The naive whole-list rate still prints, since revenue divided by list size is defined even when the active share and revenue are both zero."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'email-list-value-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, count = T.count;
+
+  var DEFAULTS = {
+    list_size: 60000, active_share_pct: 30, flow_revenue_90d: 42000, campaign_revenue_90d: 28000,
+    cm_pct: 55, return_rate_pct: 25, winback_uplift_pts: 10, return_cost_pct: 12, return_cost_on: true
+  };
+  var KEYS = ['list_size','active_share_pct','flow_revenue_90d','campaign_revenue_90d','cm_pct','return_rate_pct','winback_uplift_pts','return_cost_pct'];
+  var SEGS = ['inactive','active'];
+  var CROSS = ['email-roi-calculator','email-flow-scorecard','ltv','repeat-purchase-rate','aov','cac'];
+  var GLYPH = {
+    'email-roi-calculator':'ROI', 'email-flow-scorecard':'FLOW', 'ltv':'LTV',
+    'repeat-purchase-rate':'RPT', 'aov':'AOV', 'cac':'CAC'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function fmtMoney(x){ return (x === null || x === undefined) ? 'n/a' : money(x); }
+  function fmtCount(x){ return (x === null || x === undefined) ? 'n/a' : count(x); }
+  function fmtPct2(x){ return (x === null || x === undefined) ? 'n/a' : pct(x, 2); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.return_cost_on = el('return_cost_on').checked;
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      list_size: i.list_size,
+      active_share_pct: i.active_share_pct,
+      flow_revenue_90d: i.flow_revenue_90d,
+      campaign_revenue_90d: i.campaign_revenue_90d,
+      cm_pct: i.cm_pct,
+      return_rate_pct: i.return_rate_pct,
+      winback_uplift_pts: i.winback_uplift_pts,
+      return_cost_pct: i.return_cost_on ? i.return_cost_pct : null
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var hasActive = o.value_per_active_subscriber !== null;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = hasActive
+      ? money(o.value_per_active_subscriber) + '<span class="per"> per active subscriber</span>'
+      : 'No active subscribers';
+    el('mbarNum').textContent = hasActive ? money(o.value_per_active_subscriber) : 'n/a';
+
+    var cls, tierLabel;
+    if (i.active_share_pct >= 40) { tierLabel = 'SAFE TO SCALE'; cls = 't-safe'; }
+    else if (i.active_share_pct >= 20) { tierLabel = 'FIX FIRST'; cls = 't-fix'; }
+    else { tierLabel = 'NOT YET'; cls = 't-not'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = tierLabel;
+    });
+
+    if (o.uplift_low !== null && o.uplift_high !== null) {
+      el('rangeLine').innerHTML = 'Winning back active share would add somewhere between <b>' +
+        money(o.uplift_low) + '</b> and <b>' + money(o.uplift_high) + '</b>';
+    } else {
+      el('rangeLine').innerHTML = 'There is nothing to win back with zero active subscribers.';
+    }
+
+    /* two-band bar: inactive and active always fill the list exactly. The
+       white line marks the winback target as a share of the same list. */
+    var scale = i.list_size > 0 ? i.list_size : 1;
+    var vals = { inactive: o.inactive_subscribers, active: o.active_subscribers };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = o.scenario_active_share_pct;
+    el('wfMark').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + count(i.list_size) + ' total subscribers';
+    el('wfMarkCap').textContent = 'The white line marks the winback target of ' + pct(markPct, 2) + ' active.';
+
+    el('lg_inactive').textContent = count(o.inactive_subscribers);
+    el('lg_active').textContent   = count(o.active_subscribers);
+
+    /* what decides the number */
+    el('bindMain').innerHTML = 'Active share is <b>' + pct(i.active_share_pct, 2) + '</b> of your list, so the flat naive rate of <b>' +
+      fmtMoney(o.value_per_subscriber_naive) + '</b> per subscriber becomes <b>' +
+      (hasActive ? money(o.value_per_active_subscriber) : 'no defined value') + '</b> per active subscriber.';
+
+    if (o.flow_share_pct !== null && o.campaign_share_pct !== null) {
+      el('bindFix').textContent = 'Flow makes up ' + pct(o.flow_share_pct, 2) + ' of the last 90 days and campaigns make up ' +
+        pct(o.campaign_share_pct, 2) + '.';
+    } else {
+      el('bindFix').textContent = 'There is no email revenue in the last 90 days to split between flow and campaigns.';
+    }
+
+    if (o.uplift_low !== null && o.uplift_high !== null) {
+      el('bindDrag').textContent = 'Winning back ' + i.winback_uplift_pts + ' points of active share would be worth between ' +
+        money(o.uplift_low) + ' and ' + money(o.uplift_high) + ' over the same 90 days.';
+    } else {
+      el('bindDrag').textContent = '';
+    }
+
+    var rep = el('bindRepeat');
+    if (o.cap_notice) {
+      rep.hidden = false;
+      rep.textContent = o.cap_notice;
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread */
+    el('scLow').textContent  = fmtMoney(o.uplift_low);
+    el('scMid').textContent  = money(o.contribution_90d);
+    el('scHigh').textContent = fmtMoney(o.uplift_high);
+    el('scLow').classList.toggle('neg',  o.uplift_low  !== null && o.uplift_low  < 0);
+    el('scMid').classList.toggle('neg',  o.contribution_90d < 0);
+    el('scHigh').classList.toggle('neg', o.uplift_high !== null && o.uplift_high < 0);
+    el('scLowA').textContent  = 'If reactivated subscribers spend half of what today\'s actives spend.';
+    el('scMidA').textContent  = pct(i.active_share_pct, 2) + ' active, returns adjusted, before any winback.';
+    el('scHighA').textContent = 'If reactivated subscribers spend exactly like today\'s actives, the arithmetic ceiling.';
+    el('scenNote').textContent = hasActive
+      ? 'Treat the ceiling as the best case a winback campaign could plausibly hit, not a forecast to plan a quarter around.'
+      : 'Set an active share above zero to see what winning more of it back would be worth.';
+
+    /* substituted arithmetic, one line per row */
+    var r = i.return_rate_pct / 100, cm = i.cm_pct / 100;
+    var rc = (ci.return_cost_pct === null ? 0 : ci.return_cost_pct) / 100;
+    var cmRateRa = (1 - r) * cm - r * rc;
+
+    el('m_active').textContent = count(o.active_subscribers);
+    el('mx_active').innerHTML  = count(i.list_size) + ' x ' + pct(i.active_share_pct, 2) + ' = ' + count(o.active_subscribers) +
+      '  <em>opened or clicked in the last 90 days</em>';
+
+    el('m_inactive').textContent = count(o.inactive_subscribers);
+    el('mx_inactive').innerHTML  = count(i.list_size) + ' - ' + count(o.active_subscribers) + ' = ' + count(o.inactive_subscribers) +
+      '  <em>on the list, silent for 90 days or more</em>';
+
+    el('m_gross').textContent = money(o.gross_90d);
+    el('mx_gross').innerHTML  = money(i.flow_revenue_90d) + ' + ' + money(i.campaign_revenue_90d) + ' = ' + money(o.gross_90d) +
+      '  <em>flow and campaign revenue combined</em>';
+
+    el('m_naive').textContent = fmtMoney(o.value_per_subscriber_naive);
+    el('mx_naive').innerHTML  = money(o.gross_90d) + ' / ' + count(i.list_size) + ' = ' + fmtMoney(o.value_per_subscriber_naive) +
+      '  <em>the flat rate a whole-list tool reports</em>';
+
+    el('m_activeval').textContent = fmtMoney(o.value_per_active_subscriber);
+    el('m_activeval').classList.toggle('neg', hasActive && o.value_per_active_subscriber < 0);
+    el('mx_activeval').innerHTML  = hasActive
+      ? money(o.gross_90d) + ' / ' + count(o.active_subscribers) + ' = ' + money(o.value_per_active_subscriber) +
+        '  <em>the honest rate, only the subscribers who are still there</em>'
+      : '<em>No active subscribers, so value per active subscriber is undefined.</em>';
+
+    el('m_split').textContent = fmtPct2(o.flow_share_pct);
+    el('mx_split').innerHTML  = (o.flow_share_pct === null)
+      ? '<em>No 90-day revenue to split between flow and campaigns.</em>'
+      : money(i.flow_revenue_90d) + ' / ' + money(o.gross_90d) + ' = ' + pct(o.flow_share_pct, 2) +
+        ' flow; the rest, ' + pct(o.campaign_share_pct, 2) + ', is campaign  <em>flow keeps working while campaigns need a send</em>';
+
+    el('m_contrib').textContent = money(o.contribution_90d);
+    el('mx_contrib').innerHTML  = '(1 - ' + n2(r) + ') x ' + n2(cm) + ' - ' + n2(r) + ' x ' + n2(rc) + ' = ' + n2(cmRateRa) +
+      ' contribution rate; ' + money(o.gross_90d) + ' x that = ' + money(o.contribution_90d) +
+      '  <em>returns cost you twice, in lost revenue and in handling</em>';
+
+    el('m_contribactive').textContent = fmtMoney(o.contribution_per_active);
+    el('mx_contribactive').innerHTML  = hasActive
+      ? money(o.contribution_90d) + ' / ' + count(o.active_subscribers) + ' = ' + money(o.contribution_per_active)
+      : '<em>No active subscribers to divide contribution across.</em>';
+
+    el('m_annual').textContent = fmtMoney(o.annualised_contribution_per_active);
+    el('mx_annual').innerHTML  = hasActive
+      ? money(o.contribution_per_active) + ' x (365 / 90) = ' + money(o.annualised_contribution_per_active) + '  <em>no seasonality assumed</em>'
+      : '<em>No active subscribers, so there is nothing to annualise.</em>';
+
+    el('m_scenshare').textContent = pct(o.scenario_active_share_pct, 2);
+    el('mx_scenshare').innerHTML  = pct(i.active_share_pct, 2) + ' + ' + i.winback_uplift_pts + ' pts = ' + pct(o.scenario_active_share_pct, 2) +
+      (o.cap_notice ? '  <em>capped at 100%</em>' : '  <em>the target you are chasing</em>');
+
+    el('m_scencontrib').textContent = fmtMoney(o.scenario_contribution);
+    el('mx_scencontrib').innerHTML  = hasActive
+      ? 'at ' + pct(o.scenario_active_share_pct, 2) + ' active = ' + money(o.scenario_contribution) + '  <em>same rate per active subscriber, applied to more of them</em>'
+      : '<em>No active subscribers today, so there is no rate to project forward.</em>';
+
+    el('m_uplift').textContent = fmtMoney(o.uplift_contribution);
+    el('m_uplift').classList.toggle('neg', o.uplift_contribution !== null && o.uplift_contribution < 0);
+    el('mx_uplift').innerHTML  = (o.uplift_low === null || o.uplift_high === null)
+      ? '<em>No active subscribers today, so there is no winback to price.</em>'
+      : money(o.uplift_low) + ' to ' + money(o.uplift_high) + '  <em>half rate to full rate, treat the top end as a ceiling, not a forecast</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) || i.return_cost_on !== DEFAULTS.return_cost_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('return_cost_on').addEventListener('change', function(){
+    el('returnCostField').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    el('return_cost_on').checked = DEFAULTS.return_cost_on;
+    el('returnCostField').classList.toggle('is-off', !DEFAULTS.return_cost_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        active_subscribers: lastOut.active_subscribers,
+        inactive_subscribers: lastOut.inactive_subscribers,
+        gross_90d: T.round2(lastOut.gross_90d),
+        contribution_90d: T.round2(lastOut.contribution_90d),
+        value_per_subscriber_naive: lastOut.value_per_subscriber_naive === null ? null : T.round2(lastOut.value_per_subscriber_naive),
+        value_per_active_subscriber: lastOut.value_per_active_subscriber === null ? null : T.round2(lastOut.value_per_active_subscriber),
+        uplift_contribution: lastOut.uplift_contribution === null ? null : T.round2(lastOut.uplift_contribution),
+        uplift_low: lastOut.uplift_low === null ? null : T.round2(lastOut.uplift_low),
+        uplift_high: lastOut.uplift_high === null ? null : T.round2(lastOut.uplift_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

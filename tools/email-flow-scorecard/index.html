@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Email Flow Scorecard: Weighted Klaviyo Flow Audit | RISE DTC</title>
+<meta name="description" content="Free weighted email flow scorecard. Mark each of the eight revenue flows absent, partial or live, and see a score out of 100 weighted by what each flow is worth, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/email-flow-scorecard/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Email Flow Scorecard: Weighted Klaviyo Flow Audit" />
+<meta property="og:description" content="A weighted audit of the eight flows that carry email revenue, where a VIP flow does not count the same as abandoned cart. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/email-flow-scorecard/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Email Flow Scorecard: Weighted Klaviyo Flow Audit" />
+<meta name="twitter:description" content="A weighted audit of the eight flows that carry email revenue. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-email-flow-scorecard";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=email-flow-scorecard" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Email Flow Scorecard</span>
+      <span class="t2">Tool 22 of 22, email</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free scorecard, no signup</p>
+    <h1>Your email flow scorecard, <span class="hl">weighted by revenue</span></h1>
+    <p class="lede">Eight flows carry email revenue, and they do not carry equal shares of it.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your flows</span>
+          <span class="ph-n">8 flows</span>
+        </div>
+
+        <p class="f-cap" style="margin:12px 0 0">Klaviyo, Omnisend and Attentive all run the same eight flows, so this page is platform agnostic and is not affiliated with Klaviyo.</p>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="welcome_status_r">Welcome series</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="welcome_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">LIVE</span></span>
+          </div>
+          <input data-calc-input type="range" id="welcome_status_r" min="0" max="2" step="1" value="2" aria-label="Welcome series status" />
+          <p class="f-cap">Weight <span id="w_welcome">0</span> of 100. The only flow every new subscriber sees, and it owns the first purchase.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="abandoned_cart_status_r">Abandoned cart</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="abandoned_cart_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">LIVE</span></span>
+          </div>
+          <input data-calc-input type="range" id="abandoned_cart_status_r" min="0" max="2" step="1" value="2" aria-label="Abandoned cart status" />
+          <p class="f-cap">Weight <span id="w_abandoned_cart">0</span> of 100. Fires on a session that already reached checkout, the highest intent moment email ever gets.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="browse_abandon_status_r">Browse abandonment</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="browse_abandon_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">ABSENT</span></span>
+          </div>
+          <input data-calc-input type="range" id="browse_abandon_status_r" min="0" max="2" step="1" value="0" aria-label="Browse abandonment status" />
+          <p class="f-cap">Weight <span id="w_browse_abandon">0</span> of 100. A bigger audience than cart, at materially lower intent.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="post_purchase_status_r">Post-purchase</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="post_purchase_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">PARTIAL</span></span>
+          </div>
+          <input data-calc-input type="range" id="post_purchase_status_r" min="0" max="2" step="1" value="1" aria-label="Post-purchase status" />
+          <p class="f-cap">Weight <span id="w_post_purchase">0</span> of 100. In apparel it carries fit and care guidance, so it moves repeat rate and deflects returns.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="winback_status_r">Winback</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="winback_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">ABSENT</span></span>
+          </div>
+          <input data-calc-input type="range" id="winback_status_r" min="0" max="2" step="1" value="0" aria-label="Winback status" />
+          <p class="f-cap">Weight <span id="w_winback">0</span> of 100. Recovers people who already bought, which is the cheapest revenue on the list, with a delayed payoff.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="sunset_status_r">Sunset</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="sunset_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">ABSENT</span></span>
+          </div>
+          <input data-calc-input type="range" id="sunset_status_r" min="0" max="2" step="1" value="0" aria-label="Sunset status" />
+          <p class="f-cap">Weight <span id="w_sunset">0</span> of 100. Almost no direct revenue, and it protects the inbox placement of the other seven.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="back_in_stock_status_r">Back in stock</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="back_in_stock_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">ABSENT</span></span>
+          </div>
+          <input data-calc-input type="range" id="back_in_stock_status_r" min="0" max="2" step="1" value="0" aria-label="Back in stock status" />
+          <p class="f-cap">Weight <span id="w_back_in_stock">0</span> of 100. High intent and apparel specific, capped by how often the inventory event happens.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="vip_status_r">VIP</label>
+            <span class="pill" style="min-width:114px;justify-content:center"><span class="u" id="vip_status_v" style="opacity:1;font-size:13px;letter-spacing:.08em">ABSENT</span></span>
+          </div>
+          <input data-calc-input type="range" id="vip_status_r" min="0" max="2" step="1" value="0" aria-label="VIP status" />
+          <p class="f-cap">Weight <span id="w_vip">0</span> of 100. The smallest audience on the list, working on retention and order value rather than acquisition.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Weighted flow score</p>
+        <p class="bignum" id="bigNum">0.00<span class="per"> of 100</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT RUNNING</span>
+          <span class="rangeline" id="rangeLine">Between <b>0.00</b> and <b>0.00</b></span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the points sit <span id="wfScale">of 100 points</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="welcome"></span>
+            <span class="seg" data-k="abandoned_cart"></span>
+            <span class="seg" data-k="browse_abandon"></span>
+            <span class="seg" data-k="post_purchase"></span>
+            <span class="seg" data-k="winback"></span>
+            <span class="seg" data-k="sunset"></span>
+            <span class="seg" data-k="back_in_stock"></span>
+            <span class="seg" data-k="vip"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:0%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is your weighted score.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" id="dot_welcome"></span><span class="nm" id="nm_welcome">Welcome series</span><span class="vl" id="lg_welcome">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_abandoned_cart"></span><span class="nm" id="nm_abandoned_cart">Abandoned cart</span><span class="vl" id="lg_abandoned_cart">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_browse_abandon"></span><span class="nm" id="nm_browse_abandon">Browse abandonment</span><span class="vl" id="lg_browse_abandon">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_post_purchase"></span><span class="nm" id="nm_post_purchase">Post-purchase</span><span class="vl" id="lg_post_purchase">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_winback"></span><span class="nm" id="nm_winback">Winback</span><span class="vl" id="lg_winback">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_sunset"></span><span class="nm" id="nm_sunset">Sunset</span><span class="vl" id="lg_sunset">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_back_in_stock"></span><span class="nm" id="nm_back_in_stock">Back in stock</span><span class="vl" id="lg_back_in_stock">0.00</span></div>
+            <div class="lgd"><span class="dot" id="dot_vip"></span><span class="nm" id="nm_vip">VIP</span><span class="vl" id="lg_vip">0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm">Weighted score</span><span class="vl" id="lg_result">0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">The biggest gaps</span>
+          <p id="bindMain">Nothing entered yet.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat"></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Partial is a judgment call, so the score ships as a band</h2>
+    <p class="sec-sub">A flow you marked partial counts for half. Here is the same scorecard read two other ways: once with every partial counted as absent, once with every partial counted as live. The gap between them is the part of your score that rests on how generous you were being.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Every partial counted as absent</p><p class="sc-v" id="scLow">0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As you judged it</p><p class="sc-v" id="scMid">0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Every partial counted as live</p><p class="sc-v" id="scHigh">0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your answers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one point of flow weight. Absent scores zero of the weight, partial scores half, live scores all of it. These rows update as you move the switches above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Welcome series</span><span class="mv" id="m_welcome">0.00</span><span class="mx" id="mx_welcome"></span></div>
+      <div class="mrow"><span class="mn">Abandoned cart</span><span class="mv" id="m_abandoned_cart">0.00</span><span class="mx" id="mx_abandoned_cart"></span></div>
+      <div class="mrow"><span class="mn">Browse abandonment</span><span class="mv" id="m_browse_abandon">0.00</span><span class="mx" id="mx_browse_abandon"></span></div>
+      <div class="mrow"><span class="mn">Post-purchase</span><span class="mv" id="m_post_purchase">0.00</span><span class="mx" id="mx_post_purchase"></span></div>
+      <div class="mrow"><span class="mn">Winback</span><span class="mv" id="m_winback">0.00</span><span class="mx" id="mx_winback"></span></div>
+      <div class="mrow"><span class="mn">Sunset</span><span class="mv" id="m_sunset">0.00</span><span class="mx" id="mx_sunset"></span></div>
+      <div class="mrow"><span class="mn">Back in stock</span><span class="mv" id="m_back_in_stock">0.00</span><span class="mx" id="mx_back_in_stock"></span></div>
+      <div class="mrow"><span class="mn">VIP</span><span class="mv" id="m_vip">0.00</span><span class="mx" id="mx_vip"></span></div>
+      <div class="mrow sum final"><span class="mn">Weighted score</span><span class="mv" id="m_score">0.00</span></div>
+      <div class="mrow"><span class="mn">Low end, partials counted as absent</span><span class="mv" id="m_low">0.00</span><span class="mx" id="mx_low"></span></div>
+      <div class="mrow"><span class="mn">High end, partials counted as live</span><span class="mv" id="m_high">0.00</span><span class="mx" id="mx_high"></span></div>
+      <div class="mrow"><span class="mn">Points still missing</span><span class="mv" id="m_missing">0.00</span><span class="mx" id="mx_missing"></span></div>
+      <div class="mrow"><span class="mn">Flat checklist coverage</span><span class="mv" id="m_cov">0.00%</span><span class="mx" id="mx_cov"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>The weights sum to exactly 100</b>, so the weighted total is already the score. There is no normalising step and no hidden multiplier.</li>
+      <li><b>The score measures presence only.</b> A live flow with one badly written email scores the same as a great one. This tool checks whether the flow exists, and nothing else.</li>
+      <li><b>Partial counts as half the weight</b>, which is a blunt instrument on purpose. The band above shows you what the blunt instrument costs you.</li>
+      <li><b>Eight flows are in scope.</b> Birthday, quiz result, replenishment and the rest are left out rather than padded in to inflate the count.</li>
+      <li><b>Returns enter the weighting, not the arithmetic.</b> Post-purchase and back in stock both carry weight partly because they prevent returns. No money figure is produced here, so no return rate is asked for.</li>
+      <li><b>Ties are broken by a fixed flow order</b>, so the three gaps listed above are the same three every time you load the page with the same answers.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Why automated flows carry the weight they do</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Automations against campaigns</span>
+      <p class="quote">"Automations generated $3.41 per email sent versus $0.155 for campaign emails (22x difference); automation conversion rate 1.49% vs 0.08% for campaigns; automation CTR 4.66% vs 0.74% for campaigns"</p>
+      <span class="cite">Omnisend &middot; 2025 data (27,000+ brands) &middot; <a href="https://www.omnisend.com/blog/email-marketing-benchmarks/" target="_blank" rel="noopener">omnisend.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Welcome and abandoned cart, measured separately</span>
+      <p class="quote">"Welcome Emails: 35.53% open rate, 3.94% CTR, 2.11% conversion, $6.16 per email. Abandoned Cart: 37.12% open rate, 4.13% CTR, 1.72% conversion, $3.59 per email"</p>
+      <span class="cite">Omnisend &middot; 2025 data (27,000+ brands) &middot; <a href="https://www.omnisend.com/blog/email-marketing-benchmarks/" target="_blank" rel="noopener">omnisend.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Where automated orders come from</span>
+      <p class="quote">"One in two people who click on automated welcome or abandoned cart emails end up making a purchase; abandoned cart, welcome, and browse abandonment emails represented 87% of automated orders"</p>
+      <span class="cite">Omnisend &middot; 2025 report &middot; <a href="https://www.omnisend.com/blog/email-marketing-statistics/" target="_blank" rel="noopener">omnisend.com</a></span>
+    </div>
+
+    <p class="srcnote">Omnisend calls these sends automations, which is the same concept Klaviyo calls flows. The published figures explain why the top three weights sit where they sit. The weights themselves are a judgment about revenue criticality, not a published statistic, which is why the reasoning behind each one is printed next to the switch rather than hidden in a model. This page is not affiliated with Klaviyo, Omnisend or Attentive.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why the eight flows do not count equally</h2>
+    <div class="prose">
+      <p>Most flow checklists hand you a fraction. Five of eight built, so you are at sixty-something percent, and the number treats a VIP flow and an abandoned cart flow as the same object. In an apparel store they are nowhere near the same object. One fires on a shopper who reached checkout with a size selected and a card half entered. The other fires on a small group of repeat buyers to protect a relationship that already exists. Both are worth building. Only one of them is worth building this week.</p>
+
+      <p>This scorecard weights each flow by purchase intent at the moment it fires, multiplied by how many people trigger it. Abandoned cart takes the top weight because it catches the highest intent moment email ever gets. Welcome sits just behind it, because it is the only flow every single new subscriber sees and it owns first-purchase conversion, so its audience dwarfs everything else on the list. Post-purchase takes more than a token score because in apparel it carries fit and care guidance, which lifts repeat rate and deflects returns at the same time: two results from one flow. Browse abandonment sits mid-table, a larger audience than cart at materially lower intent. Winback earns a middle weight because it recovers people who already bought, the cheapest revenue on the list, with a payoff that arrives late.</p>
+
+      <h3>The two weights that look wrong until you read them</h3>
+      <p>Sunset is the deliberate call. It produces almost no direct revenue, and an unweighted checklist and a revenue-only model would both score it near zero. It carries real weight here because it protects the inbox placement of the other seven flows. Keep mailing subscribers who stopped opening months ago and your welcome series starts landing in Promotions, your cart reminders start landing in spam, and the flows you did build quietly stop working. Scoring sunset near zero is exactly the mistake a flat checklist makes, in the opposite direction.</p>
+
+      <p>Back in stock earns its weight for an apparel-specific reason. A restock alert that names the size the shopper wanted converts demand you already paid to create. It also prevents a specific expensive event: the shopper who settles for the wrong size because the right one was gone, then sends it back. That is the second place returns enter this scorecard, and neither place asks you for a return rate, because this tool produces no money figure. If you want the money version, the email ROI and email list value tools both take returns as an input.</p>
+
+      <h3>What partial means, and why the band is always shown</h3>
+      <p>Partial is the honest answer for a flow that exists as one email with a generic discount, or a flow that was built two years ago and has not been opened since. It counts for half the weight. Half is a blunt instrument, so the page never hides what the bluntness costs. The band recomputes your score twice: once with every partial demoted to absent, once with every partial promoted to live. A brand with four half-built flows sees a wide band, and that width is the signal. It means the real number depends on how generous you were being with the word partial, and the fix is to look at those flows again rather than to trust the headline.</p>
+
+      <h3>The flat checklist number sits right next to the weighted one</h3>
+      <p>Both numbers print, on purpose. The flat coverage figure is the count of flows divided by eight, which is what an unweighted checklist would have told you. The weighted score is the same answers priced by what each flow carries. When the weighted score comes in higher, you own the flows that matter and the gaps are at the edges. When it comes in lower, you have built the easy flows and skipped the two that pay for the rest. The distance between the two figures is the whole argument for weighting, printed in your own numbers rather than asserted.</p>
+
+      <h3>What the top three gaps are for</h3>
+      <p>The panel ranks every missing flow by the points it is costing you, then names the three largest. A flow marked partial still shows up there, carrying half its weight, which is how a half-built welcome series can outrank a completely missing VIP flow. Each gap comes with a plain sentence about who is going unserved and when, and no revenue estimate at all. Any number that claimed to know what your missing browse abandonment flow would earn would be invented, and this page prints no invented numbers.</p>
+
+      <p>One caution before you act on the score. It counts whether a flow is live and stops there. A live flow with three thin emails and a stale discount code scores identically to a well built one. A brand can reach a high score and still be leaving money on the table inside flows that technically run. Treat the score as the first pass: build what is missing, in the order the points suggest, then go back and read what the live ones actually say to a shopper who is standing in front of a mirror with two sizes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this scorecard</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why weight the flows instead of counting them equally?</summary>
+        <div class="fa">Because an unweighted count says five of eight and stops there, whether the five you own are the two that carry the revenue or the five that were easiest to switch on. Omnisend measures welcome and abandoned cart separately from every other automated send, and reports that abandoned cart, welcome and browse abandonment together account for most automated orders. Weighting by revenue criticality is what turns a count into a priority list. The flat coverage figure still prints beside the weighted score, so you can see the difference on your own answers.</div>
+      </details>
+      <details>
+        <summary>What counts as partial rather than live?</summary>
+        <div class="fa">Partial is the right answer when the flow technically exists but is not doing the job: one email where the flow needs three, a generic discount with no product context, a sequence built years ago that nobody has opened since, or a flow that is switched on for a segment that barely triggers. Live means it fires for the whole eligible audience and someone has read it this quarter. If you are unsure, mark it partial and read the band, which shows you the score both ways.</div>
+      </details>
+      <details>
+        <summary>Does this work if I am not on Klaviyo?</summary>
+        <div class="fa">Yes. Klaviyo, Omnisend, Attentive and every other ecommerce email platform run the same eight flows under different names, so the scorecard is platform agnostic. Klaviyo appears on this page only because it is the term most apparel founders search for. This page is not affiliated with Klaviyo.</div>
+      </details>
+      <details>
+        <summary>Why does sunset carry weight when it sells almost nothing?</summary>
+        <div class="fa">Because it protects the inbox placement of the seven flows that do sell. Keep mailing subscribers who stopped engaging and the whole sending reputation degrades, which pushes your welcome series into Promotions and your cart reminders into spam. Scoring it near zero would price it by direct revenue alone and miss what it is actually for, which is the same failure as counting every flow equally, in the opposite direction.</div>
+      </details>
+      <details>
+        <summary>Where are birthday, quiz result and replenishment flows?</summary>
+        <div class="fa">Out of scope on purpose. They are worth building for some apparel brands and worth nothing for others, and adding them would pad the denominator so every score drifts down for a reason that has nothing to do with the eight flows that carry revenue. This tool scores the eight that carry it. If you run a strong birthday flow, count it as a bonus rather than trying to fit it into a slot here.</div>
+      </details>
+      <details>
+        <summary>My score is high. Does that mean my email is in good shape?</summary>
+        <div class="fa">It means the structure is in place. The score only reflects whether each flow is running, so a flow with three thin emails scores the same as a well built one. Read a high score as permission to stop building and start improving: open each live flow, read it as a shopper deciding between two sizes, and check whether it does more than repeat the discount from the welcome series.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every flow, its weight, the points it earned and the three biggest gaps, sent as a one page scorecard you can forward to whoever owns email.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The scorecard stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The scorecard stays open either way. The email is only how the one page version reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want these flows built on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this audit on your live email platform, then build the missing flows in the order the points suggest. Book a 30 minute intro call and we will walk your flow map together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=email-flow-scorecard" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Weighted flow score</span>
+  <span class="mv" id="mbarNum">0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT RUNNING</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why weight the flows instead of counting them equally?","acceptedAnswer":{"@type":"Answer","text":"Because an unweighted count says five of eight and stops there, whether the five you own are the two that carry the revenue or the five that were easiest to switch on. Omnisend measures welcome and abandoned cart separately from every other automated send, and reports that abandoned cart, welcome and browse abandonment together account for most automated orders. Weighting by revenue criticality is what turns a count into a priority list. The flat coverage figure still prints beside the weighted score, so you can see the difference on your own answers."}},
+    {"@type":"Question","name":"What counts as partial rather than live?","acceptedAnswer":{"@type":"Answer","text":"Partial is the right answer when the flow technically exists but is not doing the job: one email where the flow needs three, a generic discount with no product context, a sequence built years ago that nobody has opened since, or a flow that is switched on for a segment that barely triggers. Live means it fires for the whole eligible audience and someone has read it this quarter. If you are unsure, mark it partial and read the band, which shows you the score both ways."}},
+    {"@type":"Question","name":"Does this work if I am not on Klaviyo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Klaviyo, Omnisend, Attentive and every other ecommerce email platform run the same eight flows under different names, so the scorecard is platform agnostic. Klaviyo appears on this page only because it is the term most apparel founders search for. This page is not affiliated with Klaviyo."}},
+    {"@type":"Question","name":"Why does sunset carry weight when it sells almost nothing?","acceptedAnswer":{"@type":"Answer","text":"Because it protects the inbox placement of the seven flows that do sell. Keep mailing subscribers who stopped engaging and the whole sending reputation degrades, which pushes your welcome series into Promotions and your cart reminders into spam. Scoring it near zero would price it by direct revenue alone and miss what it is actually for, which is the same failure as counting every flow equally, in the opposite direction."}},
+    {"@type":"Question","name":"Where are birthday, quiz result and replenishment flows?","acceptedAnswer":{"@type":"Answer","text":"Out of scope on purpose. They are worth building for some apparel brands and worth nothing for others, and adding them would pad the denominator so every score drifts down for a reason that has nothing to do with the eight flows that carry revenue. This tool scores the eight that carry it. If you run a strong birthday flow, count it as a bonus rather than trying to fit it into a slot here."}},
+    {"@type":"Question","name":"My score is high. Does that mean my email is in good shape?","acceptedAnswer":{"@type":"Answer","text":"It means the structure is in place. The score only reflects whether each flow is running, so a flow with three thin emails scores the same as a well built one. Read a high score as permission to stop building and start improving: open each live flow, read it as a shopper deciding between two sizes, and check whether it does more than repeat the discount from the welcome series."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'email-flow-scorecard';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var pct = T.percent, ratio = T.ratio, count = T.count;
+
+  /* the canonical order and the weights both come out of the formula file, so
+     nothing on this page restates a model constant from memory */
+  var SEED = window.RISE_TOOLS[SLUG].compute({});
+  var FLOWS = SEED.raw.canonical_order;
+  var WEIGHT = SEED.raw.weights;
+
+  var STATUS = ['absent', 'partial', 'live'];
+  var WORD = { absent: 'ABSENT', partial: 'PARTIAL', live: 'LIVE' };
+  var SAY = { absent: 'absent', partial: 'partial', live: 'live' };
+  var NOTE = {
+    live: 'live, so the full weight counts',
+    partial: 'partial, so half the weight counts',
+    absent: 'absent, so none of the weight counts'
+  };
+  var COLOR = { live: 'var(--gold)', partial: 'var(--amber-2)', absent: 'var(--grey-1)' };
+  var RANK = { live: 0, partial: 1, absent: 2 };
+
+  var NAME = {
+    welcome: 'Welcome series',
+    abandoned_cart: 'Abandoned cart',
+    browse_abandon: 'Browse abandonment',
+    post_purchase: 'Post-purchase',
+    winback: 'Winback',
+    sunset: 'Sunset',
+    back_in_stock: 'Back in stock',
+    vip: 'VIP'
+  };
+
+  var BAND = {
+    'complete': { cls: 't-safe', chip: 'COMPLETE' },
+    'solid with gaps at the edges': { cls: 't-safe', chip: 'SOLID' },
+    'core covered, revenue leaking': { cls: 't-fix', chip: 'LEAKING' },
+    'half the engine missing': { cls: 't-not', chip: 'HALF MISSING' },
+    'flows are not running': { cls: 't-not', chip: 'NOT RUNNING' }
+  };
+
+  var DEFAULTS = {
+    welcome: 'live',
+    abandoned_cart: 'live',
+    browse_abandon: 'absent',
+    post_purchase: 'partial',
+    winback: 'absent',
+    sunset: 'absent',
+    back_in_stock: 'absent',
+    vip: 'absent'
+  };
+
+  var CROSS = ['email-roi-calculator', 'email-list-value-calculator', 'repeat-purchase-rate', 'ltv', 'cac', 'aov'];
+  var GLYPH = {
+    'email-roi-calculator': 'ROI', 'email-list-value-calculator': 'LIST',
+    'repeat-purchase-rate': 'RPR', 'ltv': 'LTV', 'cac': 'CAC', 'aov': 'AOV'
+  };
+
+  function el(id) { return document.getElementById(id); }
+  function n1(x) { return T.roundDp(x, 1).toFixed(1); }
+  function join(list, empty) { return list.length ? list.join(' + ') : empty; }
+
+  /* ------------------------------------------------------------- inputs */
+  function readInputs() {
+    var i = {};
+    FLOWS.forEach(function (f) {
+      var v = Math.round(T.clamp(parseFloat(el(f + '_status_r').value), 0, 2));
+      i[f + '_status'] = STATUS[isFinite(v) ? v : 0] || 'absent';
+    });
+    return i;
+  }
+  function setField(f, status) {
+    var idx = STATUS.indexOf(status);
+    if (idx < 0) idx = 0;
+    var s = el(f + '_status_r');
+    s.value = idx;
+    s.setAttribute('aria-valuetext', SAY[STATUS[idx]]);
+    el(f + '_status_v').textContent = WORD[STATUS[idx]];
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint() {
+    var i = readInputs();
+    var o = window.RISE_TOOLS[SLUG].compute(i);
+    lastInputs = i; lastOut = o;
+
+    var partials = FLOWS.filter(function (f) { return i[f + '_status'] === 'partial'; });
+    var anyPartial = partials.length > 0;
+
+    /* headline: gold numerals always, the chip carries the colour */
+    el('bigNum').innerHTML = ratio(o.score) + '<span class="per"> of 100</span>';
+    el('mbarNum').textContent = ratio(o.score);
+
+    var b = BAND[o.grade_band] || BAND['flows are not running'];
+    ['tierChip', 'mbarTier'].forEach(function (id) {
+      var t = el(id);
+      t.className = 'tier ' + b.cls;
+      t.textContent = b.chip;
+    });
+
+    el('rangeLine').innerHTML = anyPartial
+      ? 'Between <b>' + ratio(o.score_low) + '</b> and <b>' + ratio(o.score_high) + '</b>, and the band reads ' + o.grade_band
+      : 'A single number, and the band reads ' + o.grade_band;
+
+    /* stacked bar: one segment per flow, width is its weight, colour is its
+       status. Segments are ordered live, then partial, then absent, so the
+       filled part of the bar is contiguous and the score mark lands on it. */
+    var bar = el('wfBar');
+    FLOWS.forEach(function (f, idx) {
+      var st = i[f + '_status'];
+      var seg = bar.querySelector('.seg[data-k="' + f + '"]');
+      seg.style.width = WEIGHT[f] + '%';
+      seg.style.background = COLOR[st];
+      seg.style.order = RANK[st] * 10 + idx;
+    });
+    el('wfMark').style.left = o.score + '%';
+    el('wfScale').textContent = 'of 100 points';
+    el('wfMarkCap').textContent = 'The white line is your weighted score. Gold is live, amber is partial, grey is missing.';
+
+    FLOWS.forEach(function (f) {
+      var st = i[f + '_status'];
+      var earned = WEIGHT[f] - o.missing_points_per_flow[f];
+      el('dot_' + f).style.background = COLOR[st];
+      el('nm_' + f).textContent = NAME[f] + ', ' + SAY[st];
+      el('lg_' + f).textContent = ratio(earned) + ' of ' + count(WEIGHT[f]);
+    });
+    el('lg_result').textContent = ratio(o.score) + ' of 100';
+
+    /* the biggest gaps, ranked by the points they cost */
+    var top = o.top_3_missing;
+    if (!top.length) {
+      el('bindMain').textContent = 'Nothing is missing. The audit moves from presence to depth, and this tool only measures presence.';
+      el('bindFix').textContent = '';
+      el('bindDrag').textContent = '';
+    } else {
+      el('bindMain').innerHTML = NAME[top[0][0]] + ' is the biggest gap at <b>' + ratio(top[0][1]) + ' points</b>.';
+      el('bindFix').textContent = o.impact_statements[0].statement;
+      var rest = top.slice(1).map(function (row) {
+        return NAME[row[0]] + ' at ' + ratio(row[1]) + ' points';
+      });
+      el('bindDrag').textContent = rest.length
+        ? 'Then ' + rest.join(', then ') + '.'
+        : 'That is the only gap left on the board.';
+    }
+    el('bindRepeat').textContent = 'A flat checklist would call this ' + pct(o.coverage_pct_unweighted, 2) +
+      ' covered. Weighted by what each flow carries, it reads ' + ratio(o.score) + ' of 100.';
+
+    /* the band */
+    el('scLow').textContent = ratio(o.score_low);
+    el('scMid').textContent = ratio(o.score);
+    el('scHigh').textContent = ratio(o.score_high);
+    var named = partials.map(function (f) { return NAME[f]; }).join(', ');
+    el('scLowA').textContent = anyPartial
+      ? 'Demoted to absent: ' + named + '.'
+      : 'Nothing was judged partial, so this end matches the headline.';
+    el('scMidA').textContent = anyPartial
+      ? 'Every partial counted for half its weight.'
+      : 'Every flow was judged absent or live.';
+    el('scHighA').textContent = anyPartial
+      ? 'Promoted to live: ' + named + '.'
+      : 'Nothing was judged partial, so this end matches the headline.';
+    el('scenNote').textContent = anyPartial
+      ? 'The wider this spread, the more of your score rests on how generous you were with the word partial. Open those flows and decide which end is true.'
+      : (o.notes.length ? o.notes[o.notes.length - 1] : '');
+
+    /* substituted arithmetic, monospace, one line per row */
+    var liveTerms = [], highTerms = [], factorTerms = [], missTerms = [];
+    FLOWS.forEach(function (f) {
+      var st = i[f + '_status'];
+      var factor = st === 'live' ? 1 : (st === 'partial' ? 0.5 : 0);
+      var earned = WEIGHT[f] - o.missing_points_per_flow[f];
+      el('m_' + f).textContent = ratio(earned);
+      el('mx_' + f).innerHTML = count(WEIGHT[f]) + ' x ' + n1(factor) + ' = ' + ratio(earned) +
+        ' points  <em>' + NOTE[st] + '</em>';
+      if (st === 'live') liveTerms.push(count(WEIGHT[f]));
+      if (st !== 'absent') highTerms.push(count(WEIGHT[f]));
+      factorTerms.push(n1(factor));
+      if (o.missing_points_per_flow[f] > 0) missTerms.push(ratio(o.missing_points_per_flow[f]));
+    });
+
+    el('m_score').textContent = ratio(o.score);
+    el('m_low').textContent = ratio(o.score_low);
+    el('mx_low').innerHTML = join(liveTerms, '0') + ' = ' + ratio(o.score_low) +
+      '  <em>only the flows you marked live</em>';
+    el('m_high').textContent = ratio(o.score_high);
+    el('mx_high').innerHTML = join(highTerms, '0') + ' = ' + ratio(o.score_high) +
+      '  <em>every flow that is not absent, counted in full</em>';
+
+    var missTotal = FLOWS.reduce(function (a, f) { return a + o.missing_points_per_flow[f]; }, 0);
+    el('m_missing').textContent = ratio(missTotal);
+    el('mx_missing').innerHTML = missTerms.length
+      ? join(missTerms, '0') + ' = ' + ratio(missTotal) + '  <em>the points the missing and half-built flows are costing you</em>'
+      : '<em>Nothing is missing, so there are no points left on the table.</em>';
+
+    el('m_cov').textContent = pct(o.coverage_pct_unweighted, 2);
+    el('mx_cov').innerHTML = '(' + factorTerms.join(' + ') + ') / 8 x 100 = ' + pct(o.coverage_pct_unweighted, 2) +
+      '  <em>what a flat checklist would have told you, with every flow counted the same</em>';
+
+    /* state note */
+    var touched = FLOWS.some(function (f) { return i[f + '_status'] !== DEFAULTS[f]; });
+    el('stateNote').textContent = touched ? 'running on your flows' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  FLOWS.forEach(function (f) {
+    el('w_' + f).textContent = count(WEIGHT[f]);
+    var s = el(f + '_status_r');
+    s.addEventListener('input', function () {
+      setField(f, STATUS[Math.round(T.clamp(parseFloat(s.value), 0, 2))] || 'absent');
+      paint();
+    });
+  });
+
+  el('resetBtn').addEventListener('click', function () {
+    FLOWS.forEach(function (f) { setField(f, DEFAULTS[f]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function () {
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function (slug) {
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function () {
+    var q = new URLSearchParams(location.search);
+    FLOWS.forEach(function (f) {
+      var v = q.get(f + '_status');
+      if (v !== null && STATUS.indexOf(v) >= 0) setField(f, v);
+      else setField(f, readInputs()[f + '_status']);
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function () { return lastInputs; },
+    getOutputs: function () {
+      if (!lastOut) return {};
+      return {
+        score: lastOut.score,
+        score_low: lastOut.score_low,
+        score_high: lastOut.score_high,
+        score_band: lastOut.score_band,
+        coverage_pct_unweighted: lastOut.coverage_pct_unweighted,
+        grade_band: lastOut.grade_band,
+        top_3_missing: lastOut.top_3_missing
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,977 @@
+[
+  {
+    "slug": "mer-calculator",
+    "name": "TV1 healthy blended account, defaults",
+    "inputs": {
+      "total_revenue": 250000,
+      "total_ad_spend": 50000,
+      "new_customer_revenue": 150000,
+      "cm_pct": 55,
+      "return_rate_pct": 25,
+      "return_cost_pct": 12,
+      "opex_period": 0
+    },
+    "expected": {
+      "mer": 5.0,
+      "amer": 3.0,
+      "cm_rate_ra_pct": 38.25,
+      "breakeven_mer": 2.61,
+      "breakeven_mer_low": 2.4,
+      "breakeven_mer_high": 2.87,
+      "target_mer_all_in": 2.61,
+      "headroom": 2.39,
+      "headroom_pct": 91.25,
+      "contribution_after_ads": 45625.0
+    },
+    "hand_check": "cm_rate_ra = 0.75*0.55 - 0.25*0.12 = 0.4125 - 0.03 = 0.3825. 1/0.3825 = 2.6143790849 -> 2.61. 250000*0.3825 = 95625; 95625 - 50000 = 45625. headroom = 5 - 2.6143790849 = 2.3856209 -> 2.39. headroom_pct = (95625/50000 - 1)*100 = 91.25. Low: r=0.20 -> 0.44 - 0.024 = 0.416; 1/0.416 = 2.4038461 -> 2.40. High: r=0.30 -> 0.385 - 0.036 = 0.349; 1/0.349 = 2.8653295 -> 2.87."
+  },
+  {
+    "slug": "mer-calculator",
+    "name": "TV2 zero ad spend + opex filled (divide-by-zero guard)",
+    "inputs": {
+      "total_revenue": 100000,
+      "total_ad_spend": 0,
+      "new_customer_revenue": null,
+      "cm_pct": 50,
+      "return_rate_pct": 20,
+      "return_cost_pct": 10,
+      "opex_period": 20000
+    },
+    "expected": {
+      "mer": null,
+      "amer": null,
+      "cm_rate_ra_pct": 38.0,
+      "breakeven_mer": 2.63,
+      "breakeven_mer_low": 2.44,
+      "breakeven_mer_high": 2.86,
+      "target_mer_all_in": null,
+      "headroom": null,
+      "headroom_pct": null,
+      "contribution_after_ads": 38000.0
+    },
+    "hand_check": "cm_rate_ra = 0.80*0.50 - 0.20*0.10 = 0.40 - 0.02 = 0.38. 1/0.38 = 2.6315789 -> 2.63. Low r=0.15: 0.425 - 0.015 = 0.41; 1/0.41 = 2.4390244 -> 2.44. High r=0.25: 0.375 - 0.025 = 0.35; 1/0.35 = 2.8571429 -> 2.86. contribution = 100000*0.38 - 0 = 38000."
+  },
+  {
+    "slug": "mer-calculator",
+    "name": "TV3 returns eat the margin (negative contribution rate)",
+    "inputs": {
+      "total_revenue": 80000,
+      "total_ad_spend": 40000,
+      "new_customer_revenue": 60000,
+      "cm_pct": 20,
+      "return_rate_pct": 40,
+      "return_cost_pct": 35,
+      "opex_period": 10000
+    },
+    "expected": {
+      "mer": 2.0,
+      "amer": 1.5,
+      "cm_rate_ra_pct": -2.0,
+      "breakeven_mer": null,
+      "breakeven_mer_low": 133.33,
+      "breakeven_mer_high": null,
+      "target_mer_all_in": null,
+      "headroom": null,
+      "headroom_pct": null,
+      "contribution_after_ads": -41600.0
+    },
+    "hand_check": "cm_rate_ra = 0.60*0.20 - 0.40*0.35 = 0.12 - 0.14 = -0.02 -> break-even null. contribution = 80000*(-0.02) - 40000 = -1600 - 40000 = -41600. Low r=0.35: 0.65*0.20 - 0.35*0.35 = 0.13 - 0.1225 = 0.0075; 1/0.0075 = 133.3333 -> 133.33. High r=0.45: 0.11 - 0.1575 = -0.0475 -> null. Range renders '133.33 to not reachable'."
+  },
+  {
+    "slug": "cpm-calculator",
+    "name": "TV1 CPM from spend",
+    "inputs": {
+      "mode": "cpm_from_spend",
+      "ad_spend": 5000,
+      "impressions": 500000
+    },
+    "expected": {
+      "cpm": 10.0
+    },
+    "hand_check": "5000 / 500000 = 0.01; x 1000 = 10.00."
+  },
+  {
+    "slug": "cpm-calculator",
+    "name": "TV2 impressions from spend + round-trip",
+    "inputs": {
+      "mode": "impressions_from_spend",
+      "ad_spend": 5000,
+      "cpm": 8
+    },
+    "expected": {
+      "impressions": 625000,
+      "roundtrip_spend_from_cpm": 5000.0
+    },
+    "hand_check": "5000 / 8 = 625; x 1000 = 625000. Round-trip: 8 * 625000 / 1000 = 5000.00. Assert both."
+  },
+  {
+    "slug": "cpm-calculator",
+    "name": "TV3 affordable CPM with range",
+    "inputs": {
+      "mode": "affordable_cpm",
+      "ctr_pct": 1.2,
+      "cvr_pct": 2.5,
+      "aov": 85,
+      "cm_pct": 55,
+      "return_rate_pct": 25,
+      "return_cost_pct": 12
+    },
+    "expected": {
+      "raco": 32.51,
+      "orders_per_1000_impressions": 0.3,
+      "breakeven_cpm": 9.75,
+      "breakeven_cpm_low": 6.24,
+      "breakeven_cpm_high": 14.05
+    },
+    "hand_check": "raco = 85*(0.75*0.55 - 0.25*0.12) = 85*(0.4125 - 0.03) = 85*0.3825 = 32.5125 -> 32.51. orders/1000 = 1000*0.012*0.025 = 0.3. breakeven = 0.3*32.5125 = 9.75375 -> 9.75. Low = 0.64*9.75375 = 6.2424 -> 6.24. High = 1.44*9.75375 = 14.0454 -> 14.05. Ranges use the unrounded 9.75375."
+  },
+  {
+    "slug": "cpc-calculator",
+    "name": "TV1 CPC from spend + round-trip",
+    "inputs": {
+      "mode": "cpc_from_spend",
+      "ad_spend": 5000,
+      "clicks": 2500
+    },
+    "expected": {
+      "cpc": 2.0,
+      "roundtrip_spend_from_cpc": 5000.0
+    },
+    "hand_check": "5000 / 2500 = 2.00. Round-trip: 2.00 * 2500 = 5000.00."
+  },
+  {
+    "slug": "cpc-calculator",
+    "name": "TV2 zero clicks (divide-by-zero guard)",
+    "inputs": {
+      "mode": "cpc_from_spend",
+      "ad_spend": 900,
+      "clicks": 0
+    },
+    "expected": {
+      "cpc": null,
+      "message": "Enter clicks above 0."
+    },
+    "hand_check": "Denominator 0 -> null, never Infinity, never NaN rendered to screen."
+  },
+  {
+    "slug": "cpc-calculator",
+    "name": "TV3 max affordable CPC with range",
+    "inputs": {
+      "mode": "max_cpc",
+      "cvr_pct": 2.4,
+      "aov": 85,
+      "cm_pct": 55,
+      "return_rate_pct": 25,
+      "return_cost_pct": 12
+    },
+    "expected": {
+      "raco": 32.51,
+      "max_cpc": 0.78,
+      "max_cpc_low": 0.57,
+      "max_cpc_high": 1.02,
+      "implied_cpa_at_max_cpc": 32.51
+    },
+    "hand_check": "raco = 85*(0.4125 - 0.03) = 32.5125. max_cpc = 0.024 * 32.5125 = 0.78030 -> 0.78. Low: cvr 0.0192, r=0.30 -> 0.385 - 0.036 = 0.349; raco_low = 85*0.349 = 29.665; 0.0192*29.665 = 0.5695680 -> 0.57. High: cvr 0.0288, r=0.20 -> 0.44 - 0.024 = 0.416; raco_high = 85*0.416 = 35.36; 0.0288*35.36 = 1.0183680 -> 1.02."
+  },
+  {
+    "slug": "cpa-calculator",
+    "name": "TV1 CPA above both ceilings, full 12-month window",
+    "inputs": {
+      "ad_spend": 5000,
+      "conversions": 60,
+      "aov": 85,
+      "cm_pct": 55,
+      "return_rate_pct": 25,
+      "return_cost_pct": 12,
+      "repeat_orders_12mo": 0.6,
+      "payback_window_months": 12
+    },
+    "expected": {
+      "cpa_actual": 83.33,
+      "max_cpa_first_order": 32.51,
+      "repeat_in_window": 0.6,
+      "max_cpa_ltv": 52.02,
+      "max_cpa_ltv_low": 43.01,
+      "max_cpa_ltv_high": 61.88,
+      "headroom_first": -50.82,
+      "headroom_ltv": -31.31,
+      "verdict": "does not pay back"
+    },
+    "hand_check": "cpa = 5000/60 = 83.333333 -> 83.33. raco = 85*0.3825 = 32.5125 -> 32.51. repeat_in_window = 0.6*(12/12) = 0.6. ltv ceiling = 32.5125*1.6 = 52.02. headroom_first = 32.5125 - 83.333333 = -50.820833 -> -50.82. headroom_ltv = 52.02 - 83.333333 = -31.313333 -> -31.31. Low: r=0.30 -> raco 29.665; x (1+0.45) = 43.01425 -> 43.01. High: r=0.20 -> raco 35.36; x (1+0.75) = 61.88."
+  },
+  {
+    "slug": "cpa-calculator",
+    "name": "TV2 no conversions yet, no repeat data",
+    "inputs": {
+      "ad_spend": 3000,
+      "conversions": 0,
+      "aov": 120,
+      "cm_pct": 60,
+      "return_rate_pct": 30,
+      "return_cost_pct": 15,
+      "repeat_orders_12mo": 0,
+      "payback_window_months": 12
+    },
+    "expected": {
+      "cpa_actual": null,
+      "max_cpa_first_order": 45.0,
+      "repeat_in_window": 0.0,
+      "max_cpa_ltv": 45.0,
+      "max_cpa_ltv_low": 40.5,
+      "max_cpa_ltv_high": 49.5,
+      "headroom_first": null,
+      "headroom_ltv": null,
+      "verdict": null
+    },
+    "hand_check": "raco = 120*(0.70*0.60 - 0.30*0.15) = 120*(0.42 - 0.045) = 120*0.375 = 45.00. repeat 0 -> ltv ceiling equals first-order ceiling. Low: r=0.35 -> 0.65*0.60 - 0.35*0.15 = 0.39 - 0.0525 = 0.3375; 120*0.3375 = 40.50. High: r=0.25 -> 0.45 - 0.0375 = 0.4125; 120*0.4125 = 49.50."
+  },
+  {
+    "slug": "cpa-calculator",
+    "name": "TV3 profitable on first order, 6-month window",
+    "inputs": {
+      "ad_spend": 2000,
+      "conversions": 100,
+      "aov": 60,
+      "cm_pct": 50,
+      "return_rate_pct": 20,
+      "return_cost_pct": 10,
+      "repeat_orders_12mo": 1.2,
+      "payback_window_months": 6
+    },
+    "expected": {
+      "cpa_actual": 20.0,
+      "max_cpa_first_order": 22.8,
+      "repeat_in_window": 0.6,
+      "max_cpa_ltv": 36.48,
+      "max_cpa_ltv_low": 30.45,
+      "max_cpa_ltv_high": 43.05,
+      "headroom_first": 2.8,
+      "headroom_ltv": 16.48,
+      "verdict": "pays back on the first order"
+    },
+    "hand_check": "cpa = 2000/100 = 20.00. raco = 60*(0.80*0.50 - 0.20*0.10) = 60*(0.40 - 0.02) = 60*0.38 = 22.80. repeat_in_window = 1.2*(6/12) = 0.6. ltv = 22.8*1.6 = 36.48. Low: r=0.25 -> 0.375 - 0.025 = 0.35; 60*0.35 = 21.00; x1.45 = 30.45. High: r=0.15 -> 0.425 - 0.015 = 0.41; 60*0.41 = 24.60; x1.75 = 43.05."
+  },
+  {
+    "slug": "ctr-calculator",
+    "name": "TV1 significant lift at 50k impressions per variant",
+    "inputs": {
+      "impressions_a": 50000,
+      "clicks_a": 500,
+      "impressions_b": 50000,
+      "clicks_b": 620,
+      "confidence_level": 95
+    },
+    "expected": {
+      "ctr_a_pct": 1.0,
+      "ctr_a_ci": [
+        0.91,
+        1.09
+      ],
+      "ctr_b_pct": 1.24,
+      "ctr_b_ci": [
+        1.14,
+        1.34
+      ],
+      "lift_pct": 24.0,
+      "z": 3.606,
+      "p_value": 0.0003,
+      "significant": true,
+      "n_per_variant": 30178
+    },
+    "hand_check": "p1 = 0.01, p2 = 0.0124. p_pool = 1120/100000 = 0.0112. se = sqrt(0.0112*0.9888*0.00004) = sqrt(4.429824e-7) = 6.6556e-4. z = 0.0024/6.6556e-4 = 3.6059359 -> 3.606. p = 2*(1-Phi(3.6059359)) = 0.000311103 -> 0.0003. n = (2.8016^2 * (0.0099 + 0.01224624)) / 0.0024^2 = (7.84896 * 0.02214624)/5.76e-6 = 30177.95 -> ceil 30178. CI A: 1.96*sqrt(0.0099/50000) = 8.7214e-4 -> [0.91%, 1.09%]. CI B: 1.96*sqrt(0.01224624/50000) = 9.6800e-4 -> [1.14%, 1.34%]."
+  },
+  {
+    "slug": "ctr-calculator",
+    "name": "TV2 bigger apparent lift, too small to call",
+    "inputs": {
+      "impressions_a": 2000,
+      "clicks_a": 20,
+      "impressions_b": 2000,
+      "clicks_b": 26,
+      "confidence_level": 95
+    },
+    "expected": {
+      "ctr_a_pct": 1.0,
+      "ctr_a_ci": [
+        0.56,
+        1.44
+      ],
+      "ctr_b_pct": 1.3,
+      "ctr_b_ci": [
+        0.8,
+        1.8
+      ],
+      "lift_pct": 30.0,
+      "z": 0.89,
+      "p_value": 0.3736,
+      "significant": false,
+      "n_per_variant": 19824
+    },
+    "hand_check": "p_pool = 46/4000 = 0.0115. se = sqrt(0.0115*0.9885*0.001) = sqrt(1.136775e-5) = 3.371609e-3. z = 0.003/0.003371609 = 0.8897828 -> 0.890. p = 2*(1-Phi(0.8897828)) = 0.3735825 -> 0.3736. n = (7.84896*(0.0099 + 0.012831))/9e-6 = 19823.86 -> ceil 19824. The teaching line: a 30% lift is bigger than TV1's 24% and still unreadable."
+  },
+  {
+    "slug": "ctr-calculator",
+    "name": "TV3 single variant, B left empty",
+    "inputs": {
+      "impressions_a": 120000,
+      "clicks_a": 1080,
+      "impressions_b": null,
+      "clicks_b": null,
+      "confidence_level": 95
+    },
+    "expected": {
+      "ctr_a_pct": 0.9,
+      "ctr_a_ci": [
+        0.85,
+        0.95
+      ],
+      "ctr_b_pct": null,
+      "ctr_b_ci": null,
+      "lift_pct": null,
+      "z": null,
+      "p_value": null,
+      "significant": null,
+      "n_per_variant": null
+    },
+    "hand_check": "1080/120000 = 0.009 -> 0.90%. 1.96*sqrt(0.009*0.991/120000) = 1.96*2.72626e-4 = 5.3435e-4 -> [0.8466%, 0.9534%] -> [0.85%, 0.95%]. Everything comparative stays null, not zero."
+  },
+  {
+    "slug": "conversion-rate-calculator",
+    "name": "TV1 all four sources filled",
+    "inputs": {
+      "paid_social_sessions": 40000,
+      "paid_social_orders": 640,
+      "paid_search_sessions": 15000,
+      "paid_search_orders": 375,
+      "email_sessions": 8000,
+      "email_orders": 320,
+      "direct_organic_sessions": 25000,
+      "direct_organic_orders": 500
+    },
+    "expected": {
+      "cvr_per_source": {
+        "paid_social": 1.6,
+        "paid_search": 2.5,
+        "email": 4.0,
+        "direct_organic": 2.0
+      },
+      "total_sessions": 88000,
+      "total_orders": 1835,
+      "blended_cvr_pct": 2.09,
+      "blended_ci": [
+        1.99,
+        2.18
+      ],
+      "spread_pp": 2.4,
+      "best_minus_blended_pp": 1.91,
+      "session_shares_pct": {
+        "paid_social": 45.45,
+        "paid_search": 17.05,
+        "email": 9.09,
+        "direct_organic": 28.41
+      },
+      "mix_shift_pct": 2.04,
+      "low_order_rows": []
+    },
+    "hand_check": "640/40000 = 1.60%; 375/15000 = 2.50%; 320/8000 = 4.00%; 500/25000 = 2.00%. Blended = 1835/88000 = 0.02085227 -> 2.09%. Spread = 4.00 - 1.60 = 2.40pp. Best minus blended = 4.00 - 2.085227 = 1.914773 -> 1.91pp. Shares: 40000/88000 = 45.4545 -> 45.45; 15000/88000 = 17.0455 -> 17.05; 8000/88000 = 9.0909 -> 9.09; 25000/88000 = 28.4091 -> 28.41. Mix shift: +8000 social sessions at 1.6% = +128 orders -> 1963/96000 = 2.0448% -> 2.04%, LOWER than 2.09% with nothing on the site changed. CI: 1.96*sqrt(0.02085227*0.97914773/88000) = 9.4410e-4 -> [1.99%, 2.18%]."
+  },
+  {
+    "slug": "conversion-rate-calculator",
+    "name": "TV2 two sources filled, email and direct empty",
+    "inputs": {
+      "paid_social_sessions": 10000,
+      "paid_social_orders": 150,
+      "paid_search_sessions": 4000,
+      "paid_search_orders": 120,
+      "email_sessions": null,
+      "email_orders": null,
+      "direct_organic_sessions": null,
+      "direct_organic_orders": null
+    },
+    "expected": {
+      "cvr_per_source": {
+        "paid_social": 1.5,
+        "paid_search": 3.0,
+        "email": null,
+        "direct_organic": null
+      },
+      "total_sessions": 14000,
+      "total_orders": 270,
+      "blended_cvr_pct": 1.93,
+      "blended_ci": [
+        1.7,
+        2.16
+      ],
+      "spread_pp": 1.5,
+      "best_minus_blended_pp": 1.07,
+      "session_shares_pct": {
+        "paid_social": 71.43,
+        "paid_search": 28.57
+      },
+      "mix_shift_pct": 1.88,
+      "low_order_rows": []
+    },
+    "hand_check": "150/10000 = 1.50%; 120/4000 = 3.00%. Blended = 270/14000 = 1.928571% -> 1.93%. Best minus blended = 3.00 - 1.928571 = 1.071429 -> 1.07pp. Shares 71.4286 -> 71.43 and 28.5714 -> 28.57. Mix shift: +2000 social sessions at 1.5% = +30 orders -> 300/16000 = 1.875% -> 1.88%. CI: 1.96*sqrt(0.01928571*0.98071429/14000) = 2.2775e-3 -> [1.70%, 2.16%]. Empty rows stay null and are excluded from the blend."
+  },
+  {
+    "slug": "conversion-rate-calculator",
+    "name": "TV3 one zero-session row and one thin row",
+    "inputs": {
+      "paid_social_sessions": 0,
+      "paid_social_orders": 0,
+      "paid_search_sessions": 5000,
+      "paid_search_orders": 22,
+      "email_sessions": null,
+      "email_orders": null,
+      "direct_organic_sessions": null,
+      "direct_organic_orders": null
+    },
+    "expected": {
+      "cvr_per_source": {
+        "paid_social": null,
+        "paid_search": 0.44,
+        "email": null,
+        "direct_organic": null
+      },
+      "total_sessions": 5000,
+      "total_orders": 22,
+      "blended_cvr_pct": 0.44,
+      "blended_ci": [
+        0.26,
+        0.62
+      ],
+      "spread_pp": null,
+      "best_minus_blended_pp": null,
+      "session_shares_pct": {
+        "paid_search": 100.0
+      },
+      "mix_shift_pct": null,
+      "low_order_rows": [
+        "paid_search"
+      ]
+    },
+    "hand_check": "Paid social has 0 sessions -> excluded, cvr null, no divide-by-zero. 22/5000 = 0.44%. Only one included row so spread is null. CI: 1.96*sqrt(0.0044*0.9956/5000) = 1.83459e-3 -> [0.2565%, 0.6235%] -> [0.26%, 0.62%]. 22 orders < 30 -> flagged. mix_shift null because the paid social row is not included."
+  },
+  {
+    "slug": "meta-ads-budget-calculator",
+    "name": "TV1 default state, lands just above break-even",
+    "inputs": {
+      "target_new_customers": 300,
+      "retargeting_share_pct": 20,
+      "prospecting_cpm": 15,
+      "prospecting_ctr_pct": 1.4,
+      "prospecting_cvr_pct": 2.2,
+      "retargeting_cpm": 22,
+      "retargeting_ctr_pct": 2.0,
+      "retargeting_cvr_pct": 5.5,
+      "contribution_per_order": 55,
+      "return_rate_pct": 25,
+      "return_cost_per_return": 10
+    },
+    "expected": {
+      "retarget_share_used_pct": 20.0,
+      "cac_prospecting": 48.7,
+      "cac_retargeting": 20.0,
+      "blended_cac": 37.84,
+      "total_budget": 11352.17,
+      "budget_prospecting": 9081.74,
+      "budget_retargeting": 2270.43,
+      "orders_prospecting": 186.48,
+      "orders_retargeting": 113.52,
+      "raco": 38.75,
+      "max_affordable_budget": 11625.0,
+      "net_first_order": 272.83,
+      "budget_low": 9460.14,
+      "budget_high": 14190.21,
+      "net_low": 2164.86,
+      "net_high": -2565.21
+    },
+    "hand_check": "k_p = 1000*0.014*0.022/15 = 0.308/15 = 0.0205333333333; 1/k_p = 48.7012987 -> 48.70. k_r = 1000*0.020*0.055/22 = 1.1/22 = 0.05; 1/k_r = 20.00. k_blend = 0.8*0.0205333333333 + 0.2*0.05 = 0.0164266666667 + 0.01 = 0.0264266666667; 1/k_blend = 37.8405651 -> 37.84. Budget = 300/0.0264266666667 = 11352.1695257 -> 11352.17. Prospecting = 11352.1695257 * 0.8 = 9081.7356206 -> 9081.74. Retargeting = 2270.4339051 -> 2270.43 (and 9081.74 + 2270.43 = 11352.17, so the split reconciles at display precision). Orders: 9081.7356206*0.0205333333 = 186.4783047 -> 186.48; 2270.4339051*0.05 = 113.5216953 -> 113.52; sum 300.00. raco = 55*0.75 - 10*0.25 = 41.25 - 2.5 = 38.75. max_affordable = 300*38.75 = 11625.00. net = 11625 - 11352.1695257 = 272.8304743 -> 272.83. Low = 11352.1695257/1.2 = 9460.1412714 -> 9460.14; high = 11352.1695257/0.8 = 14190.2119072 -> 14190.21. net_low = 11625 - 9460.1412714 = 2164.8587286 -> 2164.86; net_high = 11625 - 14190.2119072 = -2565.2119072 -> -2565.21.",
+    "rounding_note": "Every derived figure must be computed from the UNROUNDED total_budget and rounded exactly once, at display. Rounding total_budget to 11352.17 first and then splitting it produces 9081.736 -> 9081.74 either way here, but the discipline matters on the orders lines, where a rounded budget breaks the 186.48 + 113.52 = 300.00 reconciliation. This vector pins that rule."
+  },
+  {
+    "slug": "meta-ads-budget-calculator",
+    "name": "TV2 prospecting only, retargeting share 0",
+    "inputs": {
+      "target_new_customers": 100,
+      "retargeting_share_pct": 0,
+      "prospecting_cpm": 20,
+      "prospecting_ctr_pct": 1.0,
+      "prospecting_cvr_pct": 2.0,
+      "retargeting_cpm": null,
+      "retargeting_ctr_pct": null,
+      "retargeting_cvr_pct": null,
+      "contribution_per_order": 40,
+      "return_rate_pct": 20,
+      "return_cost_per_return": 8
+    },
+    "expected": {
+      "retarget_share_used_pct": 0.0,
+      "cac_prospecting": 100.0,
+      "cac_retargeting": null,
+      "blended_cac": 100.0,
+      "total_budget": 10000.0,
+      "budget_prospecting": 10000.0,
+      "budget_retargeting": 0.0,
+      "orders_prospecting": 100.0,
+      "orders_retargeting": 0.0,
+      "raco": 30.4,
+      "max_affordable_budget": 3040.0,
+      "net_first_order": -6960.0,
+      "budget_low": 8333.33,
+      "budget_high": 12500.0,
+      "net_low": -5293.33,
+      "net_high": -9460.0
+    },
+    "hand_check": "k_p = 1000*0.01*0.02/20 = 0.2/20 = 0.01; CAC 100.00. s = 0 so k_blend = k_p. Budget = 100/0.01 = 10000.00. raco = 40*0.8 - 8*0.2 = 32 - 1.6 = 30.40. max_affordable = 3040.00. net = -6960.00. Low = 10000/1.2 = 8333.3333 -> 8333.33; high = 12500.00. net_low = 3040 - 8333.3333 = -5293.3333 -> -5293.33; net_high = 3040 - 12500 = -9460.00. Empty retargeting fields must not produce NaN anywhere."
+  },
+  {
+    "slug": "meta-ads-budget-calculator",
+    "name": "TV3 share clamp at 40 plus a zero-CVR prospecting segment",
+    "inputs": {
+      "target_new_customers": 250,
+      "retargeting_share_pct": 60,
+      "prospecting_cpm": 12,
+      "prospecting_ctr_pct": 0.8,
+      "prospecting_cvr_pct": 0,
+      "retargeting_cpm": 25,
+      "retargeting_ctr_pct": 2.5,
+      "retargeting_cvr_pct": 4.0,
+      "contribution_per_order": 60,
+      "return_rate_pct": 30,
+      "return_cost_per_return": 12
+    },
+    "expected": {
+      "retarget_share_used_pct": 40.0,
+      "cac_prospecting": null,
+      "cac_retargeting": 25.0,
+      "blended_cac": 62.5,
+      "total_budget": 15625.0,
+      "budget_prospecting": 9375.0,
+      "budget_retargeting": 6250.0,
+      "orders_prospecting": 0.0,
+      "orders_retargeting": 250.0,
+      "raco": 38.4,
+      "max_affordable_budget": 9600.0,
+      "net_first_order": -6025.0,
+      "budget_low": 13020.83,
+      "budget_high": 19531.25,
+      "net_low": -3420.83,
+      "net_high": -9931.25,
+      "warnings": [
+        "retargeting share clamped from 60% to 40%",
+        "retargeting above 30% of budget"
+      ]
+    },
+    "hand_check": "Clamp 60 -> 40, s = 0.4. k_p = 1000*0.008*0/12 = 0 -> cac_prospecting null (not Infinity). k_r = 1000*0.025*0.04/25 = 1/25 = 0.04 -> CAC 25.00. k_blend = 0.6*0 + 0.4*0.04 = 0.016 -> blended CAC 62.50. Budget = 250/0.016 = 15625.00, split 9375.00 / 6250.00. Orders: 0 and 6250*0.04 = 250.00. raco = 60*0.70 - 12*0.30 = 42 - 3.6 = 38.40. max_affordable = 9600.00, net = -6025.00. Low = 15625/1.2 = 13020.8333 -> 13020.83; high = 19531.25. net_low = 9600 - 13020.8333 = -3420.83; net_high = 9600 - 19531.25 = -9931.25. Note the honest ugly line: 60% of budget goes to a segment that spends 9375 to produce zero orders."
+  },
+  {
+    "slug": "google-ads-budget-calculator",
+    "name": "TV1 default state, brand caps at 135 orders",
+    "inputs": {
+      "target_new_customers": 250,
+      "brand_monthly_searches": 6000,
+      "brand_expected_ctr_pct": 25,
+      "brand_cpc": 0.6,
+      "brand_cvr_pct": 9.0,
+      "nonbrand_cpc": 2.2,
+      "nonbrand_cvr_pct": 1.8,
+      "contribution_per_order": 55,
+      "return_rate_pct": 25,
+      "return_cost_per_return": 10
+    },
+    "expected": {
+      "brand_clicks_max": 1500.0,
+      "brand_orders_max": 135.0,
+      "brand_orders": 135.0,
+      "brand_clicks_used": 1500.0,
+      "brand_budget": 900.0,
+      "remaining_orders": 115.0,
+      "nonbrand_clicks": 6388.89,
+      "nonbrand_budget": 14055.56,
+      "total_budget": 14955.56,
+      "brand_cac": 6.67,
+      "nonbrand_cac": 122.22,
+      "blended_cac_split": 59.82,
+      "naive_budget": 6481.48,
+      "naive_gap": 8474.07,
+      "naive_error_pct": -56.66,
+      "raco": 38.75,
+      "max_affordable_budget": 9687.5,
+      "net_first_order": -5268.06,
+      "total_low": 12612.96,
+      "total_high": 18469.44
+    },
+    "hand_check": "brand_clicks_max = 6000*0.25 = 1500. brand_orders_max = 1500*0.09 = 135 < 250 -> capped. clicks_used = 135/0.09 = 1500; budget = 900.00. remaining = 115. nonbrand_clicks = 115/0.018 = 6388.8889 -> 6388.89; budget = 6388.8889*2.20 = 14055.5556 -> 14055.56. total = 14955.5556 -> 14955.56. brand_cac = 0.60/0.09 = 6.6667 -> 6.67. nonbrand_cac = 2.20/0.018 = 122.2222 -> 122.22. blended = 14955.5556/250 = 59.8222 -> 59.82. naive_cpc = 1.40, naive_cvr = 5.4% -> naive_budget = 250*1.40/0.054 = 6481.4815 -> 6481.48; gap = 8474.0741 -> 8474.07; error = 6481.4815/14955.5556 - 1 = -0.566612 -> -56.66%. raco = 55*0.75 - 10*0.25 = 38.75; max_affordable = 9687.50; net = -5268.0556 -> -5268.06. total_low = 900 + 14055.5556/1.2 = 900 + 11712.963 = 12612.96; total_high = 900 + 17569.4444 = 18469.44."
+  },
+  {
+    "slug": "google-ads-budget-calculator",
+    "name": "TV2 brand covers the whole target, non-brand fields empty",
+    "inputs": {
+      "target_new_customers": 80,
+      "brand_monthly_searches": 20000,
+      "brand_expected_ctr_pct": 30,
+      "brand_cpc": 0.45,
+      "brand_cvr_pct": 10,
+      "nonbrand_cpc": null,
+      "nonbrand_cvr_pct": null,
+      "contribution_per_order": 45,
+      "return_rate_pct": 20,
+      "return_cost_per_return": 8
+    },
+    "expected": {
+      "brand_clicks_max": 6000.0,
+      "brand_orders_max": 600.0,
+      "brand_orders": 80.0,
+      "brand_clicks_used": 800.0,
+      "brand_budget": 360.0,
+      "remaining_orders": 0.0,
+      "nonbrand_clicks": 0.0,
+      "nonbrand_budget": 0.0,
+      "total_budget": 360.0,
+      "brand_cac": 4.5,
+      "nonbrand_cac": null,
+      "blended_cac_split": 4.5,
+      "naive_budget": null,
+      "naive_gap": null,
+      "naive_error_pct": null,
+      "raco": 34.4,
+      "max_affordable_budget": 2752.0,
+      "net_first_order": 2392.0,
+      "total_low": 360.0,
+      "total_high": 360.0
+    },
+    "hand_check": "brand_clicks_max = 20000*0.30 = 6000; orders_max = 600; capped by target -> 80. clicks_used = 80/0.10 = 800; budget = 800*0.45 = 360.00. remaining = 0 -> non-brand short-circuits to 0 with NO division, so the empty CVR never divides. raco = 45*0.8 - 8*0.2 = 36 - 1.6 = 34.40; max_affordable = 2752.00; net = +2392.00. Range collapses: 360.00 to 360.00."
+  },
+  {
+    "slug": "google-ads-budget-calculator",
+    "name": "TV3 brand cap binds hard and non-brand CVR is zero",
+    "inputs": {
+      "target_new_customers": 500,
+      "brand_monthly_searches": 2000,
+      "brand_expected_ctr_pct": 20,
+      "brand_cpc": 0.8,
+      "brand_cvr_pct": 8,
+      "nonbrand_cpc": 3.0,
+      "nonbrand_cvr_pct": 0,
+      "contribution_per_order": 70,
+      "return_rate_pct": 35,
+      "return_cost_per_return": 15
+    },
+    "expected": {
+      "brand_clicks_max": 400.0,
+      "brand_orders_max": 32.0,
+      "brand_orders": 32.0,
+      "brand_clicks_used": 400.0,
+      "brand_budget": 320.0,
+      "remaining_orders": 468.0,
+      "nonbrand_clicks": null,
+      "nonbrand_budget": null,
+      "total_budget": null,
+      "brand_cac": 10.0,
+      "nonbrand_cac": null,
+      "blended_cac_split": null,
+      "naive_budget": null,
+      "naive_gap": null,
+      "naive_error_pct": null,
+      "raco": 40.25,
+      "max_affordable_budget": 20125.0,
+      "net_first_order": null,
+      "total_low": null,
+      "total_high": null,
+      "cap_notice": "Brand search volume caps you at 32 orders; the other 468 must come from non-brand."
+    },
+    "hand_check": "brand_clicks_max = 2000*0.20 = 400; orders_max = 400*0.08 = 32. clicks_used = 32/0.08 = 400; budget = 320.00. remaining = 468 > 0 with nonbrand_cvr = 0 -> null propagation through nonbrand_clicks, nonbrand_budget, total_budget, blended CAC, net and both range ends. brand_cac = 0.80/0.08 = 10.00. raco = 70*0.65 - 15*0.35 = 45.5 - 5.25 = 40.25; max_affordable = 20125.00 still renders, because the ceiling does not depend on the unreachable plan. The naive comparison is suppressed rather than printed against a null: had it computed it would have read 500*1.90/0.04 = 23750.00, and printing that next to a null total is exactly the false-confidence failure this tool exists to avoid."
+  },
+  {
+    "slug": "email-roi-calculator",
+    "name": "TV1 default state, list actually costs money",
+    "inputs": {
+      "flow_revenue": 18000,
+      "campaign_revenue": 12000,
+      "platform_cost": 500,
+      "agency_time_cost": 1500,
+      "new_subscribers": 2500,
+      "subscriber_acquisition_cost": 1.2,
+      "cm_pct": 55,
+      "return_rate_pct": 25,
+      "return_cost_pct": 12
+    },
+    "expected": {
+      "gross_email_revenue": 30000.0,
+      "net_revenue_after_returns": 22500.0,
+      "returns_adjusted_contribution": 11475.0,
+      "acquisition_cost": 3000.0,
+      "total_cost": 5000.0,
+      "roi_naive_x": 15.0,
+      "roi_honest_x": 2.3,
+      "net_profit": 6475.0,
+      "flow_share_pct": 60.0,
+      "campaign_share_pct": 40.0,
+      "revenue_per_new_subscriber": 12.0,
+      "contribution_per_new_subscriber": 4.59,
+      "breakeven_sac": 3.79,
+      "roi_low_x": 1.69,
+      "roi_high_x": 3.28
+    },
+    "hand_check": "gross = 30000. cm_rate_ra = 0.75*0.55 - 0.25*0.12 = 0.3825 -> contribution = 11475.00. acquisition = 2500*1.20 = 3000. total_cost = 5000. naive = 30000/2000 = 15.00. honest = 11475/5000 = 2.295 -> 2.30 (this is an exact .xx5 boundary and is why the rounding helper uses toFixed(6) before rounding; a naive Math.round returns 2.29 here). net = 6475.00. breakeven_sac = (11475 - 2000)/2500 = 9475/2500 = 3.79. Low: r=0.30 -> 0.349 -> 10470; cost = 2000 + 2500*1.68 = 6200; 10470/6200 = 1.688710 -> 1.69. High: r=0.20 -> 0.416 -> 12480; cost = 2000 + 2500*0.72 = 3800; 12480/3800 = 3.284211 -> 3.28."
+  },
+  {
+    "slug": "email-roi-calculator",
+    "name": "TV2 acquisition data missing, ROI looks enormous",
+    "inputs": {
+      "flow_revenue": 9000,
+      "campaign_revenue": 3000,
+      "platform_cost": 300,
+      "agency_time_cost": 0,
+      "new_subscribers": 0,
+      "subscriber_acquisition_cost": 0,
+      "cm_pct": 60,
+      "return_rate_pct": 20,
+      "return_cost_pct": 10
+    },
+    "expected": {
+      "gross_email_revenue": 12000.0,
+      "net_revenue_after_returns": 9600.0,
+      "returns_adjusted_contribution": 5520.0,
+      "acquisition_cost": 0.0,
+      "total_cost": 300.0,
+      "roi_naive_x": 40.0,
+      "roi_honest_x": 18.4,
+      "net_profit": 5220.0,
+      "flow_share_pct": 75.0,
+      "campaign_share_pct": 25.0,
+      "revenue_per_new_subscriber": null,
+      "contribution_per_new_subscriber": null,
+      "breakeven_sac": null,
+      "roi_low_x": 17.0,
+      "roi_high_x": 19.8
+    },
+    "hand_check": "cm_rate_ra = 0.80*0.60 - 0.20*0.10 = 0.48 - 0.02 = 0.46 -> contribution = 5520.00. total_cost = 300. naive = 12000/300 = 40.00. honest = 5520/300 = 18.40. Subscriber lines all null, never 0. Range moves only on the return rate because acquisition cost is 0: low r=0.25 -> 0.425 -> 5100/300 = 17.00; high r=0.15 -> 0.495 -> 5940/300 = 19.80. The narrow band is the tell and the page names it."
+  },
+  {
+    "slug": "email-roi-calculator",
+    "name": "TV3 list bought at a loss",
+    "inputs": {
+      "flow_revenue": 4000,
+      "campaign_revenue": 2000,
+      "platform_cost": 400,
+      "agency_time_cost": 2000,
+      "new_subscribers": 8000,
+      "subscriber_acquisition_cost": 1.5,
+      "cm_pct": 40,
+      "return_rate_pct": 35,
+      "return_cost_pct": 20
+    },
+    "expected": {
+      "gross_email_revenue": 6000.0,
+      "net_revenue_after_returns": 3900.0,
+      "returns_adjusted_contribution": 1140.0,
+      "acquisition_cost": 12000.0,
+      "total_cost": 14400.0,
+      "roi_naive_x": 2.5,
+      "roi_honest_x": 0.08,
+      "net_profit": -13260.0,
+      "flow_share_pct": 66.67,
+      "campaign_share_pct": 33.33,
+      "revenue_per_new_subscriber": 0.75,
+      "contribution_per_new_subscriber": 0.14,
+      "breakeven_sac": -0.16,
+      "roi_low_x": 0.05,
+      "roi_high_x": 0.14
+    },
+    "hand_check": "cm_rate_ra = 0.65*0.40 - 0.35*0.20 = 0.26 - 0.07 = 0.19 -> contribution = 1140.00. acquisition = 12000. total_cost = 14400. naive = 6000/2400 = 2.50 (still looks like a win). honest = 1140/14400 = 0.0791667 -> 0.08. net = -13260.00. breakeven_sac = (1140 - 2400)/8000 = -0.1575 -> -0.16. Low: r=0.40 -> 0.16 -> 960; cost = 2400 + 16800 = 19200; 0.05. High: r=0.30 -> 0.22 -> 1320; cost = 2400 + 7200 = 9600; 0.1375 -> 0.14."
+  },
+  {
+    "slug": "email-list-value-calculator",
+    "name": "TV1 default state, 30% active",
+    "inputs": {
+      "list_size": 60000,
+      "active_share_pct": 30,
+      "flow_revenue_90d": 42000,
+      "campaign_revenue_90d": 28000,
+      "cm_pct": 55,
+      "return_rate_pct": 25,
+      "winback_uplift_pts": 10,
+      "return_cost_pct": 12
+    },
+    "expected": {
+      "active_subscribers": 18000,
+      "inactive_subscribers": 42000,
+      "gross_90d": 70000.0,
+      "contribution_90d": 26775.0,
+      "value_per_subscriber_naive": 1.17,
+      "value_per_active_subscriber": 3.89,
+      "contribution_per_active": 1.49,
+      "annualised_contribution_per_active": 6.03,
+      "flow_share_pct": 60.0,
+      "campaign_share_pct": 40.0,
+      "scenario_active_share_pct": 40.0,
+      "scenario_contribution": 35700.0,
+      "uplift_contribution": 8925.0,
+      "uplift_low": 4462.5,
+      "uplift_high": 8925.0
+    },
+    "hand_check": "active = 18000, inactive = 42000. gross = 70000. cm_rate_ra = 0.3825 -> contribution = 26775.00. naive per subscriber = 70000/60000 = 1.166667 -> 1.17. Per active = 70000/18000 = 3.888889 -> 3.89, which is 3.3x the flat number. Contribution per active = 26775/18000 = 1.4875 -> 1.49. Annualised = 1.4875 * 4.055556 = 6.032639 -> 6.03. Scenario: 40% active = 24000; gross = 3.888889*24000 = 93333.333; contribution = 93333.333*0.3825 = 35700.00; uplift = 8925.00; band 4462.50 to 8925.00."
+  },
+  {
+    "slug": "email-list-value-calculator",
+    "name": "TV2 empty list state, zero actives",
+    "inputs": {
+      "list_size": 25000,
+      "active_share_pct": 0,
+      "flow_revenue_90d": 0,
+      "campaign_revenue_90d": 0,
+      "cm_pct": 50,
+      "return_rate_pct": 20,
+      "winback_uplift_pts": 10,
+      "return_cost_pct": 10
+    },
+    "expected": {
+      "active_subscribers": 0,
+      "inactive_subscribers": 25000,
+      "gross_90d": 0.0,
+      "contribution_90d": 0.0,
+      "value_per_subscriber_naive": 0.0,
+      "value_per_active_subscriber": null,
+      "contribution_per_active": null,
+      "annualised_contribution_per_active": null,
+      "flow_share_pct": null,
+      "campaign_share_pct": null,
+      "scenario_active_share_pct": 10.0,
+      "scenario_contribution": null,
+      "uplift_contribution": null,
+      "uplift_low": null,
+      "uplift_high": null
+    },
+    "hand_check": "active = 0 -> every per-active output null, no division by zero. naive = 0/25000 = 0.00, which is defined. gross = 0 -> shares null. Scenario active share still displays as 10% but its money outputs are null because value_per_active is null."
+  },
+  {
+    "slug": "email-list-value-calculator",
+    "name": "TV3 uplift capped by a 95% active list",
+    "inputs": {
+      "list_size": 10000,
+      "active_share_pct": 95,
+      "flow_revenue_90d": 15000,
+      "campaign_revenue_90d": 5000,
+      "cm_pct": 60,
+      "return_rate_pct": 30,
+      "winback_uplift_pts": 10,
+      "return_cost_pct": 15
+    },
+    "expected": {
+      "active_subscribers": 9500,
+      "inactive_subscribers": 500,
+      "gross_90d": 20000.0,
+      "contribution_90d": 7500.0,
+      "value_per_subscriber_naive": 2.0,
+      "value_per_active_subscriber": 2.11,
+      "contribution_per_active": 0.79,
+      "annualised_contribution_per_active": 3.2,
+      "flow_share_pct": 75.0,
+      "campaign_share_pct": 25.0,
+      "scenario_active_share_pct": 100.0,
+      "scenario_contribution": 7894.74,
+      "uplift_contribution": 394.74,
+      "uplift_low": 197.37,
+      "uplift_high": 394.74,
+      "cap_notice": "Active share capped at 100%: your realistic uplift is 5 points, not 10."
+    },
+    "hand_check": "active = 9500. cm_rate_ra = 0.70*0.60 - 0.30*0.15 = 0.42 - 0.045 = 0.375 -> contribution = 7500.00. naive = 2.00, per active = 20000/9500 = 2.105263 -> 2.11. Contribution per active = 7500/9500 = 0.789474 -> 0.79. Annualised = 0.789474*4.055556 = 3.201754 -> 3.20. Scenario capped: 105 -> 100 -> 10000 actives; gross = 2.105263*10000 = 21052.632; contribution = 7894.737 -> 7894.74; uplift = 394.7368 -> 394.74; low = 197.3684 -> 197.37. A nearly-clean list has almost nothing to win back, which is the correct and unflattering answer."
+  },
+  {
+    "slug": "email-flow-scorecard",
+    "name": "TV1 default state: cart and welcome live, post-purchase partial",
+    "inputs": {
+      "welcome_status": "live",
+      "abandoned_cart_status": "live",
+      "browse_abandon_status": "absent",
+      "post_purchase_status": "partial",
+      "winback_status": "absent",
+      "sunset_status": "absent",
+      "back_in_stock_status": "absent",
+      "vip_status": "absent"
+    },
+    "expected": {
+      "score": 49.0,
+      "score_low": 42.0,
+      "score_high": 56.0,
+      "coverage_pct_unweighted": 31.25,
+      "grade_band": "half the engine missing",
+      "top_3_missing": [
+        [
+          "browse_abandon",
+          12.0
+        ],
+        [
+          "winback",
+          10.0
+        ],
+        [
+          "sunset",
+          8.0
+        ]
+      ]
+    },
+    "hand_check": "20 + 22 + 0 + 14*0.5 + 0 + 0 + 0 + 0 = 42 + 7 = 49.00. Low: only live flows = 20 + 22 = 42.00. High: partials promoted = 20 + 22 + 14 = 56.00. Unweighted: (1+1+0+0.5+0+0+0+0)/8 = 2.5/8 = 31.25%. Missing points: browse 12, winback 10, sunset 8, back_in_stock 8, post_purchase 7, vip 6. Top 3 = browse_abandon 12, winback 10, then the 8-8 tie resolved by canonical order, which puts sunset (position 6) ahead of back_in_stock (position 7). The teaching contrast: the flat checklist says 31.25%, the weighted score says 49, because this brand happens to own the two flows that matter most."
+  },
+  {
+    "slug": "email-flow-scorecard",
+    "name": "TV2 every flow live",
+    "inputs": {
+      "welcome_status": "live",
+      "abandoned_cart_status": "live",
+      "browse_abandon_status": "live",
+      "post_purchase_status": "live",
+      "winback_status": "live",
+      "sunset_status": "live",
+      "back_in_stock_status": "live",
+      "vip_status": "live"
+    },
+    "expected": {
+      "score": 100.0,
+      "score_low": 100.0,
+      "score_high": 100.0,
+      "coverage_pct_unweighted": 100.0,
+      "grade_band": "complete",
+      "top_3_missing": []
+    },
+    "hand_check": "Sum of all weights = 20+22+12+14+10+8+8+6 = 100.00 (this vector doubles as the weights-sum-to-100 assertion). No partials, so the band collapses. top_3_missing is an empty array, never null and never a placeholder row."
+  },
+  {
+    "slug": "email-flow-scorecard",
+    "name": "TV3 four partials, cart missing entirely",
+    "inputs": {
+      "welcome_status": "partial",
+      "abandoned_cart_status": "absent",
+      "browse_abandon_status": "partial",
+      "post_purchase_status": "live",
+      "winback_status": "partial",
+      "sunset_status": "live",
+      "back_in_stock_status": "absent",
+      "vip_status": "partial"
+    },
+    "expected": {
+      "score": 46.0,
+      "score_low": 22.0,
+      "score_high": 70.0,
+      "coverage_pct_unweighted": 50.0,
+      "grade_band": "half the engine missing",
+      "top_3_missing": [
+        [
+          "abandoned_cart",
+          22.0
+        ],
+        [
+          "welcome",
+          10.0
+        ],
+        [
+          "back_in_stock",
+          8.0
+        ]
+      ]
+    },
+    "hand_check": "20*0.5 + 0 + 12*0.5 + 14 + 10*0.5 + 8 + 0 + 6*0.5 = 10 + 0 + 6 + 14 + 5 + 8 + 0 + 3 = 46.00. Low (partials -> absent) = 14 + 8 = 22.00. High (partials -> live) = 20 + 12 + 14 + 10 + 8 + 6 = 70.00. Unweighted = (0.5+0+0.5+1+0.5+1+0+0.5)/8 = 4/8 = 50.00%. Missing points: welcome 10, abandoned_cart 22, browse 6, post_purchase 0, winback 5, sunset 0, back_in_stock 8, vip 3. Top 3 = abandoned_cart 22, welcome 10, back_in_stock 8. The 22-to-70 band on a headline of 46 is the honest output of a brand with four half-built flows."
+  }
+]

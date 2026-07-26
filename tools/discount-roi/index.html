@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Discount ROI Calculator (Returns-Adjusted) | RISE DTC</title>
+<meta name="description" content="Free returns-adjusted discount ROI calculator. Enter your discount, margin, order volume and a separate return rate for discounted orders, and see the real lift a promo needs before it pays, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/discount-roi/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Discount ROI Calculator (Returns-Adjusted)" />
+<meta property="og:description" content="The real lift a promo needs before it pays, counting the discounted orders that come back. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/discount-roi/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Discount ROI Calculator (Returns-Adjusted)" />
+<meta name="twitter:description" content="The real lift a promo needs before it pays, counting the discounted orders that come back. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-discount-roi";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=discount-roi" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Discount ROI</span>
+      <span class="t2">Tool 04 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>Does the discount <span class="hl">actually pay for itself?</span></h1>
+    <p class="lede">A discounted order that comes back still costs you the discount, the shipping and the fee.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="aov">Average order value at full price</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="aov" data-min="10" data-max="500" data-step="1" value="68" /></span>
+          </div>
+          <input type="range" id="aov_r" min="10" max="500" step="1" value="68" aria-label="Average order value slider" />
+          <p class="f-cap">Gross, before the discount and before refunds. Your Shopify overview prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="discount_pct">Discount</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="discount_pct" data-min="0" data-max="60" data-step="1" value="20" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="discount_pct_r" min="0" max="60" step="1" value="20" aria-label="Discount percent slider" />
+          <p class="f-cap">The percentage off the ticket price for this promo.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin at full price</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="5" data-max="90" data-step="1" value="45" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="5" max="90" step="1" value="45" aria-label="Contribution margin slider" />
+          <p class="f-cap">After product and fulfillment cost, before returns and ad spend.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="orders">Orders in the promo window</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="orders" data-min="1" data-max="100000" data-step="1" value="500" /></span>
+          </div>
+          <input type="range" id="orders_r" min="1" max="100000" step="1" value="500" aria-label="Orders in the promo window slider" />
+          <p class="f-cap">What you would have done with no promo running.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="expected_lift_pct">Expected order lift</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="expected_lift_pct" data-min="0" data-max="300" data-step="5" value="30" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="expected_lift_pct_r" min="0" max="300" step="5" value="30" aria-label="Expected order lift slider" />
+          <p class="f-cap">This is the guess. It drives the honest spread further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_baseline">Return rate, full price</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_baseline" data-min="0" data-max="70" data-step="1" value="22" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_baseline_r" min="0" max="70" step="1" value="22" aria-label="Return rate, full price, slider" />
+          <p class="f-cap">Share of full-price orders returned. The published figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_discount">Return rate, discounted orders</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_discount" data-min="0" data-max="70" data-step="1" value="28" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_discount_r" min="0" max="70" step="1" value="28" aria-label="Return rate, discounted orders, slider" />
+          <p class="f-cap">Promo buyers are less committed. Set it equal to baseline if you have no split.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost">All-in cost of one return</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost" data-min="0" data-max="40" data-step="0.5" value="12" /></span>
+          </div>
+          <input type="range" id="return_cost_r" min="0" max="40" step="0.5" value="12" aria-label="All-in return cost slider" />
+          <p class="f-cap">Return label plus handling plus the outbound shipping and payment fees you do not get back.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Net profit impact of the promo</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> for the window</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> for the window</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where one discounted order goes <span id="wfScale">of $68.00 full price</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="varcost" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="discount" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="returns" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the full price.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Product and fulfillment cost</span><span class="vl" id="lg_varcost">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Discount given away</span><span class="vl" id="lg_discount">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Returns impact</span><span class="vl" id="lg_returns">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">What is left</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What's driving this</span>
+          <p id="bindMain">The discount given away is the bigger drag on this order.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Expected order lift is the guess</h2>
+    <p class="sec-sub">Order lift is the input most promo plans are most optimistic about. Here is the same window recomputed with it flexed 20% in each direction, so you can see how much of the answer rests on the guess.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one order shipped, at full price and at the discounted price. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Baseline contribution per order</span><span class="mv" id="m_a">$0.00</span><span class="mx" id="mx_a"></span></div>
+      <div class="mrow"><span class="mn">Promo contribution per order</span><span class="mv" id="m_b">$0.00</span><span class="mx" id="mx_b"></span></div>
+      <div class="mrow sum"><span class="mn">Baseline total, no promo</span><span class="mv" id="m_basetotal">$0.00</span><span class="mx" id="mx_basetotal"></span></div>
+      <div class="mrow"><span class="mn">Orders in the promo window</span><span class="mv" id="m_promoorders">0</span><span class="mx" id="mx_promoorders"></span></div>
+      <div class="mrow sum"><span class="mn">Promo total</span><span class="mv" id="m_promototal">$0.00</span><span class="mx" id="mx_promototal"></span></div>
+      <div class="mrow sum final"><span class="mn">Net profit impact</span><span class="mv" id="m_impact">$0.00</span></div>
+      <div class="mrow"><span class="mn">Lift this discount needs to break even</span><span class="mv" id="m_reqlift">0.0%</span><span class="mx" id="mx_reqlift"></span></div>
+      <div class="mrow"><span class="mn">What a returns-blind calculator would ask for</span><span class="mv" id="m_naivelift">0.0%</span><span class="mx" id="mx_naivelift"></span></div>
+      <div class="mrow"><span class="mn">Required lift at 10% discount</span><span class="mv" id="m_tbl0">0.0%</span><span class="mx" id="mx_tbl0"></span></div>
+      <div class="mrow"><span class="mn">Required lift at 15% discount</span><span class="mv" id="m_tbl1">0.0%</span><span class="mx" id="mx_tbl1"></span></div>
+      <div class="mrow"><span class="mn">Required lift at 20% discount</span><span class="mv" id="m_tbl2">0.0%</span><span class="mx" id="mx_tbl2"></span></div>
+      <div class="mrow"><span class="mn">Required lift at 25% discount</span><span class="mv" id="m_tbl3">0.0%</span><span class="mx" id="mx_tbl3"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Product cost is assumed recovered on every return</b>, because the unit is resellable. If yours often are not, raise the all-in return cost to compensate.</li>
+      <li><b>Full price and discounted orders carry separate return rates</b>, because promo buyers commit differently to the purchase.</li>
+      <li><b>All-in return cost bundles the label, the handling, the outbound shipping and the payment fees you do not get back</b>, so the tool stays at eight fields.</li>
+      <li><b>Expected order lift is the guess this whole page exists to pressure-test.</b> Flex it in the honest spread above.</li>
+      <li><b>Required lift is the exact break-even point given your returns</b>, not a rounded target.</li>
+      <li><b>The returns-blind lift assumes every discounted order is a kept order.</b> It is printed to show how far off that assumption runs.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where the return-rate dials come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Return rate, all retail</span>
+      <p class="quote">"15.8% of their annual sales will be returned this year, totaling $849.9 billion"</p>
+      <span class="cite">National Retail Federation, in partnership with Happy Returns &middot; 2025 forecast, full-year retail &middot; <a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">nrf.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Return rate, online only</span>
+      <p class="quote">"an estimated 19.3% of online sales will be returned in 2025"</p>
+      <span class="cite">National Retail Federation &middot; 2025 forecast &middot; <a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">nrf.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Return rate, apparel</span>
+      <p class="quote">"The average ecommerce return rate is about 20%, and in apparel it runs closer to 30&ndash;40%. ... Apparel: Typical online return rate 20&ndash;40%"</p>
+      <span class="cite">Richpanel &middot; 2025-2026 &middot; <a href="https://www.richpanel.com/learn/ecommerce-return-rates" target="_blank" rel="noopener">richpanel.com</a></span>
+    </div>
+
+    <p class="srcnote">There is no published split between full-price and discounted-order return rates, so the discount rate stays yours to estimate. Set it equal to baseline if you have no reason to think it runs different. The three figures above are there to sanity-check the level you enter, not to replace it.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why a discount needs more lift than the sale rack suggests</h2>
+    <div class="prose">
+      <p>The version of this math most promo decks run is simple almost to the point of being wrong: you gave away a discount worth so many cents on the dollar, so you need enough extra orders to cover the cents. That version assumes every discounted order gets kept. In apparel, it almost never fully is. A promo buyer who would not have bought at full price is, by definition, a more marginal purchase, and marginal purchases come back more often. The gap between what the sale rack math promises and what the order actually leaves you is the entire reason this page exists.</p>
+
+      <p>Sizing drives most of it. A promo shopper who is already unsure whether a garment fits is more willing to order it anyway once the price drops, plan to keep whichever size works, and return the other. That behavior was going to happen at full price too, but a lower price lowers the bar for taking the gamble in the first place. The order volume the promo bought includes some share of orders that were only ever going to be tried on, not kept, and the naive math counts every one of them as revenue.</p>
+
+      <h3>Two return rates, on purpose</h3>
+      <p>This calculator asks for the full-price return rate and the discounted return rate separately, because folding them into one blended figure hides exactly the gap that matters. The default sets the discounted rate a few points above baseline, which is a starting assumption to edit, not a published finding. There is no benchmark dataset that reports the split between full-price and promo-driven returns, which is why the published figures further down this page cover general return rates only. Pull your own split if you can. If you cannot, set the two rates equal and treat the required-lift numbers as a floor rather than the real number.</p>
+
+      <h3>What the all-in return cost bundles</h3>
+      <p>The all-in return cost is one field carrying four costs: the return label, the inspection and repack labor, the outbound shipping you already paid and cannot get back, and the card processing fee the processor keeps on a refund. Bundling them keeps the tool at eight fields instead of twelve, at the price of losing the individual breakdown. The model also assumes the returned unit itself is resellable, meaning the product cost comes home with it. If a meaningful share of your promo returns are worn, out of season, or otherwise unsellable at full price, that cost is not modelled separately here. Raise the all-in return cost to cover it, or expect your real number to run worse than this one.</p>
+
+      <h3>The real required lift versus the returns-blind one</h3>
+      <p>The returns-blind required lift is the ratio of the discount to what is left of the margin after the discount: discount divided by margin minus discount. It answers a narrower question than it looks like it does. It tells you how many more orders would offset the margin given away if every single one of those orders got kept. The real required lift answers a different question: how many more orders does it take once each one carries its own chance of coming back, refunding the discounted price, and adding a handling cost on top. Every additional discounted order carries a return risk of its own, and that risk compounds as volume grows rather than staying fixed. The required-lift table on this page prints both columns at four discount depths, ten, fifteen, twenty and twenty-five percent, so you can see the two numbers pull apart as the discount gets deeper. At a shallow discount the gap is modest. Past a certain depth, the real number can run many multiples of the returns-blind one, because the margin cushion the promo has left to absorb returns shrinks faster than the discount itself grows.</p>
+
+      <h3>When no lift saves the discount</h3>
+      <p>There is a point where the discount alone exceeds the contribution margin at full price. Once that happens, a single discounted order that gets kept already loses money before a single return is counted, and returns can only make it worse. No amount of extra volume repairs that, because more orders at a negative contribution multiply the loss rather than diluting it. When this page shows that no lift saves the discount, the fix is a shallower discount, a higher-margin product, or a more targeted return-rate reduction on that specific line.</p>
+
+      <h3>The lift you enter is the guess</h3>
+      <p>Expected order lift is the one number on this page that nobody measures before the promo runs. It is a forecast, usually built from the last promo that felt similar. The honest spread above recomputes the same window with that forecast flexed twenty percent lower and twenty percent higher, so you can see whether the verdict survives being wrong about the one input you cannot check in advance. When the whole spread sits on the same side of zero, the lift guess is not what decides the outcome, the underlying order economics are. When the spread straddles zero, the promo's fate rides entirely on a number nobody has measured yet.</p>
+
+      <h3>How to use this before you launch a promo</h3>
+      <p>Run your actual numbers, not the defaults, before you commit spend. If the verdict says the promo pays but only barely, treat the order count you enter as a floor to hit rather than a target to aim for, since a small miss on lift or a slightly higher return rate than expected can flip the sign. If it says no lift saves the discount, the conversation with whoever wants to run it should be about the discount depth or the margin, not about pushing harder on volume. And whichever way it comes out, the required-lift table is the one line worth bringing into that conversation, because it is the single clearest way to show a stakeholder why the sale-rack math and the real math disagree.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does a discounted order need its own return rate?</summary>
+        <div class="fa">Because a promo buyer is a different purchase than a full-price buyer. Someone who would not commit at full price is, by definition, a more marginal purchase, and marginal purchases come back more often. Folding both rates into one blended number hides that gap, which is exactly the gap this page is built to show.</div>
+      </details>
+      <details>
+        <summary>What goes into the all-in cost of one return?</summary>
+        <div class="fa">The return label, the inspection and repack labor, the outbound shipping you already paid and cannot get back, and the card processing fee the processor keeps on a refund, bundled into one number so the tool stays at eight fields. The model assumes the returned unit is resellable and the product cost comes home with it. If a meaningful share of your returns cannot be resold at full price, raise this number to cover it.</div>
+      </details>
+      <details>
+        <summary>Why is the real required lift so much higher than the discount-over-margin math?</summary>
+        <div class="fa">The discount-over-margin number, discount divided by margin minus discount, assumes every discounted order gets kept. The real required lift accounts for the fact that each additional discounted order also carries a chance of coming back, refunding the discounted price and adding a handling cost. That risk compounds as volume grows, so the gap between the two numbers widens as the discount gets deeper, which is exactly what the required-lift table on this page prints at four discount depths.</div>
+      </details>
+      <details>
+        <summary>What does it mean when no lift saves the discount?</summary>
+        <div class="fa">It means the discount already exceeds the contribution margin at full price, so a single discounted order that gets kept already loses money before any return is counted. Each extra order at a negative contribution adds to the loss, so no volume target fixes it. The fix is a shallower discount, a higher-margin product, or a lower return rate on that line.</div>
+      </details>
+      <details>
+        <summary>How much should I trust the expected lift number I entered?</summary>
+        <div class="fa">Treat it as a forecast rather than a fact, because it is usually built from how the last similar promo performed. The honest spread on this page recomputes the same window at the lift flexed twenty percent in each direction. If the whole spread lands on the same side of zero, the lift guess is not what decides the outcome. If it straddles zero, the promo's fate rides on a number nobody has measured yet, and that is worth knowing before spend goes out.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on the promo.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your next promo?</span></h2>
+      <p>From week one we run this math on live Shopify and promo data, then work the dials that move it: the return-rate gap between full price and discounted orders, the discount depth and the lift a promo actually needs. Book a 30 minute intro call and we will walk your next promo together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=discount-roi" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Net profit impact</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does a discounted order need its own return rate?","acceptedAnswer":{"@type":"Answer","text":"Because a promo buyer is a different purchase than a full-price buyer. Someone who would not commit at full price is, by definition, a more marginal purchase, and marginal purchases come back more often. Folding both rates into one blended number hides that gap, which is exactly the gap this page is built to show."}},
+    {"@type":"Question","name":"What goes into the all-in cost of one return?","acceptedAnswer":{"@type":"Answer","text":"The return label, the inspection and repack labor, the outbound shipping you already paid and cannot get back, and the card processing fee the processor keeps on a refund, bundled into one number so the tool stays at eight fields. The model assumes the returned unit is resellable and the product cost comes home with it. If a meaningful share of your returns cannot be resold at full price, raise this number to cover it."}},
+    {"@type":"Question","name":"Why is the real required lift so much higher than the discount-over-margin math?","acceptedAnswer":{"@type":"Answer","text":"The discount-over-margin number, discount divided by margin minus discount, assumes every discounted order gets kept. The real required lift accounts for the fact that each additional discounted order also carries a chance of coming back, refunding the discounted price and adding a handling cost. That risk compounds as volume grows, so the gap between the two numbers widens as the discount gets deeper, which is exactly what the required-lift table on this page prints at four discount depths."}},
+    {"@type":"Question","name":"What does it mean when no lift saves the discount?","acceptedAnswer":{"@type":"Answer","text":"It means the discount already exceeds the contribution margin at full price, so a single discounted order that gets kept already loses money before any return is counted. Each extra order at a negative contribution adds to the loss, so no volume target fixes it. The fix is a shallower discount, a higher-margin product, or a lower return rate on that line."}},
+    {"@type":"Question","name":"How much should I trust the expected lift number I entered?","acceptedAnswer":{"@type":"Answer","text":"Treat it as a forecast rather than a fact, because it is usually built from how the last similar promo performed. The honest spread on this page recomputes the same window at the lift flexed twenty percent in each direction. If the whole spread lands on the same side of zero, the lift guess is not what decides the outcome. If it straddles zero, the promo's fate rides on a number nobody has measured yet, and that is worth knowing before spend goes out."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'discount-roi';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    aov: 68, discount_pct: 20, cm_pct: 45, orders: 500, expected_lift_pct: 30,
+    return_rate_baseline: 22, return_rate_discount: 28, return_cost: 12
+  };
+  var KEYS = ['aov','discount_pct','cm_pct','orders','expected_lift_pct','return_rate_baseline','return_rate_discount','return_cost'];
+  var SEGS = ['varcost','discount','returns','result'];
+  var CROSS = ['contribution-margin','true-profit-per-order','break-even-roas','cac','pricing-margin','aov'];
+  var GLYPH = {
+    'contribution-margin':'CM', 'true-profit-per-order':'$', 'break-even-roas':'ROAS',
+    'cac':'CAC', 'pricing-margin':'%', 'aov':'AOV'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function pctCell(v){
+    return (v === null) ? 'no lift saves this' : pct(v, 1);
+  }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var o = window.RISE_TOOLS[SLUG].compute(i);
+    lastInputs = i; lastOut = o;
+
+    var d = i.discount_pct / 100, m = i.cm_pct / 100, rd = i.return_rate_discount / 100;
+    var A = o.baseline_contribution_per_order, B = o.promo_contribution_per_order;
+    var net = o.net_profit_impact;
+    var neg = net < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = money(net) + '<span class="per"> for the window</span>';
+    el('mbarNum').textContent = money(net);
+
+    var cls = net > 0 ? 't-safe' : 't-not';
+    var tierText = net > 0 ? 'PROMO PAYS' : 'COSTS MONEY';
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = tierText;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.net_profit_impact_low) +
+      '</b> and <b>' + money(o.net_profit_impact_high) + '</b> for the window';
+
+    /* stacked bar. Product cost, discount given away and returns impact plus
+       the gold remainder fill the full order price exactly. When the order
+       does not clear, the three bands overrun the price and the overrun is
+       drawn as the shortfall. */
+    var varCost = i.aov * (1 - m);
+    var discGiven = i.aov * d;
+    var retImpact = rd * (i.aov * (m - d) + i.return_cost);
+    var vals = {
+      varcost: Math.max(0, varCost),
+      discount: Math.max(0, discGiven),
+      returns: Math.max(0, retImpact),
+      result: neg ? 0 : B
+    };
+    var costTotal = varCost + discGiven + retImpact;
+    var scale = neg ? costTotal : i.aov;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = i.aov / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + money(i.aov) + ' full price';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the full price. Everything past it is the shortfall.'
+      : 'The gold band on the right is what one discounted order still leaves you.';
+
+    el('lg_varcost').textContent  = money(varCost);
+    el('lg_discount').textContent = money(discGiven);
+    el('lg_returns').textContent  = money(retImpact);
+    el('lg_result').textContent   = neg ? money(Math.abs(B)) : money(B);
+    el('lg_result_nm').textContent = neg ? 'Short by' : 'What is left';
+
+    /* what's driving this */
+    if (discGiven >= retImpact) {
+      el('bindMain').innerHTML = 'The discount given away is the bigger drag, at <b>' + money(discGiven) +
+        '</b> against <b>' + money(retImpact) + '</b> from returns.';
+    } else {
+      el('bindMain').innerHTML = 'Returns impact is the bigger drag, at <b>' + money(retImpact) +
+        '</b> against <b>' + money(discGiven) + '</b> given away in the discount.';
+    }
+    if (o.required_lift_pct === null) {
+      el('bindFix').textContent = 'Promo contribution per order is at or below zero, so no order lift repays this discount.';
+    } else {
+      el('bindFix').textContent = 'This discount needs a ' + pctCell(o.required_lift_display ? null : o.required_lift_pct) +
+        ' lift to break even. A returns-blind read would ask for ' + pctCell(o.naive_required_lift_pct) + '.';
+      if (o.required_lift_display) {
+        el('bindFix').textContent = 'This discount needs a lift of ' + o.required_lift_display +
+          ' to break even. A returns-blind read would ask for ' + pctCell(o.naive_required_lift_pct) + '.';
+      }
+    }
+    el('bindDrag').textContent = 'Returns alone add ' + money(retImpact) + ' to the cost of every discounted order shipped.';
+
+    /* scenario spread */
+    el('scLow').textContent  = money(o.net_profit_impact_low);
+    el('scMid').textContent  = money(o.net_profit_impact_mid);
+    el('scHigh').textContent = money(o.net_profit_impact_high);
+    el('scLow').classList.toggle('neg',  o.net_profit_impact_low  < 0);
+    el('scMid').classList.toggle('neg',  o.net_profit_impact_mid  < 0);
+    el('scHigh').classList.toggle('neg', o.net_profit_impact_high < 0);
+    el('scLowA').textContent  = 'Lift ' + pct(Math.max(0, i.expected_lift_pct * 0.8), 1);
+    el('scMidA').textContent  = 'Lift ' + pct(i.expected_lift_pct, 1) + ', as entered';
+    el('scHighA').textContent = 'Lift ' + pct(i.expected_lift_pct * 1.2, 1);
+    el('scenNote').textContent = o.no_lift_saves_it
+      ? 'Every case here is a loss. More orders at a negative contribution mean a bigger loss, not a smaller one, which is why the spread does not help this discount.'
+      : 'If the whole spread sits on the same side of zero, the lift guess is not what is driving the answer. If it straddles zero, get a firmer number on the lift before you commit spend.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_a').textContent  = money(A);
+    el('mx_a').innerHTML   = '(1 - ' + n2(i.return_rate_baseline / 100) + ') x ' + money(i.aov) + ' x ' + n2(m) +
+      ' - ' + n2(i.return_rate_baseline / 100) + ' x ' + money(i.return_cost) + ' = ' + money(A) +
+      '  <em>what one order leaves you today, with no promo running</em>';
+    el('m_b').textContent  = money(B);
+    el('mx_b').innerHTML   = '(1 - ' + n2(rd) + ') x ' + money(i.aov) + ' x (' + n2(m) + ' - ' + n2(d) + ') - ' +
+      n2(rd) + ' x ' + money(i.return_cost) + ' = ' + money(B) +
+      '  <em>what one discounted order leaves you, counting the ones that come back</em>';
+    el('m_basetotal').textContent = money(o.baseline_contribution_total);
+    el('mx_basetotal').innerHTML  = T.count(i.orders) + ' orders x ' + money(A) + ' = ' + money(o.baseline_contribution_total);
+    el('m_promoorders').textContent = T.count(o.promo_orders);
+    el('mx_promoorders').innerHTML  = T.count(i.orders) + ' x (1 + ' + n2(i.expected_lift_pct / 100) + ') = ' + T.count(o.promo_orders) +
+      '  <em>orders in the window if the lift lands exactly as guessed</em>';
+    el('m_promototal').textContent = money(o.promo_contribution_total);
+    el('mx_promototal').innerHTML  = T.count(o.promo_orders) + ' x ' + money(B) + ' = ' + money(o.promo_contribution_total);
+    el('m_impact').textContent = money(net);
+    el('m_impact').classList.toggle('neg', neg);
+
+    if (o.required_lift_pct === null) {
+      el('m_reqlift').textContent = 'no lift saves this';
+      el('mx_reqlift').innerHTML = '<em>Promo contribution per order is at or below zero, so no order lift repays it. Fix the discount or the return rate first.</em>';
+    } else if (o.required_lift_display) {
+      el('m_reqlift').textContent = o.required_lift_display;
+      el('mx_reqlift').innerHTML = money(A) + ' / ' + money(B) + ' - 1 = ' + pct(o.required_lift_pct, 1) +
+        '  <em>the raw figure, shown as not reachable above 1000%</em>';
+    } else {
+      el('m_reqlift').textContent = pct(o.required_lift_pct, 1);
+      el('mx_reqlift').innerHTML = money(A) + ' / ' + money(B) + ' - 1 = ' + pct(o.required_lift_pct, 1) +
+        '  <em>the order lift this discount needs before it pays for itself</em>';
+    }
+
+    if (o.naive_required_lift_pct === null) {
+      el('m_naivelift').textContent = 'no lift saves this';
+      el('mx_naivelift').innerHTML = '<em>The discount already exceeds the margin, so even a returns-blind calculator finds no lift that works.</em>';
+    } else {
+      el('m_naivelift').textContent = pct(o.naive_required_lift_pct, 1);
+      el('mx_naivelift').innerHTML = n2(d) + ' / (' + n2(m) + ' - ' + n2(d) + ') = ' + pct(o.naive_required_lift_pct, 1) +
+        '  <em>assumes every discounted order gets kept</em>';
+    }
+
+    var tbl = o.required_lift_table;
+    for (var k = 0; k < tbl.length; k++) {
+      var row = tbl[k];
+      var reqText = row.required === null ? 'no lift saves this' : (row.required_display || pct(row.required, 1));
+      var naiText = row.naive === null ? 'no lift saves this' : pct(row.naive, 1);
+      el('m_tbl' + k).textContent = reqText;
+      var note = 'a returns-blind read asks for ' + naiText;
+      if (k === tbl.length - 1) note += '  <em>the gap between the two columns is the entire argument for counting returns</em>';
+      el('mx_tbl' + k).innerHTML = note;
+    }
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        baseline_contribution_per_order: T.round2(lastOut.baseline_contribution_per_order),
+        promo_contribution_per_order: T.round2(lastOut.promo_contribution_per_order),
+        net_profit_impact: T.round2(lastOut.net_profit_impact),
+        required_lift_pct: lastOut.required_lift_pct,
+        naive_required_lift_pct: lastOut.naive_required_lift_pct,
+        verdict: lastOut.verdict,
+        net_profit_impact_low: T.round2(lastOut.net_profit_impact_low),
+        net_profit_impact_high: T.round2(lastOut.net_profit_impact_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

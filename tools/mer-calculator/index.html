@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MER Calculator: Marketing Efficiency Ratio (Free)</title>
+<meta name="description" content="Free MER and aMER calculator. Enter total revenue, ad spend, contribution margin and return rate, and see the returns-adjusted MER floor your margin actually requires, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/mer-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="MER Calculator: Marketing Efficiency Ratio (Free)" />
+<meta property="og:description" content="Whether the whole ad budget pays for itself, plus the MER floor your margin actually requires once returns are counted. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/mer-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MER Calculator: Marketing Efficiency Ratio (Free)" />
+<meta name="twitter:description" content="Whether the whole ad budget pays for itself, plus the MER floor your margin actually requires. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-mer-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=mer-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">MER and aMER</span>
+      <span class="t2">Tool 12 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What MER does your margin <span class="hl">actually require?</span></h1>
+    <p class="lede">MER shows the ratio you are running. This tool solves for the ratio your margin and your return rate actually require.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">7 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="total_revenue">Total revenue this period</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="total_revenue" data-min="0" data-max="100000000" data-step="100" value="250000" /></span>
+          </div>
+          <input type="range" id="total_revenue_r" min="0" max="100000000" step="100" value="250000" aria-label="Total revenue slider" />
+          <p class="f-cap">Gross revenue for the period, before refunds. Your sales dashboard prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="total_ad_spend">Total ad spend this period</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="total_ad_spend" data-min="0" data-max="20000000" data-step="100" value="50000" /></span>
+          </div>
+          <input type="range" id="total_ad_spend_r" min="0" max="20000000" step="100" value="50000" aria-label="Total ad spend slider" />
+          <p class="f-cap">Every platform combined. Meta, Google, TikTok, affiliates, all of it.</p>
+        </div>
+
+        <div class="field" id="ncrField">
+          <div class="f-top">
+            <label class="f-label" for="new_customer_revenue">Revenue from first-time customers <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="new_customer_revenue_on" checked aria-label="Include new customer revenue" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="new_customer_revenue" data-min="0" data-max="100000000" data-step="100" value="150000" /></span>
+            </span>
+          </div>
+          <input type="range" id="new_customer_revenue_r" min="0" max="100000000" step="100" value="150000" aria-label="New customer revenue slider" />
+          <p class="f-cap">Turns on aMER, the ratio that counts first-time customers only. Switch it off and aMER stays off the page instead of reading as zero.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin before returns</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="0" data-max="100" data-step="0.5" value="55" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="0" max="100" step="0.5" value="55" aria-label="Contribution margin percent slider" />
+          <p class="f-cap">Covers product cost, payment fees, pick and pack, and outbound shipping, before returns are counted.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return rate slider" />
+          <p class="f-cap">Share of orders returned or exchanged. The published figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field" id="rcField">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_pct">Net cost of a returned order <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="return_cost_pct_on" checked aria-label="Include return handling cost" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_pct" data-min="0" data-max="50" data-step="0.5" value="12" /><span class="u">%</span></span>
+            </span>
+          </div>
+          <input type="range" id="return_cost_pct_r" min="0" max="50" step="0.5" value="12" aria-label="Return cost percent slider" />
+          <p class="f-cap">Return shipping, processing and the markdown share on units that cannot go back to full price, as a percent of AOV.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="opex_period">Fixed operating cost this period <span class="opt">optional</span></label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="opex_period" data-min="0" data-max="20000000" data-step="100" value="0" /></span>
+          </div>
+          <input type="range" id="opex_period_r" min="0" max="20000000" step="100" value="0" aria-label="Fixed operating cost slider" />
+          <p class="f-cap">Rent, salaries, software. Leave it at zero to see the ad-only floor.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Blended MER</p>
+        <p class="bignum" id="bigNum">0.00<span class="per">x</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Your floor is likely between <b>0.00x</b> and <b>0.00x</b></span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the revenue goes <span id="wfScale">of $250,000.00 booked</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="cost" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="adspend" style="background:var(--grey-4)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the gross revenue booked.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Cost of goods, fees and returns</span><span class="vl" id="lg_cost">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-4)"></span><span class="nm">Ad spend</span><span class="vl" id="lg_adspend">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">What is left</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Biggest single line</span>
+          <p id="bindMain">Ad spend is the biggest single line.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>How your return rate moves the break-even floor</h2>
+    <p class="sec-sub">MER itself never sees a return. The break-even floor does, because it is built from your contribution margin after returns come out. Here is that floor recomputed with the return rate five points higher and five points lower, so you can see how much of the answer rests on the estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">0.00x</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.00x</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">0.00x</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is the whole ad account for the period. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Blended MER</span><span class="mv" id="m_mer">0.00x</span><span class="mx" id="mx_mer"></span></div>
+      <div class="mrow"><span class="mn">aMER, new customers only</span><span class="mv" id="m_amer">0.00x</span><span class="mx" id="mx_amer"></span></div>
+      <div class="mrow sum"><span class="mn">Contribution rate after returns</span><span class="mv" id="m_rate">0.00%</span><span class="mx" id="mx_rate"></span></div>
+      <div class="mrow"><span class="mn">Break-even MER</span><span class="mv" id="m_be">0.00x</span><span class="mx" id="mx_be"></span></div>
+      <div class="mrow"><span class="mn">Break-even range</span><span class="mv" id="m_berange">0.00x to 0.00x</span><span class="mx" id="mx_berange"></span></div>
+      <div class="mrow"><span class="mn">All-in floor, with fixed costs</span><span class="mv" id="m_allin">0.00x</span><span class="mx" id="mx_allin"></span></div>
+      <div class="mrow"><span class="mn">Headroom above the floor</span><span class="mv" id="m_headroom">0.00x</span><span class="mx" id="mx_headroom"></span></div>
+      <div class="mrow sum final"><span class="mn">Contribution after ad spend</span><span class="mv" id="m_contrib">$0.00</span><span class="mx" id="mx_contrib"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Returned orders contribute nothing to margin</b> and cost a share of AOV to process, entered as the return cost dial.</li>
+      <li><b>Ad spend is the only marketing cost</b> unless a fixed operating cost is entered.</li>
+      <li><b>Break-even MER is the ad-only floor.</b> The all-in floor below adds fixed operating cost on top of ad spend.</li>
+      <li><b>The break-even range is recomputed independently</b> at your return rate five points higher and five points lower, so one side can hold a number while the other does not.</li>
+      <li><b>New customer revenue is optional.</b> Leave it off and aMER stays out of the page instead of reading as zero.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What a good MER usually looks like</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from. Neither publisher adjusts for returns, which is the gap this calculator closes.</p>
+
+    <div class="src">
+      <span class="src-t">MER, general benchmark</span>
+      <p class="quote">"A good MER benchmark often falls around 5.0 or higher, meaning your business is generating $5 in revenue for every $1 spent on marketing."</p>
+      <span class="cite">Northbeam &middot; definitional benchmark page, not tied to a specific study period &middot; <a href="https://www.northbeam.io/blog/marketing-efficiency-ratio-mer-roas" target="_blank" rel="noopener">northbeam.io</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">MER, by brand revenue stage</span>
+      <p class="quote">"$1M-$5M brands: blended MER 1.5 to 2.5. $5M-$10M brands: 2.5 to 3.5. $10M-$25M brands: 3.0 to 4.5. $25M-$100M brands: 3.5 to 6.0 or higher. Subscription/high-LTV brands intentionally run lower (1.5 to 2.5)"</p>
+      <span class="cite">Eightx &middot; 2026 article, no fixed historical study window stated &middot; <a href="https://eightx.co/blog/what-is-mer-marketing-efficiency-ratio" target="_blank" rel="noopener">eightx.co</a></span>
+    </div>
+
+    <p class="srcnote">Neither figure is adjusted for returns or staged against a contribution margin, so treat both as a sanity check on the raw ratio, not as your break-even. The break-even MER printed above is the number built from your own margin and your own return rate.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>What one blended ratio leaves out</h2>
+    <div class="prose">
+      <p>Marketing efficiency ratio is total revenue divided by total ad spend, and on its own it never touches a return. An order that ships and an order that ships and comes back both count the same in the numerator the day the sale posts. That is fine for a rough read of the whole account, and it is exactly why a single blended MER on a dashboard can sit at a comfortable-looking number while the business underneath it is thin. Apparel carries this gap further than most categories, because sizing gets decided at home and a share of every order comes back after the ad that bought it has already cleared.</p>
+
+      <p>Break-even MER is a different question: not what ratio are you running, but what ratio does your margin actually require. It is built from the contribution rate after returns, which folds in four things at once. A kept order delivers your full contribution margin. A returned order delivers none of it, because the sale reverses. A returned order also costs you a share of AOV to process, the return shipping, the inspection, and the markdown on the units that cannot go back on the shelf at full price. And the whole calculation runs against gross revenue booked, the number your ad platform and your bank statement both agree on before any of that unwinds. Multiply that contribution rate through and invert it, and the result is the minimum blended MER before the ad account stops paying for itself.</p>
+
+      <h3>Why the floor moves when the return rate does</h3>
+      <p>Return rate sits inside the contribution rate twice: once directly, as the share of orders that contribute nothing, and once through the return cost dial, since a higher return rate means more orders carrying that processing cost. Push the return rate up and the contribution rate after returns falls, which pushes the required MER up in response. That is the whole reason this page asks for a return rate at all when the plain MER formula does not use one. The break-even range further up the page recomputes that floor five points higher and five points lower than what you entered, independently at each end, because return rate is usually the input a founder is estimating rather than reading off a report.</p>
+
+      <h3>How blended MER and aMER differ</h3>
+      <p>Blended MER divides the same ad spend by every dollar of revenue, including repeat orders a returning customer placed without a fresh ad touching them. aMER divides that same spend by revenue from first-time customers only. When aMER sits meaningfully below blended MER, a real share of the ratio is being carried by customers who were already acquired, and the number on the dashboard is flattering the current spend more than the current spend is actually earning. Leaving the new customer revenue field off keeps aMER out of the page entirely instead of quietly reading as zero, which would understate it in the other direction.</p>
+
+      <h3>The floor changes again once fixed costs join it</h3>
+      <p>Break-even MER, as computed above, is an ad-only number: spend against contribution, nothing else in it. Most accounts also carry rent, salaries and software that ad spend alone was never meant to cover. The all-in floor on the math card adds that fixed operating cost on top of ad spend before dividing by the same contribution rate, so it sits at or above the ad-only floor whenever a fixed cost is entered, and matches it exactly when the fixed cost field is left at zero.</p>
+
+      <h3>Reading the verdict</h3>
+      <p>The tier under the headline number reads the gap between your blended MER and the break-even MER it is measured against. Comfortably above the floor means the account is carrying real cushion above what the margin requires. Above the floor with no cushion means the account clears today but has no room if the return rate or the margin moves against it. Below the floor means the ad spend, at the contribution rate you entered, is not paying for itself yet, whatever the raw MER number looks like on a platform dashboard. When the contribution rate after returns falls to zero or below, no MER breaks even, and the page says so directly instead of printing a floor that implies more ad spend can fix a margin problem.</p>
+
+      <p>Once you have the number, three dials move it. The return rate, which sizing guidance and fit content both touch before a marketing dial ever does. The contribution margin behind the price, which sits upstream of every ad decision. And the ad spend itself, which is the only lever that changes the ratio without changing the floor underneath it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>What counts as ad spend in this calculator?</summary>
+        <div class="fa">Every platform combined for the period, Meta, Google, TikTok, affiliates, all of it. Blended ad spend is what your bank account actually paid across all of them.</div>
+      </details>
+      <details>
+        <summary>Why does return rate change the MER I need, when MER itself never touches returns?</summary>
+        <div class="fa">MER is just revenue divided by spend, so it never sees a return. Break-even MER does, because it is built from your contribution margin after returns come out. A returned order keeps none of the margin and costs a share of AOV to process, so the more orders that come back, the more revenue you need per dollar of ad spend before the account clears.</div>
+      </details>
+      <details>
+        <summary>What is aMER and why does it usually sit below blended MER?</summary>
+        <div class="fa">aMER divides the same ad spend by revenue from first-time customers only. Blended MER counts every order, including the repeat ones a returning customer places without a fresh ad touching them. Once aMER runs meaningfully below blended MER, most of the ratio is being carried by customers you already acquired.</div>
+      </details>
+      <details>
+        <summary>My return rate and contribution margin are both estimates. How far off could my floor be?</summary>
+        <div class="fa">The break-even range on this page recomputes the floor with your return rate five points higher and five points lower, independently at each end. If the whole range sits below where you are running, the estimate is not the risk. If your number sits inside the range, pull the real return rate before you change ad spend on it.</div>
+      </details>
+      <details>
+        <summary>What happens if my contribution rate after returns is zero or negative?</summary>
+        <div class="fa">No MER breaks even. At that contribution rate every additional dollar of revenue returns nothing or less than nothing after returns are handled, so no amount of MER, however high, pays for the ad spend. The fix is the contribution rate itself: the return rate, the return cost, or the margin behind the price.</div>
+      </details>
+      <details>
+        <summary>Does the break-even MER include my fixed operating costs?</summary>
+        <div class="fa">Only the ad-only floor sits in the headline number. Break-even MER is spend against contribution, nothing else in it. The all-in floor further down the math card adds your fixed operating cost on top, so leave that field at zero for the ad-only number and fill it in for the floor that matches your full P&amp;L.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and ad platform data, then work the lines that move it: the return rate, the contribution margin and what you actually pay to acquire. Book a 30 minute intro call and we will walk your ad account together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=mer-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Blended MER</span>
+  <span class="mv" id="mbarNum">0.00x</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What counts as ad spend in this calculator?","acceptedAnswer":{"@type":"Answer","text":"Every platform combined for the period, Meta, Google, TikTok, affiliates, all of it. Blended ad spend is what your bank account actually paid across all of them."}},
+    {"@type":"Question","name":"Why does return rate change the MER I need, when MER itself never touches returns?","acceptedAnswer":{"@type":"Answer","text":"MER is just revenue divided by spend, so it never sees a return. Break-even MER does, because it is built from your contribution margin after returns come out. A returned order keeps none of the margin and costs a share of AOV to process, so the more orders that come back, the more revenue you need per dollar of ad spend before the account clears."}},
+    {"@type":"Question","name":"What is aMER and why does it usually sit below blended MER?","acceptedAnswer":{"@type":"Answer","text":"aMER divides the same ad spend by revenue from first-time customers only. Blended MER counts every order, including the repeat ones a returning customer places without a fresh ad touching them. Once aMER runs meaningfully below blended MER, most of the ratio is being carried by customers you already acquired."}},
+    {"@type":"Question","name":"My return rate and contribution margin are both estimates. How far off could my floor be?","acceptedAnswer":{"@type":"Answer","text":"The break-even range on this page recomputes the floor with your return rate five points higher and five points lower, independently at each end. If the whole range sits below where you are running, the estimate is not the risk. If your number sits inside the range, pull the real return rate before you change ad spend on it."}},
+    {"@type":"Question","name":"What happens if my contribution rate after returns is zero or negative?","acceptedAnswer":{"@type":"Answer","text":"No MER breaks even. At that contribution rate every additional dollar of revenue returns nothing or less than nothing after returns are handled, so no amount of MER, however high, pays for the ad spend. The fix is the contribution rate itself: the return rate, the return cost, or the margin behind the price."}},
+    {"@type":"Question","name":"Does the break-even MER include my fixed operating costs?","acceptedAnswer":{"@type":"Answer","text":"Only the ad-only floor sits in the headline number. Break-even MER is spend against contribution, nothing else in it. The all-in floor further down the math card adds your fixed operating cost on top, so leave that field at zero for the ad-only number and fill it in for the floor that matches your full P&L."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'mer-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    total_revenue: 250000, total_ad_spend: 50000, new_customer_revenue: 150000,
+    cm_pct: 55, return_rate_pct: 25, return_cost_pct: 12, opex_period: 0,
+    new_customer_revenue_on: true, return_cost_pct_on: true
+  };
+  var KEYS = ['total_revenue', 'total_ad_spend', 'cm_pct', 'return_rate_pct', 'opex_period'];
+  var OPT_KEYS = ['new_customer_revenue', 'return_cost_pct'];
+  var ALL_KEYS = KEYS.concat(OPT_KEYS);
+  var SEGS = ['cost', 'adspend', 'result'];
+  var CROSS = ['break-even-roas', 'cac', 'contribution-margin', 'cpm-calculator', 'cpa-calculator', 'meta-ads-budget-calculator'];
+  var GLYPH = {
+    'break-even-roas': 'ROAS', 'cac': 'CAC', 'contribution-margin': 'CM',
+    'cpm-calculator': 'CPM', 'cpa-calculator': 'CPA', 'meta-ads-budget-calculator': 'META'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function n4(x){ return T.roundDp(x, 4).toFixed(4); }
+  function xr(v){ return v === null ? null : T.ratio(v) + 'x'; }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    ALL_KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.new_customer_revenue_on = el('new_customer_revenue_on').checked;
+    i.return_cost_pct_on = el('return_cost_pct_on').checked;
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      total_revenue: i.total_revenue,
+      total_ad_spend: i.total_ad_spend,
+      new_customer_revenue: i.new_customer_revenue_on ? i.new_customer_revenue : null,
+      cm_pct: i.cm_pct,
+      return_rate_pct: i.return_rate_pct,
+      return_cost_pct: i.return_cost_pct_on ? i.return_cost_pct : null,
+      opex_period: i.opex_period
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var rate = o.cm_rate_ra_pct / 100;
+    var mer = o.mer, amer = o.amer, breakeven = o.breakeven_mer;
+    var contribAfterAds = o.contribution_after_ads;
+    var neg = contribAfterAds < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = mer === null
+      ? 'No ad spend<span class="per">so MER is undefined</span>'
+      : (T.ratio(mer) + '<span class="per">x</span>');
+    el('mbarNum').textContent = mer === null ? '(no ad spend)' : T.ratio(mer) + 'x';
+
+    var cls = o.verdict_band === 'comfortably above break-even' ? 't-safe'
+      : (o.verdict_band === 'above break-even, no cushion' ? 't-fix' : 't-not');
+    var chipText = o.verdict_band === 'comfortably above break-even' ? 'SAFE TO SCALE'
+      : (o.verdict_band === 'above break-even, no cushion' ? 'FIX FIRST' : 'NOT YET');
+    ['tierChip', 'mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = chipText;
+    });
+
+    el('rangeLine').innerHTML = 'Your floor is likely between <b>' + (xr(o.breakeven_mer_low) || 'not reachable') +
+      '</b> and <b>' + (xr(o.breakeven_mer_high) || 'not reachable') + '</b>';
+
+    /* stacked bar, scaled to total revenue booked. Three bands: everything
+       that never becomes contribution, ad spend, and what is left. When the
+       account clears, the three bands fill the revenue bar exactly. When it
+       does not, the bands overrun the revenue and the overrun is the
+       shortfall, mirroring the treatment used on every other tool in the hub. */
+    var contributionKept = contribAfterAds + i.total_ad_spend;
+    var cost = i.total_revenue - contributionKept;
+    var adspend = i.total_ad_spend;
+    var vals = { cost: cost, adspend: adspend, result: neg ? 0 : contribAfterAds };
+    var costTotal = cost + adspend;
+    var scale = neg ? costTotal : i.total_revenue;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      var w = vals[k] / scale * 100;
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (w < 0 ? 0 : w) + '%';
+    });
+    var markPct = i.total_revenue / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + money(i.total_revenue) + ' booked';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the revenue booked. Everything past it is the shortfall.'
+      : 'The gold band on the right is what is left after ad spend.';
+
+    el('lg_cost').textContent = money(cost);
+    el('lg_adspend').textContent = money(adspend);
+    el('lg_result').textContent = neg ? money(Math.abs(contribAfterAds)) : money(contribAfterAds);
+    el('lg_result_nm').textContent = neg ? 'Short by' : 'What is left';
+
+    /* biggest single line */
+    var lines = [
+      { k: 'Ad spend', v: adspend,
+        fix: 'Break-even sits at ' + (xr(breakeven) || 'no reachable floor') + '. You are running at ' + (xr(mer) || 'no ad spend entered') + '.' },
+      { k: 'Cost of goods, fees and returns', v: cost,
+        fix: 'At a ' + pct(rate * 100, 2) + ' contribution rate after returns, ' + money(cost) + ' of every ' + money(i.total_revenue) + ' in revenue never becomes contribution.' }
+    ];
+    if (i.opex_period > 0) {
+      lines.push({ k: 'Fixed operating cost', v: i.opex_period,
+        fix: 'Opex adds ' + money(i.opex_period) + ' on top of ad spend before the account is truly even.' });
+    }
+    lines.sort(function(a, b){ return b.v - a.v; });
+    var top = lines[0];
+    el('bindMain').innerHTML = top.k + ' is the biggest single line at <b>' + money(top.v) + '</b> this period.';
+    el('bindFix').textContent = top.fix;
+    el('bindDrag').textContent = o.headroom !== null
+      ? 'Headroom above the floor: ' + xr(o.headroom) + ', or ' + pct(o.headroom_pct, 2) + ' of ad spend.'
+      : 'Headroom needs both a blended MER and a break-even MER to compute.';
+
+    var rep = el('bindRepeat');
+    if (amer !== null && mer !== null) {
+      rep.hidden = false;
+      rep.textContent = 'aMER runs at ' + xr(amer) + ', ' + (amer < mer ? 'below' : 'at or above') + ' the blended ' + xr(mer) + '.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread, on the break-even floor, not on MER itself */
+    el('scLow').textContent = xr(o.breakeven_mer_high) || 'not reachable';
+    el('scMid').textContent = xr(o.breakeven_mer) || 'not reachable';
+    el('scHigh').textContent = xr(o.breakeven_mer_low) || 'not reachable';
+    el('scLowA').textContent = 'Return rate ' + pct(Math.min(60, i.return_rate_pct + 5), 1);
+    el('scMidA').textContent = 'Return rate ' + pct(i.return_rate_pct, 1);
+    el('scHighA').textContent = 'Return rate ' + pct(Math.max(0, i.return_rate_pct - 5), 1);
+    el('scenNote').textContent = (o.breakeven_mer === null)
+      ? 'Your contribution rate after returns is zero or negative at the entered return rate, so no MER breaks even yet.'
+      : 'If the whole spread sits below where you are running, the estimate is not the risk. If your number sits inside it, pull the real return rate before you change ad spend.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_mer').textContent = xr(mer) || 'no ad spend entered';
+    el('mx_mer').innerHTML = mer !== null
+      ? (money(i.total_revenue) + ' / ' + money(i.total_ad_spend) + ' = ' + xr(mer) + '  <em>every dollar of ad spend returned this much revenue</em>')
+      : '<em>ad spend is zero, so this ratio is undefined</em>';
+
+    el('m_amer').textContent = xr(amer) || 'not entered';
+    el('mx_amer').innerHTML = amer !== null
+      ? (money(i.new_customer_revenue) + ' / ' + money(i.total_ad_spend) + ' = ' + xr(amer) + '  <em>counts first-time customer revenue only</em>')
+      : '<em>new customer revenue is off, so aMER stays out of the page</em>';
+
+    el('m_rate').textContent = pct(rate * 100, 2);
+    el('mx_rate').innerHTML = '(1 - ' + n2(i.return_rate_pct / 100) + ') x ' + n2(i.cm_pct / 100) + ' - ' + n2(i.return_rate_pct / 100) + ' x ' + n2((ci.return_cost_pct || 0) / 100) +
+      ' = ' + n4(rate) + '  <em>kept orders keep the full margin; returned orders cost the return dial of AOV to process</em>';
+
+    el('m_be').textContent = xr(breakeven) || 'no floor exists';
+    el('mx_be').innerHTML = breakeven !== null
+      ? ('1 / ' + n4(rate) + ' = ' + xr(breakeven) + '  <em>the minimum blended MER before ad spend loses money</em>')
+      : '<em>the contribution rate after returns is zero or negative, so no MER breaks even</em>';
+
+    el('m_berange').textContent = (xr(o.breakeven_mer_low) || 'not reachable') + ' to ' + (xr(o.breakeven_mer_high) || 'not reachable');
+    el('mx_berange').innerHTML = '<em>recomputed at your return rate five points higher and five points lower, since that is the number most founders guess</em>';
+
+    el('m_allin').textContent = xr(o.target_mer_all_in) || 'not applicable';
+    el('mx_allin').innerHTML = o.target_mer_all_in !== null
+      ? ('(1 + ' + money(i.opex_period) + ' / ' + money(i.total_ad_spend) + ') / ' + n4(rate) + ' = ' + xr(o.target_mer_all_in) + '  <em>the floor once fixed operating cost joins ad spend</em>')
+      : '<em>ad spend is zero or no MER breaks even, so this floor cannot be set</em>';
+
+    el('m_headroom').textContent = xr(o.headroom) || 'not available';
+    el('mx_headroom').innerHTML = o.headroom !== null
+      ? (xr(mer) + ' - ' + xr(breakeven) + ' = ' + xr(o.headroom) + '  <em>how far above the floor you are running today</em>')
+      : '<em>needs both a blended MER and a break-even MER to compute</em>';
+
+    el('m_contrib').textContent = money(contribAfterAds);
+    el('m_contrib').classList.toggle('neg', neg);
+    el('mx_contrib').innerHTML = money(i.total_revenue) + ' x ' + n4(rate) + ' - ' + money(i.total_ad_spend) + ' = ' + money(contribAfterAds) +
+      '  <em>what is left once ads are paid, before any fixed cost</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) ||
+      OPT_KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) ||
+      i.new_customer_revenue_on !== DEFAULTS.new_customer_revenue_on ||
+      i.return_cost_pct_on !== DEFAULTS.return_cost_pct_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  ALL_KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('new_customer_revenue_on').addEventListener('change', function(){
+    el('ncrField').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+  el('return_cost_pct_on').addEventListener('change', function(){
+    el('rcField').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    ALL_KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    el('new_customer_revenue_on').checked = DEFAULTS.new_customer_revenue_on;
+    el('return_cost_pct_on').checked = DEFAULTS.return_cost_pct_on;
+    el('ncrField').classList.toggle('is-off', !DEFAULTS.new_customer_revenue_on);
+    el('rcField').classList.toggle('is-off', !DEFAULTS.return_cost_pct_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(ALL_KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        mer: lastOut.mer === null ? null : T.round2(lastOut.mer),
+        amer: lastOut.amer === null ? null : T.round2(lastOut.amer),
+        cm_rate_ra_pct: T.round2(lastOut.cm_rate_ra_pct),
+        breakeven_mer: lastOut.breakeven_mer === null ? null : T.round2(lastOut.breakeven_mer),
+        breakeven_mer_range: lastOut.breakeven_mer_range,
+        target_mer_all_in: lastOut.target_mer_all_in === null ? null : T.round2(lastOut.target_mer_all_in),
+        headroom: lastOut.headroom === null ? null : T.round2(lastOut.headroom),
+        headroom_pct: lastOut.headroom_pct === null ? null : T.round2(lastOut.headroom_pct),
+        contribution_after_ads: T.round2(lastOut.contribution_after_ads),
+        verdict_band: lastOut.verdict_band
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

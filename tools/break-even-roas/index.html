@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Break-Even ROAS Calculator (Returns-Adjusted) | RISE DTC</title>
+<meta name="description" content="Free break-even ROAS calculator, returns adjusted. Enter AOV, contribution margin, return rate, return cost and your target net margin, and see the ROAS you actually need, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/break-even-roas/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Break-Even ROAS Calculator (Returns-Adjusted)" />
+<meta property="og:description" content="The ROAS you actually need, once returns are inside your margin. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/break-even-roas/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Break-Even ROAS Calculator (Returns-Adjusted)" />
+<meta name="twitter:description" content="The ROAS you actually need, once returns are inside your margin. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-break-even-roas";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Break-Even ROAS</span>
+      <span class="t2">Tool 05 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What ROAS do you <span class="hl">actually need?</span></h1>
+    <p class="lede">Ad platforms report ROAS before a single refund lands, and the returns that follow come out of your margin.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">6 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="aov">Average order value</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="aov" data-min="10" data-max="500" data-step="1" value="68" /></span>
+          </div>
+          <input type="range" id="aov_r" min="10" max="500" step="1" value="68" aria-label="Average order value slider" />
+          <p class="f-cap">Gross. Ad platforms report revenue before refunds, so ROAS is measured on gross.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin at full price</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="5" data-max="90" data-step="1" value="45" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="5" max="90" step="1" value="45" aria-label="Contribution margin percent slider" />
+          <p class="f-cap">After product and fulfilment cost, before returns and ad spend.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate">Return rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate" data-min="0" data-max="60" data-step="1" value="22" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_r" min="0" max="60" step="1" value="22" aria-label="Return rate slider" />
+          <p class="f-cap">Share of orders returned. The number most founders are estimating rather than reading off a report.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost">All-in cost of one return</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost" data-min="0" data-max="40" data-step="0.5" value="12" /></span>
+          </div>
+          <input type="range" id="return_cost_r" min="0" max="40" step="0.5" value="12" aria-label="Return cost slider" />
+          <p class="f-cap">Label, inspection and repack, per returned order.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="target_net_margin_pct">Net margin you want after ad spend</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="target_net_margin_pct" data-min="0" data-max="50" data-step="1" value="10" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="target_net_margin_pct_r" min="0" max="50" step="1" value="10" aria-label="Target net margin slider" />
+          <p class="f-cap">What you want left once acquisition is paid, not before it.</p>
+        </div>
+
+        <div class="field is-off" id="roasField">
+          <div class="f-top">
+            <label class="f-label" for="platform_reported_roas">ROAS your ad platform reports <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="roas_on" aria-label="Include platform reported ROAS" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="platform_reported_roas" data-min="0" data-max="20" data-step="0.1" value="4" /><span class="u">x</span></span>
+            </span>
+          </div>
+          <input type="range" id="platform_reported_roas_r" min="0" max="20" step="0.1" value="4" aria-label="Platform reported ROAS slider" />
+          <p class="f-cap">Off by default. Leave it off and this page shows what your own numbers require. Switch it on to see what your reported ROAS is really buying you.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Break-even ROAS</p>
+        <p class="bignum" id="bigNum">0.00x<span class="per"> to break even</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">From <b>0.00x</b> in your best case to <b>0.00x</b> in your worst case</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where a gross dollar goes <span id="wfScale">of $68.00 gross</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="refunded" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="cogs" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="handling" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="adspend" style="background:var(--grey-4)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band on the right is the contribution left once ad spend is paid.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Refunded revenue</span><span class="vl" id="lg_refunded">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Product and fulfilment cost</span><span class="vl" id="lg_cogs">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Return handling</span><span class="vl" id="lg_handling">$0.00</span></div>
+            <div class="lgd" id="lgAdspend" hidden><span class="dot" style="background:var(--grey-4)"></span><span class="nm">Ad spend, at your reported ROAS</span><span class="vl" id="lg_adspend">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Contribution left</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Biggest single line</span>
+          <p id="bindMain">Refunded revenue is the biggest single line.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Return rate is the guess here</h2>
+    <p class="sec-sub">Return rate is the number most founders estimate. Here the same order is recomputed with it flexed 20% in each direction, so you can see how much of your break-even ROAS rests on the guess. A lower ROAS requirement is the good outcome, which is why the cases below are named best and worst rather than low and high.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Worst case</p><p class="sc-v" id="scLow">0.00x</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.00x</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Best case</p><p class="sc-v" id="scHigh">0.00x</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one gross dollar of reported ad revenue. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Revenue kept after returns</span><span class="mv" id="m_kept">$0.00</span><span class="mx" id="mx_kept"></span></div>
+      <div class="mrow"><span class="mn">Contribution before return handling</span><span class="mv" id="m_pre">$0.00</span><span class="mx" id="mx_pre"></span></div>
+      <div class="mrow"><span class="mn">Return handling cost</span><span class="mv" id="m_hand">$0.00</span><span class="mx" id="mx_hand"></span></div>
+      <div class="mrow sum"><span class="mn">Contribution per order</span><span class="mv" id="m_contrib">$0.00</span><span class="mx" id="mx_contrib"></span></div>
+      <div class="mrow"><span class="mn">Contribution per gross dollar</span><span class="mv" id="m_cmnet">0.000</span><span class="mx" id="mx_cmnet"></span></div>
+      <div class="mrow sum final"><span class="mn">Break-even ROAS</span><span class="mv" id="m_be">0.00x</span><span class="mx" id="mx_be"></span></div>
+      <div class="mrow"><span class="mn">Naive break-even ROAS, margin only</span><span class="mv" id="m_naive">0.00x</span><span class="mx" id="mx_naive"></span></div>
+      <div class="mrow"><span class="mn">Returns penalty</span><span class="mv" id="m_penalty">0.00x</span><span class="mx" id="mx_penalty"></span></div>
+      <div class="mrow"><span class="mn">Target ROAS for your margin goal</span><span class="mv" id="m_target">0.00x</span><span class="mx" id="mx_target"></span></div>
+      <div class="mrow"><span class="mn">Most you can pay and still hit your target</span><span class="mv" id="m_maxtarget">$0.00</span><span class="mx" id="mx_maxtarget"></span></div>
+      <div class="mrow"><span class="mn">Net margin at a flat 4x ROAS</span><span class="mv" id="m_4x">0.0%</span><span class="mx" id="mx_4x"></span></div>
+      <div class="mrow" id="reportedRow" hidden><span class="mn">Net margin at your reported ROAS</span><span class="mv" id="m_reported">0.0%</span><span class="mx" id="mx_reported"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>ROAS is measured on gross, reported revenue</b>, because that is the number the ad platform shows you and the number this page has to be comparable against.</li>
+      <li><b>Returned orders remove the whole order value from contribution</b>, while return handling is charged on every expected return.</li>
+      <li><b>Ad spend is never refunded</b>, so a returned order still carries the acquisition cost that bought it.</li>
+      <li><b>Contribution margin, return cost and your target margin stay fixed in the range below.</b> Those are yours to set, not estimates on the return rate.</li>
+      <li><b>When contribution per order clears zero or below, break-even ROAS is undefined</b> and the page says so instead of printing a number that implies a ROAS could still fix it.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where two of these dials come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Apparel gross margin, public companies</span>
+      <p class="quote">"Apparel: Gross Margin 56.88%, Net Margin 3.85%. Data used is as of January 2026"</p>
+      <span class="cite">NYU Stern, Aswath Damodaran industry margin dataset &middot; as of January 2026, 35 public apparel firms &middot; <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/margin.html" target="_blank" rel="noopener">stern.nyu.edu</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel gross margin, broader company set</span>
+      <p class="quote">"Gross Margin 34.62% TTM Q1 2026 TTM"</p>
+      <span class="cite">CSIMarket, Retail Apparel Industry &middot; trailing twelve months to Q1 2026 &middot; <a href="https://csimarket.com/Industry/industry_Profitability_Ratios.php?ind=1301" target="_blank" rel="noopener">csimarket.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Meta ROAS, apparel and accessories</span>
+      <p class="quote">"Meta (Facebook/Instagram) ecommerce ROAS: median 1.86 (all industries); Apparel &amp; Accessories ROAS 2.18"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 - Dec 31, 2025, about 35,000 brands &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">TikTok ROAS, apparel and accessories</span>
+      <p class="quote">"TikTok ecommerce ROAS: median 2.21 (all industries); Apparel &amp; Accessories ROAS 2.49"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 - Dec 31, 2025 &middot; <a href="https://www.triplewhale.com/blog/tiktok-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <p class="srcnote">The two margin figures cover different company sets, which is why they sit so far apart. Use 34.62% if you want the more conservative default. The two ROAS figures come from the same panel and the same vendor, which is why they compare cleanly against each other and against the 4x figure this page keeps testing. There is no published figure we could verify for the all-in cost of processing one return, so that dial stays yours to set.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why returns raise the ROAS you need, beyond the return rate you report</h2>
+    <div class="prose">
+      <p>Break-even ROAS answers one question: how much revenue does a dollar of ad spend need to buy before the order it bought stops losing money. Most founders answer it with a margin number alone and divide 1 by that margin. At the 45% margin loaded into the fields above, 1 divided by 0.45 gives 2.22x, which is the naive row printed in the math card. That number is real, but it is missing the return that has not happened yet at the moment the ad platform reports the sale.</p>
+
+      <h3>ROAS is measured on gross revenue, on purpose</h3>
+      <p>Meta, TikTok and every ad platform report return on ad spend against the gross value of the order at the moment it is placed, before a refund can happen. That is the number sitting in your ads dashboard, and agencies often quote a flat 4x target to hold it against, which is why 4x is loaded into the reported-ROAS field on this page and then tested against your own margin instead of assumed. This calculator keeps that same denominator. Break-even ROAS here is gross order value divided by contribution per order, so the answer it hands back is directly comparable to the number the platform already shows you.</p>
+
+      <h3>Where returns enter a margin that already looks complete</h3>
+      <p>Contribution margin at full price is usually quoted on an order that ships and stays sold: product cost out, fulfilment cost out, nothing else has touched it. Returns have not entered that number anywhere yet. This page adds them back in twice, because they cost you twice. First, the revenue from a returned order is gone, so only the kept share of orders contributes anything at all. Second, someone has to receive the parcel, inspect it and repack it, and that cost lands on every order shipped in proportion to how often orders come back. Both numbers pull contribution per order down, and since ROAS is 1 divided by contribution per gross dollar, pulling the numerator down pushes the required ROAS up.</p>
+
+      <h3>Why 4x reads as safe and rarely is</h3>
+      <p>Triple Whale's 2025 apparel and accessories medians, quoted in full in the panel above, sit in a narrow band: 2.18x on Meta and 2.49x on TikTok. A flat 4x target sounds comfortably above that band, which is exactly why it gets repeated. But those medians describe what the platforms are delivering across a category, while your own order sets its own bar. Run the example loaded into the fields above, a 45% full-price margin with a 22% return rate, and the panel asks for about 3.2x just to clear zero, and considerably more than that to leave a real net margin once ad spend is paid. A platform-reported ROAS that beats the category median can still sit below your own break-even line, and the only way to know is to run your own margin and your own return rate through the math instead of borrowing someone else's average.</p>
+
+      <h3>What target ROAS actually asks for</h3>
+      <p>Break-even ROAS only gets you to zero. Target ROAS on this page solves for the ROAS that leaves the net margin you actually want after ad spend, which is a stricter number and usually the one that belongs on a media plan instead of the break-even figure. When contribution per gross dollar cannot clear the target margin at any spend level, this page says so directly rather than printing a ROAS nothing could reach, because at that point the constraint sits in the order rather than the ad account.</p>
+
+      <h3>When no ROAS works</h3>
+      <p>If contribution per order is at or below zero before a single ad dollar is spent, no ROAS a platform could report repays it. No amount of creative testing or audience refinement fixes that. It is a signal to look at the return rate, the return cost or the margin first, the same three dials this page asks for, before spending more to acquire orders that were already losing money on arrival.</p>
+
+      <p>The range on this page flexes only the return rate, since that is the number most founders are estimating rather than reading off a settled report. Contribution margin, return cost and the target margin are choices you make rather than guesses about the world, so they stay fixed while the return rate moves 20% in each direction. A best case that still asks for an uncomfortable ROAS is telling you the fix sits in the order itself, before the next round of testing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why is ROAS measured on gross revenue instead of revenue after returns?</summary>
+        <div class="fa">Because that is what the ad platform reports and what you are actually comparing your number against. Meta, TikTok and every other platform quote ROAS on the gross order value the pixel fires on, before any refund happens. This calculator keeps that same denominator so the break-even number it hands back is directly comparable to the number already sitting in your ads dashboard.</div>
+      </details>
+      <details>
+        <summary>Why does a higher return rate raise the ROAS you need, instead of just lowering revenue?</summary>
+        <div class="fa">A returned order removes its revenue from your contribution, but the ad spend that bought it is never refunded. Contribution margin is the numerator of break-even ROAS and revenue is the denominator, so when returns shrink the numerator without touching the denominator, the ROAS required to clear zero goes up. That is the whole mechanism behind the returns penalty printed on this page.</div>
+      </details>
+      <details>
+        <summary>Is 4x really a safe target for ROAS?</summary>
+        <div class="fa">Only if your margin, once returns are inside it, clears 25 cents of contribution per gross dollar. Triple Whale's 2025 apparel medians, quoted with their link in the published figures panel on this page, sit at 2.18x on Meta and 2.49x on TikTok, both under the flat 4x target agencies tend to quote. At the example loaded into the fields above, a 45% margin with a 22% return rate still asks for more than 4x before a meaningful net margin appears. The 4x figure is a media buyer's shorthand, and this page tests it against your own numbers rather than assuming it.</div>
+      </details>
+      <details>
+        <summary>My contribution margin already includes everything, so why do I need a separate return cost input?</summary>
+        <div class="fa">Contribution margin at full price is quoted on an order that ships and stays sold. It has no return in it yet. This calculator adds the return back in twice: once by removing the revenue on the returned share, and once by charging the label, inspection and repack cost you enter here on that same share. Folding both into one margin number would hide exactly the two places returns cost you.</div>
+      </details>
+      <details>
+        <summary>What does it mean if no ROAS breaks even?</summary>
+        <div class="fa">It means the order loses money before you spend a single dollar on acquisition, at any ROAS a platform could report. Fix the order first, either the margin, the return rate or the return cost, before you spend more on the ads that buy it. No amount of ROAS discipline repairs unit economics that are already underwater.</div>
+      </details>
+      <details>
+        <summary>How is the range calculated, and why call it best case and worst case instead of low and high?</summary>
+        <div class="fa">Return rate is the number most founders are estimating rather than reading off a report, so this page recomputes break-even ROAS with it flexed 20% higher and 20% lower. A lower ROAS requirement is the good outcome here, so calling that case best case and the higher requirement worst case keeps the labels honest. Low and high would read backwards, since a lower number is the one you want.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Five tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and ad account data, then work the lines that move it: the margin, the return rate and what you pay to acquire. Book a 30 minute intro call and we will walk your break-even ROAS together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=break-even-roas" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Break-even ROAS</span>
+  <span class="mv" id="mbarNum">0.00x</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why is ROAS measured on gross revenue instead of revenue after returns?","acceptedAnswer":{"@type":"Answer","text":"Because that is what the ad platform reports and what you are actually comparing your number against. Meta, TikTok and every other platform quote ROAS on the gross order value the pixel fires on, before any refund happens. This calculator keeps that same denominator so the break-even number it hands back is directly comparable to the number already sitting in your ads dashboard."}},
+    {"@type":"Question","name":"Why does a higher return rate raise the ROAS you need, instead of just lowering revenue?","acceptedAnswer":{"@type":"Answer","text":"A returned order removes its revenue from your contribution, but the ad spend that bought it is never refunded. Contribution margin is the numerator of break-even ROAS and revenue is the denominator, so when returns shrink the numerator without touching the denominator, the ROAS required to clear zero goes up. That is the whole mechanism behind the returns penalty printed on this page."}},
+    {"@type":"Question","name":"Is 4x really a safe target for ROAS?","acceptedAnswer":{"@type":"Answer","text":"Only if your margin, once returns are inside it, clears 25 cents of contribution per gross dollar. Triple Whale's 2025 apparel medians, quoted with their link in the published figures panel on this page, sit at 2.18x on Meta and 2.49x on TikTok, both under the flat 4x target agencies tend to quote. At the example loaded into the fields above, a 45% margin with a 22% return rate still asks for more than 4x before a meaningful net margin appears. The 4x figure is a media buyer's shorthand, and this page tests it against your own numbers rather than assuming it."}},
+    {"@type":"Question","name":"My contribution margin already includes everything, so why do I need a separate return cost input?","acceptedAnswer":{"@type":"Answer","text":"Contribution margin at full price is quoted on an order that ships and stays sold. It has no return in it yet. This calculator adds the return back in twice: once by removing the revenue on the returned share, and once by charging the label, inspection and repack cost you enter here on that same share. Folding both into one margin number would hide exactly the two places returns cost you."}},
+    {"@type":"Question","name":"What does it mean if no ROAS breaks even?","acceptedAnswer":{"@type":"Answer","text":"It means the order loses money before you spend a single dollar on acquisition, at any ROAS a platform could report. Fix the order first, either the margin, the return rate or the return cost, before you spend more on the ads that buy it. No amount of ROAS discipline repairs unit economics that are already underwater."}},
+    {"@type":"Question","name":"How is the range calculated, and why call it best case and worst case instead of low and high?","acceptedAnswer":{"@type":"Answer","text":"Return rate is the number most founders are estimating rather than reading off a report, so this page recomputes break-even ROAS with it flexed 20% higher and 20% lower. A lower ROAS requirement is the good outcome here, so calling that case best case and the higher requirement worst case keeps the labels honest. Low and high would read backwards, since a lower number is the one you want."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'break-even-roas';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+
+  var DEFAULTS = {
+    aov: 68, cm_pct: 45, return_rate: 22, return_cost: 12, target_net_margin_pct: 10,
+    platform_reported_roas: 4, roas_on: false
+  };
+  var KEYS = ['aov', 'cm_pct', 'return_rate', 'return_cost', 'target_net_margin_pct', 'platform_reported_roas'];
+  var SEGS = ['refunded', 'cogs', 'handling', 'adspend', 'result'];
+  var CROSS = ['contribution-margin', 'cac', 'true-profit-per-order', 'mer-calculator', 'pricing-margin'];
+  var GLYPH = {
+    'contribution-margin': 'CM', 'cac': 'CAC', 'true-profit-per-order': 'TPO',
+    'mer-calculator': 'MER', 'pricing-margin': '%'
+  };
+
+  function el(id) { return document.getElementById(id); }
+  function n2(x) { return T.roundDp(x, 2).toFixed(2); }
+  function n3(x) { return T.roundDp(x, 3).toFixed(3); }
+  function roasTxt(x) { return (x === null) ? 'no ROAS clears it' : T.ratio(x) + 'x'; }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k) {
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs() {
+    var i = {};
+    KEYS.forEach(function (k) {
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.roas_on = el('roas_on').checked;
+    return i;
+  }
+  function setField(k, v) {
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i) {
+    return {
+      aov: i.aov, cm_pct: i.cm_pct, return_rate: i.return_rate, return_cost: i.return_cost,
+      target_net_margin_pct: i.target_net_margin_pct,
+      platform_reported_roas: i.roas_on ? i.platform_reported_roas : null
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint() {
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var r = i.return_rate / 100, m = i.cm_pct / 100, t = i.target_net_margin_pct / 100;
+    var reportedOn = i.roas_on && i.platform_reported_roas > 0;
+    var reportedRoas = reportedOn ? i.platform_reported_roas : 0;
+    var beNull = (o.break_even_roas === null);
+
+    var refunded = r * i.aov;
+    var costSeg = (1 - r) * i.aov * (1 - m);
+    var handling = r * i.return_cost;
+    var preHandling = (1 - r) * i.aov * m;
+    var contribution = o.contribution_per_order;
+    var adspend = reportedOn ? (i.aov / reportedRoas) : 0;
+    var resultVal = contribution - adspend;
+    var neg = resultVal < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    if (beNull) {
+      el('bigNum').innerHTML = 'No ROAS breaks even<span class="per"> fix the order before you buy more of them</span>';
+      el('mbarNum').textContent = 'No ROAS';
+    } else {
+      el('bigNum').innerHTML = T.ratio(o.break_even_roas) + 'x<span class="per"> to break even</span>';
+      el('mbarNum').textContent = T.ratio(o.break_even_roas) + 'x';
+    }
+
+    var tier;
+    if (beNull) {
+      tier = 'NOT YET';
+    } else if (reportedOn) {
+      if (o.target_roas !== null && reportedRoas >= o.target_roas) tier = 'SAFE TO SCALE';
+      else if (reportedRoas >= o.break_even_roas) tier = 'FIX FIRST';
+      else tier = 'NOT YET';
+    } else {
+      tier = (o.target_roas !== null) ? 'SAFE TO SCALE' : 'FIX FIRST';
+    }
+    var cls = tier === 'SAFE TO SCALE' ? 't-safe' : (tier === 'FIX FIRST' ? 't-fix' : 't-not');
+    ['tierChip', 'mbarTier'].forEach(function (id) {
+      var x = el(id);
+      x.className = 'tier ' + cls;
+      x.textContent = tier;
+    });
+
+    if (beNull) {
+      el('rangeLine').innerHTML = 'No ROAS breaks even at these numbers, in any case tested.';
+    } else {
+      el('rangeLine').innerHTML = 'From <b>' + roasTxt(o.break_even_roas_best_case) +
+        '</b> in your best case to <b>' + roasTxt(o.break_even_roas_worst_case) + '</b> in your worst case';
+    }
+
+    /* stacked bar. When the order clears, four cost bands plus the gold
+       remainder fill the gross order exactly. When it does not, the bands
+       overrun the gross order and the overrun is drawn as the shortfall. */
+    var vals = {
+      refunded: refunded,
+      cogs: costSeg,
+      handling: handling,
+      adspend: adspend,
+      result: neg ? 0 : resultVal
+    };
+    var costTotal = refunded + costSeg + handling + adspend;
+    var scale = neg ? costTotal : i.aov;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function (k) {
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = i.aov / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + T.money(i.aov) + ' gross';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the gross order. Everything past it is the shortfall.'
+      : 'The gold band on the right is the contribution left once ad spend is paid.';
+
+    el('lg_refunded').textContent = T.money(refunded);
+    el('lg_cogs').textContent = T.money(costSeg);
+    el('lg_handling').textContent = T.money(handling);
+    el('lg_adspend').textContent = T.money(adspend);
+    el('lg_result').textContent = neg ? T.money(Math.abs(resultVal)) : T.money(resultVal);
+    el('lg_result_nm').textContent = neg ? 'Short by' : 'Contribution left';
+    el('lgAdspend').hidden = !reportedOn;
+
+    /* biggest single line */
+    var lines = [
+      { k: 'Refunded revenue', v: refunded,
+        fix: 'At a ' + T.percent(i.return_rate) + ' return rate, ' + T.money(refunded) + ' of every gross dollar goes back to the customer.' },
+      { k: 'Product and fulfilment cost', v: costSeg,
+        fix: 'At a ' + T.percent(i.cm_pct) + ' contribution margin, ' + T.money(costSeg) + ' of every order is cost, not margin.' },
+      { k: 'Return handling', v: handling,
+        fix: 'Processing one return costs ' + T.money(i.return_cost) + ', spread across every order shipped it costs ' + T.money(handling) + '.' }
+    ];
+    if (reportedOn) {
+      lines.push({ k: 'Ad spend, at your reported ROAS', v: adspend,
+        fix: 'At a reported ' + T.ratio(reportedRoas) + 'x, you are paying ' + T.money(adspend) + ' to acquire this order.' });
+    }
+    lines.sort(function (a, b) { return b.v - a.v; });
+    var top = lines[0];
+    el('bindMain').innerHTML = top.k + ' is the biggest single line at <b>' + T.money(top.v) + '</b> of every gross dollar.';
+    el('bindFix').textContent = top.fix;
+
+    el('bindDrag').textContent = beNull
+      ? 'Contribution per order is ' + T.money(o.contribution_per_order) + ', at or below zero, so no ROAS repays the acquisition that bought this order.'
+      : 'Returns add ' + T.ratio(o.returns_penalty_x) + 'x to the ROAS you need, over the ' + T.ratio(o.naive_break_even_roas) + 'x a margin-only number would tell you.';
+
+    var rep = el('bindRepeat');
+    if (reportedOn) {
+      rep.hidden = false;
+      rep.textContent = 'At your reported ' + T.ratio(reportedRoas) + 'x, this order nets ' +
+        T.percent(o.actual_net_margin_at_reported_roas, 1) + ' after ad spend, against a ' + T.percent(i.target_net_margin_pct) + ' target.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread */
+    el('scLow').textContent = roasTxt(o.break_even_roas_worst_case);
+    el('scMid').textContent = beNull ? 'no ROAS clears it' : roasTxt(o.break_even_roas_expected);
+    el('scHigh').textContent = roasTxt(o.break_even_roas_best_case);
+    el('scLow').classList.toggle('neg', o.break_even_roas_worst_case === null);
+    el('scMid').classList.toggle('neg', beNull);
+    el('scHigh').classList.toggle('neg', o.break_even_roas_best_case === null);
+    el('scLowA').textContent = 'Return rate ' + T.percent(Math.min(100, i.return_rate * 1.2));
+    el('scMidA').textContent = 'Return rate ' + T.percent(i.return_rate);
+    el('scHighA').textContent = 'Return rate ' + T.percent(i.return_rate * 0.8);
+    el('scenNote').textContent = o.range_inert
+      ? 'Your return rate is set to zero, so flexing it changes nothing. Every case above is identical.'
+      : (o.break_even_roas_worst_case === null
+        ? 'A fifth more returns and no ROAS breaks even. The order stops supporting profitable paid acquisition entirely at that point.'
+        : 'If your best case still asks for an uncomfortable ROAS, the fix is the margin or the return rate, not the media buyer.');
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_kept').textContent = T.money((1 - r) * i.aov);
+    el('mx_kept').innerHTML = '(1 - ' + n2(r) + ') x ' + T.money(i.aov) + ' = ' + T.money((1 - r) * i.aov) +
+      '  <em>only the kept share of orders leaves revenue behind</em>';
+
+    el('m_pre').textContent = T.money(preHandling);
+    el('mx_pre').innerHTML = T.money((1 - r) * i.aov) + ' x ' + n2(m) + ' = ' + T.money(preHandling) +
+      '  <em>your margin applied to the revenue you keep</em>';
+
+    el('m_hand').textContent = T.money(handling);
+    el('mx_hand').innerHTML = n2(r) + ' x ' + T.money(i.return_cost) + ' = ' + T.money(handling) +
+      '  <em>label, inspection and repack, spread across every order shipped</em>';
+
+    el('m_contrib').textContent = T.money(o.contribution_per_order);
+    el('mx_contrib').innerHTML = T.money(preHandling) + ' - ' + T.money(handling) + ' = ' + T.money(o.contribution_per_order) +
+      '  <em>also the most you can pay to acquire this order and still break even</em>';
+
+    el('m_cmnet').textContent = n3(o.cm_net);
+    el('mx_cmnet').innerHTML = T.money(o.contribution_per_order) + ' / ' + T.money(i.aov) + ' = ' + n3(o.cm_net) +
+      '  <em>contribution earned per dollar of reported ad revenue</em>';
+
+    el('m_be').textContent = beNull ? 'no ROAS' : T.ratio(o.break_even_roas) + 'x';
+    el('m_be').classList.toggle('neg', beNull);
+    el('mx_be').innerHTML = beNull
+      ? '<em>Contribution per order is at or below zero, so dividing by it is undefined. Fix the order before you buy more of it.</em>'
+      : '1 / ' + n3(o.cm_net) + ' = ' + T.ratio(o.break_even_roas) + 'x  <em>the ROAS your margin actually requires</em>';
+
+    el('m_naive').textContent = (o.naive_break_even_roas === null) ? 'n/a' : T.ratio(o.naive_break_even_roas) + 'x';
+    el('mx_naive').innerHTML = (o.naive_break_even_roas === null)
+      ? '<em>Contribution margin is at zero, so there is no naive figure to quote.</em>'
+      : '1 / ' + n2(m) + ' = ' + T.ratio(o.naive_break_even_roas) + 'x  <em>what a calculator with no returns in it would tell you</em>';
+
+    el('m_penalty').textContent = (o.returns_penalty_x === null) ? 'n/a' : T.ratio(o.returns_penalty_x) + 'x';
+    el('mx_penalty').innerHTML = beNull
+      ? '<em>Break-even ROAS is undefined, so there is no penalty to quote, only an order to fix.</em>'
+      : T.ratio(o.break_even_roas) + 'x - ' + T.ratio(o.naive_break_even_roas) + 'x = ' + T.ratio(o.returns_penalty_x) + 'x' +
+        '  <em>how much returns add to the ROAS you need</em>';
+
+    if (o.target_roas !== null) {
+      el('m_target').textContent = T.ratio(o.target_roas) + 'x';
+      el('m_target').classList.remove('neg');
+      el('mx_target').innerHTML = '1 / (' + n3(o.cm_net) + ' - ' + n2(t) + ') = ' + T.ratio(o.target_roas) + 'x' +
+        '  <em>the ROAS that leaves your target net margin after ad spend</em>';
+    } else {
+      el('m_target').textContent = 'not reachable';
+      el('m_target').classList.add('neg');
+      el('mx_target').innerHTML = '<em>No ROAS reaches that net margin at these unit economics.</em>';
+    }
+
+    if (o.max_cac_for_target < 0) {
+      el('m_maxtarget').textContent = 'not reachable';
+      el('m_maxtarget').classList.add('neg');
+      el('mx_maxtarget').innerHTML = '<em>Negative. Even zero acquisition spend cannot hit your target margin at these unit economics.</em>';
+    } else {
+      el('m_maxtarget').textContent = T.money(o.max_cac_for_target);
+      el('m_maxtarget').classList.remove('neg');
+      el('mx_maxtarget').innerHTML = T.money(o.contribution_per_order) + ' - ' + n2(t) + ' x ' + T.money(i.aov) + ' = ' + T.money(o.max_cac_for_target) +
+        '  <em>contribution minus the dollars your target margin needs to keep</em>';
+    }
+
+    if (o.net_margin_at_4x !== null) {
+      el('m_4x').textContent = T.percent(o.net_margin_at_4x, 1);
+      el('m_4x').classList.toggle('neg', o.net_margin_at_4x < 0);
+      el('mx_4x').innerHTML = n3(o.cm_net) + ' - 0.250 = ' + n3(o.net_margin_at_4x / 100) + ', or ' + T.percent(o.net_margin_at_4x, 1) +
+        '  <em>what a flat 4x ROAS actually leaves you, once returns are inside your margin</em>';
+    } else {
+      el('m_4x').textContent = 'n/a';
+      el('mx_4x').innerHTML = '';
+    }
+
+    var reportedRow = el('reportedRow');
+    if (reportedOn) {
+      reportedRow.hidden = false;
+      el('m_reported').textContent = T.percent(o.actual_net_margin_at_reported_roas, 1);
+      el('m_reported').classList.toggle('neg', o.actual_net_margin_at_reported_roas < 0);
+      el('mx_reported').innerHTML = n3(o.cm_net) + ' - 1 / ' + T.ratio(reportedRoas) + 'x = ' + T.percent(o.actual_net_margin_at_reported_roas, 1) +
+        '  <em>what your platform reported ROAS is really buying you</em>';
+    } else {
+      reportedRow.hidden = true;
+    }
+
+    /* state note */
+    var touched = KEYS.some(function (k) { return i[k] !== DEFAULTS[k]; }) || i.roas_on !== DEFAULTS.roas_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function (k) {
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function () {
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function () {
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function () { n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('roas_on').addEventListener('change', function () {
+    el('roasField').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function () {
+    KEYS.forEach(function (k) { setField(k, DEFAULTS[k]); });
+    el('roas_on').checked = DEFAULTS.roas_on;
+    el('roasField').classList.toggle('is-off', !DEFAULTS.roas_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function () {
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function (slug) {
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function () {
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function (k) {
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function () { return lastInputs; },
+    getOutputs: function () {
+      if (!lastOut) return {};
+      return {
+        contribution_per_order: T.round2(lastOut.contribution_per_order),
+        cm_net: lastOut.cm_net === null ? null : T.roundDp(lastOut.cm_net, 4),
+        break_even_roas: lastOut.break_even_roas === null ? null : T.round2(lastOut.break_even_roas),
+        naive_break_even_roas: lastOut.naive_break_even_roas === null ? null : T.round2(lastOut.naive_break_even_roas),
+        returns_penalty_x: lastOut.returns_penalty_x === null ? null : T.round2(lastOut.returns_penalty_x),
+        target_roas: lastOut.target_roas === null ? null : T.round2(lastOut.target_roas),
+        max_cac_per_order: T.round2(lastOut.max_cac_per_order),
+        max_cac_for_target: T.round2(lastOut.max_cac_for_target),
+        net_margin_at_4x: lastOut.net_margin_at_4x === null ? null : T.round2(lastOut.net_margin_at_4x),
+        actual_net_margin_at_reported_roas: lastOut.actual_net_margin_at_reported_roas === null ? null : T.round2(lastOut.actual_net_margin_at_reported_roas),
+        break_even_roas_best_case: lastOut.break_even_roas_best_case === null ? null : T.round2(lastOut.break_even_roas_best_case),
+        break_even_roas_worst_case: lastOut.break_even_roas_worst_case === null ? null : T.round2(lastOut.break_even_roas_worst_case)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

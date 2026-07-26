@@ -1,0 +1,1568 @@
+{
+  "family": "uniteco",
+  "source_spec": "phase1-spec-uniteco.json",
+  "extracted_verbatim": true,
+  "note": "Inputs/expected copied byte-for-byte from the spec test_vectors. Never hand-edit; regenerate from the spec.",
+  "display_rounding": {
+    "money": "2dp half-up",
+    "percent": "1dp half-up",
+    "points": "1dp half-up",
+    "ratio": "2dp half-up",
+    "x": "2dp half-up",
+    "months": "1dp half-up",
+    "counts": "ceil or floor to integer"
+  },
+  "vector_count": 33,
+  "tools": [
+    {
+      "slug": "true-profit-per-order",
+      "title": "True Profit Per Order",
+      "rounding_rule": "All arithmetic in full float. Round only the displayed value: money to 2 decimals via Math.round(x*100)/100, percentages to 1 decimal, counts via Math.ceil to an integer.",
+      "outputs": [
+        {
+          "name": "contribution_before_cac",
+          "format": "money",
+          "description": "What one order leaves before you pay to acquire the customer."
+        },
+        {
+          "name": "true_profit_per_order",
+          "format": "money",
+          "description": "Headline. After returns, fees and CAC."
+        },
+        {
+          "name": "returns_drag_per_order",
+          "format": "money",
+          "description": "The line TGM has no field for."
+        },
+        {
+          "name": "break_even_orders_per_customer",
+          "format": "integer or null",
+          "description": "Orders one customer must place before the acquisition cost is repaid."
+        },
+        {
+          "name": "verdict_tier",
+          "format": "enum SAFE TO SCALE | FIX FIRST | NOT YET",
+          "description": "One-word read."
+        },
+        {
+          "name": "profit_per_customer",
+          "format": "money or null",
+          "description": "Only when the optional repeat rate is on."
+        },
+        {
+          "name": "true_profit_low / true_profit_mid / true_profit_high",
+          "format": "money range",
+          "description": "RANGE OUTPUT. The honest spread."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default, unprofitable on order one",
+          "inputs": {
+            "aov": 68,
+            "cogs_pct": 35,
+            "shipping": 7.5,
+            "return_rate": 22,
+            "return_processing_cost": 6,
+            "resellable_pct": 80,
+            "cac": 28,
+            "proc_pct": 2.9,
+            "repeat_rate": null
+          },
+          "expected": {
+            "revenue_kept": 53.04,
+            "cogs_cost": 19.6112,
+            "return_handling_cost": 1.32,
+            "processing_cost": 2.272,
+            "contribution_before_cac": 22.34,
+            "true_profit_per_order": -5.66,
+            "returns_drag_per_order": 12.09,
+            "break_even_orders_per_customer": 2,
+            "verdict_tier": "NOT YET",
+            "profit_per_customer": null,
+            "true_profit_low": -13.68,
+            "true_profit_mid": -5.66,
+            "true_profit_high": 2.36
+          },
+          "worked": "revenue_kept 0.78*68=53.04. cogs 68*0.35*(1-0.22*0.8)=23.8*0.824=19.6112. return handling 0.22*6=1.32. processing 0.029*68+0.30=2.272. contribution 53.04-19.6112-7.5-1.32-2.272=22.3368 -> 22.34. profit 22.3368-28=-5.6632 -> -5.66. drag 0.22*(68*(1-0.8*0.35)+6)=0.22*54.96=12.0912 -> 12.09. break-even ceil(28/22.3368)=ceil(1.2535)=2. safe_threshold 3.40, profit <= 0, no repeat -> NOT YET. HIGH: r=0.176, cac=22.4 -> 0.824*68=56.032, cogs 23.8*0.8592=20.44896, handling 1.056, contribution 24.75504, profit 2.35504 -> 2.36. LOW: r=0.264, cac=33.6 -> 0.736*68=50.048, cogs 23.8*0.7888=18.77344, handling 1.584, contribution 19.91856, profit -13.68144 -> -13.68."
+        },
+        {
+          "name": "TV2 zero return rate, healthy order",
+          "inputs": {
+            "aov": 100,
+            "cogs_pct": 30,
+            "shipping": 5,
+            "return_rate": 0,
+            "return_processing_cost": 8,
+            "resellable_pct": 50,
+            "cac": 20,
+            "proc_pct": 2.9,
+            "repeat_rate": null
+          },
+          "expected": {
+            "contribution_before_cac": 61.8,
+            "true_profit_per_order": 41.8,
+            "returns_drag_per_order": 0,
+            "break_even_orders_per_customer": 1,
+            "verdict_tier": "SAFE TO SCALE",
+            "profit_per_customer": null,
+            "true_profit_low": 37.8,
+            "true_profit_mid": 41.8,
+            "true_profit_high": 45.8
+          },
+          "worked": "revenue 100, cogs 100*0.3*1=30, shipping 5, handling 0, processing 2.9+0.30=3.20. contribution 100-30-5-0-3.2=61.80. profit 41.80. break-even ceil(20/61.8)=1. safe_threshold 5.00, 41.80 > 5 -> SAFE TO SCALE. Range: return flex inert at 0, so CAC only. HIGH cac 16 -> 45.80. LOW cac 24 -> 37.80."
+        },
+        {
+          "name": "TV3 nothing resellable, repeat toggle on",
+          "inputs": {
+            "aov": 50,
+            "cogs_pct": 40,
+            "shipping": 6,
+            "return_rate": 30,
+            "return_processing_cost": 10,
+            "resellable_pct": 0,
+            "cac": 15,
+            "proc_pct": 3.0,
+            "repeat_rate": 40
+          },
+          "expected": {
+            "contribution_before_cac": 4.2,
+            "true_profit_per_order": -10.8,
+            "returns_drag_per_order": 18.0,
+            "break_even_orders_per_customer": 4,
+            "expected_orders_per_customer": 1.6666666667,
+            "profit_per_customer": -8.0,
+            "verdict_tier": "NOT YET",
+            "true_profit_low": -17.4,
+            "true_profit_mid": -10.8,
+            "true_profit_high": -4.2
+          },
+          "worked": "revenue 0.7*50=35. cogs 50*0.4*(1-0.3*0)=20. shipping 6. handling 0.3*10=3. processing 0.03*50+0.30=1.80. contribution 35-20-6-3-1.8=4.20. profit 4.20-15=-10.80. drag 0.3*(50*(1-0)+10)=18.00 (check: zero-return contribution 50*0.6-6-1.8=22.20; 22.20-4.20=18.00). break-even ceil(15/4.2)=ceil(3.5714)=4. repeat 1/(1-0.4)=1.6667 orders; 1.6667*4.2-15=7.00-15=-8.00, still negative -> NOT YET. HIGH r=0.24 cac=12: 0.76*50=38, cogs 20, handling 2.4, proc 1.8, contribution 7.80, profit -4.20. LOW r=0.36 cac=18: 0.64*50=32, cogs 20, handling 3.6, proc 1.8, contribution 0.60, profit -17.40."
+        }
+      ]
+    },
+    {
+      "slug": "contribution-margin",
+      "title": "Contribution Margin (Returns-Adjusted)",
+      "rounding_rule": "Full float internally. Money 2 decimals, percentages and margin points 1 decimal, unit counts ceil to integer.",
+      "outputs": [
+        {
+          "name": "returns_adjusted_cm_per_unit",
+          "format": "money",
+          "description": "Headline."
+        },
+        {
+          "name": "gross_cm_per_unit",
+          "format": "money",
+          "description": "The comparison number."
+        },
+        {
+          "name": "returns_drag_per_unit",
+          "format": "money",
+          "description": "The gap in dollars."
+        },
+        {
+          "name": "returns_drag_pts",
+          "format": "percent 1dp",
+          "description": "The gap in margin points."
+        },
+        {
+          "name": "cm_ratio_net_pct",
+          "format": "percent 1dp",
+          "description": "CM% of net revenue."
+        },
+        {
+          "name": "cm_ratio_gross_pct",
+          "format": "percent 1dp",
+          "description": "CM% of gross price."
+        },
+        {
+          "name": "break_even_units",
+          "format": "integer or null"
+        },
+        {
+          "name": "break_even_units_ignoring_returns",
+          "format": "integer or null"
+        },
+        {
+          "name": "extra_units_returns_cost_you",
+          "format": "integer or null",
+          "description": "The sentence that sells the tool."
+        },
+        {
+          "name": "cm_low / cm_mid / cm_high",
+          "format": "money range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default",
+          "inputs": {
+            "price": 68,
+            "cogs_unit": 23.8,
+            "shipping_unit": 7.5,
+            "other_variable": 2.27,
+            "return_rate": 22,
+            "return_cost": 6,
+            "resellable_pct": 80,
+            "fixed_costs": 12000
+          },
+          "expected": {
+            "gross_cm_per_unit": 34.43,
+            "returns_adjusted_cm_per_unit": 22.34,
+            "returns_drag_per_unit": 12.09,
+            "returns_drag_pts": 17.8,
+            "cm_ratio_net_pct": 42.1,
+            "cm_ratio_gross_pct": 32.9,
+            "break_even_units": 538,
+            "break_even_units_ignoring_returns": 349,
+            "extra_units_returns_cost_you": 189,
+            "cm_low": 19.92,
+            "cm_mid": 22.34,
+            "cm_high": 24.76
+          },
+          "worked": "gross 68-23.8-7.5-2.27=34.43. adjusted 0.78*68=53.04 minus 23.8*(1-0.176)=19.6112 minus 7.5 minus 2.27 minus 0.22*6=1.32 -> 22.3388 -> 22.34. drag 0.22*(68-0.8*23.8+6)=0.22*54.96=12.0912 -> 12.09 (34.43-22.3388=12.0912 confirms). drag_pts 12.0912/68*100=17.7812 -> 17.8. cm_net 22.3388/53.04*100=42.1169 -> 42.1. cm_gross 22.3388/68*100=32.8512 -> 32.9. BE 12000/22.3388=537.182 -> 538. BE ignoring 12000/34.43=348.533 -> 349. delta 189. LOW r=0.264: 0.736*68=50.048 - 23.8*0.7888=18.77344 - 7.5 - 2.27 - 1.584 = 19.92056 -> 19.92. HIGH r=0.176: 0.824*68=56.032 - 23.8*0.8592=20.44896 - 7.5 - 2.27 - 1.056 = 24.75704 -> 24.76."
+        },
+        {
+          "name": "TV2 zero returns, fixed costs omitted",
+          "inputs": {
+            "price": 40,
+            "cogs_unit": 10,
+            "shipping_unit": 4,
+            "other_variable": 1.5,
+            "return_rate": 0,
+            "return_cost": 5,
+            "resellable_pct": 100,
+            "fixed_costs": null
+          },
+          "expected": {
+            "gross_cm_per_unit": 24.5,
+            "returns_adjusted_cm_per_unit": 24.5,
+            "returns_drag_per_unit": 0,
+            "returns_drag_pts": 0.0,
+            "cm_ratio_net_pct": 61.3,
+            "cm_ratio_gross_pct": 61.3,
+            "break_even_units": null,
+            "break_even_units_ignoring_returns": null,
+            "extra_units_returns_cost_you": null,
+            "cm_low": 24.5,
+            "cm_mid": 24.5,
+            "cm_high": 24.5
+          },
+          "worked": "40-10-4-1.5=24.50 both ways. ratio 24.5/40*100=61.25 -> 61.3 on both bases since r=0. fixed blank -> break-even block hidden. Range collapses; page states there is no guess to flex."
+        },
+        {
+          "name": "TV3 high returns, nothing resellable",
+          "inputs": {
+            "price": 120,
+            "cogs_unit": 48,
+            "shipping_unit": 9,
+            "other_variable": 4.2,
+            "return_rate": 35,
+            "return_cost": 12,
+            "resellable_pct": 0,
+            "fixed_costs": 30000
+          },
+          "expected": {
+            "gross_cm_per_unit": 58.8,
+            "returns_adjusted_cm_per_unit": 12.6,
+            "returns_drag_per_unit": 46.2,
+            "returns_drag_pts": 38.5,
+            "cm_ratio_net_pct": 16.2,
+            "cm_ratio_gross_pct": 10.5,
+            "break_even_units": 2381,
+            "break_even_units_ignoring_returns": 511,
+            "extra_units_returns_cost_you": 1870,
+            "cm_low": 3.36,
+            "cm_mid": 12.6,
+            "cm_high": 21.84
+          },
+          "worked": "gross 120-48-9-4.2=58.80. adjusted 0.65*120=78 - 48*(1-0)=48 - 9 - 4.2 - 0.35*12=4.2 -> 12.60. drag 0.35*(120-0+12)=46.20 (58.8-12.6 confirms). drag_pts 46.2/120*100=38.5. cm_net 12.6/78*100=16.1538 -> 16.2. cm_gross 12.6/120*100=10.5. BE 30000/12.6=2380.95 -> 2381. BE ignoring 30000/58.8=510.204 -> 511. delta 1870. LOW r=0.42: 0.58*120=69.6-48-9-4.2-5.04=3.36. HIGH r=0.28: 0.72*120=86.4-48-9-4.2-3.36=21.84."
+        }
+      ]
+    },
+    {
+      "slug": "free-shipping-threshold",
+      "title": "Free Shipping Threshold (Returns-Adjusted)",
+      "rounding_rule": "Full float internally. Money 2 decimals, percentages 1 decimal, threshold rounded UP to the nearest whole $5 before display.",
+      "outputs": [
+        {
+          "name": "suggested_threshold",
+          "format": "money rounded to $5"
+        },
+        {
+          "name": "net_impact_per_order",
+          "format": "money",
+          "description": "Headline, signed."
+        },
+        {
+          "name": "naive_net_impact_per_100",
+          "format": "money",
+          "description": "What returns-blind tools report."
+        },
+        {
+          "name": "bracketing_leak_per_100",
+          "format": "money",
+          "description": "The difference, named."
+        },
+        {
+          "name": "break_even_lift_dollars",
+          "format": "money or null",
+          "description": "The number that decides it."
+        },
+        {
+          "name": "break_even_lift_pct",
+          "format": "percent 1dp or null"
+        },
+        {
+          "name": "shipping_absorbed_per_100",
+          "format": "money"
+        },
+        {
+          "name": "threshold_verdict",
+          "format": "string"
+        },
+        {
+          "name": "net_impact_per_order_low / mid / high",
+          "format": "money range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default, threshold loses money",
+          "inputs": {
+            "current_aov": 68,
+            "cm_pct": 45,
+            "shipping_cost": 7.5,
+            "threshold_multiplier": 1.3,
+            "reach_pct": 30,
+            "aov_lift_pct": 15,
+            "threshold_return_rate": 30,
+            "return_cost": 6
+          },
+          "expected": {
+            "suggested_threshold": 90,
+            "incremental_revenue_gross_per_100": 306.0,
+            "incremental_revenue_net_per_100": 214.2,
+            "incremental_contribution_per_100": 96.39,
+            "returns_cost_per_100": 54.0,
+            "shipping_absorbed_per_100": 225.0,
+            "net_impact_per_100": -182.61,
+            "net_impact_per_order": -1.83,
+            "naive_net_impact_per_100": -87.3,
+            "bracketing_leak_per_100": 95.31,
+            "break_even_lift_dollars": 29.52,
+            "break_even_lift_pct": 43.4,
+            "threshold_verdict": "At this lift, the threshold costs you money",
+            "net_impact_per_order_low": -2.02,
+            "net_impact_per_order_mid": -1.83,
+            "net_impact_per_order_high": -1.63
+          },
+          "worked": "threshold ceil(88.4/5)*5=90. qualifying 30. gross 30*68*0.15=306. net 306*0.7=214.20. contribution 214.2*0.45=96.39. returns 30*0.3*6=54. shipping 30*7.5=225. net/100 96.39-54-225=-182.61 -> per order -1.8261 -> -1.83. naive 306*0.45-225=-87.30. leak -87.30-(-182.61)=95.31 (formula 9*(4.59+6)=95.31 confirms). BE lift $ (7.5+1.8)/(0.7*0.45)=9.3/0.315=29.5238 -> 29.52; pct 29.5238/68*100=43.4174 -> 43.4. LOW L=0.12: 244.8*0.7=171.36*0.45=77.112-54-225=-201.888 -> -2.02. HIGH L=0.18: 367.2*0.7=257.04*0.45=115.668-54-225=-163.332 -> -1.63."
+        },
+        {
+          "name": "TV2 zero returns, threshold pays",
+          "inputs": {
+            "current_aov": 100,
+            "cm_pct": 50,
+            "shipping_cost": 5,
+            "threshold_multiplier": 1.5,
+            "reach_pct": 40,
+            "aov_lift_pct": 25,
+            "threshold_return_rate": 0,
+            "return_cost": 8
+          },
+          "expected": {
+            "suggested_threshold": 150,
+            "incremental_revenue_gross_per_100": 1000.0,
+            "incremental_revenue_net_per_100": 1000.0,
+            "incremental_contribution_per_100": 500.0,
+            "returns_cost_per_100": 0.0,
+            "shipping_absorbed_per_100": 200.0,
+            "net_impact_per_100": 300.0,
+            "net_impact_per_order": 3.0,
+            "naive_net_impact_per_100": 300.0,
+            "bracketing_leak_per_100": 0.0,
+            "break_even_lift_dollars": 10.0,
+            "break_even_lift_pct": 10.0,
+            "threshold_verdict": "This threshold pays for itself",
+            "net_impact_per_order_low": 2.0,
+            "net_impact_per_order_mid": 3.0,
+            "net_impact_per_order_high": 4.0
+          },
+          "worked": "threshold ceil(150/5)*5=150. gross 40*100*0.25=1000, no returns so net=1000, contribution 500, shipping 40*5=200, net 300 -> 3.00/order. naive identical, leak 0. BE lift $ (5+0)/(1*0.5)=10 -> 10% of 100. LOW L=0.20: 800*0.5=400-200=200 -> 2.00. HIGH L=0.30: 1200*0.5=600-200=400 -> 4.00."
+        },
+        {
+          "name": "TV3 heavy bracketing, thin margin, unreachable break-even",
+          "inputs": {
+            "current_aov": 45,
+            "cm_pct": 30,
+            "shipping_cost": 9,
+            "threshold_multiplier": 1.75,
+            "reach_pct": 50,
+            "aov_lift_pct": 20,
+            "threshold_return_rate": 55,
+            "return_cost": 10
+          },
+          "expected": {
+            "suggested_threshold": 80,
+            "incremental_revenue_gross_per_100": 450.0,
+            "incremental_revenue_net_per_100": 202.5,
+            "incremental_contribution_per_100": 60.75,
+            "returns_cost_per_100": 275.0,
+            "shipping_absorbed_per_100": 450.0,
+            "net_impact_per_100": -664.25,
+            "net_impact_per_order": -6.64,
+            "naive_net_impact_per_100": -315.0,
+            "bracketing_leak_per_100": 349.25,
+            "break_even_lift_dollars": 107.41,
+            "break_even_lift_pct": 238.7,
+            "threshold_verdict": "At this lift, the threshold costs you money",
+            "net_impact_per_order_low": -6.76,
+            "net_impact_per_order_mid": -6.64,
+            "net_impact_per_order_high": -6.52
+          },
+          "worked": "threshold 45*1.75=78.75 -> ceil(15.75)=16*5=80. gross 50*45*0.2=450. net 450*0.45=202.50. contribution 202.5*0.3=60.75. returns 50*0.55*10=275. shipping 50*9=450. net/100 60.75-275-450=-664.25 -> -6.6425 -> -6.64. naive 450*0.3-450=-315.00. leak 349.25 (27.5*(2.7+10)=349.25 confirms). BE lift $ (9+5.5)/(0.45*0.3)=14.5/0.135=107.4074 -> 107.41; pct 107.4074/45*100=238.683 -> 238.7. LOW L=0.16: 360*0.45=162*0.3=48.6-275-450=-676.4 -> -6.76. HIGH L=0.24: 540*0.45=243*0.3=72.9-725=-652.1 -> -6.52."
+        }
+      ]
+    },
+    {
+      "slug": "discount-roi",
+      "title": "Discount ROI (Returns-Adjusted)",
+      "rounding_rule": "Full float internally. Money 2 decimals, percentages 1 decimal. Display rule: a required lift above 1000% renders as 'not reachable' while the raw value is still returned for tests.",
+      "outputs": [
+        {
+          "name": "net_profit_impact",
+          "format": "money signed",
+          "description": "Headline for the window."
+        },
+        {
+          "name": "promo_contribution_per_order",
+          "format": "money",
+          "description": "What one discounted order actually leaves."
+        },
+        {
+          "name": "baseline_contribution_per_order",
+          "format": "money"
+        },
+        {
+          "name": "required_lift_pct",
+          "format": "percent 1dp or null"
+        },
+        {
+          "name": "naive_required_lift_pct",
+          "format": "percent 1dp or null"
+        },
+        {
+          "name": "required_lift_table",
+          "format": "table of 4 rows at 10/15/20/25% discount, real vs returns-blind"
+        },
+        {
+          "name": "verdict",
+          "format": "string"
+        },
+        {
+          "name": "net_profit_impact_low / mid / high",
+          "format": "money range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default, 20% off",
+          "inputs": {
+            "aov": 68,
+            "discount_pct": 20,
+            "cm_pct": 45,
+            "orders": 500,
+            "expected_lift_pct": 30,
+            "return_rate_baseline": 22,
+            "return_rate_discount": 28,
+            "return_cost": 12
+          },
+          "expected": {
+            "baseline_contribution_per_order": 21.228,
+            "promo_contribution_per_order": 8.88,
+            "baseline_contribution_total": 10614.0,
+            "promo_orders": 650,
+            "promo_contribution_total": 5772.0,
+            "net_profit_impact": -4842.0,
+            "required_lift_pct": 139.1,
+            "naive_required_lift_pct": 80.0,
+            "required_lift_table": [
+              {
+                "discount": "10%",
+                "required": 54.1,
+                "naive": 28.6
+              },
+              {
+                "discount": "15%",
+                "required": 87.4,
+                "naive": 50.0
+              },
+              {
+                "discount": "20%",
+                "required": 139.1,
+                "naive": 80.0
+              },
+              {
+                "discount": "25%",
+                "required": 230.0,
+                "naive": 125.0
+              }
+            ],
+            "verdict": "The promo costs you money",
+            "net_profit_impact_low": -5108.4,
+            "net_profit_impact_mid": -4842.0,
+            "net_profit_impact_high": -4575.6
+          },
+          "worked": "A=0.78*68*0.45-0.22*12=23.868-2.64=21.228. B=0.72*68*0.25-0.28*12=12.24-3.36=8.88. baseline 500*21.228=10614.00. promo 650*8.88=5772.00. impact -4842.00. required 21.228/8.88-1=1.390541 -> 139.1. naive 0.20/0.25=0.8 -> 80.0. Table: B(10%)=0.72*23.8-3.36=13.776, 21.228/13.776-1=0.540941 -> 54.1 (naive 0.10/0.35=28.6). B(15%)=0.72*20.4-3.36=11.328, ratio 1.873941 -> 87.4 (naive 50.0). B(25%)=0.72*13.6-3.36=6.432, ratio 3.300373 -> 230.0 (naive 125.0). LOW L=0.24: 620*8.88=5505.60-10614=-5108.40. HIGH L=0.36: 680*8.88=6038.40-10614=-4575.60."
+        },
+        {
+          "name": "TV2 zero returns, promo pays",
+          "inputs": {
+            "aov": 100,
+            "discount_pct": 10,
+            "cm_pct": 60,
+            "orders": 1000,
+            "expected_lift_pct": 40,
+            "return_rate_baseline": 0,
+            "return_rate_discount": 0,
+            "return_cost": 10
+          },
+          "expected": {
+            "baseline_contribution_per_order": 60.0,
+            "promo_contribution_per_order": 50.0,
+            "baseline_contribution_total": 60000.0,
+            "promo_orders": 1400,
+            "promo_contribution_total": 70000.0,
+            "net_profit_impact": 10000.0,
+            "required_lift_pct": 20.0,
+            "naive_required_lift_pct": 20.0,
+            "required_lift_table": [
+              {
+                "discount": "10%",
+                "required": 20.0,
+                "naive": 20.0
+              },
+              {
+                "discount": "15%",
+                "required": 33.3,
+                "naive": 33.3
+              },
+              {
+                "discount": "20%",
+                "required": 50.0,
+                "naive": 50.0
+              },
+              {
+                "discount": "25%",
+                "required": 71.4,
+                "naive": 71.4
+              }
+            ],
+            "verdict": "The promo pays",
+            "net_profit_impact_low": 6000.0,
+            "net_profit_impact_mid": 10000.0,
+            "net_profit_impact_high": 14000.0
+          },
+          "worked": "A=100*0.6=60. B=100*0.5=50. baseline 60000, promo 1400*50=70000, impact +10000. required 60/50-1=0.2 -> 20.0, naive 0.10/0.50=20.0, identical because both return rates are zero. Table B: 45, 40, 35 -> 60/45-1=33.3, 60/40-1=50.0, 60/35-1=71.4. LOW L=0.32: 1320*50=66000 -> +6000. HIGH L=0.48: 1480*50=74000 -> +14000."
+        },
+        {
+          "name": "TV3 discount exceeds margin, no lift saves it",
+          "inputs": {
+            "aov": 50,
+            "discount_pct": 40,
+            "cm_pct": 35,
+            "orders": 200,
+            "expected_lift_pct": 100,
+            "return_rate_baseline": 20,
+            "return_rate_discount": 45,
+            "return_cost": 15
+          },
+          "expected": {
+            "baseline_contribution_per_order": 11.0,
+            "promo_contribution_per_order": -8.125,
+            "baseline_contribution_total": 2200.0,
+            "promo_orders": 400,
+            "promo_contribution_total": -3250.0,
+            "net_profit_impact": -5450.0,
+            "required_lift_pct": null,
+            "naive_required_lift_pct": null,
+            "required_lift_table": [
+              {
+                "discount": "10%",
+                "required": 8700.0,
+                "required_display": "not reachable",
+                "naive": 40.0
+              },
+              {
+                "discount": "15%",
+                "required": null,
+                "naive": 75.0
+              },
+              {
+                "discount": "20%",
+                "required": null,
+                "naive": 133.3
+              },
+              {
+                "discount": "25%",
+                "required": null,
+                "naive": 250.0
+              }
+            ],
+            "verdict": "The promo costs you money",
+            "net_profit_impact_low": -5125.0,
+            "net_profit_impact_mid": -5450.0,
+            "net_profit_impact_high": -5775.0
+          },
+          "worked": "A=0.8*50*0.35-0.2*15=14-3=11. B=0.55*50*(0.35-0.40)-0.45*15=-1.375-6.75=-8.125. baseline 200*11=2200. promo 400*(-8.125)=-3250. impact -5450.00. required null (B<0). naive null (m<d). Table B(10%)=0.55*12.5-6.75=0.125 -> 11/0.125-1=87 -> 8700.0% raw, displays 'not reachable'; naive 0.10/0.25=40.0. B(15%)=5.5-6.75=-1.25 -> null (naive 0.15/0.20=75.0). B(20%)=4.125-6.75=-2.625 -> null (naive 0.20/0.15=133.3). B(25%)=2.75-6.75=-4.0 -> null (naive 0.25/0.10=250.0). LOW L=0.80: 360*(-8.125)=-2925 -> -5125.00. HIGH L=1.20: 440*(-8.125)=-3575 -> -5775.00. Note the range inverts: more orders at a negative contribution is worse, and the page labels it that way."
+        }
+      ]
+    },
+    {
+      "slug": "break-even-roas",
+      "title": "Break-Even ROAS (Returns-Adjusted)",
+      "rounding_rule": "Full float internally. ROAS displayed to 2 decimals with an x suffix, money 2 decimals, percentages 1 decimal.",
+      "outputs": [
+        {
+          "name": "break_even_roas",
+          "format": "x 2dp or null",
+          "description": "Headline."
+        },
+        {
+          "name": "naive_break_even_roas",
+          "format": "x 2dp",
+          "description": "What margin-only calculators say."
+        },
+        {
+          "name": "returns_penalty_x",
+          "format": "x 2dp"
+        },
+        {
+          "name": "target_roas",
+          "format": "x 2dp or null"
+        },
+        {
+          "name": "max_cac_per_order",
+          "format": "money"
+        },
+        {
+          "name": "max_cac_for_target",
+          "format": "money, negative renders as 'not reachable'"
+        },
+        {
+          "name": "net_margin_at_4x",
+          "format": "percent 1dp",
+          "description": "The line that kills the rumour."
+        },
+        {
+          "name": "actual_net_margin_at_reported_roas",
+          "format": "percent 1dp or null"
+        },
+        {
+          "name": "break_even_roas_best_case / expected / worst_case",
+          "format": "x range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default",
+          "inputs": {
+            "aov": 68,
+            "cm_pct": 45,
+            "return_rate": 22,
+            "return_cost": 12,
+            "target_net_margin_pct": 10,
+            "platform_reported_roas": null
+          },
+          "expected": {
+            "contribution_per_order": 21.228,
+            "cm_net": 0.3121764706,
+            "break_even_roas": 3.2,
+            "naive_break_even_roas": 2.22,
+            "returns_penalty_x": 0.98,
+            "target_roas": 4.71,
+            "max_cac_per_order": 21.23,
+            "max_cac_for_target": 14.43,
+            "net_margin_at_4x": 6.2,
+            "actual_net_margin_at_reported_roas": null,
+            "break_even_roas_best_case": 2.94,
+            "break_even_roas_expected": 3.2,
+            "break_even_roas_worst_case": 3.51
+          },
+          "worked": "contribution 0.78*68*0.45-0.22*12=23.868-2.64=21.228. cm_net 21.228/68=0.31217647. BE 68/21.228=3.203316 -> 3.20. naive 1/0.45=2.222222 -> 2.22. penalty 0.981094 -> 0.98. target 1/(0.31217647-0.10)=1/0.21217647=4.713058 -> 4.71. max CAC 21.23. max CAC for target 21.228-6.8=14.428 -> 14.43. at 4x: 0.31217647-0.25=0.06217647 -> 6.2%. best r=0.176: contribution 0.824*30.6-2.112=25.2144-2.112=23.1024, BE 68/23.1024=2.943417 -> 2.94. worst r=0.264: contribution 0.736*30.6-3.168=22.5216-3.168=19.3536, BE 68/19.3536=3.513558 -> 3.51."
+        },
+        {
+          "name": "TV2 zero returns, high margin",
+          "inputs": {
+            "aov": 120,
+            "cm_pct": 60,
+            "return_rate": 0,
+            "return_cost": 10,
+            "target_net_margin_pct": 15,
+            "platform_reported_roas": null
+          },
+          "expected": {
+            "contribution_per_order": 72.0,
+            "cm_net": 0.6,
+            "break_even_roas": 1.67,
+            "naive_break_even_roas": 1.67,
+            "returns_penalty_x": 0.0,
+            "target_roas": 2.22,
+            "max_cac_per_order": 72.0,
+            "max_cac_for_target": 54.0,
+            "net_margin_at_4x": 35.0,
+            "break_even_roas_best_case": 1.67,
+            "break_even_roas_expected": 1.67,
+            "break_even_roas_worst_case": 1.67
+          },
+          "worked": "contribution 120*0.6=72. cm_net 0.6. BE 1/0.6=1.666667 -> 1.67, identical to naive, penalty 0.00. target 1/(0.6-0.15)=2.222222 -> 2.22. max CAC 72.00, for target 72-18=54.00. at 4x 0.60-0.25=0.35 -> 35.0%. Range collapses at r=0."
+        },
+        {
+          "name": "TV3 thin margin, returns break the model",
+          "inputs": {
+            "aov": 40,
+            "cm_pct": 25,
+            "return_rate": 35,
+            "return_cost": 14,
+            "target_net_margin_pct": 10,
+            "platform_reported_roas": 4.0
+          },
+          "expected": {
+            "contribution_per_order": 1.6,
+            "cm_net": 0.04,
+            "break_even_roas": 25.0,
+            "naive_break_even_roas": 4.0,
+            "returns_penalty_x": 21.0,
+            "target_roas": null,
+            "max_cac_per_order": 1.6,
+            "max_cac_for_target": -2.4,
+            "net_margin_at_4x": -21.0,
+            "actual_net_margin_at_reported_roas": -21.0,
+            "break_even_roas_best_case": 12.2,
+            "break_even_roas_expected": 25.0,
+            "break_even_roas_worst_case": null
+          },
+          "worked": "contribution 0.65*40*0.25-0.35*14=6.5-4.9=1.60. cm_net 1.6/40=0.04. BE 1/0.04=25.00. naive 1/0.25=4.00. penalty 21.00. target null since cm_net 0.04 < t 0.10. max CAC 1.60; for target 1.6-4=-2.40 -> displays 'not reachable'. at 4x 0.04-0.25=-0.21 -> -21.0%, and since the reported ROAS is 4.0 the same -21.0% is what the platform's number is really buying. best r=0.28: contribution 0.72*10-3.92=7.2-3.92=3.28, cm_net 0.082, BE 1/0.082=12.195122 -> 12.20. worst r=0.42: contribution 0.58*10-5.88=5.8-5.88=-0.08, negative -> null."
+        }
+      ]
+    },
+    {
+      "slug": "ltv",
+      "title": "Customer Lifetime Value (Returns and Exchanges Adjusted)",
+      "rounding_rule": "Full float internally. Money 2 decimals, ratio 2 decimals, order counts shown to 1 decimal (they are averages, not integers).",
+      "outputs": [
+        {
+          "name": "net_aov",
+          "format": "money",
+          "description": "Gross AOV minus refunds, exchanges retained."
+        },
+        {
+          "name": "contribution_ltv",
+          "format": "money",
+          "description": "Headline."
+        },
+        {
+          "name": "naive_contribution_ltv",
+          "format": "money"
+        },
+        {
+          "name": "returns_gap",
+          "format": "money",
+          "description": "What returns take out of the lifetime number."
+        },
+        {
+          "name": "net_ltv_after_cac",
+          "format": "money or null"
+        },
+        {
+          "name": "ltv_cac_ratio",
+          "format": "ratio 2dp or null"
+        },
+        {
+          "name": "discounted_contribution_ltv",
+          "format": "money, shown only when the toggle is on"
+        },
+        {
+          "name": "contribution_ltv_low / mid / high",
+          "format": "money range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default, CAC on, discounting off",
+          "inputs": {
+            "gross_aov": 68,
+            "return_rate": 22,
+            "exchange_share_pct": 30,
+            "purchases_per_year": 2.2,
+            "lifespan_years": 2,
+            "cm_pct": 45,
+            "cac": 28,
+            "discount_rate_pct": 0
+          },
+          "expected": {
+            "net_aov": 57.528,
+            "total_orders": 4.4,
+            "contribution_ltv": 113.91,
+            "naive_contribution_ltv": 134.64,
+            "returns_gap": 20.73,
+            "net_ltv_after_cac": 85.91,
+            "ltv_cac_ratio": 4.07,
+            "discounted_contribution_ltv": 113.91,
+            "contribution_ltv_low": 91.12,
+            "contribution_ltv_mid": 113.91,
+            "contribution_ltv_high": 136.69
+          },
+          "worked": "net_aov 68*(1-0.22*0.7)=68*0.846=57.528. orders 4.4. contribution per order 57.528*0.45=25.8876; LTV 25.8876*4.4=113.90544 -> 113.91. naive 68*0.45*4.4=134.64. gap 20.73456 -> 20.73. net after CAC 85.90544 -> 85.91. ratio 113.90544/28=4.068051 -> 4.07. LOW f=1.76: 25.8876*3.52=91.124352 -> 91.12. HIGH f=2.64: 25.8876*5.28=136.686528 -> 136.69."
+        },
+        {
+          "name": "TV2 zero returns, discounting ON, CAC omitted",
+          "inputs": {
+            "gross_aov": 100,
+            "return_rate": 0,
+            "exchange_share_pct": 0,
+            "purchases_per_year": 3,
+            "lifespan_years": 2,
+            "cm_pct": 50,
+            "cac": null,
+            "discount_rate_pct": 10
+          },
+          "expected": {
+            "net_aov": 100.0,
+            "total_orders": 6.0,
+            "contribution_ltv": 300.0,
+            "naive_contribution_ltv": 300.0,
+            "returns_gap": 0.0,
+            "net_ltv_after_cac": null,
+            "ltv_cac_ratio": null,
+            "annual_contribution": 150.0,
+            "discounted_contribution_ltv": 260.33,
+            "contribution_ltv_low": 240.0,
+            "contribution_ltv_mid": 300.0,
+            "contribution_ltv_high": 360.0,
+            "discounted_contribution_ltv_low": 208.26,
+            "discounted_contribution_ltv_high": 312.4
+          },
+          "worked": "net_aov 100 (no returns). LTV 100*0.5*6=300.00. C_yr=150. discounted 150/1.1 + 150/1.21 = 136.363636 + 123.966942 = 260.330578 -> 260.33. CAC blank so both CAC outputs null. LOW f=2.4: orders 4.8 -> 240.00; C_yr 120 -> 120/1.1+120/1.21=109.090909+99.173554=208.264463 -> 208.26. HIGH f=3.6: orders 7.2 -> 360.00; C_yr 180 -> 163.636364+148.760331=312.396694 -> 312.40."
+        },
+        {
+          "name": "TV3 fractional lifespan, mostly exchanges",
+          "inputs": {
+            "gross_aov": 80,
+            "return_rate": 40,
+            "exchange_share_pct": 75,
+            "purchases_per_year": 1.5,
+            "lifespan_years": 2.5,
+            "cm_pct": 52,
+            "cac": 45,
+            "discount_rate_pct": 0
+          },
+          "expected": {
+            "net_aov": 72.0,
+            "total_orders": 3.75,
+            "contribution_ltv": 140.4,
+            "naive_contribution_ltv": 156.0,
+            "returns_gap": 15.6,
+            "net_ltv_after_cac": 95.4,
+            "ltv_cac_ratio": 3.12,
+            "annual_contribution": 56.16,
+            "discounted_contribution_ltv": 140.4,
+            "contribution_ltv_low": 112.32,
+            "contribution_ltv_mid": 140.4,
+            "contribution_ltv_high": 168.48
+          },
+          "worked": "net_aov 80*(1-0.4*0.25)=80*0.9=72.00. A 40% return rate that is three quarters exchanges only costs 10% of revenue. orders 1.5*2.5=3.75. contribution per order 72*0.52=37.44; LTV 37.44*3.75=140.40. naive 80*0.52*3.75=156.00, gap 15.60. after CAC 95.40. ratio 140.40/45=3.12. Fractional-year path check with dr=0: C_yr=37.44*1.5=56.16; floor(y)=2 so 56.16+56.16 plus 0.5*56.16=28.08 gives 140.40, matching. LOW f=1.2: orders 3.0 -> 37.44*3=112.32. HIGH f=1.8: orders 4.5 -> 37.44*4.5=168.48."
+        }
+      ]
+    },
+    {
+      "slug": "cac",
+      "title": "Customer Acquisition Cost",
+      "rounding_rule": "Full float internally. Money 2 decimals, percentages 1 decimal, factor 2 decimals, customers-per-budget floored to a whole customer (you cannot buy a fraction of one).",
+      "outputs": [
+        {
+          "name": "blended_cac",
+          "format": "money or null",
+          "description": "Headline."
+        },
+        {
+          "name": "media_only_cac",
+          "format": "money or null"
+        },
+        {
+          "name": "platform_reported_cac",
+          "format": "money or null"
+        },
+        {
+          "name": "attribution_gap_pct",
+          "format": "percent 1dp or null",
+          "description": "How many more conversions the platforms claim than your store recorded."
+        },
+        {
+          "name": "overstatement_factor",
+          "format": "x 2dp or null"
+        },
+        {
+          "name": "channel_a_cac / channel_b_cac",
+          "format": "money or null"
+        },
+        {
+          "name": "unattributed_spend / unattributed_customers",
+          "format": "money and integer, with a data-error flag when negative"
+        },
+        {
+          "name": "customers_per_10k / customers_per_100k",
+          "format": "integer or null"
+        },
+        {
+          "name": "blended_cac_low / mid / high",
+          "format": "money range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 default, two channels plus an untracked remainder",
+          "inputs": {
+            "total_ad_spend": 40000,
+            "other_acq_costs": 4000,
+            "new_customers": 900,
+            "platform_reported_conversions": 1400,
+            "channel_a_spend": 26000,
+            "channel_a_customers": 520,
+            "channel_b_spend": 14000,
+            "channel_b_customers": 260
+          },
+          "expected": {
+            "blended_cac": 48.89,
+            "media_only_cac": 44.44,
+            "platform_reported_cac": 28.57,
+            "attribution_gap_pct": 55.6,
+            "overstatement_factor": 1.71,
+            "channel_a_cac": 50.0,
+            "channel_b_cac": 53.85,
+            "unattributed_spend": 0.0,
+            "unattributed_customers": 120,
+            "customers_per_10k": 204,
+            "customers_per_100k": 2045,
+            "blended_cac_low": 40.74,
+            "blended_cac_mid": 48.89,
+            "blended_cac_high": 61.11
+          },
+          "worked": "blended 44000/900=48.888889 -> 48.89. media 40000/900=44.444444 -> 44.44. platform 40000/1400=28.571429 -> 28.57. gap (1400-900)/900*100=55.5556 -> 55.6. overstatement (44000/900)/(40000/1400)=1.711111 -> 1.71. A 26000/520=50.00. B 14000/260=53.846154 -> 53.85. unattributed spend 0, customers 900-520-260=120. per 10k floor(10000/48.888889)=floor(204.545)=204. per 100k floor(2045.4545)=2045. LOW 44000/1080=40.740741 -> 40.74. HIGH 44000/720=61.111111 -> 61.11."
+        },
+        {
+          "name": "TV2 single channel, all optionals omitted",
+          "inputs": {
+            "total_ad_spend": 12000,
+            "other_acq_costs": null,
+            "new_customers": 300,
+            "platform_reported_conversions": null,
+            "channel_a_spend": 12000,
+            "channel_a_customers": 300,
+            "channel_b_spend": null,
+            "channel_b_customers": null
+          },
+          "expected": {
+            "blended_cac": 40.0,
+            "media_only_cac": 40.0,
+            "platform_reported_cac": null,
+            "attribution_gap_pct": null,
+            "overstatement_factor": null,
+            "channel_a_cac": 40.0,
+            "channel_b_cac": null,
+            "unattributed_spend": 0.0,
+            "unattributed_customers": 0,
+            "customers_per_10k": 250,
+            "customers_per_100k": 2500,
+            "blended_cac_low": 33.33,
+            "blended_cac_mid": 40.0,
+            "blended_cac_high": 50.0
+          },
+          "worked": "other costs blank -> 0, so blended equals media: 12000/300=40.00. Attribution block hidden. Channel B null. per 10k floor(250)=250, per 100k 2500. LOW 12000/360=33.333333 -> 33.33. HIGH 12000/240=50.00."
+        },
+        {
+          "name": "TV3 pure edge case: zero customers and channel spend over total",
+          "inputs": {
+            "total_ad_spend": 80000,
+            "other_acq_costs": 15000,
+            "new_customers": 0,
+            "platform_reported_conversions": 1000,
+            "channel_a_spend": 50000,
+            "channel_a_customers": 900,
+            "channel_b_spend": 40000,
+            "channel_b_customers": 700
+          },
+          "expected": {
+            "blended_cac": null,
+            "media_only_cac": null,
+            "platform_reported_cac": 80.0,
+            "attribution_gap_pct": null,
+            "overstatement_factor": null,
+            "channel_a_cac": 55.56,
+            "channel_b_cac": 57.14,
+            "unattributed_spend": -10000.0,
+            "unattributed_customers": -1600,
+            "data_error_flag": true,
+            "customers_per_10k": null,
+            "customers_per_100k": null,
+            "blended_cac_low": null,
+            "blended_cac_mid": null,
+            "blended_cac_high": null
+          },
+          "worked": "new_customers 0 -> blended, media, gap, overstatement, per-budget and the whole range are null; the page prompts for the count. platform 80000/1000=80.00 still renders. A 50000/900=55.555556 -> 55.56. B 40000/700=57.142857 -> 57.14. unattributed spend 80000-50000-40000=-10000 and customers 0-900-700=-1600, both negative, so the data-error flag fires: channel numbers cannot exceed the totals."
+        }
+      ]
+    },
+    {
+      "slug": "ltv-cac-payback",
+      "title": "LTV to CAC and Payback Period",
+      "rounding_rule": "Full float internally. Ratios 2 decimals, months 1 decimal, money 2 decimals, payback orders ceil to integer.",
+      "outputs": [
+        {
+          "name": "ratio_low / ratio_mid / ratio_high",
+          "format": "ratio 2dp range",
+          "description": "RANGE OUTPUT and the headline. Presented as a band first, the point estimate second."
+        },
+        {
+          "name": "payback_months_fast / payback_months_mid / payback_months_slow",
+          "format": "months 1dp range",
+          "description": "RANGE OUTPUT."
+        },
+        {
+          "name": "ltv",
+          "format": "money"
+        },
+        {
+          "name": "net_aov",
+          "format": "money"
+        },
+        {
+          "name": "payback_orders",
+          "format": "integer or null"
+        },
+        {
+          "name": "never_pays_back_flag",
+          "format": "boolean",
+          "description": "True renders as 'You never pay this CAC back inside the life of the customer.'"
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default",
+          "inputs": {
+            "gross_aov": 68,
+            "return_rate": 22,
+            "exchange_share_pct": 30,
+            "cm_pct": 45,
+            "purchases_per_year": 2.2,
+            "lifespan_years": 2,
+            "cac": 28
+          },
+          "expected": {
+            "net_aov": 57.528,
+            "contribution_per_order": 25.8876,
+            "ltv": 113.91,
+            "ratio_low": 2.6,
+            "ratio_mid": 4.07,
+            "ratio_high": 5.86,
+            "payback_months_fast": 4.1,
+            "payback_months_mid": 5.9,
+            "payback_months_slow": 9.2,
+            "payback_orders": 2,
+            "never_pays_back_flag": false
+          },
+          "worked": "net_aov 68*0.846=57.528. cpo 25.8876. ltv 25.8876*4.4=113.90544 -> 113.91. ratio 113.90544/28=4.068051 -> 4.07. monthly 25.8876*2.2/12=4.74606; payback 28/4.74606=5.899630 -> 5.9. orders ceil(28/25.8876)=ceil(1.0816)=2. HIGH f=2.64 m=0.54: cpo 57.528*0.54=31.06512, ltv 31.06512*5.28=164.023834, ratio 5.857994 -> 5.86; monthly 31.06512*2.64/12=6.8343264, payback 28/6.8343264=4.096965 -> 4.1. LOW f=1.76 m=0.36: cpo 20.71008, ltv 20.71008*3.52=72.899482, ratio 2.603553 -> 2.60; monthly 20.71008*1.76/12=3.0374784, payback 28/3.0374784=9.218173 -> 9.2. lifespan 24 months, payback 5.9 -> flag false."
+        },
+        {
+          "name": "TV2 zero returns, fast payback",
+          "inputs": {
+            "gross_aov": 90,
+            "return_rate": 0,
+            "exchange_share_pct": 0,
+            "cm_pct": 55,
+            "purchases_per_year": 4,
+            "lifespan_years": 3,
+            "cac": 30
+          },
+          "expected": {
+            "net_aov": 90.0,
+            "contribution_per_order": 49.5,
+            "ltv": 594.0,
+            "ratio_low": 12.67,
+            "ratio_mid": 19.8,
+            "ratio_high": 28.51,
+            "payback_months_fast": 1.3,
+            "payback_months_mid": 1.8,
+            "payback_months_slow": 2.8,
+            "payback_orders": 1,
+            "never_pays_back_flag": false
+          },
+          "worked": "cpo 49.50; ltv 49.5*12=594.00; ratio 19.80. monthly 49.5*4/12=16.5; payback 30/16.5=1.818182 -> 1.8. orders ceil(30/49.5)=1. HIGH f=4.8 m=0.66: cpo 59.4, ltv 59.4*14.4=855.36, ratio 28.512 -> 28.51; monthly 23.76, payback 30/23.76=1.262626 -> 1.3. LOW f=3.2 m=0.44: cpo 39.6, ltv 39.6*9.6=380.16, ratio 12.672 -> 12.67; monthly 10.56, payback 30/10.56=2.840909 -> 2.8."
+        },
+        {
+          "name": "TV3 never pays back inside the customer's life",
+          "inputs": {
+            "gross_aov": 45,
+            "return_rate": 45,
+            "exchange_share_pct": 0,
+            "cm_pct": 30,
+            "purchases_per_year": 1,
+            "lifespan_years": 1,
+            "cac": 40
+          },
+          "expected": {
+            "net_aov": 24.75,
+            "contribution_per_order": 7.425,
+            "ltv": 7.43,
+            "ratio_low": 0.12,
+            "ratio_mid": 0.19,
+            "ratio_high": 0.27,
+            "payback_months_fast": 44.9,
+            "payback_months_mid": 64.6,
+            "payback_months_slow": 101.0,
+            "payback_orders": 6,
+            "never_pays_back_flag": true
+          },
+          "worked": "net_aov 45*(1-0.45)=24.75 (no exchanges, so the full return rate bites). cpo 24.75*0.3=7.425. ltv 7.425 -> 7.43. ratio 7.425/40=0.185625 -> 0.19. monthly 7.425/12=0.61875; payback 40/0.61875=64.646465 -> 64.6, against a 12-month lifespan, so the flag fires. orders ceil(40/7.425)=ceil(5.3872)=6. HIGH f=1.2 m=0.36: cpo 8.91, ltv 10.692, ratio 0.2673 -> 0.27; monthly 0.891, payback 44.893378 -> 44.9. LOW f=0.8 m=0.24: cpo 5.94, ltv 4.752, ratio 0.1188 -> 0.12; monthly 0.396, payback 101.010101 -> 101.0."
+        }
+      ]
+    },
+    {
+      "slug": "aov",
+      "title": "Average Order Value, Gross and Net of Returns",
+      "rounding_rule": "Full float internally. Money 2 decimals, percentages 1 decimal.",
+      "outputs": [
+        {
+          "name": "gross_aov",
+          "format": "money",
+          "description": "What your dashboard shows."
+        },
+        {
+          "name": "net_aov",
+          "format": "money",
+          "description": "What you keep."
+        },
+        {
+          "name": "aov_gap / aov_gap_pct",
+          "format": "money and percent 1dp"
+        },
+        {
+          "name": "contribution_per_order_now / contribution_per_order_after",
+          "format": "money"
+        },
+        {
+          "name": "total_contribution_gain",
+          "format": "money",
+          "description": "The lift, priced."
+        },
+        {
+          "name": "naive_total_contribution_gain / overstatement",
+          "format": "money"
+        },
+        {
+          "name": "extra_cac_headroom_per_order",
+          "format": "money"
+        },
+        {
+          "name": "total_contribution_gain_low / mid / high",
+          "format": "money range",
+          "description": "RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 real refund total supplied",
+          "inputs": {
+            "gross_revenue": 340000,
+            "orders": 5000,
+            "refunded_amount": 61200,
+            "return_rate": 22,
+            "exchange_share_pct": 30,
+            "cm_pct": 45,
+            "target_aov_lift": 10
+          },
+          "expected": {
+            "gross_aov": 68.0,
+            "refund_dollars": 61200.0,
+            "refund_fraction": 0.18,
+            "net_aov": 55.76,
+            "aov_gap": 12.24,
+            "aov_gap_pct": 18.0,
+            "contribution_per_order_now": 25.09,
+            "contribution_gain_per_order": 3.69,
+            "contribution_per_order_after": 28.78,
+            "total_contribution_gain": 18450.0,
+            "naive_total_contribution_gain": 22500.0,
+            "overstatement": 4050.0,
+            "extra_cac_headroom_per_order": 3.69,
+            "total_contribution_gain_low": 14760.0,
+            "total_contribution_gain_mid": 18450.0,
+            "total_contribution_gain_high": 22140.0
+          },
+          "worked": "gross_aov 340000/5000=68.00. fraction 61200/340000=0.18. net_aov 68*0.82=55.76 (and (340000-61200)/5000=55.76 confirms). gap 12.24, 18.0%. cpo now 55.76*0.45=25.092 -> 25.09. gain/order 10*0.82*0.45=3.69. after 28.782 -> 28.78. total 3.69*5000=18450.00. naive 10*0.45*5000=22500.00, overstatement 4050.00. Refunds measured, so lift-only range: 8 -> 2.952*5000=14760.00; 12 -> 4.428*5000=22140.00."
+        },
+        {
+          "name": "TV2 refund total blank, derived from return rate and exchanges, both inputs flexed",
+          "inputs": {
+            "gross_revenue": 120000,
+            "orders": 2000,
+            "refunded_amount": null,
+            "return_rate": 30,
+            "exchange_share_pct": 50,
+            "cm_pct": 40,
+            "target_aov_lift": 15
+          },
+          "expected": {
+            "gross_aov": 60.0,
+            "refund_dollars": 18000.0,
+            "refund_fraction": 0.15,
+            "net_aov": 51.0,
+            "aov_gap": 9.0,
+            "aov_gap_pct": 15.0,
+            "contribution_per_order_now": 20.4,
+            "contribution_gain_per_order": 5.1,
+            "contribution_per_order_after": 25.5,
+            "total_contribution_gain": 10200.0,
+            "naive_total_contribution_gain": 12000.0,
+            "overstatement": 1800.0,
+            "extra_cac_headroom_per_order": 5.1,
+            "total_contribution_gain_low": 7872.0,
+            "total_contribution_gain_mid": 10200.0,
+            "total_contribution_gain_high": 12672.0
+          },
+          "worked": "fraction 0.30*(1-0.50)=0.15. refunds 120000*0.15=18000.00. gross_aov 60.00, net 51.00, gap 9.00 = 15.0%. cpo now 20.40. gain/order 15*0.85*0.4=5.10. total 10200.00. naive 15*0.4*2000=12000.00, overstatement 1800.00. LOW lift 12 with r=0.36 -> fraction 0.18, gain 12*0.82*0.4=3.936, total 7872.00. HIGH lift 18 with r=0.24 -> fraction 0.12, gain 18*0.88*0.4=6.336, total 12672.00."
+        },
+        {
+          "name": "TV3 zero returns, no lift target",
+          "inputs": {
+            "gross_revenue": 50000,
+            "orders": 500,
+            "refunded_amount": 0,
+            "return_rate": 22,
+            "exchange_share_pct": 30,
+            "cm_pct": 60,
+            "target_aov_lift": 0
+          },
+          "expected": {
+            "gross_aov": 100.0,
+            "refund_dollars": 0.0,
+            "refund_fraction": 0.0,
+            "net_aov": 100.0,
+            "aov_gap": 0.0,
+            "aov_gap_pct": 0.0,
+            "contribution_per_order_now": 60.0,
+            "contribution_gain_per_order": 0.0,
+            "contribution_per_order_after": 60.0,
+            "total_contribution_gain": 0.0,
+            "naive_total_contribution_gain": 0.0,
+            "overstatement": 0.0,
+            "extra_cac_headroom_per_order": 0.0,
+            "total_contribution_gain_low": 0.0,
+            "total_contribution_gain_mid": 0.0,
+            "total_contribution_gain_high": 0.0
+          },
+          "worked": "An explicit 0 refund total is honoured and the return rate field is ignored: fraction 0, so gross and net AOV are both 100.00 and the gap is zero. cpo 60.00. Lift target 0 zeroes the whole scenario block and the range; the page prompts for a lift target instead of showing a flat band."
+        }
+      ]
+    },
+    {
+      "slug": "repeat-purchase-rate",
+      "title": "Repeat Purchase Rate (Exchange-Adjusted)",
+      "rounding_rule": "Full float internally. Percentages and points 1 decimal, money 2 decimals, customer counts displayed to 1 decimal where the arithmetic produces a fraction (they are expected values, not people).",
+      "outputs": [
+        {
+          "name": "raw_repeat_rate_pct",
+          "format": "percent 1dp",
+          "description": "What your dashboard shows."
+        },
+        {
+          "name": "true_repeat_rate_pct",
+          "format": "percent 1dp",
+          "description": "Headline."
+        },
+        {
+          "name": "exchange_inflation_pts",
+          "format": "points 1dp",
+          "description": "The miscount, named."
+        },
+        {
+          "name": "extra_repeat_customers / extra_orders",
+          "format": "number 1dp"
+        },
+        {
+          "name": "extra_revenue",
+          "format": "money"
+        },
+        {
+          "name": "extra_contribution",
+          "format": "money"
+        },
+        {
+          "name": "extra_contribution_annualized",
+          "format": "money"
+        },
+        {
+          "name": "true_repeat_rate_low / mid / high",
+          "format": "percent range",
+          "description": "RANGE OUTPUT."
+        },
+        {
+          "name": "extra_contribution_low / mid / high",
+          "format": "money range",
+          "description": "Second RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 default, 12-month window",
+          "inputs": {
+            "total_customers": 4000,
+            "repeat_customers": 1000,
+            "exchange_share_of_repeats": 20,
+            "window_months": 12,
+            "net_aov": 57.53,
+            "cm_pct": 45,
+            "target_lift_pts": 5
+          },
+          "expected": {
+            "raw_repeat_rate_pct": 25.0,
+            "true_repeat_customers": 800.0,
+            "true_repeat_rate_pct": 20.0,
+            "exchange_inflation_pts": 5.0,
+            "extra_repeat_customers": 200.0,
+            "extra_revenue": 11506.0,
+            "extra_contribution": 5177.7,
+            "extra_contribution_annualized": 5177.7,
+            "true_repeat_rate_low": 19.0,
+            "true_repeat_rate_mid": 20.0,
+            "true_repeat_rate_high": 21.0,
+            "extra_contribution_low": 4142.16,
+            "extra_contribution_mid": 5177.7,
+            "extra_contribution_high": 6213.24
+          },
+          "worked": "raw 1000/4000*100=25.0. true customers 1000*0.8=800 -> 20.0%. inflation 5.0 pts. lift 4000*0.05=200 customers, revenue 200*57.53=11506.00, contribution *0.45=5177.70; window is 12 months so annualized is identical. Rate band: e=0.24 -> 760/4000=19.0; e=0.16 -> 840/4000=21.0. Contribution band: 4 pts -> 160*57.53=9204.80*0.45=4142.16; 6 pts -> 240*57.53=13807.20*0.45=6213.24."
+        },
+        {
+          "name": "TV2 no exchanges, 6-month window (annualization exercised)",
+          "inputs": {
+            "total_customers": 2500,
+            "repeat_customers": 500,
+            "exchange_share_of_repeats": 0,
+            "window_months": 6,
+            "net_aov": 80,
+            "cm_pct": 50,
+            "target_lift_pts": 10
+          },
+          "expected": {
+            "raw_repeat_rate_pct": 20.0,
+            "true_repeat_customers": 500.0,
+            "true_repeat_rate_pct": 20.0,
+            "exchange_inflation_pts": 0.0,
+            "extra_repeat_customers": 250.0,
+            "extra_revenue": 20000.0,
+            "extra_contribution": 10000.0,
+            "extra_contribution_annualized": 20000.0,
+            "true_repeat_rate_low": 20.0,
+            "true_repeat_rate_mid": 20.0,
+            "true_repeat_rate_high": 20.0,
+            "extra_contribution_low": 8000.0,
+            "extra_contribution_mid": 10000.0,
+            "extra_contribution_high": 12000.0,
+            "extra_contribution_annualized_low": 16000.0,
+            "extra_contribution_annualized_high": 24000.0
+          },
+          "worked": "raw and true both 500/2500*100=20.0, inflation 0.0, and the rate band collapses because the exchange share is zero. lift 2500*0.10=250 customers, revenue 250*80=20000.00, contribution 10000.00 in a 6-month window, so annualized 10000*(12/6)=20000.00. Contribution band: 8 pts -> 200 customers -> 16000 revenue -> 8000.00 (annualized 16000.00); 12 pts -> 300 -> 24000 -> 12000.00 (annualized 24000.00)."
+        },
+        {
+          "name": "TV3 heavy exchange inflation, 18-month window",
+          "inputs": {
+            "total_customers": 1200,
+            "repeat_customers": 600,
+            "exchange_share_of_repeats": 75,
+            "window_months": 18,
+            "net_aov": 42,
+            "cm_pct": 38,
+            "target_lift_pts": 3
+          },
+          "expected": {
+            "raw_repeat_rate_pct": 50.0,
+            "true_repeat_customers": 150.0,
+            "true_repeat_rate_pct": 12.5,
+            "exchange_inflation_pts": 37.5,
+            "extra_repeat_customers": 36.0,
+            "extra_revenue": 1512.0,
+            "extra_contribution": 574.56,
+            "extra_contribution_annualized": 383.04,
+            "true_repeat_rate_low": 5.0,
+            "true_repeat_rate_mid": 12.5,
+            "true_repeat_rate_high": 20.0,
+            "extra_contribution_low": 459.65,
+            "extra_contribution_mid": 574.56,
+            "extra_contribution_high": 689.47
+          },
+          "worked": "raw 600/1200*100=50.0. true customers 600*0.25=150 -> 12.5%. inflation 37.5 pts: half the loyalty was a size swap. lift 1200*0.03=36 customers, revenue 36*42=1512.00, contribution 1512*0.38=574.56, annualized 574.56*(12/18)=383.04. Rate band: e=0.90 -> 60/1200=5.0; e=0.60 -> 240/1200=20.0. Contribution band: 2.4 pts -> 28.8 customers -> 1209.60 revenue -> 459.648 -> 459.65; 3.6 pts -> 43.2 -> 1814.40 -> 689.472 -> 689.47."
+        }
+      ]
+    },
+    {
+      "slug": "pricing-margin",
+      "title": "Pricing and Margin",
+      "rounding_rule": "Full float internally. Money 2 decimals, percentages and margin points 1 decimal, markup multiple 2 decimals.",
+      "outputs": [
+        {
+          "name": "markup_pct / markup_multiple",
+          "format": "percent 1dp and x 2dp",
+          "description": "Section A."
+        },
+        {
+          "name": "gross_margin_pct / gross_profit_per_unit",
+          "format": "percent 1dp and money",
+          "description": "Section B."
+        },
+        {
+          "name": "realized_profit_per_unit",
+          "format": "money",
+          "description": "Section C headline."
+        },
+        {
+          "name": "realized_margin_net_pct / realized_margin_gross_pct",
+          "format": "percent 1dp"
+        },
+        {
+          "name": "margin_gap_pts",
+          "format": "points 1dp"
+        },
+        {
+          "name": "target_price_gross / target_price_net / target_price_headline",
+          "format": "money or null"
+        },
+        {
+          "name": "price_gap",
+          "format": "money"
+        },
+        {
+          "name": "realized_margin_gross_low / mid / high",
+          "format": "percent range",
+          "description": "RANGE OUTPUT."
+        },
+        {
+          "name": "target_price_net_low / mid / high",
+          "format": "money range",
+          "description": "Second RANGE OUTPUT."
+        }
+      ],
+      "test_vectors": [
+        {
+          "name": "TV1 apparel default, target already beaten",
+          "inputs": {
+            "unit_cost": 23.8,
+            "selling_price": 68,
+            "fulfilment_cost": 9.77,
+            "return_rate": 22,
+            "return_cost": 6,
+            "resellable_pct": 80,
+            "target_margin_pct": 40,
+            "target_margin_basis": "net-of-returns"
+          },
+          "expected": {
+            "markup_pct": 185.7,
+            "markup_multiple": 2.86,
+            "gross_profit_per_unit": 44.2,
+            "gross_margin_pct": 65.0,
+            "realized_profit_per_unit": 22.34,
+            "realized_margin_net_pct": 42.1,
+            "realized_margin_gross_pct": 32.9,
+            "margin_gap_pts": 32.1,
+            "target_price_gross": 39.67,
+            "target_price_net": 65.6,
+            "target_price_headline": 65.6,
+            "price_gap": 25.93,
+            "realized_margin_gross_low": 29.3,
+            "realized_margin_gross_mid": 32.9,
+            "realized_margin_gross_high": 36.4,
+            "target_price_net_low": 63.26,
+            "target_price_net_mid": 65.6,
+            "target_price_net_high": 68.22
+          },
+          "worked": "markup 44.2/23.8*100=185.714286 -> 185.7; multiple 68/23.8=2.857143 -> 2.86. gross margin 44.2/68*100=65.0. realized 0.78*68=53.04 - 23.8*0.824=19.6112 - 9.77 - 1.32 = 22.3388 -> 22.34. net margin 22.3388/53.04*100=42.1169 -> 42.1; gross basis 22.3388/68*100=32.8512 -> 32.9; gap 65.0-32.8512=32.1488 -> 32.1. target gross 23.8/0.6=39.666667 -> 39.67. target net (19.6112+9.77+1.32)/(0.78*0.6)=30.7012/0.468=65.600855 -> 65.60, which is BELOW the current 68, so the page reports the 40% net target is already beaten. price gap 65.600855-39.666667=25.934188 -> 25.93. Margin band: r=0.264 -> realized 19.92056 -> 29.294944 -> 29.3; r=0.176 -> realized 24.75704 -> 36.407412 -> 36.4. Price band: r=0.176 -> (20.44896+9.77+1.056)/(0.824*0.6)=31.27496/0.4944=63.258414 -> 63.26; r=0.264 -> (18.77344+9.77+1.584)/(0.736*0.6)=30.12744/0.4416=68.223370 -> 68.22."
+        },
+        {
+          "name": "TV2 zero returns, target measured on gross",
+          "inputs": {
+            "unit_cost": 20,
+            "selling_price": 50,
+            "fulfilment_cost": 6,
+            "return_rate": 0,
+            "return_cost": 5,
+            "resellable_pct": 100,
+            "target_margin_pct": 50,
+            "target_margin_basis": "gross"
+          },
+          "expected": {
+            "markup_pct": 150.0,
+            "markup_multiple": 2.5,
+            "gross_profit_per_unit": 30.0,
+            "gross_margin_pct": 60.0,
+            "realized_profit_per_unit": 24.0,
+            "realized_margin_net_pct": 48.0,
+            "realized_margin_gross_pct": 48.0,
+            "margin_gap_pts": 12.0,
+            "target_price_gross": 40.0,
+            "target_price_net": 52.0,
+            "target_price_headline": 40.0,
+            "price_gap": 12.0,
+            "realized_margin_gross_low": 48.0,
+            "realized_margin_gross_mid": 48.0,
+            "realized_margin_gross_high": 48.0,
+            "target_price_net_low": 52.0,
+            "target_price_net_mid": 52.0,
+            "target_price_net_high": 52.0
+          },
+          "worked": "markup 30/20*100=150.0, multiple 2.50. gross margin 30/50*100=60.0. realized 50-20-6-0=24.00; both margin bases 48.0 because r=0; the 12-point gap is pure fulfilment cost, which is the honest reason Section B always flatters you. target gross 20/0.5=40.00 is the headline on this basis; target net (20+6+0)/(1*0.5)=52.00 is still shown, gap 12.00. Both bands collapse at r=0 and the page says there is no return-rate guess to flex."
+        },
+        {
+          "name": "TV3 nothing resellable, high returns, unreachable-looking target",
+          "inputs": {
+            "unit_cost": 30,
+            "selling_price": 90,
+            "fulfilment_cost": 12,
+            "return_rate": 40,
+            "return_cost": 15,
+            "resellable_pct": 0,
+            "target_margin_pct": 35,
+            "target_margin_basis": "net-of-returns"
+          },
+          "expected": {
+            "markup_pct": 200.0,
+            "markup_multiple": 3.0,
+            "gross_profit_per_unit": 60.0,
+            "gross_margin_pct": 66.7,
+            "realized_profit_per_unit": 6.0,
+            "realized_margin_net_pct": 11.1,
+            "realized_margin_gross_pct": 6.7,
+            "margin_gap_pts": 60.0,
+            "target_price_gross": 46.15,
+            "target_price_net": 123.08,
+            "target_price_headline": 123.08,
+            "price_gap": 76.92,
+            "realized_margin_gross_low": -2.7,
+            "realized_margin_gross_mid": 6.7,
+            "realized_margin_gross_high": 16.0,
+            "target_price_net_low": 105.88,
+            "target_price_net_mid": 123.08,
+            "target_price_net_high": 145.56
+          },
+          "worked": "markup 60/30*100=200.0, multiple 3.00. gross margin 60/90*100=66.6667 -> 66.7. realized 0.6*90=54 - 30*(1-0)=30 - 12 - 0.4*15=6 -> 6.00. net margin 6/54*100=11.1111 -> 11.1; gross basis 6/90*100=6.6667 -> 6.7; gap 66.6667-6.6667=60.0 exactly. target gross 30/0.65=46.153846 -> 46.15. target net (30+12+6)/(0.6*0.65)=48/0.39=123.076923 -> 123.08, which is 37% above the current price: the 35% net target is not reachable without repricing or fixing returns. price gap 76.923077 -> 76.92. Margin band: r=0.48 -> realized 0.52*90=46.8-30-12-7.2=-2.4 -> -2.666667 -> -2.7 (a fifth more returns and the unit loses money); r=0.32 -> realized 61.2-30-12-4.8=14.4 -> 16.0. Price band: r=0.32 -> (30+12+4.8)/(0.68*0.65)=46.8/0.442=105.882353 -> 105.88; r=0.48 -> (30+12+7.2)/(0.52*0.65)=49.2/0.338=145.562130 -> 145.56."
+        }
+      ]
+    }
+  ]
+}

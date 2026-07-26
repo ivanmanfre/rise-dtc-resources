@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Email Marketing ROI Calculator (Real Costs) | RISE DTC</title>
+<meta name="description" content="Free email marketing ROI calculator. Enter flow and campaign revenue, platform cost, time cost, new subscribers, subscriber cost, contribution margin and return rate, and see the honest ROI next to the number the category quotes, with every line of the math printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/email-roi-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Email Marketing ROI Calculator (Real Costs)" />
+<meta property="og:description" content="The ROI number the category quotes counts gross revenue over platform and time only. This one also charges for the subscribers you bought and the returns you took. Free, no signup, math printed." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/email-roi-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Email Marketing ROI Calculator (Real Costs)" />
+<meta name="twitter:description" content="ROI after subscribers, platform, time and returns are all paid for. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-email-roi-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=email-roi-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Email Marketing ROI</span>
+      <span class="t2">Tool 20 of 22, email</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What is your email marketing <span class="hl">actually returning?</span></h1>
+    <p class="lede">Subscribers cost money to acquire, and returns take a cut of what comes back.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">9 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="flow_revenue">Revenue from flows this period</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="flow_revenue" data-min="0" data-max="50000000" data-step="100" value="18000" /></span>
+          </div>
+          <input type="range" id="flow_revenue_r" min="0" max="50000000" step="100" value="18000" aria-label="Revenue from flows slider" />
+          <p class="f-cap">Revenue your ESP or Shopify attributes to automated flows this period.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="campaign_revenue">Revenue from campaigns this period</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="campaign_revenue" data-min="0" data-max="50000000" data-step="100" value="12000" /></span>
+          </div>
+          <input type="range" id="campaign_revenue_r" min="0" max="50000000" step="100" value="12000" aria-label="Revenue from campaigns slider" />
+          <p class="f-cap">Revenue attributed to one-off sends this period.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="platform_cost">Email platform cost this period</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="platform_cost" data-min="0" data-max="500000" data-step="10" value="500" /></span>
+          </div>
+          <input type="range" id="platform_cost_r" min="0" max="500000" step="10" value="500" aria-label="Email platform cost slider" />
+          <p class="f-cap">Your ESP invoice for this period.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="agency_time_cost">Agency or in-house time cost this period</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="agency_time_cost" data-min="0" data-max="500000" data-step="50" value="1500" /></span>
+          </div>
+          <input type="range" id="agency_time_cost_r" min="0" max="500000" step="50" value="1500" aria-label="Agency or in-house time cost slider" />
+          <p class="f-cap">What it actually costs to plan, write and send, invoice or internal estimate either way.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="new_subscribers">New subscribers added this period <span class="opt">optional</span></label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="new_subscribers" data-min="0" data-max="10000000" data-step="10" value="2500" /></span>
+          </div>
+          <input type="range" id="new_subscribers_r" min="0" max="10000000" step="10" value="2500" aria-label="New subscribers slider" />
+          <p class="f-cap">New subscribers who joined the list this period, popups and giveaways included.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="subscriber_acquisition_cost">What one new subscriber costs you <span class="opt">optional</span></label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="subscriber_acquisition_cost" data-min="0" data-max="100" data-step="0.05" value="1.2" /></span>
+          </div>
+          <input type="range" id="subscriber_acquisition_cost_r" min="0" max="100" step="0.05" value="1.2" aria-label="Subscriber acquisition cost slider" />
+          <p class="f-cap">Popup traffic, giveaway spend, lead ads. If it is 0 you did not pay for the traffic, and the page will say so rather than reward you for it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin before returns</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="0" data-max="100" data-step="0.5" value="55" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="0" max="100" step="0.5" value="55" aria-label="Contribution margin slider" />
+          <p class="f-cap">Margin on a kept order, before returns are taken out.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return and exchange rate slider" />
+          <p class="f-cap">Share of orders returned or exchanged this period.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_pct">Net cost of a returned order <span class="opt">advanced</span></label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_pct" data-min="0" data-max="50" data-step="0.5" value="12" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_cost_pct_r" min="0" max="50" step="0.5" value="12" aria-label="Net cost of a returned order slider" />
+          <p class="f-cap">Share of order value a return costs you net: label, inspection and lost margin combined.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Honest ROI on email</p>
+        <p class="bignum" id="bigNum">0.00x<span class="per"> return per dollar spent</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>0.00x</b> and <b>0.00x</b></span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the email revenue goes <span id="wfScale">of $30,000.00 gross</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="returns" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="platform" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="agency" style="background:var(--grey-2)"></span>
+            <span class="seg" data-k="acquisition" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the gross email revenue.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Lost to returns and returns handling</span><span class="vl" id="lg_returns">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Platform cost</span><span class="vl" id="lg_platform">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-2)"></span><span class="nm">Agency or in-house time</span><span class="vl" id="lg_agency">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Subscriber acquisition</span><span class="vl" id="lg_acquisition">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Net profit</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Biggest single line</span>
+          <p id="bindMain">Subscriber acquisition is the biggest single line.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Two of those inputs are a guess</h2>
+    <p class="sec-sub">Return rate and subscriber acquisition cost are the two numbers most stores estimate loosely. Here is the same period recomputed with both flexed, so you can see how much of the ROI rests on the estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">0.00x</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.00x</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">0.00x</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is the period you entered above. These rows update as you move the dials.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Gross email revenue</span><span class="mv" id="m_gross">$0.00</span><span class="mx" id="mx_gross"></span></div>
+      <div class="mrow"><span class="mn">Flow share of that revenue</span><span class="mv" id="m_flowshare">0.00%</span><span class="mx" id="mx_flowshare"></span></div>
+      <div class="mrow"><span class="mn">Net revenue after returns</span><span class="mv" id="m_net">$0.00</span><span class="mx" id="mx_net"></span></div>
+      <div class="mrow sum"><span class="mn">Returns-adjusted contribution</span><span class="mv" id="m_contrib">$0.00</span><span class="mx" id="mx_contrib"></span></div>
+      <div class="mrow"><span class="mn">Platform cost</span><span class="mv" id="m_platform">$0.00</span><span class="mx" id="mx_platform"></span></div>
+      <div class="mrow"><span class="mn">Agency or in-house time</span><span class="mv" id="m_agency">$0.00</span><span class="mx" id="mx_agency"></span></div>
+      <div class="mrow"><span class="mn">Subscriber acquisition cost</span><span class="mv" id="m_acq">$0.00</span><span class="mx" id="mx_acq"></span></div>
+      <div class="mrow sum"><span class="mn">Total cost</span><span class="mv" id="m_total">$0.00</span></div>
+      <div class="mrow"><span class="mn">Headline ratio, the category quotes</span><span class="mv" id="m_roi_naive">0.00x</span><span class="mx" id="mx_roi_naive"></span></div>
+      <div class="mrow sum final"><span class="mn">Honest ROI</span><span class="mv" id="m_roi_honest">0.00x</span><span class="mx" id="mx_roi_honest"></span></div>
+      <div class="mrow"><span class="mn">Net profit</span><span class="mv" id="m_profit">$0.00</span><span class="mx" id="mx_profit"></span></div>
+      <div class="mrow"><span class="mn">Contribution per new subscriber</span><span class="mv" id="m_contribsub">$0.00</span><span class="mx" id="mx_contribsub"></span></div>
+      <div class="mrow"><span class="mn">Breakeven subscriber acquisition cost</span><span class="mv" id="m_breakeven">$0.00</span><span class="mx" id="mx_breakeven"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Email-attributed revenue is taken as entered.</b> Last-click attribution typically overstates flows, and that gap is stated here rather than left silent.</li>
+      <li><b>Returns are priced as one flat share of order value</b>, not tracked unit by unit. It is a channel-level proxy built for speed, not a full order teardown.</li>
+      <li><b>Subscriber acquisition cost is charged fully in the period the subscriber joins</b>, which is the conservative reading and is stated here.</li>
+      <li><b>Platform cost and agency or in-house time are treated as the true cost to run email this period</b>, regardless of how the invoice happens to be coded.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What the category reports about email</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Email revenue share of store sales</span>
+      <p class="quote">"the companies looked at made over $230 million from purchases attributed to email in Q4, representing over a quarter of their overall store revenue (27%) on average&mdash;companies with $10M+ annual revenue brought in nearly a third of their store revenue via email in Q4"</p>
+      <span class="cite">Klaviyo &middot; Q4 2016, roughly 1 billion emails across roughly 1,000 US ecommerce companies (a 2016 study, printed here because the date matters) &middot; <a href="https://www.klaviyo.com/marketing-resources/ecommerce-benchmarks" target="_blank" rel="noopener">klaviyo.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Average email marketing ROI, self-reported</span>
+      <p class="quote">"for every $1 marketers spend on email marketing, they receive $36 in return"</p>
+      <span class="cite">Litmus &middot; 2025 State of Email Survey, about 500 marketing professionals surveyed worldwide &middot; <a href="https://www.litmus.com/resources/email-marketing-roi" target="_blank" rel="noopener">litmus.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Email marketing ROI, by return band and by industry</span>
+      <p class="quote">"35% receive $10-$36 in return per dollar spent; 30% receive $36-50 in return per dollar spent; 5% receive more than $50 in return per dollar spent; 21% of marketing leaders do not measure ROI at all; Retail/eCommerce/Consumer Goods industry-specific ROI: 45:1"</p>
+      <span class="cite">Litmus &middot; State of Email report 2025, same survey of about 500 marketing professionals &middot; <a href="https://www.litmus.com/blog/infographic-the-roi-of-email-marketing" target="_blank" rel="noopener">litmus.com</a></span>
+    </div>
+
+    <p class="srcnote">The Klaviyo revenue share figure is from a 2016 study, printed with its data period so the age of it stays visible instead of implied by omission. The two Litmus figures come from the same 2025 survey: a flat average and a distribution broken out by return band, printed together so the spread behind the one flat number is visible too. All three are self-reported by the marketers surveyed, not measured against a ledger, which is the gap the honest ROI on this page is built to close.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why the honest number is almost always lower</h2>
+    <div class="prose">
+      <p>The ratio the category quotes almost always divides gross email revenue by what the platform and your time cost, full stop. Nothing about the subscribers on the list and nothing about the orders that come back ever enters that denominator or that numerator. It is a real number, and it explains why email keeps getting called the highest-ROI channel available. It is also not the number that tells you whether the channel is actually growing the business, because a list built for free will always beat a list you paid to fill, and a store that never adjusts for returns will always look healthier than one that does.</p>
+
+      <p>Apparel is the case where the gap shows up fastest. A flow that reminds a shopper about a size they left in the cart earns credit for a sale that a size chart and a fit photo will decide anyway, and a chunk of that sale comes back a week later because the size guessed wrong. The flow gets full credit for the order and none of the blame for the return. This calculator prices the return back in with one number, the net cost of a returned order, applied as a share of order value across the whole return rate. It is not a unit-by-unit teardown the way an order-level tool would run it. It is a channel-level proxy built to answer one question fast: does the email program, taken as a whole, actually pay for itself once the returns it also generates are accounted for.</p>
+
+      <h3>What the two revenue lines are for</h3>
+      <p>Flow revenue and campaign revenue are kept apart on purpose. Flows run on autopilot once they are built: welcome, abandoned cart, post-purchase, winback. Campaigns take a person's time every single send. A list that earns most of its revenue from flows is earning it with a fixed cost that does not scale with headcount. A list that earns most of its revenue from campaigns is buying that revenue with agency or in-house hours every week. Neither split is automatically better, but conflating them into one "email revenue" line hides which of the two costs is actually driving the return, and that is the cost most stores actually have room to change.</p>
+
+      <h3>What gets consolidated, and why</h3>
+      <p>Platform cost and agency or in-house time are added together into one run cost, because both are paid whether or not a single new subscriber joins the list this period. Subscriber acquisition cost is kept separate, because it only exists if you are actively buying the list rather than growing it for free through a popup nobody paid to place traffic against. The honest ROI divides returns-adjusted contribution by the sum of all three: run cost plus acquisition cost. That is the whole consolidation. Nothing about the return rate, the flow and campaign split, or the margin gets folded into a single blended figure anywhere upstream of that division, so every input on this page is still visible in the rows above.</p>
+
+      <h3>The dial almost nobody fills in</h3>
+      <p>Subscriber acquisition cost is the input most stores leave at zero, not because it is genuinely zero but because nobody has gone and added up what the popup traffic, the giveaway spend and the lead ads actually cost per new name. Leave it blank and the ROI on this page looks stable and high, because the list is quietly being treated as free. The moment a store starts paying for reach through paid social, cold traffic to a landing page, or a giveaway with a media buy behind it, that cost belongs in this field, and the honest figure will move, sometimes by a lot, the first time it is filled in correctly.</p>
+
+      <h3>Breakeven subscriber acquisition cost is the number to watch</h3>
+      <p>Breakeven subscriber acquisition cost answers a narrower question than the ROI does: given what this period actually earned after run cost, what is the most you could pay per new subscriber before email stops paying for itself. When that number comes back negative, the program does not even cover platform and time before a single subscriber is bought, and no acquisition budget fixes that. When it comes back comfortably above what you are actually paying, there is real room to spend more on growing the list without breaking the channel's own economics.</p>
+
+      <p>Three mistakes show up most often once a store starts running this math for real. The first is reading the headline ratio off a marketer survey and assuming it describes their own list, when it describes a self-reported average across a very wide range of stores and spend levels. The second is leaving new subscribers and subscriber acquisition cost both at zero long after the store started paying for growth, which is the single biggest reason a program looks safer than it is. The third is pricing returns off a memory of last year's rate rather than a number pulled this period, on a channel where the return rate moves with whatever the flows and campaigns happened to sell that month. Fix those three and the number on this page starts matching what the bank account actually shows.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does this page print two ROI numbers instead of one?</summary>
+        <div class="fa">The number the category quotes usually divides gross email revenue by what the platform and your time cost, and nothing else. This page prints that ratio too, labeled as the headline figure, then prints a second one that also subtracts what returns take back and what you paid to get the subscribers on the list. The gap between the two is the part most reports leave out.</div>
+      </details>
+      <details>
+        <summary>Why do returns lower the ROI on email at all? The subscriber already bought once.</summary>
+        <div class="fa">A subscriber who buys and then returns the order still cost you the send, the platform fee and, on paid growth, the acquisition spend, and the sale itself hands back most of its contribution. This calculator prices that in with one rate: the share of orders returned and a net cost of a returned order, applied to the whole return share rather than tracked unit by unit. It is a channel-level proxy built for speed, not a full order teardown.</div>
+      </details>
+      <details>
+        <summary>What should I put in agency or in-house time cost?</summary>
+        <div class="fa">Whatever it actually costs to plan, write, design and send the flows and campaigns this period, whether that is an invoice, a contractor rate or an internal hourly estimate for the hours spent. It sits next to platform cost as the running cost of the channel, before a single subscriber is counted.</div>
+      </details>
+      <details>
+        <summary>Is it fine to use last-click attribution for flow and campaign revenue?</summary>
+        <div class="fa">It is what most stores have on hand, and this calculator takes it as entered. Last-click email attribution typically overstates what flows would have earned anyway, since it credits email for orders a shopper was already going to place. Treat the honest ROI figure as a ceiling on the channel rather than an exact number, and it will not mislead you.</div>
+      </details>
+      <details>
+        <summary>What happens if I have not tracked what a new subscriber costs?</summary>
+        <div class="fa">Leave new subscribers and subscriber acquisition cost at zero and the ROI still computes, using only platform and time cost as the denominator. The page flags that the result looks stable only because the list is being treated as free. The moment you start paying for popups, giveaways or lead ads, fill both fields in and watch the honest figure move.</div>
+      </details>
+      <details>
+        <summary>Why is Litmus's $36 or 45 to 1 figure so much higher than what I get here?</summary>
+        <div class="fa">Both come from Litmus's 2025 State of Email survey of about 500 marketers, quoted with its link in the published figures panel on this page, and they describe email against platform and time cost only, the same headline ratio this page prints as the naive figure. Once subscriber acquisition cost and the returns rate are added to the denominator and the numerator respectively, the honest figure on this page is almost always lower, and on a young or paid list it can be a fraction of the naive one.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on email spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math against your live email platform and ad data, then work the lines that move it: the return rate, the subscriber cost and what campaigns versus flows are actually earning. Book a 30 minute intro call and we will walk your email economics together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=email-roi-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Honest ROI on email</span>
+  <span class="mv" id="mbarNum">0.00x</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does this page print two ROI numbers instead of one?","acceptedAnswer":{"@type":"Answer","text":"The number the category quotes usually divides gross email revenue by what the platform and your time cost, and nothing else. This page prints that ratio too, labeled as the headline figure, then prints a second one that also subtracts what returns take back and what you paid to get the subscribers on the list. The gap between the two is the part most reports leave out."}},
+    {"@type":"Question","name":"Why do returns lower the ROI on email at all? The subscriber already bought once.","acceptedAnswer":{"@type":"Answer","text":"A subscriber who buys and then returns the order still cost you the send, the platform fee and, on paid growth, the acquisition spend, and the sale itself hands back most of its contribution. This calculator prices that in with one rate: the share of orders returned and a net cost of a returned order, applied to the whole return share rather than tracked unit by unit. It is a channel-level proxy built for speed, not a full order teardown."}},
+    {"@type":"Question","name":"What should I put in agency or in-house time cost?","acceptedAnswer":{"@type":"Answer","text":"Whatever it actually costs to plan, write, design and send the flows and campaigns this period, whether that is an invoice, a contractor rate or an internal hourly estimate for the hours spent. It sits next to platform cost as the running cost of the channel, before a single subscriber is counted."}},
+    {"@type":"Question","name":"Is it fine to use last-click attribution for flow and campaign revenue?","acceptedAnswer":{"@type":"Answer","text":"It is what most stores have on hand, and this calculator takes it as entered. Last-click email attribution typically overstates what flows would have earned anyway, since it credits email for orders a shopper was already going to place. Treat the honest ROI figure as a ceiling on the channel rather than an exact number, and it will not mislead you."}},
+    {"@type":"Question","name":"What happens if I have not tracked what a new subscriber costs?","acceptedAnswer":{"@type":"Answer","text":"Leave new subscribers and subscriber acquisition cost at zero and the ROI still computes, using only platform and time cost as the denominator. The page flags that the result looks stable only because the list is being treated as free. The moment you start paying for popups, giveaways or lead ads, fill both fields in and watch the honest figure move."}},
+    {"@type":"Question","name":"Why is Litmus's $36 or 45 to 1 figure so much higher than what I get here?","acceptedAnswer":{"@type":"Answer","text":"Both come from Litmus's 2025 State of Email survey of about 500 marketers, quoted with its link in the published figures panel on this page, and they describe email against platform and time cost only, the same headline ratio this page prints as the naive figure. Once subscriber acquisition cost and the returns rate are added to the denominator and the numerator respectively, the honest figure on this page is almost always lower, and on a young or paid list it can be a fraction of the naive one."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'email-roi-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, ratio = T.ratio, count = T.count;
+
+  var DEFAULTS = {
+    flow_revenue: 18000, campaign_revenue: 12000, platform_cost: 500, agency_time_cost: 1500,
+    new_subscribers: 2500, subscriber_acquisition_cost: 1.2, cm_pct: 55, return_rate_pct: 25, return_cost_pct: 12
+  };
+  var KEYS = ['flow_revenue','campaign_revenue','platform_cost','agency_time_cost','new_subscribers',
+    'subscriber_acquisition_cost','cm_pct','return_rate_pct','return_cost_pct'];
+  var SEGS = ['returns','platform','agency','acquisition','result'];
+  var CROSS = ['contribution-margin','mer-calculator','cac','ltv','email-list-value-calculator','email-flow-scorecard'];
+  var GLYPH = {
+    'contribution-margin':'CM','mer-calculator':'MER','cac':'CAC','ltv':'LTV',
+    'email-list-value-calculator':'LIST','email-flow-scorecard':'FLOW'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function n4(x){ return T.roundDp(x, 4).toFixed(4); }
+  function xOr(v, fmt, fallback){ return (v === null || v === undefined) ? (fallback || 'not entered') : fmt(v); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var o = window.RISE_TOOLS[SLUG].compute(i);
+    lastInputs = i; lastOut = o;
+
+    var r = i.return_rate_pct / 100, cm = i.cm_pct / 100, rc = i.return_cost_pct / 100;
+    var rate = (1 - r) * cm - r * rc;
+    var runCost = i.platform_cost + i.agency_time_cost;
+    var hasSubs = i.new_subscribers > 0;
+
+    var gross = o.gross_email_revenue;
+    var netAfterReturns = o.net_revenue_after_returns;
+    var contribution = o.returns_adjusted_contribution;
+    var acquisitionCost = o.acquisition_cost;
+    var totalCost = o.total_cost;
+    var roiNaive = o.roi_naive_x;
+    var roiHonest = o.roi_honest_x;
+    var roiLow = o.roi_low_x;
+    var roiHigh = o.roi_high_x;
+    var netProfit = o.net_profit;
+    var returnsCost = gross - contribution;
+    var neg = netProfit < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    var honestTxt = (roiHonest === null) ? 'n/a' : (ratio(roiHonest) + 'x');
+    el('bigNum').innerHTML = honestTxt + '<span class="per"> return per dollar spent</span>';
+    el('mbarNum').textContent = honestTxt;
+
+    var tier = (roiHonest === null || roiHonest < 1) ? 'NOT YET' : (roiHonest < 3 ? 'FIX FIRST' : 'SAFE TO SCALE');
+    var cls = tier === 'SAFE TO SCALE' ? 't-safe' : (tier === 'FIX FIRST' ? 't-fix' : 't-not');
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = tier;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + (roiLow === null ? 'n/a' : ratio(roiLow) + 'x') +
+      '</b> and <b>' + (roiHigh === null ? 'n/a' : ratio(roiHigh) + 'x') + '</b>';
+
+    /* stacked bar. When the period clears, four cost bands plus the gold
+       remainder fill the gross revenue exactly. When it does not, the four
+       bands overrun the gross revenue and the overrun is drawn as the shortfall. */
+    var vals = {
+      returns: returnsCost,
+      platform: i.platform_cost,
+      agency: i.agency_time_cost,
+      acquisition: acquisitionCost,
+      result: neg ? 0 : netProfit
+    };
+    var costTotal = returnsCost + i.platform_cost + i.agency_time_cost + acquisitionCost;
+    var scale = neg ? costTotal : gross;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = gross / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + money(gross) + ' gross';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the gross email revenue. Everything past it is the shortfall.'
+      : 'The gold band on the right is what email actually nets you.';
+
+    el('lg_returns').textContent     = money(returnsCost);
+    el('lg_platform').textContent    = money(i.platform_cost);
+    el('lg_agency').textContent      = money(i.agency_time_cost);
+    el('lg_acquisition').textContent = money(acquisitionCost);
+    el('lg_result').textContent      = neg ? money(Math.abs(netProfit)) : money(netProfit);
+    el('lg_result_nm').textContent   = neg ? 'Short by' : 'Net profit';
+
+    /* biggest single line */
+    var lines = [
+      { k: 'Lost to returns and returns handling', v: returnsCost,
+        fix: 'At a ' + pct(i.return_rate_pct) + ' return rate, returns take ' + money(returnsCost) + ' off contribution before a single cost is paid.' },
+      { k: 'Subscriber acquisition', v: acquisitionCost,
+        fix: 'You paid ' + money(i.subscriber_acquisition_cost) + ' for each of ' + count(i.new_subscribers) + ' new subscribers, ' + money(acquisitionCost) + ' in total.' },
+      { k: 'Platform cost', v: i.platform_cost,
+        fix: 'The platform costs ' + money(i.platform_cost) + ' this period regardless of what it sends.' },
+      { k: 'Agency or in-house time', v: i.agency_time_cost,
+        fix: 'Planning, writing and sending cost ' + money(i.agency_time_cost) + ' this period.' }
+    ];
+    lines.sort(function(a, b){ return b.v - a.v; });
+    var top = lines[0];
+    el('bindMain').innerHTML = top.k + ' is the biggest single line at <b>' + money(top.v) + '</b>.';
+    el('bindFix').textContent = top.fix;
+
+    if (roiNaive !== null) {
+      el('bindDrag').innerHTML = 'The headline figure the category quotes is <b>' + ratio(roiNaive) + 'x</b>. Once subscriber acquisition and returns are priced in, the honest figure is <b>' +
+        (roiHonest === null ? 'n/a' : ratio(roiHonest) + 'x') + '</b>.';
+    } else {
+      el('bindDrag').textContent = 'No platform or time cost is entered, so there is no headline ratio to compare against.';
+    }
+
+    var rep = el('bindRepeat');
+    if (!hasSubs) {
+      rep.hidden = false;
+      rep.textContent = 'New subscribers are left at zero, so this ROI is not yet charged for the list it took to earn this revenue.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread */
+    el('scLow').textContent  = roiLow === null ? 'n/a' : ratio(roiLow) + 'x';
+    el('scMid').textContent  = roiHonest === null ? 'n/a' : ratio(roiHonest) + 'x';
+    el('scHigh').textContent = roiHigh === null ? 'n/a' : ratio(roiHigh) + 'x';
+    el('scLow').classList.toggle('neg',  roiLow !== null && roiLow < 0);
+    el('scMid').classList.toggle('neg',  roiHonest !== null && roiHonest < 0);
+    el('scHigh').classList.toggle('neg', roiHigh !== null && roiHigh < 0);
+    var rHighPct = Math.min(100, i.return_rate_pct + 5);
+    var rLowPct  = Math.max(0, i.return_rate_pct - 5);
+    el('scLowA').textContent  = 'Return rate ' + pct(rHighPct) + ', subscriber cost ' + money(i.subscriber_acquisition_cost * 1.4);
+    el('scMidA').textContent  = 'Return rate ' + pct(i.return_rate_pct) + ', subscriber cost ' + money(i.subscriber_acquisition_cost);
+    el('scHighA').textContent = 'Return rate ' + pct(rLowPct) + ', subscriber cost ' + money(i.subscriber_acquisition_cost * 0.6);
+    el('scenNote').textContent = (!hasSubs || i.subscriber_acquisition_cost === 0)
+      ? 'Subscriber acquisition cost is at zero, so this spread narrows sharply. The narrowness is a measurement gap, not real stability.'
+      : 'If the whole spread sits below 1x, the estimate has stopped being the problem and the true return on email has. If it straddles 1x, pull the real subscriber acquisition cost before you decide anything.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_gross').textContent = money(gross);
+    el('mx_gross').innerHTML  = money(i.flow_revenue) + ' + ' + money(i.campaign_revenue) + ' = ' + money(gross) +
+      '  <em>flow and campaign revenue combined</em>';
+
+    el('m_flowshare').textContent = (o.flow_share_pct === null) ? 'not entered' : pct(o.flow_share_pct);
+    el('mx_flowshare').innerHTML  = (o.flow_share_pct === null)
+      ? '<em>gross email revenue is zero, so a flow versus campaign split has nothing to divide</em>'
+      : money(i.flow_revenue) + ' / ' + money(gross) + ' x 100 = ' + pct(o.flow_share_pct) +
+        '  <em>revenue running on autopilot rather than a one-off send</em>';
+
+    el('m_net').textContent = money(netAfterReturns);
+    el('mx_net').innerHTML  = '(1 - ' + n2(r) + ') x ' + money(gross) + ' = ' + money(netAfterReturns) +
+      '  <em>revenue that survives returns and exchanges</em>';
+
+    el('m_contrib').textContent = money(contribution);
+    el('mx_contrib').innerHTML  = money(gross) + ' x ((1 - ' + n2(r) + ') x ' + n2(cm) + ' - ' + n2(r) + ' x ' + n2(rc) + ') = ' +
+      money(gross) + ' x ' + n4(rate) + ' = ' + money(contribution) +
+      '  <em>margin on what you keep, minus the cost of handling what comes back</em>';
+
+    el('m_platform').textContent = money(i.platform_cost);
+    el('mx_platform').innerHTML  = money(i.platform_cost) + ' x 1 = ' + money(i.platform_cost) +
+      '  <em>what the platform costs you this period</em>';
+
+    el('m_agency').textContent = money(i.agency_time_cost);
+    el('mx_agency').innerHTML  = money(i.agency_time_cost) + ' x 1 = ' + money(i.agency_time_cost) +
+      '  <em>time to plan, write and send, this period</em>';
+
+    el('m_acq').textContent = money(acquisitionCost);
+    el('mx_acq').innerHTML  = count(i.new_subscribers) + ' x ' + money(i.subscriber_acquisition_cost) + ' = ' + money(acquisitionCost) +
+      '  <em>new subscribers this period, at what one costs you</em>';
+
+    el('m_total').textContent = money(totalCost);
+
+    el('m_roi_naive').textContent = (roiNaive === null) ? 'not entered' : (ratio(roiNaive) + 'x');
+    el('mx_roi_naive').innerHTML  = (runCost > 0)
+      ? money(gross) + ' / ' + money(runCost) + ' = ' + ratio(roiNaive) + 'x' +
+        '  <em>the ratio the category quotes: gross revenue over platform and time only</em>'
+      : '<em>no platform or time cost entered</em>';
+
+    el('m_roi_honest').textContent = (roiHonest === null) ? 'not entered' : (ratio(roiHonest) + 'x');
+    el('mx_roi_honest').innerHTML   = (totalCost > 0)
+      ? money(contribution) + ' / ' + money(totalCost) + ' = ' + ratio(roiHonest) + 'x' +
+        '  <em>what email actually returns once subscribers, platform, time and returns are all paid for</em>'
+      : '<em>email cannot have a return on zero cost</em>';
+
+    el('m_profit').textContent = money(netProfit);
+    el('m_profit').classList.toggle('neg', neg);
+    el('mx_profit').innerHTML = money(contribution) + ' - ' + money(totalCost) + ' = ' + money(netProfit) +
+      '  <em>contribution left once every real cost is paid</em>';
+
+    el('m_contribsub').textContent = (o.contribution_per_new_subscriber === null) ? 'not entered' : money(o.contribution_per_new_subscriber);
+    el('mx_contribsub').innerHTML  = hasSubs
+      ? money(contribution) + ' / ' + count(i.new_subscribers) + ' = ' + money(o.contribution_per_new_subscriber) +
+        '  <em>what each new subscriber is worth in contribution</em>'
+      : '<em>enter new subscribers to see what each one earns</em>';
+
+    el('m_breakeven').textContent = (o.breakeven_sac === null) ? 'not entered' : money(o.breakeven_sac);
+    el('mx_breakeven').innerHTML  = hasSubs
+      ? '(' + money(contribution) + ' - ' + money(runCost) + ') / ' + count(i.new_subscribers) + ' = ' + money(o.breakeven_sac) +
+        '  <em>the most you could pay per subscriber before email stops paying for itself</em>'
+      : '<em>enter new subscribers to see the ceiling</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        gross_email_revenue: lastOut.gross_email_revenue,
+        returns_adjusted_contribution: lastOut.returns_adjusted_contribution,
+        total_cost: lastOut.total_cost,
+        roi_naive_x: lastOut.roi_naive_x,
+        roi_honest_x: lastOut.roi_honest_x,
+        roi_low_x: lastOut.roi_low_x,
+        roi_high_x: lastOut.roi_high_x,
+        net_profit: lastOut.net_profit,
+        breakeven_sac: lastOut.breakeven_sac
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

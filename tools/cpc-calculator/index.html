@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CPC Calculator: Cost Per Click + Max CPC | RISE DTC</title>
+<meta name="description" content="Free CPC calculator. Work cost per click forward from spend and clicks, or back from the most a click can afford to cost once returns are counted, apparel benchmarks included." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/cpc-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="CPC Calculator: Cost Per Click + Max CPC" />
+<meta property="og:description" content="Cost per click both directions, plus the ceiling a click can cost before the order stops paying for itself after returns. Free, no signup, math printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/cpc-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CPC Calculator: Cost Per Click + Max CPC" />
+<meta name="twitter:description" content="Cost per click both directions, plus the ceiling a click can cost after returns. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<style>
+  /* Mode selector, scoped to this page only. Reuses tokens defined in tools.css. */
+  .modeRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .modeBtn{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--sub);
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:9px 14px;
+    cursor:pointer;min-height:38px;flex:1 1 auto;text-align:center;}
+  .modeBtn:hover{border-color:var(--ink);color:var(--ink)}
+  .modeBtn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .modeBtn.is-active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .field.is-hidden{display:none}
+  @media (min-width:560px){.modeBtn{flex:0 1 auto}}
+</style>
+<script>window.__lm_slug = "rise-dtc-tools-cpc-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">CPC and Max Affordable CPC</span>
+      <span class="t2">Tool 14 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What should a click <span class="hl">actually cost you?</span></h1>
+    <p class="lede">Go forward from spend and clicks, or back from the most a click can cost before returns eat the order.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n" id="phN">3 dials</span>
+        </div>
+
+        <div class="field" id="modeField">
+          <div class="f-top">
+            <label class="f-label">What do you want to work out?</label>
+          </div>
+          <div class="modeRow" role="group" aria-label="Calculation mode">
+            <button type="button" class="modeBtn is-active" data-mode="cpc_from_spend">CPC from spend</button>
+            <button type="button" class="modeBtn" data-mode="spend_from_cpc">Spend from CPC</button>
+            <button type="button" class="modeBtn" data-mode="clicks_from_spend">Clicks from spend</button>
+            <button type="button" class="modeBtn" data-mode="max_cpc">Max affordable CPC</button>
+          </div>
+          <p class="f-cap">Switch modes and the dials below change to match.</p>
+        </div>
+
+        <div class="field" id="f_ad_spend" data-modes="cpc_from_spend,clicks_from_spend">
+          <div class="f-top">
+            <label class="f-label" for="ad_spend">Ad spend</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="ad_spend" data-min="0" data-max="10000000" data-step="10" value="5000" /></span>
+          </div>
+          <input type="range" id="ad_spend_r" min="0" max="10000000" step="10" value="5000" aria-label="Ad spend slider" />
+          <p class="f-cap">Total paid media spend for the period you are checking.</p>
+        </div>
+
+        <div class="field" id="f_clicks" data-modes="cpc_from_spend,spend_from_cpc">
+          <div class="f-top">
+            <label class="f-label" for="clicks">Clicks</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="clicks" data-min="0" data-max="100000000" data-step="10" value="2500" /><span class="u">clicks</span></span>
+          </div>
+          <input type="range" id="clicks_r" min="0" max="100000000" step="10" value="2500" aria-label="Clicks slider" />
+          <p class="f-cap">Clicks the platform reports for that same spend.</p>
+        </div>
+
+        <div class="field" id="f_cpc" data-modes="spend_from_cpc,clicks_from_spend">
+          <div class="f-top">
+            <label class="f-label" for="cpc">CPC</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cpc" data-min="0" data-max="200" data-step="0.05" value="2" /></span>
+          </div>
+          <input type="range" id="cpc_r" min="0" max="200" step="0.05" value="2" aria-label="CPC slider" />
+          <p class="f-cap">What you already pay, or plan to pay, per click.</p>
+        </div>
+
+        <div class="field" id="f_cvr_pct" data-modes="max_cpc">
+          <div class="f-top">
+            <label class="f-label" for="cvr_pct">Click-to-order conversion rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cvr_pct" data-min="0" data-max="30" data-step="0.05" value="2.4" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cvr_pct_r" min="0" max="30" step="0.05" value="2.4" aria-label="Conversion rate slider" />
+          <p class="f-cap">Share of clicks that turn into a placed order.</p>
+        </div>
+
+        <div class="field" id="f_aov" data-modes="max_cpc">
+          <div class="f-top">
+            <label class="f-label" for="aov">Average order value</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="aov" data-min="1" data-max="5000" data-step="1" value="85" /></span>
+          </div>
+          <input type="range" id="aov_r" min="1" max="5000" step="1" value="85" aria-label="Average order value slider" />
+          <p class="f-cap">Gross order value, before refunds.</p>
+        </div>
+
+        <div class="field" id="f_cm_pct" data-modes="max_cpc">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin before returns</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="0" data-max="100" data-step="0.5" value="55" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="0" max="100" step="0.5" value="55" aria-label="Contribution margin slider" />
+          <p class="f-cap">Price minus product cost, shipping and payment processing, as a share of AOV.</p>
+        </div>
+
+        <div class="field" id="f_return_rate_pct" data-modes="max_cpc">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return rate slider" />
+          <p class="f-cap">Share of orders returned or exchanged.</p>
+        </div>
+
+        <div class="field" id="f_return_cost_pct" data-modes="max_cpc">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_pct">Net cost of a returned order <span class="opt">optional</span></label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_pct" data-min="0" data-max="50" data-step="0.5" value="12" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_cost_pct_r" min="0" max="50" step="0.5" value="12" aria-label="Return cost slider" />
+          <p class="f-cap">What does not come back on a returned order: unsellable product, the label, the inspection, as a share of AOV.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the campaign example</button>
+          <span class="state" id="stateNote">running on the campaign example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label" id="vLabel">Cost per click</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per" id="bigPer"> per click</span></p>
+        <div class="tierrow">
+          <span class="tier t-safe" id="tierChip">CALCULATED</span>
+          <span class="rangeline" id="rangeLine">Checks out</span>
+        </div>
+
+        <div class="wf" id="wfWrap" style="display:none">
+          <p class="wf-t">Where the contribution goes <span id="wfScale">of gross contribution</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="lost_returns" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="lost_handling" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="kept" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band is what a click can be sold against.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Lost to returned orders</span><span class="vl" id="lg_lost_returns">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Return handling cost</span><span class="vl" id="lg_lost_handling">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Contribution kept, per order</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt" id="bindLabel">What this means</span>
+          <p id="bindMain">Cost per click at your spend and clicks.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey" id="scenSection" style="display:none">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Two of those inputs are a guess</h2>
+    <p class="sec-sub">Conversion rate and return rate are the two numbers most founders estimate for a new or scaling campaign. Here is the same ceiling recomputed with both flexed at once, so you can see how much of the answer rests on the estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote">A softer funnel and a worse return quarter tend to arrive together, so the pessimistic end pairs a weaker conversion rate with a higher return rate, and the optimistic end pairs the reverse.</p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The rows below match the mode selected above and update as you move the dials.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow" data-modegroup="cpc_from_spend"><span class="mn">Ad spend entered</span><span class="mv" id="m_cfs_spend">$0.00</span></div>
+      <div class="mrow" data-modegroup="cpc_from_spend"><span class="mn">Clicks entered</span><span class="mv" id="m_cfs_clicks">0</span></div>
+      <div class="mrow sum final" data-modegroup="cpc_from_spend"><span class="mn">Cost per click</span><span class="mv" id="m_cfs_cpc">$0.00</span><span class="mx" id="mx_cfs_cpc"></span></div>
+      <div class="mrow" data-modegroup="cpc_from_spend"><span class="mn">Round-trip check</span><span class="mv" id="m_cfs_rt">$0.00</span><span class="mx" id="mx_cfs_rt"></span></div>
+
+      <div class="mrow" data-modegroup="spend_from_cpc"><span class="mn">Clicks entered</span><span class="mv" id="m_sfc_clicks">0</span></div>
+      <div class="mrow" data-modegroup="spend_from_cpc"><span class="mn">CPC entered</span><span class="mv" id="m_sfc_cpc">$0.00</span></div>
+      <div class="mrow sum final" data-modegroup="spend_from_cpc"><span class="mn">Ad spend</span><span class="mv" id="m_sfc_spend">$0.00</span><span class="mx" id="mx_sfc_spend"></span></div>
+
+      <div class="mrow" data-modegroup="clicks_from_spend"><span class="mn">Ad spend entered</span><span class="mv" id="m_cls_spend">$0.00</span></div>
+      <div class="mrow" data-modegroup="clicks_from_spend"><span class="mn">CPC entered</span><span class="mv" id="m_cls_cpc">$0.00</span></div>
+      <div class="mrow sum final" data-modegroup="clicks_from_spend"><span class="mn">Clicks</span><span class="mv" id="m_cls_clicks">0</span><span class="mx" id="mx_cls_clicks"></span></div>
+      <div class="mrow" data-modegroup="clicks_from_spend"><span class="mn">Round-trip check</span><span class="mv" id="m_cls_rt">$0.00</span><span class="mx" id="mx_cls_rt"></span></div>
+
+      <div class="mrow" data-modegroup="max_cpc"><span class="mn">Returns-adjusted contribution per order</span><span class="mv" id="m_mc_raco">$0.00</span><span class="mx" id="mx_mc_raco"></span></div>
+      <div class="mrow sum final" data-modegroup="max_cpc"><span class="mn">Max affordable CPC</span><span class="mv" id="m_mc_max">$0.00</span><span class="mx" id="mx_mc_max"></span></div>
+      <div class="mrow" data-modegroup="max_cpc"><span class="mn">Implied CPA at the ceiling</span><span class="mv" id="m_mc_cpa">$0.00</span><span class="mx" id="mx_mc_cpa"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Every click is assumed equally likely to convert.</b> The max CPC ceiling uses one blended conversion rate across all traffic, not a per-keyword or per-audience curve.</li>
+      <li><b>Ad spend, clicks and CPC restate each other exactly.</b> Enter any two and the third is arithmetic, not an estimate, so the first three modes carry no range.</li>
+      <li><b>The max CPC ceiling treats returns as the leak between an order and its contribution.</b> Product cost, shipping and card fees already sit inside the contribution margin you enter, not as separate lines here.</li>
+      <li><b>At the ceiling the order contributes exactly zero.</b> A real bid should sit under this number, never on it.</li>
+      <li><b>The range moves conversion rate and return rate together, in the same direction,</b> because a softer funnel and a worse return quarter tend to show up in the same stretch.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where a click price gets checked</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Meta CPC, apparel and fashion</span>
+      <p class="quote">"Apparel/Fashion &amp; Jewelry (Traffic objective): CTR 1.29%, CPC $0.86"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 1, 2024 - June 30, 2025 &middot; <a href="https://www.wordstream.com/blog/facebook-ads-benchmarks-2025" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Meta CPC, all industries</span>
+      <p class="quote">"Traffic objective campaigns, all industries: CPC $0.70, CTR 1.71%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 1, 2024 - June 30, 2025 (554 US campaigns, min 3/subcategory) &middot; <a href="https://www.wordstream.com/blog/facebook-ads-benchmarks-2025" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search CPC, apparel and fashion</span>
+      <p class="quote">"Apparel/Fashion &amp; Jewelry: CTR 6.64%, CPC $4.44, CVR 4.50%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 - March 2026 &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search CPC, all industries</span>
+      <p class="quote">"All industries (23 verticals): CTR 6.64%, CPC $5.42, CVR 8.18%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 - March 2026 (13,474 US search campaigns) &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <p class="srcnote">Meta's apparel and fashion row runs higher than its all-industry row on the same report. Google Search's apparel row runs lower than its all-industry row. Category moves the number more than platform does, which is the case for checking a bid against your own returns-adjusted ceiling rather than a single published average.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why the same number needs four ways to ask for it</h2>
+    <div class="prose">
+      <p>Cost per click sounds like one number, but a click quote arrives in different shapes depending on where you sit. A platform report hands you spend and clicks and expects you to divide. A media plan hands you a target CPC and a budget and expects you to multiply. A forecast hands you spend and a CPC assumption and expects you to solve for clicks. None of those three is an estimate. Each one is the same arithmetic identity read from a different starting point, which is why the first three modes on this page carry no range and ask for nothing about returns: spend, clicks and CPC restate each other exactly, and there is nothing to guess.</p>
+
+      <p>The published rows above show why a single average CPC is a poor anchor on its own. Meta's apparel and fashion traffic campaigns run at a different price than Meta's all-industry average, and Google Search's apparel row sits on the other side of its own all-industry average. Category, objective and platform all move the number before your funnel gets a say. That is the case for the fourth mode on this page, the one that asks what a click is actually worth to your business rather than what a report says other people paid.</p>
+
+      <h3>Three names for the same number</h3>
+      <p>CPC from spend divides what you spent by what you got. Spend from CPC multiplies a target price by a volume of clicks to size a budget before the money goes out. Clicks from spend divides a fixed budget by an assumed CPC to see how much traffic it should buy. Each mode also prints a round-trip check: the other two numbers multiplied or divided back together to confirm they land on the number you started with. That check exists to catch a pasted-in typo or a mismatch between what the ad platform reports and what your invoice says, not to add a second opinion on the math.</p>
+
+      <h3>The ceiling is a different question</h3>
+      <p>Max affordable CPC builds a new number from what an order is worth once returns are counted. Contribution margin is what an order is worth if every unit ships and stays sold. Return rate and the net cost of a returned order knock that figure down to the returns-adjusted contribution per order, the same primitive this whole tool library uses everywhere returns can eat a number that looks fine gross. Multiply that by your conversion rate and you get the most a click can cost while the order still breaks even, before you have paid a cent for the click itself.</p>
+
+      <p>The implied CPA line under the ceiling is a sanity check rather than a new number: at the exact ceiling, cost per order equals the returns-adjusted contribution per order. If that equality does not hold on your own numbers, the arithmetic upstream of it has drifted.</p>
+
+      <h3>Why returns cut the ceiling before the ad account ever sees it</h3>
+      <p>Apparel carries this cost more than most categories, because sizing gets decided at home after the parcel has already shipped. A returned order gives back none of its contribution and adds a handling cost on top: a label, an inspection, sometimes a markdown on stock that comes back out of season. Both of those show up in the waterfall above when the max CPC mode is selected, splitting gross contribution into what returns take and what is left to spend on the click that started the order. Raise the return rate and the gold band shrinks before you have touched a single ad setting.</p>
+
+      <h3>What this tool deliberately leaves out</h3>
+      <p>This page prices one click, blended across whatever traffic you enter. It does not split brand from non-brand, because that split belongs to the Google Ads budget tool, which is built to hold the two apart. It does not split prospecting from retargeting, because that belongs to the Meta budget tool for the same reason. It does not model click-through rate or a test for whether one creative beats another, because that is what the CTR and significance tool is for. And it does not carry a repeat-purchase window, because that is the CPA tool's job once a campaign is converting reliably enough to look at lifetime value. Folding all of that into one page would blend numbers that behave differently and hide exactly the splits that matter. Four narrow tools that agree on the same returns-adjusted primitive beat one wide tool that guesses at all of them.</p>
+
+      <h3>Reading the range on the ceiling</h3>
+      <p>Conversion rate and return rate are the two inputs to the max CPC mode most founders are estimating rather than reading off a report. The spread above flexes both at once, in the same direction, because a softer funnel and a worse return quarter tend to arrive together, usually when a campaign pushes into a colder audience or a new season starts returning last season's sizing mistakes. If the whole spread sits comfortably above your real CPC, the ceiling is not the binding constraint. If it straddles your real CPC, pull the actual conversion rate and return rate before deciding whether the bid is too high.</p>
+
+      <h3>What to do with the ceiling once you have it</h3>
+      <p>Compare it against the CPC your ad platform is actually reporting, using the first mode on this page if you only have spend and clicks handy. A real CPC comfortably under the ceiling means there is room to bid harder for volume. A real CPC above the ceiling means the order is paying for the click before it is paying for anything else, and the fix sits in the order's margin, price or return rate rather than in the ad account.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does the max CPC ceiling need a return rate and a conversion rate at all?</summary>
+        <div class="fa">Because a click alone never pays for anything. It has to convert into an order, and that order has to clear the returns and refunds this business absorbs before there is anything left to spend on the click. Contribution margin is what the order is worth if nothing is returned. Return rate and return cost knock that number down to what the order is actually worth. Conversion rate is what turns a click price into an order price. Skip any one of the three and the ceiling stops meaning anything.</div>
+      </details>
+      <details>
+        <summary>Why don't the first three modes ask about returns or margin?</summary>
+        <div class="fa">Cost per click, ad spend and clicks are three names for the same number: spend divided by clicks, or clicks times CPC, or spend divided by CPC. Enter any two and the third follows exactly, with no estimate involved. Returns only enter the picture once you ask what a click is worth to the business, which is what the max affordable CPC mode is for.</div>
+      </details>
+      <details>
+        <summary>What does it mean when the max affordable CPC comes back as $0.00?</summary>
+        <div class="fa">It means the order loses money after returns before a single click gets paid for. That happens when contribution margin is too thin, the return rate is too high, or the net cost of a return is high enough that the returns-adjusted contribution per order clears zero or drops below it. No CPC is affordable at that point. The fix sits in the order itself, its price, its cost or its return rate.</div>
+      </details>
+      <details>
+        <summary>Why does the range on the ceiling move conversion rate and return rate together instead of one at a time?</summary>
+        <div class="fa">Because they tend to move together in the real world. A softer funnel and a worse return quarter both show up when a campaign scales into a colder audience or a new season, not one without the other. The pessimistic end of the range pairs a weaker conversion rate with a higher return rate, and the optimistic end pairs a stronger conversion rate with a lower return rate, so the spread reflects how these two numbers actually fail together.</div>
+      </details>
+      <details>
+        <summary>Should I set my real bids at the max affordable CPC number?</summary>
+        <div class="fa">No. At that exact number the order contributes exactly zero after returns, which means every click is a break-even bet at best. Treat the max affordable CPC as the ceiling you never want to cross, and leave room under it for the order to still be worth acquiring.</div>
+      </details>
+      <details>
+        <summary>How is this different from the cost per acquisition tool?</summary>
+        <div class="fa">This tool prices a single click. The CPA tool prices a completed order, on the first purchase and across a repeat window, and it is the better check once a campaign is converting reliably. Use this one to size a bid before spend goes out, and the CPA tool to check what already came back.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every mode, every line of the math and the ceiling, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that price the same funnel</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live ad platform and Shopify data, then work the lines that move it: the return rate, the contribution margin and what a click is actually allowed to cost. Book a 30 minute intro call and we will walk your funnel economics together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpc-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml" id="mbarLabel">Cost per click</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-safe" id="mbarTier">CALCULATED</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does the max CPC ceiling need a return rate and a conversion rate at all?","acceptedAnswer":{"@type":"Answer","text":"Because a click alone never pays for anything. It has to convert into an order, and that order has to clear the returns and refunds this business absorbs before there is anything left to spend on the click. Contribution margin is what the order is worth if nothing is returned. Return rate and return cost knock that number down to what the order is actually worth. Conversion rate is what turns a click price into an order price. Skip any one of the three and the ceiling stops meaning anything."}},
+    {"@type":"Question","name":"Why don't the first three modes ask about returns or margin?","acceptedAnswer":{"@type":"Answer","text":"Cost per click, ad spend and clicks are three names for the same number: spend divided by clicks, or clicks times CPC, or spend divided by CPC. Enter any two and the third follows exactly, with no estimate involved. Returns only enter the picture once you ask what a click is worth to the business, which is what the max affordable CPC mode is for."}},
+    {"@type":"Question","name":"What does it mean when the max affordable CPC comes back as $0.00?","acceptedAnswer":{"@type":"Answer","text":"It means the order loses money after returns before a single click gets paid for. That happens when contribution margin is too thin, the return rate is too high, or the net cost of a return is high enough that the returns-adjusted contribution per order clears zero or drops below it. No CPC is affordable at that point. The fix sits in the order itself, its price, its cost or its return rate."}},
+    {"@type":"Question","name":"Why does the range on the ceiling move conversion rate and return rate together instead of one at a time?","acceptedAnswer":{"@type":"Answer","text":"Because they tend to move together in the real world. A softer funnel and a worse return quarter both show up when a campaign scales into a colder audience or a new season, not one without the other. The pessimistic end of the range pairs a weaker conversion rate with a higher return rate, and the optimistic end pairs a stronger conversion rate with a lower return rate, so the spread reflects how these two numbers actually fail together."}},
+    {"@type":"Question","name":"Should I set my real bids at the max affordable CPC number?","acceptedAnswer":{"@type":"Answer","text":"No. At that exact number the order contributes exactly zero after returns, which means every click is a break-even bet at best. Treat the max affordable CPC as the ceiling you never want to cross, and leave room under it for the order to still be worth acquiring."}},
+    {"@type":"Question","name":"How is this different from the cost per acquisition tool?","acceptedAnswer":{"@type":"Answer","text":"This tool prices a single click. The CPA tool prices a completed order, on the first purchase and across a repeat window, and it is the better check once a campaign is converting reliably. Use this one to size a bid before spend goes out, and the CPA tool to check what already came back."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'cpc-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, count = T.count;
+
+  var DEFAULTS = {
+    mode: 'cpc_from_spend',
+    ad_spend: 5000, clicks: 2500, cpc: 2,
+    cvr_pct: 2.4, aov: 85, cm_pct: 55, return_rate_pct: 25, return_cost_pct: 12
+  };
+  var KEYS = ['ad_spend', 'clicks', 'cpc', 'cvr_pct', 'aov', 'cm_pct', 'return_rate_pct', 'return_cost_pct'];
+  var MODES = ['cpc_from_spend', 'spend_from_cpc', 'clicks_from_spend', 'max_cpc'];
+  var MODE_FIELDS = {
+    cpc_from_spend: ['ad_spend', 'clicks'],
+    spend_from_cpc: ['clicks', 'cpc'],
+    clicks_from_spend: ['ad_spend', 'cpc'],
+    max_cpc: ['cvr_pct', 'aov', 'cm_pct', 'return_rate_pct', 'return_cost_pct']
+  };
+  var MODE_LABEL = {
+    cpc_from_spend: 'Cost per click',
+    spend_from_cpc: 'Ad spend',
+    clicks_from_spend: 'Clicks',
+    max_cpc: 'Max affordable CPC'
+  };
+  var CROSS = ['cpm-calculator', 'cpa-calculator', 'ctr-calculator', 'mer-calculator', 'break-even-roas', 'conversion-rate-calculator'];
+  var GLYPH = {
+    'cpm-calculator': 'CPM', 'cpa-calculator': 'CPA', 'ctr-calculator': 'CTR',
+    'mer-calculator': 'MER', 'break-even-roas': 'ROAS', 'conversion-rate-calculator': 'CVR'
+  };
+
+  var currentMode = DEFAULTS.mode;
+
+  function el(id) { return document.getElementById(id); }
+  function n2(x) { return T.roundDp(x, 2).toFixed(2); }
+  function n4(x) { return T.roundDp(x, 4).toFixed(4); }
+  function safeMoney(x) { return x === null || x === undefined ? 'N/A' : money(x); }
+  function safeCount(x) { return x === null || x === undefined ? 'N/A' : count(x); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k) {
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs() {
+    var i = {};
+    KEYS.forEach(function (k) {
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v) {
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputsFor(mode, i) {
+    if (mode === 'cpc_from_spend') return { mode: mode, ad_spend: i.ad_spend, clicks: i.clicks };
+    if (mode === 'spend_from_cpc') return { mode: mode, clicks: i.clicks, cpc: i.cpc };
+    if (mode === 'clicks_from_spend') return { mode: mode, ad_spend: i.ad_spend, cpc: i.cpc };
+    return {
+      mode: mode, cvr_pct: i.cvr_pct, aov: i.aov, cm_pct: i.cm_pct,
+      return_rate_pct: i.return_rate_pct, return_cost_pct: i.return_cost_pct
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* --------------------------------------------------------- field show */
+  function updateFieldVisibility(mode) {
+    KEYS.forEach(function (k) {
+      var field = el('f_' + k);
+      if (!field) return;
+      var modes = (field.getAttribute('data-modes') || '').split(',');
+      field.classList.toggle('is-hidden', modes.indexOf(mode) === -1);
+    });
+    ['cpc_from_spend', 'spend_from_cpc', 'clicks_from_spend', 'max_cpc'].forEach(function (m) {
+      var rows = document.querySelectorAll('[data-modegroup="' + m + '"]');
+      Array.prototype.forEach.call(rows, function (r) { r.style.display = (m === mode) ? '' : 'none'; });
+    });
+    el('phN').textContent = (MODE_FIELDS[mode].length + 1) + ' dials';
+    el('scenSection').style.display = (mode === 'max_cpc') ? '' : 'none';
+    el('wfWrap').style.display = (mode === 'max_cpc') ? '' : 'none';
+  }
+
+  /* ------------------------------------------------------------- render */
+  function renderConversion(mode, i, o) {
+    var label = MODE_LABEL[mode];
+    el('vLabel').textContent = label;
+    el('mbarLabel').textContent = label;
+
+    var value = null, suffix = '', errored = false;
+    if (mode === 'cpc_from_spend') { value = o.cpc; suffix = ' per click'; }
+    if (mode === 'spend_from_cpc') { value = o.ad_spend; suffix = ' ad spend'; }
+    if (mode === 'clicks_from_spend') { value = o.clicks; suffix = ' clicks'; }
+    errored = (value === null || value === undefined);
+
+    if (errored) {
+      el('bigNum').innerHTML = 'N/A';
+      el('mbarNum').textContent = 'N/A';
+      el('tierChip').className = 'tier t-not';
+      el('tierChip').textContent = 'NEEDS INPUT';
+      el('mbarTier').className = 'tier t-not';
+      el('mbarTier').textContent = 'NEEDS INPUT';
+      el('rangeLine').textContent = o.message || 'Enter a value above 0.';
+      el('bindMain').textContent = o.message || 'Enter a value above 0.';
+      el('bindFix').textContent = '';
+    } else {
+      var display = (mode === 'clicks_from_spend') ? count(value) : money(value);
+      el('bigNum').innerHTML = display + '<span class="per">' + suffix + '</span>';
+      el('mbarNum').textContent = display;
+      el('tierChip').className = 'tier t-safe';
+      el('tierChip').textContent = 'CALCULATED';
+      el('mbarTier').className = 'tier t-safe';
+      el('mbarTier').textContent = 'CALCULATED';
+
+      if (mode === 'cpc_from_spend') {
+        el('rangeLine').innerHTML = 'Checks out: <b>' + money(o.cpc) + '</b> x ' + count(i.clicks) + ' clicks = <b>' + money(o.roundtrip_spend_from_cpc) + '</b>';
+        el('bindMain').innerHTML = 'One click costs <b>' + money(o.cpc) + '</b> on average, across ' + money(i.ad_spend) + ' spent over ' + count(i.clicks) + ' clicks.';
+        el('bindFix').textContent = 'Compare this against the max affordable CPC mode to see how much room that price leaves.';
+      } else if (mode === 'spend_from_cpc') {
+        el('rangeLine').innerHTML = 'Checks out: ' + money(i.cpc) + ' x ' + count(i.clicks) + ' clicks = <b>' + money(o.ad_spend) + '</b>';
+        el('bindMain').innerHTML = 'Buying ' + count(i.clicks) + ' clicks at ' + money(i.cpc) + ' each takes <b>' + money(o.ad_spend) + '</b> of budget.';
+        el('bindFix').textContent = 'Use this to size a media plan before the spend goes out.';
+      } else {
+        el('rangeLine').innerHTML = 'Checks out: ' + money(i.ad_spend) + ' / ' + money(i.cpc) + ' = <b>' + count(o.roundtrip_clicks_from_spend) + '</b> clicks';
+        el('bindMain').innerHTML = 'A ' + money(i.ad_spend) + ' budget buys <b>' + count(o.clicks) + '</b> clicks at ' + money(i.cpc) + ' each.';
+        el('bindFix').textContent = 'Use this to forecast traffic from a fixed budget and an assumed CPC.';
+      }
+    }
+    el('bindDrag').textContent = '';
+  }
+
+  function renderMaxCpc(i, o) {
+    el('vLabel').textContent = 'Max affordable CPC';
+    el('mbarLabel').textContent = 'Max affordable CPC';
+
+    var cvr = i.cvr_pct / 100, cm = i.cm_pct / 100, r = i.return_rate_pct / 100, rc = i.return_cost_pct / 100;
+    var notAffordable = !!o.message;
+
+    el('bigNum').innerHTML = money(o.max_cpc) + '<span class="per"> max per click</span>';
+    el('mbarNum').textContent = money(o.max_cpc);
+
+    var cls = notAffordable ? 't-not' : 't-safe';
+    var chipText = notAffordable ? 'NOT AFFORDABLE' : 'CEILING SET';
+    el('tierChip').className = 'tier ' + cls; el('tierChip').textContent = chipText;
+    el('mbarTier').className = 'tier ' + cls; el('mbarTier').textContent = chipText;
+
+    if (notAffordable) {
+      el('rangeLine').textContent = o.message;
+      el('bindMain').textContent = o.message;
+      el('bindFix').textContent = 'Fix the order economics first: contribution margin, return rate or return cost, before spending on clicks.';
+    } else {
+      el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.max_cpc_low) + '</b> and <b>' + money(o.max_cpc_high) + '</b> per click';
+      el('bindMain').innerHTML = 'Contribution clears <b>' + money(o.raco) + '</b> per order after returns, so a click can cost up to <b>' + money(o.max_cpc) + '</b> and the order still breaks even.';
+      el('bindFix').innerHTML = 'At the ceiling, cost per order equals ' + money(o.implied_cpa_at_max_cpc) + ', exactly what one order leaves behind.';
+    }
+    el('bindDrag').textContent = '';
+
+    /* waterfall: gross contribution split into what returns take and what is left for the click */
+    var grossContribution = i.aov * cm;
+    var lostReturns = i.aov * r * cm;
+    var lostHandling = i.aov * r * rc;
+    var kept = o.raco;
+    var neg = kept <= 0;
+    var scale = grossContribution > 0 ? grossContribution : (lostReturns + lostHandling);
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    bar.querySelector('.seg[data-k="lost_returns"]').style.width = (Math.min(lostReturns, scale) / scale * 100) + '%';
+    bar.querySelector('.seg[data-k="lost_handling"]').style.width = (Math.min(lostHandling, scale) / scale * 100) + '%';
+    bar.querySelector('.seg[data-k="kept"]').style.width = (neg ? 0 : Math.max(0, kept) / scale * 100) + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfScale').textContent = 'of ' + money(grossContribution) + ' gross contribution';
+    el('wfMarkCap').textContent = neg
+      ? 'Returns take more than the order contributes. There is no gold band left.'
+      : 'The gold band is what a click can be sold against.';
+
+    el('lg_lost_returns').textContent = money(lostReturns);
+    el('lg_lost_handling').textContent = money(lostHandling);
+    el('lg_result').textContent = neg ? money(Math.abs(kept)) : money(kept);
+    el('lg_result_nm').textContent = neg ? 'Short by' : 'Contribution kept, per order';
+
+    /* scenario spread */
+    el('scLow').textContent = money(o.max_cpc_low);
+    el('scMid').textContent = money(o.max_cpc);
+    el('scHigh').textContent = money(o.max_cpc_high);
+    el('scLow').classList.toggle('neg', o.max_cpc_low < 0);
+    el('scMid').classList.toggle('neg', o.max_cpc < 0);
+    el('scHigh').classList.toggle('neg', o.max_cpc_high < 0);
+    var rHigh = Math.min(60, i.return_rate_pct + 5), rLow = Math.max(0, i.return_rate_pct - 5);
+    el('scLowA').textContent = 'Conversion ' + pct(cvr * 100 * 0.8, 2) + ', return rate ' + pct(rHigh, 2);
+    el('scMidA').textContent = 'Conversion ' + pct(i.cvr_pct, 2) + ', return rate ' + pct(i.return_rate_pct, 2);
+    el('scHighA').textContent = 'Conversion ' + pct(cvr * 100 * 1.2, 2) + ', return rate ' + pct(rLow, 2);
+
+    /* substituted arithmetic */
+    el('m_mc_raco').textContent = money(o.raco);
+    el('mx_mc_raco').innerHTML = money(i.aov) + ' x ((1 - ' + n2(r) + ') x ' + n2(cm) + ' - ' + n2(r) + ' x ' + n2(rc) + ') = ' + money(o.raco) +
+      '  <em>what one order leaves after returns, before you pay for the click</em>';
+    el('m_mc_max').textContent = money(o.max_cpc);
+    el('m_mc_max').classList.toggle('neg', o.max_cpc < 0);
+    el('mx_mc_max').innerHTML = n4(cvr) + ' x ' + money(o.raco) + ' = ' + money(o.max_cpc) +
+      '  <em>the ceiling per click before this order stops paying for itself</em>';
+    el('m_mc_cpa').textContent = notAffordable ? 'none' : money(o.implied_cpa_at_max_cpc);
+    el('mx_mc_cpa').innerHTML = notAffordable
+      ? '<em>No click price is affordable, so there is no ceiling to check.</em>'
+      : money(o.max_cpc) + ' / ' + n4(cvr) + ' = ' + money(o.implied_cpa_at_max_cpc) +
+        '  <em>sanity check: at the ceiling, cost per order equals contribution exactly</em>';
+  }
+
+  function paint() {
+    var i = readInputs();
+    var ci = computeInputsFor(currentMode, i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    updateFieldVisibility(currentMode);
+
+    if (currentMode === 'max_cpc') {
+      renderMaxCpc(i, o);
+    } else {
+      renderConversion(currentMode, i, o);
+    }
+
+    /* mode-scoped math rows, always kept current so a switch never shows stale numbers */
+    el('m_cfs_spend').textContent = money(i.ad_spend);
+    el('m_cfs_clicks').textContent = count(i.clicks);
+    if (currentMode === 'cpc_from_spend') {
+      var ocfs = o;
+      el('m_cfs_cpc').textContent = safeMoney(ocfs.cpc);
+      el('mx_cfs_cpc').innerHTML = ocfs.cpc === null
+        ? '<em>' + (ocfs.message || 'Enter clicks above 0.') + '</em>'
+        : money(i.ad_spend) + ' / ' + count(i.clicks) + ' = ' + money(ocfs.cpc) + '  <em>average cost of one click across the whole spend</em>';
+      el('m_cfs_rt').textContent = safeMoney(ocfs.roundtrip_spend_from_cpc);
+      el('mx_cfs_rt').innerHTML = ocfs.cpc === null ? '' : money(ocfs.cpc) + ' x ' + count(i.clicks) + ' = ' + money(ocfs.roundtrip_spend_from_cpc) + '  <em>confirms the division did not drop a cent</em>';
+    }
+
+    el('m_sfc_clicks').textContent = count(i.clicks);
+    el('m_sfc_cpc').textContent = money(i.cpc);
+    if (currentMode === 'spend_from_cpc') {
+      el('m_sfc_spend').textContent = money(o.ad_spend);
+      el('mx_sfc_spend').innerHTML = money(i.cpc) + ' x ' + count(i.clicks) + ' = ' + money(o.ad_spend) + '  <em>budget needed to buy that many clicks at that price</em>';
+    }
+
+    el('m_cls_spend').textContent = money(i.ad_spend);
+    el('m_cls_cpc').textContent = money(i.cpc);
+    if (currentMode === 'clicks_from_spend') {
+      var ocls = o;
+      el('m_cls_clicks').textContent = safeCount(ocls.clicks);
+      el('mx_cls_clicks').innerHTML = ocls.clicks === null
+        ? '<em>' + (ocls.message || 'Enter a CPC above 0.') + '</em>'
+        : money(i.ad_spend) + ' / ' + money(i.cpc) + ' = ' + count(ocls.clicks) + '  <em>clicks a fixed budget buys at that price</em>';
+      el('m_cls_rt').textContent = safeMoney(ocls.roundtrip_spend_from_cpc);
+      el('mx_cls_rt').innerHTML = ocls.clicks === null ? '' : count(ocls.clicks) + ' x ' + money(i.cpc) + ' = ' + money(ocls.roundtrip_spend_from_cpc) + '  <em>confirms the division did not drop a cent</em>';
+    }
+
+    /* state note */
+    var touched = currentMode !== DEFAULTS.mode || KEYS.some(function (k) { return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the campaign example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function (k) {
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function () {
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function () {
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function () { n.value = T.numStr(s.value); paint(); });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.modeBtn'), function (btn) {
+    btn.addEventListener('click', function () {
+      currentMode = btn.getAttribute('data-mode');
+      Array.prototype.forEach.call(document.querySelectorAll('.modeBtn'), function (b) {
+        b.classList.toggle('is-active', b === btn);
+      });
+      paint();
+    });
+  });
+
+  el('resetBtn').addEventListener('click', function () {
+    currentMode = DEFAULTS.mode;
+    Array.prototype.forEach.call(document.querySelectorAll('.modeBtn'), function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-mode') === DEFAULTS.mode);
+    });
+    KEYS.forEach(function (k) { setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function () {
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function (slug) {
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function () {
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function (k) {
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+    var q = new URLSearchParams(location.search);
+    var m = q.get('mode');
+    if (m && MODES.indexOf(m) !== -1) {
+      currentMode = m;
+      Array.prototype.forEach.call(document.querySelectorAll('.modeBtn'), function (b) {
+        b.classList.toggle('is-active', b.getAttribute('data-mode') === m);
+      });
+    }
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function () { return lastInputs; },
+    getOutputs: function () {
+      if (!lastOut) return {};
+      return lastOut.display || lastOut;
+    }
+  });
+})();
+</script>
+</body>
+</html>

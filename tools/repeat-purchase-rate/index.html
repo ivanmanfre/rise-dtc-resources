@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Repeat Purchase Rate Calculator (Exchange-Adjusted) | RISE DTC</title>
+<meta name="description" content="Free exchange-adjusted repeat purchase rate calculator. Enter customers, repeat customers, exchange share, window and AOV, and see your true repeat rate next to the inflated one your dashboard reports, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/repeat-purchase-rate/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Repeat Purchase Rate Calculator (Exchange-Adjusted)" />
+<meta property="og:description" content="Your true repeat rate once size-swap exchanges are removed, plus what a lift in that rate is worth. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/repeat-purchase-rate/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Repeat Purchase Rate Calculator (Exchange-Adjusted)" />
+<meta name="twitter:description" content="Your true repeat rate once exchanges are removed. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-repeat-purchase-rate";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=repeat-purchase-rate" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Repeat Purchase Rate</span>
+      <span class="t2">Tool 10 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What's your repeat rate <span class="hl">without the exchanges?</span></h1>
+    <p class="lede">A size swap creates a second order that looks exactly like a loyal repeat customer in your dashboard.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">7 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="total_customers">Customers in the window</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="total_customers" data-min="1" data-max="1000000" data-step="1" value="4000" /><span class="u">customers</span></span>
+          </div>
+          <input type="range" id="total_customers_r" min="1" max="1000000" step="1" value="4000" aria-label="Customers in the window slider" />
+          <p class="f-cap">Everyone who placed an order in the window, whatever window you report on.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="repeat_customers">Customers with 2 or more orders</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="repeat_customers" data-min="0" data-max="1000000" data-step="1" value="1000" /><span class="u">customers</span></span>
+          </div>
+          <input type="range" id="repeat_customers_r" min="0" max="1000000" step="1" value="1000" aria-label="Repeat customers slider" />
+          <p class="f-cap">From the same window, before anything is stripped out.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="exchange_share_of_repeats">Second orders that are exchanges</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="exchange_share_of_repeats" data-min="0" data-max="100" data-step="5" value="20" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="exchange_share_of_repeats_r" min="0" max="100" step="5" value="20" aria-label="Exchange share of repeats slider" />
+          <p class="f-cap">Replacement orders created by an exchange look like repeat purchases in Shopify. They are not new demand.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="window_months">Measurement window</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="window_months" data-min="1" data-max="36" data-step="1" value="12" /><span class="u">months</span></span>
+          </div>
+          <input type="range" id="window_months_r" min="1" max="36" step="1" value="12" aria-label="Measurement window slider" />
+          <p class="f-cap">A repeat rate without a window is not a number.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="net_aov">Average order value, net of refunds</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="net_aov" data-min="5" data-max="500" data-step="1" value="57.53" /></span>
+          </div>
+          <input type="range" id="net_aov_r" min="5" max="500" step="1" value="57.53" aria-label="Net average order value slider" />
+          <p class="f-cap">Take this from the AOV tool so the two pages agree.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="5" data-max="90" data-step="1" value="45" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="5" max="90" step="1" value="45" aria-label="Contribution margin slider" />
+          <p class="f-cap">What one more order actually keeps, after product cost and fulfillment.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="target_lift_pts">Repeat rate lift you are chasing</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="target_lift_pts" data-min="0" data-max="30" data-step="1" value="5" /><span class="u">pts</span></span>
+          </div>
+          <input type="range" id="target_lift_pts_r" min="0" max="30" step="1" value="5" aria-label="Target lift slider" />
+          <p class="f-cap">The point improvement you are planning for, not the one you already have.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Repeat purchase rate, exchange-adjusted</p>
+        <p class="bignum" id="bigNum">0.0%<span class="per"> true repeat rate</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>0.0%</b> and <b>0.0%</b> exchange-adjusted</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the window's customers land <span id="wfScale">of 4,000 customers</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="onetime" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="exchange" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band on the right is your true repeat customers.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">One-time customers</span><span class="vl" id="lg_onetime">0.0</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Exchange-inflated repeats</span><span class="vl" id="lg_exchange">0.0</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">True repeat customers</span><span class="vl" id="lg_result">0.0</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What the exchange caveat costs you</span>
+          <p id="bindMain">Exchanges account for 0.0 points of your reported repeat rate.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread 1 ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>How much of your rate is a guess?</h2>
+    <p class="sec-sub">Exchange share is the number almost no store can query directly. Here is the same true repeat rate recomputed with it flexed 20% in each direction, so you can see how much of the answer rests on the estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">0.0%</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.0%</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">0.0%</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ scenario spread 2 ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <p class="sec-eyebrow">The plan, priced</p>
+    <h2>What a lift is worth, priced two ways</h2>
+    <p class="sec-sub">The lift target is a number you set, so here is the contribution impact recomputed with it flexed 20% in each direction.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Undershoot</p><p class="sc-v" id="scCLow">$0.00</p><p class="sc-a" id="scCLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As planned</p><p class="sc-v" id="scCMid">$0.00</p><p class="sc-a" id="scCMidA"></p></div>
+      <div class="sc"><p class="sc-k">Overshoot</p><p class="sc-v" id="scCHigh">$0.00</p><p class="sc-a" id="scCHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNoteC"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is the customer window you entered above. These rows update as you move the dials.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Raw repeat rate, what your dashboard reports</span><span class="mv" id="m_raw">0.0%</span><span class="mx" id="mx_raw"></span></div>
+      <div class="mrow"><span class="mn">True repeat customers, exchanges removed</span><span class="mv" id="m_truecust">0.0</span><span class="mx" id="mx_truecust"></span></div>
+      <div class="mrow sum final"><span class="mn">True repeat rate, exchange-adjusted</span><span class="mv" id="m_true">0.0%</span></div>
+      <div class="mrow"><span class="mn">Exchange inflation</span><span class="mv" id="m_infl">0.0 pts</span><span class="mx" id="mx_infl"></span></div>
+      <div class="mrow"><span class="mn">Extra repeat customers at the lift target</span><span class="mv" id="m_extracust">0.0</span><span class="mx" id="mx_extracust"></span></div>
+      <div class="mrow"><span class="mn">Extra revenue at the lift target</span><span class="mv" id="m_extrarev">$0.00</span><span class="mx" id="mx_extrarev"></span></div>
+      <div class="mrow sum"><span class="mn">Extra contribution at the lift target</span><span class="mv" id="m_extracontrib">$0.00</span><span class="mx" id="mx_extracontrib"></span></div>
+      <div class="mrow"><span class="mn">Extra contribution, annualized</span><span class="mv" id="m_annualized">$0.00</span><span class="mx" id="mx_annualized"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Second orders created by an exchange count as repeat orders</b> in your dashboard until you strip them out here.</li>
+      <li><b>True repeat customers is an expected value</b>, the repeat count times one minus the exchange share, not a headcount of specific people.</li>
+      <li><b>The lift model assumes one additional order per newly repeating customer</b>, stated on the page rather than hidden in the formula.</li>
+      <li><b>Extra revenue runs on net AOV</b>, so refunded revenue never enters the loyalty math either.</li>
+      <li><b>Extra contribution annualizes on 12 divided by your measurement window</b>, so a 6 month window doubles the yearly read and an 18 month window shrinks it.</li>
+      <li><b>When the exchange share is zero, the true rate range collapses to a single number</b>, since there is no guess left to flex.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why a repeat rate and an exchange rate get counted as the same thing</h2>
+    <div class="prose">
+      <p>A repeat purchase rate answers one question: did the same customer come back and buy again. In apparel, that question has a quiet complication that most dashboards never surface. When a customer orders a medium, decides it runs small, and asks for a large instead, most storefronts and helpdesk tools process that as a brand new order. The customer never chose to buy from you a second time. They chose a different size for the same purchase. Your reporting has no way to tell the difference, so it counts a size swap the same way it counts a customer who came back a season later for a different item entirely.</p>
+
+      <p>That miscount compounds because exchanges are common in apparel and rare almost everywhere else. A category with a wide spread in fit, cut and sizing across brands generates more of these replacement orders than a category where sizing is fixed, like electronics or supplements. So the categories most likely to lean on repeat rate as a growth story are the same categories where the raw number is most likely to be inflated by something that has nothing to do with loyalty.</p>
+
+      <h3>What the exchange-adjusted rate actually removes</h3>
+      <p>This calculator asks for one number most repeat-rate tools never ask for: the share of second orders, inside your repeat count, that were created by an exchange rather than a genuine return purchase. Multiply your repeat customer count by one minus that share, and what is left is an estimate of customers who repeated because they wanted more, not because a garment failed to fit. The gap between the raw rate and this true rate is printed on the page as exchange inflation, in points, so the miscount has a number attached to it instead of living as a caveat in a footnote.</p>
+
+      <p>The math treats this as an expected value rather than a headcount. So a 20% exchange share does not mean exactly one in five specific customers is an exchange case. It means that, across the window, roughly a fifth of what your dashboard calls a repeat customer is more accurately described as the same original order, resolved in a second shipment. Expected values can be fractional, which is why this page prints customer counts to one decimal rather than rounding them into people who do not exist.</p>
+
+      <h3>Why the revenue impact runs on net AOV</h3>
+      <p>The lift model on this page answers a forward-looking question: if you raised the true repeat rate by a target number of points, what would that be worth. It multiplies the newly repeating customers by one additional order each, at your average order value net of refunds, then applies your contribution margin. Net AOV matters here for the same reason returns matter across every other page in this set: a dollar of gross revenue that comes back as a refund was never really a dollar you kept. Using net AOV keeps the lift estimate from repeating the same optimistic mistake the raw repeat rate makes, just measured in currency instead of customers.</p>
+
+      <p>The lift model also makes one assumption explicit rather than folding it into the formula: one additional order per newly repeating customer. It is not a lifetime value calculation and does not compound across future orders. That is a deliberate, conservative choice. The compounding version of this question, where a customer keeps repeating across a longer horizon, lives on the lifetime value calculator. This page answers a narrower question: what is the next order worth, one lift target at a time.</p>
+
+      <h3>Why the window matters more than it looks like it should</h3>
+      <p>A repeat rate without a stated window is close to meaningless, because the rate mechanically climbs the longer you measure. A 3 month window will always show fewer repeat customers than a 12 month window pulled from the same store, not because loyalty changed but because customers had less time to place a second order. This page asks for the window directly and uses it to annualize the contribution impact, so a 6 month measurement and an 18 month measurement can both be compared against the same yearly number instead of two figures that were never on the same footing.</p>
+
+      <h3>What this page does not do</h3>
+      <p>There is no published, source-checked benchmark for apparel repeat purchase rate, for the share of apparel returns processed as exchanges, or for the cohort window most reporting uses, that met the sourcing bar for this page. Repeat rate reporting varies so widely by return policy, sizing system and platform default that a single quoted figure would do more harm than good sitting next to your number. So this page prints none. Every figure here comes from what you enter, with the arithmetic shown underneath it.</p>
+
+      <h3>The number worth watching</h3>
+      <p>Exchange inflation points is the number that tells you whether your reported repeat rate can be trusted for a scaling decision. When it sits well below your raw rate, the exchange caveat is a rounding issue and the true rate is close enough to the reported one that either number will do. When it climbs toward half the raw rate or past it, as it does for stores with a wide-fit product line, the reported number is telling a story that is mostly about sizing rather than loyalty. In that case the fix is a returns and exchange reporting one: get exchange orders tagged separately in your platform so this number stops needing to be estimated at all.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why do exchanges inflate my repeat purchase rate?</summary>
+        <div class="fa">Most storefronts and helpdesk platforms create a brand new order when a customer exchanges a size, so a size swap gets recorded exactly like a customer who came back on their own. Multiplying your repeat count by one minus the exchange share removes those replacement orders from the count of customers who chose to repeat.</div>
+      </details>
+      <details>
+        <summary>How do I find my exchange share of repeats?</summary>
+        <div class="fa">Pull a report from your returns or exchange platform filtered to the reason code for exchanges, then divide that count by your total repeat orders in the same window. If your platform does not tag exchanges separately, sample a month of second orders and check for the same product in a different size shipped within a few days of the first order, which is the pattern an exchange leaves behind.</div>
+      </details>
+      <details>
+        <summary>What happens to the true rate range when my exchange share is zero?</summary>
+        <div class="fa">The range collapses to a single number, since there is no guess left to flex, and the page states that instead of drawing a spread around a number with nothing to estimate.</div>
+      </details>
+      <details>
+        <summary>Why does the lift impact use net AOV instead of gross AOV?</summary>
+        <div class="fa">Net AOV is what you keep once refunds are removed, and the whole point of the exchange adjustment is to stop counting activity that was never new demand. Running the lift impact on gross AOV would undo that work by pricing the extra orders at a number that includes revenue you never actually kept.</div>
+      </details>
+      <details>
+        <summary>What does the lift model assume, and what does it not do?</summary>
+        <div class="fa">It assumes one additional order per newly repeating customer, at your net AOV and contribution margin, stated on the page rather than hidden in the formula. It is not a lifetime value calculation and does not compound across future orders. For the compounding version of this question, use the lifetime value calculator instead.</div>
+      </details>
+      <details>
+        <summary>What if the customers with 2 or more orders I enter is higher than my total customers?</summary>
+        <div class="fa">That is a data entry mismatch rather than a real repeat rate, since a repeat customer count can never exceed the total customer count it was drawn from. Recheck that both numbers come from the same window and the same customer definition before trusting anything else on this page.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever owns retention.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on your live Shopify data, then work the number that actually moves it: how many of those repeat orders are exchanges. Book a 30 minute intro call and we will walk your repeat rate together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=repeat-purchase-rate" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Repeat purchase rate</span>
+  <span class="mv" id="mbarNum">0.0%</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why do exchanges inflate my repeat purchase rate?","acceptedAnswer":{"@type":"Answer","text":"Most storefronts and helpdesk platforms create a brand new order when a customer exchanges a size, so a size swap gets recorded exactly like a customer who came back on their own. Multiplying your repeat count by one minus the exchange share removes those replacement orders from the count of customers who chose to repeat."}},
+    {"@type":"Question","name":"How do I find my exchange share of repeats?","acceptedAnswer":{"@type":"Answer","text":"Pull a report from your returns or exchange platform filtered to the reason code for exchanges, then divide that count by your total repeat orders in the same window. If your platform does not tag exchanges separately, sample a month of second orders and check for the same product in a different size shipped within a few days of the first order, which is the pattern an exchange leaves behind."}},
+    {"@type":"Question","name":"What happens to the true rate range when my exchange share is zero?","acceptedAnswer":{"@type":"Answer","text":"The range collapses to a single number, since there is no guess left to flex, and the page states that instead of drawing a spread around a number with nothing to estimate."}},
+    {"@type":"Question","name":"Why does the lift impact use net AOV instead of gross AOV?","acceptedAnswer":{"@type":"Answer","text":"Net AOV is what you keep once refunds are removed, and the whole point of the exchange adjustment is to stop counting activity that was never new demand. Running the lift impact on gross AOV would undo that work by pricing the extra orders at a number that includes revenue you never actually kept."}},
+    {"@type":"Question","name":"What does the lift model assume, and what does it not do?","acceptedAnswer":{"@type":"Answer","text":"It assumes one additional order per newly repeating customer, at your net AOV and contribution margin, stated on the page rather than hidden in the formula. It is not a lifetime value calculation and does not compound across future orders. For the compounding version of this question, use the lifetime value calculator instead."}},
+    {"@type":"Question","name":"What if the customers with 2 or more orders I enter is higher than my total customers?","acceptedAnswer":{"@type":"Answer","text":"That is a data entry mismatch rather than a real repeat rate, since a repeat customer count can never exceed the total customer count it was drawn from. Recheck that both numbers come from the same window and the same customer definition before trusting anything else on this page."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'repeat-purchase-rate';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    total_customers: 4000, repeat_customers: 1000, exchange_share_of_repeats: 20,
+    window_months: 12, net_aov: 57.53, cm_pct: 45, target_lift_pts: 5
+  };
+  var KEYS = ['total_customers','repeat_customers','exchange_share_of_repeats','window_months','net_aov','cm_pct','target_lift_pts'];
+  var SEGS = ['onetime','exchange','result'];
+  var CROSS = ['ltv','aov','ltv-cac-payback','cac','true-profit-per-order','contribution-margin'];
+  var GLYPH = {
+    'ltv':'LTV', 'aov':'AOV', 'ltv-cac-payback':'L:C',
+    'cac':'CAC', 'true-profit-per-order':'$/ORD', 'contribution-margin':'CM'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function group(s){ return s.replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function cnt1(x){
+    var v = T.roundDp(x, 1);
+    var parts = Math.abs(v).toFixed(1).split('.');
+    return (v < 0 ? '-' : '') + group(parts[0]) + '.' + parts[1];
+  }
+  function ptsFmt(x){
+    var v = T.roundDp(x, 1);
+    var parts = Math.abs(v).toFixed(1).split('.');
+    return (v < 0 ? '-' : '') + group(parts[0]) + '.' + parts[1] + ' pts';
+  }
+  function grp0(x){
+    var v = T.roundDp(x, 0);
+    return (v < 0 ? '-' : '') + group(Math.abs(v).toFixed(0));
+  }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      total_customers: i.total_customers, repeat_customers: i.repeat_customers,
+      exchange_share_of_repeats: i.exchange_share_of_repeats, window_months: i.window_months,
+      net_aov: i.net_aov, cm_pct: i.cm_pct, target_lift_pts: i.target_lift_pts
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var raw = o.raw_repeat_rate_pct === null ? 0 : o.raw_repeat_rate_pct;
+    var trueRate = o.true_repeat_rate_pct === null ? 0 : o.true_repeat_rate_pct;
+    var infl = o.exchange_inflation_pts === null ? 0 : o.exchange_inflation_pts;
+    var errFlag = !!o.data_error_flag;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = pct(trueRate) + '<span class="per"> true repeat rate</span>';
+    el('mbarNum').textContent = pct(trueRate);
+
+    var half = raw / 2;
+    var tierLabel, cls;
+    if (errFlag || raw <= 0) { tierLabel = 'NOT YET'; cls = 't-not'; }
+    else if (infl >= half) { tierLabel = 'FIX FIRST'; cls = 't-fix'; }
+    else { tierLabel = 'SAFE TO SCALE'; cls = 't-safe'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = tierLabel;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + pct(o.true_repeat_rate_low) +
+      '</b> and <b>' + pct(o.true_repeat_rate_high) + '</b> exchange-adjusted';
+
+    /* stacked bar over the customer pool. Normally the pool is total
+       customers, and the three bands (one-time, exchange-inflated, true
+       repeat) fill it exactly. If repeat customers entered exceeds total
+       customers, the pool switches to the larger number and the overrun is
+       drawn as the shortfall past the white line. */
+    var onetime = Math.max(0, i.total_customers - i.repeat_customers);
+    var exch = i.repeat_customers * (i.exchange_share_of_repeats / 100);
+    var result = o.true_repeat_customers;
+    var scale = errFlag ? i.repeat_customers : i.total_customers;
+    if (scale <= 0) scale = 1;
+
+    var vals = { onetime: onetime, exchange: exch, result: result };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = errFlag ? (i.total_customers / scale * 100) : 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = errFlag ? 'block' : 'none';
+    el('wfShort').style.display = errFlag ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = errFlag
+      ? 'of ' + grp0(i.repeat_customers) + ' customers counted as repeat'
+      : 'of ' + grp0(i.total_customers) + ' customers';
+    el('wfMarkCap').textContent = errFlag
+      ? 'The white line is total customers entered. Everything past it is repeat customers you cannot account for.'
+      : 'The gold band on the right is your true repeat customers.';
+
+    el('lg_onetime').textContent  = cnt1(onetime);
+    el('lg_exchange').textContent = cnt1(exch);
+    el('lg_result').textContent   = cnt1(result);
+    el('lg_result_nm').textContent = errFlag ? 'True repeat customers (check your data)' : 'True repeat customers';
+
+    /* biggest single line, reframed for this tool as the exchange caveat */
+    el('bindMain').innerHTML = 'Exchanges account for <b>' + ptsFmt(infl) + '</b> of your reported repeat rate.';
+    el('bindFix').textContent = 'Your dashboard reports ' + pct(raw) + '. The exchange-adjusted rate is ' + pct(trueRate) + '.';
+    el('bindDrag').textContent = 'A ' + ptsFmt(i.target_lift_pts) + ' lift to the true rate is worth ' + money(o.extra_contribution) +
+      ' in contribution across ' + cnt1(o.extra_orders) + ' orders, ' + money(o.extra_contribution_annualized) + ' annualized.';
+    var rep = el('bindRepeat');
+    if (errFlag) {
+      rep.hidden = false;
+      rep.textContent = 'Repeat customers entered exceed total customers entered. Check both counts before trusting the rest of this panel.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread 1: true repeat rate, exchange share flexed */
+    el('scLow').textContent  = pct(o.true_repeat_rate_low);
+    el('scMid').textContent  = pct(o.true_repeat_rate_mid);
+    el('scHigh').textContent = pct(o.true_repeat_rate_high);
+    var eLowPts = Math.min(100, i.exchange_share_of_repeats * 1.2);
+    var eHighPts = i.exchange_share_of_repeats * 0.8;
+    el('scLowA').textContent  = 'Exchange share ' + pct(eLowPts, 0);
+    el('scMidA').textContent  = 'Exchange share ' + pct(i.exchange_share_of_repeats, 0);
+    el('scHighA').textContent = 'Exchange share ' + pct(eHighPts, 0);
+    el('scenNote').textContent = o.range_inert
+      ? 'Your exchange share is set to zero, so flexing it changes nothing. This is the true rate with no exchanges removed.'
+      : 'If your exchange share turns out higher than entered, the true rate drops toward the low end. Pull an exchange report before you trust the high end.';
+
+    /* scenario spread 2: extra contribution, lift target flexed */
+    el('scCLow').textContent  = money(o.extra_contribution_low);
+    el('scCMid').textContent  = money(o.extra_contribution_mid);
+    el('scCHigh').textContent = money(o.extra_contribution_high);
+    var liftLow = i.target_lift_pts * 0.8;
+    var liftHigh = i.target_lift_pts * 1.2;
+    el('scCLowA').textContent  = 'Lift target ' + ptsFmt(liftLow);
+    el('scCMidA').textContent  = 'Lift target ' + ptsFmt(i.target_lift_pts);
+    el('scCHighA').textContent = 'Lift target ' + ptsFmt(liftHigh);
+    el('scenNoteC').textContent = (i.target_lift_pts === 0)
+      ? 'Your lift target is 0, so there is nothing to price yet.'
+      : 'This is what a ' + ptsFmt(i.target_lift_pts) + ' lift is worth if you hit it. Treat the undershoot column as the case where adoption falls short of the plan.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_raw').textContent = pct(raw);
+    el('mx_raw').innerHTML  = grp0(i.repeat_customers) + ' / ' + grp0(i.total_customers) + ' x 100 = ' + pct(raw) +
+      '  <em>what your dashboard reports</em>';
+    el('m_truecust').textContent = cnt1(o.true_repeat_customers);
+    el('mx_truecust').innerHTML  = grp0(i.repeat_customers) + ' x (1 - ' + n2(i.exchange_share_of_repeats / 100) + ') = ' + cnt1(o.true_repeat_customers) +
+      '  <em>repeat customers once exchange orders are removed</em>';
+    el('m_true').textContent = pct(trueRate);
+    el('m_infl').textContent = ptsFmt(infl);
+    el('mx_infl').innerHTML  = pct(raw) + ' - ' + pct(trueRate) + ' = ' + ptsFmt(infl) + '  <em>the miscount, named</em>';
+    el('m_extracust').textContent = cnt1(o.extra_repeat_customers);
+    el('mx_extracust').innerHTML  = grp0(i.total_customers) + ' x ' + n2(i.target_lift_pts / 100) + ' = ' + cnt1(o.extra_repeat_customers) +
+      '  <em>customers who would newly repeat at this lift</em>';
+    el('m_extrarev').textContent = money(o.extra_revenue);
+    el('mx_extrarev').innerHTML  = cnt1(o.extra_orders) + ' x ' + money(i.net_aov) + ' = ' + money(o.extra_revenue) +
+      '  <em>one additional order per newly repeating customer</em>';
+    el('m_extracontrib').textContent = money(o.extra_contribution);
+    el('mx_extracontrib').innerHTML  = money(o.extra_revenue) + ' x ' + pct(i.cm_pct) + ' = ' + money(o.extra_contribution) +
+      '  <em>contribution margin applied to the extra revenue</em>';
+    el('m_annualized').textContent = (o.extra_contribution_annualized === null) ? 'none' : money(o.extra_contribution_annualized);
+    el('mx_annualized').innerHTML  = (o.extra_contribution_annualized === null)
+      ? '<em>Add a measurement window above 0 to annualize this line.</em>'
+      : money(o.extra_contribution) + ' x (12 / ' + grp0(i.window_months) + ') = ' + money(o.extra_contribution_annualized) +
+        '  <em>same lift, expressed as a yearly number</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        raw_repeat_rate_pct: lastOut.raw_repeat_rate_pct === null ? null : T.round2(lastOut.raw_repeat_rate_pct),
+        true_repeat_rate_pct: lastOut.true_repeat_rate_pct === null ? null : T.round2(lastOut.true_repeat_rate_pct),
+        exchange_inflation_pts: lastOut.exchange_inflation_pts === null ? null : T.round2(lastOut.exchange_inflation_pts),
+        extra_contribution: T.round2(lastOut.extra_contribution),
+        extra_contribution_annualized: lastOut.extra_contribution_annualized === null ? null : T.round2(lastOut.extra_contribution_annualized),
+        data_error_flag: lastOut.data_error_flag,
+        true_repeat_rate_low: lastOut.true_repeat_rate_low === null ? null : T.round2(lastOut.true_repeat_rate_low),
+        true_repeat_rate_high: lastOut.true_repeat_rate_high === null ? null : T.round2(lastOut.true_repeat_rate_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

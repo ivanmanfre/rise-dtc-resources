@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free Shipping Threshold Calculator (Returns-Adjusted) | RISE DTC</title>
+<meta name="description" content="Free returns-adjusted free shipping threshold calculator. Enter AOV, margin, shipping cost, reach and the bracketing return rate, and see whether your threshold pays for itself, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/free-shipping-threshold/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Free Shipping Threshold Calculator (Returns-Adjusted)" />
+<meta property="og:description" content="Whether your free shipping threshold pays for itself once the bracketing return is priced in. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/free-shipping-threshold/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Free Shipping Threshold Calculator (Returns-Adjusted)" />
+<meta name="twitter:description" content="Whether your free shipping threshold pays for itself once the bracketing return is priced in. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-free-shipping-threshold";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Free Shipping Threshold</span>
+      <span class="t2">Tool 03 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>Set a free shipping threshold <span class="hl">that pays for itself.</span></h1>
+    <p class="lede">The shopper who adds one item to clear the threshold often sends it back. This prices that trade before the number goes live.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="current_aov">Current average order value</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="current_aov" data-min="10" data-max="500" data-step="1" value="68" /></span>
+          </div>
+          <input type="range" id="current_aov_r" min="10" max="500" step="1" value="68" aria-label="Current average order value slider" />
+          <p class="f-cap">Your AOV today, before this threshold changes anything.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="5" data-max="90" data-step="1" value="45" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="5" max="90" step="1" value="45" aria-label="Contribution margin percent slider" />
+          <p class="f-cap">On kept revenue, after product and fulfilment cost, before the shipping subsidy.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="shipping_cost">What one shipment costs you</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="shipping_cost" data-min="0" data-max="40" data-step="0.5" value="7.5" /></span>
+          </div>
+          <input type="range" id="shipping_cost_r" min="0" max="40" step="0.5" value="7.5" aria-label="Shipping cost slider" />
+          <p class="f-cap">Fully loaded, what it costs you to ship one order.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="threshold_multiplier">Threshold multiplier</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="threshold_multiplier" data-min="1.0" data-max="2.0" data-step="0.05" value="1.3" /><span class="u">x</span></span>
+          </div>
+          <input type="range" id="threshold_multiplier_r" min="1.0" max="2.0" step="0.05" value="1.3" aria-label="Threshold multiplier slider" />
+          <p class="f-cap">Suggested threshold equals your AOV times this, rounded up to the nearest $5.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="reach_pct">Orders that will grow to hit it</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="reach_pct" data-min="0" data-max="100" data-step="1" value="30" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="reach_pct_r" min="0" max="100" step="1" value="30" aria-label="Reach percent slider" />
+          <p class="f-cap">Add orders already above the threshold here too for the conservative read: you absorb their shipping as well.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="aov_lift_pct">How much those orders grow</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="aov_lift_pct" data-min="0" data-max="60" data-step="1" value="15" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="aov_lift_pct_r" min="0" max="60" step="1" value="15" aria-label="AOV lift percent slider" />
+          <p class="f-cap">This is the guess. It drives the range below.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="threshold_return_rate">Threshold orders that return an item</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="threshold_return_rate" data-min="0" data-max="70" data-step="1" value="30" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="threshold_return_rate_r" min="0" max="70" step="1" value="30" aria-label="Threshold return rate slider" />
+          <p class="f-cap">The bracketing leak. Usually higher than your store-wide return rate, because the added item was never really wanted.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost">Cost to process one return</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost" data-min="0" data-max="30" data-step="0.5" value="6" /></span>
+          </div>
+          <input type="range" id="return_cost_r" min="0" max="30" step="0.5" value="6" aria-label="Return processing cost slider" />
+          <p class="f-cap">Label, inspection and repack for the item that comes back.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Net impact per order</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per order</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> per order</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the added item goes <span id="wfScale">of $0.00 added per qualifying order</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="refunded" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="cost" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="handling" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="shipping" style="background:var(--grey-2)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the extra dollars the cart added.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Item comes back</span><span class="vl" id="lg_refunded">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Return handling</span><span class="vl" id="lg_handling">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Product and fulfilment cost</span><span class="vl" id="lg_cost">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-2)"></span><span class="nm">Shipping given away</span><span class="vl" id="lg_shipping">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">What is left</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Biggest single line</span>
+          <p id="bindMain">Shipping given away is the biggest single line.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Nobody knows the lift until the threshold is live</h2>
+    <p class="sec-sub">How much a qualifying cart actually grows is a guess dressed as a plan. Here is the same threshold recomputed with that guess flexed 20% in each direction, so you can see how much of the answer rests on it.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">Modelled per 100 orders shipped, then reduced to one order. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Suggested threshold</span><span class="mv" id="m_thresh">$0</span><span class="mx" id="mx_thresh"></span></div>
+      <div class="mrow"><span class="mn">Orders that grow to hit it, per 100</span><span class="mv" id="m_qual">0</span><span class="mx" id="mx_qual"></span></div>
+      <div class="mrow"><span class="mn">Incremental revenue, gross</span><span class="mv" id="m_gross">$0.00</span><span class="mx" id="mx_gross"></span></div>
+      <div class="mrow"><span class="mn">Incremental revenue, net of the return</span><span class="mv" id="m_net">$0.00</span><span class="mx" id="mx_net"></span></div>
+      <div class="mrow sum"><span class="mn">Incremental contribution</span><span class="mv" id="m_contrib">$0.00</span><span class="mx" id="mx_contrib"></span></div>
+      <div class="mrow"><span class="mn">Returns handling cost</span><span class="mv" id="m_hand">$0.00</span><span class="mx" id="mx_hand"></span></div>
+      <div class="mrow"><span class="mn">Shipping given away</span><span class="mv" id="m_ship">$0.00</span><span class="mx" id="mx_ship"></span></div>
+      <div class="mrow sum"><span class="mn">Net impact, per 100 orders shipped</span><span class="mv" id="m_net100">$0.00</span><span class="mx" id="mx_net100"></span></div>
+      <div class="mrow sum final"><span class="mn">Net impact per order</span><span class="mv" id="m_netorder">$0.00</span><span class="mx" id="mx_netorder"></span></div>
+      <div class="mrow"><span class="mn">What a returns-blind calculator shows</span><span class="mv" id="m_naive">$0.00</span><span class="mx" id="mx_naive"></span></div>
+      <div class="mrow"><span class="mn">The bracketing leak</span><span class="mv" id="m_leak">$0.00</span><span class="mx" id="mx_leak"></span></div>
+      <div class="mrow"><span class="mn">Lift needed to break even</span><span class="mv" id="m_be">$0.00</span><span class="mx" id="mx_be"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Only the orders whose behaviour actually changes are priced.</b> Orders that already qualified are left out unless you fold them into the reach percentage yourself.</li>
+      <li><b>The added item is what comes back, not the whole order.</b> Incremental revenue is scaled by one minus the bracketing return rate.</li>
+      <li><b>Contribution margin is entered net of product and fulfilment cost</b>, before the shipping subsidy this threshold hands out.</li>
+      <li><b>Shipping given away is not reduced for the returns.</b> You hand it over the moment the cart clears the threshold, whether the item stays or comes back.</li>
+      <li><b>The suggested threshold is rounded up to the nearest $5</b>, because a threshold is a merchandising call rather than an arithmetic answer.</li>
+      <li><b>The range only flexes the lift assumption.</b> The bracketing return rate stays fixed, because it is the number you can actually go and pull.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where two of these dials come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Shoppers who add items for free shipping</span>
+      <p class="quote">"they'll take various actions to obtain free shipping, including adding items to the cart (36%)"</p>
+      <span class="cite">UPS, Pulse of the Online Shopper study, via GlobeNewswire &middot; 2019 UPS Pulse of the Online Shopper study &middot; <a href="https://www.globenewswire.com/news-release/2019/08/06/1897480/0/en/Transparency-And-Personalization-Are-The-Next-Frontiers-For-Online-Retailers-UPS-Study-Finds.html" target="_blank" rel="noopener">globenewswire.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Cost objections and cart abandonment</span>
+      <p class="quote">"40% Extra costs too high (shipping, tax, fees)"</p>
+      <span class="cite">Baymard Institute &middot; rolling average across 50 studies, Baymard's ongoing cart abandonment research &middot; <a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener">baymard.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Return rate, all retail</span>
+      <p class="quote">"15.8% of their annual sales will be returned this year, totaling $849.9 billion"</p>
+      <span class="cite">National Retail Federation, in partnership with Happy Returns &middot; 2025 forecast, full-year retail &middot; <a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">nrf.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Return rate, online only</span>
+      <p class="quote">"an estimated 19.3% of online sales will be returned in 2025"</p>
+      <span class="cite">National Retail Federation &middot; 2025 forecast &middot; <a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">nrf.com</a></span>
+    </div>
+
+    <p class="srcnote">There is no published figure we could verify for the specific bracketing return rate on items added purely to clear a shipping threshold, so this page prints none. The general and apparel-adjacent return rates above are there to sanity-check the number you enter, not to replace it. That dial stays yours to fill in.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why a threshold that grows your AOV can still lose money</h2>
+    <div class="prose">
+      <p>A free shipping threshold works on a simple mechanism: a shopper sitting a few dollars under the line adds something to clear it, because paying a shipping charge on the order already in the cart feels worse than adding a little more product and shipping free. That mechanism is well documented. UPS has found that roughly a third of online shoppers add items to a cart specifically to hit a free shipping cutoff, and Baymard's ongoing abandonment research puts extra costs, shipping among them, as one of the leading reasons a cart is abandoned at checkout in the first place. The threshold is a real lever on average order value, and it carries a cost that only shows up after the order ships.</p>
+
+      <p>Apparel is where this mechanism gets expensive, and it is the case the defaults on this page are built around. The item added to clear a threshold is rarely the item the shopper came for. It is a second size bought to avoid a guess, a color picked without trying it on, or a small add-on grabbed purely to make the number work. The National Retail Federation puts the online return rate at 19.3% for 2025, quoted in full in the panel above, and apparel specifically runs well above that. The item that exists only to clear a threshold sits at the sharp end of whatever your baseline already is, because it was never really wanted. That is the behaviour this calculator calls the bracketing return rate, and it is the whole reason a threshold that lifts AOV on your dashboard can still cost you money at the bank.</p>
+
+      <h3>Where the return enters the arithmetic twice</h3>
+      <p>The bracketing return touches this calculation in two separate places, and both stay visible on this page. First, the incremental revenue: only the kept share of the added item counts, so the gross lift is multiplied by one minus the bracketing return rate before any margin is taken on it. Second, the handling cost: every returning item still has to be received, inspected and repacked, and that cost is counted on the expected share of qualifying orders that come back. Shipping is deliberately left out of that second discount. You gave the shipping away the moment the cart cleared the threshold, and you do not get it back when the extra item does.</p>
+
+      <p>Contribution margin is the third number doing real work here, and it is worth being precise about what it already contains. It is entered net of product and fulfilment cost, which means the cost of goods on the returned item is already folded into the margin rate rather than pulled out separately the way a full profit-per-order calculation would. That is a deliberate simplification for a tool that is pricing one incremental item, not a whole order, and it is why this page does not ask for a resellable share the way a broader profit calculator does.</p>
+
+      <h3>The naive number and the real one</h3>
+      <p>A calculator with no returns line takes the gross lift, applies the margin, subtracts the shipping subsidy, and stops. That naive number is printed on this page next to the real one, and the gap between them is labelled the bracketing leak. At a high enough bracketing return rate, the leak is large enough to flip a threshold from a plan that looks obviously good on a naive read to one that quietly costs money on the real one. The gap is the entire portion of the return behaviour that a returns-blind tool cannot see, because it never asked whether the item that got the cart across the line was one the shopper actually intended to keep.</p>
+
+      <h3>Reach is the dial people get wrong</h3>
+      <p>The reach percentage is meant to capture only the orders whose behaviour the threshold actually changes: carts that would have checked out below the line and grew to clear it. An order that was already going to sit above the threshold is not one the threshold changed, and pricing it as if the threshold caused it overstates the upside. The conservative read goes the other direction. Because you absorb the shipping on every order above the threshold whether the threshold changed anything or not, folding those orders into reach gives you the fuller cost picture even though it understates the revenue attribution. Which read to use depends on what question you are answering: the causal lift from the threshold, or the total shipping bill it now carries.</p>
+
+      <h3>The number to watch is the break-even lift</h3>
+      <p>The break-even lift is the minimum amount a qualifying cart has to grow by before the threshold pays for itself, given your margin and your bracketing return rate. It is the number that turns a guess into a decision. If your honest estimate of how much carts will grow sits comfortably above the break-even figure, the threshold has room to work even if the estimate is a little optimistic. If the estimate sits below it, or if the whole pessimistic-to-optimistic spread stays negative, no amount of hoping fixes that. The levers to pull are the threshold itself, the margin behind it, and the bracketing return rate the product and fit content on that page are driving.</p>
+
+      <p>Run the number twice before setting a threshold live: once at the multiplier you were about to pick, and once at a multiplier a notch higher. On thin-margin apparel with a bracketing return rate anywhere near 30 percent, the gap between those two runs is usually the difference between a threshold that pays for itself and one that quietly subsidizes returns you never see on the P&amp;L until the reconciliation lands.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does a threshold that raises average order value still cost money?</summary>
+        <div class="fa">Because the shopper who adds the extra item to clear the threshold often sends it back. The added revenue is real for exactly as long as the parcel is in transit. Once the bracketing return rate is applied, what actually lands is the kept share of that extra item, and the margin on it has to cover the return handling cost and the shipping you gave away for free. At a high enough bracketing rate, the math flips negative even though the average order value on your dashboard went up.</div>
+      </details>
+      <details>
+        <summary>What does the reach percentage really measure, and how do I estimate mine?</summary>
+        <div class="fa">It is the share of orders whose behaviour the threshold actually changes: carts that would have checked out below the threshold and grew to clear it. Pull it from a before-and-after order value distribution around the threshold price point. The note under the field also tells you to fold in orders that were already above the threshold if you want the conservative read, since you absorb their shipping too even though the threshold changed nothing about what they bought.</div>
+      </details>
+      <details>
+        <summary>Why is the bracketing return rate usually higher than my overall return rate?</summary>
+        <div class="fa">The item added to clear a threshold was rarely on the shopping list. It was picked to hit a number, often a second size or a color the shopper was unsure about. The National Retail Federation's 19.3% online return rate for 2025, quoted with its link in the published figures panel on this page, is the general baseline, and apparel runs well above it. The item added purely to qualify for free shipping tends to sit at the upper end of whatever your baseline is, because it was never really wanted.</div>
+      </details>
+      <details>
+        <summary>What does the break-even lift number tell me to do next?</summary>
+        <div class="fa">It is the minimum dollar amount a qualifying cart has to grow by before the threshold pays for itself, given your margin and your bracketing return rate. Compare it against the lift you actually expect. If your honest estimate sits below the break-even number, the threshold is priced too low for your margin and your return rate. The fix is to raise the threshold, tighten the bracketing return rate, or both.</div>
+      </details>
+      <details>
+        <summary>Why doesn't this tool ask about the resellable share of the returned item?</summary>
+        <div class="fa">Because this page prices the incremental item bought only to clear the threshold, run through your contribution margin, which already nets out product and fulfilment cost on the revenue you keep. Splitting a resellable share out again would count the same cost twice. Resellable share belongs on the true profit per order tool, because that one prices the whole order rather than the single item a threshold persuades someone to add.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on the threshold.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Five tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and ad data, then work the lines that move it: the threshold, the bracketing return rate and the margin behind it. Book a 30 minute intro call and we will walk your shipping economics together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=free-shipping-threshold" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Net impact per order</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does a threshold that raises average order value still cost money?","acceptedAnswer":{"@type":"Answer","text":"Because the shopper who adds the extra item to clear the threshold often sends it back. The added revenue is real for exactly as long as the parcel is in transit. Once the bracketing return rate is applied, what actually lands is the kept share of that extra item, and the margin on it has to cover the return handling cost and the shipping you gave away for free. At a high enough bracketing rate, the math flips negative even though the average order value on your dashboard went up."}},
+    {"@type":"Question","name":"What does the reach percentage really measure, and how do I estimate mine?","acceptedAnswer":{"@type":"Answer","text":"It is the share of orders whose behaviour the threshold actually changes: carts that would have checked out below the threshold and grew to clear it. Pull it from a before-and-after order value distribution around the threshold price point. The note under the field also tells you to fold in orders that were already above the threshold if you want the conservative read, since you absorb their shipping too even though the threshold changed nothing about what they bought."}},
+    {"@type":"Question","name":"Why is the bracketing return rate usually higher than my overall return rate?","acceptedAnswer":{"@type":"Answer","text":"The item added to clear a threshold was rarely on the shopping list. It was picked to hit a number, often a second size or a color the shopper was unsure about. The National Retail Federation's 19.3% online return rate for 2025, quoted with its link in the published figures panel on this page, is the general baseline, and apparel runs well above it. The item added purely to qualify for free shipping tends to sit at the upper end of whatever your baseline is, because it was never really wanted."}},
+    {"@type":"Question","name":"What does the break-even lift number tell me to do next?","acceptedAnswer":{"@type":"Answer","text":"It is the minimum dollar amount a qualifying cart has to grow by before the threshold pays for itself, given your margin and your bracketing return rate. Compare it against the lift you actually expect. If your honest estimate sits below the break-even number, the threshold is priced too low for your margin and your return rate. The fix is to raise the threshold, tighten the bracketing return rate, or both."}},
+    {"@type":"Question","name":"Why doesn't this tool ask about the resellable share of the returned item?","acceptedAnswer":{"@type":"Answer","text":"Because this page prices the incremental item bought only to clear the threshold, run through your contribution margin, which already nets out product and fulfilment cost on the revenue you keep. Splitting a resellable share out again would count the same cost twice. Resellable share belongs on the true profit per order tool, because that one prices the whole order rather than the single item a threshold persuades someone to add."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'free-shipping-threshold';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, money0 = T.money0, pct = T.percent, ratio = T.ratio, count = T.count;
+
+  var DEFAULTS = {
+    current_aov: 68, cm_pct: 45, shipping_cost: 7.5, threshold_multiplier: 1.3,
+    reach_pct: 30, aov_lift_pct: 15, threshold_return_rate: 30, return_cost: 6
+  };
+  var KEYS = ['current_aov','cm_pct','shipping_cost','threshold_multiplier','reach_pct','aov_lift_pct','threshold_return_rate','return_cost'];
+  var SEGS = ['refunded','cost','handling','shipping','result'];
+  var CROSS = ['contribution-margin','aov','true-profit-per-order','discount-roi','break-even-roas'];
+  var GLYPH = {
+    'contribution-margin':'CM','aov':'AOV','true-profit-per-order':'PROFIT',
+    'discount-roi':'PROMO','break-even-roas':'ROAS'
+  };
+
+  function el(id){ return document.getElementById(id); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var o = window.RISE_TOOLS[SLUG].compute(i);
+    lastInputs = i; lastOut = o;
+
+    var net = o.net_impact_per_order;
+    var neg = net < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = money(net) + '<span class="per"> per order</span>';
+    el('mbarNum').textContent = money(net);
+
+    var cls, label;
+    if (net > 0) { cls = 't-safe'; label = 'PAYS FOR ITSELF'; }
+    else if (o.net_impact_per_order_high > 0) { cls = 't-fix'; label = 'CLOSE, NOT THERE'; }
+    else { cls = 't-not'; label = 'COSTS YOU MONEY'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = label;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.net_impact_per_order_low) +
+      '</b> and <b>' + money(o.net_impact_per_order_high) + '</b> per order';
+
+    /* waterfall, priced per qualifying order (the reach cancels out of every
+       per-100 output, so this is the same figure regardless of reach) */
+    var qty = o.qualifying_orders_per_100;
+    function perQual(v){ return qty > 0 ? v / qty : 0; }
+    var perQualGross = perQual(o.incremental_revenue_gross_per_100);
+    var perQualNet = perQual(o.incremental_revenue_net_per_100);
+    var perQualContrib = perQual(o.incremental_contribution_per_100);
+    var handling = perQual(o.returns_cost_per_100);
+    var shipping = perQual(o.shipping_absorbed_per_100);
+    var resultPerQual = perQual(o.net_impact_per_100);
+    var refunded = perQualGross - perQualNet;
+    var costEmbedded = perQualNet - perQualContrib;
+
+    var vals = {
+      refunded: refunded,
+      cost: costEmbedded,
+      handling: handling,
+      shipping: shipping,
+      result: neg ? 0 : resultPerQual
+    };
+    var costTotal = refunded + costEmbedded + handling + shipping;
+    var scale = neg ? costTotal : perQualGross;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = perQualGross / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = qty > 0
+      ? 'of ' + money(perQualGross) + ' added per qualifying order'
+      : 'nothing qualifies at 0% reach';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the extra dollars added. Everything past it is the shortfall.'
+      : 'The gold band on the right is what the threshold nets you.';
+
+    el('lg_refunded').textContent  = money(refunded);
+    el('lg_handling').textContent  = money(handling);
+    el('lg_cost').textContent      = money(costEmbedded);
+    el('lg_shipping').textContent  = money(shipping);
+    el('lg_result').textContent    = neg ? money(Math.abs(resultPerQual)) : money(resultPerQual);
+    el('lg_result_nm').textContent = neg ? 'Short by' : 'What is left';
+
+    /* biggest single line */
+    var lines = [
+      { k: 'The returned item', v: refunded,
+        fix: 'At a ' + pct(i.threshold_return_rate) + ' bracketing return rate, ' + money(refunded) + ' of every qualifying order comes right back.' },
+      { k: 'Product and fulfilment cost', v: costEmbedded,
+        fix: 'At a ' + pct(i.cm_pct) + ' contribution margin, ' + money(costEmbedded) + ' of the kept revenue is cost, not profit.' },
+      { k: 'Return handling', v: handling,
+        fix: 'Processing the returned item costs ' + money(handling) + ' per qualifying order.' },
+      { k: 'Shipping given away', v: shipping,
+        fix: 'You hand over ' + money(shipping) + ' the moment the cart clears the threshold, whether the extra item stays or comes back.' }
+    ];
+    lines.sort(function(a, b){ return b.v - a.v; });
+    var top = lines[0];
+    el('bindMain').innerHTML = top.k + ' is the biggest single line at <b>' + money(top.v) + '</b> per qualifying order.';
+    el('bindFix').textContent = top.fix;
+    el('bindDrag').textContent = (o.break_even_lift_dollars === null)
+      ? 'No lift makes this threshold pay at a ' + pct(i.threshold_return_rate) + ' bracketing rate and a ' + pct(i.cm_pct) + ' margin.'
+      : 'The qualifying cart has to grow by at least ' + money(o.break_even_lift_dollars) + ', ' + pct(o.break_even_lift_pct) + ' of your current AOV, before this threshold breaks even.';
+
+    /* scenario spread */
+    el('scLow').textContent  = money(o.net_impact_per_order_low);
+    el('scMid').textContent  = money(o.net_impact_per_order_mid);
+    el('scHigh').textContent = money(o.net_impact_per_order_high);
+    el('scLow').classList.toggle('neg',  o.net_impact_per_order_low  < 0);
+    el('scMid').classList.toggle('neg',  o.net_impact_per_order_mid  < 0);
+    el('scHigh').classList.toggle('neg', o.net_impact_per_order_high < 0);
+    el('scLowA').textContent  = 'Cart grows ' + pct(i.aov_lift_pct * 0.8);
+    el('scMidA').textContent  = 'Cart grows ' + pct(i.aov_lift_pct);
+    el('scHighA').textContent = 'Cart grows ' + pct(i.aov_lift_pct * 1.2);
+    el('scenNote').textContent = (i.reach_pct === 0)
+      ? 'Reach is set to zero, so flexing the lift changes nothing. Nothing is qualifying for the threshold at these settings.'
+      : (o.break_even_lift_dollars === null)
+        ? 'No lift makes this threshold pay at this bracketing return rate and margin. The range above only shows how much it costs at each guess.'
+        : 'If the whole spread sits below zero, the lift assumption has stopped being the problem and the bracketing return rate has taken over. If it straddles zero, tighten your lift estimate before you set the threshold live.';
+
+    /* substituted arithmetic, one line per row */
+    el('m_thresh').textContent = money0(o.suggested_threshold);
+    el('mx_thresh').innerHTML  = money(i.current_aov) + ' x ' + ratio(i.threshold_multiplier) + ' = ' + money(i.current_aov * i.threshold_multiplier) +
+      ', rounded up to the nearest $5  <em>a threshold reads as a merchandising number, so it gets rounded</em>';
+
+    el('m_qual').textContent = count(o.qualifying_orders_per_100);
+    el('mx_qual').innerHTML  = '100 x ' + pct(i.reach_pct) + ' = ' + count(o.qualifying_orders_per_100) +
+      '  <em>orders per 100 whose behaviour the threshold actually changes</em>';
+
+    el('m_gross').textContent = money(o.incremental_revenue_gross_per_100);
+    el('mx_gross').innerHTML  = count(o.qualifying_orders_per_100) + ' x ' + money(i.current_aov) + ' x ' + pct(i.aov_lift_pct) + ' = ' + money(o.incremental_revenue_gross_per_100) +
+      '  <em>the extra dollars those carts add, before any of it comes back</em>';
+
+    el('m_net').textContent = money(o.incremental_revenue_net_per_100);
+    el('mx_net').innerHTML  = money(o.incremental_revenue_gross_per_100) + ' x (1 - ' + pct(i.threshold_return_rate) + ') = ' + money(o.incremental_revenue_net_per_100) +
+      '  <em>the added item is what comes back, not the whole order</em>';
+
+    el('m_contrib').textContent = money(o.incremental_contribution_per_100);
+    el('mx_contrib').innerHTML  = money(o.incremental_revenue_net_per_100) + ' x ' + pct(i.cm_pct) + ' = ' + money(o.incremental_contribution_per_100) +
+      '  <em>margin on the revenue that survives the return</em>';
+
+    el('m_hand').textContent = money(o.returns_cost_per_100);
+    el('mx_hand').innerHTML  = count(o.qualifying_orders_per_100) + ' x ' + pct(i.threshold_return_rate) + ' x ' + money(i.return_cost) + ' = ' + money(o.returns_cost_per_100) +
+      '  <em>label, inspection and repack on the orders that come back</em>';
+
+    el('m_ship').textContent = money(o.shipping_absorbed_per_100);
+    el('mx_ship').innerHTML  = count(o.qualifying_orders_per_100) + ' x ' + money(i.shipping_cost) + ' = ' + money(o.shipping_absorbed_per_100) +
+      '  <em>given away the moment each cart clears the threshold</em>';
+
+    el('m_net100').textContent = money(o.net_impact_per_100);
+    el('mx_net100').innerHTML  = money(o.incremental_contribution_per_100) + ' - ' + money(o.returns_cost_per_100) + ' - ' + money(o.shipping_absorbed_per_100) + ' = ' + money(o.net_impact_per_100) +
+      '  <em>the subtotal across 100 orders shipped</em>';
+
+    el('m_netorder').textContent = money(net);
+    el('m_netorder').classList.toggle('neg', neg);
+    el('mx_netorder').innerHTML = money(o.net_impact_per_100) + ' / 100 = ' + money(net) +
+      '  <em>the number that decides whether to launch this threshold</em>';
+
+    el('m_naive').textContent = money(o.naive_net_impact_per_100);
+    el('mx_naive').innerHTML  = count(o.qualifying_orders_per_100) + ' x ' + money(i.current_aov) + ' x ' + pct(i.aov_lift_pct) + ' x ' + pct(i.cm_pct) + ' - ' + count(o.qualifying_orders_per_100) + ' x ' + money(i.shipping_cost) + ' = ' + money(o.naive_net_impact_per_100) +
+      '  <em>what a calculator with no returns line would tell you</em>';
+
+    el('m_leak').textContent = money(o.bracketing_leak_per_100);
+    el('mx_leak').innerHTML  = money(o.naive_net_impact_per_100) + ' - ' + money(o.net_impact_per_100) + ' = ' + money(o.bracketing_leak_per_100) +
+      '  <em>the gap the returns-blind number hides</em>';
+
+    if (o.break_even_lift_dollars === null) {
+      el('m_be').textContent = 'none';
+      el('mx_be').innerHTML = '<em>At a ' + pct(i.threshold_return_rate) + ' bracketing rate and a ' + pct(i.cm_pct) + ' margin, no lift repays this threshold. Fix the rate or the margin first.</em>';
+    } else {
+      el('m_be').textContent = money(o.break_even_lift_dollars);
+      el('mx_be').innerHTML = '(' + money(i.shipping_cost) + ' + ' + pct(i.threshold_return_rate) + ' x ' + money(i.return_cost) + ') / ((1 - ' + pct(i.threshold_return_rate) + ') x ' + pct(i.cm_pct) + ') = ' + money(o.break_even_lift_dollars) + ', ' + pct(o.break_even_lift_pct) + ' of your current AOV' +
+        '  <em>every qualifying order has to grow by at least this much</em>';
+    }
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        suggested_threshold: lastOut.suggested_threshold,
+        net_impact_per_order: T.round2(lastOut.net_impact_per_order),
+        naive_net_impact_per_100: T.round2(lastOut.naive_net_impact_per_100),
+        bracketing_leak_per_100: T.round2(lastOut.bracketing_leak_per_100),
+        break_even_lift_dollars: lastOut.break_even_lift_dollars === null ? null : T.round2(lastOut.break_even_lift_dollars),
+        break_even_lift_pct: lastOut.break_even_lift_pct === null ? null : T.round2(lastOut.break_even_lift_pct),
+        threshold_verdict: lastOut.threshold_verdict,
+        net_impact_per_order_low: T.round2(lastOut.net_impact_per_order_low),
+        net_impact_per_order_high: T.round2(lastOut.net_impact_per_order_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Google Ads Budget Calculator: Brand vs Non-Brand | RISE DTC</title>
+<meta name="description" content="Free Google Ads budget calculator that splits brand from non-brand. Cap brand by your real search volume, price the rest at non-brand cost per order, and see the budget a blended cost per click would have told you instead, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/google-ads-budget-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Google Ads Budget Calculator: Brand vs Non-Brand" />
+<meta property="og:description" content="Split your Google budget the way the auction splits it: brand demand you cannot exceed, and non-brand you pay real money for. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/google-ads-budget-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Google Ads Budget Calculator: Brand vs Non-Brand" />
+<meta name="twitter:description" content="Brand demand has a ceiling. Everything past it gets bought at non-brand prices. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-google-ads-budget-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=google-ads-budget-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Google Ads Budget</span>
+      <span class="t2">Tool 19 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What Google Ads budget does your target <span class="hl">actually need?</span></h1>
+    <p class="lede">Brand search is demand you already have, and it runs out. Every order past that ceiling gets bought at non-brand prices.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">10 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="target_new_customers">Orders you want from Google this month</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="target_new_customers" data-min="1" data-max="1000000" data-step="1" value="250" /></span>
+          </div>
+          <input type="range" id="target_new_customers_r" min="1" max="1000000" step="1" value="250" aria-label="Order target slider" />
+          <p class="f-cap">New customers you want the Google account to bring in over the month.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="brand_monthly_searches">Monthly searches for your brand name</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="brand_monthly_searches" data-min="0" data-max="100000000" data-step="100" value="6000" /></span>
+          </div>
+          <input type="range" id="brand_monthly_searches_r" min="0" max="100000000" step="100" value="6000" aria-label="Brand monthly searches slider" />
+          <p class="f-cap">Your brand name and its close variants. This is the ceiling. You cannot buy more brand demand than exists.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="brand_expected_ctr_pct">Share of those searches you can win as clicks</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="brand_expected_ctr_pct" data-min="0" data-max="100" data-step="1" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="brand_expected_ctr_pct_r" min="0" max="100" step="1" value="25" aria-label="Brand click share slider" />
+          <p class="f-cap">Clicks on your own brand ad, as a share of brand searches. Published branded figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="brand_cpc">Brand CPC</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="brand_cpc" data-min="0" data-max="200" data-step="0.05" value="0.6" /></span>
+          </div>
+          <input type="range" id="brand_cpc_r" min="0" max="200" step="0.05" value="0.6" aria-label="Brand cost per click slider" />
+          <p class="f-cap">What you pay for a click on your own name, from the brand campaign only.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="brand_cvr_pct">Brand conversion rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="brand_cvr_pct" data-min="0" data-max="60" data-step="0.1" value="9" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="brand_cvr_pct_r" min="0" max="60" step="0.1" value="9" aria-label="Brand conversion rate slider" />
+          <p class="f-cap">Orders divided by clicks on brand traffic. Segment it, because the account-wide rate is pulled up by exactly this campaign.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="nonbrand_cpc">Non-brand CPC <span class="opt">optional</span></label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="nonbrand_cpc" data-min="0" data-max="200" data-step="0.05" value="2.2" /></span>
+          </div>
+          <input type="range" id="nonbrand_cpc_r" min="0" max="200" step="0.05" value="2.2" aria-label="Non-brand cost per click slider" />
+          <p class="f-cap">A click on terms that do not carry your name, including Shopping and Performance Max. Clear the field if brand covers your whole target.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="nonbrand_cvr_pct">Non-brand conversion rate <span class="opt">optional</span></label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="nonbrand_cvr_pct" data-min="0" data-max="60" data-step="0.1" value="1.8" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="nonbrand_cvr_pct_r" min="0" max="60" step="0.1" value="1.8" aria-label="Non-brand conversion rate slider" />
+          <p class="f-cap">Orders divided by clicks on everything that is not your brand name. Published search figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="contribution_per_order">Contribution per order before returns</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="contribution_per_order" data-min="0" data-max="5000" data-step="1" value="55" /></span>
+          </div>
+          <input type="range" id="contribution_per_order_r" min="0" max="5000" step="1" value="55" aria-label="Contribution per order slider" />
+          <p class="f-cap">What one order leaves after product cost, shipping and processing, before anything comes back.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return and exchange rate slider" />
+          <p class="f-cap">Share of orders returned or exchanged. Pull it over a window long enough for the returns to land.</p>
+        </div>
+
+        <div class="field" id="field_return_cost">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_per_return">Cost to handle one return <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="return_cost_on" checked aria-label="Count the cost of handling a return" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_per_return" data-min="0" data-max="500" data-step="1" value="10" /></span>
+            </span>
+          </div>
+          <input type="range" id="return_cost_per_return_r" min="0" max="500" step="1" value="10" aria-label="Cost to handle one return slider" />
+          <p class="f-cap">Return label, inspection and repack on one returned order. Switched off it counts as zero, and the page flags that.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label" id="vLabel">Monthly Google budget for this target</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> a month</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> a month</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the budget goes <span id="wfScale">against $0.00 you can afford</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="brand" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="nonbrand" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band on the right is what the target leaves you after the media.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Brand budget</span><span class="vl" id="lg_brand">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Non-brand budget</span><span class="vl" id="lg_nonbrand">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Left over on order one</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Where the money is going</span>
+          <p id="bindMain">Enter your numbers to see how the split lands.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindCap"></p>
+          <p class="sub" id="bindNaive"></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>One of those inputs is a real guess</h2>
+    <p class="sec-sub">Brand CPC and brand conversion rate are the best known numbers in any account, so flexing them would be theatre. The non-brand conversion rate is the guess, so only the non-brand half of the budget moves here, 20% in each direction, while brand stays fixed.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one month of Google spend against one order target. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated id="mathCard">
+      <div id="mathRows"></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Brand and non-brand are the only two buckets.</b> Performance Max and Shopping fold into non-brand here, because that is where their unbranded traffic and its cost per order belong.</li>
+      <li><b>Brand clicks are bought before non-brand clicks</b>, because brand costs less per order in every account where this page is worth opening.</li>
+      <li><b>Brand demand is fixed inside the month</b> and is treated as unaffected by the non-brand spend. Prospecting does create brand searches later, so this understates what brand is worth over time.</li>
+      <li><b>Returns are counted through contribution, not through the media.</b> Contribution per order is multiplied by the share of orders that stick, and the handling cost of the ones that come back is subtracted, before the ceiling on spend is set.</li>
+      <li><b>Every segment is judged against that same returns-adjusted number</b>, so the verdict can say brand pays back while non-brand does not, instead of one blended pass or fail.</li>
+      <li><b>When brand demand covers the whole target the non-brand block short-circuits to zero</b> before any division happens, so an empty non-brand field can never divide by zero, and the spread collapses to a single number.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What search actually costs, and how far brand sits from the rest</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Branded against non-branded click-through</span>
+      <p class="quote">"A good CTR for branded Google Search campaigns is generally 20%; a good CTR benchmark for non-branded Google Search campaigns is 5%"</p>
+      <span class="cite">Shopify &middot; not specified, 2026 article, the 5% figure tied to Google's own Ad Grants standard &middot; <a href="https://www.shopify.com/blog/good-ctr-google-ads" target="_blank" rel="noopener">shopify.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Bidding on your own brand, effect on organic clicks</span>
+      <p class="quote">"Single paid result present: Organic CTR 53.7%, Paid CTR 12.9%. Multiple paid results: Organic CTR 51.5%, Paid CTR 10.4%. No paid ads showing: Organic CTR 64.1%, Paid CTR 0%"</p>
+      <span class="cite">NP Digital, Neil Patel, Ubersuggest data &middot; October 2025 study, 250 websites &middot; <a href="https://neilpatel.com/marketing-stats/branded-search-ctr-performance/" target="_blank" rel="noopener">neilpatel.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search, apparel</span>
+      <p class="quote">"Apparel/Fashion &amp; Jewelry: CTR 6.64%, CPC $4.44, CVR 4.50%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026 &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search, all industries</span>
+      <p class="quote">"All industries (23 verticals): CTR 6.64%, CPC $5.42, CVR 8.18%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026, 13,474 US search campaigns &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search, general retail proxy</span>
+      <p class="quote">"Shopping, Collectibles &amp; Gifts: CTR 8.28%, CPC $4.14, CVR 4.01%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026 &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Ecommerce search click-through, same origin quoted by Shopify</span>
+      <p class="quote">"Ecommerce ads have an average CTR of 2.69% on Google Search ads"</p>
+      <span class="cite">WordStream data, quoted by Shopify &middot; 2026 article &middot; <a href="https://www.shopify.com/blog/good-ctr-google-ads" target="_blank" rel="noopener">shopify.com</a></span>
+    </div>
+
+    <p class="srcnote">Every one of those published rates mixes branded and non-branded traffic into a single figure, which is the whole reason this page asks for the two separately. The two click-through sources sit far apart because they count different campaign sets, and both are printed so you can see the spread rather than a single tidy number. In the WordStream edition quoted here the apparel click-through figure lands identical to the all-industry average, verified as printed. No published figure for brand search volume in a specific store exists, so this page prints none: that dial stays yours to pull from a keyword tool or from Search Console.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why one blended cost per click hides the only split that matters</h2>
+    <div class="prose">
+      <p>A Google account holds two different businesses under one budget line. Someone typing your brand name has already decided; they saw the jacket on a friend, or on your feed, and they came looking for you. That click is cheap, it converts at a rate nothing else in the account touches, and the number of those clicks available is fixed by how many people searched. Someone typing "merino base layer women" has decided nothing. That click costs several times more, converts at a fraction of the rate, and there is effectively no ceiling on how many of them you can buy. Average the two into one cost per click and one conversion rate, multiply by your order target, and the budget that falls out is wrong in a direction you cannot see. This page prints how wrong, on your own inputs, as its last two rows.</p>
+
+      <p>The split starts with the ceiling. Brand searches times the share you win as clicks times your brand conversion rate is the most orders brand can ever deliver in a month. If your target sits under that number, the whole plan is a brand campaign and the non-brand fields never get used. If your target sits above it, and for most growing apparel brands it does, the calculator names the exact shortfall and prices every remaining order at non-brand rates. That is where budgets get made or wrecked, because the two segments do not cost anything like the same amount per customer.</p>
+
+      <h3>Where returns enter the arithmetic</h3>
+      <p>Returns never touch the media cost. They touch what an order is worth, which is what sets the ceiling on the media cost. Contribution per order gets multiplied by the share of orders that stick, one minus your return rate, and then the cost of handling the ones that come back is subtracted, counted on the share that comes back. What is left is the returns-adjusted contribution one order actually delivers. Multiply that by the order target and you get the most this account can spend on Google in a month and still be even at the end of order one. The page then compares each segment's cost per customer against that same figure, which is why the verdict can read that brand pays back while non-brand does not, rather than one blended pass or fail that hides both facts.</p>
+
+      <p>Apparel is where the gap bites hardest. Sizing sends a large share of orders back, so contribution per order is thinner than the invoice suggests, and the ceiling drops with it. A non-brand cost per customer that looks survivable against gross contribution can sit well above the returns-adjusted figure. Run the return rate up four points and watch which segment falls out of the plan first: it is never brand.</p>
+
+      <h3>What Performance Max and Shopping do to the split</h3>
+      <p>Performance Max and Shopping both serve on queries that carry your brand name and on queries that do not, then report one cost per order across the mix. Folded together, a campaign can look efficient while the efficiency is coming entirely from people who already knew you. This calculator folds those campaigns into the non-brand side, because the question it answers is how much it costs to reach a customer who has not decided yet. If you want the split to be accurate, pull a brand and non-brand segmentation from the account, put your brand terms into the brand fields and everything else into non-brand, and treat a Performance Max cost per order that is close to your brand cost per order as a signal that the campaign is harvesting demand rather than creating it.</p>
+
+      <h3>Three ways this gets entered wrong</h3>
+      <p>The first is entering the account-wide conversion rate into the non-brand field. That number is pulled up by the brand campaign, sometimes by a lot, and using it makes non-brand look cheap enough to fund a target it cannot reach. Pull the rate from a non-brand campaign or from a filtered view, never from the account summary.</p>
+
+      <p>The second is reading brand search volume off a keyword tool without checking what it counted. Tools report a head term, sometimes a whole cluster of misspellings and product names, sometimes navigational queries that were going to land on your site regardless. That figure sets the ceiling on the cheapest orders in the plan, so an inflated one quietly shifts orders out of the expensive half of the budget and understates what the month costs.</p>
+
+      <p>The third is entering a share of brand searches you can win as clicks that assumes an ad wins every one of them. Published branded benchmarks sit well above non-branded ones, and the quoted figures further up this page put a reasonable band around it. Organic listings still take a large share of clicks on your own name, which is a separate question this page does not answer: whether to bid on your own brand at all. The published study quoted above measures what happens to organic clicks when a paid result appears on a branded query, and it is worth reading before you decide how hard to bid on a term you might already own.</p>
+
+      <h3>What the range means and what to do with the answer</h3>
+      <p>Only the non-brand budget flexes in the spread, because the non-brand conversion rate is the single number in this model nobody has measured well enough. Brand cost per click and brand conversion rate come out of a campaign that has been running for months, so ranging them would widen the answer without telling you anything. The pessimistic figure is the same plan with the non-brand rate 20% worse, the optimistic one is it 20% better, and brand sits still in both.</p>
+
+      <p>Once the number is in front of you, there are three moves. Raise the brand ceiling, which is a demand problem solved outside Google. Lower the non-brand cost per customer, which is a creative, landing page and conversion rate problem. Or lower the target, which is the honest answer when the whole spread sits above what the returns-adjusted contribution can carry. The one move this page will not endorse is funding the gap from a blended cost per click that never existed in the auction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why split brand and non-brand instead of using one blended cost per click?</summary>
+        <div class="fa">Because the auction never blended them. Brand clicks are cheap, convert at a much higher rate, and are capped by how many people searched for you. Non-brand clicks cost more, convert at a fraction of the rate, and have no ceiling. A blended model spreads the cheap segment across orders it can never reach, and the last two rows of the math card print exactly how far off that puts the budget on your own numbers.</div>
+      </details>
+      <details>
+        <summary>Where do Performance Max and Shopping belong in this split?</summary>
+        <div class="fa">On the non-brand side. Both serve on branded and unbranded queries and report one cost per order across the mix, so a campaign can look efficient while the efficiency comes from people who already knew the brand. If a Performance Max cost per order sits close to your brand cost per order, treat that as a sign it is harvesting existing demand rather than creating new demand, and price the rest of your target at a real non-brand rate.</div>
+      </details>
+      <details>
+        <summary>Should I be bidding on my own brand name at all?</summary>
+        <div class="fa">This calculator assumes you are, and prices those clicks at whatever you enter. Whether it is worth it is a separate question, and the published study quoted above measures the part most people skip: what a paid result does to the organic clicks on the same branded query. Read the three cases in that quote before you decide how hard to bid, because part of the brand traffic in this plan may be traffic you already had.</div>
+      </details>
+      <details>
+        <summary>What do I enter if I have no reliable non-brand conversion rate?</summary>
+        <div class="fa">Do not use the account-wide rate. It is pulled up by the brand campaign and it will make non-brand look cheap enough to fund a target it cannot reach. Either pull the rate from a non-brand campaign, or run the calculator twice a few tenths of a point apart and see whether the verdict changes. If the whole spread sits above what your returns-adjusted contribution can carry, the answer does not depend on the guess.</div>
+      </details>
+      <details>
+        <summary>Why does the budget compare against a returns-adjusted number instead of contribution?</summary>
+        <div class="fa">Because a returned order refunds the revenue and leaves the acquisition cost behind. Contribution per order is multiplied by the share of orders that stick, then the handling cost of the ones that come back is subtracted, and the result is what one order really leaves you. That figure times your order target is the most this account can spend on Google and still be even at the end of order one, and every segment on the page is judged against it.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the split and the budget it lands on, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want the split run on <span class="hl">your account?</span></h2>
+      <p>From week one we run this math on live Shopify and Google Ads data, then work the lines that move it: the brand ceiling, the non-brand cost per customer and the return rate sitting underneath both. Book a 30 minute intro call and we will walk your search economics together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=google-ads-budget-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Google budget</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why split brand and non-brand instead of using one blended cost per click?","acceptedAnswer":{"@type":"Answer","text":"Because the auction never blended them. Brand clicks are cheap, convert at a much higher rate, and are capped by how many people searched for you. Non-brand clicks cost more, convert at a fraction of the rate, and have no ceiling. A blended model spreads the cheap segment across orders it can never reach, and the last two rows of the math card print exactly how far off that puts the budget on your own numbers."}},
+    {"@type":"Question","name":"Where do Performance Max and Shopping belong in this split?","acceptedAnswer":{"@type":"Answer","text":"On the non-brand side. Both serve on branded and unbranded queries and report one cost per order across the mix, so a campaign can look efficient while the efficiency comes from people who already knew the brand. If a Performance Max cost per order sits close to your brand cost per order, treat that as a sign it is harvesting existing demand rather than creating new demand, and price the rest of your target at a real non-brand rate."}},
+    {"@type":"Question","name":"Should I be bidding on my own brand name at all?","acceptedAnswer":{"@type":"Answer","text":"This calculator assumes you are, and prices those clicks at whatever you enter. Whether it is worth it is a separate question, and the published study quoted above measures the part most people skip: what a paid result does to the organic clicks on the same branded query. Read the three cases in that quote before you decide how hard to bid, because part of the brand traffic in this plan may be traffic you already had."}},
+    {"@type":"Question","name":"What do I enter if I have no reliable non-brand conversion rate?","acceptedAnswer":{"@type":"Answer","text":"Do not use the account-wide rate. It is pulled up by the brand campaign and it will make non-brand look cheap enough to fund a target it cannot reach. Either pull the rate from a non-brand campaign, or run the calculator twice a few tenths of a point apart and see whether the verdict changes. If the whole spread sits above what your returns-adjusted contribution can carry, the answer does not depend on the guess."}},
+    {"@type":"Question","name":"Why does the budget compare against a returns-adjusted number instead of contribution?","acceptedAnswer":{"@type":"Answer","text":"Because a returned order refunds the revenue and leaves the acquisition cost behind. Contribution per order is multiplied by the share of orders that stick, then the handling cost of the ones that come back is subtracted, and the result is what one order really leaves you. That figure times your order target is the most this account can spend on Google and still be even at the end of order one, and every segment on the page is judged against it."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'google-ads-budget-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, ratio = T.ratio, count = T.count;
+
+  var DEFAULTS = {
+    target_new_customers: 250, brand_monthly_searches: 6000, brand_expected_ctr_pct: 25,
+    brand_cpc: 0.6, brand_cvr_pct: 9, nonbrand_cpc: 2.2, nonbrand_cvr_pct: 1.8,
+    contribution_per_order: 55, return_rate_pct: 25, return_cost_per_return: 10,
+    return_cost_on: true
+  };
+  /* Required fields fall back to the default when cleared. The two non-brand
+     fields are optional by spec: cleared means absent, and the compute function
+     short-circuits on them rather than dividing. */
+  var REQ_KEYS = ['target_new_customers', 'brand_monthly_searches', 'brand_expected_ctr_pct',
+    'brand_cpc', 'brand_cvr_pct', 'contribution_per_order', 'return_rate_pct', 'return_cost_per_return'];
+  var OPT_KEYS = ['nonbrand_cpc', 'nonbrand_cvr_pct'];
+  var NUM_KEYS = REQ_KEYS.concat(OPT_KEYS);
+  var SEGS = ['brand', 'nonbrand', 'result'];
+  var CROSS = ['meta-ads-budget-calculator', 'cpc-calculator', 'cpa-calculator',
+    'conversion-rate-calculator', 'break-even-roas', 'cac'];
+  var GLYPH = {
+    'meta-ads-budget-calculator': 'META', 'cpc-calculator': 'CPC', 'cpa-calculator': 'CPA',
+    'conversion-rate-calculator': 'CVR', 'break-even-roas': 'ROAS', 'cac': 'CAC'
+  };
+
+  function el(id) { return document.getElementById(id); }
+  /* Prints a rate the way the spec hand-checks write it: 0.25, 0.09, 0.018. */
+  function rate(x) { return String(T.roundDp(x, 4)); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k) {
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs() {
+    var i = {};
+    REQ_KEYS.forEach(function (k) {
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    OPT_KEYS.forEach(function (k) {
+      var raw = String(el(k).value || '').trim();
+      if (raw === '') { i[k] = null; return; }
+      var v = T.parseNum(raw);
+      if (isNaN(v)) { i[k] = null; return; }
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.return_cost_on = el('return_cost_on').checked;
+    return i;
+  }
+  function setField(k, v) {
+    el(k).value = (v === null ? '' : T.numStr(v));
+    var s = el(k + '_r');
+    if (s && v !== null) s.value = v;
+  }
+  function computeInputs(i) {
+    return {
+      target_new_customers: i.target_new_customers,
+      brand_monthly_searches: i.brand_monthly_searches,
+      brand_expected_ctr_pct: i.brand_expected_ctr_pct,
+      brand_cpc: i.brand_cpc,
+      brand_cvr_pct: i.brand_cvr_pct,
+      nonbrand_cpc: i.nonbrand_cpc,
+      nonbrand_cvr_pct: i.nonbrand_cvr_pct,
+      contribution_per_order: i.contribution_per_order,
+      return_rate_pct: i.return_rate_pct,
+      return_cost_per_return: i.return_cost_on ? i.return_cost_per_return : 0
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  function setTier(cls, label) {
+    ['tierChip', 'mbarTier'].forEach(function (id) {
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = label;
+    });
+  }
+
+  /* ------------------------------------------------------------- render */
+  function paint() {
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var r = i.return_rate_pct / 100;
+    var bctr = i.brand_expected_ctr_pct / 100;
+    var bcvr = i.brand_cvr_pct / 100;
+    var ncvr = i.nonbrand_cvr_pct === null ? null : i.nonbrand_cvr_pct / 100;
+    var returnCost = i.return_cost_on ? i.return_cost_per_return : 0;
+    var solved = o.total_budget !== null;
+    var covered = o.remaining_orders === 0;
+    var over = solved && o.net_first_order !== null && o.net_first_order < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    if (solved) {
+      el('bigNum').innerHTML = money(o.total_budget) + '<span class="per"> a month</span>';
+      el('mbarNum').textContent = money(o.total_budget);
+    } else {
+      el('bigNum').innerHTML = 'n/a<span class="per"> a month</span>';
+      el('mbarNum').textContent = 'n/a';
+    }
+
+    if (!solved) {
+      setTier('t-not', 'NEEDS A RATE');
+    } else if (!over) {
+      setTier('t-safe', 'BUDGET CLEARS');
+    } else if (o.brand_cac !== null && o.brand_cac <= o.raco) {
+      setTier('t-fix', 'FIX NON-BRAND');
+    } else {
+      setTier('t-not', 'NOT YET');
+    }
+
+    if (!solved) {
+      el('rangeLine').textContent = o.message || 'Fill in the non-brand fields to price the rest of the target.';
+    } else if (covered) {
+      el('rangeLine').innerHTML = 'Brand covers the whole target, so nothing flexes: <b>' + money(o.total_budget) + '</b> either way';
+    } else {
+      el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.total_low) +
+        '</b> and <b>' + money(o.total_high) + '</b> a month';
+    }
+
+    /* stacked bar. The two budget bands run against the most this target can
+       carry after returns. When they overrun it, the overrun is the shortfall. */
+    var headroom = (solved && o.net_first_order !== null && o.net_first_order > 0) ? o.net_first_order : 0;
+    var vals = {
+      brand: o.brand_budget,
+      nonbrand: solved ? o.nonbrand_budget : 0,
+      result: over ? 0 : headroom
+    };
+    var scale = over ? o.total_budget : o.max_affordable_budget;
+    if (!isFinite(scale) || scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function (k) {
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = o.max_affordable_budget / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = over ? 'block' : 'none';
+    el('wfShort').style.display = over ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'against ' + money(o.max_affordable_budget) + ' you can afford';
+    el('wfMarkCap').textContent = over
+      ? 'The white line is the most this target can carry after returns. Everything past it is the shortfall.'
+      : 'The gold band on the right is what the target leaves you after the media.';
+
+    el('lg_brand').textContent = money(o.brand_budget);
+    el('lg_nonbrand').textContent = solved ? money(o.nonbrand_budget) : 'n/a';
+    el('lg_result').textContent = (solved && o.net_first_order !== null)
+      ? money(Math.abs(o.net_first_order)) : 'n/a';
+    el('lg_result_nm').textContent = over ? 'Short by' : 'Left over on order one';
+
+    /* where the money is going */
+    var noBrand = o.brand_cac === null;
+    if (!solved) {
+      el('bindMain').textContent = o.message || 'The non-brand half of this target cannot be priced yet.';
+      el('bindFix').textContent = noBrand
+        ? 'A zero brand conversion rate buys no orders, so every order in this target is priced at non-brand rates.'
+        : 'Brand still costs ' + money(o.brand_budget) + ' for ' + ratio(o.brand_orders) +
+          ' orders at ' + money(o.brand_cac) + ' each.';
+    } else if (covered) {
+      el('bindMain').innerHTML = 'Brand demand covers the whole target on its own, for <b>' +
+        money(o.brand_budget) + '</b>. Non-brand is not needed at this target.';
+      el('bindFix').textContent = 'Brand costs ' + money(o.brand_cac) + ' per customer, against ' +
+        money(o.raco) + ' of returns-adjusted contribution per order.';
+    } else {
+      var brandShareNote = o.brand_budget >= o.nonbrand_budget
+        ? 'Brand is the bigger half of the budget at ' + money(o.brand_budget) + '.'
+        : 'Non-brand is the bigger half of the budget at ' + money(o.nonbrand_budget) + '.';
+      el('bindMain').innerHTML = brandShareNote + ' It buys <b>' +
+        ratio(o.brand_budget >= o.nonbrand_budget ? o.brand_orders : o.remaining_orders) + '</b> of the ' +
+        count(i.target_new_customers) + ' orders.';
+      el('bindFix').textContent = (noBrand
+        ? 'A zero brand conversion rate buys no orders, so non-brand carries the whole target at ' +
+          (o.nonbrand_cac === null ? 'no rate yet' : money(o.nonbrand_cac)) + ' per customer'
+        : 'Brand costs ' + money(o.brand_cac) + ' per customer and non-brand costs ' +
+          (o.nonbrand_cac === null ? 'nothing yet' : money(o.nonbrand_cac))) +
+        ', against ' + money(o.raco) + ' of returns-adjusted contribution per order.';
+    }
+
+    el('bindCap').textContent = o.cap_notice
+      ? o.cap_notice
+      : 'Brand demand can carry this target on its own, so no order is priced at non-brand rates.';
+
+    if (o.naive_budget !== null) {
+      el('bindNaive').textContent = 'One blended cost per click and one blended conversion rate would have said ' +
+        money(o.naive_budget) + ', off by ' + pct(o.naive_error_pct, 2) + '.';
+    } else {
+      el('bindNaive').textContent = 'The blended comparison stays hidden while the split has no total to compare against.';
+    }
+
+    /* scenario spread: only the non-brand half moves */
+    if (!solved) {
+      el('scLow').textContent = 'n/a';
+      el('scMid').textContent = 'n/a';
+      el('scHigh').textContent = 'n/a';
+      el('scLowA').textContent = '';
+      el('scMidA').textContent = '';
+      el('scHighA').textContent = '';
+      el('scenNote').textContent = o.message || 'There is no total to flex until the non-brand fields are filled in.';
+    } else {
+      el('scLow').textContent = money(o.total_high);
+      el('scMid').textContent = money(o.total_budget);
+      el('scHigh').textContent = money(o.total_low);
+      el('scLowA').textContent = covered ? 'Brand only, nothing to flex' : 'Non-brand conversion rate at ' + pct(i.nonbrand_cvr_pct * 0.8, 2);
+      el('scMidA').textContent = covered ? 'Brand only, nothing to flex' : 'Non-brand conversion rate at ' + pct(i.nonbrand_cvr_pct, 2);
+      el('scHighA').textContent = covered ? 'Brand only, nothing to flex' : 'Non-brand conversion rate at ' + pct(i.nonbrand_cvr_pct * 1.2, 2);
+      el('scenNote').textContent = covered
+        ? 'Brand demand covers the whole target, so the non-brand rate has nothing to move. The spread collapses to one number, and that number is as certain as your brand campaign already is.'
+        : 'If the pessimistic figure still sits under ' + money(o.max_affordable_budget) +
+          ', a 20% miss on the non-brand rate does not change the decision. If it does not, pull a real non-brand conversion rate before committing the month.';
+    }
+
+    /* substituted arithmetic, one line per row */
+    var rows = [];
+    rows.push({ mn: 'Brand clicks available', mv: ratio(o.brand_clicks_max),
+      mx: count(i.brand_monthly_searches) + ' x ' + rate(bctr) + ' = ' + ratio(o.brand_clicks_max),
+      em: 'brand searches times the share you win as clicks' });
+    rows.push({ mn: 'Brand orders available', mv: ratio(o.brand_orders_max),
+      mx: count(i.brand_monthly_searches) + ' x ' + rate(bctr) + ' x ' + rate(bcvr) + ' = ' + ratio(o.brand_orders_max),
+      em: 'the ceiling on brand, because you cannot buy demand nobody searched for' });
+    rows.push({ mn: 'Brand orders you take', mv: ratio(o.brand_orders),
+      mx: 'min(' + ratio(o.brand_orders_max) + ', ' + count(i.target_new_customers) + ') = ' + ratio(o.brand_orders),
+      em: 'brand is bought first, because it costs less per customer' });
+    rows.push({ mn: 'Brand clicks bought', mv: ratio(o.brand_clicks_used),
+      mx: (bcvr > 0 ? (ratio(o.brand_orders) + ' / ' + rate(bcvr) + ' = ' + ratio(o.brand_clicks_used)) : '0.00'),
+      em: (bcvr > 0 ? 'the clicks those orders take at your brand conversion rate' : 'a zero brand conversion rate buys no orders, so the whole target falls to non-brand') });
+    rows.push({ mn: 'Brand budget', mv: money(o.brand_budget),
+      mx: ratio(o.brand_clicks_used) + ' x ' + money(i.brand_cpc) + ' = ' + money(o.brand_budget),
+      em: 'clicks times what a click on your own name costs', sum: true });
+    rows.push({ mn: 'Orders left for non-brand', mv: ratio(o.remaining_orders),
+      mx: count(i.target_new_customers) + ' - ' + ratio(o.brand_orders) + ' = ' + ratio(o.remaining_orders),
+      em: 'what brand demand cannot reach inside the month' });
+
+    if (covered) {
+      rows.push({ mn: 'Non-brand clicks', mv: '0.00', mx: 'not needed at this target',
+        em: 'nothing is divided here, so an empty non-brand field can never divide by zero' });
+      rows.push({ mn: 'Non-brand budget', mv: money(0), mx: 'not needed at this target',
+        em: 'brand demand covers every order you asked for' });
+    } else if (!solved) {
+      rows.push({ mn: 'Non-brand clicks', mv: 'n/a', mx: o.message || '',
+        em: 'the division is refused rather than printed against a zero' });
+      rows.push({ mn: 'Non-brand budget', mv: 'n/a', mx: '',
+        em: 'no non-brand budget can be priced at these numbers' });
+    } else {
+      rows.push({ mn: 'Non-brand clicks', mv: ratio(o.nonbrand_clicks),
+        mx: ratio(o.remaining_orders) + ' / ' + rate(ncvr) + ' = ' + ratio(o.nonbrand_clicks),
+        em: 'the clicks those orders take at your non-brand conversion rate' });
+      rows.push({ mn: 'Non-brand budget', mv: money(o.nonbrand_budget),
+        mx: ratio(o.nonbrand_clicks) + ' x ' + money(i.nonbrand_cpc) + ' = ' + money(o.nonbrand_budget),
+        em: 'clicks times what a click on an undecided shopper costs', sum: true });
+    }
+
+    rows.push({ mn: 'Total monthly budget', mv: (solved ? money(o.total_budget) : 'n/a'),
+      mx: (solved ? (money(o.brand_budget) + ' + ' + money(o.nonbrand_budget) + ' = ' + money(o.total_budget)) : ''),
+      em: (solved ? 'the two halves of the auction, added once' : ''), sum: true, final: true });
+
+    rows.push({ mn: 'Brand cost per customer', mv: (o.brand_cac === null ? 'n/a' : money(o.brand_cac)),
+      mx: (o.brand_cac === null ? 'a zero brand conversion rate has no cost per customer'
+        : (money(i.brand_cpc) + ' / ' + rate(bcvr) + ' = ' + money(o.brand_cac))),
+      em: 'what one order from someone who already knew you costs' });
+    rows.push({ mn: 'Non-brand cost per customer', mv: (o.nonbrand_cac === null ? 'n/a' : money(o.nonbrand_cac)),
+      mx: (o.nonbrand_cac === null ? 'no non-brand rate entered'
+        : (money(i.nonbrand_cpc) + ' / ' + rate(ncvr) + ' = ' + money(o.nonbrand_cac))),
+      em: 'what one order from someone who has not decided yet costs' });
+    rows.push({ mn: 'Blended cost per customer across the split', mv: (o.blended_cac_split === null ? 'n/a' : money(o.blended_cac_split)),
+      mx: (o.blended_cac_split === null ? '' : (money(o.total_budget) + ' / ' + count(i.target_new_customers) + ' = ' + money(o.blended_cac_split))),
+      em: 'the number your dashboard will report, sitting between two very different segments' });
+
+    rows.push({ mn: 'Returns-adjusted contribution per order', mv: money(o.raco),
+      mx: money(i.contribution_per_order) + ' x (1 - ' + rate(r) + ') - ' + money(returnCost) + ' x ' + rate(r) + ' = ' + money(o.raco),
+      em: (i.return_cost_on ? 'kept orders carry contribution, returned ones carry a handling cost'
+        : 'return handling is switched off, so it counts as zero here, which flatters the ceiling'), sum: true });
+    rows.push({ mn: 'Most you can spend this month', mv: money(o.max_affordable_budget),
+      mx: count(i.target_new_customers) + ' x ' + money(o.raco) + ' = ' + money(o.max_affordable_budget),
+      em: 'the ceiling on Google spend if order one has to break even' });
+    rows.push({ mn: 'Left after order one', mv: (o.net_first_order === null ? 'n/a' : money(o.net_first_order)),
+      mx: (o.net_first_order === null ? '' : (money(o.max_affordable_budget) + ' - ' + money(o.total_budget) + ' = ' + money(o.net_first_order))),
+      em: (o.net_first_order === null ? '' : 'what the target leaves once the media is paid for'), sum: true, final: true });
+
+    if (o.naive_budget !== null) {
+      rows.push({ mn: 'What one blended CPC and CVR would have said', mv: money(o.naive_budget),
+        mx: count(i.target_new_customers) + ' x (' + money(i.brand_cpc) + ' + ' + money(i.nonbrand_cpc) + ') / 2 / ((' +
+          pct(i.brand_cvr_pct, 2) + ' + ' + pct(i.nonbrand_cvr_pct, 2) + ') / 2) = ' + money(o.naive_budget),
+        em: 'the one-rate model this page exists to replace' });
+      rows.push({ mn: 'Gap against the split', mv: money(o.naive_gap),
+        mx: money(o.total_budget) + ' - ' + money(o.naive_budget) + ' = ' + money(o.naive_gap) + ', an error of ' + pct(o.naive_error_pct, 2),
+        em: 'how far off the budget would have been on your own numbers' });
+    }
+
+    var html = '';
+    rows.forEach(function (row) {
+      var cls = 'mrow' + (row.sum ? ' sum' : '') + (row.final ? ' final' : '');
+      html += '<div class="' + cls + '"><span class="mn">' + row.mn + '</span><span class="mv">' + row.mv + '</span>';
+      if (row.mx) html += '<span class="mx">' + row.mx + (row.em ? '  <em>' + row.em + '</em>' : '') + '</span>';
+      else if (row.em) html += '<span class="mx"><em>' + row.em + '</em></span>';
+      html += '</div>';
+    });
+    el('mathRows').innerHTML = html;
+
+    /* state note */
+    var touched = NUM_KEYS.some(function (k) { return i[k] !== DEFAULTS[k]; }) ||
+      i.return_cost_on !== DEFAULTS.return_cost_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  NUM_KEYS.forEach(function (k) {
+    var n = el(k), s = el(k + '_r');
+    var optional = OPT_KEYS.indexOf(k) !== -1;
+    n.addEventListener('input', function () {
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function () {
+      var raw = String(n.value || '').trim();
+      var v = T.parseNum(raw);
+      if (isNaN(v)) {
+        if (optional && raw === '') { paint(); return; }
+        v = DEFAULTS[k];
+      }
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function () { n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('return_cost_on').addEventListener('change', function () {
+    el('field_return_cost').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function () {
+    NUM_KEYS.forEach(function (k) { setField(k, DEFAULTS[k]); });
+    el('return_cost_on').checked = DEFAULTS.return_cost_on;
+    el('field_return_cost').classList.toggle('is-off', !DEFAULTS.return_cost_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function () {
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function (slug) {
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function () {
+    var pre = T.prefillFromQuery(NUM_KEYS);
+    Object.keys(pre).forEach(function (k) {
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function () { return lastInputs; },
+    getOutputs: function () {
+      if (!lastOut) return {};
+      return {
+        brand_orders: lastOut.brand_orders,
+        brand_budget: lastOut.brand_budget,
+        remaining_orders: lastOut.remaining_orders,
+        nonbrand_budget: lastOut.nonbrand_budget,
+        total_budget: lastOut.total_budget,
+        total_budget_range: lastOut.total_budget_range,
+        brand_cac: lastOut.brand_cac,
+        nonbrand_cac: lastOut.nonbrand_cac,
+        blended_cac_split: lastOut.blended_cac_split,
+        naive_budget: lastOut.naive_budget,
+        naive_error_pct: lastOut.naive_error_pct,
+        raco: lastOut.raco,
+        max_affordable_budget: lastOut.max_affordable_budget,
+        net_first_order: lastOut.net_first_order,
+        cap_notice: lastOut.cap_notice
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contribution Margin Calculator (Returns-Adjusted) | RISE DTC</title>
+<meta name="description" content="Free returns-adjusted contribution margin calculator. Enter price, product cost, shipping, other variable costs, return rate and resellable share, and see gross margin next to returns-adjusted margin, plus the extra units returns force you to sell." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/contribution-margin/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Contribution Margin Calculator (Returns-Adjusted)" />
+<meta property="og:description" content="Gross margin and returns-adjusted margin, side by side, with the extra units returns force you to sell. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/contribution-margin/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contribution Margin Calculator (Returns-Adjusted)" />
+<meta name="twitter:description" content="Gross margin and returns-adjusted margin, side by side. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-contribution-margin";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=contribution-margin" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Contribution Margin</span>
+      <span class="t2">Tool 02 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What's your margin <span class="hl">after returns?</span></h1>
+    <p class="lede">Gross margin and returns-adjusted margin are rarely the same number, and the gap is where returns actually cost you.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="price">Selling price per unit</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="price" data-min="5" data-max="500" data-step="1" value="68" /></span>
+          </div>
+          <input type="range" id="price_r" min="5" max="500" step="1" value="68" aria-label="Selling price slider" />
+          <p class="f-cap">What the customer pays, before refunds.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cogs_unit">Product cost per unit</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cogs_unit" data-min="0" data-max="300" data-step="0.5" value="23.8" /></span>
+          </div>
+          <input type="range" id="cogs_unit_r" min="0" max="300" step="0.5" value="23.8" aria-label="Product cost slider" />
+          <p class="f-cap">Landed cost in dollars, not a percent of price.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="shipping_unit">Outbound shipping per unit</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="shipping_unit" data-min="0" data-max="30" data-step="0.5" value="7.5" /></span>
+          </div>
+          <input type="range" id="shipping_unit_r" min="0" max="30" step="0.5" value="7.5" aria-label="Outbound shipping slider" />
+          <p class="f-cap">What you pay to ship one unit. You pay it whether or not it comes back.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="other_variable">Other variable cost per unit</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="other_variable" data-min="0" data-max="50" data-step="0.5" value="2.27" /></span>
+          </div>
+          <input type="range" id="other_variable_r" min="0" max="50" step="0.5" value="2.27" aria-label="Other variable cost slider" />
+          <p class="f-cap">Payment fees, pick and pack, packaging.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate">Return rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate" data-min="0" data-max="60" data-step="1" value="22" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_r" min="0" max="60" step="1" value="22" aria-label="Return rate slider" />
+          <p class="f-cap">Share of units returned. The published figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost">Cost to process one return</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost" data-min="0" data-max="30" data-step="0.5" value="6" /></span>
+          </div>
+          <input type="range" id="return_cost_r" min="0" max="30" step="0.5" value="6" aria-label="Return processing cost slider" />
+          <p class="f-cap">Return label plus inspection plus repack, per returned unit.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="resellable_pct">Returns resellable at full price</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="resellable_pct" data-min="0" data-max="100" data-step="5" value="80" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="resellable_pct_r" min="0" max="100" step="5" value="80" aria-label="Resellable share slider" />
+          <p class="f-cap">The rest gets written off, so you carry the product cost twice on those units.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="fixed_costs">Monthly fixed costs <span class="opt">optional</span></label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="fixed_costs" data-min="0" data-max="200000" data-step="100" value="12000" /></span>
+          </div>
+          <input type="range" id="fixed_costs_r" min="0" max="200000" step="100" value="12000" aria-label="Monthly fixed costs slider" />
+          <p class="f-cap">Only used for break-even units. Leave it at 0 and that block stays hidden.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Contribution margin, after returns</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per unit</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> per unit</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the unit goes <span id="wfScale">of $68.00 price</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="refunded" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="cogs" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="shipping" style="background:var(--grey-2)"></span>
+            <span class="seg" data-k="othervar" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="handling" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the price you charge.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Refunded revenue</span><span class="vl" id="lg_refunded">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Return handling</span><span class="vl" id="lg_handling">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Product cost, net of resale</span><span class="vl" id="lg_cogs">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-2)"></span><span class="nm">Outbound shipping</span><span class="vl" id="lg_shipping">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Other variable costs</span><span class="vl" id="lg_othervar">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">What is left</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Biggest single line</span>
+          <p id="bindMain">Product cost is the biggest single line.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindGross"></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>One of those inputs is a guess</h2>
+    <p class="sec-sub">Return rate is the number most founders estimate rather than pull from a report. Here is the same unit recomputed with it flexed 20% in each direction, so you can see how much of the answer rests on the estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one unit shipped. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Revenue kept</span><span class="mv" id="m_rev">$0.00</span><span class="mx" id="mx_rev"></span></div>
+      <div class="mrow"><span class="mn">Product cost, net of resale</span><span class="mv" id="m_cogs">$0.00</span><span class="mx" id="mx_cogs"></span></div>
+      <div class="mrow"><span class="mn">Outbound shipping</span><span class="mv" id="m_ship">$0.00</span><span class="mx" id="mx_ship"></span></div>
+      <div class="mrow"><span class="mn">Other variable costs</span><span class="mv" id="m_other">$0.00</span><span class="mx" id="mx_other"></span></div>
+      <div class="mrow"><span class="mn">Return handling</span><span class="mv" id="m_hand">$0.00</span><span class="mx" id="mx_hand"></span></div>
+      <div class="mrow sum"><span class="mn">Gross margin per unit, ignoring returns</span><span class="mv" id="m_gross">$0.00</span></div>
+      <div class="mrow sum final"><span class="mn">Contribution margin per unit, after returns</span><span class="mv" id="m_cm">$0.00</span></div>
+      <div class="mrow"><span class="mn">Returns drag per unit</span><span class="mv" id="m_drag">$0.00</span><span class="mx" id="mx_drag"></span></div>
+      <div class="mrow"><span class="mn">Break-even units, after returns</span><span class="mv" id="m_be">none</span><span class="mx" id="mx_be"></span></div>
+      <div class="mrow"><span class="mn">Break-even units, ignoring returns</span><span class="mv" id="m_be_ignore">none</span><span class="mx" id="mx_be_ignore"></span></div>
+      <div class="mrow"><span class="mn">Extra units returns force you to sell</span><span class="mv" id="m_extra">none</span><span class="mx" id="mx_extra"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Returned units refund the whole unit price</b>, so only the kept share of revenue is counted as revenue.</li>
+      <li><b>Product cost comes back only on the resellable share.</b> The written-off units cost you the product a second time.</li>
+      <li><b>Outbound shipping and other variable costs are charged on every unit shipped</b> and never credited back, since the carrier and the processor have already been paid.</li>
+      <li><b>Return handling is counted on the expected share of units that come back</b>, spread across every unit shipped.</li>
+      <li><b>Break-even units compares returns-adjusted margin against your monthly fixed costs</b>, so that block stays hidden until you enter a number above 0.</li>
+      <li><b>Gross margin and returns-adjusted margin share the same cost inputs.</b> The only difference between the two rows is how each one treats returns.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where the return rate and the margin comparison come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Return rate, all retail</span>
+      <p class="quote">"15.8% of their annual sales will be returned this year, totaling $849.9 billion"</p>
+      <span class="cite">National Retail Federation, in partnership with Happy Returns &middot; 2025 forecast, full-year retail &middot; <a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">nrf.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Return rate, online only</span>
+      <p class="quote">"an estimated 19.3% of online sales will be returned in 2025"</p>
+      <span class="cite">National Retail Federation &middot; 2025 forecast &middot; <a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener">nrf.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Return rate, apparel specifically</span>
+      <p class="quote">"The average ecommerce return rate is about 20%, and in apparel it runs closer to 30&ndash;40%. ... Apparel: Typical online return rate 20&ndash;40%"</p>
+      <span class="cite">Richpanel, returns-industry benchmark synthesis &middot; 2025-2026 &middot; <a href="https://www.richpanel.com/learn/ecommerce-return-rates" target="_blank" rel="noopener">richpanel.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel gross margin, public companies</span>
+      <p class="quote">"Apparel: Gross Margin 56.88%, Net Margin 3.85%. Data used is as of January 2026"</p>
+      <span class="cite">NYU Stern, Aswath Damodaran industry margin dataset &middot; as of January 2026, 35 public apparel firms &middot; <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/margin.html" target="_blank" rel="noopener">stern.nyu.edu</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel gross margin, broader company set</span>
+      <p class="quote">"Gross Margin 34.62% TTM Q1 2026 TTM"</p>
+      <span class="cite">CSIMarket, Retail Apparel Industry &middot; trailing twelve months to Q1 2026 &middot; <a href="https://csimarket.com/Industry/industry_Profitability_Ratios.php?ind=1301" target="_blank" rel="noopener">csimarket.com</a></span>
+    </div>
+
+    <p class="srcnote">The two margin figures cover different company sets, which is why they sit so far apart. Both are printed so you can see the spread instead of a single tidy number. Neither one carries your returns rate, your resellable share or your fixed costs, so treat them as a sanity check on the gross margin row, not as a substitute for the returns-adjusted row above it.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why gross margin and returns-adjusted margin are different numbers</h2>
+    <div class="prose">
+      <p>Gross margin is the number most spreadsheets show: price minus product cost minus shipping minus the small variable costs, all counted once, on every unit as if every unit stays sold. It is a clean number and it is the wrong number for a returns business, because a share of those units come back, and coming back does not refund the costs the way it refunds the revenue. Contribution margin, the returns-adjusted version, keeps the same cost inputs and changes only how it treats the units that return. The gap between the two rows on this page is the cost of returns, priced in dollars per unit instead of left as a sentence in a board deck.</p>
+
+      <p>Apparel is the hard case, and it is the case these defaults are built around. A shopper who orders two sizes to keep one has bought two units and paid for one. The gross margin line has no way to see that. It assumes the sale that happened is the sale that stays. The returns-adjusted line asks four separate questions about every unit shipped, and this page keeps all four visible instead of folding them into one estimate.</p>
+
+      <h3>The four places returns enter the arithmetic</h3>
+      <p>First, refunded revenue: only the kept share of units leaves money behind, so revenue is multiplied by one minus the return rate. Second, product cost: you recover inventory value only on the resellable share, so a return that cannot be resold at full price charges you for the goods a second time. Third, return handling: the label, the inspection and the repack, counted on the expected share of units that come back. Fourth, everything that stays fixed: outbound shipping and the other variable costs are charged on every unit shipped and never credited back, because the carrier and the processor have already been paid whether or not the customer keeps the order.</p>
+
+      <p>Notice what does not change between the two margin rows. Product cost as a dollar figure, shipping and the other variable costs are the same inputs in both calculations. The only difference is that the returns-adjusted row multiplies revenue by the kept share, nets product cost against the resellable share, and adds the handling cost of the returns you expect. Two calculators fed the same nine numbers should never disagree on gross margin. They will disagree on contribution margin the moment one of them ignores returns.</p>
+
+      <h3>Resellable share is the dial most people skip</h3>
+      <p>When a garment comes back worn, unfolded, without tags, or in a season that has already turned over, it stops being A-grade inventory. It moves to markdown, to an outlet channel, or to a write-off. At 80% resellable, one fifth of everything that comes back charges you the landed product cost twice: once when you bought it, once when you cannot sell it at the price you planned. Most margin calculators fold that into an average and lose sight of it entirely. This one gives it its own dial so you can watch what happens to the margin row when you drag it from 80% down to 50%.</p>
+
+      <h3>What the two margin ratios actually mean</h3>
+      <p>This page prints contribution margin as a share of two different bases, and the difference between them is a consolidation worth understanding rather than skipping. CM as a percent of net revenue divides the returns-adjusted margin by the revenue you actually keep after refunds, the number that lands on your P&amp;L. CM as a percent of gross price divides the same margin by the sticker price, which is the base every non-returns-adjusted calculator uses. The gross-price version is lower for the same order, because the denominator includes revenue that never arrives. Use the net figure when you are comparing this unit against your own financials. Use the gross figure when you are comparing it against a margin benchmark, like the ones quoted above, that was never built with returns in mind.</p>
+
+      <h3>Break-even units move by more than the return rate would suggest</h3>
+      <p>Fixed costs get repaid by contribution margin, one unit at a time, and a lower per-unit margin means more units are required to clear the same fixed cost. That relationship is not linear with the return rate, because returns lower the margin from two directions at once, the refunded revenue and the unrecovered product cost, while the handling fee adds a third small drag on top. The extra units line on this page is the sentence that sells the tool: it is the number of additional units, past what gross margin would have required, that returns force you to sell before your fixed costs are covered. On the default apparel numbers that gap is not small, and it tends to surprise operators who have only ever budgeted off the gross margin row.</p>
+
+      <p>Once you have both numbers side by side, three levers move the gap between them. The return rate, which sizing guidance, fit content and product photography all touch. The resellable share, which is a grading and liquidation question more than a marketing one. And the fixed cost base itself, which decides how much that per-unit gap costs you every month it goes unaddressed. Run the same unit at a 22% return rate and again at 18%, and watch what happens to the extra units line before you decide which lever to pull first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why is contribution margin lower than gross margin once returns are added?</summary>
+        <div class="fa">Gross margin assumes every unit shipped stays sold. Contribution margin multiplies revenue by the kept share, nets product cost against the resellable share, and adds a handling cost for the units expected back. Shipping and the other variable costs are the same in both rows, so the whole gap between gross margin and contribution margin is the price of returns, shown as a dollar figure rather than left as a sentence.</div>
+      </details>
+      <details>
+        <summary>What does resellable at full price mean, and how do I estimate it?</summary>
+        <div class="fa">It is the share of returned units that can go straight back into A-grade stock and sell at the original price. Count a month of returns and sort them: back on the shelf at full price, sold at markdown, moved to outlet, written off. The first bucket divided by the total is your resellable share. Most apparel operators who count it for the first time find it lower than they assumed, especially on items that ship in peak season and come back after it.</div>
+      </details>
+      <details>
+        <summary>Why do outbound shipping and other variable costs stay in the math for returned units?</summary>
+        <div class="fa">The carrier and the processor have already been paid. The parcel went out, the label was bought, the fee cleared. Reducing those lines in proportion to the return rate would flatter the answer by pretending the cost can be un-spent. Return handling is counted separately, on the expected share of units that come back, so the two costs never double up.</div>
+      </details>
+      <details>
+        <summary>What is the difference between CM as a percent of net revenue and CM as a percent of gross price?</summary>
+        <div class="fa">Net revenue is what you actually keep after refunds, so CM as a percent of net revenue is the number that matches your P&amp;L. Gross price is the sticker price before any refunds happen, which is the base almost every non-returns-adjusted margin benchmark uses. The gross-price version reads lower for the same unit, because its denominator includes revenue that never arrives. Compare against your own books using the net figure and against outside benchmarks using the gross one.</div>
+      </details>
+      <details>
+        <summary>Why do returns increase my break-even units by more than the return rate alone would suggest?</summary>
+        <div class="fa">Returns lower contribution margin from three directions at once: refunded revenue, unrecovered product cost on the non-resellable share, and the handling fee. Since break-even units is fixed costs divided by contribution margin, a lower margin per unit means a disproportionately larger number of units is needed to clear the same fixed cost base. The extra units line on this page is that gap, computed directly rather than approximated.</div>
+      </details>
+      <details>
+        <summary>What return rate should I enter if I sell apparel?</summary>
+        <div class="fa">Pull your own, over a window long enough for returns to land. Returns lag the sale by weeks, so a trailing 30 day rate during a growth month reads low. The published figures quoted on this page cover all retail, all online retail and an apparel-specific range, and they are there to sanity-check the number you enter rather than to replace it. If you have no reliable figure yet, run the calculator twice, a few points apart, and see whether the verdict changes.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on unit economics.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and ad data, then work the lines that move it: the return rate, the resellable share and what a unit actually costs to fulfill. Book a 30 minute intro call and we will walk your margin together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=contribution-margin" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Contribution margin</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why is contribution margin lower than gross margin once returns are added?","acceptedAnswer":{"@type":"Answer","text":"Gross margin assumes every unit shipped stays sold. Contribution margin multiplies revenue by the kept share, nets product cost against the resellable share, and adds a handling cost for the units expected back. Shipping and the other variable costs are the same in both rows, so the whole gap between gross margin and contribution margin is the price of returns, shown as a dollar figure rather than left as a sentence."}},
+    {"@type":"Question","name":"What does resellable at full price mean, and how do I estimate it?","acceptedAnswer":{"@type":"Answer","text":"It is the share of returned units that can go straight back into A-grade stock and sell at the original price. Count a month of returns and sort them: back on the shelf at full price, sold at markdown, moved to outlet, written off. The first bucket divided by the total is your resellable share. Most apparel operators who count it for the first time find it lower than they assumed, especially on items that ship in peak season and come back after it."}},
+    {"@type":"Question","name":"Why do outbound shipping and other variable costs stay in the math for returned units?","acceptedAnswer":{"@type":"Answer","text":"The carrier and the processor have already been paid. The parcel went out, the label was bought, the fee cleared. Reducing those lines in proportion to the return rate would flatter the answer by pretending the cost can be un-spent. Return handling is counted separately, on the expected share of units that come back, so the two costs never double up."}},
+    {"@type":"Question","name":"What is the difference between CM as a percent of net revenue and CM as a percent of gross price?","acceptedAnswer":{"@type":"Answer","text":"Net revenue is what you actually keep after refunds, so CM as a percent of net revenue is the number that matches your P&L. Gross price is the sticker price before any refunds happen, which is the base almost every non-returns-adjusted margin benchmark uses. The gross-price version reads lower for the same unit, because its denominator includes revenue that never arrives. Compare against your own books using the net figure and against outside benchmarks using the gross one."}},
+    {"@type":"Question","name":"Why do returns increase my break-even units by more than the return rate alone would suggest?","acceptedAnswer":{"@type":"Answer","text":"Returns lower contribution margin from three directions at once: refunded revenue, unrecovered product cost on the non-resellable share, and the handling fee. Since break-even units is fixed costs divided by contribution margin, a lower margin per unit means a disproportionately larger number of units is needed to clear the same fixed cost base. The extra units line on this page is that gap, computed directly rather than approximated."}},
+    {"@type":"Question","name":"What return rate should I enter if I sell apparel?","acceptedAnswer":{"@type":"Answer","text":"Pull your own, over a window long enough for returns to land. Returns lag the sale by weeks, so a trailing 30 day rate during a growth month reads low. The published figures quoted on this page cover all retail, all online retail and an apparel-specific range, and they are there to sanity-check the number you enter rather than to replace it. If you have no reliable figure yet, run the calculator twice, a few points apart, and see whether the verdict changes."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'contribution-margin';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    price: 68, cogs_unit: 23.8, shipping_unit: 7.5, other_variable: 2.27,
+    return_rate: 22, return_cost: 6, resellable_pct: 80, fixed_costs: 12000
+  };
+  var KEYS = ['price','cogs_unit','shipping_unit','other_variable','return_rate','return_cost','resellable_pct','fixed_costs'];
+  var SEGS = ['refunded','cogs','shipping','othervar','handling','result'];
+  var CROSS = ['true-profit-per-order','break-even-roas','pricing-margin','cac','aov','free-shipping-threshold'];
+  var GLYPH = {
+    'true-profit-per-order':'$/ORD','break-even-roas':'ROAS','pricing-margin':'%',
+    'cac':'CAC','aov':'AOV','free-shipping-threshold':'SHIP'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function n3(x){ return T.roundDp(x, 3).toFixed(3); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      price: i.price, cogs_unit: i.cogs_unit, shipping_unit: i.shipping_unit,
+      other_variable: i.other_variable, return_rate: i.return_rate, return_cost: i.return_cost,
+      resellable_pct: i.resellable_pct, fixed_costs: i.fixed_costs
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var r = i.return_rate / 100, s = i.resellable_pct / 100;
+    var refunded = r * i.price;
+    var cogsNet = i.cogs_unit * (1 - r * s);
+    var handling = r * i.return_cost;
+    var cm = o.returns_adjusted_cm_per_unit;
+    var neg = cm < 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = money(cm) + '<span class="per"> per unit</span>';
+    el('mbarNum').textContent = money(cm);
+
+    var half = o.gross_cm_per_unit / 2;
+    var tierLabel, cls;
+    if (cm <= 0) { tierLabel = 'NOT YET'; cls = 't-not'; }
+    else if (o.returns_drag_per_unit >= half) { tierLabel = 'FIX FIRST'; cls = 't-fix'; }
+    else { tierLabel = 'SAFE TO SCALE'; cls = 't-safe'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = tierLabel;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.cm_low) +
+      '</b> and <b>' + money(o.cm_high) + '</b> per unit';
+
+    /* stacked bar. When the unit clears, five cost bands plus the gold
+       remainder fill the price exactly. When it does not, the five bands
+       overrun the price and the overrun is drawn as the shortfall. */
+    var vals = {
+      refunded: refunded,
+      cogs: cogsNet,
+      shipping: i.shipping_unit,
+      othervar: i.other_variable,
+      handling: handling,
+      result: neg ? 0 : cm
+    };
+    var costTotal = refunded + cogsNet + i.shipping_unit + i.other_variable + handling;
+    var scale = neg ? costTotal : i.price;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = i.price / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + money(i.price) + ' price';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the price you charge. Everything past it is the shortfall.'
+      : 'The gold band on the right is what you keep.';
+
+    el('lg_refunded').textContent  = money(refunded);
+    el('lg_handling').textContent  = money(handling);
+    el('lg_cogs').textContent      = money(cogsNet);
+    el('lg_shipping').textContent  = money(i.shipping_unit);
+    el('lg_othervar').textContent  = money(i.other_variable);
+    el('lg_result').textContent    = neg ? money(Math.abs(cm)) : money(cm);
+    el('lg_result_nm').textContent = neg ? 'Short by' : 'What is left';
+
+    /* biggest single line */
+    var lines = [
+      { k: 'Product cost, net of resale', v: cogsNet,
+        fix: 'You carry ' + money(cogsNet) + ' of product cost on every unit shipped, after netting out the resellable share.' },
+      { k: 'Refunded revenue', v: refunded,
+        fix: 'At a ' + pct(i.return_rate) + ' return rate, ' + money(refunded) + ' of every unit shipped goes back to the customer.' },
+      { k: 'Outbound shipping', v: i.shipping_unit,
+        fix: 'You pay ' + money(i.shipping_unit) + ' to ship every unit, including the ones that come back.' },
+      { k: 'Other variable costs', v: i.other_variable,
+        fix: 'Card fees, pick, pack and packaging cost ' + money(i.other_variable) + ' on every unit shipped.' },
+      { k: 'Return handling', v: handling,
+        fix: 'Processing returns costs ' + money(handling) + ' spread across every unit shipped.' }
+    ];
+    lines.sort(function(a, b){ return b.v - a.v; });
+    var top = lines[0];
+    el('bindMain').innerHTML = top.k + ' is the biggest single line at <b>' + money(top.v) + '</b> per unit shipped.';
+    el('bindFix').textContent = top.fix;
+    el('bindDrag').textContent = 'Returns cost you ' + money(o.returns_drag_per_unit) + ' per unit shipped, or ' +
+      pct(o.returns_drag_pts) + ' of price, which puts contribution margin at ' + pct(o.cm_ratio_net_pct) +
+      ' of net revenue and ' + pct(o.cm_ratio_gross_pct) + ' of gross price.';
+    el('bindGross').textContent = 'Ignoring returns, this unit clears ' + money(o.gross_cm_per_unit) +
+      '. Returns pull it down to ' + money(cm) + '.';
+
+    /* scenario spread */
+    el('scLow').textContent  = money(o.cm_low);
+    el('scMid').textContent  = money(o.cm_mid);
+    el('scHigh').textContent = money(o.cm_high);
+    el('scLow').classList.toggle('neg',  o.cm_low  < 0);
+    el('scMid').classList.toggle('neg',  o.cm_mid  < 0);
+    el('scHigh').classList.toggle('neg', o.cm_high < 0);
+    el('scLowA').textContent  = 'Return rate ' + pct(Math.min(100, i.return_rate * 1.2));
+    el('scMidA').textContent  = 'Return rate ' + pct(i.return_rate);
+    el('scHighA').textContent = 'Return rate ' + pct(i.return_rate * 0.8);
+    el('scenNote').textContent = o.range_inert
+      ? 'Your return rate is set to zero, so flexing it changes nothing. This is the margin with no returns at all.'
+      : 'If the whole spread sits at or below zero, the estimate has stopped being the problem and the unit economics have taken over. If it straddles zero, pull the real return rate from your returns app before you decide anything.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_rev').textContent  = money((1 - r) * i.price);
+    el('mx_rev').innerHTML   = '(1 - ' + n2(r) + ') x ' + money(i.price) + ' = ' + money((1 - r) * i.price) +
+      '  <em>returned units refund the whole unit price</em>';
+    el('m_cogs').textContent = money(cogsNet);
+    el('mx_cogs').innerHTML  = money(i.cogs_unit) + ' x (1 - ' + n2(r) + ' x ' + n2(s) + ') = ' + money(cogsNet) +
+      '  <em>product cost comes back only on the resellable share</em>';
+    el('m_ship').textContent = money(i.shipping_unit);
+    el('mx_ship').innerHTML  = money(i.shipping_unit) + ' x 1 = ' + money(i.shipping_unit) +
+      '  <em>charged on every unit shipped, never reduced for returns</em>';
+    el('m_other').textContent = money(i.other_variable);
+    el('mx_other').innerHTML  = money(i.other_variable) + ' x 1 = ' + money(i.other_variable) +
+      '  <em>card fees, pick, pack and packaging, charged on every unit shipped</em>';
+    el('m_hand').textContent = money(handling);
+    el('mx_hand').innerHTML  = n2(r) + ' x ' + money(i.return_cost) + ' = ' + money(handling) +
+      '  <em>expected handling per unit shipped</em>';
+    el('m_gross').textContent = money(o.gross_cm_per_unit);
+    el('m_cm').textContent    = money(cm);
+    el('m_cm').classList.toggle('neg', neg);
+    el('m_drag').textContent = money(o.returns_drag_per_unit);
+    el('mx_drag').innerHTML  = n2(r) + ' x (' + money(i.price) + ' - ' + n2(s) + ' x ' + money(i.cogs_unit) + ' + ' +
+      money(i.return_cost) + ') = ' + money(o.returns_drag_per_unit) +
+      '  <em>identical to gross margin minus returns-adjusted margin</em>';
+
+    var fc = i.fixed_costs > 0 ? i.fixed_costs : null;
+    el('m_be').textContent = (o.break_even_units === null) ? 'none' : T.count(o.break_even_units);
+    el('mx_be').innerHTML = (fc === null)
+      ? '<em>Add monthly fixed costs above 0 to see break-even units.</em>'
+      : (o.break_even_units === null
+        ? '<em>Contribution margin is at or below zero, so no volume fixes this. Every unit loses money.</em>'
+        : 'ceil(' + money(fc) + ' / ' + money(cm) + ') = ' + T.count(o.break_even_units) +
+          '  <em>units needed to clear fixed costs, after returns</em>');
+    el('m_be_ignore').textContent = (o.break_even_units_ignoring_returns === null) ? 'none' : T.count(o.break_even_units_ignoring_returns);
+    el('mx_be_ignore').innerHTML = (fc === null)
+      ? '<em>Add monthly fixed costs above 0 to see this row.</em>'
+      : (o.break_even_units_ignoring_returns === null
+        ? '<em>Gross margin is at or below zero, so this comparison does not apply.</em>'
+        : 'ceil(' + money(fc) + ' / ' + money(o.gross_cm_per_unit) + ') = ' + T.count(o.break_even_units_ignoring_returns) +
+          '  <em>units needed to clear fixed costs, if returns were ignored</em>');
+    el('m_extra').textContent = (o.extra_units_returns_cost_you === null) ? 'none' : T.count(o.extra_units_returns_cost_you);
+    el('mx_extra').innerHTML = (fc === null)
+      ? '<em>Add monthly fixed costs above 0 to see what returns cost you in volume.</em>'
+      : (o.extra_units_returns_cost_you === null
+        ? '<em>One of the two break-even rows above is undefined, so this gap cannot be computed.</em>'
+        : T.count(o.break_even_units) + ' - ' + T.count(o.break_even_units_ignoring_returns) + ' = ' + T.count(o.extra_units_returns_cost_you) +
+          '  <em>the sentence that sells the tool</em>');
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        gross_cm_per_unit: T.round2(lastOut.gross_cm_per_unit),
+        returns_adjusted_cm_per_unit: T.round2(lastOut.returns_adjusted_cm_per_unit),
+        returns_drag_per_unit: T.round2(lastOut.returns_drag_per_unit),
+        returns_drag_pts: lastOut.returns_drag_pts === null ? null : T.round2(lastOut.returns_drag_pts),
+        cm_ratio_net_pct: lastOut.cm_ratio_net_pct === null ? null : T.round2(lastOut.cm_ratio_net_pct),
+        cm_ratio_gross_pct: lastOut.cm_ratio_gross_pct === null ? null : T.round2(lastOut.cm_ratio_gross_pct),
+        break_even_units: lastOut.break_even_units,
+        break_even_units_ignoring_returns: lastOut.break_even_units_ignoring_returns,
+        extra_units_returns_cost_you: lastOut.extra_units_returns_cost_you,
+        cm_low: T.round2(lastOut.cm_low),
+        cm_high: T.round2(lastOut.cm_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

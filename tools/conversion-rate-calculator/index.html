@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Conversion Rate Calculator: Blended vs By Source | RISE DTC</title>
+<meta name="description" content="Free conversion rate calculator for ecommerce. Enter sessions and orders for paid social, paid search, email and direct plus organic, and see your blended rate next to the per source rates it is hiding, with a 95% confidence band on every figure." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/conversion-rate-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Conversion Rate Calculator: Blended vs By Source" />
+<meta property="og:description" content="Your blended conversion rate next to the per source rates it is hiding, with a 95% confidence band on every figure. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/conversion-rate-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Conversion Rate Calculator: Blended vs By Source" />
+<meta name="twitter:description" content="Your blended rate next to the per source rates it is hiding. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-conversion-rate-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=conversion-rate-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Conversion Rate, Blended and By Source</span>
+      <span class="t2">Tool 17 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What is your blended rate <span class="hl">actually hiding?</span></h1>
+    <p class="lede">One dashboard number blends four different sources into a single rate. Split it apart and the picture usually looks different.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials, 4 sources</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="paid_social_sessions">Paid social sessions <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="paid_social_sessions" data-min="0" data-max="100000000" data-step="100" value="40000" /><span class="u">sessions</span></span>
+          </div>
+          <input type="range" id="paid_social_sessions_r" min="0" max="100000000" step="100" value="40000" aria-label="Paid social sessions slider" />
+          <p class="f-cap">Sessions your analytics tool credits to paid social. Clear the field to leave this source out of the blend entirely.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="paid_social_orders">Paid social orders <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="paid_social_orders" data-min="0" data-max="10000000" data-step="1" value="640" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="paid_social_orders_r" min="0" max="10000000" step="1" value="640" aria-label="Paid social orders slider" />
+          <p class="f-cap">Orders from the same channel and window as the sessions above. Left blank on an included row, it reads as zero.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="paid_search_sessions">Paid search sessions <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="paid_search_sessions" data-min="0" data-max="100000000" data-step="100" value="15000" /><span class="u">sessions</span></span>
+          </div>
+          <input type="range" id="paid_search_sessions_r" min="0" max="100000000" step="100" value="15000" aria-label="Paid search sessions slider" />
+          <p class="f-cap">Sessions credited to paid search, same attribution model as the row above it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="paid_search_orders">Paid search orders <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="paid_search_orders" data-min="0" data-max="10000000" data-step="1" value="375" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="paid_search_orders_r" min="0" max="10000000" step="1" value="375" aria-label="Paid search orders slider" />
+          <p class="f-cap">Orders attributed to paid search in the same window.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="email_sessions">Email sessions <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="email_sessions" data-min="0" data-max="100000000" data-step="100" value="8000" /><span class="u">sessions</span></span>
+          </div>
+          <input type="range" id="email_sessions_r" min="0" max="100000000" step="100" value="8000" aria-label="Email sessions slider" />
+          <p class="f-cap">Sessions your platform attributes to email sends and flows.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="email_orders">Email orders <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="email_orders" data-min="0" data-max="10000000" data-step="1" value="320" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="email_orders_r" min="0" max="10000000" step="1" value="320" aria-label="Email orders slider" />
+          <p class="f-cap">Orders attributed to email in the same window.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="direct_organic_sessions">Direct and organic sessions <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="direct_organic_sessions" data-min="0" data-max="100000000" data-step="100" value="25000" /><span class="u">sessions</span></span>
+          </div>
+          <input type="range" id="direct_organic_sessions_r" min="0" max="100000000" step="100" value="25000" aria-label="Direct and organic sessions slider" />
+          <p class="f-cap">Sessions with no paid channel attached: direct visits, organic search and organic social.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="direct_organic_orders">Direct and organic orders <span class="opt">optional</span></label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="direct_organic_orders" data-min="0" data-max="10000000" data-step="1" value="500" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="direct_organic_orders_r" min="0" max="10000000" step="1" value="500" aria-label="Direct and organic orders slider" />
+          <p class="f-cap">Orders from that same direct and organic traffic.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the four source example</button>
+          <span class="state" id="stateNote">running on the four source example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Blended conversion rate</p>
+        <p class="bignum" id="bigNum">0.00%<span class="per"> blended</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Fill at least one traffic source to see a range</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where your sessions come from <span id="wfScale">of 0 total sessions</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="paid_social" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="paid_search" style="background:var(--grey-2)"></span>
+            <span class="seg" data-k="email" style="background:var(--grey-3)"></span>
+            <span class="seg" data-k="direct_organic" style="background:var(--amber-2)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">Bar width is each source's share of total sessions entered above.</p>
+
+          <div class="legend">
+            <div class="lgd" id="lgd_paid_social"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Paid social <span class="shr" id="shr_paid_social"></span></span><span class="vl" id="lg_paid_social">0.00%</span></div>
+            <div class="lgd" id="lgd_paid_search"><span class="dot" style="background:var(--grey-2)"></span><span class="nm">Paid search <span class="shr" id="shr_paid_search"></span></span><span class="vl" id="lg_paid_search">0.00%</span></div>
+            <div class="lgd" id="lgd_email"><span class="dot" style="background:var(--grey-3)"></span><span class="nm">Email <span class="shr" id="shr_email"></span></span><span class="vl" id="lg_email">0.00%</span></div>
+            <div class="lgd" id="lgd_direct_organic"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Direct and organic <span class="shr" id="shr_direct_organic"></span></span><span class="vl" id="lg_direct_organic">0.00%</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What the blend is hiding</span>
+          <p id="bindMain">Enter your numbers to see what the blend is hiding.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Your blended rate is a sample with room around it</h2>
+    <p class="sec-sub">This rate comes from real sessions and real orders, and it is still a sample. Here is the 95% confidence band built from the same total sessions and orders you entered above, so you can see how much room sits around the point estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">0.00%</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.00%</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">0.00%</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one session, across the sources you filled in. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Paid social rate</span><span class="mv" id="m_ps">0.00%</span><span class="mx" id="mx_ps"></span></div>
+      <div class="mrow"><span class="mn">Paid search rate</span><span class="mv" id="m_pse">0.00%</span><span class="mx" id="mx_pse"></span></div>
+      <div class="mrow"><span class="mn">Email rate</span><span class="mv" id="m_em">0.00%</span><span class="mx" id="mx_em"></span></div>
+      <div class="mrow"><span class="mn">Direct and organic rate</span><span class="mv" id="m_do">0.00%</span><span class="mx" id="mx_do"></span></div>
+      <div class="mrow sum"><span class="mn">Total sessions, sources filled in</span><span class="mv" id="m_total_sessions">0</span><span class="mx" id="mx_total_sessions"></span></div>
+      <div class="mrow sum"><span class="mn">Total orders, sources filled in</span><span class="mv" id="m_total_orders">0</span><span class="mx" id="mx_total_orders"></span></div>
+      <div class="mrow sum final"><span class="mn">Blended conversion rate</span><span class="mv" id="m_blended">0.00%</span><span class="mx" id="mx_blended"></span></div>
+      <div class="mrow"><span class="mn">Spread, best source minus worst</span><span class="mv" id="m_spread">0.00pp</span><span class="mx" id="mx_spread"></span></div>
+      <div class="mrow"><span class="mn">Best source minus blended</span><span class="mv" id="m_best">0.00pp</span><span class="mx" id="mx_best"></span></div>
+      <div class="mrow"><span class="mn">Mix shift, paid social sessions up 20%</span><span class="mv" id="m_mix">0.00%</span><span class="mx" id="mx_mix"></span></div>
+      <div class="mrow"><span class="mn">Blended rate, 95% confidence band</span><span class="mv" id="m_ci">0.00% to 0.00%</span><span class="mx" id="mx_ci"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>A row counts only when its sessions field is filled in and greater than zero.</b> An empty row never becomes a zero percent row, it simply sits out of the blend.</li>
+      <li><b>Orders left blank on a row that has sessions filled in are read as zero</b>, not as missing data.</li>
+      <li><b>Every row needs to come from the same attribution model and the same window.</b> Mixing a session count pulled from one analytics tool with an order count from another invalidates the comparison this page runs.</li>
+      <li><b>The confidence band uses a Wald normal approximation at 95%</b>, the same method behind every rate on this page. It is an approximation, not an exact binomial interval, and it reads oddly narrow at very small sample sizes.</li>
+      <li><b>Mix shift changes exactly one input:</b> paid social sessions, up 20%, with every per source rate held exactly where you entered it. Nothing else about the funnel is assumed to move.</li>
+      <li><b>This page does not model returns.</b> A returned order still counted as a conversion the moment it was placed, so returns leave this arithmetic untouched. cpa-calculator and mer-calculator are where returns start changing the money.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where a blended rate sits against the wider market</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Shopify median conversion rate, all verticals</span>
+      <p class="quote">"average conversion rate for Shopify was 1.4% ... more than 3.2% would put you in the best 20% ... more than 4.7% would put you in the best 10%"</p>
+      <span class="cite">Littledata &middot; 2,800 ecommerce sites benchmarked, 2023 dataset &middot; <a href="https://www.littledata.io/average-website-performance" target="_blank" rel="noopener">littledata.io</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Fashion clothing and accessories conversion rate</span>
+      <p class="quote">"Conversion Rate: 1.70% (June 2026 compared to 1.50% in June 2025, representing a +13.34% increase)"</p>
+      <span class="cite">IRP Commerce, UK ecommerce market data &middot; June 2026 vs June 2025 &middot; <a href="https://www.irpcommerce.com/en/gb/ecommercemarketdata.aspx?Market=3" target="_blank" rel="noopener">irpcommerce.com</a></span>
+    </div>
+
+    <p class="srcnote">The Littledata figure is a blended, all vertical Shopify median that includes inactive and low traffic stores, which pulls the median down. The IRP Commerce figure is apparel specific but UK market only. Neither publisher breaks a site's rate down by paid social, paid search, email and direct plus organic the way this calculator does, which is the split this page exists to print.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why a blended rate hides four different sources</h2>
+    <div class="prose">
+      <p>An apparel site running paid social, paid search, email and a direct plus organic bucket is really running four separate small businesses under one dashboard tile. Paid social usually pulls in the widest, coldest audience and posts the lowest rate. Email reaches people who already own something from you and posts the highest. Blend the four together into one line and the number that comes out the other side describes nobody, because it is a weighted average of four very different shoppers at four very different points in a relationship with the brand. The blended rate on this page is the same arithmetic your dashboard runs. What changes is that every source sits next to it, so the average stops hiding the sources that built it.</p>
+
+      <h3>Why the weight matters more than the count</h3>
+      <p>A source with a low rate and a small share of sessions barely moves the blend. The same low rate carried by your biggest traffic source drags the whole number down with it, and that is usually paid social on an apparel account running cold prospecting at scale. The session share column next to each rate on this page exists for exactly that reason: a rate on its own tells you how a source converts, and the share next to it tells you how much that source is allowed to move your headline number. A source can post a strong rate and still barely matter to the blend if almost nobody lands there, and a weak source can matter enormously if it is where most of the traffic sits.</p>
+
+      <h3>What the confidence band is measuring</h3>
+      <p>Every rate on this page carries a 95% Wald interval built from the sessions behind it. This is not the same kind of range as flexing a return rate or a CAC estimate twenty percent in either direction, because sessions and orders are counted rather than guessed. The uncertainty here is sampling noise: even a perfectly stable underlying rate produces a slightly different observed rate every time you count a finite number of visits. A source with a hundred thousand sessions has a tight band around its rate. A source with four hundred sessions has a wide one, and reading its point estimate as a fact rather than a range is where a lot of channel decisions go wrong on a smaller apparel account still building traffic in a newer channel.</p>
+
+      <h3>The few orders warning</h3>
+      <p>Any included row with fewer than 30 orders gets flagged rather than ranked against the others as if it were solid. Thirty orders is not a magic number, it is a floor below which a Wald interval starts behaving badly and a single unusual week can move a rate by a full percentage point or more. A flagged row still shows its rate and still counts toward the blend, because it did happen, but this page will not let it win or lose the spread against a source with real volume behind it. Treat a flagged row as directional until it has collected more traffic, not as a channel decision on its own.</p>
+
+      <h3>What mix shift is actually showing you</h3>
+      <p>Mix shift answers a narrower question than most of this page: what happens to the blended number if paid social grows twenty percent and every source keeps converting exactly as it does today. Nothing about your site, your offer or your checkout changes in this scenario. Only the traffic mix does. When paid social converts below your blend, growing it pulls the blended rate down even though nothing got worse. This is the mechanic behind a founder watching the site's headline conversion rate slide during a month when the team actually scaled spend correctly and every individual source held its rate steady. The blended number moved because the mix moved, not because anything on the site did.</p>
+
+      <h3>Where returns fit, and where they do not</h3>
+      <p>This calculator does not ask about returns, on purpose. A conversion is counted the moment the order is placed, and whether that order ships, gets worn, gets returned, or gets exchanged for a different size happens after the moment this page is measuring. An apparel shopper who orders two sizes to keep one still converted twice against these numbers, even though one of those two orders will come back. Returns absolutely change what those orders are worth, but that is a different question, answered by true-profit-per-order and contribution-margin, and a different money question again, answered by cpa-calculator and mer-calculator. Adding a returns field to this page would imply a dollar output this tool does not produce, so it stays out.</p>
+
+      <h3>Reading the split before you read the headline</h3>
+      <p>The order to read this page in is the split first, the blend second. Look at which source carries the most sessions, look at what that source converts at, and only then look at the blended number at the top, because by then you already know most of what built it. A blended rate that looks flat month over month can hide a paid social rate quietly declining while email keeps propping the average up, and a blended rate that looks like it improved can hide nothing more than a shift toward a channel that already converted better before anything on the funnel changed. The split is the diagnosis. The blended number is the summary you hand to someone who does not have time for the split.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does my blended conversion rate look nothing like any one of my channels?</summary>
+        <div class="fa">Because it is a weighted average of all of them, and the weight is each source's share of sessions, not an equal split. A source with a huge share of traffic and a modest rate can pull the blended number toward it even while a smaller, higher converting source sits right next to it on this page. The blended figure describes the mix, not any single channel inside it.</div>
+      </details>
+      <details>
+        <summary>What does "too few orders to read" mean, and when does it show up?</summary>
+        <div class="fa">Any included row with fewer than 30 orders gets that flag. Below that count, the confidence band behaves badly and a single unusual week can swing the rate by a full percentage point or more. The row still counts toward the blend, but this page will not let it win or lose the spread against a source with real volume behind it.</div>
+      </details>
+      <details>
+        <summary>Why do you show a range instead of one confidence number?</summary>
+        <div class="fa">Because sessions and orders are counted, not guessed, and even a perfectly stable rate produces a slightly different observed number every time you count a finite sample. The 95% Wald band shown here reflects that sampling noise. A source with a hundred thousand sessions has a tight band. A source with a few hundred has a wide one, and the point estimate alone hides which case you are in.</div>
+      </details>
+      <details>
+        <summary>What is the mix shift number telling me?</summary>
+        <div class="fa">It answers one narrow question: what happens to your blended rate if paid social sessions grow 20% and every source keeps converting exactly as it does today. Nothing on the site changes in that scenario, only the traffic mix does. When paid social converts below your blend, growing it can pull the blended number down even though every individual rate held steady, which is exactly the pattern that makes a headline rate look worse in a month spend actually scaled correctly.</div>
+      </details>
+      <details>
+        <summary>Why doesn't this calculator ask about returns?</summary>
+        <div class="fa">A conversion here is counted the instant the order is placed, before a return can happen. A returned order still counted as a conversion at that moment, so returns do not change this arithmetic. Adding a returns field would imply a money output this page does not produce. true-profit-per-order and contribution-margin cover what a returned order costs, and cpa-calculator and mer-calculator cover where returns change what an order was worth acquiring.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever owns the traffic mix.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on your live analytics and ad accounts, then work the piece that moves it: the traffic mix, the source pulling the blend down and what a bigger sample would tell you before you trust a rate. Book a 30 minute intro call and we will walk your conversion split together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=conversion-rate-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Blended conversion rate</span>
+  <span class="mv" id="mbarNum">0.00%</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does my blended conversion rate look nothing like any one of my channels?","acceptedAnswer":{"@type":"Answer","text":"Because it is a weighted average of all of them, and the weight is each source's share of sessions, not an equal split. A source with a huge share of traffic and a modest rate can pull the blended number toward it even while a smaller, higher converting source sits right next to it on this page. The blended figure describes the mix, not any single channel inside it."}},
+    {"@type":"Question","name":"What does \"too few orders to read\" mean, and when does it show up?","acceptedAnswer":{"@type":"Answer","text":"Any included row with fewer than 30 orders gets that flag. Below that count, the confidence band behaves badly and a single unusual week can swing the rate by a full percentage point or more. The row still counts toward the blend, but this page will not let it win or lose the spread against a source with real volume behind it."}},
+    {"@type":"Question","name":"Why do you show a range instead of one confidence number?","acceptedAnswer":{"@type":"Answer","text":"Because sessions and orders are counted, not guessed, and even a perfectly stable rate produces a slightly different observed number every time you count a finite sample. The 95% Wald band shown here reflects that sampling noise. A source with a hundred thousand sessions has a tight band. A source with a few hundred has a wide one, and the point estimate alone hides which case you are in."}},
+    {"@type":"Question","name":"What is the mix shift number telling me?","acceptedAnswer":{"@type":"Answer","text":"It answers one narrow question: what happens to your blended rate if paid social sessions grow 20% and every source keeps converting exactly as it does today. Nothing on the site changes in that scenario, only the traffic mix does. When paid social converts below your blend, growing it can pull the blended number down even though every individual rate held steady, which is exactly the pattern that makes a headline rate look worse in a month spend actually scaled correctly."}},
+    {"@type":"Question","name":"Why doesn't this calculator ask about returns?","acceptedAnswer":{"@type":"Answer","text":"A conversion here is counted the instant the order is placed, before a return can happen. A returned order still counted as a conversion at that moment, so returns do not change this arithmetic. Adding a returns field would imply a money output this page does not produce. true-profit-per-order and contribution-margin cover what a returned order costs, and cpa-calculator and mer-calculator cover where returns change what an order was worth acquiring."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'conversion-rate-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var pct = T.percent, count = T.count;
+
+  var DEFAULTS = {
+    paid_social_sessions: 40000, paid_social_orders: 640,
+    paid_search_sessions: 15000, paid_search_orders: 375,
+    email_sessions: 8000, email_orders: 320,
+    direct_organic_sessions: 25000, direct_organic_orders: 500
+  };
+  var KEYS = ['paid_social_sessions','paid_social_orders','paid_search_sessions','paid_search_orders',
+    'email_sessions','email_orders','direct_organic_sessions','direct_organic_orders'];
+  var SEGS = ['paid_social','paid_search','email','direct_organic'];
+  var LABELS = { paid_social:'Paid social', paid_search:'Paid search', email:'Email', direct_organic:'Direct and organic' };
+  var CROSS = ['ctr-calculator','cpa-calculator','mer-calculator','aov','true-profit-per-order','cac'];
+  var GLYPH = {
+    'ctr-calculator':'CTR','cpa-calculator':'CPA','mer-calculator':'MER',
+    'aov':'AOV','true-profit-per-order':'TPO','cac':'CAC'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function pctStr(v, dp){ return v === null || v === undefined ? '-' : pct(v, dp === undefined ? 2 : dp); }
+  // Percentage-point values (spread, best-minus-blended) print as a bare
+  // number with a trailing "pp": pctStr already appends "%", so it is never
+  // used for these to avoid a doubled "%pp" unit.
+  function ppStr(v){ return v === null || v === undefined ? '-' : T.roundDp(v, 2).toFixed(2); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  // Sessions and orders are genuinely optional: an empty field stays empty
+  // and the row sits out of the blend, rather than snapping back to a
+  // default the way a required dial does elsewhere on this page.
+  function readOptional(k){
+    var raw = el(k).value;
+    if (raw === null || String(raw).trim() === '') { return null; }
+    var v = T.parseNum(raw);
+    if (isNaN(v)) { return null; }
+    var b = bounds(k);
+    return T.clamp(v, b.min, b.max);
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){ i[k] = readOptional(k); });
+    return i;
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var o = window.RISE_TOOLS[SLUG].compute(i);
+    lastInputs = i; lastOut = o;
+
+    var totalSessions = o.total_sessions || 0;
+    var totalOrders = o.total_orders || 0;
+    var includedKeys = SEGS.filter(function(k){ return o.cvr_per_source[k] !== null; });
+    var includedCount = includedKeys.length;
+    var hasBlend = totalSessions > 0;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = (hasBlend ? pctStr(o.blended_cvr_pct) : '-') + '<span class="per"> blended</span>';
+    el('mbarNum').textContent = hasBlend ? pctStr(o.blended_cvr_pct) : '-';
+
+    var tierText, tierCls;
+    if (!hasBlend) { tierText = 'ADD A SOURCE'; tierCls = 't-fix'; }
+    else if (includedCount < 2) { tierText = 'ONE SOURCE ONLY'; tierCls = 't-fix'; }
+    else if (o.spread_pp < 1) { tierText = 'SOURCES ALIGNED'; tierCls = 't-safe'; }
+    else if (o.spread_pp < 3) { tierText = 'BLEND HIDES A GAP'; tierCls = 't-fix'; }
+    else { tierText = 'BLEND HIDES A LOT'; tierCls = 't-not'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + tierCls;
+      t.textContent = tierText;
+    });
+
+    el('rangeLine').innerHTML = o.blended_ci
+      ? 'At 95% confidence, your real blended rate sits between <b>' + pctStr(o.blended_ci[0]) + '</b> and <b>' + pctStr(o.blended_ci[1]) + '</b>'
+      : (o.message || 'Fill at least one traffic source to see a range.');
+
+    /* wf bar: share of total sessions per source. Shares can never overrun
+       the total, so there is no shortfall case here. */
+    var scale = hasBlend ? totalSessions : 1;
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      var s = i[k + '_sessions'] || 0;
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (s / scale * 100) + '%';
+    });
+    el('wfMark').style.display = 'none';
+    el('wfShort').style.display = 'none';
+    el('wfScale').textContent = 'of ' + count(totalSessions) + ' total sessions';
+
+    var rawCvr = (o.raw && o.raw.cvr_per_source) || o.cvr_per_source;
+    var bestKey = null, worstKey = null;
+    if (includedCount >= 1) {
+      includedKeys.forEach(function(k){
+        if (bestKey === null || rawCvr[k] > rawCvr[bestKey]) { bestKey = k; }
+        if (worstKey === null || rawCvr[k] < rawCvr[worstKey]) { worstKey = k; }
+      });
+    }
+
+    SEGS.forEach(function(k){
+      var cvr = o.cvr_per_source[k];
+      var share = o.session_shares_pct[k];
+      var lowFlag = o.low_order_rows.indexOf(k) !== -1;
+      el('lg_' + k).textContent = cvr === null ? 'not entered' : (pctStr(cvr) + (lowFlag ? ' (thin)' : ''));
+      el('shr_' + k).textContent = (share === undefined || share === null) ? '' : ('(' + pctStr(share) + ' of sessions)');
+      el('lgd_' + k).classList.toggle('is-result', includedCount >= 2 && k === bestKey);
+    });
+
+    /* binding: what the blend is hiding, then the mix shift, then any thin rows */
+    if (includedCount === 0) {
+      el('bindMain').textContent = 'Fill in at least one traffic source above to see what the blend is hiding.';
+      el('bindFix').textContent = '';
+      el('bindDrag').textContent = '';
+    } else if (includedCount === 1) {
+      el('bindMain').innerHTML = 'Only ' + LABELS[bestKey] + ' is filled in, at <b>' + pctStr(o.cvr_per_source[bestKey]) + '</b>.';
+      el('bindFix').textContent = 'Add a second source above to see the gap a blended rate would hide.';
+      el('bindDrag').textContent = '';
+    } else {
+      el('bindMain').innerHTML = LABELS[bestKey] + ' converts at <b>' + pctStr(o.cvr_per_source[bestKey]) +
+        '</b>, ' + ppStr(o.best_minus_blended_pp) + 'pp above the blended rate of ' + pctStr(o.blended_cvr_pct) + '.';
+      el('bindFix').innerHTML = LABELS[worstKey] + ' carries ' + pctStr(o.session_shares_pct[worstKey]) +
+        ' of your sessions at just ' + pctStr(o.cvr_per_source[worstKey]) + ', the weight pulling the blended number toward it.';
+      if (o.mix_shift_pct !== null) {
+        var dir = o.mix_shift_pct < o.blended_cvr_pct ? 'lower' : 'higher';
+        el('bindDrag').innerHTML = 'If paid social sessions grow 20% with every source rate unchanged, the blended rate becomes <b>' +
+          pctStr(o.mix_shift_pct) + '</b>, ' + dir + ' even though nothing on the site changed.';
+      } else {
+        el('bindDrag').textContent = 'Fill in paid social above to see how a 20% growth in its sessions alone would move the blended rate.';
+      }
+    }
+
+    var rep = el('bindRepeat');
+    if (o.low_order_rows.length > 0) {
+      rep.hidden = false;
+      var names = o.low_order_rows.map(function(k){ return LABELS[k]; }).join(' and ');
+      rep.textContent = names + (o.low_order_rows.length > 1 ? ' have' : ' has') +
+        ' fewer than 30 orders, too few to read as a solid rate yet.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread: the 95% Wald band on the blended rate */
+    if (o.blended_ci) {
+      el('scLow').textContent = pctStr(o.blended_ci[0]);
+      el('scMid').textContent = pctStr(o.blended_cvr_pct);
+      el('scHigh').textContent = pctStr(o.blended_ci[1]);
+      el('scLowA').textContent = 'Lower bound of the 95% band';
+      el('scMidA').textContent = count(totalSessions) + ' sessions, ' + count(totalOrders) + ' orders';
+      el('scHighA').textContent = 'Upper bound of the 95% band';
+      el('scenNote').textContent = o.low_order_rows.length > 0
+        ? 'This band covers the blended rate only. One or more sources above are still too thin on orders to trust on their own.'
+        : 'Your real blended rate sits somewhere in this band. The point estimate in the middle is the least useful number on this page, useful mainly as its midpoint.';
+    } else {
+      el('scLow').textContent = '-'; el('scMid').textContent = '-'; el('scHigh').textContent = '-';
+      el('scLowA').textContent = ''; el('scMidA').textContent = ''; el('scHighA').textContent = '';
+      el('scenNote').textContent = o.message || 'Fill at least one traffic source above to see a band.';
+    }
+
+    /* substituted arithmetic, monospace, one line per row */
+    function rateRow(mId, mxId, k){
+      var s = i[k + '_sessions'], ords = i[k + '_orders'];
+      var cvr = o.cvr_per_source[k];
+      if (cvr === null) {
+        el(mId).textContent = 'not entered';
+        el(mxId).innerHTML = '<em>clear or fill in sessions above to include this source</em>';
+        return;
+      }
+      var lowFlag = o.low_order_rows.indexOf(k) !== -1;
+      el(mId).textContent = pctStr(cvr);
+      el(mxId).innerHTML = count(ords === null ? 0 : ords) + ' / ' + count(s) + ' = ' + pctStr(cvr) + '  <em>' +
+        (lowFlag ? ('only ' + count(ords === null ? 0 : ords) + ' orders, too few to read as a solid rate yet') : 'enough orders to read as a stable rate at this sample size') +
+        '</em>';
+    }
+    rateRow('m_ps', 'mx_ps', 'paid_social');
+    rateRow('m_pse', 'mx_pse', 'paid_search');
+    rateRow('m_em', 'mx_em', 'email');
+    rateRow('m_do', 'mx_do', 'direct_organic');
+
+    var sessionTerms = includedKeys.map(function(k){ return count(i[k + '_sessions']); }).join(' + ');
+    var orderTerms = includedKeys.map(function(k){ return count(i[k + '_orders'] === null ? 0 : i[k + '_orders']); }).join(' + ');
+    el('m_total_sessions').textContent = count(totalSessions);
+    el('mx_total_sessions').innerHTML = includedCount > 0
+      ? sessionTerms + ' = ' + count(totalSessions) + '  <em>sources filled in above only</em>'
+      : '<em>no sources filled in yet</em>';
+    el('m_total_orders').textContent = count(totalOrders);
+    el('mx_total_orders').innerHTML = includedCount > 0
+      ? orderTerms + ' = ' + count(totalOrders) + '  <em>same sources, same window</em>'
+      : '<em>no sources filled in yet</em>';
+
+    el('m_blended').textContent = hasBlend ? pctStr(o.blended_cvr_pct) : '-';
+    el('mx_blended').innerHTML = hasBlend
+      ? count(totalOrders) + ' / ' + count(totalSessions) + ' = ' + pctStr(o.blended_cvr_pct) + '  <em>every order filled in, over every session filled in</em>'
+      : '<em>fill at least one traffic source to see this line</em>';
+
+    el('m_spread').textContent = o.spread_pp === null ? '-' : ppStr(o.spread_pp) + 'pp';
+    el('mx_spread').innerHTML = (o.spread_pp === null)
+      ? '<em>add a second source to see the gap blending costs you</em>'
+      : pctStr(o.cvr_per_source[bestKey]) + ' - ' + pctStr(o.cvr_per_source[worstKey]) + ' = ' + ppStr(o.spread_pp) + 'pp' +
+        '  <em>the gap between your best and worst converting source</em>';
+
+    el('m_best').textContent = o.best_minus_blended_pp === null ? '-' : ppStr(o.best_minus_blended_pp) + 'pp';
+    el('mx_best').innerHTML = (o.best_minus_blended_pp === null)
+      ? '<em>add a second source to see this line</em>'
+      : pctStr(o.cvr_per_source[bestKey]) + ' - ' + pctStr(o.blended_cvr_pct) + ' = ' + ppStr(o.best_minus_blended_pp) + 'pp' +
+        '  <em>how much better the top source is than the number you are reporting</em>';
+
+    el('m_mix').textContent = o.mix_shift_pct === null ? '-' : pctStr(o.mix_shift_pct);
+    el('mx_mix').innerHTML = (o.mix_shift_pct === null)
+      ? '<em>fill in paid social sessions above to see this line</em>'
+      : '(' + count(totalOrders) + ' + 0.20 x ' + count(i.paid_social_sessions) + ' x ' + pctStr(o.cvr_per_source.paid_social) +
+        ') / (' + count(totalSessions) + ' + 0.20 x ' + count(i.paid_social_sessions) + ') = ' + pctStr(o.mix_shift_pct) +
+        '  <em>what your blended rate becomes if paid social sessions grow 20% and every rate stays exactly where it is</em>';
+
+    el('m_ci').textContent = o.blended_ci ? (pctStr(o.blended_ci[0]) + ' to ' + pctStr(o.blended_ci[1])) : '-';
+    el('mx_ci').innerHTML = o.blended_ci
+      ? '1.96 x sqrt(' + pctStr(o.blended_cvr_pct) + ' x ' + pctStr(T.roundDp(100 - o.blended_cvr_pct, 2)) + ' / ' + count(totalSessions) +
+        ') = ' + pctStr(o.blended_ci[0]) + ' to ' + pctStr(o.blended_ci[1]) + '  <em>95% Wald interval on the blended rate</em>'
+      : '<em>fill at least one traffic source to see this line</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the four source example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) { s.value = v; }
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var raw = n.value.trim();
+      if (raw === '') { paint(); return; }
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) { n.value = ''; paint(); return; }
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) { return; }
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) { return {}; }
+      return {
+        cvr_per_source: lastOut.cvr_per_source,
+        total_sessions: lastOut.total_sessions,
+        total_orders: lastOut.total_orders,
+        blended_cvr_pct: lastOut.blended_cvr_pct,
+        blended_ci: lastOut.blended_ci,
+        spread_pp: lastOut.spread_pp,
+        best_minus_blended_pp: lastOut.best_minus_blended_pp,
+        session_shares_pct: lastOut.session_shares_pct,
+        mix_shift_pct: lastOut.mix_shift_pct,
+        low_order_rows: lastOut.low_order_rows
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

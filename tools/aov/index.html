@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AOV Calculator: Gross vs Net of Returns | RISE DTC</title>
+<meta name="description" content="Free AOV calculator that splits gross AOV from net AOV after refunds, prices what an AOV lift is really worth once returns touch it, and shows every line of the math." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/aov/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="AOV Calculator: Gross vs Net of Returns" />
+<meta property="og:description" content="The AOV your dashboard shows, the AOV you keep, and what another $10 is really worth once refunds touch it. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/aov/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AOV Calculator: Gross vs Net of Returns" />
+<meta name="twitter:description" content="The AOV your dashboard shows, the AOV you keep, and what another $10 is really worth. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-aov";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=aov" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Average Order Value</span>
+      <span class="t2">Tool 09 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What does another $10 of AOV <span class="hl">actually leave you?</span></h1>
+    <p class="lede">Gross AOV gets measured the moment an order is placed. This page runs the same division once the refunds have posted.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">7 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="gross_revenue">Revenue in the period</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="gross_revenue" data-min="0" data-max="100000000" data-step="100" value="340000" /></span>
+          </div>
+          <input type="range" id="gross_revenue_r" min="0" max="100000000" step="100" value="340000" aria-label="Revenue in the period slider" />
+          <p class="f-cap">Gross, before refunds. Your Shopify or GA revenue report prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="orders">Orders in the period</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="orders" data-min="1" data-max="1000000" data-step="1" value="5000" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="orders_r" min="1" max="1000000" step="1" value="5000" aria-label="Orders in the period slider" />
+          <p class="f-cap">Orders placed, including the ones that come back later. Your dashboard counts them the same way.</p>
+        </div>
+
+        <div class="field" id="refundedField">
+          <div class="f-top">
+            <label class="f-label" for="refunded_amount">Refunds in the period <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="refunded_on" checked aria-label="Use a measured refund total" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="refunded_amount" data-min="0" data-max="100000000" data-step="100" value="61200" /></span>
+            </span>
+          </div>
+          <input type="range" id="refunded_amount_r" min="0" max="100000000" step="100" value="61200" aria-label="Refunds in the period slider" />
+          <p class="f-cap">If you have the real number, switch this on and use it, including zero. Switch it off and the return rate below is used instead.</p>
+        </div>
+
+        <div class="field is-off" id="returnRateField">
+          <div class="f-top">
+            <label class="f-label" for="return_rate">Return rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate" data-min="0" data-max="60" data-step="1" value="22" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_r" min="0" max="60" step="1" value="22" aria-label="Return rate slider" />
+          <p class="f-cap">Only used when the refund total above is off. Pull it over a window long enough for the returns to land.</p>
+        </div>
+
+        <div class="field is-off" id="exchangeField">
+          <div class="f-top">
+            <label class="f-label" for="exchange_share_pct">Returns that become exchanges</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="exchange_share_pct" data-min="0" data-max="100" data-step="5" value="30" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="exchange_share_pct_r" min="0" max="100" step="5" value="30" aria-label="Exchange share slider" />
+          <p class="f-cap">An exchange keeps the revenue and swaps the product, so it is not a refund. Only used when the refund total above is off.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="5" data-max="90" data-step="1" value="45" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="5" max="90" step="1" value="45" aria-label="Contribution margin slider" />
+          <p class="f-cap">Revenue left after product cost, shipping, processing and other variable costs, before acquisition spend.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="target_aov_lift">AOV lift you are chasing</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="target_aov_lift" data-min="0" data-max="100" data-step="1" value="10" /></span>
+          </div>
+          <input type="range" id="target_aov_lift_r" min="0" max="100" step="1" value="10" aria-label="AOV lift target slider" />
+          <p class="f-cap">This is the guess. It drives the range below.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">What this AOV lift is worth</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> across the period</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b></span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where an average order goes <span id="wfScale">of $68.00 gross</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="refunded" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="kept" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%;display:none"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The amber band is refunded revenue. The gold band is what you keep.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Refunded revenue</span><span class="vl" id="lg_refunded">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Net AOV, what you keep</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What is driving the gap</span>
+          <p id="bindMain">Refunds are the biggest gap between what your dashboard shows and what you keep.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Your lift target is a number you choose</h2>
+    <p class="sec-sub">The AOV lift above is always a guess. When you have not entered a real refund total, the return rate is a guess too. Here is the same lift priced with both flexed 20% in each direction, so you can see how much of the number rests on the plan.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">Two AOV numbers live on this page: the gross one and the net one. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Gross AOV</span><span class="mv" id="m_gross">$0.00</span><span class="mx" id="mx_gross"></span></div>
+      <div class="mrow"><span class="mn">Refunds this period</span><span class="mv" id="m_refund">$0.00</span><span class="mx" id="mx_refund"></span></div>
+      <div class="mrow"><span class="mn">Net AOV</span><span class="mv" id="m_net">$0.00</span><span class="mx" id="mx_net"></span></div>
+      <div class="mrow"><span class="mn">AOV gap</span><span class="mv" id="m_gap">$0.00</span><span class="mx" id="mx_gap"></span></div>
+      <div class="mrow"><span class="mn">Contribution per order, today</span><span class="mv" id="m_cpo_now">$0.00</span><span class="mx" id="mx_cpo_now"></span></div>
+      <div class="mrow"><span class="mn">Contribution gain per order, from the lift</span><span class="mv" id="m_gain">$0.00</span><span class="mx" id="mx_gain"></span></div>
+      <div class="mrow sum"><span class="mn">Contribution per order, after the lift</span><span class="mv" id="m_cpo_after">$0.00</span></div>
+      <div class="mrow sum final"><span class="mn">Total contribution gain, across the period</span><span class="mv" id="m_total">$0.00</span><span class="mx" id="mx_total"></span></div>
+      <div class="mrow"><span class="mn">What a returns-blind tool would have promised</span><span class="mv" id="m_naive">$0.00</span><span class="mx" id="mx_naive"></span></div>
+      <div class="mrow"><span class="mn">Overstatement</span><span class="mv" id="m_over">$0.00</span><span class="mx" id="mx_over"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Orders counted for gross AOV include orders later returned</b>, the same way your dashboard counts them.</li>
+      <li><b>A refund total you enter is used exactly as entered, including zero.</b> Only a blank field falls back to the return rate estimate.</li>
+      <li><b>An exchange is removed from the return rate before the refund estimate runs</b>, because it keeps the revenue and only swaps the product.</li>
+      <li><b>The incremental dollars from an AOV lift refund at the same rate as the rest of the basket.</b> A $10 add-on is not worth $10 in a basket that refunds 18% of its value.</li>
+      <li><b>Contribution margin is applied to the whole order</b>, not split between the base basket and the marginal item.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where two outside AOV numbers come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">AOV, ecommerce and Shopify</span>
+      <p class="quote">"average order value (AOV) across ecommerce was US$ 101 ... For Shopify the average AOV was US$ 85"</p>
+      <span class="cite">Littledata &middot; 2,800 ecommerce sites benchmarked, 2023 dataset &middot; <a href="https://www.littledata.io/average-website-performance" target="_blank" rel="noopener">littledata.io</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">AOV, UK fashion and accessories</span>
+      <p class="quote">"Average Order Value: &pound;85.58 (June 2026 compared to &pound;87.54 in June 2025, representing a -2.24% change)"</p>
+      <span class="cite">IRP Commerce, UK ecommerce market data &middot; June 2026 vs June 2025 &middot; <a href="https://www.irpcommerce.com/en/gb/ecommercemarketdata.aspx?Market=3" target="_blank" rel="noopener">irpcommerce.com</a></span>
+    </div>
+
+    <p class="srcnote">Both figures describe averages across many stores, not one apparel brand. Littledata blends every vertical on Shopify. IRP Commerce tracks UK fashion and accessories specifically, and its number sits in British pounds rather than dollars. Compare either one to your own gross AOV as a sanity check, not a target. There is no published figure we could verify for the share of returns that become exchanges, or for what a specific AOV lift is worth in contribution dollars after refunds. Those two numbers stay yours to fill in.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>What the dashboard AOV leaves out</h2>
+    <div class="prose">
+      <p>Average order value is one of the simplest numbers in ecommerce and one of the easiest to get wrong. Divide revenue by orders and you have gross AOV, the number every dashboard shows on the home screen. The problem is what "orders" counts. An order placed on Monday and refunded on the following Tuesday still counts as an order in that division, and its full price still counts as revenue. Only when the refund posts does the money actually leave, usually days or weeks after the order shipped and the AOV was already reported. Net AOV is the same order count divided by the revenue that actually stayed, and in apparel the gap between the two is rarely small.</p>
+
+      <p>Apparel is the hard case because sizing gets decided at home, not at checkout. A shopper who orders a small and a medium to keep one has placed one order and bought two units, and the calendar has already turned before the return comes back. Your morning dashboard reports the gross order. Your bank account reports the refund a few weeks later. Both are true, and only one of them pays your bills.</p>
+
+      <h3>Two ways to enter the refund side, one number underneath</h3>
+      <p>This calculator gives you two routes into the same math, and both collapse onto a single refund fraction so they can never quietly disagree. The first route is a real refund total for the period, read straight off Shopify or your payment processor. That number is used exactly as entered, including a real zero. The second route is a return rate and an exchange share, used only when the refund field is left blank. An exchange keeps the revenue and swaps the size or color, so it never becomes a refund dollar, and the exchange share is what carves those orders out of the return rate before the refund estimate runs. Whichever route you take, everything downstream, net AOV, the gap, the contribution math, reads from the same one fraction.</p>
+
+      <h3>Where the $10 goes before it reaches contribution</h3>
+      <p>Most AOV projections multiply the lift by contribution margin and stop there. Ten dollars at 45% margin reads as four dollars and fifty cents of extra profit, and that is the number a returns-blind spreadsheet will show you. It is wrong for the same reason gross AOV is wrong: the extra dollars sit inside the same basket as the rest of the order, and they refund at the same rate. If eighteen percent of the basket comes back, eighteen percent of the extra ten dollars comes back with it. What is left, after both the margin and the refund rate have had their say, is the real number this page calls the contribution gain per order. Multiply it across every order in the period and you get the total contribution gain, which is what the lift is actually worth to the business rather than what it looks like on a slide.</p>
+
+      <h3>Reading the overstatement line</h3>
+      <p>The math card also prints what a returns-blind tool would have promised for the same lift, and the difference between that number and the real one is labeled overstatement. Overstatement is the exact share of the projected gain that refunds will take back before it reaches a bank account, and it grows or shrinks with the same return rate that drives the rest of this page. At the example loaded into the fields above, refunds run $61,200 against $340,000 of gross revenue, so a returns-blind projection of $22,500 in extra contribution becomes $18,450, and the $4,050 difference is the overstatement line. Drop the refund share and that line shrinks toward nothing, which makes a naive projection close enough to work from. Push the refund share up and the line starts to rival the real gain, which is the clearest possible sign that any AOV plan built on gross numbers needs a returns adjustment before anyone signs off on the ad spend behind it.</p>
+
+      <h3>Why contribution per order is the number to watch</h3>
+      <p>AOV on its own does not pay for anything. Contribution per order does, and it is what is left after the product, the shipping, the processing and the other variable costs, before you pay to acquire the customer. This page prices the lift on contribution because that is the number that funds acquisition spend, repeat purchase economics and everything else downstream. The extra dollars a lift buys you, net of refunds, are also the extra room you can spend chasing the customer who placed that order, which is why the same figure doubles as acquisition headroom in the panel above. Chasing AOV on its own can hand you a bigger dashboard number while a return-heavy basket leaves the bank balance where it was. Pricing the lift on contribution keeps the return rate inside the plan instead of leaving it as a surprise at month end.</p>
+
+      <h3>What actually moves this number</h3>
+      <p>Three dials move the verdict on this page. The return rate, because every point of it eats into the lift before it ever reaches contribution. The exchange share, because it is the one lever that recovers revenue without giving up a sale. And the lift target itself, which is the only number here that is entirely a plan rather than a measurement. Run the same lift at your real return rate and again five points lower, and compare the gap in total contribution gain against what a size guide or a fit page might realistically move. On an apparel order book, closing the return rate is usually worth more than chasing the next AOV point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does my dashboard AOV differ from the net AOV on this page?</summary>
+        <div class="fa">Your dashboard divides revenue by orders the moment the order is placed, before any refunds have posted. This page runs the same division after the refunds you enter or estimate have been taken out. Both numbers are correct for what they measure. Gross AOV tells you what customers agreed to pay. Net AOV tells you what actually stayed.</div>
+      </details>
+      <details>
+        <summary>Should I enter a real refund total or use the return rate estimate?</summary>
+        <div class="fa">Use the real total whenever you have it, straight off Shopify or your payment processor, and leave the switch on. Switch it off only when you do not have that number yet, and the return rate plus the exchange share below will estimate it for you. A real number is always tighter than an estimate.</div>
+      </details>
+      <details>
+        <summary>What counts as an exchange rather than a refund?</summary>
+        <div class="fa">An exchange swaps the size, the color or the item and keeps the original sale on the books, so no refund dollars leave and it should not be counted in your return rate the way a full refund is. This calculator removes the exchange share from the return rate before it estimates refund dollars, so a store that handles a lot of exchanges does not get penalized twice.</div>
+      </details>
+      <details>
+        <summary>Why is a $10 AOV lift worth less than $10 in contribution?</summary>
+        <div class="fa">The extra dollars from a lift sit inside the same basket as the rest of the order and refund at the same rate. At a margin of 45% and a refund rate of 18%, ten dollars of lift is worth three dollars and sixty nine cents in contribution, not four dollars and fifty cents. The math card shows both numbers so you can see exactly where the difference goes.</div>
+      </details>
+      <details>
+        <summary>What does the overstatement line mean?</summary>
+        <div class="fa">It is the gap between what a returns-blind projection would have promised for this lift and what the lift is actually worth once refunds are taken out. A small overstatement means your return rate is low enough that a naive projection is close to safe. A large one means any AOV plan built on gross numbers needs the returns adjustment before it goes in front of whoever signs off on the spend behind it.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and refund data, then work the levers that actually move contribution: the return rate, the exchange share and what the next price test really nets you. Book a 30 minute intro call and we will walk your AOV math together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=aov" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Lift, priced</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does my dashboard AOV differ from the net AOV on this page?","acceptedAnswer":{"@type":"Answer","text":"Your dashboard divides revenue by orders the moment the order is placed, before any refunds have posted. This page runs the same division after the refunds you enter or estimate have been taken out. Both numbers are correct for what they measure. Gross AOV tells you what customers agreed to pay. Net AOV tells you what actually stayed."}},
+    {"@type":"Question","name":"Should I enter a real refund total or use the return rate estimate?","acceptedAnswer":{"@type":"Answer","text":"Use the real total whenever you have it, straight off Shopify or your payment processor, and leave the switch on. Switch it off only when you do not have that number yet, and the return rate plus the exchange share below will estimate it for you. A real number is always tighter than an estimate."}},
+    {"@type":"Question","name":"What counts as an exchange rather than a refund?","acceptedAnswer":{"@type":"Answer","text":"An exchange swaps the size, the color or the item and keeps the original sale on the books, so no refund dollars leave and it should not be counted in your return rate the way a full refund is. This calculator removes the exchange share from the return rate before it estimates refund dollars, so a store that handles a lot of exchanges does not get penalized twice."}},
+    {"@type":"Question","name":"Why is a $10 AOV lift worth less than $10 in contribution?","acceptedAnswer":{"@type":"Answer","text":"The extra dollars from a lift sit inside the same basket as the rest of the order and refund at the same rate. At a margin of 45% and a refund rate of 18%, ten dollars of lift is worth three dollars and sixty nine cents in contribution, not four dollars and fifty cents. The math card shows both numbers so you can see exactly where the difference goes."}},
+    {"@type":"Question","name":"What does the overstatement line mean?","acceptedAnswer":{"@type":"Answer","text":"It is the gap between what a returns-blind projection would have promised for this lift and what the lift is actually worth once refunds are taken out. A small overstatement means your return rate is low enough that a naive projection is close to safe. A large one means any AOV plan built on gross numbers needs the returns adjustment before it goes in front of whoever signs off on the spend behind it."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'aov';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, count = T.count;
+
+  var DEFAULTS = {
+    gross_revenue: 340000, orders: 5000, refunded_amount: 61200, return_rate: 22,
+    exchange_share_pct: 30, cm_pct: 45, target_aov_lift: 10, refunded_on: true
+  };
+  var KEYS = ['gross_revenue','orders','refunded_amount','return_rate','exchange_share_pct','cm_pct','target_aov_lift'];
+  var SEGS = ['refunded','kept'];
+  var CROSS = ['free-shipping-threshold','ltv','contribution-margin','pricing-margin','repeat-purchase-rate','cac'];
+  var GLYPH = {
+    'free-shipping-threshold':'SHIP', 'ltv':'LTV', 'contribution-margin':'CM',
+    'pricing-margin':'%', 'repeat-purchase-rate':'RPT', 'cac':'CAC'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.refunded_on = el('refunded_on').checked;
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      gross_revenue: i.gross_revenue,
+      orders: i.orders,
+      refunded_amount: i.refunded_on ? i.refunded_amount : null,
+      return_rate: i.return_rate,
+      exchange_share_pct: i.exchange_share_pct,
+      cm_pct: i.cm_pct,
+      target_aov_lift: i.target_aov_lift
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var m = i.cm_pct / 100;
+    var measured = o.refund_source === 'measured';
+    var gain = o.contribution_gain_per_order;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = money(o.total_contribution_gain) + '<span class="per"> across the period</span>';
+    el('mbarNum').textContent = money(o.total_contribution_gain);
+
+    var gapPct = o.aov_gap_pct === null ? 0 : o.aov_gap_pct;
+    var tierLabel, cls;
+    if (gapPct > 25) { tierLabel = 'NOT YET'; cls = 't-not'; }
+    else if (gapPct > 10) { tierLabel = 'FIX FIRST'; cls = 't-fix'; }
+    else { tierLabel = 'SAFE TO SCALE'; cls = 't-safe'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = tierLabel;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.total_contribution_gain_low) +
+      '</b> and <b>' + money(o.total_contribution_gain_high) + '</b>';
+
+    /* two-band bar: refunded revenue and net AOV always fill the gross
+       order exactly, so there is never an overrun to draw. */
+    var grossAov = o.gross_aov || 0;
+    var netAov = o.net_aov === null ? 0 : o.net_aov;
+    var gapDollars = o.aov_gap === null ? 0 : o.aov_gap;
+    var scale = grossAov > 0 ? grossAov : 1;
+
+    var vals = { refunded: gapDollars, kept: netAov };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    el('wfScale').textContent = 'of ' + money(grossAov) + ' gross';
+
+    el('lg_refunded').textContent = money(gapDollars);
+    el('lg_result').textContent   = money(netAov);
+
+    /* what is driving the gap */
+    if (i.target_aov_lift <= 0) {
+      el('bindMain').innerHTML = 'Set an AOV lift above zero to see what it is worth. Right now there is nothing to price.';
+      el('bindFix').textContent = '';
+      el('bindDrag').textContent = '';
+    } else {
+      el('bindMain').innerHTML = 'Refunds take <b>' + pct(gapPct) + '</b> of gross AOV, a gap of <b>' +
+        money(gapDollars) + '</b> per order between what your dashboard shows and what you keep.';
+      var naivePerOrder = i.orders > 0 ? o.naive_total_contribution_gain / i.orders : 0;
+      el('bindFix').textContent = 'This lift is worth ' + money(gain) + ' per order after refunds, not the ' +
+        money(naivePerOrder) + ' a returns-blind number would show.';
+      el('bindDrag').textContent = 'It also buys ' + money(o.extra_cac_headroom_per_order) +
+        ' of extra room to spend acquiring the customer who placed the order, before margin drops below where it sits today.';
+    }
+
+    var rep = el('bindRepeat');
+    if (!measured) {
+      rep.hidden = false;
+      rep.textContent = 'Refunds above are estimated from a ' + pct(i.return_rate) + ' return rate and a ' +
+        pct(i.exchange_share_pct) + ' exchange share, not measured. Enter a real refund total for a tighter number.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread */
+    el('scLow').textContent  = money(o.total_contribution_gain_low);
+    el('scMid').textContent  = money(o.total_contribution_gain_mid);
+    el('scHigh').textContent = money(o.total_contribution_gain_high);
+    el('scLow').classList.toggle('neg',  o.total_contribution_gain_low  < 0);
+    el('scMid').classList.toggle('neg',  o.total_contribution_gain_mid  < 0);
+    el('scHigh').classList.toggle('neg', o.total_contribution_gain_high < 0);
+
+    var liftLow = i.target_aov_lift * 0.8, liftHigh = i.target_aov_lift * 1.2;
+    var rateUpV = Math.min(100, i.return_rate * 1.2), rateDownV = i.return_rate * 0.8;
+    if (measured) {
+      el('scLowA').textContent  = 'Lift ' + money(liftLow) + ', refunds measured at ' + money(o.refund_dollars);
+      el('scMidA').textContent  = 'Lift ' + money(i.target_aov_lift) + ', refunds measured at ' + money(o.refund_dollars);
+      el('scHighA').textContent = 'Lift ' + money(liftHigh) + ', refunds measured at ' + money(o.refund_dollars);
+      el('scenNote').textContent = i.target_aov_lift <= 0
+        ? 'Set an AOV lift target above to see what it is worth.'
+        : 'Refunds here are a real number, so this spread flexes only the lift you are chasing.';
+    } else {
+      el('scLowA').textContent  = 'Lift ' + money(liftLow) + ', return rate ' + pct(rateUpV);
+      el('scMidA').textContent  = 'Lift ' + money(i.target_aov_lift) + ', return rate ' + pct(i.return_rate);
+      el('scHighA').textContent = 'Lift ' + money(liftHigh) + ', return rate ' + pct(rateDownV);
+      el('scenNote').textContent = i.target_aov_lift <= 0
+        ? 'Set an AOV lift target above to see what it is worth.'
+        : 'Return rate is a guess here too, so the spread flexes both the lift and the return rate in opposite directions. Pull your real refund total from Shopify to close the gap.';
+    }
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_gross').textContent = o.gross_aov === null ? '$0.00' : money(o.gross_aov);
+    el('mx_gross').innerHTML  = money(i.gross_revenue) + ' / ' + count(i.orders) + ' orders = ' +
+      (o.gross_aov === null ? '$0.00' : money(o.gross_aov)) + '  <em>what your dashboard shows</em>';
+
+    el('m_refund').textContent = money(o.refund_dollars);
+    if (measured) {
+      el('mx_refund').innerHTML = money(i.refunded_amount) + ' entered directly' +
+        (o.data_error_flag ? ', capped at ' + money(o.refund_dollars) + ' since refunds cannot exceed revenue' : '') +
+        '  <em>a real number, not a guess</em>';
+    } else {
+      el('mx_refund').innerHTML = pct(i.return_rate) + ' x (1 - ' + pct(i.exchange_share_pct) + ') x ' +
+        money(i.gross_revenue) + ' = ' + money(o.refund_dollars) + '  <em>derived from return rate and exchange share</em>';
+    }
+
+    el('m_net').textContent = o.net_aov === null ? '$0.00' : money(o.net_aov);
+    el('mx_net').innerHTML  = (o.gross_aov === null ? '$0.00' : money(o.gross_aov)) + ' x (1 - ' + pct(o.refund_fraction * 100) + ') = ' +
+      (o.net_aov === null ? '$0.00' : money(o.net_aov)) + '  <em>what you keep, per order</em>';
+
+    el('m_gap').textContent = (o.aov_gap === null ? '$0.00' : money(o.aov_gap) + ' · ' + pct(o.aov_gap_pct));
+    el('mx_gap').innerHTML  = (o.gross_aov === null ? '$0.00' : money(o.gross_aov)) + ' - ' + (o.net_aov === null ? '$0.00' : money(o.net_aov)) + ' = ' +
+      (o.aov_gap === null ? '$0.00' : money(o.aov_gap)) + '  <em>the number your dashboard hides</em>';
+
+    el('m_cpo_now').textContent = o.contribution_per_order_now === null ? '$0.00' : money(o.contribution_per_order_now);
+    el('mx_cpo_now').innerHTML  = (o.net_aov === null ? '$0.00' : money(o.net_aov)) + ' x ' + pct(i.cm_pct) + ' = ' +
+      (o.contribution_per_order_now === null ? '$0.00' : money(o.contribution_per_order_now)) + '  <em>margin on the AOV you actually keep</em>';
+
+    el('m_gain').textContent = money(gain);
+    el('mx_gain').innerHTML  = money(i.target_aov_lift) + ' x (1 - ' + pct(o.refund_fraction * 100) + ') x ' + pct(i.cm_pct) + ' = ' +
+      money(gain) + '  <em>the added dollars refund at the same rate as the rest of the basket</em>';
+
+    el('m_cpo_after').textContent = o.contribution_per_order_after === null ? '$0.00' : money(o.contribution_per_order_after);
+
+    el('m_total').textContent = money(o.total_contribution_gain);
+    el('mx_total').innerHTML  = money(gain) + ' x ' + count(i.orders) + ' orders = ' + money(o.total_contribution_gain) +
+      '  <em>priced across every order in the period</em>';
+
+    el('m_naive').textContent = money(o.naive_total_contribution_gain);
+    el('mx_naive').innerHTML  = money(i.target_aov_lift) + ' x ' + pct(i.cm_pct) + ' x ' + count(i.orders) + ' orders = ' +
+      money(o.naive_total_contribution_gain) + '  <em>ignores refunds entirely</em>';
+
+    el('m_over').textContent = money(o.overstatement);
+    el('mx_over').innerHTML  = money(o.naive_total_contribution_gain) + ' - ' + money(o.total_contribution_gain) + ' = ' +
+      money(o.overstatement) + '  <em>the gap between the naive number and the real one</em>';
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) || i.refunded_on !== DEFAULTS.refunded_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('refunded_on').addEventListener('change', function(){
+    var on = this.checked;
+    el('refundedField').classList.toggle('is-off', !on);
+    el('returnRateField').classList.toggle('is-off', on);
+    el('exchangeField').classList.toggle('is-off', on);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    el('refunded_on').checked = DEFAULTS.refunded_on;
+    el('refundedField').classList.toggle('is-off', !DEFAULTS.refunded_on);
+    el('returnRateField').classList.toggle('is-off', DEFAULTS.refunded_on);
+    el('exchangeField').classList.toggle('is-off', DEFAULTS.refunded_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        gross_aov: lastOut.gross_aov === null ? null : T.round2(lastOut.gross_aov),
+        net_aov: lastOut.net_aov === null ? null : T.round2(lastOut.net_aov),
+        aov_gap: lastOut.aov_gap === null ? null : T.round2(lastOut.aov_gap),
+        aov_gap_pct: lastOut.aov_gap_pct === null ? null : T.round2(lastOut.aov_gap_pct),
+        total_contribution_gain: T.round2(lastOut.total_contribution_gain),
+        total_contribution_gain_low: T.round2(lastOut.total_contribution_gain_low),
+        total_contribution_gain_high: T.round2(lastOut.total_contribution_gain_high),
+        overstatement: T.round2(lastOut.overstatement),
+        refund_source: lastOut.refund_source
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CPM Calculator: Cost Per 1,000 Impressions | RISE DTC</title>
+<meta name="description" content="Free CPM calculator. Convert spend, impressions and CPM in either direction, then switch to affordable CPM mode to see the highest CPM your own funnel and return rate can carry, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/cpm-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="CPM Calculator: Cost Per 1,000 Impressions" />
+<meta property="og:description" content="Spend, impressions and CPM converted in either direction, plus the highest CPM your funnel can afford once returns are counted. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/cpm-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CPM Calculator: Cost Per 1,000 Impressions" />
+<meta name="twitter:description" content="Spend, impressions and CPM converted in either direction, plus the highest CPM your funnel can afford after returns. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-cpm-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpm-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">CPM and Affordable CPM</span>
+      <span class="t2">Tool 13 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>How much are you really paying <span class="hl">per 1,000 impressions?</span></h1>
+    <p class="lede">Convert spend, impressions and CPM in either direction, then switch modes to see the highest CPM your own funnel and return rate can afford.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">up to 7 dials</span>
+        </div>
+
+        <div class="field" id="modeField">
+          <div class="f-top">
+            <label class="f-label" id="modeLabel">What do you want to work out?</label>
+          </div>
+          <div class="chiprow" id="modeChips" role="group" aria-label="Calculation mode">
+            <button type="button" class="chip" data-mode="cpm_from_spend" aria-pressed="true" style="border:none;cursor:pointer;font:inherit">CPM from spend</button>
+            <button type="button" class="chip ghost" data-mode="spend_from_cpm" aria-pressed="false" style="border:1px solid #e6e6e6;cursor:pointer;font:inherit">Spend from CPM</button>
+            <button type="button" class="chip ghost" data-mode="impressions_from_spend" aria-pressed="false" style="border:1px solid #e6e6e6;cursor:pointer;font:inherit">Impressions from spend</button>
+            <button type="button" class="chip ghost" data-mode="affordable_cpm" aria-pressed="false" style="border:1px solid #e6e6e6;cursor:pointer;font:inherit">Affordable CPM</button>
+          </div>
+          <p class="f-cap" id="modeCap">Pick the direction you need. Affordable CPM runs on your funnel and your return rate instead of a media buy you already made.</p>
+        </div>
+
+        <div class="field" id="field_ad_spend">
+          <div class="f-top">
+            <label class="f-label" for="ad_spend">Ad spend</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="ad_spend" data-min="0" data-max="10000000" data-step="10" value="5000" /></span>
+          </div>
+          <input type="range" id="ad_spend_r" min="0" max="10000000" step="10" value="5000" aria-label="Ad spend slider" />
+          <p class="f-cap">What you spent to buy the impressions.</p>
+        </div>
+
+        <div class="field" id="field_impressions">
+          <div class="f-top">
+            <label class="f-label" for="impressions">Impressions</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="impressions" data-min="0" data-max="1000000000" data-step="1000" value="500000" /></span>
+          </div>
+          <input type="range" id="impressions_r" min="0" max="1000000000" step="1000" value="500000" aria-label="Impressions slider" />
+          <p class="f-cap">The number the platform reported for that spend.</p>
+        </div>
+
+        <div class="field" id="field_cpm" hidden>
+          <div class="f-top">
+            <label class="f-label" for="cpm">CPM</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cpm" data-min="0" data-max="500" data-step="0.1" value="15" /></span>
+          </div>
+          <input type="range" id="cpm_r" min="0" max="500" step="0.1" value="15" aria-label="CPM slider" />
+          <p class="f-cap">Cost per 1,000 impressions, quoted by the platform or the media plan.</p>
+        </div>
+
+        <div class="field" id="field_ctr_pct" hidden>
+          <div class="f-top">
+            <label class="f-label" for="ctr_pct">Click-through rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="ctr_pct" data-min="0" data-max="25" data-step="0.05" value="1.2" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="ctr_pct_r" min="0" max="25" step="0.05" value="1.2" aria-label="Click-through rate slider" />
+          <p class="f-cap">Clicks divided by impressions on the ad itself.</p>
+        </div>
+
+        <div class="field" id="field_cvr_pct" hidden>
+          <div class="f-top">
+            <label class="f-label" for="cvr_pct">Landing page conversion rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cvr_pct" data-min="0" data-max="30" data-step="0.05" value="2.5" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cvr_pct_r" min="0" max="30" step="0.05" value="2.5" aria-label="Landing page conversion rate slider" />
+          <p class="f-cap">Orders divided by clicks once the visitor lands on the site.</p>
+        </div>
+
+        <div class="field" id="field_aov" hidden>
+          <div class="f-top">
+            <label class="f-label" for="aov">Average order value</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="aov" data-min="1" data-max="5000" data-step="1" value="85" /></span>
+          </div>
+          <input type="range" id="aov_r" min="1" max="5000" step="1" value="85" aria-label="Average order value slider" />
+          <p class="f-cap">Gross, before refunds. Your Shopify overview prints it.</p>
+        </div>
+
+        <div class="field" id="field_cm_pct" hidden>
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin before returns</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="0" data-max="100" data-step="0.5" value="55" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="0" max="100" step="0.5" value="55" aria-label="Contribution margin slider" />
+          <p class="f-cap">Share of the order price left after product cost, shipping and processing, before any order comes back.</p>
+        </div>
+
+        <div class="field" id="field_return_rate_pct" hidden>
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return and exchange rate slider" />
+          <p class="f-cap">Share of orders returned or exchanged. Published apparel figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field is-off" id="field_return_cost_pct" hidden>
+          <div class="f-top">
+            <label class="f-label" for="return_cost_pct">Net cost of a returned order <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="return_cost_on" checked aria-label="Count the net cost of a returned order" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_pct" data-min="0" data-max="50" data-step="0.5" value="12" /><span class="u">%</span></span>
+            </span>
+          </div>
+          <input type="range" id="return_cost_pct_r" min="0" max="50" step="0.5" value="12" aria-label="Net cost of a returned order slider" />
+          <p class="f-cap">Label, inspection and markdown on a returned order, as a share of AOV. Left off, the calculator treats it as zero and flags that on the page.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label" id="vLabel">Cost per 1,000 impressions</p>
+        <p class="bignum" id="bigNum">$0.00</p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Enter a spend and an impressions figure above.</span>
+        </div>
+
+        <div class="wf" id="wfBlock" hidden>
+          <p class="wf-t">Where the ceiling comes from <span id="wfScale">of $0.00 gross</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="lost" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="handling" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the contribution before any order comes back.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Lost to returned orders' contribution</span><span class="vl" id="lg_lost">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Return handling cost</span><span class="vl" id="lg_handling">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Affordable contribution left</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">Biggest single line</span>
+          <p id="bindMain">Enter your numbers to see what drives the ceiling.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2 id="scenH2">Two of those inputs are a guess</h2>
+    <p class="sec-sub" id="scenSub">Click-through rate and landing page conversion rate are the two numbers most founders estimate. Here is the same ceiling recomputed with both flexed 20% in each direction, so you can see how much of the answer rests on the estimate.</p>
+    <div class="scen" data-gated id="scenGrid">
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2 id="mathH2">Every line, with your numbers written into it</h2>
+    <p class="sec-sub" id="mathSub">These rows update as you move the dials above or switch modes.</p>
+
+    <div class="mathcard" data-gated id="mathCard">
+      <div id="mathRows"></div>
+    </div>
+
+    <ul class="assume" id="assumeList">
+      <li><b>CPM, spend and impressions convert one way, exactly.</b> Neither conversion mode carries a returns assumption, because neither one makes a profit claim.</li>
+      <li><b>Affordable CPM is a bid ceiling.</b> It uses your contribution margin and your return rate to say what one impression can be worth, nothing more.</li>
+      <li><b>Impressions to clicks to orders is a clean multiplicative funnel</b> with no view-through credit added on top.</li>
+      <li><b>The click-through rate and the conversion rate are the two guessed inputs</b> in affordable CPM mode. Because the ceiling is linear in both, flexing each 20% gives an exact low and high, not a simulation.</li>
+      <li><b>Break-even means the impression cost exactly equals the contribution it produces.</b> It leaves nothing over for overhead.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What CPM actually runs at</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Meta CPM, ecommerce median</span>
+      <p class="quote">"CPM: $14.19 (median, all industries, Facebook/Meta ecommerce ads)"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025, nearly 35,000 brands &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Meta CPM, the yearly trend</span>
+      <p class="quote">"Every single industry saw CPM increase year-over-year; platform-wide CPM increase of roughly +20% in 2025"</p>
+      <span class="cite">Triple Whale &middot; full-year 2025 vs full-year 2024 &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">TikTok CPM, ecommerce median</span>
+      <p class="quote">"TikTok ecommerce overall median (2025): CPM $13.26, CPA $32.74, CTR 1.77%, CVR 2.01%, ROAS 2.21"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 &middot; <a href="https://www.triplewhale.com/blog/tiktok-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">TikTok CPM, apparel and accessories</span>
+      <p class="quote">"Apparel & Accessories (TikTok): CPA $21.85, CPM $4.24, CTR 0.69%, CVR 2.37%, ROAS 2.49, AOV $68.40"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 &middot; <a href="https://www.triplewhale.com/blog/tiktok-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <p class="srcnote">The apparel row on TikTok sits far below TikTok's own platform-wide median, which is a real gap in the panel behind that report rather than a typo. Neither publisher breaks Meta CPM out by apparel specifically, which is why the Meta rows above stay at the all-industry level.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why a CPM number alone never tells you if an order is profitable</h2>
+    <div class="prose">
+      <p>CPM measures one thing: what it costs to put an ad in front of 1,000 people. It says nothing about how many of those people click, how many of the clicks turn into an order, what the order is worth, or how many of those orders come back. Two brands can pay exactly the median CPM quoted in the panel above, Triple Whale's 2025 figure of $14.19, and land in completely different places, because the funnel underneath it, and the return rate sitting inside that funnel, are doing all the real work. That gap is why this page ships in two halves. The first three modes are pure conversion: spend, impressions and CPM, moved between each other with no assumption attached. The fourth mode, affordable CPM, is the one that turns a funnel and a return rate into a ceiling you can actually bid against.</p>
+
+      <p>The three conversion modes exist because the same three numbers get reported in three different shapes depending on where you are reading them. A platform dashboard reports spend and impressions and makes you divide. A media plan quotes a CPM and a budget and makes you multiply. A reach forecast quotes a CPM and a budget and asks how many impressions that buys. None of those three questions carries a profit claim, so none of them touch returns, contribution margin or anything about the product. They are unit conversions, and the calculator treats them as exactly that, both directions checked against each other so a typo shows up as a failed round trip rather than a silent error.</p>
+
+      <h3>Where returns actually enter the arithmetic</h3>
+      <p>Returns only show up once you ask a money question, and the only money question this page asks is affordable CPM. The logic runs backward from the order. Start with the contribution margin the order carries before anything comes back, the share of the order price left after product cost, shipping and processing. Multiply that by the share of orders that stick, one minus the return rate. Then subtract the net cost of the orders that do not stick, the label, the inspection and the markdown, as a share of AOV, multiplied by the return rate again. What is left is the returns-adjusted contribution one order actually delivers. Multiply that by the number of orders 1,000 impressions produce, impressions to clicks by the click-through rate, clicks to orders by the landing page conversion rate, and the result is the highest CPM that funnel can pay and still break even. Pay more than that number and the impression costs more than the order is worth before you have covered a single dollar of overhead.</p>
+
+      <p>Apparel is the case where this matters most, because apparel return rates run well above the cross-category average and the two ad platforms most apparel brands run on price impressions very differently. TikTok's platform-wide median CPM sits close to Meta's, but the apparel-specific row on TikTok drops to a fraction of that median, reflecting a channel where apparel competition for attention is lighter than the platform average. Meanwhile Triple Whale's full-year 2025 read, quoted in the panel above, has Meta CPM climbing across every industry it tracks, roughly 20% year over year. Put those two facts together and a brand comparing its Meta bid against its TikTok bid on CPM alone is comparing a number that keeps rising against a number that reflects a comparatively uncrowded niche, neither of which says anything about whether either channel's orders are worth what they cost once the return rate is counted.</p>
+
+      <h3>The two guessed inputs, and why the spread is linear</h3>
+      <p>Affordable CPM asks for two numbers nobody has measured yet for a new placement: the click-through rate and the landing page conversion rate. Both get flexed 20% worse and 20% better, which multiplies out to 0.64 and 1.44 of the midpoint rather than the more familiar looking 0.8 and 1.2, because the ceiling is the product of both rates together. That multiplication is exact, not simulated, so the pessimistic and optimistic figures printed on this page are the real bounds of what a 20% miss on either rate does to the number, not an approximation.</p>
+
+      <h3>What the ceiling does and does not tell you</h3>
+      <p>When the ceiling comes back at zero, the message on the page says so plainly: the order loses money before the impression is even paid for, and no CPM is affordable until the contribution margin, the return rate or the return cost changes. When the ceiling comes back positive, treat it as the most a specific placement can cost before it stops paying for itself, rather than a target to spend down to. A campaign bidding well under its own ceiling still has to clear a minimum reach to be worth running at all, and this calculator has nothing to say about that. What it does say, reliably, is the one number every CPM comparison across channels is missing: the price a channel actually has to beat, given your product's margin and your customers' habit of sending things back.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why doesn't the CPM I'm quoted tell me if the campaign is profitable?</summary>
+        <div class="fa">CPM only measures what it costs to reach 1,000 people. It has no view of your click-through rate, your conversion rate, your order value or your return rate, and any of those four can turn an identical CPM into a profitable campaign for one brand and a losing one for another. Affordable CPM mode exists to close that gap by running your own funnel and your own return rate backward into a bid ceiling.</div>
+      </details>
+      <details>
+        <summary>What does "affordable CPM" actually mean?</summary>
+        <div class="fa">It is the highest price you can pay per 1,000 impressions and still exactly break even, once the impression turns into a click, the click turns into an order, and the return rate and return cost take their share of that order's contribution margin. Bid below it and the campaign has room to also cover overhead. Bid above it and the media cost alone outweighs what the order was worth.</div>
+      </details>
+      <details>
+        <summary>Why is TikTok's apparel CPM so much lower than Meta's?</summary>
+        <div class="fa">Published 2025 data puts TikTok's apparel and accessories CPM well below TikTok's own platform-wide median, while Meta does not break its CPM out by apparel at all in the same report. It reflects how crowded a channel is for a given vertical at a given time, not a permanent rule, and it is a reason to check affordable CPM per channel rather than assume one platform is cheaper across the board.</div>
+      </details>
+      <details>
+        <summary>Why do CPMs keep going up?</summary>
+        <div class="fa">Triple Whale's full-year 2025 benchmark, quoted with its link in the published figures panel on this page, shows Meta CPM rising across every industry it tracks, roughly 20% year over year. That trend is exactly why a fixed affordable CPM ceiling is worth checking on a schedule rather than once: the funnel that clears it this quarter may not clear it once the median CPM has climbed again.</div>
+      </details>
+      <details>
+        <summary>My click-through rate and conversion rate are both guesses for a new placement. Does that break the ceiling?</summary>
+        <div class="fa">It widens it, which is why the spread is printed above. Both rates are flexed 20% worse and 20% better, which multiplies to a 0.64x to 1.44x band around the midpoint because the ceiling is the product of both. If the whole band sits comfortably above zero, a 20% miss on either guess still leaves room. If it dips toward zero, get a real click-through rate and conversion rate from a small test before committing real budget.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the affordable CPM ceiling, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want the ceiling run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and ad account data, then work the lines that move it: the return rate, the contribution margin and what a channel actually charges per 1,000 impressions. Book a 30 minute intro call and we will walk your ad economics together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpm-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml" id="mbarLabel">CPM</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why doesn't the CPM I'm quoted tell me if the campaign is profitable?","acceptedAnswer":{"@type":"Answer","text":"CPM only measures what it costs to reach 1,000 people. It has no view of your click-through rate, your conversion rate, your order value or your return rate, and any of those four can turn an identical CPM into a profitable campaign for one brand and a losing one for another. Affordable CPM mode exists to close that gap by running your own funnel and your own return rate backward into a bid ceiling."}},
+    {"@type":"Question","name":"What does \"affordable CPM\" actually mean?","acceptedAnswer":{"@type":"Answer","text":"It is the highest price you can pay per 1,000 impressions and still exactly break even, once the impression turns into a click, the click turns into an order, and the return rate and return cost take their share of that order's contribution margin. Bid below it and the campaign has room to also cover overhead. Bid above it and the media cost alone outweighs what the order was worth."}},
+    {"@type":"Question","name":"Why is TikTok's apparel CPM so much lower than Meta's?","acceptedAnswer":{"@type":"Answer","text":"Published 2025 data puts TikTok's apparel and accessories CPM well below TikTok's own platform-wide median, while Meta does not break its CPM out by apparel at all in the same report. It reflects how crowded a channel is for a given vertical at a given time, not a permanent rule, and it is a reason to check affordable CPM per channel rather than assume one platform is cheaper across the board."}},
+    {"@type":"Question","name":"Why do CPMs keep going up?","acceptedAnswer":{"@type":"Answer","text":"Triple Whale's full-year 2025 benchmark, quoted with its link in the published figures panel on this page, shows Meta CPM rising across every industry it tracks, roughly 20% year over year. That trend is exactly why a fixed affordable CPM ceiling is worth checking on a schedule rather than once: the funnel that clears it this quarter may not clear it once the median CPM has climbed again."}},
+    {"@type":"Question","name":"My click-through rate and conversion rate are both guesses for a new placement. Does that break the ceiling?","acceptedAnswer":{"@type":"Answer","text":"It widens it, which is why the spread is printed above. Both rates are flexed 20% worse and 20% better, which multiplies to a 0.64x to 1.44x band around the midpoint because the ceiling is the product of both. If the whole band sits comfortably above zero, a 20% miss on either guess still leaves room. If it dips toward zero, get a real click-through rate and conversion rate from a small test before committing real budget."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'cpm-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent, count = T.count;
+
+  var DEFAULTS = {
+    mode: 'cpm_from_spend', ad_spend: 5000, impressions: 500000, cpm: 15,
+    ctr_pct: 1.2, cvr_pct: 2.5, aov: 85, cm_pct: 55, return_rate_pct: 25,
+    return_cost_pct: 12, return_cost_on: true
+  };
+  var NUM_KEYS = ['ad_spend', 'impressions', 'cpm', 'ctr_pct', 'cvr_pct', 'aov', 'cm_pct', 'return_rate_pct', 'return_cost_pct'];
+  var MODE_FIELDS = {
+    cpm_from_spend: ['ad_spend', 'impressions'],
+    spend_from_cpm: ['impressions', 'cpm'],
+    impressions_from_spend: ['ad_spend', 'cpm'],
+    affordable_cpm: ['ctr_pct', 'cvr_pct', 'aov', 'cm_pct', 'return_rate_pct', 'return_cost_pct']
+  };
+  var MODE_LABELS = {
+    cpm_from_spend: 'CPM from spend',
+    spend_from_cpm: 'Spend from CPM',
+    impressions_from_spend: 'Impressions from spend',
+    affordable_cpm: 'Affordable CPM'
+  };
+  var CROSS = ['mer-calculator', 'cpc-calculator', 'cpa-calculator', 'ctr-calculator', 'conversion-rate-calculator', 'break-even-roas'];
+  var GLYPH = {
+    'mer-calculator': 'MER', 'cpc-calculator': 'CPC', 'cpa-calculator': 'CPA',
+    'ctr-calculator': 'CTR', 'conversion-rate-calculator': 'CVR', 'break-even-roas': 'ROAS'
+  };
+
+  var mode = DEFAULTS.mode;
+
+  function el(id) { return document.getElementById(id); }
+  function n2(x) { return T.roundDp(x, 2).toFixed(2); }
+  function n4(x) { return T.roundDp(x, 4).toFixed(4); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k) {
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs() {
+    var i = { mode: mode };
+    NUM_KEYS.forEach(function (k) {
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.return_cost_on = el('return_cost_on').checked;
+    return i;
+  }
+  function setField(k, v) {
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i) {
+    return {
+      mode: i.mode,
+      ad_spend: i.ad_spend,
+      impressions: i.impressions,
+      cpm: i.cpm,
+      ctr_pct: i.ctr_pct,
+      cvr_pct: i.cvr_pct,
+      aov: i.aov,
+      cm_pct: i.cm_pct,
+      return_rate_pct: i.return_rate_pct,
+      return_cost_pct: i.return_cost_on ? i.return_cost_pct : 0
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* -------------------------------------------------------- mode switch */
+  function applyModeVisibility() {
+    var shown = MODE_FIELDS[mode];
+    NUM_KEYS.forEach(function (k) {
+      if (k === 'return_cost_pct') return; // wrapper toggled below, field id differs
+      el('field_' + k).hidden = shown.indexOf(k) === -1;
+    });
+    el('field_return_cost_pct').hidden = shown.indexOf('return_cost_pct') === -1;
+
+    var chips = el('modeChips').querySelectorAll('button[data-mode]');
+    Array.prototype.forEach.call(chips, function (b) {
+      var active = b.getAttribute('data-mode') === mode;
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      b.className = active ? 'chip' : 'chip ghost';
+      b.style.border = active ? 'none' : '1px solid #e6e6e6';
+    });
+
+    var isAfford = mode === 'affordable_cpm';
+    el('scenH2').textContent = isAfford ? 'Two of those inputs are a guess' : 'Nothing here is a guess';
+    el('scenSub').textContent = isAfford
+      ? 'Click-through rate and landing page conversion rate are the two numbers most founders estimate. Here is the same ceiling recomputed with both flexed 20% in each direction, so you can see how much of the answer rests on the estimate.'
+      : 'Spend, impressions and CPM are three measured facts converted between each other. Switch to affordable CPM mode above to see the one number on this page that involves a guess.';
+    el('scenGrid').hidden = !isAfford;
+
+    el('mathH2').textContent = isAfford
+      ? 'Every line, with your numbers written into it'
+      : 'Every line of the conversion, with your numbers written into it';
+    el('mathSub').textContent = isAfford
+      ? 'These rows update as you move the dials above. The unit of analysis is one order placed.'
+      : 'These rows update as you move the dials above. Neither direction of this conversion carries a returns assumption.';
+  }
+
+  MODE_LABELS && Object.keys(MODE_LABELS); // keep label map referenced
+
+  /* ------------------------------------------------------------- render */
+  function paint() {
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var rows = [];
+
+    if (mode === 'cpm_from_spend') {
+      el('vLabel').textContent = 'Cost per 1,000 impressions';
+      el('mbarLabel').textContent = 'CPM';
+      if (o.cpm === null) {
+        el('bigNum').innerHTML = money(0);
+        el('mbarNum').textContent = money(0);
+        el('rangeLine').textContent = o.message || 'Enter impressions above 0.';
+        setTier('t-not', 'ENTER A VALUE');
+      } else {
+        el('bigNum').innerHTML = money(o.cpm) + '<span class="per"> CPM</span>';
+        el('mbarNum').textContent = money(o.cpm);
+        el('rangeLine').innerHTML = 'Round trip: <b>' + money(o.roundtrip_spend_from_cpm) + '</b> at that CPM buys the same impressions back';
+        setTier('t-safe', 'CONVERTED');
+      }
+      el('bindMain').innerHTML = money(i.ad_spend) + ' across <b>' + count(i.impressions) + '</b> impressions works out to <b>' + (o.cpm === null ? 'no CPM' : money(o.cpm) + ' CPM') + '</b>.';
+      el('bindFix').textContent = 'This is a straight conversion. It carries no assumption about clicks, orders or returns.';
+      el('bindDrag').textContent = '';
+      rows = [
+        { mn: 'Ad spend', mv: money(i.ad_spend), mx: 'entered above', em: 'what you spent to buy the impressions' },
+        { mn: 'Impressions', mv: count(i.impressions), mx: 'entered above', em: 'what the platform reported for that spend' },
+        { mn: 'Cost per 1,000 impressions', mv: (o.cpm === null ? 'n/a' : money(o.cpm)), mx: (o.cpm === null ? (o.message || '') : (n2(i.ad_spend) + ' / ' + count(i.impressions) + ' x 1000 = ' + money(o.cpm))), em: 'spend divided by impressions, scaled to a thousand', sum: true, final: true },
+        { mn: 'Round trip check', mv: (o.roundtrip_spend_from_cpm === null ? 'n/a' : money(o.roundtrip_spend_from_cpm)), mx: (o.cpm === null ? '' : (n2(o.cpm) + ' x ' + count(i.impressions) + ' / 1000 = ' + money(o.roundtrip_spend_from_cpm))), em: 'confirms the CPM reproduces the spend you entered' }
+      ];
+    } else if (mode === 'spend_from_cpm') {
+      el('vLabel').textContent = 'Ad spend required';
+      el('mbarLabel').textContent = 'Spend';
+      el('bigNum').innerHTML = money(o.ad_spend);
+      el('mbarNum').textContent = money(o.ad_spend);
+      el('rangeLine').innerHTML = 'Round trip: those numbers imply a CPM of <b>' + money(o.roundtrip_cpm_from_spend) + '</b>';
+      setTier('t-safe', 'CONVERTED');
+      el('bindMain').innerHTML = money(i.cpm) + ' CPM across <b>' + count(i.impressions) + '</b> impressions costs <b>' + money(o.ad_spend) + '</b>.';
+      el('bindFix').textContent = 'This is a straight conversion. It carries no assumption about clicks, orders or returns.';
+      el('bindDrag').textContent = '';
+      rows = [
+        { mn: 'CPM', mv: money(i.cpm), mx: 'entered above', em: 'the rate quoted by the platform or the media plan' },
+        { mn: 'Impressions', mv: count(i.impressions), mx: 'entered above', em: 'the reach you are pricing out' },
+        { mn: 'Ad spend', mv: money(o.ad_spend), mx: n2(i.cpm) + ' x ' + count(i.impressions) + ' / 1000 = ' + money(o.ad_spend), em: 'CPM times impressions, scaled down from a thousand', sum: true, final: true },
+        { mn: 'Round trip check', mv: money(o.roundtrip_cpm_from_spend), mx: n2(o.ad_spend) + ' / ' + count(i.impressions) + ' x 1000 = ' + money(o.roundtrip_cpm_from_spend), em: 'confirms the spend reproduces the CPM you entered' }
+      ];
+    } else if (mode === 'impressions_from_spend') {
+      el('vLabel').textContent = 'Impressions this budget buys';
+      el('mbarLabel').textContent = 'Impr.';
+      if (o.impressions === null) {
+        el('bigNum').innerHTML = count(0) + '<span class="per"> impressions</span>';
+        el('mbarNum').textContent = count(0);
+        el('rangeLine').textContent = o.message || 'Enter a CPM above 0.';
+        setTier('t-not', 'ENTER A VALUE');
+      } else {
+        el('bigNum').innerHTML = count(o.impressions) + '<span class="per"> impressions</span>';
+        el('mbarNum').textContent = count(o.impressions);
+        el('rangeLine').innerHTML = 'Round trip: that many impressions at this CPM costs <b>' + money(o.roundtrip_spend_from_cpm) + '</b> again';
+        setTier('t-safe', 'CONVERTED');
+      }
+      el('bindMain').innerHTML = money(i.ad_spend) + ' at <b>' + money(i.cpm) + ' CPM</b> buys <b>' + (o.impressions === null ? 'no impressions' : count(o.impressions) + ' impressions') + '</b>.';
+      el('bindFix').textContent = 'This is a straight conversion. It carries no assumption about clicks, orders or returns.';
+      el('bindDrag').textContent = '';
+      rows = [
+        { mn: 'Ad spend', mv: money(i.ad_spend), mx: 'entered above', em: 'the budget you are pricing out' },
+        { mn: 'CPM', mv: money(i.cpm), mx: 'entered above', em: 'the rate quoted by the platform or the media plan' },
+        { mn: 'Impressions', mv: (o.impressions === null ? 'n/a' : count(o.impressions)), mx: (o.impressions === null ? (o.message || '') : (n2(i.ad_spend) + ' / ' + n2(i.cpm) + ' x 1000 = ' + count(o.impressions))), em: 'spend divided by CPM, scaled up to a thousand', sum: true, final: true },
+        { mn: 'Round trip check', mv: (o.roundtrip_spend_from_cpm === null ? 'n/a' : money(o.roundtrip_spend_from_cpm)), mx: (o.impressions === null ? '' : (n2(i.cpm) + ' x ' + count(o.impressions) + ' / 1000 = ' + money(o.roundtrip_spend_from_cpm))), em: 'confirms the impressions reproduce the spend you entered' }
+      ];
+    } else { // affordable_cpm
+      var r = i.return_rate_pct / 100, cm = i.cm_pct / 100;
+      var rc = i.return_cost_on ? i.return_cost_pct / 100 : 0;
+      var ctr = i.ctr_pct / 100, cvr = i.cvr_pct / 100;
+      var contribBefore = i.aov * cm;
+      var lost = i.aov * r * cm;
+      var handling = i.aov * r * rc;
+      var neg = o.raco !== null && o.raco <= 0;
+
+      el('vLabel').textContent = 'Highest CPM you can afford';
+      el('mbarLabel').textContent = 'CPM';
+      el('bigNum').innerHTML = money(o.breakeven_cpm) + '<span class="per"> CPM</span>';
+      el('mbarNum').textContent = money(o.breakeven_cpm);
+
+      if (o.breakeven_cpm_low !== null && o.breakeven_cpm_high !== null) {
+        el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.breakeven_cpm_low) + '</b> and <b>' + money(o.breakeven_cpm_high) + '</b> CPM';
+      } else {
+        el('rangeLine').textContent = o.message || 'No CPM is affordable at these numbers.';
+      }
+      setTier(neg || o.breakeven_cpm === 0 ? 't-not' : 't-safe', neg || o.breakeven_cpm === 0 ? 'NOT YET' : 'CEILING SET');
+
+      /* waterfall: contribution before returns, minus what returns take, leaves the ceiling's raw material */
+      el('wfBlock').hidden = false;
+      el('wfScale').textContent = 'of ' + money(contribBefore) + ' contribution before returns';
+      var scale = neg ? (lost + handling) : contribBefore;
+      if (scale <= 0) scale = 1;
+      var bar = el('wfBar');
+      var vals = { lost: lost, handling: handling, result: neg ? 0 : Math.max(0, contribBefore - lost - handling) };
+      ['lost', 'handling', 'result'].forEach(function (k) {
+        bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+      });
+      var markPct = contribBefore / scale * 100;
+      el('wfMark').style.left = markPct + '%';
+      el('wfMark').style.display = neg ? 'block' : 'none';
+      el('wfShort').style.display = neg ? 'block' : 'none';
+      el('wfShort').style.left = markPct + '%';
+      el('wfMarkCap').textContent = neg
+        ? 'The white line is the contribution before returns. Everything past it is what returns take beyond it.'
+        : 'The gold band on the right is what is left to set the ceiling from.';
+
+      el('lg_lost').textContent = money(lost);
+      el('lg_handling').textContent = money(handling);
+      el('lg_result').textContent = neg ? money(Math.abs(contribBefore - lost - handling)) : money(vals.result);
+      el('lg_result_nm').textContent = neg ? 'Short by' : 'Affordable contribution left';
+
+      var lines = [
+        { k: "Lost to returned orders' contribution", v: lost, fix: 'At a ' + pct(i.return_rate_pct) + ' return rate, ' + money(lost) + ' of contribution walks back out the door on every order placed.' },
+        { k: 'Return handling cost', v: handling, fix: (i.return_cost_on ? ('At ' + pct(i.return_cost_pct) + ' of AOV, processing a return costs ' + money(handling) + ' per order placed.') : 'Return handling cost is switched off, so it is counted as zero here, which likely overstates the ceiling.') }
+      ];
+      lines.sort(function (a, b) { return b.v - a.v; });
+      var top = lines[0];
+      el('bindMain').innerHTML = top.k + ' is the bigger drag on the ceiling at <b>' + money(top.v) + '</b> per order placed.';
+      el('bindFix').textContent = top.fix;
+      el('bindDrag').textContent = 'Returns pull the ceiling down by ' + money(lost + handling) + ' per order placed, from a ' + money(contribBefore) + ' contribution before any of it comes back.';
+
+      rows = [
+        { mn: 'Contribution before returns', mv: money(contribBefore), mx: n2(i.aov) + ' x ' + n2(cm) + ' = ' + money(contribBefore), em: 'AOV times contribution margin, before any order comes back' },
+        { mn: "Lost to returned orders' contribution", mv: money(lost), mx: n2(i.aov) + ' x ' + n2(r) + ' x ' + n2(cm) + ' = ' + money(lost), em: 'contribution given up on the share of orders that come back' },
+        { mn: 'Return handling cost', mv: money(handling), mx: n2(i.aov) + ' x ' + n2(r) + ' x ' + n2(rc) + ' = ' + money(handling), em: 'net cost of processing and marking down the return, as a share of AOV' },
+        { mn: 'Returns-adjusted contribution per order', mv: money(o.raco), mx: '', em: '', sum: true },
+        { mn: 'Orders per 1,000 impressions', mv: n4(o.orders_per_1000_impressions), mx: '1000 x ' + n2(ctr) + ' x ' + n2(cvr) + ' = ' + n4(o.orders_per_1000_impressions), em: 'impressions turn to clicks, clicks turn to orders' },
+        { mn: 'Highest affordable CPM', mv: money(o.breakeven_cpm), mx: (o.breakeven_cpm === 0 ? (o.message || '') : (n4(o.orders_per_1000_impressions) + ' x ' + money(o.raco) + ' = ' + money(o.breakeven_cpm))), em: 'the most this funnel can pay per 1,000 impressions and still break even', sum: true, final: true }
+      ];
+
+      /* scenario spread, exact linear multiples of the ceiling */
+      if (o.breakeven_cpm_low !== null && o.breakeven_cpm_high !== null) {
+        el('scLow').textContent = money(o.breakeven_cpm_low);
+        el('scMid').textContent = money(o.breakeven_cpm);
+        el('scHigh').textContent = money(o.breakeven_cpm_high);
+        el('scLow').classList.remove('neg');
+        el('scMid').classList.remove('neg');
+        el('scHigh').classList.remove('neg');
+        el('scLowA').textContent = 'CTR ' + pct(i.ctr_pct * 0.8, 2) + ', CVR ' + pct(i.cvr_pct * 0.8, 2);
+        el('scMidA').textContent = 'CTR ' + pct(i.ctr_pct, 2) + ', CVR ' + pct(i.cvr_pct, 2);
+        el('scHighA').textContent = 'CTR ' + pct(i.ctr_pct * 1.2, 2) + ', CVR ' + pct(i.cvr_pct * 1.2, 2);
+        el('scenNote').textContent = 'If the whole spread sits comfortably above zero, a 20% miss on either rate still leaves room. If it dips toward zero, pull a real click-through rate and conversion rate before you commit budget.';
+      } else {
+        el('scLow').textContent = 'n/a';
+        el('scMid').textContent = 'n/a';
+        el('scHigh').textContent = 'n/a';
+        el('scLowA').textContent = '';
+        el('scMidA').textContent = '';
+        el('scHighA').textContent = '';
+        el('scenNote').textContent = o.message || 'No CPM is affordable at these numbers, so there is no ceiling left to flex.';
+      }
+    }
+
+    if (mode !== 'affordable_cpm') {
+      el('wfBlock').hidden = true;
+      el('scLow').textContent = 'n/a';
+      el('scMid').textContent = 'n/a';
+      el('scHigh').textContent = 'n/a';
+      el('scLowA').textContent = '';
+      el('scMidA').textContent = '';
+      el('scHighA').textContent = '';
+      el('scenNote').textContent = 'Spend, impressions and CPM are three measured facts. Switch to affordable CPM mode to see the one part of this page that involves a guess.';
+    }
+
+    /* substituted arithmetic rows */
+    var html = '';
+    rows.forEach(function (row) {
+      var cls = 'mrow' + (row.sum ? ' sum' : '') + (row.final ? ' final' : '');
+      html += '<div class="' + cls + '"><span class="mn">' + row.mn + '</span><span class="mv">' + row.mv + '</span>';
+      if (row.mx) {
+        html += '<span class="mx">' + row.mx + (row.em ? '<em>' + row.em + '</em>' : '') + '</span>';
+      }
+      html += '</div>';
+    });
+    el('mathRows').innerHTML = html;
+
+    /* state note */
+    var touched = i.mode !== DEFAULTS.mode || NUM_KEYS.some(function (k) { return i[k] !== DEFAULTS[k]; }) || i.return_cost_on !== DEFAULTS.return_cost_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  function setTier(cls, label) {
+    ['tierChip', 'mbarTier'].forEach(function (id) {
+      var t = el(id);
+      t.className = 'tier ' + cls;
+      t.textContent = label;
+    });
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  NUM_KEYS.forEach(function (k) {
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function () {
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function () {
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function () { n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('return_cost_on').addEventListener('change', function () {
+    el('field_return_cost_pct').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  var modeChips = el('modeChips').querySelectorAll('button[data-mode]');
+  Array.prototype.forEach.call(modeChips, function (b) {
+    b.addEventListener('click', function () {
+      mode = b.getAttribute('data-mode');
+      applyModeVisibility();
+      paint();
+    });
+  });
+
+  el('resetBtn').addEventListener('click', function () {
+    mode = DEFAULTS.mode;
+    NUM_KEYS.forEach(function (k) { setField(k, DEFAULTS[k]); });
+    el('return_cost_on').checked = DEFAULTS.return_cost_on;
+    el('field_return_cost_pct').classList.toggle('is-off', !DEFAULTS.return_cost_on);
+    applyModeVisibility();
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function () {
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function (slug) {
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var qm = q.get('mode');
+    if (qm && MODE_FIELDS.hasOwnProperty(qm)) mode = qm;
+    var pre = T.prefillFromQuery(NUM_KEYS);
+    Object.keys(pre).forEach(function (k) {
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  applyModeVisibility();
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function () { return lastInputs; },
+    getOutputs: function () {
+      if (!lastOut) return {};
+      return {
+        mode: lastOut.mode,
+        cpm: lastOut.cpm,
+        ad_spend: lastOut.ad_spend,
+        impressions: lastOut.impressions,
+        raco: lastOut.raco,
+        orders_per_1000_impressions: lastOut.orders_per_1000_impressions,
+        breakeven_cpm: lastOut.breakeven_cpm,
+        breakeven_cpm_range: lastOut.breakeven_cpm_range
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Markup and Margin Calculator (Returns-Adjusted) | RISE DTC</title>
+<meta name="description" content="Free markup and margin calculator, returns adjusted. Enter landed cost, price, fulfilment cost, return rate and resellable share, and see your markup, gross margin, the margin you actually realize after returns, and the price your target margin needs." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/pricing-margin/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="Markup and Margin Calculator (Returns-Adjusted)" />
+<meta property="og:description" content="Markup, gross margin, and the margin you actually bank after returns, plus what returns add to the price your target margin needs. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/pricing-margin/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Markup and Margin Calculator (Returns-Adjusted)" />
+<meta name="twitter:description" content="Markup, gross margin, and the margin you actually bank after returns, plus what returns add to the price your target margin needs. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-pricing-margin";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Pricing and Margin</span>
+      <span class="t2">Tool 11 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What markup and margin do you <span class="hl">actually keep?</span></h1>
+    <p class="lede">Markup and gross margin look fine on paper. Returns decide what the price actually earns you.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="unit_cost">Landed cost per unit</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="unit_cost" data-min="0.5" data-max="500" data-step="0.5" value="23.8" /></span>
+          </div>
+          <input type="range" id="unit_cost_r" min="0.5" max="500" step="0.5" value="23.8" aria-label="Landed cost per unit slider" />
+          <p class="f-cap">Product cost delivered to you, before you mark it up.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="selling_price">Selling price</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="selling_price" data-min="1" data-max="1000" data-step="1" value="68" /></span>
+          </div>
+          <input type="range" id="selling_price_r" min="1" max="1000" step="1" value="68" aria-label="Selling price slider" />
+          <p class="f-cap">What you charge today, before any discount.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="fulfilment_cost">Fulfilment cost per unit</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="fulfilment_cost" data-min="0" data-max="50" data-step="0.5" value="9.77" /></span>
+          </div>
+          <input type="range" id="fulfilment_cost_r" min="0" max="50" step="0.5" value="9.77" aria-label="Fulfilment cost per unit slider" />
+          <p class="f-cap">Shipping, pick and pack, and payment fees, bundled into one number. Section C only.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate">Return rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate" data-min="0" data-max="60" data-step="1" value="22" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_r" min="0" max="60" step="1" value="22" aria-label="Return rate slider" />
+          <p class="f-cap">Share of units returned. Section C only. The published figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost">Cost to process one return</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost" data-min="0" data-max="30" data-step="0.5" value="6" /></span>
+          </div>
+          <input type="range" id="return_cost_r" min="0" max="30" step="0.5" value="6" aria-label="Return processing cost slider" />
+          <p class="f-cap">Return label plus inspection plus repack, per returned unit.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="resellable_pct">Returns resellable at full price</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="resellable_pct" data-min="0" data-max="100" data-step="5" value="80" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="resellable_pct_r" min="0" max="100" step="5" value="80" aria-label="Resellable share slider" />
+          <p class="f-cap">The rest gets written off, so you carry the product cost twice on those units.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="target_margin_pct">Target margin</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="target_margin_pct" data-min="5" data-max="80" data-step="1" value="40" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="target_margin_pct_r" min="5" max="80" step="1" value="40" aria-label="Target margin slider" />
+          <p class="f-cap">The margin you are pricing toward.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="basis_on">Target margin measured on</label>
+            <span class="toggle-row">
+              <span>Gross</span>
+              <span class="switch"><input data-calc-input type="checkbox" id="basis_on" aria-label="Measure target margin net of returns" checked /><span class="track"></span><span class="knob"></span></span>
+              <span>Net of returns</span>
+            </span>
+          </div>
+          <p class="f-cap">Both target prices are always shown below. This only sets which one is the headline.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Price to hit your target margin</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per unit</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> per unit</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where one unit's price goes <span id="wfScale">of $68.00 charged</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="refunded" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="cogs" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="fulfilment" style="background:var(--grey-2)"></span>
+            <span class="seg" data-k="handling" style="background:var(--amber-2)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The white line is the price you charge.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Refunded revenue</span><span class="vl" id="lg_refunded">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--amber-2)"></span><span class="nm">Return handling</span><span class="vl" id="lg_handling">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">Product cost, net of resale</span><span class="vl" id="lg_cogs">$0.00</span></div>
+            <div class="lgd"><span class="dot" style="background:var(--grey-2)"></span><span class="nm">Fulfilment</span><span class="vl" id="lg_fulfilment">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Realized profit</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What's driving this</span>
+          <p id="bindMain">Returns add $0.00 to the price you would need to charge to hit your target margin.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Return rate is the guess</h2>
+    <p class="sec-sub">Return rate is the one input most operators are least sure about. Here is the same unit's realized margin recomputed with return rate flexed 20% in each direction, so you can see how much of the margin rests on the guess.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">0.0%</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">0.0%</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">0.0%</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one unit sold. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Markup</span><span class="mv" id="m_markup">0.00x</span><span class="mx" id="mx_markup"></span></div>
+      <div class="mrow"><span class="mn">Gross profit per unit</span><span class="mv" id="m_grossprofit">$0.00</span><span class="mx" id="mx_grossprofit"></span></div>
+      <div class="mrow sum"><span class="mn">Gross margin</span><span class="mv" id="m_grossmargin">0.0%</span><span class="mx" id="mx_grossmargin"></span></div>
+      <div class="mrow"><span class="mn">Revenue kept</span><span class="mv" id="m_rev">$0.00</span><span class="mx" id="mx_rev"></span></div>
+      <div class="mrow"><span class="mn">Product cost, net of resale</span><span class="mv" id="m_cogs">$0.00</span><span class="mx" id="mx_cogs"></span></div>
+      <div class="mrow"><span class="mn">Fulfilment cost</span><span class="mv" id="m_fulf">$0.00</span><span class="mx" id="mx_fulf"></span></div>
+      <div class="mrow"><span class="mn">Return handling</span><span class="mv" id="m_hand">$0.00</span><span class="mx" id="mx_hand"></span></div>
+      <div class="mrow sum final"><span class="mn">Realized profit per unit</span><span class="mv" id="m_realized">$0.00</span></div>
+      <div class="mrow"><span class="mn">Realized margin, net of returns</span><span class="mv" id="m_marginnet">0.0%</span><span class="mx" id="mx_marginnet"></span></div>
+      <div class="mrow"><span class="mn">Realized margin, on sticker price</span><span class="mv" id="m_margingross">0.0%</span><span class="mx" id="mx_margingross"></span></div>
+      <div class="mrow"><span class="mn">Margin gap</span><span class="mv" id="m_gap">0.0 points</span><span class="mx" id="mx_gap"></span></div>
+      <div class="mrow"><span class="mn">Target price, returns-blind</span><span class="mv" id="m_targetgross">$0.00</span><span class="mx" id="mx_targetgross"></span></div>
+      <div class="mrow sum"><span class="mn">Target price, net of returns</span><span class="mv" id="m_targetnet">$0.00</span><span class="mx" id="mx_targetnet"></span></div>
+      <div class="mrow sum final"><span class="mn">What returns add to your sticker price</span><span class="mv" id="m_pricegap">$0.00</span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Sections A and B are returns-blind on purpose</b>, so Section C can show exactly what returns take out.</li>
+      <li><b>Product cost comes back only on the resellable share.</b> A return that cannot be resold charges you for the goods a second time.</li>
+      <li><b>Fulfilment cost is charged on every unit shipped</b>, whether or not it comes back.</li>
+      <li><b>Both target prices are always calculated.</b> The measured-on toggle only picks which one is the headline above.</li>
+      <li><b>The target-price range flexes the same return-rate guess as the margin band</b>, twenty percent in each direction.</li>
+      <li><b>A target price at or below your current selling price means that target is already beaten.</b> No price cut is implied and none is suggested.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>Where the margin benchmarks come from</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Apparel gross margin, public companies</span>
+      <p class="quote">"Apparel: Gross Margin 56.88%, Net Margin 3.85%. Data used is as of January 2026"</p>
+      <span class="cite">NYU Stern, Aswath Damodaran industry margin dataset &middot; as of January 2026, 35 public apparel firms &middot; <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/margin.html" target="_blank" rel="noopener">stern.nyu.edu</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel gross margin, broader company set</span>
+      <p class="quote">"Gross Margin 34.62% TTM Q1 2026 TTM"</p>
+      <span class="cite">CSIMarket, Retail Apparel Industry &middot; trailing twelve months to Q1 2026 &middot; <a href="https://csimarket.com/Industry/industry_Profitability_Ratios.php?ind=1301" target="_blank" rel="noopener">csimarket.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Card processing, Stripe</span>
+      <p class="quote">"2.9% + 30&cent; per successful transaction for domestic cards"</p>
+      <span class="cite">Stripe &middot; standard US online pricing, current at 2026-07-26 &middot; <a href="https://stripe.com/pricing" target="_blank" rel="noopener">stripe.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Card processing, Shopify Payments</span>
+      <p class="quote">"From 2.5% to 2.9% plus 30&cent; per transaction"</p>
+      <span class="cite">Shopify &middot; online card rates across plans, current at 2026-07-26 &middot; <a href="https://www.shopify.com/blog/credit-card-processing-fees" target="_blank" rel="noopener">shopify.com</a></span>
+    </div>
+
+    <p class="srcnote">The two margin figures cover different company sets, which is why they sit so far apart. Both are printed so you can see the spread instead of a single tidy number. The two card processing figures inform the payment-fee share bundled into the fulfilment cost dial above. There is no published figure we could verify for resellable share of returns or for a typical apparel markup, so this page prints none for either. Those two dials stay yours to fill in.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>What returns take out of your quoted margin</h2>
+    <div class="prose">
+      <p>Every pricing conversation starts with the same two numbers: markup and gross margin. Markup asks how much you charged over cost. Gross margin asks what share of the price is profit before anything else happens to the order. Both are honest answers to a narrow question, and both are calculated the same way whether the product ships once and stays sold or ships, comes back, and ships again to someone else. That is Section A and Section B on this page, and they are deliberately returns-blind, so you can see the exact size of the gap once Section C removes that assumption.</p>
+
+      <p>Apparel is where the gap is widest. A shopper orders two sizes to keep one. A garment comes back worn once, or out of season, or without its tags. None of that shows up in a markup calculation, because markup only ever looks at one clean sale. It shows up the moment you ask what a unit actually banks once the returns that follow it are counted, and that is the entire reason a third section exists on this page.</p>
+
+      <h3>The four places returns enter Section C</h3>
+      <p>Returns touch the arithmetic four separate times, and this page keeps all four visible instead of folding them into one blended number. First, revenue kept: only the share of units that stay sold leaves money behind, so revenue is multiplied by one minus the return rate. Second, product cost, net of resale: you recover the landed cost only on the resellable share, so a unit that comes back unsellable charges you for the goods twice. Third, fulfilment: shipping, pick and pack, and payment fees are charged on every unit shipped, whether it stays sold or not, because that cost clears before the customer decides. Fourth, return handling: the label, the inspection and the repack, counted on the expected share of units that come back.</p>
+
+      <p>Put together, realized profit per unit is what one unit sold actually leaves you once all four are counted. Realized margin, net of returns, measures that profit against the revenue you actually keep. Realized margin, on sticker price, measures the same profit against the price on the tag, so it lines up directly against the gross margin figure from Section B. The distance between those two margins is the margin gap, and it is the single most honest number a pricing page can print: it is the difference between the margin you quote in a deck and the margin that lands in the bank.</p>
+
+      <h3>What resellable share is actually doing</h3>
+      <p>Resellable share is the input most pricing spreadsheets skip, and it is the one that moves the answer most. At 80% resellable, one unit in five that comes back cannot go straight back on the shelf at full price. It gets marked down, moved to an outlet channel, or written off, and the landed cost on that unit is gone twice over: once when you bought it, once when you could not sell it at the price you planned. Drag that dial from 80% down to 50% and watch the realized margin move while the gross margin above it does not move at all, because gross margin never asked the question in the first place.</p>
+
+      <h3>Two target prices, on purpose</h3>
+      <p>Most pricing tools solve a single equation: cost over one minus target margin, which answers what price clears your target margin if every unit sold stays sold. This page always calculates that number, labeled target price, returns-blind, and it always also calculates a second number that solves the same target margin after revenue lost to returns, product cost carried twice, fulfilment and handling are all subtracted first. That second number is the target price, net of returns, and it is almost always the higher of the two, because it has more cost to recover from fewer kept units. The gap between them, what this page calls the price gap, is the plainest possible statement of what returns add to your sticker price. The toggle on the input side decides which of the two numbers becomes the headline you see first, and both stay calculated either way.</p>
+
+      <h3>When a target price sits below your current price</h3>
+      <p>Sometimes the net-of-returns target price comes back lower than what you already charge. That means the margin you are asking for is already being met or beaten at your current price, once returns are counted honestly, and the page says exactly that instead of implying a price cut. Other times the net-of-returns target sits well above your current price, which means hitting that margin needs either a higher sticker price, a lower return rate, a higher resellable share, or some combination of the three. The page shows you the size of the gap so the conversation about closing it starts from a real number instead of a guess.</p>
+
+      <h3>Reading the range</h3>
+      <p>Return rate is the one input on this page most operators are estimating rather than measuring, so it is the one flexed twenty percent in each direction to produce the honest spread above and the target-price range printed in the math. When the whole spread sits close together, the return-rate guess is not doing much work and the price and margin you see are close to load bearing. When it spreads wide, the number you should trust least is the one you are least sure about, and it is worth pulling a real return rate off your own order data before repricing anything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why do Section A and Section B ignore returns completely?</summary>
+        <div class="fa">Because markup and gross margin are the two numbers most pricing conversations already run on, and they are always calculated as a single clean sale, with no return in the picture. Keeping them returns-blind here means the gap that shows up once Section C adds returns back in is the honest size of the gap, not an artifact of a different formula.</div>
+      </details>
+      <details>
+        <summary>What does resellable at full price actually change?</summary>
+        <div class="fa">It sets how much of the landed product cost comes back to you on a returned unit. At 100% resellable, every returned unit goes straight back on the shelf and the cost is fully recovered. Below that, the unresellable share gets marked down, moved to outlet, or written off, and you are carrying that product cost twice: once on the original sale and once on the unit that cannot be resold at the price you planned.</div>
+      </details>
+      <details>
+        <summary>Why are there two target prices, and which one should I use?</summary>
+        <div class="fa">Target price, returns-blind, is the classic cost over one minus margin answer. Target price, net of returns, solves the same target margin after revenue lost to returns, product cost carried twice, fulfilment and return handling are all subtracted first. Both are always calculated. The toggle only decides which one is shown as the headline. If your margin target needs to survive contact with your real return rate, use the net of returns figure.</div>
+      </details>
+      <details>
+        <summary>What does the margin gap actually mean?</summary>
+        <div class="fa">It is the distance, in percentage points, between the gross margin you would quote from Section B and the realized margin, on sticker price, from Section C. It is the plainest way to see how much of the margin you think you are running is actually being taken by returns, product cost you do not recover, fulfilment and handling before a single dollar reaches the bank.</div>
+      </details>
+      <details>
+        <summary>What does it mean if the target price, net of returns, comes back below my current price?</summary>
+        <div class="fa">It means the margin you are targeting is already being met or beaten at the price you already charge, once returns are counted honestly. No price change is implied by that result, and none is suggested. It is worth checking the other direction too: if the target price sits well above your current price, closing that gap needs a higher sticker price, a lower return rate, a higher resellable share, or some mix of the three.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on pricing.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your own catalog?</span></h2>
+      <p>From week one we run this math on live Shopify and returns data, then work the lines that move it: the return rate, the resellable share and the price your target margin really needs. Book a 30 minute intro call and we will walk your pricing together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=pricing-margin" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Price to hit target margin</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why do Section A and Section B ignore returns completely?","acceptedAnswer":{"@type":"Answer","text":"Because markup and gross margin are the two numbers most pricing conversations already run on, and they are always calculated as a single clean sale, with no return in the picture. Keeping them returns-blind here means the gap that shows up once Section C adds returns back in is the honest size of the gap, not an artifact of a different formula."}},
+    {"@type":"Question","name":"What does resellable at full price actually change?","acceptedAnswer":{"@type":"Answer","text":"It sets how much of the landed product cost comes back to you on a returned unit. At 100% resellable, every returned unit goes straight back on the shelf and the cost is fully recovered. Below that, the unresellable share gets marked down, moved to outlet, or written off, and you are carrying that product cost twice: once on the original sale and once on the unit that cannot be resold at the price you planned."}},
+    {"@type":"Question","name":"Why are there two target prices, and which one should I use?","acceptedAnswer":{"@type":"Answer","text":"Target price, returns-blind, is the classic cost over one minus margin answer. Target price, net of returns, solves the same target margin after revenue lost to returns, product cost carried twice, fulfilment and return handling are all subtracted first. Both are always calculated. The toggle only decides which one is shown as the headline. If your margin target needs to survive contact with your real return rate, use the net of returns figure."}},
+    {"@type":"Question","name":"What does the margin gap actually mean?","acceptedAnswer":{"@type":"Answer","text":"It is the distance, in percentage points, between the gross margin you would quote from Section B and the realized margin, on sticker price, from Section C. It is the plainest way to see how much of the margin you think you are running is actually being taken by returns, product cost you do not recover, fulfilment and handling before a single dollar reaches the bank."}},
+    {"@type":"Question","name":"What does it mean if the target price, net of returns, comes back below my current price?","acceptedAnswer":{"@type":"Answer","text":"It means the margin you are targeting is already being met or beaten at the price you already charge, once returns are counted honestly. No price change is implied by that result, and none is suggested. It is worth checking the other direction too: if the target price sits well above your current price, closing that gap needs a higher sticker price, a lower return rate, a higher resellable share, or some mix of the three."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'pricing-margin';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    unit_cost: 23.8, selling_price: 68, fulfilment_cost: 9.77, return_rate: 22,
+    return_cost: 6, resellable_pct: 80, target_margin_pct: 40, basis_on: true
+  };
+  var KEYS = ['unit_cost','selling_price','fulfilment_cost','return_rate','return_cost','resellable_pct','target_margin_pct'];
+  var SEGS = ['refunded','cogs','fulfilment','handling','result'];
+  var CROSS = ['contribution-margin','true-profit-per-order','discount-roi','break-even-roas','cac','aov'];
+  var GLYPH = {
+    'contribution-margin':'CM', 'true-profit-per-order':'$', 'discount-roi':'ROI',
+    'break-even-roas':'ROAS', 'cac':'CAC', 'aov':'AOV'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+  function n3(x){ return T.roundDp(x, 3).toFixed(3); }
+  function pts(x){
+    var v = T.roundDp(x, 1);
+    return (v < 0 ? '-' : '') + Math.abs(v).toFixed(1) + ' points';
+  }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.basis_on = el('basis_on').checked;
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      unit_cost: i.unit_cost, selling_price: i.selling_price, fulfilment_cost: i.fulfilment_cost,
+      return_rate: i.return_rate, return_cost: i.return_cost, resellable_pct: i.resellable_pct,
+      target_margin_pct: i.target_margin_pct,
+      target_margin_basis: i.basis_on ? 'net-of-returns' : 'gross'
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var r = i.return_rate / 100, s = i.resellable_pct / 100, t = i.target_margin_pct / 100;
+    var price = i.selling_price;
+    var refunded = r * price;
+    var cogsNet = i.unit_cost * (1 - r * s);
+    var handling = r * i.return_cost;
+    var realized = o.realized_profit_per_unit;
+    var neg = realized < 0;
+    var headline = o.target_price_headline;
+    var beaten = (headline !== null) && (headline <= price);
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = money(headline) + '<span class="per"> per unit</span>';
+    el('mbarNum').textContent = money(headline);
+
+    var cls, tierText;
+    if (neg) { cls = 't-not'; tierText = 'LOSES MONEY'; }
+    else if (beaten) { cls = 't-safe'; tierText = 'TARGET MET'; }
+    else { cls = 't-fix'; tierText = 'PRICE SHORT'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var el2 = el(id);
+      el2.className = 'tier ' + cls;
+      el2.textContent = tierText;
+    });
+
+    if (i.basis_on) {
+      el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.target_price_net_low) +
+        '</b> and <b>' + money(o.target_price_net_high) + '</b> per unit';
+    } else {
+      el('rangeLine').innerHTML = 'Holds at <b>' + money(o.target_price_gross) +
+        '</b> per unit regardless of return rate, because this basis is returns-blind';
+    }
+
+    /* stacked bar. Refunded revenue, product cost net of resale, fulfilment
+       and return handling plus the gold remainder fill the price exactly.
+       When the unit does not clear, the four bands overrun the price and
+       the overrun is drawn as the shortfall. */
+    var vals = {
+      refunded: refunded,
+      cogs: cogsNet,
+      fulfilment: i.fulfilment_cost,
+      handling: handling,
+      result: neg ? 0 : realized
+    };
+    var costTotal = refunded + cogsNet + i.fulfilment_cost + handling;
+    var scale = neg ? costTotal : price;
+    if (scale <= 0) scale = 1;
+
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = price / scale * 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + money(price) + ' charged';
+    el('wfMarkCap').textContent = neg
+      ? 'The white line is the price you charge. Everything past it is the shortfall.'
+      : 'The gold band on the right is what you realize once returns are counted.';
+
+    el('lg_refunded').textContent   = money(refunded);
+    el('lg_handling').textContent   = money(handling);
+    el('lg_cogs').textContent       = money(cogsNet);
+    el('lg_fulfilment').textContent = money(i.fulfilment_cost);
+    el('lg_result').textContent     = neg ? money(Math.abs(realized)) : money(realized);
+    el('lg_result_nm').textContent  = neg ? 'Short by' : 'Realized profit';
+
+    /* what's driving this */
+    el('bindMain').innerHTML = 'Returns add <b>' + money(o.price_gap) +
+      '</b> to the price you would need to charge to hit your target margin.';
+    el('bindFix').textContent = 'The returns-blind price is ' + money(o.target_price_gross) +
+      '. Once returns are counted, hitting the same ' + pct(i.target_margin_pct, 1) +
+      ' target needs ' + money(o.target_price_net) + '.';
+    el('bindDrag').textContent = 'At your current ' + money(price) + ' price, the margin you quote runs ' +
+      pct(o.gross_margin_pct, 1) + ', and the margin you actually bank runs ' +
+      pct(o.realized_margin_gross_pct, 1) + ', a gap of ' + pts(o.margin_gap_pts) + '.';
+
+    /* scenario spread: realized margin, on sticker price, at the return rate flexed */
+    el('scLow').textContent  = pct(o.realized_margin_gross_low, 1);
+    el('scMid').textContent  = pct(o.realized_margin_gross_mid, 1);
+    el('scHigh').textContent = pct(o.realized_margin_gross_high, 1);
+    el('scLow').classList.toggle('neg',  o.realized_margin_gross_low  < 0);
+    el('scMid').classList.toggle('neg',  o.realized_margin_gross_mid  < 0);
+    el('scHigh').classList.toggle('neg', o.realized_margin_gross_high < 0);
+    el('scLowA').textContent  = 'Return rate ' + pct(Math.min(100, i.return_rate * 1.2), 0);
+    el('scMidA').textContent  = 'Return rate ' + pct(i.return_rate, 0) + ', as entered';
+    el('scHighA').textContent = 'Return rate ' + pct(i.return_rate * 0.8, 0);
+    el('scenNote').textContent = o.range_inert
+      ? 'Your return rate is set to zero, so flexing it changes nothing. This spread is currently inert.'
+      : 'If the whole spread sits close together, the return-rate guess is not doing much work. If it spreads wide, pull a real return rate off your own order data before repricing anything.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    el('m_markup').textContent = (o.markup_multiple === null ? 'n/a' : n2(o.markup_multiple) + 'x');
+    el('mx_markup').innerHTML  = '(' + money(price) + ' - ' + money(i.unit_cost) + ') / ' + money(i.unit_cost) +
+      ' = ' + (o.markup_pct === null ? 'n/a' : pct(o.markup_pct, 1)) +
+      '  <em>markup over cost, the classic framing, no returns involved</em>';
+
+    el('m_grossprofit').textContent = money(o.gross_profit_per_unit);
+    el('mx_grossprofit').innerHTML  = money(price) + ' - ' + money(i.unit_cost) + ' = ' + money(o.gross_profit_per_unit) +
+      '  <em>the sticker-price answer, before returns enter the picture</em>';
+
+    el('m_grossmargin').textContent = pct(o.gross_margin_pct, 1);
+    el('mx_grossmargin').innerHTML  = money(o.gross_profit_per_unit) + ' / ' + money(price) + ' = ' + pct(o.gross_margin_pct, 1) +
+      '  <em>what a returns-blind margin report shows</em>';
+
+    el('m_rev').textContent = money((1 - r) * price);
+    el('mx_rev').innerHTML  = '(1 - ' + n2(r) + ') x ' + money(price) + ' = ' + money((1 - r) * price) +
+      '  <em>returned units refund the whole sale</em>';
+
+    el('m_cogs').textContent = money(cogsNet);
+    el('mx_cogs').innerHTML  = money(i.unit_cost) + ' x (1 - ' + n2(r) + ' x ' + n2(s) + ') = ' + money(cogsNet) +
+      '  <em>product cost comes back only on the resellable share</em>';
+
+    el('m_fulf').textContent = money(i.fulfilment_cost);
+    el('mx_fulf').innerHTML  = money(i.fulfilment_cost) + ' x 1 = ' + money(i.fulfilment_cost) +
+      '  <em>charged on every unit shipped, never reduced for returns</em>';
+
+    el('m_hand').textContent = money(handling);
+    el('mx_hand').innerHTML  = n2(r) + ' x ' + money(i.return_cost) + ' = ' + money(handling) +
+      '  <em>expected handling per unit shipped</em>';
+
+    el('m_realized').textContent = money(realized);
+    el('m_realized').classList.toggle('neg', neg);
+
+    el('m_marginnet').textContent = (o.realized_margin_net_pct === null ? 'n/a' : pct(o.realized_margin_net_pct, 1));
+    el('mx_marginnet').innerHTML  = money(realized) + ' / ' + money((1 - r) * price) + ' = ' +
+      (o.realized_margin_net_pct === null ? 'n/a' : pct(o.realized_margin_net_pct, 1)) +
+      '  <em>measured on the revenue you actually keep</em>';
+
+    el('m_margingross').textContent = pct(o.realized_margin_gross_pct, 1);
+    el('mx_margingross').innerHTML  = money(realized) + ' / ' + money(price) + ' = ' + pct(o.realized_margin_gross_pct, 1) +
+      '  <em>the like-for-like comparison against the gross margin above</em>';
+
+    el('m_gap').textContent = pts(o.margin_gap_pts);
+    el('mx_gap').innerHTML  = pct(o.gross_margin_pct, 1) + ' - ' + pct(o.realized_margin_gross_pct, 1) + ' = ' + pts(o.margin_gap_pts) +
+      '  <em>the distance between the margin you quote and the margin you bank</em>';
+
+    el('m_targetgross').textContent = (o.target_price_gross === null ? 'n/a' : money(o.target_price_gross));
+    el('mx_targetgross').innerHTML  = money(i.unit_cost) + ' / (1 - ' + n2(t) + ') = ' +
+      (o.target_price_gross === null ? 'n/a' : money(o.target_price_gross)) +
+      '  <em>the classic cost-over-one-minus-margin answer, returns-blind</em>';
+
+    el('m_targetnet').textContent = (o.target_price_net === null ? 'n/a' : money(o.target_price_net));
+    var targetNetNote = (o.target_price_net === null)
+      ? '<em>Return rate or target margin is out of range for this solve.</em>'
+      : '(' + money(cogsNet) + ' + ' + money(i.fulfilment_cost) + ' + ' + money(handling) + ') / ((1 - ' + n2(r) + ') x (1 - ' + n2(t) + ')) = ' +
+        money(o.target_price_net) + '  <em>between ' + money(o.target_price_net_low) + ' and ' + money(o.target_price_net_high) +
+        ' across a return rate flexed 20% either way' + (beaten ? ', already beaten by your ' + money(price) + ' price' : '') + '</em>';
+    el('mx_targetnet').innerHTML = targetNetNote;
+
+    el('m_pricegap').textContent = (o.price_gap === null ? 'n/a' : money(o.price_gap));
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) || i.basis_on !== DEFAULTS.basis_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('basis_on').addEventListener('change', paint);
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    el('basis_on').checked = DEFAULTS.basis_on;
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        markup_pct: lastOut.markup_pct === null ? null : T.round2(lastOut.markup_pct),
+        markup_multiple: lastOut.markup_multiple === null ? null : T.round2(lastOut.markup_multiple),
+        gross_margin_pct: T.round2(lastOut.gross_margin_pct),
+        realized_profit_per_unit: T.round2(lastOut.realized_profit_per_unit),
+        realized_margin_net_pct: lastOut.realized_margin_net_pct === null ? null : T.round2(lastOut.realized_margin_net_pct),
+        realized_margin_gross_pct: T.round2(lastOut.realized_margin_gross_pct),
+        margin_gap_pts: T.round2(lastOut.margin_gap_pts),
+        target_price_gross: lastOut.target_price_gross === null ? null : T.round2(lastOut.target_price_gross),
+        target_price_net: lastOut.target_price_net === null ? null : T.round2(lastOut.target_price_net),
+        target_price_headline: lastOut.target_price_headline === null ? null : T.round2(lastOut.target_price_headline),
+        price_gap: lastOut.price_gap === null ? null : T.round2(lastOut.price_gap)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

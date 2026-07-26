@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CTR Calculator: Click-Through Rate + A/B Test</title>
+<meta name="description" content="Free CTR calculator with a built-in two-proportion A/B significance test. Enter impressions and clicks for two creatives and see whether the gap is real, plus the sample size the test still needs." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/ctr-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="CTR Calculator: Click-Through Rate + A/B Test" />
+<meta property="og:description" content="Click-through rate for two creatives, and the two-proportion test that says whether the gap between them is signal or noise." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/ctr-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CTR Calculator: Click-Through Rate + A/B Test" />
+<meta name="twitter:description" content="Click-through rate for two creatives, and whether the gap between them is real yet. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<style>
+/* per-page addition: enum dropdowns styled to sit inside the existing pill
+   language, since this is the first tool whose inputs are not all sliders. */
+.selpill{background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 15px;
+  display:inline-flex;align-items:center;gap:8px;min-height:40px;flex:none}
+.selpill .sl{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint)}
+.selpill select{font-family:'Manrope',sans-serif;font-weight:700;font-size:.92rem;color:var(--ink);
+  background:transparent;border:0;outline:0;cursor:pointer}
+.selrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+.selpill.wide{flex:1 1 auto}
+.src.match{border-left-color:var(--ink)}
+</style>
+<script>window.__lm_slug = "rise-dtc-tools-ctr-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">CTR + A/B Significance</span>
+      <span class="t2">Tool 16 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>Is that click-through gap <span class="hl">real yet?</span></h1>
+    <p class="lede">Click-through rate for two creatives, and the two-proportion test that says whether the gap between them is signal or noise.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">7 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="impressions_a">Variant A impressions</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="impressions_a" data-min="0" data-max="1000000000" data-step="100" value="50000" /></span>
+          </div>
+          <input type="range" id="impressions_a_r" min="0" max="1000000000" step="100" value="50000" aria-label="Variant A impressions slider" />
+          <p class="f-cap">Total times variant A was shown. Your ad platform or ESP prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="clicks_a">Variant A clicks</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="clicks_a" data-min="0" data-max="100000000" data-step="1" value="500" /></span>
+          </div>
+          <input type="range" id="clicks_a_r" min="0" max="100000000" step="1" value="500" aria-label="Variant A clicks slider" />
+          <p class="f-cap">Clicks variant A earned over the same window as the impressions above.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label">Testing a second creative <span class="opt">optional</span></label>
+            <span class="switch"><input type="checkbox" id="b_on" checked aria-label="Include variant B" /><span class="track"></span><span class="knob"></span></span>
+          </div>
+          <p class="f-cap">Off reads variant A on its own. On runs the significance check below against variant B.</p>
+        </div>
+
+        <div class="field" id="bImpField">
+          <div class="f-top">
+            <label class="f-label" for="impressions_b">Variant B impressions</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="impressions_b" data-min="0" data-max="1000000000" data-step="100" value="50000" /></span>
+          </div>
+          <input type="range" id="impressions_b_r" min="0" max="1000000000" step="100" value="50000" aria-label="Variant B impressions slider" />
+          <p class="f-cap">Same window as variant A, read off the same report.</p>
+        </div>
+
+        <div class="field" id="bClicksField">
+          <div class="f-top">
+            <label class="f-label" for="clicks_b">Variant B clicks</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="clicks_b" data-min="0" data-max="100000000" data-step="1" value="620" /></span>
+          </div>
+          <input type="range" id="clicks_b_r" min="0" max="100000000" step="1" value="620" aria-label="Variant B clicks slider" />
+          <p class="f-cap">Clicks variant B earned over the same window.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="confidence_level">Confidence level</label>
+            <span class="selpill"><select data-calc-input id="confidence_level" aria-label="Confidence level">
+              <option value="90">90%</option>
+              <option value="95" selected>95%</option>
+              <option value="99">99%</option>
+            </select></span>
+          </div>
+          <p class="f-cap">How sure you need to be before calling the gap real. The interval on each rate below stays a 95% Wald interval either way.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label">Where these ran <span class="opt">optional, display only</span></label>
+          </div>
+          <div class="selrow">
+            <span class="selpill wide"><span class="sl">Placement</span><select id="placement" aria-label="Placement">
+              <option value="meta_feed" selected>Meta feed</option>
+              <option value="meta_reels">Meta Reels</option>
+              <option value="tiktok">TikTok</option>
+              <option value="google_search">Google Search</option>
+              <option value="google_display">Google Display</option>
+              <option value="email">Email</option>
+            </select></span>
+            <span class="selpill wide"><span class="sl">Format</span><select id="creative_format" aria-label="Creative format">
+              <option value="static" selected>Static</option>
+              <option value="video">Video</option>
+              <option value="carousel">Carousel</option>
+            </select></span>
+          </div>
+          <p class="f-cap">Only points at which published rows to bold further down the page. Paid impressions and email sends are different denominators, so this never enters the math above.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the example</button>
+          <span class="state" id="stateNote">running on the example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Lift, variant B over variant A</p>
+        <p class="bignum" id="bigNum">+0.00%<span class="per"> lift</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Variant A sits between <b>0.00%</b> and <b>0.00%</b> at 95% confidence</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the gap sits <span id="wfScale">against a 0.00% scale</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="a" style="background:var(--grey-2)"></span>
+            <span class="seg" data-k="lift" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band is how far variant B pulls ahead of variant A.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-2)"></span><span class="nm">Variant A rate</span><span class="vl" id="lg_a">0.00%</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_result_nm">Lift to variant B</span><span class="vl" id="lg_result">0.00%</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What the numbers say</span>
+          <p id="bindMain">Variant B is reading ahead of variant A.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest bar</p>
+    <h2>How the verdict changes when you move the bar</h2>
+    <p class="sec-sub">Your p-value is fixed the moment you enter the numbers. What changes is how strict a bar you decide to hold it to. Here is the same test read against a stricter bar, your chosen bar, and a looser one.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k" id="scLowK">Stricter bar</p><p class="sc-v" id="scLow">NOT YET</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k" id="scMidK">As entered</p><p class="sc-v" id="scMid">NOT YET</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k" id="scHighK">Looser bar</p><p class="sc-v" id="scHigh">NOT YET</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">A pooled two-proportion z-test, normal approximation, two-sided, no continuity correction. These rows update as you change the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Variant A click-through rate</span><span class="mv" id="m_ctr_a">0.00%</span><span class="mx" id="mx_ctr_a"></span></div>
+      <div class="mrow"><span class="mn">Variant B click-through rate</span><span class="mv" id="m_ctr_b">0.00%</span><span class="mx" id="mx_ctr_b"></span></div>
+      <div class="mrow"><span class="mn">Pooled click rate</span><span class="mv" id="m_pool">0.00%</span><span class="mx" id="mx_pool"></span></div>
+      <div class="mrow sum"><span class="mn">Standard error</span><span class="mv" id="m_se">0.0000</span></div>
+      <div class="mrow"><span class="mn">z-score</span><span class="mv" id="m_z">0.000</span><span class="mx" id="mx_z"></span></div>
+      <div class="mrow sum final"><span class="mn">Relative lift, B over A</span><span class="mv" id="m_lift">+0.00%</span></div>
+      <div class="mrow"><span class="mn">p-value</span><span class="mv" id="m_p">1.0000</span><span class="mx" id="mx_p"></span></div>
+      <div class="mrow"><span class="mn">Impressions needed per variant</span><span class="mv" id="m_nreq">none</span><span class="mx" id="mx_nreq"></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>Pooled two-proportion z-test, normal approximation to the binomial.</b> No continuity correction, two-sided.</li>
+      <li><b>Built for exactly two variants.</b> Running six ad sets through the same pairwise test invites a false positive; each additional pair needs its own correction, which this page does not attempt.</li>
+      <li><b>The confidence interval on each rate is a fixed 95% Wald interval</b>, independent of the confidence level chosen for the significance test itself, and the label says so.</li>
+      <li><b>Fewer than 10 clicks or 10 non-clicks in a variant</b> makes the normal approximation unreliable at that count, and the panel prints a warning instead of a false read.</li>
+      <li><b>Placement and creative format are labels only.</b> Paid impressions and email sends are different denominators and never share a benchmark row.</li>
+      <li><b>Sample size is the count each variant still needs</b> to call the gap you are currently seeing at 80% statistical power, not a guarantee either variant will hold its current rate once it gets there.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the bar above and the rows here.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What a normal click-through rate looks like</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from. The row closest to your placement and format above stays bolded on the left.</p>
+
+    <div class="src" data-topic="meta_ads_ctr">
+      <span class="src-t">Meta, Apparel &amp; Accessories</span>
+      <p class="quote">"Apparel &amp; Accessories: CTR 2.25% (+15.65% YoY), CVR 1.46% (+9.39% YoY), CPA $36.76 (+1.62% YoY), ROAS 2.18 (+3.9% YoY)"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025 &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src" data-topic="meta_ads_ctr">
+      <span class="src-t">Meta, all industries</span>
+      <p class="quote">"CTR 2.19% (median, all industries, 2025)"</p>
+      <span class="cite">Triple Whale &middot; Jan 1 to Dec 31, 2025, roughly 35,000 brands &middot; <a href="https://www.triplewhale.com/blog/facebook-ads-benchmarks" target="_blank" rel="noopener">triplewhale.com</a></span>
+    </div>
+
+    <div class="src" data-topic="google_ads_search">
+      <span class="src-t">Google Search, Apparel/Fashion &amp; Jewelry</span>
+      <p class="quote">"Apparel/Fashion &amp; Jewelry: CTR 6.64%, CPC $4.44, CVR 4.50%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026 &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src" data-topic="google_ads_search">
+      <span class="src-t">Google Search, all industries</span>
+      <p class="quote">"All industries (23 verticals): CTR 6.64%, CPC $5.42, CVR 8.18%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026, 13,474 US search campaigns &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <p class="srcnote">The apparel and all-industry rows on Google Search print the same 6.64% figure in this edition of the report, which the publisher notes as a coincidence rather than a data error. Meta and Google are not comparable to each other on this metric: Meta's CTR is measured against a feed impression, Google's against a search result impression, and neither is measured against an email send. That is exactly why the placement selector above never feeds either number into your math.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why a bigger lift can still be noise</h2>
+    <div class="prose">
+      <p>Click-through rate is the easiest number in ecommerce advertising to misread, because it looks like a fact and behaves like an estimate. Variant B reading 1.24% against variant A's 1.00% is not a law of the universe, it is one sample of clicks out of one sample of impressions, and a second week of the same test would print a slightly different pair of numbers even if nothing about the creative changed. The question this page answers is not "which number is bigger", it is "how much of that gap is the creative, and how much of it is the sample".</p>
+
+      <p>Apparel accounts feel this hardest, because apparel ad accounts run more creative than almost any other vertical. A new color drop, a new model, a new fit shot, each one earns its own test, and each test runs on a smaller slice of the account's total traffic than the last one. A 24% lift on 50,000 impressions per variant is a different claim than a 30% lift on 2,000 impressions per variant, even though the second number looks more exciting on a slide. The test below is what tells the two apart.</p>
+
+      <h3>What the two-proportion test is actually doing</h3>
+      <p>Both variants are being read as a rate: clicks divided by impressions. The test pools both variants into one combined rate, on the theory that if the creatives performed identically, that pooled rate is the one number both of them should be drawing from. It then asks how far apart variant A and variant B would need to be, in units of their own sampling noise, before that pooled-rate theory becomes hard to believe. That distance is the z-score. The p-value converts the z-score into a plain question: if the two creatives were truly identical, how often would chance alone produce a gap this size or larger. A small p-value means chance is a poor explanation. It does not mean the true gap is exactly the one you measured, only that a gap of roughly this size is very unlikely to be nothing.</p>
+
+      <p>None of this needs a continuity correction or a one-sided test to be honest. This page runs the two-sided version, because a creative you expected to win can still lose, and a test that only checks for wins in the expected direction will occasionally call a loss a win. It also runs the pooled-variance version rather than the unpooled one, which is the standard choice when the null hypothesis being tested is that the two rates are equal.</p>
+
+      <h3>Why confidence level and the confidence interval are two different things</h3>
+      <p>The confidence level you pick above sets the bar the significance test has to clear. The confidence interval printed under each rate is a separate, fixed 95% Wald interval, on purpose. Moving the significance bar to 90% or 99% should change whether you call the gap real. It should not change how uncertain either individual rate is, and pinning the interval keeps the two questions from blurring into one.</p>
+
+      <h3>The line most people skip: sample size</h3>
+      <p>A gap can be real and still too early to spend a media budget on. The sample size row on this page answers a forward-looking question: given the gap you are currently seeing, how many impressions would each variant need before that gap clears your chosen bar with reasonable statistical power. When your actual impression counts sit well below that number, a NOT YET verdict is not a failure of the creative, it is an honest description of not having run the test long enough yet. Below 10 clicks or 10 non-clicks in either variant, the panel adds a separate warning, because the normal approximation this test relies on stops being trustworthy at that count no matter what the p-value prints.</p>
+
+      <h3>Why this page never turns a click into a dollar</h3>
+      <p>A click-through rate carries no return rate, no card fee and no acquisition cost, because none of those apply yet. The customer has not bought anything. Folding a CTR gap straight into a revenue projection is where blended benchmark pages tend to mislead, especially ones that average paid social, paid search and email into one CTR column as if the three shared a denominator. They do not: a feed impression, a search impression and an email open are three different events, counted three different ways, and stacking them into one number erases the placement difference that made the comparison worth running in the first place. This page keeps that door deliberately closed. Once you have a rate you trust, the question of what a click is worth belongs to a calculator built for money, not for rates, which is why cpc-calculator and cpa-calculator sit in the cross-links below rather than inside this page's math.</p>
+
+      <p>Read the verdict, read the bar it had to clear, and read the sample size before deciding a creative test is over. On apparel accounts running several tests a week, that third number is usually the one that saves the budget.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why does a bigger lift sometimes read as not significant?</summary>
+        <div class="fa">Significance depends on the size of the gap relative to the size of the sample, not on the size of the gap alone. A 30% lift measured on 2,000 impressions per variant carries far more sampling noise than a 24% lift measured on 50,000 impressions per variant, so the smaller-looking lift can clear the bar while the bigger-looking one does not. The p-value is what separates the two, and the sample size row shows how much more data the thinner test still needs.</div>
+      </details>
+      <details>
+        <summary>What does "not significant yet" mean, and can I still act on variant B?</summary>
+        <div class="fa">It means the gap you are seeing has not cleared the bar you set, which is a verdict about the evidence so far rather than about variant B. The honest move is to keep the test running toward the sample size this page prints, then read the verdict again rather than calling the winner off a partial sample.</div>
+      </details>
+      <details>
+        <summary>Why do you print a sample size instead of just a yes or no?</summary>
+        <div class="fa">A yes or no with no forward path leaves you guessing whether to keep the test running. The sample size row answers that directly: it is the number of impressions each variant would need, at your chosen confidence level and 80% statistical power, to call a gap the size you are currently seeing.</div>
+      </details>
+      <details>
+        <summary>Why doesn't this page turn CTR into revenue?</summary>
+        <div class="fa">A click has no return rate, no card fee and no acquisition cost attached to it yet, because no purchase has happened. Blending click-through rate into a revenue figure is exactly where combined paid-and-email benchmark pages go wrong, since a feed impression, a search impression and an email open are different denominators. Once a rate has cleared this test, cpc-calculator and cpa-calculator are built to answer what a click or an order is actually worth.</div>
+      </details>
+      <details>
+        <summary>What if I only have one creative running, with no variant B yet?</summary>
+        <div class="fa">Turn the second-creative toggle off. The panel reads variant A on its own, prints its rate and its 95% interval, and hides the comparison math until a second creative is entered.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, the full test and the verdict, sent as a one page scorecard you can forward to whoever owns the ad account.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this test on live ad-account data, then work the creative that actually clears the bar instead of the one that only looks bigger on a slide. Book a 30 minute intro call and we will walk your current tests together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ctr-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Lift, B over A</span>
+  <span class="mv" id="mbarNum">+0.00%</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why does a bigger lift sometimes read as not significant?","acceptedAnswer":{"@type":"Answer","text":"Significance depends on the size of the gap relative to the size of the sample, not on the size of the gap alone. A 30% lift measured on 2,000 impressions per variant carries far more sampling noise than a 24% lift measured on 50,000 impressions per variant, so the smaller-looking lift can clear the bar while the bigger-looking one does not. The p-value is what separates the two, and the sample size row shows how much more data the thinner test still needs."}},
+    {"@type":"Question","name":"What does \"not significant yet\" mean, and can I still act on variant B?","acceptedAnswer":{"@type":"Answer","text":"It means the gap you are seeing has not cleared the bar you set, which is a verdict about the evidence so far rather than about variant B. The honest move is to keep the test running toward the sample size this page prints, then read the verdict again rather than calling the winner off a partial sample."}},
+    {"@type":"Question","name":"Why do you print a sample size instead of just a yes or no?","acceptedAnswer":{"@type":"Answer","text":"A yes or no with no forward path leaves you guessing whether to keep the test running. The sample size row answers that directly: it is the number of impressions each variant would need, at your chosen confidence level and 80% statistical power, to call a gap the size you are currently seeing."}},
+    {"@type":"Question","name":"Why doesn't this page turn CTR into revenue?","acceptedAnswer":{"@type":"Answer","text":"A click has no return rate, no card fee and no acquisition cost attached to it yet, because no purchase has happened. Blending click-through rate into a revenue figure is exactly where combined paid-and-email benchmark pages go wrong, since a feed impression, a search impression and an email open are different denominators. Once a rate has cleared this test, cpc-calculator and cpa-calculator are built to answer what a click or an order is actually worth."}},
+    {"@type":"Question","name":"What if I only have one creative running, with no variant B yet?","acceptedAnswer":{"@type":"Answer","text":"Turn the second-creative toggle off. The panel reads variant A on its own, prints its rate and its 95% interval, and hides the comparison math until a second creative is entered."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'ctr-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+
+  var DEFAULTS = {
+    impressions_a: 50000, clicks_a: 500, impressions_b: 50000, clicks_b: 620,
+    confidence_level: 95, b_on: true
+  };
+  var KEYS = ['impressions_a', 'clicks_a', 'impressions_b', 'clicks_b'];
+  var LEVELS = [99, 95, 90];
+  var CROSS = ['cpc-calculator', 'cpa-calculator', 'conversion-rate-calculator', 'mer-calculator', 'cpm-calculator', 'meta-ads-budget-calculator'];
+  var GLYPH = {
+    'cpc-calculator': 'CPC', 'cpa-calculator': 'CPA', 'conversion-rate-calculator': 'CVR',
+    'mer-calculator': 'MER', 'cpm-calculator': 'CPM', 'meta-ads-budget-calculator': 'META'
+  };
+
+  function el(id) { return document.getElementById(id); }
+  function n3(x) { return T.roundDp(x, 3).toFixed(3); }
+  function n4(x) { return T.roundDp(x, 4).toFixed(4); }
+  function signedPct(x, d) {
+    if (x === null || x === undefined) return 'N/A';
+    return (x >= 0 ? '+' : '') + T.percent(x, d);
+  }
+  function pvStr(pv) {
+    if (pv === null || pv === undefined) return 'N/A';
+    return pv === 0 ? '<0.0001' : n4(pv);
+  }
+  function ciStr(ci) {
+    if (!ci) return null;
+    return 'between <b>' + T.percent(ci[0], 2) + '</b> and <b>' + T.percent(ci[1], 2) + '</b>';
+  }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k) {
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs() {
+    var i = {};
+    KEYS.forEach(function (k) {
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    i.confidence_level = parseInt(el('confidence_level').value, 10) || DEFAULTS.confidence_level;
+    i.b_on = el('b_on').checked;
+    i.placement = el('placement').value;
+    i.creative_format = el('creative_format').value;
+    return i;
+  }
+  function setField(k, v) {
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i) {
+    return {
+      impressions_a: i.impressions_a,
+      clicks_a: i.clicks_a,
+      impressions_b: i.b_on ? i.impressions_b : null,
+      clicks_b: i.b_on ? i.clicks_b : null,
+      confidence_level: i.confidence_level
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint() {
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var hasB = i.b_on;
+    var ctrA = o.raw.ctr_a, ctrB = o.raw.ctr_b;
+    var lift = o.lift_pct;
+    var msg = o.message;
+    var alpha = 1 - i.confidence_level / 100;
+
+    /* -------------------------------------------- headline: bigNum */
+    var bigText, perText, vLabel;
+    if (!hasB) {
+      bigText = T.percent(o.ctr_a_pct, 2);
+      perText = ' CTR';
+      vLabel = 'Variant A click-through rate';
+    } else if (lift === null) {
+      bigText = T.percent(o.ctr_b_pct, 2);
+      perText = ' CTR';
+      vLabel = 'Variant B click-through rate';
+    } else {
+      bigText = signedPct(lift, 2);
+      perText = ' lift';
+      vLabel = 'Lift, variant B over variant A';
+    }
+    el('bigNum').innerHTML = bigText + '<span class="per">' + perText + '</span>';
+    el('mbarNum').textContent = bigText;
+    document.querySelector('.v-label').textContent = vLabel;
+    el('mbar').querySelector('.ml').textContent = hasB ? 'Lift, B over A' : 'Variant A CTR';
+
+    /* -------------------------------------------- tier chip */
+    var tierText, tierClass;
+    if (!hasB) { tierText = 'SINGLE VARIANT'; tierClass = 't-fix'; }
+    else if (msg === 'Not enough variation to test.') { tierText = "CAN'T TEST"; tierClass = 't-fix'; }
+    else if (msg === 'No observed difference to size a test against.') { tierText = 'NO DIFFERENCE'; tierClass = 't-not'; }
+    else { tierText = o.significant ? 'GAP IS REAL' : 'NOT SIGNIFICANT YET'; tierClass = o.significant ? 't-safe' : 't-not'; }
+    ['tierChip', 'mbarTier'].forEach(function (id) {
+      var t = el(id);
+      t.className = 'tier ' + tierClass;
+      t.textContent = tierText;
+    });
+
+    /* -------------------------------------------- range line */
+    var ciAtxt = ciStr(o.ctr_a_ci);
+    var ciBtxt = hasB ? ciStr(o.ctr_b_ci) : null;
+    if (!hasB || !ciBtxt) {
+      el('rangeLine').innerHTML = 'Variant A sits ' + ciAtxt + ' at 95% confidence';
+    } else {
+      el('rangeLine').innerHTML = 'Variant A sits ' + ciAtxt + '; variant B sits ' + ciBtxt + ', both at 95% confidence';
+    }
+
+    /* -------------------------------------------- waterfall */
+    var neg = hasB && lift !== null && lift < 0;
+    var scale;
+    if (!hasB) { scale = ctrA * 1.3 || 0.01; }
+    else if (neg) { scale = ctrA; }
+    else { scale = Math.max(ctrA, ctrB || 0) || 0.01; }
+    if (!(scale > 0)) scale = 0.01;
+
+    var aWidth = Math.min(100, ctrA / scale * 100);
+    var liftWidth = (hasB && lift !== null && lift >= 0) ? Math.max(0, (ctrB - ctrA) / scale * 100) : 0;
+    el('wfBar').querySelector('.seg[data-k="a"]').style.width = aWidth + '%';
+    el('wfBar').querySelector('.seg[data-k="lift"]').style.width = liftWidth + '%';
+
+    var markPct = neg ? (ctrB / scale * 100) : 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+
+    el('wfScale').textContent = 'against ' + T.percent(scale * 100, 2) + ' scale';
+    if (!hasB) {
+      el('wfMarkCap').textContent = 'Add variant B above to see it plotted against variant A.';
+    } else if (neg) {
+      el('wfMarkCap').textContent = 'The white line is variant B. The hatched band is how far it falls short of variant A.';
+    } else {
+      el('wfMarkCap').textContent = 'The gold band is how far variant B pulls ahead of variant A.';
+    }
+
+    el('lg_a').textContent = T.percent(o.ctr_a_pct, 2);
+    var resultVl = el('lg_result'), resultNm = el('lg_result_nm');
+    if (!hasB) {
+      resultNm.textContent = 'Variant B';
+      resultVl.textContent = 'N/A';
+    } else {
+      resultNm.textContent = neg ? 'Shortfall to variant B' : 'Lift to variant B';
+      resultVl.textContent = signedPct(lift, 2);
+    }
+
+    /* -------------------------------------------- binding */
+    if (!hasB) {
+      el('bindMain').innerHTML = 'Only variant A is running. Turn on variant B above to compare it against something.';
+      el('bindFix').textContent = '';
+      el('bindDrag').textContent = '';
+    } else if (msg === 'Not enough variation to test.') {
+      el('bindMain').innerHTML = 'Not enough variation to test. Both variants are reading a rate this test cannot size.';
+      el('bindFix').textContent = 'This happens at 0% or 100% CTR on both variants, where there is no sampling noise left to measure against.';
+      el('bindDrag').textContent = '';
+    } else if (msg === 'No observed difference to size a test against.') {
+      el('bindMain').innerHTML = 'Variant A and variant B are reading the identical rate.';
+      el('bindFix').textContent = 'z = ' + n3(o.z) + ', p = ' + pvStr(o.p_value) + '.';
+      el('bindDrag').textContent = 'There is no gap here to size a sample against.';
+    } else {
+      el('bindMain').innerHTML = o.significant
+        ? 'Variant B beats variant A by <b>' + signedPct(lift, 2) + '</b>, and that gap clears ' + i.confidence_level + '% confidence.'
+        : 'Variant B reads <b>' + signedPct(lift, 2) + '</b> over variant A, and that gap has not cleared ' + i.confidence_level + '% confidence yet.';
+      el('bindFix').textContent = 'z = ' + n3(o.z) + ', p = ' + pvStr(o.p_value) + '.';
+      el('bindDrag').textContent = (o.n_per_variant !== null)
+        ? 'Each variant needs about ' + T.count(o.n_per_variant) + ' impressions to call a gap this size at 80% power.'
+        : 'Sample size cannot be sized without an observed gap.';
+    }
+
+    var warnEl = el('bindRepeat');
+    if (o.warnings && o.warnings.length) {
+      warnEl.hidden = false;
+      warnEl.textContent = o.warnings.join(' ');
+    } else {
+      warnEl.hidden = true;
+    }
+
+    /* -------------------------------------------- scenario: same p, three bars */
+    var idx = LEVELS.indexOf(i.confidence_level);
+    if (idx < 0) idx = 1;
+    var leftConf = LEVELS[Math.max(0, idx - 1)];
+    var rightConf = LEVELS[Math.min(2, idx + 1)];
+    var midConf = i.confidence_level;
+
+    el('scLowK').textContent = 'Stricter bar (' + leftConf + '%)';
+    el('scMidK').textContent = 'As entered (' + midConf + '%)';
+    el('scHighK').textContent = 'Looser bar (' + rightConf + '%)';
+
+    function scenCell(vId, aId, conf) {
+      var a = 1 - conf / 100;
+      if (!hasB || o.p_value === null) {
+        el(vId).textContent = 'N/A';
+        el(vId).classList.remove('neg');
+        el(aId).textContent = !hasB ? 'Add variant B to run this.' : (msg || 'No test to size yet.');
+        return;
+      }
+      var passes = o.p_value < a;
+      el(vId).textContent = passes ? 'REAL' : 'NOT YET';
+      el(vId).classList.toggle('neg', !passes);
+      el(aId).textContent = 'Calls it real when p clears ' + n4(a) + '. Yours sits at ' + pvStr(o.p_value) + '.';
+    }
+    scenCell('scLow', 'scLowA', leftConf);
+    scenCell('scMid', 'scMidA', midConf);
+    scenCell('scHigh', 'scHighA', rightConf);
+
+    el('scenNote').textContent = (!hasB || o.p_value === null)
+      ? 'There is no p-value to test against a bar yet.'
+      : 'The p-value above does not change across these three columns. Only the bar for calling it real moves. If the middle column already reads NOT YET, a stricter bar will not call it early.';
+
+    /* -------------------------------------------- substituted math rows */
+    el('m_ctr_a').textContent = T.percent(o.ctr_a_pct, 2);
+    el('mx_ctr_a').innerHTML = T.count(i.clicks_a) + ' / ' + T.count(i.impressions_a) + ' = ' + T.percent(o.ctr_a_pct, 2) +
+      '  <em>clicks divided by impressions, variant A</em>';
+
+    if (hasB) {
+      el('m_ctr_b').textContent = T.percent(o.ctr_b_pct, 2);
+      el('mx_ctr_b').innerHTML = T.count(i.clicks_b) + ' / ' + T.count(i.impressions_b) + ' = ' + T.percent(o.ctr_b_pct, 2) +
+        '  <em>clicks divided by impressions, variant B</em>';
+    } else {
+      el('m_ctr_b').textContent = 'N/A';
+      el('mx_ctr_b').innerHTML = '<em>Turn on variant B above to compute this row.</em>';
+    }
+
+    if (hasB && o.raw.p_pool !== null) {
+      el('m_pool').textContent = T.percent(o.raw.p_pool * 100, 2);
+      el('mx_pool').innerHTML = '(' + T.count(i.clicks_a) + ' + ' + T.count(i.clicks_b) + ') / (' + T.count(i.impressions_a) + ' + ' + T.count(i.impressions_b) + ') = ' + T.percent(o.raw.p_pool * 100, 2) +
+        '  <em>the rate both variants would share if the creative made no difference</em>';
+    } else {
+      el('m_pool').textContent = 'N/A';
+      el('mx_pool').innerHTML = '<em>Needs variant B to pool against.</em>';
+    }
+
+    el('m_se').textContent = (hasB && o.raw.se !== null) ? n4(o.raw.se * 100) + ' pts' : 'N/A';
+
+    if (hasB && o.z !== null) {
+      el('m_z').textContent = n3(o.z);
+      el('mx_z').innerHTML = '(' + T.percent(o.ctr_b_pct, 2) + ' &minus; ' + T.percent(o.ctr_a_pct, 2) + ') / standard error = ' + n3(o.z) +
+        '  <em>how many standard errors apart the two rates sit</em>';
+    } else {
+      el('m_z').textContent = 'N/A';
+      el('mx_z').innerHTML = '<em>' + (msg || 'Needs variant B to compute.') + '</em>';
+    }
+
+    el('m_lift').textContent = signedPct(lift, 2);
+    el('m_lift').classList.toggle('neg', lift !== null && lift < 0);
+
+    el('m_p').textContent = pvStr(o.p_value);
+    if (hasB && o.p_value !== null) {
+      el('mx_p').innerHTML = '2 &times; (1 &minus; &Phi;(|' + n3(o.z) + '|)) = ' + pvStr(o.p_value) +
+        '  <em>chance of a gap this size or larger if the two creatives were identical</em>';
+    } else {
+      el('mx_p').innerHTML = '<em>' + (msg || 'Needs variant B to compute.') + '</em>';
+    }
+
+    if (o.n_per_variant !== null) {
+      el('m_nreq').textContent = T.count(o.n_per_variant);
+      el('mx_nreq').innerHTML = 'ceil( (z-critical + 0.8416)&sup2; &times; variance / gap&sup2; ) = ' + T.count(o.n_per_variant) +
+        '  <em>impressions each variant still needs to call this size of gap at 80% power</em>';
+    } else {
+      el('m_nreq').textContent = 'none';
+      el('mx_nreq').innerHTML = '<em>' + (!hasB ? 'Turn on variant B to size a test.' : 'There is no observed gap to size a sample against.') + '</em>';
+    }
+
+    /* -------------------------------------------- toggle state */
+    ['bImpField', 'bClicksField'].forEach(function (id) {
+      el(id).classList.toggle('is-off', !hasB);
+    });
+
+    /* -------------------------------------------- benchmark highlight */
+    var fam = (i.placement === 'meta_feed' || i.placement === 'meta_reels') ? 'meta_ads_ctr'
+      : (i.placement === 'google_search' || i.placement === 'google_display') ? 'google_ads_search' : null;
+    Array.prototype.forEach.call(document.querySelectorAll('.src'), function (node) {
+      node.classList.toggle('match', fam !== null && node.getAttribute('data-topic') === fam);
+    });
+
+    /* -------------------------------------------- state note */
+    var touched = KEYS.some(function (k) { return i[k] !== DEFAULTS[k]; }) ||
+      i.confidence_level !== DEFAULTS.confidence_level || i.b_on !== DEFAULTS.b_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function (k) {
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function () {
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function () {
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function () { n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('b_on').addEventListener('change', paint);
+  el('confidence_level').addEventListener('change', paint);
+  el('placement').addEventListener('change', paint);
+  el('creative_format').addEventListener('change', paint);
+
+  el('resetBtn').addEventListener('click', function () {
+    KEYS.forEach(function (k) { setField(k, DEFAULTS[k]); });
+    el('confidence_level').value = String(DEFAULTS.confidence_level);
+    el('b_on').checked = DEFAULTS.b_on;
+    el('placement').value = 'meta_feed';
+    el('creative_format').value = 'static';
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function () {
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function (slug) {
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function () {
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function (k) {
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function () { return lastInputs; },
+    getOutputs: function () {
+      if (!lastOut) return {};
+      return {
+        ctr_a_pct: lastOut.ctr_a_pct,
+        ctr_b_pct: lastOut.ctr_b_pct,
+        lift_pct: lastOut.lift_pct,
+        z: lastOut.z,
+        p_value: lastOut.p_value,
+        significant: lastOut.significant,
+        n_per_variant: lastOut.n_per_variant
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

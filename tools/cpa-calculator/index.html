@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CPA Calculator: Cost Per Acquisition + Max CPA | RISE DTC</title>
+<meta name="description" content="Free CPA calculator for ecommerce. Enter ad spend, conversions, AOV, margin, return rate and repeat orders, and see what one order actually costs to acquire against the most you can afford to pay, on the first order and inside a repeat window you choose." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/cpa-calculator/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="CPA Calculator: Cost Per Acquisition + Max CPA" />
+<meta property="og:description" content="What one order costs to acquire, against the most you can pay for it. Free, no signup, arithmetic printed under every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/cpa-calculator/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CPA Calculator: Cost Per Acquisition + Max CPA" />
+<meta name="twitter:description" content="What one order costs to acquire, against the most you can pay for it. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-cpa-calculator";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpa-calculator" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">CPA and Max Affordable CPA</span>
+      <span class="t2">Tool 15 of 22, ad metrics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What is your CPA <span class="hl">actually buying you?</span></h1>
+    <p class="lede">Cost per order only means something next to the most you can pay for it, on the order itself and inside a repeat window you choose.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="ad_spend">Ad spend this period</label>
+            <span class="pill w"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="ad_spend" data-min="0" data-max="10000000" data-step="10" value="5000" /></span>
+          </div>
+          <input type="range" id="ad_spend_r" min="0" max="10000000" step="10" value="5000" aria-label="Ad spend slider" />
+          <p class="f-cap">Total spend for the period you are checking. One channel or every channel together.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="conversions">Orders attributed to that spend</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="conversions" data-min="0" data-max="1000000" data-step="1" value="60" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="conversions_r" min="0" max="1000000" step="1" value="60" aria-label="Conversions slider" />
+          <p class="f-cap">Orders this spend gets credit for, from your ad platform or your attribution model.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="aov">Average order value</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="aov" data-min="1" data-max="5000" data-step="1" value="85" /></span>
+          </div>
+          <input type="range" id="aov_r" min="1" max="5000" step="1" value="85" aria-label="Average order value slider" />
+          <p class="f-cap">Gross, before refunds, on the orders this spend produced.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin, before returns</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="0" data-max="100" data-step="0.5" value="55" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="0" max="100" step="0.5" value="55" aria-label="Contribution margin slider" />
+          <p class="f-cap">Share of AOV left after product cost, packaging and payment processing, before returns enter the math.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate_pct">Return and exchange rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate_pct" data-min="0" data-max="60" data-step="0.5" value="25" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_pct_r" min="0" max="60" step="0.5" value="25" aria-label="Return rate slider" />
+          <p class="f-cap">Share of these orders returned or exchanged. The published figures are quoted further down the page.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_cost_pct">Net cost of a returned order <span class="opt">optional</span></label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_cost_pct" data-min="0" data-max="50" data-step="0.5" value="12" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_cost_pct_r" min="0" max="50" step="0.5" value="12" aria-label="Return cost slider" />
+          <p class="f-cap">Product cost you do not recover plus the handling, as a share of AOV, after any resale. Leave the apparel default if you have not measured your own.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="repeat_orders_12mo">Extra orders per customer in 12 months <span class="opt">optional</span></label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="repeat_orders_12mo" data-min="0" data-max="10" data-step="0.1" value="0.6" /><span class="u">orders</span></span>
+          </div>
+          <input type="range" id="repeat_orders_12mo_r" min="0" max="10" step="0.1" value="0.6" aria-label="Repeat orders slider" />
+          <p class="f-cap">Orders beyond the first. Leave at 0 for a first-order-only ceiling.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="payback_window_months">How long you will wait to get the money back</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="payback_window_months" data-min="0" data-max="12" data-step="3" value="12" /><span class="u">months</span></span>
+          </div>
+          <input type="range" id="payback_window_months_r" min="0" max="12" step="3" value="12" aria-label="Payback window slider" />
+          <p class="f-cap">Pick 0, 3, 6 or 12 months. A longer window counts more of the repeat orders above toward what you can afford now.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Cost per order, against your ceiling</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per order</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> per order</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where your spend sits against the ceiling <span id="wfScale">of $0.00 ceiling</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="spent" style="background:var(--grey-1)"></span>
+            <span class="seg" data-k="headroom" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band is the room still under your ceiling.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--grey-1)"></span><span class="nm">What you pay</span><span class="vl" id="lg_spent">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm" id="lg_headroom_nm">Room under the ceiling</span><span class="vl" id="lg_headroom">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What sets the verdict</span>
+          <p id="bindMain">Enter your numbers to see where you sit against the ceiling.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindRepeat" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>Return rate and repeat orders are the two guesses</h2>
+    <p class="sec-sub">Those two numbers are the ones founders quote from memory. Here is the same window ceiling recomputed with the return rate flexed 5 points in each direction and the repeat order count flexed 25% in each direction, so you can see how much of the ceiling rests on the estimate. The order-one ceiling stays a single number because it rests on inputs you can look up today.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one order acquired at this spend. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow sum final"><span class="mn">Cost per order at this spend</span><span class="mv" id="m_cpa">$0.00</span><span class="mx" id="mx_cpa"></span></div>
+      <div class="mrow sum"><span class="mn">Max CPA, order one alone</span><span class="mv" id="m_first">$0.00</span><span class="mx" id="mx_first"></span></div>
+      <div class="mrow"><span class="mn">Headroom, order one alone</span><span class="mv" id="m_hfirst">$0.00</span><span class="mx" id="mx_hfirst"></span></div>
+
+      <div id="repeatBlock">
+        <div class="mrow"><span class="mn">Repeat orders inside your window</span><span class="mv" id="m_repeat">0.000</span><span class="mx" id="mx_repeat"></span></div>
+        <div class="mrow sum"><span class="mn">Max CPA, inside the window</span><span class="mv" id="m_ltv">$0.00</span><span class="mx" id="mx_ltv"></span></div>
+        <div class="mrow"><span class="mn">Headroom, inside the window</span><span class="mv" id="m_hltv">$0.00</span><span class="mx" id="mx_hltv"></span></div>
+      </div>
+      <div class="mrow" id="collapseRow" hidden><span class="mn">Max CPA, inside the window</span><span class="mv" id="m_collapse">$0.00</span><span class="mx"><em>equal to the order-one ceiling above, since no repeat orders are counted at this window</em></span></div>
+    </div>
+
+    <ul class="assume">
+      <li><b>The order-one ceiling is a returns-adjusted contribution rate.</b> Revenue kept after the return rate, margin before returns, minus what a returned order costs you net of any resale, all folded into one number per order.</li>
+      <li><b>Repeat orders carry the same AOV, margin and return rate as the first order.</b> This calculator does not ask you to model a second, different order.</li>
+      <li><b>Repeat orders accrue evenly through the 12 months</b>, so a 6 month window earns half of them and a 0 month window earns none. Stated as an assumption, not a finding.</li>
+      <li><b>The window ceiling multiplies the same returns-adjusted number</b> that prices order one, so returns discount the repeat value too, not only the first sale.</li>
+      <li><b>Every field this calculator uses appears on screen.</b> Nothing is pulled in from a hidden default.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What Google Search costs to buy a click and a conversion</h2>
+    <p class="sec-sub">These are the only outside numbers on this page. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from. None of them is a return rate or a repeat order count, the two inputs this calculator asks you to supply yourself.</p>
+
+    <div class="src">
+      <span class="src-t">Google Search, all industries</span>
+      <p class="quote">"All industries (23 verticals): CTR 6.64%, CPC $5.42, CVR 8.18%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026, 13,474 US search campaigns &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search, Apparel / Fashion &amp; Jewelry</span>
+      <p class="quote">"Apparel/Fashion &amp; Jewelry: CTR 6.64%, CPC $4.44, CVR 4.50%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026 &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Google Search, Shopping / Collectibles &amp; Gifts</span>
+      <p class="quote">"Shopping, Collectibles &amp; Gifts: CTR 8.28%, CPC $4.14, CVR 4.01%"</p>
+      <span class="cite">WordStream / LocaliQ &middot; April 2025 to March 2026 &middot; <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank" rel="noopener">wordstream.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Ecommerce CTR, the same WordStream data as quoted by Shopify</span>
+      <p class="quote">"Ecommerce ads have an average CTR of 2.69% on Google Search ads"</p>
+      <span class="cite">WordStream data, quoted by Shopify &middot; 2026 article &middot; <a href="https://www.shopify.com/blog/good-ctr-google-ads" target="_blank" rel="noopener">shopify.com</a></span>
+    </div>
+
+    <p class="srcnote">The apparel CTR figure above matches the all-industry figure in this edition of the report, a coincidence of the data and not an error. Shopify's independent ecommerce figure sits far lower, which is why it is printed alongside rather than in place of the WordStream numbers. Dividing a quoted cost per click by a quoted conversion rate gives a rough same-channel cost per order for that category, a useful sanity check against the CPA this calculator computes from your own spend and conversions. There is no published figure we could verify for return cost per order or for apparel repeat order counts, so this page prints none for either. Those two dials stay yours to fill in.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why cost per order only means something next to a ceiling</h2>
+    <div class="prose">
+      <p>Cost per acquisition, priced on its own, is a fact with no opinion attached. Ad spend divided by orders tells you what you paid. It does not tell you whether that was a good price, and a number without a ceiling next to it gets treated as good or bad based on how it feels rather than what the order can actually carry. This calculator prices both halves: what you are paying, and the most that order can afford to cost, before you ever look at whether the number feels high.</p>
+
+      <p>CPA and CAC answer different questions, and apparel brands run into the gap between them constantly. CPA prices one order. CAC prices one customer. The two match exactly when every customer places a single order and never returns, which almost never happens once a repeat purchase program is working. A brand that prices only CPA and ignores the customer who comes back three more times inside the year is pricing the front door and ignoring the house behind it. This calculator keeps both in view: an order-one ceiling that never assumes a repeat purchase, and a second ceiling that counts the repeat orders you enter, inside a window you choose.</p>
+
+      <h3>The order-one ceiling is a returns-adjusted contribution rate</h3>
+      <p>The order-one ceiling folds three things into a single number per order: the revenue you keep after the return rate, the contribution margin on that revenue, and what a returned order costs you net of whatever you can resell. A brand can hit the same margin two different ways, a low return rate with an expensive return process, or a high return rate with a cheap one, and this calculator asks for both the rate and the cost precisely so those two paths do not collapse into one number that hides which lever actually moves the ceiling. Apparel sits at the sharp end of this. A returned garment that shipped in a size that no longer sells at full price does not cost the same as a returned garment that goes straight back on the shelf, even at an identical return rate.</p>
+
+      <p>Because the order-one ceiling rests entirely on inputs you can look up today, your margin, your return rate, your AOV, it is published as a single number rather than a range. There is nothing to forecast in it.</p>
+
+      <h3>The window ceiling adds a forecast, and prices it honestly</h3>
+      <p>The second ceiling adds the repeat orders you expect a customer to place beyond the first, inside a payback window you choose. That repeat count is closer to a forecast than a fact for most brands, which is why this calculator publishes it as a range rather than a single figure: the return rate flexed 5 points in either direction, the repeat count flexed 25% in either direction. A brand willing to wait twelve months to get its money back can afford to pay more per order than a brand that needs the spend back in three, because a longer window credits more of the repeat purchases a customer is expected to make. Pick the window you can genuinely wait out. A ceiling built on patience you do not have will not hold up when you spend against it.</p>
+
+      <p>Repeat orders are assumed to land evenly across the twelve months, so a six month window credits half of what you entered and a zero month window credits none of it. That is a modeling choice, stated plainly rather than hidden inside the arithmetic. Real repeat purchase timing clusters around restock cycles, gifting seasons and replenishment intervals that vary by category, so treat the window ceiling as a range to reason with, not a date to promise a finance partner.</p>
+
+      <h3>Reading the verdict</h3>
+      <p>When your actual cost per order sits at or under the order-one ceiling, the spend pays for itself before a single repeat order ever lands, the cleanest position on this page. When it sits above that ceiling but under the window ceiling, the spend pays back, but only once the repeat orders inside your chosen window arrive, which means you are funding the gap between the two numbers out of cash on hand until they do. When it sits above even the window ceiling, the spend does not pay back on the assumptions entered, and the honest next step is to move whichever input you can actually move: the spend itself, the margin, the return rate, or how long you are willing to wait.</p>
+
+      <p>Three things move the ceiling more than founders expect. The return rate, because it discounts both the order-one ceiling and everything repeat orders add on top of it. The return cost, because two brands at the identical return rate can carry very different ceilings depending on what a return actually costs to process. And the payback window, because it is the one input that turns a forecast about future customers into a number you can compare against today's spend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Six things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>What is the difference between CPA here and CAC on the other calculator?</summary>
+        <div class="fa">CPA is the cost of one order. CAC is the cost of one customer. They match exactly when every customer places one order and never again, and they pull apart the moment repeat orders enter the picture. This calculator prices the order itself, first alone and then inside a repeat window you choose, which is why it sits next to the CAC calculator rather than standing in for it.</div>
+      </details>
+      <details>
+        <summary>Why does the ceiling change when I move the payback window?</summary>
+        <div class="fa">The window sets how many of the repeat orders you entered count toward the ceiling. Repeat orders are assumed to land evenly across twelve months, so a six month window counts half of the repeat orders you entered, and a zero month window counts none of them, which collapses the ceiling back to the order-one number. Pick the window you can actually wait, not the longest one available.</div>
+      </details>
+      <details>
+        <summary>Why are there two ceilings instead of one number?</summary>
+        <div class="fa">The order-one ceiling rests on inputs you can look up today: your margin, your return rate, your average order value. The window ceiling adds a repeat order count, which is closer to a forecast than a fact for most brands. Publishing both keeps the number you can defend on its own next to the number that depends on customers you have not acquired yet.</div>
+      </details>
+      <details>
+        <summary>What return rate and repeat order count should apparel brands use?</summary>
+        <div class="fa">Pull your own numbers rather than a published average. Size runs, seasonal timing and the fit of a specific style move both figures more than a category benchmark can capture. The Google Search figures printed further down this page describe overall categories, not your store, and they are there to sanity check the numbers you enter, not replace them.</div>
+      </details>
+      <details>
+        <summary>Why does the calculator ask for a return cost on top of a return rate?</summary>
+        <div class="fa">The return rate tells you how many orders come back. The return cost tells you what each one costs once it does: the product you do not fully recover, the label, the handling. A brand with a low return rate but an expensive return process can end up with the same ceiling as a brand with the opposite mix, and folding both into one number would hide which lever actually moves it.</div>
+      </details>
+      <details>
+        <summary>If my spend is above the ceiling, does that always mean stop?</summary>
+        <div class="fa">It means the spend does not pay for itself on the assumptions entered above. Sometimes the fix is the spend. Sometimes it is the margin, the return rate or how long you are willing to wait for repeat orders to land. The verdict tells you which side of the ceiling you are on. What you do about it depends on which input you can actually move.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the verdict, sent as a one page scorecard you can forward to whoever signs off on ad spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Six tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live ad and Shopify data, then work the lever that actually moves your ceiling: the margin, the return rate or the return cost. Book a 30 minute intro call and we will walk your acquisition ceiling together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpa-calculator" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Cost per order</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is the difference between CPA here and CAC on the other calculator?","acceptedAnswer":{"@type":"Answer","text":"CPA is the cost of one order. CAC is the cost of one customer. They match exactly when every customer places one order and never again, and they pull apart the moment repeat orders enter the picture. This calculator prices the order itself, first alone and then inside a repeat window you choose, which is why it sits next to the CAC calculator rather than standing in for it."}},
+    {"@type":"Question","name":"Why does the ceiling change when I move the payback window?","acceptedAnswer":{"@type":"Answer","text":"The window sets how many of the repeat orders you entered count toward the ceiling. Repeat orders are assumed to land evenly across twelve months, so a six month window counts half of the repeat orders you entered, and a zero month window counts none of them, which collapses the ceiling back to the order-one number. Pick the window you can actually wait, not the longest one available."}},
+    {"@type":"Question","name":"Why are there two ceilings instead of one number?","acceptedAnswer":{"@type":"Answer","text":"The order-one ceiling rests on inputs you can look up today: your margin, your return rate, your average order value. The window ceiling adds a repeat order count, which is closer to a forecast than a fact for most brands. Publishing both keeps the number you can defend on its own next to the number that depends on customers you have not acquired yet."}},
+    {"@type":"Question","name":"What return rate and repeat order count should apparel brands use?","acceptedAnswer":{"@type":"Answer","text":"Pull your own numbers rather than a published average. Size runs, seasonal timing and the fit of a specific style move both figures more than a category benchmark can capture. The Google Search figures printed further down this page describe overall categories, not your store, and they are there to sanity check the numbers you enter, not replace them."}},
+    {"@type":"Question","name":"Why does the calculator ask for a return cost on top of a return rate?","acceptedAnswer":{"@type":"Answer","text":"The return rate tells you how many orders come back. The return cost tells you what each one costs once it does: the product you do not fully recover, the label, the handling. A brand with a low return rate but an expensive return process can end up with the same ceiling as a brand with the opposite mix, and folding both into one number would hide which lever actually moves it."}},
+    {"@type":"Question","name":"If my spend is above the ceiling, does that always mean stop?","acceptedAnswer":{"@type":"Answer","text":"It means the spend does not pay for itself on the assumptions entered above. Sometimes the fix is the spend. Sometimes it is the margin, the return rate or how long you are willing to wait for repeat orders to land. The verdict tells you which side of the ceiling you are on. What you do about it depends on which input you can actually move."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-adsemail.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'cpa-calculator';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, count = T.count;
+  function pct2(x) { return T.percent(x, 2); }
+  function mm(x) { return (x === null || x === undefined) ? '-' : money(x); }
+  function n3(x) { return T.roundDp(x, 3).toFixed(3); }
+  function n4(x) { return T.roundDp(x, 4).toFixed(4); }
+
+  var DEFAULTS = {
+    ad_spend: 5000, conversions: 60, aov: 85, cm_pct: 55, return_rate_pct: 25,
+    return_cost_pct: 12, repeat_orders_12mo: 0.6, payback_window_months: 12
+  };
+  var KEYS = ['ad_spend','conversions','aov','cm_pct','return_rate_pct','return_cost_pct','repeat_orders_12mo','payback_window_months'];
+  var SEGS = ['spent','headroom'];
+  var CROSS = ['cac','cpc-calculator','break-even-roas','ltv-cac-payback','true-profit-per-order','mer-calculator'];
+  var GLYPH = {
+    'cac':'CAC','cpc-calculator':'CPC','break-even-roas':'ROAS',
+    'ltv-cac-payback':'LTV','true-profit-per-order':'TPO','mer-calculator':'MER'
+  };
+
+  function el(id){ return document.getElementById(id); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      ad_spend: i.ad_spend, conversions: i.conversions, aov: i.aov, cm_pct: i.cm_pct,
+      return_rate_pct: i.return_rate_pct, return_cost_pct: i.return_cost_pct,
+      repeat_orders_12mo: i.repeat_orders_12mo, payback_window_months: i.payback_window_months
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var r = i.return_rate_pct / 100, cm = i.cm_pct / 100, rc = i.return_cost_pct / 100;
+
+    var cpaActual = o.cpa_actual;
+    var maxFirst = o.max_cpa_first_order;
+    var maxLtv = o.max_cpa_ltv;
+    var repeatWin = o.repeat_in_window;
+    var headFirst = o.headroom_first;
+    var headLtv = o.headroom_ltv;
+    var cmRate = (o.raco !== null && o.raco !== undefined) ? o.raco / i.aov : 0;
+
+    var noConversions = i.conversions <= 0;
+    var unaffordable = maxFirst === null;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = mm(cpaActual) + '<span class="per"> per order</span>';
+    el('mbarNum').textContent = mm(cpaActual);
+
+    var tierText, tierCls;
+    if (noConversions) { tierText = 'NO ORDERS YET'; tierCls = 't-fix'; }
+    else if (unaffordable) { tierText = 'UNAFFORDABLE'; tierCls = 't-not'; }
+    else if (o.verdict === 'pays back on the first order') { tierText = 'PAYS BACK NOW'; tierCls = 't-safe'; }
+    else if (o.verdict === 'pays back inside your window, and you have to fund the gap until then') { tierText = 'PAYS BACK LATER'; tierCls = 't-fix'; }
+    else { tierText = 'DOES NOT PAY BACK'; tierCls = 't-not'; }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + tierCls;
+      t.textContent = tierText;
+    });
+
+    el('rangeLine').innerHTML = (o.max_cpa_ltv_low === null)
+      ? 'Move the margin or the return rate until an order clears its own cost to see the ceiling range.'
+      : 'Your ceiling sits between <b>' + money(o.max_cpa_ltv_low) + '</b> and <b>' + money(o.max_cpa_ltv_high) +
+        '</b> per order, once repeat orders inside the window are counted';
+
+    /* waterfall: grey = what you pay, gold = room still under the ceiling.
+       When actual cost overruns the ceiling, the bar scales to the actual
+       spend and the white mark shows where the ceiling sits inside it. */
+    var scale, spentW, headW, neg;
+    if (noConversions) {
+      neg = false;
+      scale = (maxLtv !== null && maxLtv > 0) ? maxLtv : 1;
+      spentW = 0;
+      headW = (maxLtv !== null) ? maxLtv : 0;
+    } else if (unaffordable) {
+      neg = false;
+      scale = (cpaActual !== null && cpaActual > 0) ? cpaActual : 1;
+      spentW = cpaActual === null ? 0 : cpaActual;
+      headW = 0;
+    } else {
+      neg = cpaActual > maxLtv;
+      scale = neg ? cpaActual : maxLtv;
+      if (scale <= 0) scale = 1;
+      spentW = neg ? scale : cpaActual;
+      headW = neg ? 0 : (maxLtv - cpaActual);
+    }
+
+    var vals = { spent: spentW, headroom: headW };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    var markPct = (maxLtv !== null && maxLtv >= 0) ? (maxLtv / scale * 100) : 100;
+    el('wfMark').style.left = markPct + '%';
+    el('wfMark').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.display = neg ? 'block' : 'none';
+    el('wfShort').style.left = markPct + '%';
+    el('wfScale').textContent = 'of ' + (maxLtv === null ? '-' : money(maxLtv)) + ' ceiling';
+    if (noConversions) {
+      el('wfMarkCap').textContent = 'No orders yet. This is your ceiling only.';
+    } else if (unaffordable) {
+      el('wfMarkCap').textContent = 'Every order loses money after returns, so there is no ceiling to compare against.';
+    } else {
+      el('wfMarkCap').textContent = neg
+        ? 'The white line is your ceiling. Everything past it is the overrun.'
+        : 'The gold band is the room still under your ceiling.';
+    }
+
+    el('lg_spent').textContent = mm(cpaActual);
+    el('lg_headroom').textContent = neg ? mm(Math.abs(cpaActual - maxLtv)) : mm(headW);
+    el('lg_headroom_nm').textContent = neg ? 'Over the ceiling by' : 'Room under the ceiling';
+
+    /* binding */
+    if (noConversions) {
+      el('bindMain').innerHTML = 'No orders yet, so cost per order is undefined. The ceiling below still applies once spend turns into orders.';
+      el('bindFix').innerHTML = 'At these settings, order one alone can carry up to ' + mm(maxFirst) +
+        ', and the ceiling reaches ' + mm(maxLtv) + ' once repeat orders inside your window are counted.';
+      el('bindDrag').textContent = 'That ceiling rests on a ' + pct2(i.cm_pct) + ' contribution margin and a ' + pct2(i.return_rate_pct) + ' return rate, both entered above.';
+    } else if (unaffordable) {
+      el('bindMain').textContent = 'Every order loses money after returns at these settings, so no acquisition cost is affordable right now.';
+      el('bindFix').innerHTML = 'Contribution kept per order comes to ' + mm(o.raco) + ' once returns are counted. Move the margin or the return rate before this spend can pay for itself.';
+      el('bindDrag').textContent = '';
+    } else if (o.verdict === 'pays back on the first order') {
+      el('bindMain').innerHTML = 'You are paying ' + mm(cpaActual) + ' per order, and order one alone can carry up to ' + mm(maxFirst) +
+        '. You have ' + mm(headFirst) + ' of room before the first order alone stops paying for itself.';
+      el('bindFix').textContent = 'The full ceiling, with repeat orders inside your ' + count(i.payback_window_months) + '-month window counted, reaches ' + money(maxLtv) + '.';
+      el('bindDrag').textContent = 'That ceiling rests on a ' + pct2(i.cm_pct) + ' contribution margin and a ' + pct2(i.return_rate_pct) + ' return rate. Flex both and the honest spread above moves with them.';
+    } else if (o.verdict === 'pays back inside your window, and you have to fund the gap until then') {
+      el('bindMain').innerHTML = 'You are paying ' + mm(cpaActual) + ' per order, past the ' + mm(maxFirst) +
+        ' ceiling order one can carry alone, but still under the ' + mm(maxLtv) + ' ceiling once repeat orders inside your ' +
+        count(i.payback_window_months) + '-month window are counted.';
+      el('bindFix').textContent = 'You are funding a gap of ' + money(cpaActual - maxFirst) + ' per order until those repeat orders land.';
+      el('bindDrag').textContent = 'That ceiling rests on a ' + pct2(i.cm_pct) + ' contribution margin and a ' + pct2(i.return_rate_pct) + ' return rate. Flex both and the honest spread above moves with them.';
+    } else {
+      el('bindMain').innerHTML = 'You are paying ' + mm(cpaActual) + ' per order, above the ' + mm(maxLtv) +
+        ' ceiling even with repeat orders inside your ' + count(i.payback_window_months) + '-month window counted, an overrun of ' +
+        money(cpaActual - maxLtv) + ' per order.';
+      el('bindFix').textContent = 'Move the return rate, the contribution margin or the spend itself before this holds.';
+      el('bindDrag').textContent = 'That ceiling rests on a ' + pct2(i.cm_pct) + ' contribution margin and a ' + pct2(i.return_rate_pct) + ' return rate. Flex both and the honest spread above moves with them.';
+    }
+
+    var rep = el('bindRepeat');
+    if (repeatWin === 0) {
+      rep.hidden = false;
+      rep.textContent = 'Repeat orders are set to 0 orders inside this window, so the window ceiling equals the order-one ceiling.';
+    } else {
+      rep.hidden = true;
+    }
+
+    /* scenario spread, straight from compute() */
+    el('scLow').textContent  = mm(o.max_cpa_ltv_low);
+    el('scMid').textContent  = mm(maxLtv);
+    el('scHigh').textContent = mm(o.max_cpa_ltv_high);
+    el('scLow').classList.toggle('neg',  o.max_cpa_ltv_low  !== null && o.max_cpa_ltv_low  < 0);
+    el('scMid').classList.toggle('neg',  maxLtv !== null && maxLtv < 0);
+    el('scHigh').classList.toggle('neg', o.max_cpa_ltv_high !== null && o.max_cpa_ltv_high < 0);
+    var rHigh5 = Math.min(60, i.return_rate_pct + 5), rLow5 = Math.max(0, i.return_rate_pct - 5);
+    el('scLowA').textContent  = 'Return rate ' + pct2(rHigh5) + ', repeat orders at 75% of what you entered';
+    el('scMidA').textContent  = 'Return rate ' + pct2(i.return_rate_pct) + ', repeat orders as entered';
+    el('scHighA').textContent = 'Return rate ' + pct2(rLow5) + ', repeat orders at 125% of what you entered';
+    el('scenNote').textContent = (o.max_cpa_ltv_low === null)
+      ? 'Every order loses money after returns at these settings, so there is no ceiling to spread.'
+      : 'If your actual cost per order sits above the whole spread, the estimate has stopped being the problem and the order economics have taken over. If it sits inside the spread, pull the real return rate and repeat count before you decide anything.';
+
+    /* substituted arithmetic, one line per row */
+    el('m_cpa').textContent = mm(cpaActual);
+    el('mx_cpa').innerHTML = noConversions
+      ? '<em>no orders yet at this spend, so cost per order is undefined</em>'
+      : money(i.ad_spend) + ' / ' + count(i.conversions) + ' orders = ' + money(cpaActual) +
+        '  <em>ad spend divided by the orders attributed to it</em>';
+
+    el('m_first').textContent = unaffordable ? 'none' : money(maxFirst);
+    el('mx_first').innerHTML = unaffordable
+      ? '<em>every order loses money after returns at these settings, so no acquisition cost is affordable</em>'
+      : money(i.aov) + ' x ((1 - ' + n3(r) + ') x ' + n3(cm) + ' - ' + n3(r) + ' x ' + n3(rc) + ') = ' + money(i.aov) + ' x ' + n4(cmRate) + ' = ' + money(maxFirst) +
+        '  <em>revenue kept, margin before returns, minus the net cost of a returned order</em>';
+
+    el('m_hfirst').textContent = (headFirst === null) ? '-' : money(headFirst);
+    el('m_hfirst').classList.toggle('neg', headFirst !== null && headFirst < 0);
+    el('mx_hfirst').innerHTML = (headFirst === null)
+      ? '<em>headroom needs a cost per order and an affordable ceiling first</em>'
+      : mm(maxFirst) + ' - ' + mm(cpaActual) + ' = ' + money(headFirst) +
+        '  <em>negative means you are already spending past the order-one ceiling</em>';
+
+    el('m_repeat').textContent = n3(repeatWin);
+    el('mx_repeat').innerHTML = T.numStr(i.repeat_orders_12mo) + ' orders x (' + count(i.payback_window_months) + ' / 12 months) = ' + n3(repeatWin) +
+      '  <em>extra orders per customer this window buys you credit for</em>';
+
+    el('m_ltv').textContent = unaffordable ? 'none' : money(maxLtv);
+    el('mx_ltv').innerHTML = unaffordable
+      ? '<em>the order-one ceiling above is already at or below zero</em>'
+      : money(maxFirst) + ' x (1 + ' + n3(repeatWin) + ') = ' + money(maxLtv) +
+        '  <em>the ceiling once repeat orders inside the window are counted too</em>';
+
+    el('m_hltv').textContent = (headLtv === null) ? '-' : money(headLtv);
+    el('m_hltv').classList.toggle('neg', headLtv !== null && headLtv < 0);
+    el('mx_hltv').innerHTML = (headLtv === null)
+      ? '<em>headroom needs a cost per order and an affordable ceiling first</em>'
+      : mm(maxLtv) + ' - ' + mm(cpaActual) + ' = ' + money(headLtv) +
+        '  <em>negative means the spend does not pay back inside the window</em>';
+
+    var collapsed = repeatWin === 0;
+    el('repeatBlock').hidden = collapsed;
+    el('collapseRow').hidden = !collapsed;
+    if (collapsed) { el('m_collapse').textContent = unaffordable ? 'none' : money(maxLtv); }
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; });
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        cpa_actual: lastOut.cpa_actual,
+        raco: lastOut.raco,
+        max_cpa_first_order: lastOut.max_cpa_first_order,
+        repeat_in_window: lastOut.repeat_in_window,
+        max_cpa_ltv: lastOut.max_cpa_ltv,
+        max_cpa_ltv_low: lastOut.max_cpa_ltv_low,
+        max_cpa_ltv_high: lastOut.max_cpa_ltv_high,
+        headroom_first: lastOut.headroom_first,
+        headroom_ltv: lastOut.headroom_ltv,
+        verdict: lastOut.verdict
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

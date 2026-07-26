@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LTV Calculator (Returns and Exchange Adjusted) | RISE DTC</title>
+<meta name="description" content="Free customer lifetime value calculator, returns and exchange adjusted. Enter AOV, return rate, exchange share, purchase frequency, lifespan and contribution margin, and see LTV, the LTV to CAC ratio and the range behind it, with every line of the arithmetic printed." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/ltv/" />
+<meta name="theme-color" content="#111111" />
+<meta property="og:title" content="LTV Calculator (Returns and Exchange Adjusted)" />
+<meta property="og:description" content="What one customer is worth once refunds are removed and exchanges are kept, with the LTV to CAC ratio and the math printed." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/ltv/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="LTV Calculator (Returns and Exchange Adjusted)" />
+<meta name="twitter:description" content="What one customer is worth once refunds are removed and exchanges are kept. Free, no signup." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="stylesheet" href="../assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-tools-ltv";</script>
+</head>
+<body>
+<a class="skip" href="#calculator">Skip to the calculator</a>
+
+<!-- ============================ app bar ============================ -->
+<div class="appbar">
+  <div class="wrap appbar-in">
+    <a class="logochip" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener" data-cta="brand_home"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <span class="titles">
+      <span class="t1">Customer Lifetime Value</span>
+      <span class="t2">Tool 06 of 22, unit economics</span>
+    </span>
+    <a class="back" href="../"><span class="lg">All 22 tools</span><span class="sm">Tools</span></a>
+  </div>
+</div>
+
+<!-- ============================ hero + cockpit ============================ -->
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free calculator, no signup</p>
+    <h1>What is a customer <span class="hl">actually worth?</span></h1>
+    <p class="lede">A returned order costs you the sale, unless it comes back as an exchange instead.</p>
+  </section>
+
+  <div class="cockpit" id="calculator">
+
+    <!-- ---------------------------- inputs ---------------------------- -->
+    <div class="col-inputs">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="ph-t">Your inputs</span>
+          <span class="ph-n">8 dials</span>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="gross_aov">Average order value</label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="gross_aov" data-min="10" data-max="500" data-step="1" value="68" /></span>
+          </div>
+          <input type="range" id="gross_aov_r" min="10" max="500" step="1" value="68" aria-label="Average order value slider" />
+          <p class="f-cap">Gross, before refunds. Your Shopify overview prints it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="return_rate">Return rate</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="return_rate" data-min="0" data-max="60" data-step="1" value="22" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="return_rate_r" min="0" max="60" step="1" value="22" aria-label="Return rate slider" />
+          <p class="f-cap">Share of orders returned. Pull it over a window long enough for returns to land.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="exchange_share_pct">Returns that become exchanges</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="exchange_share_pct" data-min="0" data-max="100" data-step="5" value="30" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="exchange_share_pct_r" min="0" max="100" step="5" value="30" aria-label="Exchange share slider" />
+          <p class="f-cap">A different size or color rather than a refund. Exchanges keep the revenue, only true refunds subtract it.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="purchases_per_year">Purchases per year</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="purchases_per_year" data-min="0.5" data-max="20" data-step="0.1" value="2.2" /><span class="u">/yr</span></span>
+          </div>
+          <input type="range" id="purchases_per_year_r" min="0.5" max="20" step="0.1" value="2.2" aria-label="Purchases per year slider" />
+          <p class="f-cap">How often one customer orders in a year, averaged across the relationship.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="lifespan_years">Customer lifespan</label>
+            <span class="pill w"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="lifespan_years" data-min="0.5" data-max="10" data-step="0.5" value="2" /><span class="u">yrs</span></span>
+          </div>
+          <input type="range" id="lifespan_years_r" min="0.5" max="10" step="0.5" value="2" aria-label="Customer lifespan slider" />
+          <p class="f-cap">How long one customer keeps buying from you, on average.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cm_pct">Contribution margin</label>
+            <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cm_pct" data-min="5" data-max="90" data-step="1" value="45" /><span class="u">%</span></span>
+          </div>
+          <input type="range" id="cm_pct_r" min="5" max="90" step="1" value="45" aria-label="Contribution margin slider" />
+          <p class="f-cap">Margin on the revenue you keep, after product cost, shipping, processing and returns handling.</p>
+        </div>
+
+        <div class="field">
+          <div class="f-top">
+            <label class="f-label" for="cac">Blended CAC <span class="opt">optional</span></label>
+            <span class="pill"><span class="u">$</span><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="cac" data-min="0" data-max="300" data-step="1" value="28" /></span>
+          </div>
+          <input type="range" id="cac_r" min="0" max="300" step="1" value="28" aria-label="Blended CAC slider" />
+          <p class="f-cap">All acquisition spend divided by new customers, read off your bank statement. Leave it blank to see lifetime value with no acquisition comparison.</p>
+        </div>
+
+        <div class="field is-off" id="discountField">
+          <div class="f-top">
+            <label class="f-label" for="discount_rate_pct">Annual discount rate <span class="opt">optional</span></label>
+            <span class="toggle-row">
+              <span class="switch"><input data-calc-input type="checkbox" id="discount_on" aria-label="Include present value discounting" /><span class="track"></span><span class="knob"></span></span>
+              <span class="pill"><input data-calc-input class="numin" type="text" inputmode="decimal" autocomplete="off" id="discount_rate_pct" data-min="0" data-max="30" data-step="1" value="0" /><span class="u">%</span></span>
+            </span>
+          </div>
+          <input type="range" id="discount_rate_pct_r" min="0" max="30" step="1" value="0" aria-label="Annual discount rate slider" />
+          <p class="f-cap">Off by default. Most founders do not need present value to make this decision. Switch it on to see the same lifetime value in today's dollars.</p>
+        </div>
+
+        <div class="resetline">
+          <button class="btn-ghost" type="button" id="resetBtn">Reset to the apparel example</button>
+          <span class="state" id="stateNote">running on the apparel example</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------------------- verdict ---------------------------- -->
+    <div class="col-verdict" id="verdictCol">
+      <div class="verdict" data-gated>
+        <p class="v-label">Customer lifetime value</p>
+        <p class="bignum" id="bigNum">$0.00<span class="per"> per customer</span></p>
+        <div class="tierrow">
+          <span class="tier t-not" id="tierChip">NOT YET</span>
+          <span class="rangeline" id="rangeLine">Somewhere between <b>$0.00</b> and <b>$0.00</b> across the lifespan</span>
+        </div>
+
+        <div class="wf">
+          <p class="wf-t">Where the lifetime value goes <span id="wfScale">of $0.00 naive lifetime value</span></p>
+          <div class="wfbar" id="wfBar">
+            <span class="seg" data-k="returns_gap" style="background:var(--amber-1)"></span>
+            <span class="seg" data-k="result" style="background:var(--gold)"></span>
+            <span class="short" id="wfShort"></span>
+            <span class="mark" id="wfMark" style="left:100%"></span>
+          </div>
+          <p class="wfmark-cap" id="wfMarkCap">The gold band on the right is what one customer nets you before acquisition.</p>
+
+          <div class="legend">
+            <div class="lgd"><span class="dot" style="background:var(--amber-1)"></span><span class="nm">Lost to refunds</span><span class="vl" id="lg_gap">$0.00</span></div>
+            <div class="lgd is-result" id="lgResult"><span class="dot" style="background:var(--gold)"></span><span class="nm">Kept as contribution LTV</span><span class="vl" id="lg_result">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="binding">
+          <span class="bt">What moves this number</span>
+          <p id="bindMain">Enter a blended CAC to see the LTV to CAC ratio.</p>
+          <p class="sub" id="bindFix"></p>
+          <p class="sub" id="bindDrag"></p>
+          <p class="sub" id="bindDiscount" hidden></p>
+        </div>
+      </div>
+      <p class="gatemsg">Leave an email below to see the verdict.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================ scenario spread ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">The honest spread</p>
+    <h2>One of those inputs is a guess</h2>
+    <p class="sec-sub">Purchase frequency is the number most founders round to a guess. Here is the same lifetime value recomputed with frequency flexed 20% in each direction, lifespan held fixed, so you can see how much of the answer rests on the estimate.</p>
+    <div class="scen" data-gated>
+      <div class="sc"><p class="sc-k">Pessimistic</p><p class="sc-v" id="scLow">$0.00</p><p class="sc-a" id="scLowA"></p></div>
+      <div class="sc mid"><p class="sc-k">As entered</p><p class="sc-v" id="scMid">$0.00</p><p class="sc-a" id="scMidA"></p></div>
+      <div class="sc"><p class="sc-k">Optimistic</p><p class="sc-v" id="scHigh">$0.00</p><p class="sc-a" id="scHighA"></p></div>
+    </div>
+    <p class="scen-note" id="scenNote"></p>
+  </div>
+</section>
+
+<!-- ============================ the math ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The math</p>
+    <h2>Every line, with your numbers written into it</h2>
+    <p class="sec-sub">The unit of analysis is one customer across the lifespan you entered. These rows update as you move the dials above.</p>
+
+    <div class="mathcard" data-gated>
+      <div class="mrow"><span class="mn">Net AOV, revenue kept</span><span class="mv" id="m_netaov">$0.00</span><span class="mx" id="mx_netaov"></span></div>
+      <div class="mrow"><span class="mn">Orders across the lifespan</span><span class="mv" id="m_orders">0.0</span><span class="mx" id="mx_orders"></span></div>
+      <div class="mrow"><span class="mn">Contribution per year</span><span class="mv" id="m_annual">$0.00</span><span class="mx" id="mx_annual"></span></div>
+      <div class="mrow sum final"><span class="mn">Contribution LTV</span><span class="mv" id="m_ltv">$0.00</span><span class="mx" id="mx_ltv"></span></div>
+      <div class="mrow"><span class="mn">Naive contribution LTV, no returns</span><span class="mv" id="m_naive">$0.00</span><span class="mx" id="mx_naive"></span></div>
+      <div class="mrow"><span class="mn">Returns gap</span><span class="mv" id="m_gap">$0.00</span><span class="mx" id="mx_gap"></span></div>
+
+      <div id="cacRows">
+        <div class="mrow"><span class="mn">Blended CAC</span><span class="mv" id="m_cac">$0.00</span><span class="mx" id="mx_cac"><em>entered above, spent once to acquire this customer</em></span></div>
+        <div class="mrow sum"><span class="mn">Net LTV after CAC</span><span class="mv" id="m_net">$0.00</span><span class="mx" id="mx_net"></span></div>
+        <div class="mrow" id="ratioRow"><span class="mn">LTV to CAC ratio</span><span class="mv" id="m_ratio">0.00:1</span><span class="mx" id="mx_ratio"></span></div>
+      </div>
+
+      <div id="discRow" hidden>
+        <div class="mrow"><span class="mn">Discounted contribution LTV</span><span class="mv" id="m_disc">$0.00</span><span class="mx" id="mx_disc"></span></div>
+      </div>
+    </div>
+
+    <ul class="assume">
+      <li><b>An exchange keeps the revenue in the business.</b> Only the share of returns that end in a real refund removes revenue from net AOV.</li>
+      <li><b>Contribution margin is applied to net AOV, not gross AOV,</b> so returns compound correctly across every order in the lifespan rather than being subtracted once at the end.</li>
+      <li><b>The range flexes purchase frequency by 20% in each direction and holds lifespan fixed,</b> because frequency is the input most founders round to a guess while lifespan usually comes from a steadier retention curve.</li>
+      <li><b>Discounting, when switched on, uses end of year timing,</b> with the trailing partial year prorated into the next period. At a 0% rate it matches the undiscounted figure exactly.</li>
+      <li><b>Blended CAC stays optional.</b> Leave it blank to see lifetime value on its own, with no acquisition comparison and no ratio.</li>
+    </ul>
+
+    <p class="mathnote">Rounding happens at display time only. All the arithmetic runs in full precision, so nothing drifts between the panel, the spread and the rows above.</p>
+
+    <div class="utility">
+      <button class="btn-ghost" type="button" id="copyLink">Copy a link to these numbers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ benchmarks ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Published figures</p>
+    <h2>What these figures check, and where they come from</h2>
+    <p class="sec-sub">Two are AOV benchmarks to sanity check your average order value. One is the origin of the 3 to 1 LTV to CAC rule quoted across ecommerce. Each one prints the sentence its publisher wrote, the period the data covers, and a link to the page it came from.</p>
+
+    <div class="src">
+      <span class="src-t">Ecommerce AOV benchmark, cross platform</span>
+      <p class="quote">"average order value (AOV) across ecommerce was US$ 101 ... For Shopify the average AOV was US$ 85"</p>
+      <span class="cite">Littledata &middot; 2,800 ecommerce sites benchmarked, 2023 dataset &middot; <a href="https://www.littledata.io/average-website-performance" target="_blank" rel="noopener">littledata.io</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">Apparel AOV benchmark, UK market</span>
+      <p class="quote">"Average Order Value: &pound;85.58 (June 2026 compared to &pound;87.54 in June 2025, representing a -2.24% change)"</p>
+      <span class="cite">IRP Commerce, UK ecommerce market data &middot; June 2026 vs June 2025 &middot; <a href="https://www.irpcommerce.com/en/gb/ecommercemarketdata.aspx?Market=3" target="_blank" rel="noopener">irpcommerce.com</a></span>
+    </div>
+
+    <div class="src">
+      <span class="src-t">LTV to CAC ratio, the 3 to 1 rule</span>
+      <p class="quote">"The best SaaS businesses have a LTV to CAC ratio that is higher than 3, sometimes as high as 7 or 8."</p>
+      <span class="cite">David Skok, Matrix Partners, For Entrepreneurs blog ("SaaS Metrics 2.0") &middot; originally published circa 2010, still live and current on site &middot; <a href="https://www.forentrepreneurs.com/saas-metrics-2/" target="_blank" rel="noopener">forentrepreneurs.com</a></span>
+    </div>
+
+    <p class="srcnote">The AOV figures here are not apparel specific for the first row and UK fashion specific for the second, and they are printed to sanity check the number you enter rather than replace it. The LTV to CAC figure is a SaaS benchmark, not a DTC one, printed with its origin named so you can weigh it against your own margin structure instead of treating it as a fixed pass mark. There is no published figure we could verify for exchange share, purchase frequency or customer lifespan in apparel, so this page prints none for any of the three. Those three dials stay yours to fill in.</p>
+  </div>
+</section>
+
+<!-- ============================ explainer ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">How to read it</p>
+    <h2>Why lifetime value needs a returns adjustment before it means anything</h2>
+    <div class="prose">
+      <p>Lifetime value built on gross AOV treats every order as if it landed and stayed landed. In apparel, a meaningful share of orders come back, and what happens next matters more than the return rate on its own. A shopper who orders a medium and a large to keep one has not walked away from the brand, and swapping for the right size is not the same event as asking for a refund. A lifetime value model that cannot tell those two apart either overstates every customer by ignoring returns entirely, or understates every customer by treating a size swap as lost revenue. This calculator asks for one extra number, the share of returns that come back as exchanges rather than refunds, and lets that single input carry the difference.</p>
+
+      <h3>The two ways a return shows up in the model</h3>
+      <p>Net AOV is gross AOV multiplied by one minus the return rate times one minus the exchange share. Only the true refund share removes revenue. An exchange keeps the dollars in the business, even though the size or the color changed. That is the whole adjustment: a return rate of 40% that is three quarters exchanges costs the business a tenth of revenue, not four tenths, because most of what came back went straight back out the door in a different size. This page does not model the receiving, inspection and repack cost of that swap, since it is a lifetime revenue view, not a unit cost view. The true profit per order tool carries that cost line if you need it alongside this one.</p>
+
+      <h3>What purchase frequency times lifespan actually models</h3>
+      <p>Total orders across the relationship is purchase frequency multiplied by lifespan in years, an average across the whole customer base rather than a curve fitted to any one shopper. It treats every year of the relationship as buying at the same rate, which is a simplification in the same family as a geometric repeat rate approximation. Nobody actually orders in neat, even intervals, but averaged across enough customers the two numbers you enter, how often and for how long, describe the shape of the relationship well enough to price it. Contribution margin then applies to net AOV on every one of those orders, so the returns adjustment compounds correctly across the full lifespan instead of being subtracted once at the end as an afterthought.</p>
+
+      <h3>Reading contribution LTV against the naive number</h3>
+      <p>Naive contribution LTV is the same formula run on gross AOV instead of net AOV, the number you would get if you forgot returns existed. The gap between the two is what returns take out of a customer's lifetime value, and it is worth watching on its own, separate from the headline. A brand with a high return rate but a high exchange share can still show a small gap, because most of what looks like a return risk is actually a shopper finding the right size and staying. A brand with a low return rate but a low exchange share can show a bigger gap than expected, because every one of those returns is a full refund rather than a swap.</p>
+
+      <h3>The LTV to CAC ratio, and where the 3 to 1 rule comes from</h3>
+      <p>When a blended CAC is entered, the page divides contribution LTV by CAC to produce a ratio, and compares it against David Skok's widely repeated rule, quoted verbatim with its link in the panel above, that a ratio above 3 is healthy. That rule was written about SaaS businesses, where a customer pays a predictable amount every month and the cost structure looks nothing like a physical apparel order with a return rate and a resellable share. It is printed on this page with its origin named rather than treated as a fixed pass mark, because a DTC brand with thin margins and a real returns problem may need a wider ratio to carry the same risk a SaaS company carries at 3 to 1. Use it as a reference point, not a verdict. If the CAC field is left blank, the ratio and the net LTV both disappear rather than showing a number built on a guess.</p>
+
+      <h3>Why the range flexes purchase frequency</h3>
+      <p>Purchase frequency is the number most founders round to a guess from memory. Lifespan is usually read off a longer, steadier cohort curve, so it carries less uncertainty per unit of effort to check it. Flexing both inputs at once would compound two different kinds of guesswork into a spread wide enough to be useless. This page holds lifespan fixed and flexes frequency by 20% in each direction instead, and if you want to see frequency and lifespan pushed against each other at once, the LTV to CAC and payback tool runs that wider two input view.</p>
+
+      <h3>Discounting is optional, and most apparel brands can leave it off</h3>
+      <p>The discount toggle converts future years of contribution into today's dollars at the annual rate you set, using end of year timing with the trailing partial year prorated into the next period. At a lifespan of one or two years, the difference between the discounted and undiscounted figure is usually small enough not to change a decision, which is why the toggle defaults to off. It starts to matter more once lifespan stretches past three or four years or the discount rate climbs, situations closer to a long term subscription model than a typical apparel repeat customer.</p>
+
+      <p>Once you have the number, three dials move it the most. Exchange share, which is a sizing and fit content question as much as a returns policy question. Purchase frequency, which email, SMS and replenishment timing all touch directly. And blended CAC, read off the bank statement rather than the number the ad platform reports, since the platform only counts the orders it believes it caused.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Questions we get</p>
+    <h2>Five things founders ask about this math</h2>
+    <div class="faq">
+      <details open>
+        <summary>Why do exchanges count differently than a refund in this calculator?</summary>
+        <div class="fa">A refund removes the revenue from the order. An exchange keeps it, because the same dollars stay in the business even though the size or color changed. This calculator asks for the share of returns that come back as exchanges rather than assuming every return is a refund, which is the assumption that quietly overstates lifetime value the most in apparel.</div>
+      </details>
+      <details>
+        <summary>What return rate and exchange share should I enter for an apparel brand?</summary>
+        <div class="fa">Pull your own numbers over a window long enough for returns to land, since returns lag the sale by weeks. Count a month of returns and split them into two piles: the ones that came back as a refund and the ones that came back as a request for a different size or color. The second pile divided by the total is your exchange share.</div>
+      </details>
+      <details>
+        <summary>Is the 3 to 1 LTV to CAC ratio the right bar for a DTC apparel brand?</summary>
+        <div class="fa">The 3 to 1 figure comes from David Skok's SaaS Metrics work at Matrix Partners, quoted with its link in the published figures panel on this page, and it travels with subscription assumptions that do not map cleanly onto apparel. This page prints the ratio and names where the benchmark comes from so you can weigh it against your own margin structure rather than treat it as a fixed pass mark.</div>
+      </details>
+      <details>
+        <summary>Why does the range only flex purchase frequency and hold lifespan fixed?</summary>
+        <div class="fa">Purchase frequency is the number most founders round to a guess, while lifespan usually comes from a longer, steadier retention curve. Flexing both at once would compound two guesses into a spread wide enough to be useless. For the wider two input view, the LTV to CAC and payback tool runs both dials against each other.</div>
+      </details>
+      <details>
+        <summary>What if I do not know my blended CAC yet?</summary>
+        <div class="fa">Leave the field blank. The lifetime value still computes in full, it is only the net figure and the ratio against acquisition cost that disappear until you enter one. A rough CAC from your bank statement, spend divided by new customers, is enough to start.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ scorecard ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="scoreForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this scorecard</h3>
+      <p>Every input, every line of the math and the lifetime value, sent as a one page scorecard you can forward to whoever signs off on acquisition spend.</p>
+      <div class="row">
+        <input type="email" id="scoreEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="scoreSend">Send the scorecard</button>
+      </div>
+      <p class="msg" id="scoreMsg"></p>
+      <p class="note" data-gate-only="ungated">The calculator stays open either way. Every answer on this page is visible without the form.</p>
+      <p class="note" data-gate-only="email_to_save">The calculator stays open either way. The email is only how the scorecard reaches you.</p>
+      <p class="note" data-gate-only="email_to_see">The email is what opens the verdict panel on this page.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ cross links ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Next</p>
+    <h2>Four tools that run on the same numbers</h2>
+    <div class="xgrid" id="xgrid"></div>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="finalcta on-ink">
+      <h2>Want this run on <span class="hl">your numbers?</span></h2>
+      <p>From week one we run this math on live Shopify and retention data, then work the levers that move it: the exchange share, the purchase frequency and what you pay to acquire. Book a 30 minute intro call and we will walk your lifetime value math together.</p>
+      <a class="btn-gold" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=ltv" target="_blank" rel="noopener">Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rise">
+  <div class="wrap">
+    <p class="q">Every number computed from what you enter, <span>with the math shown.</span></p>
+    <p class="p">RISE DTC free tools for ecommerce operators. Twenty-two calculators, every one of them returns adjusted.</p>
+    <div class="meta">
+      <span class="logochip"><img src="../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></span>
+      <span><a href="../">All 22 tools</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ sticky mobile verdict bar ============================ -->
+<div class="mbar" id="mbar">
+  <span class="ml">Customer lifetime value</span>
+  <span class="mv" id="mbarNum">$0.00</span>
+  <span class="tier t-not" id="mbarTier">NOT YET</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Why do exchanges count differently than a refund in this calculator?","acceptedAnswer":{"@type":"Answer","text":"A refund removes the revenue from the order. An exchange keeps it, because the same dollars stay in the business even though the size or color changed. This calculator asks for the share of returns that come back as exchanges rather than assuming every return is a refund, which is the assumption that quietly overstates lifetime value the most in apparel."}},
+    {"@type":"Question","name":"What return rate and exchange share should I enter for an apparel brand?","acceptedAnswer":{"@type":"Answer","text":"Pull your own numbers over a window long enough for returns to land, since returns lag the sale by weeks. Count a month of returns and split them into two piles: the ones that came back as a refund and the ones that came back as a request for a different size or color. The second pile divided by the total is your exchange share."}},
+    {"@type":"Question","name":"Is the 3 to 1 LTV to CAC ratio the right bar for a DTC apparel brand?","acceptedAnswer":{"@type":"Answer","text":"The 3 to 1 figure comes from David Skok's SaaS Metrics work at Matrix Partners, quoted with its link in the published figures panel on this page, and it travels with subscription assumptions that do not map cleanly onto apparel. This page prints the ratio and names where the benchmark comes from so you can weigh it against your own margin structure rather than treat it as a fixed pass mark."}},
+    {"@type":"Question","name":"Why does the range only flex purchase frequency and hold lifespan fixed?","acceptedAnswer":{"@type":"Answer","text":"Purchase frequency is the number most founders round to a guess, while lifespan usually comes from a longer, steadier retention curve. Flexing both at once would compound two guesses into a spread wide enough to be useless. For the wider two input view, the LTV to CAC and payback tool runs both dials against each other."}},
+    {"@type":"Question","name":"What if I do not know my blended CAC yet?","acceptedAnswer":{"@type":"Answer","text":"Leave the field blank. The lifetime value still computes in full, it is only the net figure and the ratio against acquisition cost that disappear until you enter one. A rough CAC from your bank statement, spend divided by new customers, is enough to start."}}
+  ]
+}
+</script>
+
+<script src="../assets/tools-config.js"></script>
+<script src="../assets/formulas-uniteco.js"></script>
+<script src="../assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var SLUG = 'ltv';
+  var T = window.RiseTools;
+  var CFG = window.RISE_TOOLS_CONFIG;
+  var money = T.money, pct = T.percent;
+
+  var DEFAULTS = {
+    gross_aov: 68, return_rate: 22, exchange_share_pct: 30, purchases_per_year: 2.2,
+    lifespan_years: 2, cm_pct: 45, cac: 28, discount_rate_pct: 0, discount_on: false
+  };
+  var KEYS = ['gross_aov','return_rate','exchange_share_pct','purchases_per_year','lifespan_years','cm_pct','cac','discount_rate_pct'];
+  var SEGS = ['returns_gap','result'];
+  var CROSS = ['ltv-cac-payback','repeat-purchase-rate','aov','cac'];
+  var GLYPH = {
+    'ltv-cac-payback':'RATIO','repeat-purchase-rate':'RPR','aov':'AOV','cac':'CAC'
+  };
+
+  function el(id){ return document.getElementById(id); }
+  function n1(x){ return T.roundDp(x, 1).toFixed(1); }
+  function n2(x){ return T.roundDp(x, 2).toFixed(2); }
+
+  /* ------------------------------------------------------------- inputs */
+  function bounds(k){
+    var node = el(k);
+    return { min: parseFloat(node.getAttribute('data-min')), max: parseFloat(node.getAttribute('data-max')) };
+  }
+  function readInputs(){
+    var i = {};
+    KEYS.forEach(function(k){
+      if (k === 'cac' && String(el(k).value).trim() === '') {
+        i.cac = null;
+        i.cac_blank = true;
+        return;
+      }
+      var v = T.parseNum(el(k).value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      i[k] = T.clamp(v, b.min, b.max);
+    });
+    if (i.cac_blank === undefined) i.cac_blank = false;
+    i.discount_on = el('discount_on').checked;
+    return i;
+  }
+  function setField(k, v){
+    el(k).value = T.numStr(v);
+    var s = el(k + '_r');
+    if (s) s.value = v;
+  }
+  function computeInputs(i){
+    return {
+      gross_aov: i.gross_aov, return_rate: i.return_rate, exchange_share_pct: i.exchange_share_pct,
+      purchases_per_year: i.purchases_per_year, lifespan_years: i.lifespan_years, cm_pct: i.cm_pct,
+      cac: i.cac_blank ? null : i.cac,
+      discount_rate_pct: i.discount_on ? i.discount_rate_pct : null
+    };
+  }
+
+  var lastInputs = null, lastOut = null;
+
+  /* ------------------------------------------------------------- render */
+  function paint(){
+    var i = readInputs();
+    var ci = computeInputs(i);
+    var o = window.RISE_TOOLS[SLUG].compute(ci);
+    lastInputs = ci; lastOut = o;
+
+    var m = i.cm_pct / 100;
+
+    /* headline: gold numerals always, the tier chip carries the colour */
+    el('bigNum').innerHTML = money(o.contribution_ltv) + '<span class="per"> per customer</span>';
+    el('mbarNum').textContent = money(o.contribution_ltv);
+
+    /* tier: based on LTV to CAC ratio against the 3:1 rule quoted on the page */
+    var tierLabel, tierClass;
+    if (i.cac_blank) {
+      tierLabel = 'ENTER CAC'; tierClass = 't-fix';
+    } else if (o.ltv_cac_ratio === null) {
+      tierLabel = 'CAC AT ZERO'; tierClass = 't-fix';
+    } else if (o.ltv_cac_ratio >= 3) {
+      tierLabel = '3:1 OR BETTER'; tierClass = 't-safe';
+    } else if (o.ltv_cac_ratio >= 1) {
+      tierLabel = 'BELOW 3:1'; tierClass = 't-fix';
+    } else {
+      tierLabel = 'UNDER 1:1'; tierClass = 't-not';
+    }
+    ['tierChip','mbarTier'].forEach(function(id){
+      var t = el(id);
+      t.className = 'tier ' + tierClass;
+      t.textContent = tierLabel;
+    });
+
+    el('rangeLine').innerHTML = 'Somewhere between <b>' + money(o.contribution_ltv_low) +
+      '</b> and <b>' + money(o.contribution_ltv_high) + '</b> across the lifespan';
+
+    /* waterfall: naive lifetime value splits into what returns take out and
+       what stays as contribution LTV. Net AOV can never exceed gross AOV, so
+       this bar always fits the scale exactly; there is no shortfall case. */
+    var scale = o.naive_contribution_ltv > 0 ? o.naive_contribution_ltv : 1;
+    var vals = { returns_gap: o.returns_gap, result: o.contribution_ltv };
+    var bar = el('wfBar');
+    SEGS.forEach(function(k){
+      bar.querySelector('.seg[data-k="' + k + '"]').style.width = (vals[k] / scale * 100) + '%';
+    });
+    el('wfMark').style.display = 'none';
+    el('wfShort').style.display = 'none';
+    el('wfScale').textContent = 'of ' + money(o.naive_contribution_ltv) + ' naive lifetime value';
+
+    el('lg_gap').textContent = money(o.returns_gap);
+    el('lg_result').textContent = money(o.contribution_ltv);
+
+    /* what moves this number */
+    if (i.cac_blank) {
+      el('bindMain').innerHTML = 'Enter a blended CAC to see the LTV to CAC ratio against the <b>3 to 1</b> benchmark.';
+      el('bindFix').textContent = 'Contribution LTV runs ' + money(o.contribution_ltv) + ' with no acquisition cost subtracted yet.';
+    } else if (o.ltv_cac_ratio === null) {
+      el('bindMain').innerHTML = 'A CAC of <b>$0.00</b> means this customer arrived organically, so there is no ratio to compute.';
+      el('bindFix').textContent = 'Net of a ' + money(i.cac) + ' blended CAC, one customer nets you ' + money(o.net_ltv_after_cac) + ' across the lifespan.';
+    } else {
+      el('bindMain').innerHTML = 'Your LTV to CAC ratio is <b>' + T.ratio(o.ltv_cac_ratio) + ':1</b>, ' +
+        (o.ltv_cac_ratio >= 3 ? 'at or above the 3 to 1 benchmark.' : 'below the 3 to 1 benchmark.');
+      el('bindFix').textContent = 'Net of a ' + money(i.cac) + ' blended CAC, one customer nets you ' + money(o.net_ltv_after_cac) + ' across the lifespan.';
+    }
+    el('bindDrag').textContent = 'Returns cost this customer ' + money(o.returns_gap) +
+      ' in lifetime contribution against the no-returns case.';
+
+    var disc = el('bindDiscount');
+    if (i.discount_on) {
+      disc.hidden = false;
+      disc.textContent = 'At a ' + pct(i.discount_rate_pct) + ' annual discount rate, the same lifetime is worth ' +
+        money(o.discounted_contribution_ltv) + ' in today’s dollars.';
+    } else {
+      disc.hidden = true;
+    }
+
+    /* scenario spread: purchase frequency flexed 20%, lifespan held fixed */
+    el('scLow').textContent  = money(o.contribution_ltv_low);
+    el('scMid').textContent  = money(o.contribution_ltv_mid);
+    el('scHigh').textContent = money(o.contribution_ltv_high);
+    el('scLowA').textContent  = 'Purchase frequency ' + n1(i.purchases_per_year * 0.8) + ' orders/yr';
+    el('scMidA').textContent  = 'Purchase frequency ' + n1(i.purchases_per_year) + ' orders/yr';
+    el('scHighA').textContent = 'Purchase frequency ' + n1(i.purchases_per_year * 1.2) + ' orders/yr';
+    el('scenNote').innerHTML = 'Lifespan stays fixed at ' + n1(i.lifespan_years) +
+      ' years in every column. For the wider two input view, see the <a href="/tools/ltv-cac-payback/">LTV to CAC and payback</a> tool.';
+
+    /* substituted arithmetic, monospace, one line per row */
+    var r2 = i.return_rate / 100, x2 = i.exchange_share_pct / 100;
+    el('m_netaov').textContent = money(o.net_aov);
+    el('mx_netaov').innerHTML = '(1 - ' + n2(r2) + ' x (1 - ' + n2(x2) + ')) x ' + money(i.gross_aov) + ' = ' + money(o.net_aov) +
+      '  <em>only true refunds remove revenue, exchanges keep it</em>';
+    el('m_orders').textContent = n1(o.total_orders);
+    el('mx_orders').innerHTML = n1(i.purchases_per_year) + ' x ' + n1(i.lifespan_years) + ' = ' + n1(o.total_orders) +
+      '  <em>purchase frequency times the years in the relationship</em>';
+    el('m_annual').textContent = money(o.annual_contribution);
+    el('mx_annual').innerHTML = money(o.net_aov) + ' x ' + n2(m) + ' x ' + n1(i.purchases_per_year) + ' = ' + money(o.annual_contribution) +
+      '  <em>revenue kept, times contribution margin, times orders in a year</em>';
+    el('m_ltv').textContent = money(o.contribution_ltv);
+    el('mx_ltv').innerHTML = money(o.net_aov) + ' x ' + n2(m) + ' x ' + n1(i.purchases_per_year) + ' x ' + n1(i.lifespan_years) + ' = ' + money(o.contribution_ltv) +
+      '  <em>the lifetime value this customer leaves in contribution dollars</em>';
+    el('m_naive').textContent = money(o.naive_contribution_ltv);
+    el('mx_naive').innerHTML = money(i.gross_aov) + ' x ' + n2(m) + ' x ' + n1(i.purchases_per_year) + ' x ' + n1(i.lifespan_years) + ' = ' + money(o.naive_contribution_ltv) +
+      '  <em>the same lifetime value if no order ever came back</em>';
+    el('m_gap').textContent = money(o.returns_gap);
+    el('mx_gap').innerHTML = money(o.naive_contribution_ltv) + ' - ' + money(o.contribution_ltv) + ' = ' + money(o.returns_gap) +
+      '  <em>what returns take out of the lifetime number</em>';
+
+    var cacRows = el('cacRows');
+    if (i.cac_blank) {
+      cacRows.hidden = true;
+    } else {
+      cacRows.hidden = false;
+      el('m_cac').textContent = money(i.cac);
+      el('m_net').textContent = money(o.net_ltv_after_cac);
+      el('mx_net').innerHTML = money(o.contribution_ltv) + ' - ' + money(i.cac) + ' = ' + money(o.net_ltv_after_cac) +
+        '  <em>lifetime contribution once acquisition is repaid</em>';
+      var ratioRow = el('ratioRow');
+      if (o.ltv_cac_ratio === null) {
+        ratioRow.hidden = true;
+      } else {
+        ratioRow.hidden = false;
+        el('m_ratio').textContent = T.ratio(o.ltv_cac_ratio) + ':1';
+        el('mx_ratio').innerHTML = money(o.contribution_ltv) + ' / ' + money(i.cac) + ' = ' + T.ratio(o.ltv_cac_ratio) + ':1' +
+          '  <em>compared with the widely cited 3:1 minimum for a healthy ratio</em>';
+      }
+    }
+
+    var discRow = el('discRow');
+    if (i.discount_on) {
+      discRow.hidden = false;
+      el('m_disc').textContent = money(o.discounted_contribution_ltv);
+      el('mx_disc').innerHTML = 'discounted at ' + pct(i.discount_rate_pct) + ' a year across ' + n1(i.lifespan_years) + ' years = ' + money(o.discounted_contribution_ltv) +
+        '  <em>the same lifetime value in today’s dollars</em>';
+    } else {
+      discRow.hidden = true;
+    }
+
+    /* state note */
+    var touched = KEYS.some(function(k){ return i[k] !== DEFAULTS[k]; }) || i.discount_on !== DEFAULTS.discount_on;
+    el('stateNote').textContent = touched ? 'running on your numbers' : 'running on the apparel example';
+
+    T.syncBarPadding();
+  }
+
+  /* ------------------------------------------------------------- wiring */
+  KEYS.forEach(function(k){
+    var n = el(k), s = el(k + '_r');
+    n.addEventListener('input', function(){
+      var v = T.parseNum(n.value);
+      if (!isNaN(v)) s.value = v;
+      paint();
+    });
+    n.addEventListener('change', function(){
+      if (k === 'cac' && String(n.value).trim() === '') { paint(); return; }
+      var v = T.parseNum(n.value);
+      if (isNaN(v)) v = DEFAULTS[k];
+      var b = bounds(k);
+      setField(k, T.clamp(v, b.min, b.max));
+      paint();
+    });
+    s.addEventListener('input', function(){ n.value = T.numStr(s.value); paint(); });
+  });
+
+  el('discount_on').addEventListener('change', function(){
+    el('discountField').classList.toggle('is-off', !this.checked);
+    paint();
+  });
+
+  el('resetBtn').addEventListener('click', function(){
+    KEYS.forEach(function(k){ setField(k, DEFAULTS[k]); });
+    el('discount_on').checked = DEFAULTS.discount_on;
+    el('discountField').classList.toggle('is-off', !DEFAULTS.discount_on);
+    paint();
+  });
+
+  /* cross links, labelled from tools-config so every page agrees */
+  (function(){
+    var host = el('xgrid'), html = '';
+    CROSS.forEach(function(slug){
+      var cfg = CFG[slug] || { title: slug, promise: '' };
+      html += '<a class="xl" href="/tools/' + slug + '/">' +
+              '<span class="g">' + GLYPH[slug] + '</span>' +
+              '<span><span class="n">' + cfg.title + '</span>' +
+              '<span class="q">' + cfg.promise + '</span></span></a>';
+    });
+    host.innerHTML = html;
+  })();
+
+  /* prefill from a shared link, then paint and hand off to the runtime */
+  (function(){
+    var pre = T.prefillFromQuery(KEYS);
+    Object.keys(pre).forEach(function(k){
+      if (!el(k)) return;
+      var b = bounds(k);
+      setField(k, T.clamp(pre[k], b.min, b.max));
+    });
+  })();
+
+  paint();
+
+  T.init({
+    slug: SLUG,
+    barAnchor: 'verdictCol',
+    getInputs: function(){ return lastInputs; },
+    getOutputs: function(){
+      if (!lastOut) return {};
+      return {
+        net_aov: T.round2(lastOut.net_aov),
+        contribution_ltv: T.round2(lastOut.contribution_ltv),
+        naive_contribution_ltv: T.round2(lastOut.naive_contribution_ltv),
+        returns_gap: T.round2(lastOut.returns_gap),
+        net_ltv_after_cac: lastOut.net_ltv_after_cac === null ? null : T.round2(lastOut.net_ltv_after_cac),
+        ltv_cac_ratio: lastOut.ltv_cac_ratio === null ? null : T.round2(lastOut.ltv_cac_ratio),
+        discounted_contribution_ltv: T.round2(lastOut.discounted_contribution_ltv),
+        contribution_ltv_low: T.round2(lastOut.contribution_ltv_low),
+        contribution_ltv_high: T.round2(lastOut.contribution_ltv_high)
+      };
+    }
+  });
+})();
+</script>
+</body>
+</html>

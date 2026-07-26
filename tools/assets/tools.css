@@ -1,0 +1,517 @@
+/* ==========================================================================
+   RISE DTC free tools — LOCKED TEMPLATE STYLESHEET
+   Design lock: candidate B "Cockpit" + grafts from A (numbered hub ledger,
+   primer card) and C (gold value pills, reset line, monospace substituted
+   math, quoted-source benchmark panels, START band, how-to-read block).
+
+   Rules baked in, do not undo:
+   - Verdict numerals are gold Sora on ink, always. Red and green live in the
+     tier chip only.
+   - Highlight slabs carry INK text on gold, never white, and clone across
+     line wraps so a slab never orphans.
+   - Sticky mobile verdict bar is compensated with body bottom padding set by
+     tools.js, so it never covers the last input.
+   - Mobile first. Nothing may exceed the viewport width at 390px.
+   ========================================================================== */
+
+:root{
+  --gold:#ffc71d;
+  --gold-soft:#ffe083;
+  --gold-wash:#fff7dd;
+  --gold-pale:#fffdf3;
+  --gold-line:#f4dc8a;
+  --gold-deep:#8a6d00;
+  --ink:#111111;
+  --ink-2:#1f1f1f;
+  --text:#333333;
+  --sub:#5a5a5a;
+  --muted:#6f6f6f;
+  --faint:#9b9b9b;
+  --line:#e6e6e6;
+  --hair:#f1f1f1;
+  --paper:#ffffff;
+  --paper-2:#f5f5f5;
+  --pos:#1f7a45;
+  --neg:#c33232;
+  /* returns family: amber. operating costs: stepped greys, high contrast. */
+  --amber-1:#a8763a;
+  --amber-2:#d0a24e;
+  /* stepped greys, light enough to stay legible on the ink verdict panel */
+  --grey-1:#6e6e6e;
+  --grey-2:#888888;
+  --grey-3:#a2a2a2;
+  --grey-4:#bcbcbc;
+  --shadow:0 18px 48px rgba(0,0,0,.14);
+  --shadow-soft:0 10px 30px rgba(0,0,0,.07);
+  --r-card:26px;
+  --r-pill:9999px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+}
+body{
+  margin:0;background:var(--paper);color:var(--text);
+  font-family:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,h4,.sora{font-family:'Sora',system-ui,sans-serif}
+
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+.wrap.narrow{max-width:760px}
+.wrap.mid{max-width:900px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-9999px}
+.skip:focus{position:fixed;top:10px;left:10px;z-index:200;background:var(--gold);color:var(--ink);padding:10px 16px;border-radius:var(--r-pill);font-weight:700;text-decoration:none}
+
+/* --- gold highlight slab: INK text, clones across wraps, never orphans ---- */
+.hl{
+  background-image:linear-gradient(transparent 56%, var(--gold) 56%, var(--gold) 95%, transparent 95%);
+  color:var(--ink);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  padding:0 .06em;
+}
+/* On ink surfaces the half-height slab would leave the top of each glyph as
+   ink on ink, so the slab becomes a solid block. Ink text either way. */
+.on-ink .hl,.verdict .hl,.finalcta .hl,.startband .hl{
+  color:var(--ink);
+  background-image:none;
+  background-color:var(--gold);
+  border-radius:4px;
+  padding:.04em .2em;
+}
+
+/* ==========================================================================
+   App bar
+   ========================================================================== */
+.appbar{background:#000;color:#fff;padding:13px 0}
+.appbar-in{display:flex;align-items:center;gap:14px}
+.appbar img{height:22px;width:auto;flex:none}
+/* the brand logo is the black lockup, so on ink surfaces it sits in a white chip */
+.logochip{background:#fff;border-radius:9px;padding:6px 10px;display:inline-flex;align-items:center;flex:none;line-height:0}
+.appbar .titles{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.appbar .t1{font-family:'Sora',sans-serif;font-weight:700;font-size:.94rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.appbar .t2{font-size:.7rem;color:rgba(255,255,255,.55);letter-spacing:.05em;white-space:nowrap}
+.appbar .back{
+  margin-left:auto;font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;white-space:nowrap;
+}
+.appbar .back:hover{color:var(--gold)}
+.appbar .back .sm{display:none}
+@media (max-width:660px){
+  .appbar .t2{display:none}
+  .appbar .t1{font-size:.88rem}
+  .appbar .back .lg{display:none}
+  .appbar .back .sm{display:inline}
+}
+
+/* brand row, used on the hub */
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:26px 0 0}
+.brandrow .logo{height:30px;width:auto}
+.wordmark{
+  font-family:'Sora',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);text-decoration:none;white-space:nowrap;font-weight:600;
+}
+.wordmark b{color:var(--ink);font-weight:700}
+.wordmark:hover b{border-bottom:2px solid var(--gold)}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{padding:34px 0 6px}
+.eyebrow{
+  font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold-deep);margin:0 0 14px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--gold);flex:none}
+h1{
+  font-size:clamp(2.05rem,6vw,3.4rem);font-weight:700;line-height:1.06;letter-spacing:-.025em;
+  margin:0 0 14px;color:var(--ink);max-width:17ch;
+}
+.lede{font-size:clamp(1rem,2.3vw,1.14rem);color:var(--sub);max-width:58ch;margin:0 0 6px}
+.chiprow{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+.chip{
+  font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--gold);color:var(--ink);border-radius:var(--r-pill);padding:6px 13px;
+}
+.chip.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+/* ==========================================================================
+   Cockpit grid: inputs left, verdict right
+   ========================================================================== */
+.cockpit{display:grid;grid-template-columns:1fr;gap:22px;padding:26px 0 8px;align-items:start}
+@media (min-width:980px){
+  .cockpit{grid-template-columns:minmax(0,1fr) 430px;gap:34px}
+  .col-verdict{position:sticky;top:18px}
+}
+
+.panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-card);
+  box-shadow:var(--shadow);padding:8px 22px 22px;
+}
+.panel-head{
+  background:var(--paper);display:flex;align-items:center;gap:12px;padding:16px 0 13px;margin:0 0 4px;
+  border-bottom:1px solid var(--line);border-radius:var(--r-card) var(--r-card) 0 0;
+}
+@media (min-width:980px){.panel-head{position:sticky;top:0;z-index:5}}
+.panel-head .ph-t{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.panel-head .ph-n{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;color:var(--faint);letter-spacing:.08em;white-space:nowrap}
+@media (max-width:600px){.panel-head .ph-n{display:none}}
+
+/* ==========================================================================
+   Fields: gold value pills (graft C) inside B's input card
+   ========================================================================== */
+.field{padding:16px 0;border-bottom:1px solid var(--hair)}
+.field:last-of-type{border-bottom:none}
+.f-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.f-label{font-weight:700;font-size:.98rem;color:var(--ink);flex:1 1 auto;min-width:0;line-height:1.3}
+.f-label .opt{font-weight:600;color:var(--faint);font-size:.78rem;letter-spacing:.02em}
+
+.pill{
+  display:inline-flex;align-items:center;gap:1px;background:var(--gold);border-radius:var(--r-pill);
+  padding:8px 15px;flex:none;min-height:40px;box-shadow:0 2px 0 rgba(0,0,0,.06);
+}
+.pill .u{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:var(--ink);opacity:.62}
+.pill input{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:var(--ink);
+  background:transparent;border:0;outline:0;padding:0;width:56px;text-align:right;
+  font-variant-numeric:tabular-nums;-moz-appearance:textfield;
+}
+.pill.w input{width:64px}
+.pill input::-webkit-outer-spin-button,
+.pill input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.pill input:focus{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:6px;background:transparent;
+  margin:14px 0 3px;cursor:pointer;touch-action:pan-y;display:block;
+}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:var(--line)}
+input[type=range]::-moz-range-track{height:6px;border-radius:999px;background:var(--line)}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:24px;height:24px;margin-top:-9px;border-radius:50%;
+  background:var(--gold);border:3px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.28);
+}
+input[type=range]::-moz-range-thumb{
+  width:24px;height:24px;border-radius:50%;background:var(--gold);border:3px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.28);
+}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(255,199,29,.45)}
+
+.band{position:relative;height:5px;margin:2px 2px 0;border-radius:999px;
+  background:repeating-linear-gradient(90deg,transparent 0 6px,var(--line) 6px 7px)}
+.band i{position:absolute;top:0;height:5px;border-radius:999px;background:rgba(255,199,29,.65)}
+.f-cap{margin:9px 0 0;font-size:.81rem;color:var(--muted);line-height:1.5}
+.f-cap a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
+
+/* optional toggle. The knob and track never intercept the pointer: the input
+   sits on top at z-index 2 and both decorations are pointer-events:none.
+   This is the x-ray-inherited trap; keep it fixed. */
+.toggle-row{display:flex;align-items:center;gap:11px;flex:none}
+.switch{position:relative;width:46px;height:26px;flex:none}
+.switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
+.switch .track{position:absolute;inset:0;background:#c9c9c9;border-radius:999px;transition:background .18s;pointer-events:none}
+.switch .knob{position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;
+  transition:transform .18s;box-shadow:0 1px 3px rgba(0,0,0,.3);pointer-events:none}
+.switch input:checked + .track{background:var(--gold)}
+.switch input:checked + .track + .knob{transform:translateX(20px)}
+.switch input:focus-visible + .track{outline:2px solid var(--ink);outline-offset:2px}
+.field.is-off input[type=range],
+.field.is-off .pill,
+.field.is-off .band{opacity:.35;pointer-events:none}
+
+/* reset line (graft C) */
+.resetline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+.btn-ghost{
+  font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:700;color:var(--sub);background:#fff;
+  border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 16px;cursor:pointer;min-height:40px;
+}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.resetline .state{font-size:13px;color:var(--faint)}
+
+/* ==========================================================================
+   Verdict panel: gold numerals on ink. Red and green in the chip only.
+   ========================================================================== */
+.verdict{
+  background:linear-gradient(180deg,#242424,#171717);border:1px solid #363636;
+  border-radius:var(--r-card);box-shadow:var(--shadow);color:#fff;padding:24px 24px 22px;
+}
+.v-label{font-family:'Sora',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;
+  color:rgba(255,255,255,.55);margin:0 0 6px;font-weight:700}
+.bignum{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(2.5rem,8.5vw,3.4rem);line-height:1;
+  letter-spacing:-.035em;color:var(--gold);margin:0;font-variant-numeric:tabular-nums;
+  word-break:break-word;
+}
+.bignum .per{font-size:.27em;color:rgba(255,255,255,.55);font-weight:600;letter-spacing:0}
+.tierrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:15px 0 12px}
+.tier{
+  font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  border-radius:var(--r-pill);padding:.42rem 1rem;white-space:nowrap;
+}
+.tier.t-safe{background:var(--pos);color:#fff}
+.tier.t-fix{background:var(--gold);color:var(--ink)}
+.tier.t-not{background:var(--neg);color:#fff}
+.rangeline{font-size:.88rem;color:rgba(255,255,255,.66);margin:0}
+.rangeline b{color:#fff;font-weight:700;font-family:'Sora',sans-serif}
+
+/* stacked cost bar: returns family amber, operating costs stepped greys */
+.wf{margin:20px 0 0}
+.wf-t{font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--gold);margin:0 0 11px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.wf-t span{color:rgba(255,255,255,.5);letter-spacing:.04em;font-size:.68rem;text-transform:none}
+.wfbar{position:relative;display:flex;height:30px;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.06)}
+.wfbar .seg{height:100%;flex:0 0 auto;transition:width .45s cubic-bezier(.22,.61,.36,1)}
+.wfbar .short{position:absolute;top:0;bottom:0;right:0;display:none;
+  background:repeating-linear-gradient(135deg, rgba(195,50,50,.94) 0 7px, rgba(140,32,32,.94) 7px 14px);
+  transition:left .45s cubic-bezier(.22,.61,.36,1)}
+.wfbar .mark{position:absolute;top:-3px;bottom:-3px;width:3px;background:#fff;
+  box-shadow:0 0 0 1px rgba(0,0,0,.45);transition:left .45s cubic-bezier(.22,.61,.36,1)}
+.wfmark-cap{font-size:.72rem;color:rgba(255,255,255,.5);margin:7px 0 0;font-family:'Sora',sans-serif;letter-spacing:.03em}
+.legend{display:grid;gap:0;margin:13px 0 0}
+.lgd{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid rgba(255,255,255,.09);font-size:.9rem}
+.lgd:first-child{border-top:none}
+.lgd .dot{width:13px;height:13px;border-radius:4px;flex:none}
+.lgd .nm{color:rgba(255,255,255,.86)}
+.lgd .vl{margin-left:auto;font-family:'Sora',sans-serif;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.lgd.is-result{border-top:1px solid rgba(255,255,255,.3);margin-top:3px;padding-top:10px}
+.lgd.is-result .nm{color:#fff;font-weight:700}
+.lgd.is-result .vl{color:var(--gold);font-size:1.02rem}
+
+.binding{
+  margin:20px 0 0;border-left:3px solid var(--gold);background:rgba(255,199,29,.09);
+  border-radius:0 8px 8px 0;padding:14px 16px;
+}
+.binding .bt{font-family:'Sora',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 7px;display:block}
+.binding p{margin:0 0 7px;font-size:.93rem;color:#fff;line-height:1.55}
+.binding p:last-child{margin-bottom:0}
+.binding p.sub{color:rgba(255,255,255,.75);font-size:.88rem}
+.binding b{color:var(--gold);font-family:'Sora',sans-serif;font-weight:700}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+section.blk{padding:48px 0}
+section.grey{background:var(--paper-2)}
+.sec-eyebrow{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold-deep);margin:0 0 11px}
+h2{font-size:clamp(1.45rem,4vw,2.05rem);font-weight:700;letter-spacing:-.022em;margin:0 0 10px;line-height:1.14;color:var(--ink)}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.015em;margin:0 0 8px;color:var(--ink)}
+.sec-sub{color:var(--muted);margin:0 0 24px;max-width:62ch}
+
+/* scenario spread */
+.scen{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:760px){.scen{grid-template-columns:1fr 1fr 1fr}}
+.sc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.sc.mid{border-color:var(--ink);box-shadow:var(--shadow-soft)}
+.sc .sc-k{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 8px}
+.sc.mid .sc-k{color:var(--gold-deep)}
+.sc .sc-v{font-family:'Sora',sans-serif;font-weight:700;font-size:1.8rem;letter-spacing:-.03em;color:var(--ink);margin:0;font-variant-numeric:tabular-nums}
+.sc .sc-v.neg{color:var(--neg)}
+.sc .sc-a{margin:9px 0 0;font-size:.82rem;color:var(--muted);line-height:1.5}
+.scen-note{margin:16px 0 0;font-size:.86rem;color:var(--muted);max-width:68ch}
+
+/* math card with monospace substituted arithmetic (graft C) */
+.mathcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:8px 22px;box-shadow:var(--shadow-soft)}
+.mrow{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:13px 0;border-top:1px solid var(--hair);align-items:baseline}
+.mrow:first-child{border-top:none}
+.mrow .mn{font-weight:700;color:var(--ink);font-size:.94rem}
+.mrow .mv{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mrow .mx{
+  grid-column:1/-1;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12.5px;color:var(--sub);line-height:1.65;word-break:break-word;overflow-wrap:anywhere;
+}
+/* the plain-language annotation sits under the substituted arithmetic, in body
+   type, so the two never read as one run-on string. 12.5px floor. */
+.mrow .mx em{display:block;margin-top:5px;font-style:normal;color:var(--muted);
+  font-family:'Manrope',sans-serif;font-size:12.5px;line-height:1.5}
+.mrow.sum{border-top:2px solid var(--ink)}
+.mrow.sum .mn,.mrow.sum .mv{font-family:'Sora',sans-serif;font-weight:700}
+.mrow.final .mv{color:var(--gold-deep);font-size:1.2rem}
+.mrow.final .mv.neg{color:var(--neg)}
+.mathnote{margin:18px 0 0;border-left:3px solid var(--gold);background:var(--gold-pale);border-radius:0 6px 6px 0;
+  padding:14px 18px;font-size:.88rem;color:var(--sub);line-height:1.65;max-width:74ch}
+.assume{margin:18px 0 0;padding-left:18px;color:var(--sub);font-size:.92rem;line-height:1.6}
+.assume li{margin:0 0 8px}
+.assume b{color:var(--ink)}
+
+/* quoted-source benchmark panels (graft C, replaces B's table) */
+.src{margin:0 0 14px;border-left:4px solid var(--gold);background:var(--gold-pale);border-radius:0 8px 8px 0;padding:16px 20px}
+.src .src-t{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold-deep);margin:0 0 8px}
+.src .quote{margin:0;font-size:1rem;line-height:1.55;color:var(--ink);font-weight:500}
+.src .cite{display:block;font-family:'Sora',sans-serif;font-size:11.5px;font-weight:600;color:var(--muted);margin:10px 0 0;line-height:1.6}
+.src .cite a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--gold);word-break:break-word}
+.src .cite a:hover{background:var(--gold)}
+.srcnote{margin:18px 0 0;font-size:.86rem;color:var(--muted);max-width:70ch}
+
+/* prose + FAQ */
+.prose p{font-size:1rem;color:var(--text);line-height:1.72;margin:0 0 16px;max-width:68ch}
+.prose h3{margin:26px 0 8px}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-family:'Sora',sans-serif;font-weight:700;
+  font-size:1.02rem;color:var(--ink);display:flex;gap:14px;align-items:flex-start}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";margin-left:auto;color:var(--gold-deep);font-weight:700;flex:none}
+.faq details[open] summary::after{content:"\2212"}
+.faq .fa{padding:0 0 20px;color:var(--sub);font-size:.96rem;line-height:1.7;max-width:66ch}
+
+/* scorecard capture */
+.score{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:28px 26px;box-shadow:var(--shadow-soft);max-width:660px}
+.score h3{margin:0 0 8px;font-size:1.25rem}
+.score p{margin:0 0 18px;color:var(--muted);font-size:.94rem}
+.score .row{display:flex;gap:10px;flex-wrap:wrap}
+.score input{flex:1 1 220px;min-width:0;padding:13px 16px;border:1px solid var(--line);border-radius:var(--r-pill);
+  font-family:inherit;font-size:1rem;background:#fff;color:var(--ink)}
+.score input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.score .note{margin:14px 0 0;font-size:.8rem;color:var(--faint)}
+.score .msg{margin:12px 0 0;font-size:.9rem;font-weight:700;color:var(--gold-deep);min-height:1.2em}
+.score .msg.err{color:var(--neg)}
+.utility{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+
+.btn-gold{
+  display:inline-block;background:var(--gold);color:var(--ink);text-decoration:none;border:none;cursor:pointer;
+  font-family:'Sora',sans-serif;font-weight:700;font-size:.98rem;padding:13px 26px;border-radius:var(--r-pill);
+  transition:transform .12s, box-shadow .12s;text-align:center;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,199,29,.35)}
+.btn-gold:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* cross links */
+.xgrid{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:760px){.xgrid{grid-template-columns:1fr 1fr}}
+.xl{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);
+  border-radius:18px;padding:16px 18px;text-decoration:none;transition:border-color .16s,transform .16s}
+.xl:hover{border-color:var(--ink);transform:translateY(-2px)}
+.xl .g{width:44px;height:44px;border-radius:13px;background:var(--ink);color:var(--gold);display:flex;align-items:center;
+  justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:14px;letter-spacing:.02em}
+.xl .n{font-family:'Sora',sans-serif;font-weight:700;font-size:.98rem;color:var(--ink);display:block;margin-bottom:2px;line-height:1.3}
+.xl .q{font-size:.84rem;color:var(--muted);display:block;line-height:1.45}
+
+/* final CTA + footer */
+.finalcta{background:var(--ink-2);color:#fff;border-radius:var(--r-card);padding:38px 32px;box-shadow:var(--shadow)}
+.finalcta h2{color:#fff;max-width:20ch}
+.finalcta p{color:rgba(255,255,255,.75);margin:0 0 22px;max-width:56ch}
+footer.rise{background:#000;color:#fff;padding:38px 0 32px;margin-top:48px}
+footer.rise .q{font-family:'Sora',sans-serif;font-size:1.22rem;font-weight:700;margin:0 0 6px;letter-spacing:-.02em}
+footer.rise .q span{color:var(--gold)}
+footer.rise .p{color:rgba(255,255,255,.6);margin:0 0 24px;font-size:.92rem;max-width:58ch}
+footer.rise .meta{border-top:1px solid #333;padding-top:18px;display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;align-items:center;font-size:.78rem;color:rgba(255,255,255,.5)}
+footer.rise .meta img{height:20px}
+footer.rise .meta a{color:rgba(255,255,255,.65);text-decoration:none}
+footer.rise .meta a:hover{color:var(--gold)}
+
+/* ==========================================================================
+   Sticky mobile verdict bar. tools.js sets body padding-bottom to the bar
+   height plus 16px, so the last input row is always reachable.
+   ========================================================================== */
+.mbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);color:#fff;
+  border-top:1px solid #333;padding:11px 20px calc(11px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;box-shadow:0 -8px 26px rgba(0,0,0,.28);
+  transform:translateY(0);transition:transform .28s ease;
+}
+.mbar.tucked{transform:translateY(115%)}
+.mbar .ml{font-family:'Sora',sans-serif;font-size:.6rem;text-transform:uppercase;letter-spacing:.13em;
+  color:rgba(255,255,255,.55);font-weight:700;line-height:1.3;max-width:92px}
+.mbar .mv{font-family:'Sora',sans-serif;font-weight:700;font-size:1.45rem;letter-spacing:-.03em;color:var(--gold);
+  font-variant-numeric:tabular-nums}
+.mbar .tier{margin-left:auto;font-size:.6rem;padding:.32rem .7rem}
+@media (min-width:980px){.mbar{display:none}}
+
+/* ==========================================================================
+   Gate modes. Driven only by tools-config.js through tools.js.
+   ========================================================================== */
+body.gate-ungated [data-gate-only="email_to_save"],
+body.gate-ungated [data-gate-only="email_to_see"],
+body.gate-email_to_save [data-gate-only="ungated"],
+body.gate-email_to_save [data-gate-only="email_to_see"],
+body.gate-email_to_see [data-gate-only="ungated"],
+body.gate-email_to_see [data-gate-only="email_to_save"]{display:none}
+
+body.gate-email_to_see:not(.gate-unlocked) [data-gated]{
+  filter:blur(9px);
+  -webkit-user-select:none;user-select:none;pointer-events:none;
+}
+.gatemsg{display:none;margin:14px 0 0;font-size:.9rem;color:var(--gold-deep);font-weight:700}
+body.gate-email_to_see:not(.gate-unlocked) .gatemsg{display:block}
+
+/* ==========================================================================
+   HUB: numbered 01 to 22 ledger (graft A) + START band + how to read (graft C)
+   ========================================================================== */
+.rack{padding:30px 0 0}
+.fam{margin:0 0 38px}
+.fam-h{display:flex;align-items:baseline;gap:12px;margin:0 0 4px;padding-bottom:9px;border-bottom:2px solid var(--ink)}
+.fam-h .fam-n{font-family:'Sora',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.fam-h .fam-c{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-left:auto;white-space:nowrap}
+.fam-note{font-size:13.5px;color:var(--muted);margin:10px 0 4px;max-width:70ch}
+
+.tool{display:grid;grid-template-columns:36px 1fr;gap:0 12px;align-items:baseline;text-decoration:none;color:inherit;
+  padding:13px 0;border-bottom:1px solid var(--hair)}
+.tool:last-child{border-bottom:0}
+.tool .t-n{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:var(--faint);letter-spacing:.02em;padding-top:3px}
+.tool .t-name{font-family:'Sora',sans-serif;font-size:16.5px;font-weight:700;letter-spacing:-.012em;line-height:1.3;color:var(--ink)}
+.tool .t-promise{grid-column:2;font-size:13.8px;line-height:1.5;color:var(--muted);margin-top:3px}
+.tool:hover .t-name{background-image:linear-gradient(transparent 58%, var(--gold) 58%, var(--gold) 96%, transparent 96%);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.tool:hover .t-n{color:var(--ink)}
+.tool:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.tool.is-flag .t-n{color:var(--ink)}
+.flagtag{display:inline-block;font-family:'Sora',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--gold);color:var(--ink);border-radius:3px;padding:3px 6px;margin-left:8px;
+  vertical-align:2px;white-space:nowrap}
+
+/* primer card (graft A) */
+.primer{border:1px solid var(--gold-line);background:var(--gold-pale);border-radius:18px;padding:24px 24px;margin:0 0 18px}
+.primer h2{font-size:1.32rem;margin:0 0 10px;max-width:26ch}
+.primer p{margin:0;font-size:.95rem;color:var(--sub);line-height:1.65;max-width:68ch}
+
+/* black START band (graft C) */
+.startband{background:var(--ink);color:#fff;padding:40px 0}
+.startband .sb-in{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.startband .sb-k{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.startband h2{color:#fff;margin:0 0 8px;max-width:20ch;font-size:clamp(1.35rem,3.6vw,1.9rem)}
+.startband p{color:rgba(255,255,255,.75);margin:0;max-width:52ch;font-size:.95rem}
+.startband .sb-copy{flex:1 1 320px;min-width:0}
+.startband .btn-gold{flex:none}
+
+/* how to read a tool: 3 rules */
+.rules{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:760px){.rules{grid-template-columns:repeat(3,1fr)}}
+.rule-c{border-left:4px solid var(--gold);background:var(--gold-pale);border-radius:0 8px 8px 0;padding:16px 20px}
+.rule-c .nt{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold-deep);margin:0 0 7px}
+.rule-c p{margin:0;font-size:.9rem;line-height:1.6;color:var(--text)}
+
+.hubfoot{border-top:1px solid var(--line);padding:24px 0 42px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.hubfoot img{height:22px;width:auto;opacity:.85}
+.hubfoot span{font-size:12px;color:var(--faint);letter-spacing:.04em;max-width:52ch}
+
+/* ==========================================================================
+   Small screens
+   ========================================================================== */
+@media (max-width:520px){
+  .wrap{padding:0 18px}
+  h1{font-size:clamp(1.9rem,8.4vw,2.4rem);max-width:none}
+  .panel{padding:6px 16px 18px;border-radius:20px}
+  .verdict{padding:20px 17px 18px;border-radius:20px}
+  .finalcta{padding:26px 20px;border-radius:20px}
+  .score{padding:22px 18px;border-radius:20px}
+  .mathcard{padding:6px 16px;border-radius:20px}
+  .primer{padding:20px 18px}
+  section.blk{padding:38px 0}
+  .f-label{font-size:.94rem}
+  .pill{padding:8px 13px}
+  .pill input{width:52px;font-size:15px}
+  .tool{grid-template-columns:30px 1fr}
+  .src{padding:14px 16px}
+  .startband{padding:32px 0}
+}
