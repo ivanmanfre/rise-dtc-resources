@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>rise-return-note-miner: sort raw return notes into a SKU by reason matrix | RISE DTC</title>
+<meta name="description" content="A free Claude skill from our DTC pack. You supply 50 to 300 return rows with customer notes; Claude sorts every note into a fixed taxonomy, builds the SKU by reason matrix, and routes each cluster." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/return-note-miner/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="rise-return-note-miner: sort raw return notes into a SKU by reason matrix" />
+<meta property="og:description" content="Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/return-note-miner/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="rise-return-note-miner: sort raw return notes into a SKU by reason matrix" />
+<meta name="twitter:description" content="Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics. Free, runs in Claude." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-return-note-miner";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the skill file</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 04 of 09 &middot; Claude skill &middot; free, runs in Claude</p>
+    <h1>The return reason is already <span class="gold-word">in the note box.</span></h1>
+    <p class="job">Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>About 4 minutes</b></span>
+      <span>New data needed <b>A returns export</b></span>
+      <span>File <b>SKILL.md</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>rise-return-note-miner</span></p>
+</section>
+
+<!-- ============================ the skill file ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The skill file</p>
+    <h2>The whole skill, printed in full</h2>
+    <p class="sec-sub">Download SKILL.md or copy it whole, paste your return rows underneath it in any Claude chat, and read the matrix it hands back.</p>
+
+    <div class="pspec">
+      <span class="ps-k">You paste, you get back, the time it takes</span>
+      <ul>
+        <li><b>You paste:</b> 50 to 300 return rows, each with SKU, size, the tagged reason, and the customer's free-text note. Straight out of Shopify returns, Loop, Returnly or AfterShip.</li>
+        <li><b>You get back:</b> every note sorted into a fixed taxonomy, a SKU by reason matrix with counts, and each cluster classified as a copy fix, a sizing fix, a QC ticket or a logistics fix, with row-numbered quotes.</li>
+        <li><b>Time:</b> about 4 minutes in any Claude chat.</li>
+      </ul>
+    </div>
+
+    <div class="skillmd">
+      <div class="sk-head">
+        <span class="sk-file">SKILL.md</span>
+        <span class="sk-where">Drop it in ~/.claude/skills/rise-return-note-miner/</span>
+      </div>
+      <pre class="pcode" id="pk-skill">---
+name: rise-return-note-miner
+description: Use when you have a pile of raw return records with the customer's own free-text note attached (Shopify returns, Loop, Returnly, AfterShip, a support export) and you want to know what is actually causing the returns. Paste 50 to 300 rows and Claude sorts every note into a fixed reason taxonomy, builds a SKU by reason matrix with counts, and says which clusters are a copy problem, a sizing problem, a QC problem, or a logistics problem, with row-numbered quotes behind every one. Not for aggregate return numbers with no notes attached, and not for writing product copy.
+---
+
+# Return Note Miner
+
+**You paste:** 50 to 300 return rows, each with SKU, size, the tagged reason, and the customer's free-text note.
+**You get back:** every note sorted into a fixed taxonomy, a SKU by reason matrix with counts, and each cluster classified as a copy fix, a sizing fix, a QC ticket, or a logistics fix, with row-numbered quotes.
+**Time:** about 4 minutes in any Claude chat. Counts are counted, never estimated.
+
+Part of the RISE DTC Claude pack, RISE Method, Financial Health pillar.
+
+## What this does
+
+The tagged reason on a return tells you almost nothing. "Sizing / fit" is the
+bin most returns apps default to, and inside that bin sit four different
+problems with four different owners. The customer already told you
+which one it is. They typed it into the note box and nobody read it.
+
+You paste the rows. Claude reads every note, sorts it into one of nine fixed
+categories, counts the clusters, and hands back the matrix plus the routing.
+Every count is a count of rows you pasted. Every quote carries the row number
+it came from, so you can check any line in your own export in seconds.
+
+The taxonomy below is fixed on purpose. Run this in August and again in
+September and the categories mean the same thing both times, so the two matrices
+can sit next to each other. That is the whole reason this is a skill file and
+not a prompt you retype.
+
+This works two ways: installed as a Claude Code skill, or pasted straight into a
+Claude chat with your rows underneath it. Same taxonomy, same counts, same
+output either way.
+
+## Step 1: Take the rows and number them
+
+Ask for the export if it is not already pasted. Each row needs four fields at a
+minimum:
+
+| Field | What it is | Where to find it |
+|---|---|---|
+| SKU | The product identifier | Your returns export, product column |
+| Size or variant | The variant that came back | Same export |
+| Tagged reason | The reason your returns app recorded | Same export, reason column |
+| Customer note | The free text the customer typed | Same export, note or comment column |
+
+Order ID, dates and resolution (refund, exchange, store credit) are welcome and
+get reported if present. They are not required.
+
+**Row numbering, fixed.** The first data row under the header is row 1. Count
+every row including the ones with empty notes. This numbering is what every
+quote in the output refers to, so it never changes mid-run.
+
+If fewer than 50 rows are pasted, run anyway and print the row count at the top
+of the output next to the words "thin sample". If no notes are attached at all,
+stop and say so: this skill reads notes, and aggregate return numbers belong in
+`rise-return-rate-rescue`.
+
+## Step 2: Apply the fixed reason taxonomy
+
+Nine categories. **Assignment order is first match wins, top to bottom.** Every
+row lands in exactly one category. Never create a tenth category, never rename
+one, never merge two.
+
+| # | Category | The note says | Owner |
+|---|---|---|---|
+| 1 | `LOGISTICS` | The order went wrong before the garment was judged: arrived late, took N weeks, wrong item sent, wrong size sent, received the other product, missing item, damaged in transit, never arrived | Logistics |
+| 2 | `QUALITY` | The garment failed: hole, seam, stitching, unravelled, pilling, snag, loose thread, cracked print, came apart, puckered, shrank or shrunk after washing, went baggy after wearing, faulty, defect | QC ticket |
+| 3 | `COPY-COLOUR` | The colour, print or finish differs from the listing images: darker, lighter, more grey, more brown, yellower, a different red, stripes are navy not black, not the colour shown | Copy fix |
+| 4 | `COPY-MATERIAL` | The fabric, weight, feel or construction differs from the description: thinner, heavier, scratchy, stiff, sheer, rougher, feels cheap, stretchier than expected | Copy fix |
+| 5 | `SIZE-PART` | One named body part is wrong while the rest of the garment is judged separately or not at all. Frozen part list: arms, sleeves, biceps, forearms, elbows, cuffs, shoulders, back, chest, bust, neck, collar, waist, hips, seat, thighs, calves, inseam, leg length, rise, body length, torso length, hem length | Sizing fix |
+| 6 | `SIZE-WHOLE` | The whole garment is too big or too small with no part named: too big, too small, too short, too long, runs big, runs small, didn't fit, sized up, sized down, need the next size | Sizing fix |
+| 7 | `SHAPE-CUT` | The cut or drape is wrong with no size and no single part named: boxy, slim, wide, tapered, oversized, drowning in it, cropped, adds bulk | Copy fix |
+| 8 | `NO-REASON-GIVEN` | The note is empty, or carries no information about the garment: changed my mind, bought on a whim, didn't want it, gift they already had one, ordered two colours keeping one | None |
+| 9 | `OTHER` | A real reason that fits none of the eight above | None |
+
+Two rules that come with the table:
+
+- **A note can describe two things. It still gets one category, decided by the
+  order above.** "Shrunk after one wash so it was too small" is `QUALITY`.
+  Rule 2 comes before rule 6. Say so in the output when it happens.
+- **The tagged reason never overrides the note.** A row tagged "Sizing / fit"
+  whose note describes a hole in the seam is `QUALITY`. Report the disagreement
+  count: that gap is one of the findings.
+
+## Step 3: Split SIZE-PART by the part named
+
+`SIZE-PART` is the category that hides the money, so it gets one extra pass.
+Sub-cluster it by the body part the customer named, using the frozen part list
+in row 5 of the table. Treat these as one part each: arms covers arms, sleeves,
+biceps, forearms, elbows and cuffs. Chest covers chest and bust. Length covers
+body length, torso length and hem length.
+
+Report each part sub-cluster with its row count and the SKUs it spans. A part
+sub-cluster that spans two or more SKUs is a pattern in the block, and it gets
+named as such.
+
+## Step 4: Build the SKU by reason matrix
+
+One row per SKU that appears in the data, sorted by total returns, largest
+first. One column per category that has at least one row. Print the totals row.
+The matrix totals must equal the row count you started with. Show that check.
+
+## Step 5: Apply the cluster floor
+
+**A cluster needs 2 independent rows to be reported as a cluster.** One row is
+one customer. Clusters of 1 row go into a `TOO THIN TO ACT ON` block with the
+row number printed, and they are never promoted, never merged into a bigger
+cluster to clear the floor, and never described as a trend.
+
+Empty notes are counted as empty in `NO-REASON-GIVEN` and reported as their own
+number. They are never guessed at from the tagged reason, the size, or the SKU.
+
+## Step 6: Route each cluster
+
+Each cluster carries one owner from the table in Step 2 and one next artifact:
+
+- **Copy fix** (COPY-COLOUR, COPY-MATERIAL, SHAPE-CUT): the product page sold
+  something the garment is not. Next artifact: run `rise-pdp-doctor` on the SKU
+  with the most rows in that cluster.
+- **Sizing fix** (SIZE-PART, SIZE-WHOLE): the size chart or the fit block is
+  wrong or missing. A SIZE-PART cluster is a measurement column your chart does
+  not have. Next artifact: add that column to the chart on every SKU in the
+  cluster, then run `rise-pdp-doctor` on the worst one.
+- **QC ticket** (QUALITY): next artifact is a supplier ticket naming the SKU,
+  the failure, and the row numbers.
+- **Logistics** (LOGISTICS): next artifact is a 3PL or carrier ticket with the
+  same row numbers.
+
+Close with one line pointing the aggregate at `rise-return-rate-rescue`, which
+turns the store's return numbers into the annual dollar figure this diagnosis
+does not compute.
+
+## Output format
+
+Do the sorting and the counting internally, row by row. The reply starts at
+`RETURN NOTE READ` and contains no working list of the individual rows: a
+120-row transcript is the export the operator already has.
+
+Produce exactly this, in order:
+
+```
+RETURN NOTE READ
+[N] rows[, thin sample if under 50]. [Window, if dates were pasted.]
+[SKU count, counted off the matrix below after it is built, never estimated
+from the styles you remember reading.]
+
+WHAT THE TAG SAID
+[tagged reason]   [count]   [% of rows]
+[one line per tagged reason present, largest first]
+
+WHAT THE NOTES SAY
+[CATEGORY]   [count]   [% of rows]   [owner]
+[one line per category present, largest first]
+Empty notes: [count]
+Rows where the note disagreed with the tag: [count]
+
+INSIDE SIZE-PART
+[part]   [count] rows   [SKUs it spans]
+[one line per part sub-cluster, largest first]
+
+SKU x REASON MATRIX
+[table: SKU, style, total rows, one column per category present]
+Check: [sum of the matrix] = [N] rows pasted
+
+CLUSTERS TO ACT ON
+1. [Cluster name], [count] rows across [n] SKU(s), [share]% of all returns
+   Owner: [copy fix / sizing fix / QC ticket / logistics]
+   Rows: [row numbers, all of them]
+   In their words:
+     "[verbatim note]" (row [N], [SKU], size [X])
+     "[verbatim note]" (row [N], [SKU], size [X])
+     "[verbatim note]" (row [N], [SKU], size [X])
+   Next: [the artifact, named]
+
+[repeat for every cluster of 2 rows or more, largest first]
+
+TOO THIN TO ACT ON
+[cluster], 1 row (row [N])
+
+WHAT THIS DOES NOT TELL YOU
+[one or two lines naming what the notes cannot answer]
+
+RUN NEXT
+[routing lines]
+```
+
+Quotes are copied character for character out of the pasted note, typos
+included. Fixing a customer's spelling in the output is a small lie about your
+own data.
+
+## Hard guardrails
+
+- **Every quote carries its row number.** No row number, no quote. A quote whose
+  row number cannot be pointed at does not go in the output.
+- **Never invent a quote, a customer, or a row.** No composites, no
+  representative lines, no tidied-up merge of two similar notes. If a
+  cluster has three rows, three quotes exist and no more.
+- **Every count is a count of pasted rows.** Never estimate a count, never round
+  one, never scale a sample up to the store's monthly return volume.
+- **Every count in a commentary line has to match the matrix.** If a note says a
+  SKU carries 2 quality rows, that SKU's QUALITY cell says 2 and the two row
+  numbers are printed. Read the count off the table you just built.
+- **Clusters under 2 rows stay in the thin block.** They are never promoted to
+  clear a floor and never counted inside a larger cluster.
+- **Empty notes are counted as empty.** Never infer a reason from the tag, the
+  size, the SKU, or the resolution.
+- **No industry benchmark anywhere.** No "typical sizing share", no category
+  average, no outside return-rate figure. The pasted rows are the only evidence
+  in this output.
+- **No dollar figures.** This skill diagnoses cause. `rise-return-rate-rescue`
+  owns the dollars, and it says so in the routing line.
+- **No em dashes and no double hyphens, including inside tables.** When a
+  sentence reaches for one, split it into two sentences at that point, or use a
+  comma. "L returns at 37.8% - well above the style" becomes "L returns at
+  37.8%. The style runs 25.3%."
+- **No corrective-contrast phrasing.** Never write "X, not Y", "isn't X, it's
+  Y", "not just X", "rather than", or "instead of" to hold two claims against
+  each other. This includes the comma form. Write the claim that is true and
+  stop. "That gap is a fit signal, not a demand signal" becomes "That gap points
+  at fit." "The table shows CPA by creative, not by product" becomes "The table
+  shows CPA by creative. Product is outside it." "The rules apply per ceiling,
+  not per account average" becomes "The rules apply per ceiling." "Read the
+  notes rather than the tag" becomes "Read the notes." The ban covers the
+  commentary under every cluster, where it turns up most: "the true rate is 12
+  rows, not the 11 tagged" becomes "12 rows are QUALITY. 11 of them carry the QC
+  tag." "A workflow issue rather than a listing error" becomes "The spread
+  across 9 SKUs points at the photography workflow." "Not only a chart fix"
+  becomes "A chart fix, and a pattern review on top of it."
+- **Never use:** leverage, seamless, robust, elevate, unlock, delve, streamline,
+  empower, game-changer, transformative.
+- Plain operator tone. Counts first, then the quote, then the owner. No hype, no
+  sign-off.</pre>
+      <div class="pbar">
+        <button class="pbtn" type="button" data-download="pk-skill" data-filename="SKILL.md">Download SKILL.md</button>
+        <button class="pbtn" type="button" data-copy="pk-skill" data-block="skill">Copy the whole file</button>
+        <span class="pb-note">Works pasted straight into claude.ai as well.</span>
+      </div>
+    </div>
+
+    <p class="srcnote">Every quote in the output carries the row number it came from, every cluster carries its count, clusters of one row stay in a too-thin block, and an empty note is counted as an empty note. No benchmark and no dollar figure appears anywhere in the output.</p>
+  </div>
+</section>
+
+<!-- ============================ why a skill file ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Why a skill file</p>
+    <h2>What the file freezes</h2>
+    <div class="prose">
+      <p>Your returns app has one big "Sizing / fit" bucket and stops there. On the sample store below it swallowed 73 of 120 rows. Inside that one bin sit four different problems with four different owners and four different costs, and the customer already told you which one they hit. They typed it into the note box. Nobody read the rows.</p>
+      <p>The taxonomy has to mean the same thing every month. If Claude invents its own categories on a Tuesday in August and different ones in September, the two matrices cannot sit next to each other and you have no trend, only two snapshots. So the skill file freezes three things: the nine reason categories and the order they get applied in, the floor of 2 independent rows before anything is called a cluster, and the rule that every quote in the output carries the row number it came from. Freeze those and the run is repeatable by you, by your ops lead, and by whoever does this after both of you.</p>
+      <p>Twelve months of runs in the same shape is what turns a chat answer into a buy sheet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend four minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+        <p><b>The input:</b> 120 return rows from a closed cohort, every return arising from the 500 orders placed 8 to 18 June 2026 and logged through 20 July. SKU, style, size, the tag the returns app recorded, the resolution, and the customer's own note. Typos left in. 15 notes blank.</p>
+        <p class="sm-note">What Claude sent back. Verbatim from the run. Trimmed where marked.</p>
+
+<pre class="pcode">RETURN NOTE READ
+120 rows. Window: orders 8-18 June 2026, returns logged through 20 July 2026.
+36 SKUs (counted from the matrix below).</pre>
+
+        <p><b>WHAT THE TAG SAID</b></p>
+        <table>
+          <thead><tr><th>Tagged reason</th><th>Count</th><th>% of rows</th></tr></thead>
+          <tbody>
+            <tr><td>Sizing / fit</td><td class="ans">73</td><td>60.8%</td></tr>
+            <tr><td>Changed mind</td><td>16</td><td>13.3%</td></tr>
+            <tr><td>Quality / defect</td><td>11</td><td>9.2%</td></tr>
+            <tr><td>Colour not as pictured</td><td>9</td><td>7.5%</td></tr>
+            <tr><td>Wrong item sent</td><td>6</td><td>5.0%</td></tr>
+            <tr><td>Arrived late</td><td>5</td><td>4.2%</td></tr>
+          </tbody>
+        </table>
+
+        <p><b>WHAT THE NOTES SAY</b></p>
+        <table>
+          <thead><tr><th>Category</th><th>Count</th><th>% of rows</th><th>Owner</th></tr></thead>
+          <tbody>
+            <tr><td>SIZE-WHOLE</td><td>37</td><td>30.8%</td><td>Sizing fix</td></tr>
+            <tr><td>SIZE-PART</td><td class="ans">31</td><td>25.8%</td><td>Sizing fix</td></tr>
+            <tr><td>NO-REASON-GIVEN</td><td>21</td><td>17.5%</td><td>None</td></tr>
+            <tr><td>QUALITY</td><td>12</td><td>10.0%</td><td>QC ticket</td></tr>
+            <tr><td>COPY-COLOUR</td><td>9</td><td>7.5%</td><td>Copy fix</td></tr>
+            <tr><td>LOGISTICS</td><td>7</td><td>5.8%</td><td>Logistics</td></tr>
+            <tr><td>SHAPE-CUT</td><td>2</td><td>1.7%</td><td>Copy fix</td></tr>
+            <tr><td>COPY-MATERIAL</td><td>1</td><td>0.8%</td><td>Copy fix</td></tr>
+          </tbody>
+        </table>
+
+<pre class="pcode">Empty notes: 15
+Rows where the note disagreed with the tag: 4 (rows 4, 49, 55, 112)
+
+Row 4 was tagged "Sizing / fit"; the note describes shrinkage after washing,
+which classifies as QUALITY under the taxonomy.
+Row 49 was tagged "Sizing / fit"; the note describes boxy cut with excessive
+width, which classifies as SHAPE-CUT.
+Row 55 was tagged "Sizing / fit"; the note describes crop length exceeding what
+the photo shows, which classifies as SHAPE-CUT.
+Row 112 was tagged "Sizing / fit"; the note describes unexpectedly stretchy rib
+fabric, which classifies as COPY-MATERIAL.</pre>
+
+        <p><b>INSIDE SIZE-PART</b></p>
+        <table>
+          <thead><tr><th>Part</th><th>Count</th><th>SKUs spanned</th></tr></thead>
+          <tbody>
+            <tr><td>Arms (arm circumference, biceps, forearms, elbows, sleeves, cuffs)</td><td class="ans">15 rows</td><td>NB-TEE-002 (9 rows), NB-KNT-001 (6 rows)</td></tr>
+            <tr><td>Body length (body length, torso length, hem length)</td><td>5 rows</td><td>NB-TEE-001, NB-TEE-005, NB-TEE-007, NB-KNT-005, NB-OUT-004</td></tr>
+            <tr><td>Chest / bust</td><td>4 rows</td><td>NB-TEE-001 (2 rows), NB-TEE-009, NB-TEE-010</td></tr>
+            <tr><td>Neck / collar</td><td>4 rows</td><td>NB-TEE-006, NB-KNT-006, NB-KNT-012, NB-KNT-014</td></tr>
+            <tr><td>Shoulders</td><td>2 rows</td><td>NB-TEE-004, NB-TEE-005</td></tr>
+            <tr><td>Back</td><td>1 row</td><td>NB-KNT-004</td></tr>
+          </tbody>
+        </table>
+
+<pre class="pcode">The arms cluster breaks into two separate measurement gaps. Arm circumference
+too narrow or tight: rows 15, 16, 17, 18, 19, 21, 22, 91, 92, 94, 95 (11 rows).
+Sleeve or arm length too long: rows 20, 23, 90, 93 (4 rows). Both gaps appear on
+NB-TEE-002 and NB-KNT-001, which means the arm block runs narrow and long across
+at least two fabrications. Two columns are missing from the chart.</pre>
+
+        <p><b>SKU x REASON MATRIX</b></p>
+        <p class="sm-note">Column codes: S-WH = SIZE-WHOLE, S-PT = SIZE-PART, NRG = NO-REASON-GIVEN, QUA = QUALITY, C-COL = COPY-COLOUR, LOG = LOGISTICS, SHP = SHAPE-CUT, C-MAT = COPY-MATERIAL</p>
+        <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>SKU</th><th>Style</th><th>S-WH</th><th>S-PT</th><th>NRG</th><th>QUA</th><th>C-COL</th><th>LOG</th><th>SHP</th><th>C-MAT</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>NB-TEE-001</td><td>Harbor Heavyweight Tee</td><td>4</td><td>3</td><td>3</td><td>2</td><td>1</td><td>1</td><td>-</td><td>-</td><td>14</td></tr>
+            <tr><td>NB-TEE-002</td><td>Harbor Heavyweight Long Sleeve</td><td>-</td><td class="ans">9</td><td>1</td><td>1</td><td>1</td><td>-</td><td>-</td><td>-</td><td>12</td></tr>
+            <tr><td>NB-TEE-003</td><td>Coastline Pocket Tee</td><td>3</td><td>-</td><td>2</td><td>1</td><td>-</td><td>1</td><td>-</td><td>-</td><td>7</td></tr>
+            <tr><td>NB-TEE-005</td><td>Dune Slub Tee</td><td>2</td><td>2</td><td>1</td><td>-</td><td>-</td><td>2</td><td>-</td><td>-</td><td>7</td></tr>
+            <tr><td>NB-KNT-001</td><td>Fathom Lambswool Crew</td><td>-</td><td>6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>6</td></tr>
+            <tr><td>NB-TEE-007</td><td>Union Boxy Tee</td><td>2</td><td>1</td><td>1</td><td>-</td><td>1</td><td>-</td><td>1</td><td>-</td><td>6</td></tr>
+            <tr><td>NB-TEE-015</td><td>Northbay Logo Tee</td><td>3</td><td>-</td><td>1</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>5</td></tr>
+            <tr><td colspan="11">[trimmed: 29 more SKU rows.]</td></tr>
+            <tr><td><b>TOTALS</b></td><td></td><td><b>37</b></td><td><b>31</b></td><td><b>21</b></td><td><b>12</b></td><td><b>9</b></td><td><b>7</b></td><td><b>2</b></td><td><b>1</b></td><td><b>120</b></td></tr>
+          </tbody>
+        </table>
+        </div>
+
+<pre class="pcode">Check: 37 + 31 + 21 + 12 + 9 + 7 + 2 + 1 = 120 = 120 rows pasted</pre>
+
+<pre class="pcode">CLUSTERS TO ACT ON
+
+1. SIZE-WHOLE, 37 rows across 25 SKUs, 30.8% of all returns
+Owner: Sizing fix
+Rows: 1, 3, 7, 13, 27, 28, 29, 34, 38, 40, 46, 50, 52, 56, 57, 59, 63, 66, 70,
+72, 73, 76, 78, 79, 80, 83, 86, 87, 89, 96, 98, 101, 106, 108, 110, 117, 118
+In their words:
+  "runs big, ordered L should have got M" (row 1, NB-TEE-001, size L)
+  "still too tight, need a 3XL" (row 13, NB-TEE-001, size XXL)
+  "way too big, drowning in it" (row 40, NB-TEE-005, size XL)
+  "it was big out the bag, not a wash thing" (row 87, NB-TEE-017, size L)
+Next: audit the size chart for all 25 SKUs in this cluster. The spread across 25
+SKUs, with notes going both too big and too small, points at grading
+inconsistency across the range. Run rise-pdp-doctor on NB-TEE-001 first (4
+SIZE-WHOLE rows, highest single-SKU count in this cluster).
+
+2. SIZE-PART / ARMS, 15 rows across 2 SKUs, 12.5% of all returns
+Owner: Sizing fix
+SKUs: NB-TEE-002 (9 rows), NB-KNT-001 (6 rows)
+Rows: 15, 16, 17, 18, 19, 20, 21, 22, 23, 90, 91, 92, 93, 94, 95
+In their words:
+  "sleeves are way too tight on the arms, body fits fine" (row 15, NB-TEE-002, size L)
+  "arms too narrow, cant get my forearm through" (row 16, NB-TEE-002, size XL)
+  "the sleaves are too long for me, hangs past my knuckles" (row 20, NB-TEE-002, size S)
+  "cant lift my arms in this, shoulders and sleeve too tight" (row 22, NB-TEE-002, size L)
+  "sleeve length was about 2 inches too long" (row 93, NB-KNT-001, size XL)
+  "arms too slim, im not even big" (row 95, NB-KNT-001, size L)
+Next: add two columns to the size chart for both NB-TEE-002 and NB-KNT-001: arm
+circumference (at the bicep) and sleeve length. Both gaps appear across both
+SKUs. The same block is used in at least two fabrications. Run rise-pdp-doctor
+on NB-TEE-002 (9 rows, worst in this cluster).
+
+[trimmed: clusters 3 to 10, QUALITY through SHOULDERS, same shape.]
+
+TOO THIN TO ACT ON
+COPY-MATERIAL (NB-KNT-012), 1 row (row 112)
+SIZE-PART / BACK (NB-KNT-004), 1 row (row 100)
+
+[trimmed: WHAT THIS DOES NOT TELL YOU, RUN NEXT.]</pre>
+
+        <p><b>The finding in one line.</b> The tag column said 73 returns were "Sizing / fit", which is where the trail usually goes cold. 15 of them are the same complaint on two styles: the arms are wrong. Nine on the Harbor Long Sleeve, six on the Fathom Lambswool Crew, and neither size chart has an arm column for a customer to check against.</p>
+
+        <p class="sm-note"><b>Numbers source.</b> Every figure in the sample, and where it comes from. Nothing here is a benchmark, an estimate, or an extrapolation.</p>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Figure in the output</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>120 rows</td><td>The pasted rows, counted</td></tr>
+            <tr><td>36 SKUs</td><td>Distinct SKUs in the pasted rows, counted off the matrix</td></tr>
+            <tr><td>Tag counts (73, 16, 11, 9, 6, 5)</td><td>The pasted tagged_reason column, counted</td></tr>
+            <tr><td>Tag percentages (60.8, 13.3, 9.2, 7.5, 5.0, 4.2%)</td><td>Each count / 120</td></tr>
+            <tr><td>Category counts (37, 31, 21, 12, 9, 7, 2, 1)</td><td>The taxonomy in Step 2 applied to each note, first match wins. They sum to 120</td></tr>
+            <tr><td>Empty notes 15</td><td>Rows with a blank customer_note, counted</td></tr>
+            <tr><td>Note disagreed with tag: 4 (rows 4, 49, 55, 112)</td><td>Rows whose taxonomy category differs from the app's tag, each one named with its reason</td></tr>
+            <tr><td>Arms sub-cluster 15 rows, 12.5%</td><td>Rows 15 to 23 and 90 to 95, counted. 15 / 120</td></tr>
+            <tr><td>Arms split 11 circumference and 4 length</td><td>The 15 arm rows read individually, both lists printed with row numbers</td></tr>
+            <tr><td>Every other part sub-cluster (5, 4, 4, 2, 1)</td><td>The SIZE-PART rows grouped by the part named in the note</td></tr>
+            <tr><td>Every matrix cell</td><td>Rows for that SKU in that category, counted</td></tr>
+            <tr><td>Matrix check 37+31+21+12+9+7+2+1 = 120</td><td>Printed in the output</td></tr>
+            <tr><td>Every quote</td><td>Copied character for character from the pasted note, typos included, with its row number, SKU and size</td></tr>
+            <tr><td>Cluster shares (30.8, 12.5, 10.0, 7.5, 5.8, 4.2, 3.3, 3.3, 1.7, 1.7%)</td><td>Cluster row count / 120</td></tr>
+            <tr><td>Thin block: 2 clusters of 1 row each</td><td>Rows 112 and 100, held back from the cluster list by the 2-row floor</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    <p class="sm-note" style="font-size:.78rem;color:#777;">One contrast phrasing in the captured run is normalized for house style. The full unedited output lives in the run archive.</p>
+</details>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>The full SKILL.md and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The skill file is printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this read on your live returns feed, route every cluster to its owner, and work the sizing and copy fixes until the rate moves. Book a 30 minute intro call and we will read your notes together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/return-note-miner/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"rise-return-note-miner: sort raw return notes into a SKU by reason matrix",
+  "description":"A free Claude skill from our DTC pack. You supply 50 to 300 return rows with customer notes; Claude sorts every note into a fixed taxonomy, builds the SKU by reason matrix, and routes each cluster.",
+  "url":"https://resources.risedtc.com/tools/claude/return-note-miner/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'return-note-miner', type: 'skill' });
+})();
+</script>
+</body>
+</html>

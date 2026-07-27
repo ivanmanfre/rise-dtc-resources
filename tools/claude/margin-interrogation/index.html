@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Margin Interrogation: rank your profit levers with Claude | RISE DTC</title>
+<meta name="description" content="Four copy-paste Claude prompts that take the result blocks off the True Profit Per Order and Contribution Margin calculators and rank your profit levers by the dollars per order each one actually moves. Free, runs in Claude, no new data." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/margin-interrogation/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="The Margin Interrogation: rank your profit levers with Claude" />
+<meta property="og:description" content="Four prompts that turn two calculator result blocks into a ranked list of the levers that move dollars per order. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/margin-interrogation/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Margin Interrogation: rank your profit levers with Claude" />
+<meta name="twitter:description" content="Four prompts that turn two calculator result blocks into a ranked list of the levers that move dollars per order. Free." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-margin-interrogation";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the prompts</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-margin-interrogation" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-margin-interrogation" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-margin-interrogation" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 01 of 09 &middot; Prompt pack &middot; free, runs in Claude</p>
+    <h1>Which profit lever is <span class="gold-word">carrying the loss?</span></h1>
+    <p class="job">Rank your profit levers by the dollars per order each one moves, using result blocks two calculators on this site have already given you.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>About 6 minutes</b></span>
+      <span>New data needed <b>None</b></span>
+      <span>Prompts <b>Four, in order</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>The Margin Interrogation</span></p>
+</section>
+
+<!-- ============================ the prompts ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The prompts</p>
+    <h2>Four prompts, run in order, in one Claude chat</h2>
+    <p class="sec-sub">Each block prints the prompt on its own, then the exact thing you paste under it. Keep them in the same chat and in this order, because each answer is the input to the next one. Every prompt is on this page in full, and the copy button puts it on your clipboard.</p>
+
+    <div class="pstack">
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">01</span>
+          <p class="pb-t">Rebuild the base</p>
+        </div>
+        <p class="pb-why">Turns your two result blocks into one per-order arithmetic line, checked to the cent against your Contribution Margin figure, so every prompt after this one runs on a verified base.</p>
+        <pre class="pcode" id="pk-p1">You are running a margin interrogation on my store. Work only from the numbers I paste. Compute
+nothing from memory and quote no outside figure at any point in this chat.
+
+STANDING RULES for every line you write in this chat, from this message to the last one:
+- Plain markdown only. Use headings, tables and fenced code blocks. Write no LaTeX and no math
+  delimiters.
+- Zero em dashes. When a line reaches for one, split it into two sentences or use a colon. Write a
+  label, then a colon, then the figure. Never write a label, a dash, then a figure.
+- Write no "it's not X, it's Y" phrasing and no "X, not Y" pairs. State the claim directly.
+- Every dollar figure traces to a number I pasted or to arithmetic on numbers I pasted. Show the
+  arithmetic on the same line or directly under it.
+- Anything you need and did not get is written as [NEEDS: &lt;the field&gt;]. Never fill it with a
+  plausible figure.
+- Never use these words: leverage, seamless, robust, elevate, unlock, delve, streamline, empower,
+  game-changer, transformative.
+- Dollars lead every line.
+
+Below are two result blocks from the RISE DTC tools hub: True Profit Per Order and Contribution
+Margin. Under them is my orders per month.
+
+Step 1. Restate my store as a single per-order arithmetic line, using my pasted fields:
+
+  contribution per order
+    = AOV
+    - product cost
+    - outbound shipping
+    - payment processing
+    - (return rate x AOV)
+    + (return rate x resellable share x product cost)
+    - (return rate x return handling cost)
+
+Step 2. Run that line on my pasted inputs and print every step with the dollars showing. For the
+payment processing term, use the figure from my Contribution Margin block, because that is the
+block Step 3 checks against. If my True Profit Per Order block carries a different processing
+figure, print both, print the difference, and carry on with the Contribution Margin one.
+
+Step 3. Check your result against the returns-adjusted contribution per unit in my pasted
+Contribution Margin block. It has to match to the cent. If it does not match, stop, print both
+figures, and tell me which of my pasted fields would explain the gap. Do not adjust a number to
+force the match.
+
+Step 4. Print the base as a three-row table with exactly these columns:
+
+  | figure | what it is | which tool it came from | the arithmetic |
+
+The three rows are contribution per order before returns, contribution per order after returns, and
+true profit per order after acquisition. Name the tool on every row, because the two tools charge
+processing slightly differently and the figures differ by cents. Never average them. Put any
+explanation of the cent-level gap in one sentence under the table.
+
+Then stop and wait. Do not rank anything yet.
+
+--- MY NUMBERS ---
+<b>[paste your True Profit Per Order block, your Contribution Margin block, and your orders per month]</b></pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Your <a href="../../true-profit-per-order/">True Profit Per Order</a> result block, inputs and outputs, copied whole.</li>
+            <li>Your <a href="../../contribution-margin/">Contribution Margin</a> result block, inputs and outputs, copied whole.</li>
+            <li>Your orders per month, from Shopify, Analytics, Orders.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p1" data-block="01">Copy prompt 01</button>
+          <span class="pb-note">Nothing here asks for data you have not already got.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">02</span>
+          <p class="pb-t">The sensitivity table</p>
+        </div>
+        <p class="pb-why">Reruns that line once per move you chose, with every other field held, and prices each move in dollars per order and dollars per year.</p>
+        <pre class="pcode" id="pk-p2">Now build the sensitivity table. One rule governs this whole step: I supply every move, you only
+multiply.
+
+<b>[paste your list, one move per line, each in this shape: "return rate 24% -&gt; 21%" or
+"outbound shipping $7.40 -&gt; $6.40" or "price $84 -&gt; $88, unit cost held"]</b>
+
+For each move, re-run the per-order contribution line from Prompt 1 with that one field changed and
+every other field held at my pasted value. Difference it against the base. Print a table with these
+columns and this header wording exactly:
+
+  | if you moved this by | new contribution per order | $/order | $/year |
+
+Compute $/year as the $/order swing times my orders per month times 12. Print that arithmetic once,
+under the table.
+
+Honesty rules for this table, all four binding:
+- Every delta in the left column is a scenario I chose. Label it that way in one line under the
+  table. A delta is never a forecast, a projection, or an expectation.
+- Never say a move is achievable, typical, realistic, or within reach. You have no basis for any of
+  those words and I did not give you one.
+- Never name an industry benchmark, an average return rate, a category norm, or a figure from any
+  store other than mine. My own arithmetic is the only comparator in this chat.
+- If a move changes a second field as a matter of arithmetic, say so in the row and show both
+  changes. A price move changes payment processing, because processing is a percentage of price.
+  Compute the moved row's processing as my processing percentage times the new price, and add
+  nothing else to it. Both sides of the comparison get built the same way, or the delta is a
+  measurement of your own bookkeeping.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Your list of moves, one per line, each written as a size you picked: "return rate 24% -&gt; 21%" or "outbound shipping $7.40 -&gt; $6.40".</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p2" data-block="02">Copy prompt 02</button>
+          <span class="pb-note">Runs on the answer prompt 01 gave you.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">03</span>
+          <p class="pb-t">The ranking, and the two levers that look big</p>
+        </div>
+        <p class="pb-why">Sorts the moves by dollars per order, sets price aside, and names the levers that look bigger than they are on your numbers.</p>
+        <pre class="pcode" id="pk-p3">Rank the moves from Prompt 2 by $/order, largest first.
+
+Then do these four things:
+
+1. Handle price separately. If a price move is the largest mover, report it and set it aside in one
+   sentence, because a price change carries a demand cost that this arithmetic cannot see and I did
+   not give you demand data.
+
+2. Of the remaining operational levers, print the top two side by side with the ratio between them,
+   like this: "[lever A] is worth $X per order. [lever B] is worth $Y per order. That is Z times."
+   Compute Z from my two figures, show the division, and print Z to two decimal places.
+
+3. Name the two levers that look big and are small on my numbers. For each one, print the dollar
+   gap between it and the top lever, and one sentence on why an operator reaches for it first.
+
+4. Print the full ranking as a table with exactly these columns, one row per move, largest first:
+
+  | rank | the move | $/order | $/year | note |
+
+The note column carries "set aside" on the price row and stays empty everywhere else. Use a table
+here, no dashes and no separators inside a line.
+
+Do not tell me any lever is easy or hard. You are ranking dollars. Sequencing is my call and I make
+it in the next prompt.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It runs on the answers already in the chat.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p3" data-block="03">Copy prompt 03</button>
+          <span class="pb-note">Runs on the answer prompt 02 gave you.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">04</span>
+          <p class="pb-t">The decision line</p>
+        </div>
+        <p class="pb-why">Ends the chat with one lever, its dollar value, the fields still missing, and the artifact to open next.</p>
+        <pre class="pcode" id="pk-p4">Close with one decision block, no longer than eight lines:
+
+  THIS QUARTER: [the single lever to work, named]
+  WORTH: $[X] per order, $[Y] per year, on the move I chose
+  BASE: [my current value] -&gt; [the value I chose]
+  WHAT I HAVE NOT TOLD YOU: [list every field this decision depends on that was missing from my
+    paste, each as [NEEDS: &lt;the field&gt;]. If nothing is missing, write "nothing missing".]
+  NEXT ARTIFACT: [one line, see below]
+
+For NEXT ARTIFACT, use these routes:
+- If the top operational lever is return rate, write: run rise-return-rate-rescue from the RISE DTC
+  AI Kit for the annual figure and the 3-move rescue plan.
+- If the top lever is product cost or return handling, write: take the ranking to your supplier or
+  3PL with the $/year figure attached.
+- If price is the largest mover and you set it aside, write: run Pricing and Margin at two candidate
+  prices before you move it.
+
+Then re-read the standing rules from Prompt 1 and confirm in one line that every message in this
+chat holds to them. Name any line that broke one.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It closes the run on what the chat already holds.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p4" data-block="04">Copy prompt 04</button>
+          <span class="pb-note">Closes the run with the decision line.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="srcnote">You supply every number these prompts work with, and every delta you ask them to test is a scenario you chose. There is no benchmark on this page and no forecast in any output. If returns come out at the top of your ranking, the returns rescue skill in the RISE AI kit sizes that leak for the year and writes the three-move plan.</p>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend six minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+<h3>Prompt 1 returned the base</h3>
+<h4>Step 1: Formula</h4>
+<pre class="pcode">contribution per order
+  = AOV
+  - product cost
+  - outbound shipping
+  - payment processing
+  - (return rate × AOV)
+  + (return rate × resellable share × product cost)
+  - (return rate × return handling cost)</pre>
+<h4>Step 2: Arithmetic</h4>
+<p><b>Processing figures: both tools</b></p>
+<p><b>Tool 01 (True Profit Per Order)</b></p>
+<ul><li>proc_pct input: 2.9%, AOV: $84.00</li><li>Percentage-only: 0.029 × $84.00 = $2.436</li><li>Tool 01 output processing_cost: $2.736</li><li>Gap above percentage-only: $2.736 - $2.436 = $0.30. No input field in the pasted Tool 01 block accounts for this $0.30.</li></ul>
+<p><b>Tool 02 (Contribution Margin)</b></p>
+<ul><li>other_variable input: $2.44</li></ul>
+<p><b>Difference between tools:</b> $2.736 - $2.44 = $0.296</p>
+<p>Carrying $2.44 (Tool 02) forward per instructions.</p>
+<p><b>Line-by-line, contribution before returns</b></p>
+<pre class="pcode"> $84.00      AOV
+- $26.88     product cost: cogs_pct 32% × $84.00 = $26.88 (equals tool 02 cogs_unit $26.88)
+-  $7.40     outbound shipping
+-  $2.44     payment processing (Tool 02 other_variable)
+-----------
+ $47.28      contribution before returns</pre>
+<p><b>Continuing: returns terms</b></p>
+<pre class="pcode"> $47.28
+- $20.16     return rate × AOV: 0.24 × $84.00 = $20.16
++  $5.16096  return rate × resellable share × product cost: 0.24 × 0.80 = 0.192; 0.192 × $26.88 = $5.16096
+-  $2.76     return rate × return handling cost: 0.24 × $11.50 = $2.76
+-----------
+ $29.52096   contribution per order after returns</pre>
+<h4>Step 3: Check against Tool 02</h4>
+<ul><li>Tool 02 output, returns_adjusted_cm_per_unit: $29.52096</li><li>My result: $29.52096</li><li>Match: exact to the cent.</li></ul>
+<h4>Step 4: Base table</h4>
+<table><thead><tr><th>figure</th><th>what it is</th><th>which tool it came from</th><th>the arithmetic</th></tr></thead><tbody><tr><td>$47.28</td><td>Contribution per order before returns</td><td>Tool 02 (Contribution Margin)</td><td>$84.00 - $26.88 - $7.40 - $2.44</td></tr><tr><td class="ans">$29.52096</td><td>Contribution per order after returns</td><td>Tool 02 (Contribution Margin)</td><td>$47.28 - $20.16 + $5.16096 - $2.76</td></tr><tr><td>-$1.77504</td><td>True profit per order after acquisition</td><td>Tool 01 (True Profit Per Order)</td><td>$29.22496 (Tool 01 contribution_before_cac output) - $31.00 (CAC input)</td></tr></tbody></table>
+<p>Tool 01 outputs processing_cost = $2.736 while Tool 02 takes other_variable = $2.44; the $0.296 difference between those two figures is the full and exact gap between Tool 01's contribution_before_cac ($29.22496) and Tool 02's returns_adjusted_cm_per_unit ($29.52096).</p>
+<h3>Prompt 2 returned the sensitivity table</h3>
+<h4>Sensitivity table</h4>
+<p>Base for all rows: $29.52096 per order (from Prompt 1, Tool 02 processing $2.44). The price row rebuilds both sides with 2.9% × price; its base is $29.52496. See note below.</p>
+<table><thead><tr><th>if you moved this by</th><th>new contribution per order</th><th>$/order</th><th>$/year</th></tr></thead><tbody><tr><td>return rate 24% → 21%</td><td>$31.74084</td><td>+$2.21988</td><td class="ans">+$38,625.91</td></tr><tr><td>product cost $26.88 → $25.20 (32% → 30% of price)</td><td>$30.87840</td><td>+$1.35744</td><td>+$23,619.46</td></tr><tr><td>outbound shipping $7.40 → $6.40</td><td>$30.52096</td><td>+$1.00000</td><td>+$17,400.00</td></tr><tr><td>price $84 → $88, unit cost held; processing also changes: 2.9% × $84 = $2.436 → 2.9% × $88 = $2.552; both base and moved row built with 2.9% × price</td><td>$32.44896</td><td>+$2.92400</td><td>+$50,877.60</td></tr><tr><td>return handling $11.50 → $9.50</td><td>$30.00096</td><td>+$0.48000</td><td>+$8,352.00</td></tr><tr><td>resellable share 80% → 88%</td><td>$30.037056</td><td>+$0.516096</td><td>+$8,980.07</td></tr></tbody></table>
+<p><b>$/year arithmetic:</b> $/order × 1,450 orders/month × 12 months = $/order × 17,400</p>
+<p>Each row in the left column is a scenario you chose. No row is a forecast, projection, or expectation.</p>
+<p>The price row's base is $29.52496 (2.9% × $84 = $2.436 processing), which is $0.004 above the $29.52096 base in all other rows (Tool 02 flat $2.44); both sides of the price comparison use proc_pct × price to keep the delta a clean measurement of the price and processing moves only.</p>
+<h3>Prompt 3 returned the ranking</h3>
+<h4>Ranked by $/order, largest first</h4>
+<p>1. Price $84 → $88: +$2.92400 2. Return rate 24% → 21%: +$2.21988 3. Product cost $26.88 → $25.20: +$1.35744 4. Outbound shipping $7.40 → $6.40: +$1.00000 5. Resellable share 80% → 88%: +$0.516096 6. Return handling $11.50 → $9.50: +$0.48000</p>
+<p><b>1. Price</b></p>
+<p>+$2.92400 per order ranks first. Set aside: a price change carries a demand cost this arithmetic cannot see, and no demand data was provided.</p>
+<p><b>2. Top two operational levers</b></p>
+<p>Return rate 24% → 21% is worth $2.21988 per order. Product cost $26.88 → $25.20 is worth $1.35744 per order. That is 1.64 times.</p>
+<p>Division: $2.21988 ÷ $1.35744 = 1.6353 = 1.64 to two decimal places.</p>
+<p><b>3. Two levers that look big and are small</b></p>
+<p><b>Return handling $11.50 → $9.50</b></p>
+<p>$1.73988 below the top lever: $2.21988 - $0.48000 = $1.73988. An operator reaches for it first because the return processing fee sits on the 3PL invoice as a named line item, so the cost has a face and targeting it looks like a direct renegotiation.</p>
+<p><b>Resellable share 80% → 88%</b></p>
+<p>$1.703784 below the top lever: $2.21988 - $0.516096 = $1.703784. An operator reaches for it first because return reason codes name specific damage types, making tighter packaging or inspection a legible target inside data the operator already has.</p>
+<p><b>4. Full ranking</b></p>
+<table><thead><tr><th>rank</th><th>the move</th><th>$/order</th><th>$/year</th><th>note</th></tr></thead><tbody><tr><td>1</td><td>price $84 → $88 (unit cost held; processing also moves)</td><td>+$2.92400</td><td>+$50,877.60</td><td>set aside</td></tr><tr><td>2</td><td>return rate 24% → 21%</td><td class="ans">+$2.21988</td><td>+$38,625.91</td><td></td></tr><tr><td>3</td><td>product cost $26.88 → $25.20</td><td>+$1.35744</td><td>+$23,619.46</td><td></td></tr><tr><td>4</td><td>outbound shipping $7.40 → $6.40</td><td>+$1.00000</td><td>+$17,400.00</td><td></td></tr><tr><td>5</td><td>resellable share 80% → 88%</td><td>+$0.516096</td><td>+$8,980.07</td><td></td></tr><tr><td>6</td><td>return handling $11.50 → $9.50</td><td>+$0.48000</td><td>+$8,352.00</td><td></td></tr></tbody></table>
+<h3>Prompt 4 returned the decision</h3>
+<pre class="pcode">THIS QUARTER: return rate
+WORTH: $2.21988 per order, $38,625.91 per year, on the move I chose
+BASE: 24% → 21%
+WHAT I HAVE NOT TOLD YOU: [NEEDS: return reason breakdown by category],
+  [NEEDS: return rate by SKU or product line], [NEEDS: current return policy
+  terms and window length]
+NEXT ARTIFACT: run rise-return-rate-rescue from the RISE DTC AI Kit for the
+  annual figure and the 3-move rescue plan.</pre>
+<p>All messages in this chat hold to the standing rules; one narrative line in the Prompt 2 response ("Base for all rows: $29.52096 per order") opens on the label with the dollar figure second, a minor departure from rule 7.</p>
+<div class="sm-note">
+<p><b>Verification: where every number in this sample came from</b></p>
+<p>Three sources are legal. <b>INPUT</b> means the figure is in the paste shown above. <b>CALC</b> means it matches the printed output of the hub's own calculators, run on those same inputs. <b>ARITH</b> means it is arithmetic on figures from those two, with the working shown in the sample itself. No fourth source is allowed, and nothing on this page came from one.</p>
+<table style="font-size:.82rem"><thead><tr><th>Figure in the sample</th><th>Source</th><th>The trace</th></tr></thead><tbody><tr><td>$84.00 AOV</td><td>INPUT</td><td><code>aov: 84</code> and <code>price: 84</code></td></tr><tr><td>2.9% processing rate</td><td>INPUT</td><td><code>proc_pct: 2.9</code></td></tr><tr><td>$2.436</td><td>ARITH</td><td>0.029 x $84.00</td></tr><tr><td>$2.736</td><td>INPUT</td><td>tool 01 output <code>processing_cost</code></td></tr><tr><td>$0.30 gap</td><td>ARITH</td><td>$2.736 minus $2.436</td></tr><tr><td>$2.44</td><td>INPUT</td><td>tool 02 input <code>other_variable</code></td></tr><tr><td>$0.296</td><td>ARITH</td><td>$2.736 minus $2.44</td></tr><tr><td>$26.88 product cost</td><td>INPUT and ARITH</td><td>tool 02 <code>cogs_unit: 26.88</code>, and 0.32 x $84.00</td></tr><tr><td>$7.40 outbound shipping</td><td>INPUT</td><td><code>shipping_unit: 7.4</code></td></tr><tr><td>$47.28 before returns</td><td>INPUT and ARITH</td><td>tool 02 <code>gross_cm_per_unit</code>, and $84 - $26.88 - $7.40 - $2.44</td></tr><tr><td>$20.16</td><td>ARITH</td><td>0.24 x $84.00</td></tr><tr><td>0.192 and $5.16096</td><td>ARITH</td><td>0.24 x 0.80, then x $26.88</td></tr><tr><td>$11.50 and $2.76</td><td>INPUT and ARITH</td><td><code>return_cost: 11.5</code>, then 0.24 x $11.50</td></tr><tr><td>$29.52096 after returns</td><td>INPUT, CALC and ARITH</td><td>tool 02 <code>returns_adjusted_cm_per_unit</code>; CALC <code>a1_lever_sensitivity.base.ra_cm_per_order</code> = 29.52096</td></tr><tr><td>$29.22496</td><td>INPUT</td><td>tool 01 output <code>contribution_before_cac</code></td></tr><tr><td>$31.00 CAC</td><td>INPUT</td><td><code>cac: 31</code></td></tr><tr><td>-$1.77504</td><td>INPUT and ARITH</td><td>tool 01 <code>true_profit_per_order</code>, and $29.22496 minus $31.00</td></tr><tr><td>1,450 orders a month, 17,400 a year</td><td>INPUT and ARITH</td><td>the paste states 1,450; 1,450 x 12 = 17,400</td></tr><tr><td>$31.74084, +$2.21988, $38,625.91</td><td>CALC and ARITH</td><td>CALC lever 1: <code>ra_cm_per_order</code> 31.74084, <code>delta_per_order</code> 2.21988, <code>delta_per_year_17400_orders</code> 38625.912</td></tr><tr><td>$30.87840, +$1.35744, $23,619.46</td><td>CALC and ARITH</td><td>CALC lever 2: 30.8784, 1.35744, 23619.456</td></tr><tr><td>$30.52096, +$1.00000, $17,400.00</td><td>CALC and ARITH</td><td>CALC lever 3: 30.52096, 1, 17400</td></tr><tr><td>$30.00096, +$0.48000, $8,352.00</td><td>CALC and ARITH</td><td>CALC lever 5: 30.00096, 0.48, 8352</td></tr><tr><td>$30.037056, +$0.516096, $8,980.07</td><td>CALC and ARITH</td><td>CALC lever 6: 30.037056, 0.516096, 8980.0704</td></tr><tr><td>$2.552</td><td>ARITH</td><td>0.029 x $88.00</td></tr><tr><td>$29.52496 (the price row's own base)</td><td>ARITH</td><td>$84 - $26.88 - $7.40 - $2.436 - $20.16 + $5.16096 - $2.76</td></tr><tr><td>$0.004</td><td>ARITH</td><td>$29.52496 minus $29.52096</td></tr><tr><td>$32.44896, +$2.92400, +$50,877.60</td><td>ARITH</td><td>$88 - $26.88 - $7.40 - $2.552 - $21.12 + $5.16096 - $2.76; delta against $29.52496; x 17,400. <b>See the note below, this row is the one that differs from the CALC.</b></td></tr><tr><td>1.6353, rounded 1.64</td><td>CALC and ARITH</td><td>$2.21988 / $1.35744 = 1.63534</td></tr><tr><td>$1.73988</td><td>ARITH</td><td>$2.21988 minus $0.48000</td></tr><tr><td>$1.703784</td><td>ARITH</td><td>$2.21988 minus $0.516096</td></tr></tbody></table>
+<p><b>The one row that differs from the calculator output, and why</b></p>
+<p>The calculator run behind this page prices the lever with an other-variable cost of $2.55, which is 0.029 x $88 rounded to the cent, against a base that carried $2.44. That produces $32.45096 per order, a $2.93 swing and $50,982.00 a year.</p>
+<p>Claude rebuilt <b>both sides</b> of that comparison with the raw percentage, 0.029 x $84 = $2.436 on the base side and 0.029 x $88 = $2.552 on the moved side, and printed the $0.004 difference between its price-row base and the base used by every other row. That produces $32.44896, a $2.92400 swing and $50,877.60 a year.</p>
+<p>Both figures are arithmetic on the pasted inputs. The gap between them is $0.006 per order and $104.40 a year, and it exists because the calculator rounded processing to the cent on one side of a comparison. Claude disclosed its construction in the table row and in the note under it, which is the behaviour the prompt asks for. Neither figure is invented and neither one changes the ranking.</p>
+</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>All four prompts, the paste specs and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The prompts are printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this ranking on live Shopify and ad data, then work the lever that came out on top until the dollars per order move. Book a 30 minute intro call and we will walk your margin together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-margin-interrogation" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/margin-interrogation/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"The Margin Interrogation: rank your profit levers with Claude",
+  "description":"Four copy-paste Claude prompts that take the result blocks off the True Profit Per Order and Contribution Margin calculators and rank your profit levers by the dollars per order each one actually moves.",
+  "url":"https://resources.risedtc.com/tools/claude/margin-interrogation/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'margin-interrogation', type: 'prompts' });
+})();
+</script>
+</body>
+</html>

@@ -48,6 +48,23 @@ const TAG = {
 const FAMILIES = ['uniteco', 'ads', 'email'];
 const STAMP = ['a', 'b', 'c'];
 
+/* The Claude pack pages are hand-owned HTML under tools/claude/<slug>/ and are
+   deliberately NOT in tools-config.js: they have no gate engine, no formulas
+   and no place in the 25-tool numbering. The sitemap is still owned entirely
+   by this script, so the nine URLs are listed here and appended after the
+   calculators. Adding a tenth page means adding its slug to this list. */
+const PACK_PAGES = [
+  'margin-interrogation',
+  'fit-promise-audit',
+  'promo-calendar',
+  'return-note-miner',
+  'creative-referee',
+  'size-curve-planner',
+  'returns-audit-20',
+  'ads-paying-15',
+  'price-a-drop-30'
+];
+
 function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -116,6 +133,14 @@ const sitemap = [
     '    <priority>0.8</priority>',
     '  </url>'
   ])),
+  ...PACK_PAGES.flatMap((s) => ([
+    '  <url>',
+    `    <loc>https://resources.risedtc.com/tools/claude/${s}/</loc>`,
+    `    <lastmod>${today}</lastmod>`,
+    '    <changefreq>monthly</changefreq>',
+    '    <priority>0.7</priority>',
+    '  </url>'
+  ])),
   '</urlset>',
   ''
 ].join('\n');
@@ -129,4 +154,5 @@ if (CHECK) {
 }
 fs.writeFileSync(hubPath, baked);
 fs.writeFileSync(smPath, sitemap);
-console.log('baked ' + slugs.length + ' tiles into index.html, ' + (slugs.length + 1) + ' urls into sitemap.xml');
+console.log('baked ' + slugs.length + ' tiles into index.html, ' +
+  (slugs.length + PACK_PAGES.length + 1) + ' urls into sitemap.xml');

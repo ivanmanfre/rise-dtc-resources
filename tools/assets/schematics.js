@@ -393,6 +393,139 @@
       '<circle class="f" cx="60" cy="58" r="2.8"/></svg>'
   };
 
+  /* ======================================================================
+     THE CLAUDE PACK, nine drawings.
+
+     Same grammar, same 0 0 120 68 viewBox, same rule that gold marks the
+     answer and nothing else. These nine are keyed claude-<slug> and are NOT
+     part of the 25-tool series: bake-hub.mjs only ever looks up a schematic
+     for a slug that exists in tools-config.js, so adding them here cannot
+     touch a baked tile. The hub's pack shelves carry the same markup a baked
+     tile carries, with the drawing inlined, so the section reads with scripts
+     off exactly like the walls above it.
+     ====================================================================== */
+
+  S['claude-margin-interrogation'] = {
+    cap: 'Profit levers ranked by dollars per order',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Four profit levers drawn as bars of different length, ranked, the largest in gold with its dollars per order bracketed">' +
+      '<line class="k2" x1="12" y1="8" x2="12" y2="62"/>' +
+      '<rect class="g" x="14" y="11" width="70" height="9" rx="1.2"/>' +
+      '<rect class="f6" x="14" y="25" width="45" height="9"/>' +
+      '<rect class="f6" x="14" y="39" width="31" height="9"/>' +
+      '<rect class="f6" x="14" y="53" width="18" height="9"/>' +
+      '<path class="gk" d="M90 11 h6 v9 h-6"/>' +
+      '<line class="d" x1="103" y1="8" x2="103" y2="62"/></svg>'
+  };
+
+  S['claude-fit-promise-audit'] = {
+    cap: 'Size chart against product copy, the crossings marked',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Two documents side by side with one line highlighted in each and a gold cross marking where they contradict">' +
+      '<rect class="k" x="8" y="9" width="44" height="50" rx="2"/>' +
+      '<rect class="f6" x="13" y="15" width="34" height="3.4"/>' +
+      '<rect class="f6" x="13" y="22" width="27" height="3.4"/>' +
+      '<rect class="g" x="13" y="29" width="34" height="4.4"/>' +
+      '<rect class="f6" x="13" y="39" width="30" height="3.4"/>' +
+      '<rect class="f6" x="13" y="46" width="21" height="3.4"/>' +
+      '<rect class="k" x="68" y="9" width="44" height="50" rx="2"/>' +
+      '<rect class="f6" x="73" y="15" width="29" height="3.4"/>' +
+      '<rect class="g" x="73" y="22" width="34" height="4.4"/>' +
+      '<rect class="f6" x="73" y="32" width="25" height="3.4"/>' +
+      '<rect class="f6" x="73" y="39" width="33" height="3.4"/>' +
+      '<rect class="f6" x="73" y="46" width="18" height="3.4"/>' +
+      '<path class="gd" d="M53 31 L67 24"/><path class="gd" d="M53 24 L67 31"/></svg>'
+  };
+
+  S['claude-promo-calendar'] = {
+    cap: 'Twelve weeks of promos against the lift each one needs',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Five promo columns on a twelve week baseline against a gold dashed break-even lift line, one column clearing it">' +
+      '<line class="d" x1="8" y1="58.8" x2="112" y2="58.8"/>' +
+      '<g class="k2"><line x1="8" y1="58.8" x2="8" y2="62"/><line x1="26" y1="58.8" x2="26" y2="61"/>' +
+      '<line x1="44" y1="58.8" x2="44" y2="61"/><line x1="62" y1="58.8" x2="62" y2="61"/>' +
+      '<line x1="80" y1="58.8" x2="80" y2="61"/><line x1="98" y1="58.8" x2="98" y2="61"/>' +
+      '<line x1="112" y1="58.8" x2="112" y2="62"/></g>' +
+      '<rect class="f6" x="12" y="35" width="13" height="23.8"/>' +
+      '<rect class="g" x="31" y="17" width="13" height="41.8" rx="1"/>' +
+      '<rect class="f6" x="50" y="41" width="13" height="17.8"/>' +
+      '<rect class="f6" x="69" y="31" width="13" height="27.8"/>' +
+      '<rect class="f6" x="88" y="45" width="13" height="13.8"/>' +
+      '<line class="gd" x1="8" y1="26" x2="112" y2="26"/></svg>'
+  };
+
+  S['claude-return-note-miner'] = {
+    cap: 'Return notes clustered into a SKU by reason matrix',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Ragged rows of free text feeding a SKU by reason matrix with one cell filled gold">' +
+      '<rect class="f6" x="8" y="12" width="26" height="3.2"/>' +
+      '<rect class="f6" x="8" y="19" width="18" height="3.2"/>' +
+      '<rect class="f6" x="8" y="26" width="30" height="3.2"/>' +
+      '<rect class="f6" x="8" y="33" width="13" height="3.2"/>' +
+      '<rect class="f6" x="8" y="40" width="24" height="3.2"/>' +
+      '<rect class="f6" x="8" y="47" width="20" height="3.2"/>' +
+      '<path class="k2" d="M44 32 H53"/><path class="f" d="M53 29.4 l5.4 2.6 -5.4 2.6z"/>' +
+      '<rect class="g" x="81.3" y="26.7" width="15.4" height="14.6"/>' +
+      '<g class="k2"><rect x="66" y="12" width="46" height="44" rx="1.6"/>' +
+      '<line x1="66" y1="26.7" x2="112" y2="26.7"/><line x1="66" y1="41.3" x2="112" y2="41.3"/>' +
+      '<line x1="81.3" y1="12" x2="81.3" y2="56"/><line x1="96.7" y1="12" x2="96.7" y2="56"/></g></svg>'
+  };
+
+  S['claude-creative-referee'] = {
+    cap: 'Every live ad against your own CPA ceiling, ruled',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Five ad rows measured against a gold dashed CPA ceiling, the two that cross it hatched and the cheapest one gold">' +
+      '<line class="k2" x1="12" y1="6" x2="12" y2="62"/>' +
+      '<rect class="f6" x="12" y="10" width="48" height="6"/>' +
+      '<rect class="h" x="12" y="20" width="76" height="6"/><rect class="k2" x="12" y="20" width="76" height="6" rx="1"/>' +
+      '<rect class="g" x="12" y="30" width="31" height="6" rx="1"/>' +
+      '<rect class="f6" x="12" y="40" width="44" height="6"/>' +
+      '<rect class="h" x="12" y="50" width="83" height="6"/><rect class="k2" x="12" y="50" width="83" height="6" rx="1"/>' +
+      '<line class="gd" x1="70" y1="6" x2="70" y2="62"/></svg>'
+  };
+
+  S['claude-size-curve-planner'] = {
+    cap: 'The size curve after returns come out of demand',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Six size columns with the returned units hatched off the top and the reorder quantity marked in gold on each">' +
+      '<line class="d" x1="6" y1="58.8" x2="114" y2="58.8"/>' +
+      '<rect class="h" x="9" y="42.8" width="13" height="4"/><rect class="f6" x="9" y="46.8" width="13" height="12"/><rect class="k2" x="9" y="42.8" width="13" height="16" rx="1"/><rect class="g" x="9" y="45.8" width="13" height="2.4"/>' +
+      '<rect class="h" x="26" y="32.8" width="13" height="6"/><rect class="f6" x="26" y="38.8" width="13" height="20"/><rect class="k2" x="26" y="32.8" width="13" height="26" rx="1"/><rect class="g" x="26" y="37.6" width="13" height="2.4"/>' +
+      '<rect class="h" x="43" y="20.8" width="13" height="9"/><rect class="f6" x="43" y="29.8" width="13" height="29"/><rect class="k2" x="43" y="20.8" width="13" height="38" rx="1"/><rect class="g" x="43" y="28.6" width="13" height="2.4"/>' +
+      '<rect class="h" x="60" y="12.8" width="13" height="18"/><rect class="f6" x="60" y="30.8" width="13" height="28"/><rect class="k2" x="60" y="12.8" width="13" height="46" rx="1"/><rect class="g" x="60" y="29.6" width="13" height="2.4"/>' +
+      '<rect class="h" x="77" y="28.8" width="13" height="7"/><rect class="f6" x="77" y="35.8" width="13" height="23"/><rect class="k2" x="77" y="28.8" width="13" height="30" rx="1"/><rect class="g" x="77" y="34.6" width="13" height="2.4"/>' +
+      '<rect class="h" x="94" y="40.8" width="13" height="4"/><rect class="f6" x="94" y="44.8" width="13" height="14"/><rect class="k2" x="94" y="40.8" width="13" height="18" rx="1"/><rect class="g" x="94" y="43.6" width="13" height="2.4"/></svg>'
+  };
+
+  S['claude-returns-audit-20'] = {
+    cap: 'Three calculators into one ranked leak list',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Three calculator result plates feeding a ranked list of leaks with the biggest one in gold">' +
+      '<rect class="k2" x="8" y="9" width="30" height="14" rx="1.8"/><rect class="f6" x="12" y="14" width="15" height="4"/>' +
+      '<rect class="k2" x="8" y="27" width="30" height="14" rx="1.8"/><rect class="f6" x="12" y="32" width="19" height="4"/>' +
+      '<rect class="k2" x="8" y="45" width="30" height="14" rx="1.8"/><rect class="f6" x="12" y="50" width="11" height="4"/>' +
+      '<path class="k2" d="M44 34 H53"/><path class="f" d="M53 31.4 l5.4 2.6 -5.4 2.6z"/>' +
+      '<rect class="g" x="64" y="11" width="44" height="8" rx="1.2"/>' +
+      '<rect class="f6" x="64" y="24" width="33" height="8"/>' +
+      '<rect class="f6" x="64" y="37" width="23" height="8"/>' +
+      '<rect class="f6" x="64" y="50" width="14" height="8"/></svg>'
+  };
+
+  S['claude-ads-paying-15'] = {
+    cap: 'The platform claim against what the bank sees',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="The platform reported column beside the returns adjusted column, with the difference between them bracketed in gold">' +
+      '<line class="d" x1="8" y1="58.8" x2="112" y2="58.8"/>' +
+      '<rect class="k" x="20" y="12" width="26" height="46.8" rx="1.4"/>' +
+      '<rect class="h" x="62" y="34" width="26" height="24.8"/><rect class="k2" x="62" y="34" width="26" height="24.8" rx="1.4"/>' +
+      '<line class="d" x1="46" y1="12" x2="96" y2="12"/>' +
+      '<line class="d" x1="88" y1="34" x2="96" y2="34"/>' +
+      '<path class="gk" d="M99 12 h6 v22 h-6"/></svg>'
+  };
+
+  S['claude-price-a-drop-30'] = {
+    cap: 'Three price rungs, each with the return rate it survives',
+    svg: '<svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Three price rungs of rising height, each with the maximum return rate it survives ticked above it, against one comparable style\'s actual rate">' +
+      '<line class="d" x1="8" y1="60" x2="112" y2="60"/>' +
+      '<rect class="f6" x="12" y="44" width="28" height="16"/><rect class="k2" x="12" y="44" width="28" height="16" rx="1.2"/>' +
+      '<rect class="g" x="46" y="34" width="28" height="26" rx="1.2"/>' +
+      '<rect class="f6" x="80" y="24" width="28" height="36"/><rect class="k2" x="80" y="24" width="28" height="36" rx="1.2"/>' +
+      '<g class="k2"><line x1="12" y1="38" x2="40" y2="38"/><line x1="46" y1="25" x2="74" y2="25"/><line x1="80" y1="16" x2="108" y2="16"/></g>' +
+      '<line class="gd" x1="6" y1="30" x2="114" y2="30"/></svg>'
+  };
+
   function get(slug){ return S[slug] || null; }
 
   function hydrate(root){

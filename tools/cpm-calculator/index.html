@@ -397,10 +397,19 @@
 <!-- ============================ final CTA ============================ -->
 <section class="blk">
   <div class="wrap">
-    <div class="finalcta on-ink">
-      <h2>Want the ceiling run on <span class="hl">your numbers?</span></h2>
-      <p>From week one we run this math on live Shopify and ad account data, then work the lines that move it: the return rate, the contribution margin and what a channel actually charges per 1,000 impressions. Book a 30 minute intro call and we will walk your ad economics together.</p>
-      <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpm-calculator" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want the ceiling run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this math on live Shopify and ad account data, then work the lines that move it: the return rate, the contribution margin and what a channel actually charges per 1,000 impressions. Book a 30 minute intro call and we will walk your ad economics together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=cpm-calculator" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -695,6 +704,7 @@
 
       /* scenario spread, exact linear multiples of the ceiling */
       if (o.breakeven_cpm_low !== null && o.breakeven_cpm_high !== null) {
+        el('scenGrid').hidden = false;
         el('scLow').textContent = money(o.breakeven_cpm_low);
         el('scMid').textContent = money(o.breakeven_cpm);
         el('scHigh').textContent = money(o.breakeven_cpm_high);
@@ -706,12 +716,9 @@
         el('scHighA').textContent = 'CTR ' + pct(i.ctr_pct * 1.2, 2) + ', CVR ' + pct(i.cvr_pct * 1.2, 2);
         el('scenNote').textContent = 'If the whole spread sits comfortably above zero, a 20% miss on either rate still leaves room. If it dips toward zero, pull a real click-through rate and conversion rate before you commit budget.';
       } else {
-        el('scLow').textContent = 'n/a';
-        el('scMid').textContent = 'n/a';
-        el('scHigh').textContent = 'n/a';
-        el('scLowA').textContent = '';
-        el('scMidA').textContent = '';
-        el('scHighA').textContent = '';
+        /* no ceiling to flex: three stamped n/a cards read as template residue,
+           so the grid hides and the note carries the explanation alone. */
+        el('scenGrid').hidden = true;
         el('scenNote').textContent = o.message || 'No CPM is affordable at these numbers, so there is no ceiling left to flex.';
       }
     }
@@ -724,7 +731,9 @@
       el('scLowA').textContent = '';
       el('scMidA').textContent = '';
       el('scHighA').textContent = '';
-      el('scenNote').textContent = 'Spend, impressions and CPM are three measured facts. Switch to affordable CPM mode to see the one part of this page that involves a guess.';
+      /* the lede above already carries this sentence; a note would stack the
+         same line twice in two sizes. */
+      el('scenNote').textContent = '';
     }
 
     /* substituted arithmetic rows */

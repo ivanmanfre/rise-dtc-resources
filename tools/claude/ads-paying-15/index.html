@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Are your ads paying for themselves, in 15 minutes: the platform claim against what the bank sees | RISE DTC</title>
+<meta name="description" content="Seven steps we run on four of our calculators and one Claude prompt. You supply one closed month of ad and Shopify numbers; out comes a reconciliation table and a spend decision. Free, runs in Claude." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/ads-paying-15/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="Are your ads paying for themselves, in 15 minutes: the platform claim against what the bank sees" />
+<meta property="og:description" content="Reconcile what the ad platforms claim against what the bank sees, and end on one budget decision. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/ads-paying-15/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Are your ads paying for themselves, in 15 minutes: the platform claim against what the bank sees" />
+<meta name="twitter:description" content="Reconcile what the ad platforms claim against what the bank sees, and end on one budget decision. Free, runs in Claude." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-ads-paying-15";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the steps</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-ads-paying-15" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-ads-paying-15" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-ads-paying-15" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 08 of 09 &middot; Tutorial &middot; free, runs in Claude</p>
+    <h1>Are your ads <span class="gold-word">paying for themselves,</span> in 15 minutes?</h1>
+    <p class="job">Reconcile what the ad platforms claim against what the bank sees, and end on one budget decision.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>15 minutes</b></span>
+      <span>New data needed <b>One closed month</b></span>
+      <span>Steps <b>Seven</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>Are your ads paying for themselves, in 15 minutes</span></p>
+</section>
+
+<!-- ============================ the steps ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The walkthrough</p>
+    <h2>Seven steps, four calculators, one Claude prompt</h2>
+    <p class="sec-sub">You pull one closed month from Shopify and your ad account, run four calculators on it, and paste the result blocks into one Claude chat.</p>
+
+    <div class="prose">
+      <p>Meta says your ads made money last month. The platform is reporting a return on ad spend that would make the month a good one, revenue looks fine on the dashboard, and contribution after everything is thinner than it was in spring. You have fifteen minutes, one ad account and one Shopify report. This walkthrough puts the platform's claim, your whole-store blend and your returns-adjusted reality in the same table, then ends on one spend decision with a dollar figure on it.</p>
+      <p>Every screenshot below is a real run on <b>Northbay Supply, a sample store</b>. Northbay is a synthetic apparel brand built for this walkthrough and labelled a sample store everywhere it appears. Run the seven steps on your own closed month and you land on your own spend decision.</p>
+    </div>
+
+    <div class="psteps">
+
+      <div class="pstep">
+        <span class="numeral">01</span>
+        <div>
+          <span class="st-t">Pull nine numbers, one pass through two dashboards</span>
+          <p>Pick one closed calendar month. Everything below comes from that same month, or the whole exercise reconciles to nothing.</p>
+          <p>From Shopify: total revenue booked, orders, average order value, revenue from first-time customers, contribution margin before returns, return and exchange rate, the net cost of a returned order as a share of order value, revenue attributed to email and SMS, and your monthly fixed operating cost.</p>
+          <p>From your ad platforms: total ad spend across every platform, orders attributed to that spend, and the return on ad spend the platforms report.</p>
+          <p>Northbay's month: $121,800 booked on 1,450 orders at $84, of which $91,728 came from first-time customers and $20,160 from email. Contribution margin before returns 56.3%, return rate 24%, net cost of a returned order 13.7% of order value, fixed cost $38,000. Ad spend $46,000 across every platform, 890 attributed orders, $74,760 of paid-attributed revenue, and Meta reports 3.1x.</p>
+          <span class="st-min">About 4 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">02</span>
+        <div>
+          <span class="st-t">Enter the whole budget in MER and aMER</span>
+          <p>Enter total revenue, total ad spend, first-time customer revenue, contribution margin, return rate, return cost and fixed cost into <a href="../../mer-calculator/">MER and aMER</a>.</p>
+          <div class="st-shot"><img src="assets/01-mer-calculator.png" alt="MER and aMER, run on Northbay Supply" width="1440" height="2946" loading="lazy" decoding="async" /></div>
+          <p>Northbay's blended MER is <b>2.65x</b> against a break-even MER of <b>2.53x</b>. Headroom is <b>0.12x</b>, which is 4.59% of ad spend. Contribution after ads for the month is <b>$2,111</b> against $38,000 of fixed cost, so the month does not cover the rent. aMER, counting only first-time customer revenue, is <b>1.99x</b>.</p>
+          <a class="st-go" href="../../mer-calculator/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">03</span>
+        <div>
+          <span class="st-t">Split the same revenue in Blended ROAS</span>
+          <p>Enter the same total revenue and total ad spend into <a href="../../blended-roas-calculator/">Blended ROAS</a>, then add your paid-attributed revenue and your email revenue, switch on the platform-reported dial, and enter the ROAS the platforms show. Leave the organic and direct row switched off so the tool derives it as the remainder.</p>
+          <div class="st-shot"><img src="assets/02-blended-roas-calculator.png" alt="Blended ROAS, run on Northbay Supply" width="1440" height="4049" loading="lazy" decoding="async" /></div>
+          <p>This is where the month stops being ambiguous. Northbay's returns-adjusted blended ROAS is <b>2.52x</b>. Paid carries <b>61.38%</b> of booked revenue and $47,040 arrives from outside paid attribution. And the row that decides the conversation: <b>the platforms claim $142,600 of revenue in a month where the store booked $121,800</b>. That is 117.08% of everything the store sold, and 1.91x the paid revenue the store actually recorded.</p>
+          <a class="st-go" href="../../blended-roas-calculator/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">04</span>
+        <div>
+          <span class="st-t">Get the floor your own margin sets</span>
+          <p>Enter your average order value, contribution margin before returns, return rate, the all-in cost of one return and the net margin you want after ad spend into <a href="../../break-even-roas/">Break-Even ROAS</a>. Switch on the reported-ROAS dial and enter what the platform claims.</p>
+          <div class="st-shot"><img src="assets/03-break-even-roas.png" alt="Break-Even ROAS, run on Northbay Supply" width="1440" height="3252" loading="lazy" decoding="async" /></div>
+          <p>Northbay needs <b>2.53x to break even</b> once returns sit inside the math, against <b>1.78x</b> if you leave returns out of it. Returns add 0.76x to the ROAS the store has to clear. At the reported 3.1x, the order nets 7.2% after ad spend against the 10.0% target that was entered.</p>
+          <a class="st-go" href="../../break-even-roas/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">05</span>
+        <div>
+          <span class="st-t">Price one order against your ceiling</span>
+          <p>Enter ad spend, attributed orders, average order value, contribution margin, return rate, return cost, and the extra orders a customer places inside your payback window into <a href="../../cpa-calculator/">CPA</a>.</p>
+          <div class="st-shot"><img src="assets/04-cpa-calculator.png" alt="CPA, run on Northbay Supply" width="1440" height="2994" loading="lazy" decoding="async" /></div>
+          <p>Northbay pays <b>$51.69 per order</b>. The first-order ceiling is <b>$33.18</b>, and the ceiling with 12 months of repeat orders counted is <b>$44.13</b>. The verdict prints as DOES NOT PAY BACK, with an overrun of <b>$7.56 per order</b>.</p>
+          <p>If you are looking for an outside figure to compare any of this against, each calculator carries a published figures block further down its own page with cited sources. This walkthrough uses none of them. The comparison that decides your budget is your own ceiling against your own cost per order.</p>
+          <a class="st-go" href="../../cpa-calculator/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">06</span>
+        <div>
+          <span class="st-t">Paste all four into Claude</span>
+          <p>Copy the arithmetic card off each of the four pages, the block headed "Every line, with your numbers written into it", and paste them under the headers below.</p>
+          <div class="pblock">
+            <div class="pb-top">
+              <span class="numeral">01</span>
+              <p class="pb-t">The ad spend reconciliation prompt</p>
+            </div>
+            <p class="pb-why">One prompt, one chat. Every rule in it limits what the answer is allowed to claim without showing the arithmetic.</p>
+            <pre class="pcode" id="pk-p1">I run a US apparel store on Shopify. <b>[ORDERS]</b> orders last month at an $<b>[AOV]</b> average
+order value, $<b>[REVENUE]</b> booked. I spent $<b>[SPEND]</b> on ads last month, up from a trailing
+average of $<b>[PRIOR SPEND]</b>, and <b>[PLATFORM]</b> reports <b>[X]</b>x. Below are four result blocks I
+copied off the RISE DTC calculators.
+
+Work only from the numbers below. Rules I need you to hold to:
+- Never introduce a number I did not give you. Every figure in your answer must be one
+  of mine or arithmetic on mine, with the arithmetic shown.
+- Never quote an industry benchmark, a typical rate, or what other stores do.
+- Never predict what a fix would deliver. If I ask what something is worth, compute it
+  from a number I supplied and label it as arithmetic on my input, not a forecast.
+- If something you need is missing, name the exact report or calculator to go and pull.
+  Do not fill the gap.
+- Plain text. No em dashes.
+
+BLOCK 1: MER AND aMER
+<b>[paste the headline, the verdict tier, the range line and the whole arithmetic card
+from resources.risedtc.com/tools/mer-calculator/]</b>
+
+BLOCK 2: BLENDED ROAS
+<b>[paste the same from resources.risedtc.com/tools/blended-roas-calculator/]</b>
+
+BLOCK 3: BREAK-EVEN ROAS
+<b>[paste the same from resources.risedtc.com/tools/break-even-roas/]</b>
+
+BLOCK 4: CPA
+<b>[paste the same from resources.risedtc.com/tools/cpa-calculator/]</b>
+
+WHAT CHANGED THIS MONTH: <b>[one sentence, the honest one]</b>
+
+Give me back, in this order:
+1. A reconciliation table with four rows: what the platform claims, what the blend
+   actually did, what the blend did after returns, and the gap in dollars. Show the
+   arithmetic for the gap.
+2. The single binding constraint, named in one sentence, with the two numbers that make
+   it binding.
+3. The spend decision for this week: cut, hold or scale, with the dollar amount and the
+   arithmetic behind it.
+4. One number to watch next week, with the threshold that would change the decision and
+   where I read it.
+Do not describe any figure as a midpoint, an average or a typical level unless you show
+the arithmetic that makes it one.
+Under 450 words.</pre>
+            <div class="pspec">
+              <span class="ps-k">Paste this under it</span>
+              <ul>
+                <li>The arithmetic card from <a href="../../mer-calculator/">MER and aMER</a>, under BLOCK 1.</li>
+                <li>The arithmetic card from <a href="../../blended-roas-calculator/">Blended ROAS</a>, under BLOCK 2.</li>
+                <li>The arithmetic card from <a href="../../break-even-roas/">Break-Even ROAS</a>, under BLOCK 3.</li>
+                <li>The arithmetic card from <a href="../../cpa-calculator/">CPA</a>, under BLOCK 4.</li>
+                <li>One honest sentence on what changed this month, in the WHAT CHANGED slot.</li>
+              </ul>
+            </div>
+            <div class="pbar">
+              <button class="pbtn" type="button" data-copy="pk-p1" data-block="01">Copy the prompt</button>
+              <span class="pb-note">The full run it produced is printed further down this page.</span>
+            </div>
+          </div>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">07</span>
+        <div>
+          <span class="st-t">The artifact, and where it goes next</span>
+          <p>You walk away with four things: a reconciliation table you can put in front of anyone who quotes platform ROAS at you, the one constraint that is actually binding, a spend number for this week with the arithmetic attached, and one metric with a threshold to read next Friday.</p>
+          <p>If the answer to why cost per order climbed turns out to be tired creative, the next artifact is new angles, and those come out of what your customers already wrote. <b><code>rise-review-angle-miner</code></b> in the RISE Claude kit takes 15 or more real reviews and returns 5 ad angles, 10 hooks and 3 UGC briefs, in your customers' own language.</p>
+          <p><b>Get the kit:</b> <a href="/rise-dtc-ai-kit/">the RISE DTC AI kit</a>. Run <code>rise-review-angle-miner</code> for the angles, and <code>rise-weekly-triage</code> to keep this reconciliation on a weekly cadence.</p>
+          <a class="st-go" href="/rise-dtc-ai-kit/">Get the RISE DTC AI kit</a>
+          <span class="st-min">About 1 minute</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="srcnote">You supply every number, the gap on this page is the platform's own claimed revenue minus the revenue the store kept, and no attribution haircut or industry benchmark enters the math at any step.</p>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend fifteen minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+        <p><b>What came back on the sample store</b> (verbatim):</p>
+        <p><b>1. Reconciliation</b></p>
+        <div class="tblwrap"><table>
+          <thead>
+            <tr><th></th><th>Revenue</th><th>ROAS</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Platform claims</td><td>$142,600.00</td><td>3.10x</td></tr>
+            <tr><td>Blend, booked</td><td>$121,800.00</td><td>2.65x</td></tr>
+            <tr><td>Blend, after returns</td><td>$115,953.60</td><td>2.52x</td></tr>
+            <tr><td>Gap (platform vs. blend after returns)</td><td class="ans">$26,646.40</td><td>0.58x</td></tr>
+          </tbody>
+        </table></div>
+        <p>Gap arithmetic: $142,600.00 - $115,953.60 = $26,646.40. In ROAS: 3.10x - 2.52x = 0.58x.</p>
+        <p><b>2. Binding constraint</b></p>
+        <p>CPA is $51.69 against a max ceiling of $44.13: 890 attributed orders &times; $7.56 overrun per order = $6,728.40 more spent than the 12-month window repays.</p>
+        <p><b>3. Spend decision: CUT to $39,276</b></p>
+        <p>Max spend at the $44.13 ceiling with 890 attributed orders: $44.13 &times; 890 = $39,275.70, rounded to $39,276.</p>
+        <p>Cut: $46,000.00 - $39,275.70 = $6,724.30.</p>
+        <p>This holds attributed order count constant at 890. If attributed orders move with spend, rerun the CPA calculator at the new count before treating $39,276 as the target.</p>
+        <p><b>4. Number to watch: blended MER</b></p>
+        <p>Current: 2.65x. Threshold: 2.53x. Below 2.53x, contribution after ad spend goes negative ($2,111 becomes zero at 2.53x, per Block 1: $121,800 &times; 0.3950 - $46,000 = $2,111). Pull it from the MER calculator at the end of next week.</p>
+        <p>Note what the answer refuses to do. It does not apply an attribution haircut, because no haircut exists here: the gap is the platform's own claimed revenue against the store's own kept revenue, subtracted. And it flags its own assumption in the spend decision, that attributed orders hold at 890 while spend comes down, which is the assumption the cut turns on.</p>
+        <p class="sm-note">Where every figure in the answer comes from:</p>
+        <div class="tblwrap"><table class="small">
+          <thead>
+            <tr><th>Figure in the answer</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$142,600.00 claimed</td><td><code>blended-roas-calculator.platform_claimed_revenue</code>, on screen as "Revenue your platforms claim: $142,600.00" in <code>assets/02-blended-roas-calculator.png</code></td></tr>
+            <tr><td>3.10x</td><td>Platform-reported ROAS, an input</td></tr>
+            <tr><td>$121,800.00 booked</td><td><code>total_revenue</code> input, on screen in the same arithmetic card</td></tr>
+            <tr><td>2.65x</td><td><code>blended_roas</code>, and the same figure as the MER headline in <code>assets/01-mer-calculator.png</code></td></tr>
+            <tr><td>$115,953.60</td><td><code>blended-roas-calculator.net_kept_revenue</code>, on screen as "Net kept revenue"</td></tr>
+            <tr><td>2.52x</td><td><code>ra_blended_roas</code>, the headline of <code>assets/02</code></td></tr>
+            <tr><td>$26,646.40 and 0.58x</td><td>Arithmetic the answer shows: $142,600.00 - $115,953.60, and 3.10x - 2.52x</td></tr>
+            <tr><td>$51.69</td><td><code>cpa-calculator.cpa_actual</code>, the headline of <code>assets/04-cpa-calculator.png</code></td></tr>
+            <tr><td>$44.13</td><td><code>cpa-calculator.max_cpa_ltv</code>, on screen as "Max CPA, inside the window"</td></tr>
+            <tr><td>$7.56</td><td><code>cpa-calculator.headroom_ltv</code> = -7.56, on screen as "Over the ceiling by: $7.56"</td></tr>
+            <tr><td>890 orders</td><td><code>conversions</code> input, on screen in the orders dial</td></tr>
+            <tr><td>$6,728.40</td><td>Arithmetic: 890 x $7.56</td></tr>
+            <tr><td>$39,275.70, $39,276, $6,724.30</td><td>Arithmetic: $44.13 x 890, then $46,000.00 minus that</td></tr>
+            <tr><td>2.53x break-even MER</td><td><code>mer-calculator.breakeven_mer</code>, on screen as "Break-even MER" in <code>assets/01</code></td></tr>
+            <tr><td>$2,111</td><td><code>mer-calculator.contribution_after_ads</code>, on screen as "Contribution after ad spend"</td></tr>
+            <tr><td>0.3950</td><td><code>mer-calculator.cm_rate_ra_pct</code> = 39.5, on screen as "Contribution rate after returns: 39.50%"</td></tr>
+            <tr><td>$46,000.00</td><td><code>total_ad_spend</code> input</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+
+    <p class="srcnote">Northbay Supply is a sample store built for this walkthrough. Every screenshot on this page is a live run of the calculator linked above it, and every number in the text is the number on the screenshot.</p>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>Every step, the prompt and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The steps are printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this reconciliation on live ad and Shopify data, then set the weekly budget from the ceiling your own margin prints. Book a 30 minute intro call and we will walk your spend together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-ads-paying-15" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/ads-paying-15/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Are your ads paying for themselves, in 15 minutes: the platform claim against what the bank sees",
+  "description":"Seven steps we run on four of our calculators and one Claude prompt. You supply one closed month of ad and Shopify numbers; out comes a reconciliation table and a spend decision.",
+  "url":"https://resources.risedtc.com/tools/claude/ads-paying-15/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'ads-paying-15', type: 'tutorial' });
+})();
+</script>
+</body>
+</html>

@@ -311,7 +311,7 @@
           leaf_template_key: window.__lm_slug || ('rise-dtc-tools-' + state.slug)
         }
       });
-      say('On its way to ' + email + '.', false);
+      say('On its way to ' + email + '. It lands within a few minutes, from itsmattan@risedtc.com.', false);
       if (input) input.value = '';
       if (state.cfg.gate === 'email_to_see') unlock();
     }

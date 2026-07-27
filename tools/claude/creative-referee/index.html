@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>rise-creative-referee: rule kill, keep or scale on every live ad | RISE DTC</title>
+<meta name="description" content="A free Claude skill from our DTC pack. You supply one row per live ad and one store line; Claude computes your returns-adjusted CPA ceiling, rules every ad against it, and shows the significance math." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/creative-referee/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="rise-creative-referee: rule kill, keep or scale on every live ad" />
+<meta property="og:description" content="Rule kill, keep or scale on every live ad each week, with the significance math printed next to the call. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/creative-referee/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="rise-creative-referee: rule kill, keep or scale on every live ad" />
+<meta name="twitter:description" content="Rule kill, keep or scale on every live ad each week, with the significance math printed next to the call. Free, runs in Claude." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-creative-referee";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the skill file</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-creative-referee" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-creative-referee" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-creative-referee" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 05 of 09 &middot; Claude skill &middot; free, runs in Claude</p>
+    <h1>Which of your ads would survive <span class="gold-word">a written rule?</span></h1>
+    <p class="job">Rule kill, keep or scale on every live ad each week, with the significance math printed next to the call.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>About 3 minutes</b></span>
+      <span>New data needed <b>An ad export</b></span>
+      <span>File <b>SKILL.md</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>rise-creative-referee</span></p>
+</section>
+
+<!-- ============================ the skill file ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The skill file</p>
+    <h2>The whole skill, printed in full</h2>
+    <p class="sec-sub">Download SKILL.md or copy it whole, paste this week's ad table and your store line underneath it in any Claude chat, and read the rulings it hands back.</p>
+
+    <div class="pspec">
+      <span class="ps-k">You paste, you get back, the time it takes</span>
+      <ul>
+        <li><b>You paste:</b> one row per live ad (name, days live, spend, impressions, clicks, orders, revenue) and one store line (AOV, contribution margin, return rate, return handling cost, repeat orders in 12 months).</li>
+        <li><b>You get back:</b> a ruling on every ad with the rule that triggered it, the returns-adjusted CPA ceiling computed in full, a readable-or-not verdict on any CTR gap, and the killed budget reallocated in dollars.</li>
+        <li><b>Time:</b> about 3 minutes, same time every week.</li>
+      </ul>
+    </div>
+
+    <div class="skillmd">
+      <div class="sk-head">
+        <span class="sk-file">SKILL.md</span>
+        <span class="sk-where">Drop it in ~/.claude/skills/rise-creative-referee/</span>
+      </div>
+      <pre class="pcode" id="pk-skill">---
+name: rise-creative-referee
+description: Use on a weekly cadence when you have more than four ads live and the kill-or-scale decision is being made on gut. Paste one row per ad (name, days live, spend, impressions, clicks, orders, revenue) plus one store line (AOV, contribution margin, return rate, return handling cost, repeat orders) and Claude rules KILL, KEEP, SCALE or NOT READABLE YET on every ad against a returns-adjusted CPA ceiling it computes from your own numbers, shows the significance math on any CTR comparison, and reallocates the killed budget in dollars. Not for writing new ad copy, and not for ads with no spend or order data attached.
+---
+
+# Creative Referee
+
+**You paste:** one row per live ad (name, days live, spend, impressions, clicks, orders, revenue) and one store line (AOV, contribution margin, return rate, return handling cost, repeat orders in 12 months).
+**You get back:** a ruling table, KILL, KEEP, SCALE or NOT READABLE YET on every ad, each with the rule that triggered it, the returns-adjusted CPA ceiling shown in full, and the killed budget reallocated in dollars.
+**Time:** about 3 minutes, same time every week. The rules do not move between weeks.
+
+Part of the RISE DTC Claude pack, RISE Method, Acquisition pillar.
+
+## What this does
+
+Ads get killed on how the creative feels and scaled on a CTR that looked good on
+a Tuesday. Both are decisions worth thousands of dollars a month, and neither
+survives being asked "which rule did you apply". This skill applies the same
+rules every week so that this week's rulings can be compared to last week's.
+
+You paste the ad table and one store line. Claude computes the most you can pay
+for an order after returns, rules every ad against it, checks whether any CTR
+gap you care about has enough clicks behind it to be real, and moves the killed
+money in dollars. Every figure comes out of the numbers you pasted.
+
+Everything below is frozen: the ceiling formula, the minimum spend before a
+kill, the minimum clicks before a CTR comparison counts, the tie-break order,
+and the ban on outside benchmarks. That is why this is a skill file and not a
+prompt written fresh each Monday.
+
+This works two ways: installed as a Claude Code skill, or pasted into a Claude
+chat with your ad table underneath it.
+
+## Step 1: Collect the inputs
+
+**Per ad, one row.** Ad name, days live, spend, impressions, clicks, orders,
+revenue. Straight out of Meta Ads Manager, Google Ads, or whatever the platform
+exports. CTR, CPC and CPA get computed here, so paste them or leave them out.
+
+**One store line, six numbers.** These set the ceiling every ad is ruled
+against:
+
+| Field | What it is | Where to find it |
+|---|---|---|
+| AOV | Average order value ($) | Shopify overview, total sales divided by orders |
+| Contribution margin before returns (%) | What one full-price order leaves after product cost, shipping and card fees | The Contribution Margin calculator, tool 02 |
+| Return and exchange rate (%) | Returns divided by orders, last 90 days | Shopify, Analytics, Returns |
+| Return handling cost (% of AOV) | Your all-in cost to take one return back, as a share of AOV | Your per-return cost divided by AOV |
+| Repeat orders per customer, 12 months | Extra orders one customer places in a year, on average | Repeat Purchase Rate calculator, tool 10 |
+| Payback window (months) | How long you are willing to wait to get the acquisition cost back | Your call. 12 is the common answer |
+
+If the store line is missing, stop and ask for it. Ruling an ad without a
+ceiling is the thing this skill exists to stop.
+
+## Step 2: Compute the ceiling
+
+This is the CPA calculator's math (tool 16, CPA and Max Affordable CPA), run
+here so the ruling and the tool agree to the cent.
+
+```
+r   = return rate / 100
+cm  = contribution margin before returns / 100
+rc  = return handling cost / 100          (as a share of AOV)
+
+RACO = AOV x ( (1 - r) x cm  -  r x rc )
+```
+
+`RACO` is returns-adjusted contribution per order: kept orders deliver the full
+contribution, returned orders deliver none and cost `rc` of AOV to handle.
+
+```
+CEILING_FIRST  = RACO
+CEILING_WINDOW = RACO x ( 1 + repeat_12mo x (payback_window / 12) )
+```
+
+Repeat orders accrue evenly across the year, so a 6-month window earns half of
+them. Print both ceilings and the arithmetic. In prose call them the first-order
+ceiling and the window ceiling. Print the account line too:
+
+```
+Account CPA = total spend / total orders
+```
+
+## Step 3: Rule every ad, in bands
+
+Per ad: `CPA = spend / orders`. If orders are 0, CPA is undefined and the ad is
+ruled on the floors alone.
+
+**The three bands, fixed:**
+
+| Band | Condition | Ruling |
+|---|---|---|
+| Pays back on order one | `CPA &lt;= CEILING_FIRST` | SCALE |
+| Pays back inside the window | `CEILING_FIRST &lt; CPA &lt;= CEILING_WINDOW` | KEEP |
+| Does not pay back | `CPA &gt; CEILING_WINDOW` | KILL |
+
+**The two floors, fixed. Both must be true before a KILL or a SCALE ruling is
+issued:**
+
+```
+Minimum spend before a kill or a scale:  spend &gt;= 3 x CEILING_WINDOW
+Minimum time before a kill or a scale:   days live &gt;= 7
+```
+
+Three ceilings of spend is enough money for the ad to have produced roughly
+three orders at the highest price you can afford to pay. Seven days is one full
+weekly cycle, so weekday and weekend traffic are both inside the number.
+
+**If either floor is unmet, the ruling is `NOT READABLE YET`.** Name the floor
+that is missing, print the current value next to the floor, and say what the ad
+reads as today and which day the floor clears. A KEEP ruling needs no floor: an
+ad inside the window keeps running by default.
+
+`NOT READABLE YET` is a real answer and it is frequently the right one. It
+means the counts cannot carry a ruling yet.
+
+## Step 4: CTR against the account's own median
+
+Compute the median CTR across the pasted ads. Odd count takes the middle value,
+even count takes the average of the two middle values. Report each ad's CTR
+against that median in relative terms.
+
+**Which pairs get checked, fixed.** Run the CTR check on ads that were run as a
+test against each other: same angle, launched on the same day, split naming
+(a/b, v1/v2, hooksplit). Ads that were never run as a pair carry different
+windows, budgets and audiences, so the gap between their CTRs is confounded and
+no significance test on it means anything. Report their CTRs against the account
+median and stop there.
+
+**The click floor, fixed.** A CTR difference between two ads in a real test pair
+is reported as real only when both of these hold:
+
+```
+1. Each arm has 1,000 clicks or more.
+2. Two-proportion z-test on clicks over impressions gives p &lt; 0.05, two sided.
+```
+
+Check them in that order. If either arm sits under 1,000 clicks, print
+`NOT READABLE YET` with both click counts next to it and stop. Do not run the
+z-test on a pair that fails the floor, and do not report the relative gap as a
+result. State the gap as observed, state that it is unreadable at these counts.
+
+The z-test, when both arms clear the floor:
+
+```
+p_pool = (clicks_A + clicks_B) / (impressions_A + impressions_B)
+se     = sqrt( p_pool x (1 - p_pool) x (1/impressions_A + 1/impressions_B) )
+z      = (CTR_B - CTR_A) / se
+```
+
+Send the operator to the CTR and A/B Significance calculator (tool 17) for the
+impressions each arm still needs. That tool owns the sample-size number.
+
+**CTR never overrides a CPA ruling.** A top-of-account CTR on an ad whose CPA
+sits above `CEILING_WINDOW` is a cheap click into an order you cannot afford.
+Rule it KILL and say the CTR out loud in the same line so the operator sees why
+the pretty number lost.
+
+## Step 5: Tie-break order
+
+When two ads land in the same band and one budget slot is open, separate them in
+this fixed order and stop at the first line that separates them:
+
+```
+1. More orders (more evidence wins)
+2. Lower CPA
+3. CTR above the account median
+4. More days live
+```
+
+If all four tie, both hold and the output says so.
+
+## Step 6: Move the money
+
+Total the spend on every ad ruled KILL. That is the freed budget. **State it in
+the same window the pasted spend column covers and convert it to no other
+window.** A month of spend frees a month of budget. Mixing a monthly total with
+a weekly cap produces a number that is true of neither.
+
+**The reallocation rule, fixed.** Freed budget is offered to the ads ruled SCALE
+first, then the ads ruled KEEP, in proportion to their current spend, capped at
+**+20% of that ad's current spend per week**. The cap exists because a bigger
+step resets the platform's learning on an ad that is currently working.
+
+Any freed budget with nowhere to go inside the cap is parked. Print the parked
+figure in dollars and say plainly that it stays off the account until a new ad
+clears `CEILING_WINDOW`. Never invent a destination for it, and never assume a
+scaled ad holds its CPA at the higher spend.
+
+## Output format
+
+Produce exactly this, in order:
+
+```
+THE CEILING
+RACO = [AOV] x ( (1 - [r]) x [cm] - [r] x [rc] ) = $[RACO]
+Most you can pay for an order, first order:      $[CEILING_FIRST]
+Most you can pay for an order, [N]-month window: $[CEILING_WINDOW]
+Account CPA: $[total spend] / [total orders] = $[account CPA]
+Account median CTR: [x.xxx]% across [N] ads
+
+RULINGS
+| Ad | Days | Spend | Orders | CPA | vs ceiling | CTR | vs median | Ruling |
+[one row per ad, KILL first, then NOT READABLE YET, then KEEP, then SCALE]
+[on a NOT READABLE YET row the CPA cell reads "$X today". Add no footnote and
+no asterisk: the ruling column already says the row is unruled]
+
+WHY, AD BY AD
+[ad name]: [ruling]. [The rule that triggered it, with the numbers in it.]
+[one line per ad, same order as the table]
+
+CTR CHECKS
+[pair]: [CTR A] vs [CTR B], [gap]% relative. [Verdict.] Clicks [A] and [B],
+floor is 1,000 per arm. [What it would take to read it.]
+
+THE MONEY
+Killed: $[total] across [n] ads.
+Moved: $[amount] to [ad], +20% cap on $[current spend]. [repeat per receiving ad]
+Parked: $[amount]. [One line on what has to happen before it goes back to work.]
+
+WHAT THIS DOES NOT TELL YOU
+[one or two lines naming what the pasted table cannot answer]
+
+RUN NEXT
+[routing lines: the tool or skill, and the reason in words]
+```
+
+`RUN NEXT` names tools and skills and says why in plain words. It carries no
+figure of any kind, computed or restated. Every number in this output belongs in
+a block above it.
+
+## Hard guardrails
+
+- **No external benchmark, anywhere, ever.** No platform average CTR, no
+  category CPA, no "good CTR is 1%", no seasonal norm. The account's own median
+  is the only comparator in this output, and it is computed from the rows you
+  pasted.
+- **Every dollar figure shows its arithmetic.** The operator checks it by hand
+  or it does not ship.
+- **`NOT READABLE YET` is a first-class ruling.** Any ad under either floor gets
+  it. Any CTR pair under 1,000 clicks per arm gets it. Reaching for a verdict
+  the counts cannot carry is the failure this skill exists to prevent.
+- **Never declare a CTR winner under the click floor.** Print the observed gap,
+  print both click counts, print the verdict, stop.
+- **Never z-test two ads that were not run as a pair.** Different windows and
+  budgets make the comparison unreadable at any click count.
+- **Describe a band in the band's own words.** An ad in the window band pays back
+  inside the window. Calling it profitable overstates what the band says.
+- **Never predict a result.** No forecast CPA at higher spend, no projected lift
+  from a scale step, no "this should get you to". Rulings describe what the
+  numbers already did.
+- **Never run a scenario on an input the operator did not supply.** No "at a 28%
+  return rate the ceiling would be", no what-if AOV, no alternative margin, no
+  "a 3-point margin lift moves the ceiling to". One store line came in, one
+  ceiling goes out. If a sensitivity is worth having, send them to the CPA
+  calculator (tool 16) to run it themselves, with no number attached.
+- **No new arithmetic in `RUN NEXT`.** It routes. The numbers live above it.
+- **Never rule on an ad with no spend or no orders column.** Say which field is
+  missing and leave the row unruled.
+- **No em dashes and no double hyphens, including inside tables.** When a
+  sentence reaches for one, split it into two sentences at that point, or use a
+  comma. "L returns at 37.8% - well above the style" becomes "L returns at
+  37.8%. The style runs 25.3%."
+- **No corrective-contrast phrasing.** Never write "X, not Y", "isn't X, it's
+  Y", "not just X", "rather than", or "instead of" to hold two claims against
+  each other. This includes the comma form. Write the claim that is true and
+  stop. "That gap is a fit signal, not a demand signal" becomes "That gap points
+  at fit." "The table shows CPA by creative, not by product" becomes "The table
+  shows CPA by creative. Product is outside it." "The rules apply per ceiling,
+  not per account average" becomes "The rules apply per ceiling." "Read the
+  notes rather than the tag" becomes "Read the notes."
+- **Never use:** leverage, seamless, robust, elevate, unlock, delve, streamline,
+  empower, game-changer, transformative.
+- Dollars first on every line. Decisive operator tone, one ruling per ad, no
+  hedging paragraph after the verdict.</pre>
+      <div class="pbar">
+        <button class="pbtn" type="button" data-download="pk-skill" data-filename="SKILL.md">Download SKILL.md</button>
+        <button class="pbtn" type="button" data-copy="pk-skill" data-block="skill">Copy the whole file</button>
+        <span class="pb-note">Works pasted straight into claude.ai as well.</span>
+      </div>
+    </div>
+
+    <p class="srcnote">The account's own median is the only comparator in the output, every significance verdict prints the click counts next to it, and an ad the floors cannot read yet gets ruled exactly that. No platform benchmark and no forecast appears anywhere.</p>
+  </div>
+</section>
+
+<!-- ============================ why a skill file ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Why a skill file</p>
+    <h2>What the file freezes</h2>
+    <div class="prose">
+      <p>$46,000 a month of spend, nine ads, and the kill decision gets made on which creative the team likes. The ceiling is the number that settles it: what one order is worth to you after 24% of them come back and cost you $11.50 each to take back. Ads above that ceiling are buying orders you cannot afford.</p>
+      <p>The rules have to stop moving. Minimum spend before a kill, minimum clicks before a CTR comparison counts for anything, the exact ceiling formula, the tie-break order when two ads want the same budget: freeze all four and this week's rulings can be laid next to last week's. Let a fresh chat re-decide them every Monday and you have twelve months of decisions that cannot be laid next to each other.</p>
+      <p>A frozen rule kills the ad you liked and refuses to crown the winner you were hoping for when the click counts are too thin. "Not readable yet" is a real ruling in this skill, printed with both click counts next to it. In the sample run below, 2 of 9 ads came back NOT READABLE YET.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend three minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+        <p><b>The input:</b> 9 live ads across 3 angles, one calendar month, $46,000 of spend. Plus one store line: $84 AOV, 56.3% contribution margin before returns, 24% return rate, $11.50 to handle a return, 0.33 repeat orders per customer in 12 months, 12-month payback window.</p>
+        <p class="sm-note">What Claude sent back. Verbatim from the run. Trimmed where marked.</p>
+
+<pre class="pcode">THE CEILING
+
+RACO = $84.00 x ((1 - 0.24) x 0.563 - 0.24 x 0.137)
+     = $84.00 x (0.42788 - 0.03288)
+     = $84.00 x 0.39500
+     = $33.18
+
+Most you can pay for an order, first order:      $33.18
+Most you can pay for an order, 12-month window:  $33.18 x (1 + 0.33 x 12/12) = $33.18 x 1.33 = $44.13
+
+Spend floor before any KILL or SCALE ruling:     3 x $44.13 = $132.39
+Time floor before any KILL or SCALE ruling:      7 days live
+
+Account CPA: $46,000 / 890 orders = $51.69
+Account median CTR: 1.400% across 9 ads</pre>
+
+        <p><b>RULINGS</b></p>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Ad</th><th>Days</th><th>Spend</th><th>Orders</th><th>CPA</th><th>vs ceiling</th><th>CTR</th><th>vs median</th><th>Ruling</th></tr></thead>
+          <tbody>
+            <tr><td>fabric-closeup-loop-15s</td><td>12</td><td>$3,600</td><td>44</td><td>$81.82</td><td>$37.69 above $44.13 window</td><td>1.750%</td><td>+25.0%</td><td class="ans">KILL</td></tr>
+            <tr><td>fabric-founder-voiceover</td><td>9</td><td>$1,850</td><td>24</td><td>$77.08</td><td>$32.95 above $44.13 window</td><td>1.162%</td><td>-17.0%</td><td>KILL</td></tr>
+            <tr><td>fit-guarantee-carousel-sizes</td><td>14</td><td>$2,100</td><td>33</td><td>$63.64</td><td>$19.51 above $44.13 window</td><td>1.121%</td><td>-19.9%</td><td>KILL</td></tr>
+            <tr><td>fit-guarantee-ugc-testimonial</td><td>21</td><td>$6,400</td><td>132</td><td>$48.48</td><td>$4.35 above $44.13 window</td><td>1.400%</td><td>at median</td><td>KILL</td></tr>
+            <tr><td>fabric-merino-hero-v2</td><td>28</td><td>$9,600</td><td>206</td><td>$46.60</td><td>$2.47 above $44.13 window</td><td>1.426%</td><td>+1.9%</td><td>KILL</td></tr>
+            <tr><td>fit-guarantee-static-v3</td><td>28</td><td>$10,500</td><td>228</td><td>$46.05</td><td>$1.92 above $44.13 window</td><td>1.400%</td><td>at median</td><td>KILL</td></tr>
+            <tr><td>ugc-unboxing-a-hooksplit</td><td>6</td><td>$1,950</td><td>13</td><td>$150.00 today</td><td>time floor unmet (6 of 7 days)</td><td>1.281%</td><td>-8.5%</td><td>NOT READABLE YET</td></tr>
+            <tr><td>ugc-unboxing-b-hooksplit</td><td>6</td><td>$2,050</td><td>14</td><td>$146.43 today</td><td>time floor unmet (6 of 7 days)</td><td>1.422%</td><td>+1.6%</td><td>NOT READABLE YET</td></tr>
+            <tr><td>ugc-review-quote-cards</td><td>30</td><td>$7,950</td><td>196</td><td>$40.56</td><td>inside window ($33.18 to $44.13)</td><td>1.382%</td><td>-1.3%</td><td>KEEP</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+<pre class="pcode">WHY, AD BY AD
+
+fabric-closeup-loop-15s: KILL. CPA $81.82 is $37.69 above the window ceiling
+($44.13). Both floors met: 12 days live, $3,600 spend vs $132.39 floor. The
+account's top CTR (1.750%, 25.0% above median) produced cheap clicks that did
+not convert at a payable rate.
+
+[trimmed: the other seven rulings, same shape.]
+
+ugc-review-quote-cards: KEEP. CPA $40.56 sits between the first-order ceiling
+($33.18) and the window ceiling ($44.13). It pays back inside the 12-month
+window. No floor check required for a KEEP ruling.
+
+CTR CHECKS
+
+ugc-unboxing-a vs ugc-unboxing-b: 1.281% vs 1.422%, 11.0% relative gap observed.
+NOT READABLE YET. Clicks: 602 (a-hooksplit) and 640 (b-hooksplit). Floor is
+1,000 per arm. The gap is observed but carries no result at these counts. Use
+the CTR and A/B Significance calculator (tool 17) to find the impressions each
+arm needs to hit the 1,000-click floor.
+
+All other ads were not run as pairs. The fit-guarantee group (v3,
+ugc-testimonial, carousel-sizes) and the fabric-story group (merino-hero-v2,
+closeup-loop, founder-voiceover) have different launch dates and formats.
+Different windows and budgets make CTR comparisons between them unreadable at
+any click count. Their CTRs appear against the account median in the table only.
+
+THE MONEY
+
+Killed:  $34,050 across 6 ads
+         ($10,500 + $9,600 + $6,400 + $3,600 + $2,100 + $1,850)
+
+No ads ruled SCALE.
+
+Moved:   $1,590 to ugc-review-quote-cards
+         +20% cap on $7,950 current spend: $7,950 x 0.20 = $1,590
+
+Parked:  $32,460
+         ($34,050 - $1,590)
+
+The $32,460 stays off the account until a new ad clears the window ceiling
+($44.13) with both floors met: 7 days live and $132.39 in spend. No destination
+is assumed for it before that.
+
+[trimmed: WHAT THIS DOES NOT TELL YOU, RUN NEXT.]</pre>
+
+        <p><b>The two traps, and what the run did with them.</b> The pretty CTR: fabric-closeup-loop-15s has the best click-through rate in the account at 1.750%, 25.0% above the median. It is killed, at $81.82 CPA against a $44.13 ceiling, with the CTR printed in the same line. The $0.77 CPC is on the pasted row.</p>
+        <p>The 11% gap the counts cannot carry: the two unboxing hooks sit 11.0% apart on CTR, which is the kind of number that gets a winner declared on a Friday. 602 and 640 clicks are both under the skill's 1,000-click floor, so the run prints NOT READABLE YET, prints both click counts, and runs no z-test.</p>
+
+        <p class="sm-note"><b>Numbers source.</b> Every figure in the sample, and where it comes from. Nothing here is a benchmark, a platform average, or a forecast.</p>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Figure in the output</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Days, spend, impressions, clicks, orders, revenue, CTR per ad</td><td>Pasted rows of the demo store's ad table</td></tr>
+            <tr><td>AOV $84, margin 56.3%, return rate 24%, return cost 13.7%, repeat 0.33, window 12</td><td>The pasted store line</td></tr>
+            <tr><td>RACO $33.18</td><td>$84 x ((1 - 0.24) x 0.563 - 0.24 x 0.137) = $84 x 0.395. Matches the CPA calculator's raco output for the same inputs</td></tr>
+            <tr><td>First-order ceiling $33.18</td><td>RACO</td></tr>
+            <tr><td>Window ceiling $44.13</td><td>$33.18 x (1 + 0.33 x 12/12). Matches the CPA calculator's max_cpa_ltv</td></tr>
+            <tr><td>Spend floor $132.39</td><td>3 x $44.13, the skill's fixed floor</td></tr>
+            <tr><td>Time floor 7 days</td><td>The skill's fixed floor</td></tr>
+            <tr><td>Account CPA $51.69</td><td>$46,000 / 890 orders. Matches the CPA calculator's cpa_actual</td></tr>
+            <tr><td>Account median CTR 1.400%</td><td>The 5th of the 9 pasted CTRs sorted. No outside benchmark</td></tr>
+            <tr><td>Per-ad CPA ($81.82, $77.08, $63.64, $48.48, $46.60, $46.05, $150.00, $146.43, $40.56)</td><td>spend / orders on each pasted row</td></tr>
+            <tr><td>vs ceiling gaps ($37.69, $32.95, $19.51, $4.35, $2.47, $1.92)</td><td>CPA minus $44.13. The KEEP row is stated as inside the $33.18 to $44.13 band with no gap figure</td></tr>
+            <tr><td>vs median (+25.0, -17.0, -19.9, at median, +1.9, at median, -8.5, +1.6, -1.3%)</td><td>ad CTR / 1.400% - 1</td></tr>
+            <tr><td>CTR gap 11.0%</td><td>1.422% / 1.281% - 1</td></tr>
+            <tr><td>Clicks 602 and 640</td><td>Pasted rows, against the skill's fixed 1,000-click floor</td></tr>
+            <tr><td>Killed $34,050</td><td>$10,500 + $9,600 + $6,400 + $3,600 + $2,100 + $1,850</td></tr>
+            <tr><td>Moved $1,590</td><td>$7,950 x 0.20, the skill's fixed +20% cap</td></tr>
+            <tr><td>Parked $32,460</td><td>$34,050 - $1,590</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>The full SKILL.md and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The skill file is printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this referee on your live ad account every Monday, hold every ad to your own ceiling, and put the freed budget back to work inside the cap. Book a 30 minute intro call and we will walk your account together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-creative-referee" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/creative-referee/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"rise-creative-referee: rule kill, keep or scale on every live ad",
+  "description":"A free Claude skill from our DTC pack. You supply one row per live ad and one store line; Claude computes your returns-adjusted CPA ceiling, rules every ad against it, and shows the significance math.",
+  "url":"https://resources.risedtc.com/tools/claude/creative-referee/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'creative-referee', type: 'skill' });
+})();
+</script>
+</body>
+</html>

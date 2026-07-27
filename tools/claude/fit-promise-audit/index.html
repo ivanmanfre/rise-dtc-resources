@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Fit Promise Audit: find your sizing contradictions with Claude | RISE DTC</title>
+<meta name="description" content="Five Claude prompts that read your size chart, product copy and returns policy side by side and quote every place they contradict each other. Free, runs in Claude, every paste comes off your own site." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/fit-promise-audit/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="The Fit Promise Audit: find your sizing contradictions with Claude" />
+<meta property="og:description" content="Five prompts that find every place your size chart, your product copy and your returns policy contradict each other. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/fit-promise-audit/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Fit Promise Audit: find your sizing contradictions with Claude" />
+<meta name="twitter:description" content="Five prompts that find every place your size chart, product copy and returns policy contradict each other. Free." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-fit-promise-audit";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the prompts</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-fit-promise-audit" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-fit-promise-audit" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-fit-promise-audit" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 02 of 09 &middot; Prompt pack &middot; free, runs in Claude</p>
+    <h1>Where does your fit promise <span class="gold-word">contradict itself?</span></h1>
+    <p class="job">Find every place your size chart, your product copy, your returns policy and your exchange flow contradict each other, using nothing beyond copy-paste off your own site.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>About 12 minutes</b></span>
+      <span>New data needed <b>Your return reasons</b></span>
+      <span>Prompts <b>Five, in order</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>The Fit Promise Audit</span></p>
+</section>
+
+<!-- ============================ the prompts ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The prompts</p>
+    <h2>Five prompts, run in order, in one Claude chat</h2>
+    <p class="sec-sub">You paste five documents off your own site once, then run the five prompts in one Claude chat in this order, because each answer is the input to the next one. Every prompt is printed in full, and the copy button puts it on your clipboard.</p>
+
+    <div class="pstack">
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">01</span>
+          <p class="pb-t">Read the documents, quote nothing yet</p>
+        </div>
+        <p class="pb-why">Reads the four documents, inventories them, and names the promises your copy makes that your chart carries no column to verify.</p>
+        <pre class="pcode" id="pk-p1">You are auditing the fit promise on my apparel store. Four documents describe how my clothes fit,
+written at different times by different people. Your job across this chat is to find where they
+contradict each other.
+
+STANDING RULES for every line you write in this chat, from this message to the last one:
+- Quote only text I pasted. Never paraphrase a document line and present it as a quote.
+- Never state a garment measurement I did not paste. Sleeve length, bicep, armhole, cuff, inseam,
+  rise, shoulder, model height, fabric stretch and shrinkage all count.
+- Never say a garment runs small, runs large, runs long or runs short unless a document I pasted
+  says so in those words. If a customer note says it, quote the note and name the source.
+- Anything missing is written as [NEEDS: &lt;the thing&gt;] on its own, with no figure beside it. That is
+  the convention the RISE DTC AI Kit uses and this chat uses it too.
+- Plain markdown only, no LaTeX. No "it's not X, it's Y" phrasing.
+- Zero em dashes, including inside table cells and inside code blocks. When a line reaches for one,
+  end the sentence and start a new one, or use a colon. Inside a table cell, use a full stop or a
+  semicolon. Write a label, then a colon, then the figure. Never write a label, a dash, then the
+  figure.
+- Put no dash between a quote and what you say about it. Put the quote on its own line and put your
+  sentence on the next line.
+- Never use these words: leverage, seamless, robust, elevate, unlock, delve, streamline, empower,
+  game-changer, transformative.
+
+Read the documents below and return only this, nothing else:
+1. An inventory: for each document, its name, its date if I gave you one, and how many lines it has.
+2. The measurement columns my size chart actually carries, listed by name.
+3. The garment attributes my product copy makes a promise about, listed by name, each with the SKU
+   that promised it.
+4. One line: which attributes appear in list 3 and are absent from list 2.
+
+Do not rule on anything yet. Do not suggest a fix.
+
+--- MY DOCUMENTS ---
+<b>[paste your size chart, your PDP fit sentences, your policy, your top 3 return reasons, and your
+support questions if you have them]</b></pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Your size chart, the whole table with its column headers, from your size guide page.</li>
+            <li>The fit sentence from 5 to 8 product pages, each with its SKU, copied exactly as written.</li>
+            <li>Your returns and exchange policy, full text, from your policy page.</li>
+            <li>Your top 3 return reasons as your portal tags them, with row counts, from Shopify, Analytics, Returns, or your returns app.</li>
+            <li>Optional: the fit questions your support inbox gets most. Unranked and uncounted is fine, say so.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p1" data-block="01">Copy prompt 01</button>
+          <span class="pb-note">Everything above is copy-paste off your own site.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">02</span>
+          <p class="pb-t">The contradiction table</p>
+        </div>
+        <p class="pb-why">Pairs your own lines against each other, two verbatim quotes per row, and names the return reason tag each contradiction lands under.</p>
+        <pre class="pcode" id="pk-p2">Now build the contradiction table. Every row needs two verbatim quotes side by side. A row with one
+quote is not a finding and does not go in the table.
+
+Columns, in this order and with this wording:
+
+  | # | Document A says (verbatim) | Document B says (verbatim) | Which one the customer believes | What it costs |
+
+Rules for the table, all five binding:
+- Both quotes come from my paste, word for word, inside quotation marks, each with its source named
+  (document name plus SKU where it is a PDP line).
+- "Which one the customer believes" is one sentence naming the document a customer reads at the
+  moment of choosing a size, and why that one wins. A customer picks a size on the product page.
+- "What it costs" names the return reason tag the contradiction lands under, using my own tag
+  wording. If I gave you counts, put the count there. If I did not, write [NEEDS: return count by
+  reason].
+- A promise with nothing to check it against is a contradiction. Quote the promise, and in column
+  B write the chart column that would verify it as [NEEDS: &lt;column&gt;].
+- Where a fit sentence tells a customer to change size, quote it, then quote both chart rows a
+  customer moves between when they follow it, and name every measurement that moves with them.
+  A size-change instruction that mentions one measurement while my chart moves two is a
+  contradiction and it earns a row.
+- Never invent a measurement to prove a row. If a row needs a number I did not paste, the row still
+  runs and the number stays as [NEEDS: &lt;the number&gt;].
+
+Under the table, list every contradiction you considered and dropped, with the reason you dropped
+it in five words or fewer.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It runs on the documents prompt 01 read.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p2" data-block="02">Copy prompt 02</button>
+          <span class="pb-note">A row needs two verbatim quotes or it does not ship.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">03</span>
+          <p class="pb-t">The chart gap, by SKU</p>
+        </div>
+        <p class="pb-why">Works the size chart alone: the missing columns, the grading gaps, and the SKUs whose promise cannot be checked at all.</p>
+        <pre class="pcode" id="pk-p3">Now work on the size chart alone.
+
+1. List the measurement columns my chart is missing for the styles in my paste. For each one, name
+   the SKUs that need it and quote the copy line that makes it necessary. Write each missing column
+   as [NEEDS: &lt;column&gt; by size].
+
+2. Flag any size that appears in my chart and is not graded across my line, or any size that is
+   graded and is missing from my chart. Quote both sources.
+
+3. Print a per-SKU table:
+
+  | SKU | Fit promise made (verbatim) | Chart columns that would verify it | Present or [NEEDS:] |
+
+4. One line at the end: the count of SKUs in my paste whose fit promise cannot be checked against
+   my chart at all.
+
+Add no advice in this step. This is an inventory of what a customer can and cannot verify.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It works the same paste, chart only.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p3" data-block="03">Copy prompt 03</button>
+          <span class="pb-note">An inventory of what a customer can and cannot verify.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">04</span>
+          <p class="pb-t">The policy read, exchange first</p>
+        </div>
+        <p class="pb-why">Quotes every cost, delay and step your policy puts in front of a size swap, then rewrites your exchange paragraph so a swap costs less than a refund.</p>
+        <pre class="pcode" id="pk-p4">Now audit my returns and exchange policy against the exchange share I gave you.
+
+1. Quote every line in my policy that puts a cost, a delay, or a step in front of a customer who
+   wants a different size. One quote per line, with no paraphrase.
+
+2. For each quoted line, write one sentence on the choice it pushes a customer toward at that
+   moment. Use my own numbers where I gave them. Where the arithmetic runs on a figure I did not
+   paste, write [NEEDS: &lt;the figure&gt;] and carry on.
+
+3. Quote any line in my policy that describes a store I am not. A line about a charge I never make
+   or a step I do not run belongs here, with the line from my own paste that contradicts it.
+
+4. If I gave you the cost of handling one return and the fee my policy charges, print the gap per
+   return and the monthly gap, with the arithmetic on the line. If I gave you only one of the two,
+   write [NEEDS: &lt;the missing one&gt;] and print nothing.
+
+5. Rewrite my exchange paragraph so that a customer who wants a different size pays less than a
+   customer who wants their money back. Change the fee on the exchange path only, and print the
+   new figure in the paragraph. Hold my window, my process steps and my refund-path fee exactly as
+   I published them. Under the paragraph, print the cost of the change in dollars: my exchanges
+   per month times the fee I gave up, with the arithmetic. Mark any figure you had to leave blank
+   as [NEEDS: &lt;the figure&gt;]. This is the only writing you do in this chat, and it is one paragraph.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It reads the policy already in the chat.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p4" data-block="04">Copy prompt 04</button>
+          <span class="pb-note">The one paragraph of new writing in the whole run.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">05</span>
+          <p class="pb-t">The three SKUs, and the hand-off</p>
+        </div>
+        <p class="pb-why">Names the three SKUs to rewrite first, the fix list in order, every open [NEEDS:], and the hand-off to rise-pdp-doctor.</p>
+        <pre class="pcode" id="pk-p5">Close the audit.
+
+1. Name the 3 SKUs to send through a page rewrite first. Rank them on the evidence in my paste: the
+   number of contradictions attached to the SKU, whether its fit promise can be verified against my
+   chart, and its return rate if I gave you one. Print the evidence next to each SKU. Where you
+   ranked on something I did not give you, write [NEEDS: &lt;the field&gt;] and drop the SKU to the bottom
+   of the list.
+
+2. Print the fix list in the order it should be done, with the artifact each one changes:
+   the size chart, the policy page, the PDPs, the returns portal tag list.
+
+3. Print every [NEEDS:] you raised in this chat as one list, deduplicated. That list is what I
+   collect before the next run.
+
+4. Print one line: run rise-pdp-doctor from the RISE DTC AI Kit on the 3 SKUs above, one at a time,
+   with each SKU's top return reason in my customers' words.
+
+Then re-read the standing rules from Prompt 1 and confirm in one line that every message in this
+chat holds to them. Name any line that broke one.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It closes the audit on what the chat already holds.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p5" data-block="05">Copy prompt 05</button>
+          <span class="pb-note">Closes the audit with the hand-off.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="srcnote">You supply every document these prompts read. A finding needs two of your own lines quoted side by side or it does not ship, and a missing measurement comes back as a [NEEDS:] line with nothing beside it. When the audit names the three SKUs to fix, rise-pdp-doctor in the RISE DTC AI Kit rewrites those pages one at a time.</p>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend twelve minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+<h3>Prompt 1 read the documents</h3>
+<h4>1. Document inventory</h4>
+<table><thead><tr><th>Document</th><th>Date</th><th>Lines</th></tr></thead><tbody><tr><td>Document 1: Size Chart</td><td>Last edited fourteen months ago</td><td>14</td></tr><tr><td>Document 2: PDP Fit Sentences, Six Styles</td><td>Not given</td><td>15</td></tr><tr><td>Document 3: Returns and Exchanges Policy</td><td>Not given</td><td>15</td></tr><tr><td>Document 4: Top Three Tagged Return Reasons</td><td>Orders placed 8 to 18 June 2026; returns logged through 20 July 2026</td><td>9</td></tr><tr><td>Document 5: Fit Questions Support Gets Most (optional)</td><td>Not given</td><td>8</td></tr><tr><td>Per-SKU Return Rates</td><td>Trailing 90 days</td><td>4</td></tr></tbody></table>
+<h4>2. Measurement columns the size chart carries</h4>
+<ul><li>Chest (flat, double for full circumference)</li><li>Body length (HPS to hem)</li></ul>
+<h4>3. Garment attributes product copy promises, by name and SKU</h4>
+<ul><li>Body silhouette: NB-TEE-001, NB-TEE-007, NB-KNT-001</li><li>Body length: NB-TEE-001</li><li>Sleeve fit: NB-TEE-002, NB-KNT-001</li><li>Garment volume: NB-KNT-003</li><li>Layering fit: NB-OUT-001</li></ul>
+<h4>4. Attributes in list 3 absent from list 2</h4>
+<p>Body silhouette (NB-TEE-001, NB-TEE-007, NB-KNT-001), sleeve fit (NB-TEE-002, NB-KNT-001), garment volume (NB-KNT-003), and layering fit (NB-OUT-001) appear in product copy and have no corresponding column in the size chart.</p>
+<h3>Prompt 2 returned the contradiction table</h3>
+<table><thead><tr><th>#</th><th>Document A says (verbatim)</th><th>Document B says (verbatim)</th><th>Which one the customer believes</th><th>What it costs</th></tr></thead><tbody><tr><td>1</td><td>"Cut straight through the body with a classic length." (Document 2, NB-TEE-001)</td><td>"Relaxed and boxy." (Document 2, NB-TEE-007)</td><td>The customer is on the NB-TEE-007 product page (Document 2) when they choose a size and reads "Relaxed and boxy" expecting a wider chest than a straight-cut garment at the same labeled size; Document 1 labels its grid "Tees and knitwear, all styles" and gives the same chest figure to both products.</td><td>Sizing / fit (73 rows)</td></tr><tr><td>2</td><td>"We recommend sizing down for a closer fit." (Document 2, NB-TEE-007)</td><td>"| S | 20.0 | 27.5 |" and "| M | 21.5 | 28.5 |" (Document 1, Size Chart)</td><td>The customer acts on the product-page instruction (Document 2, NB-TEE-007) expecting fit through the body to change; the chart shows that moving from M to S also shortens Body length (HPS to hem) from 28.5 to 27.5 alongside Chest (flat) from 21.5 to 20.0, and the instruction mentions neither measurement by name.</td><td class="ans">Sizing / fit (73 rows)</td></tr><tr><td>3</td><td>"Consider your usual size for a close fit, or size up to layer." (Document 2, NB-KNT-003)</td><td>"| M | 21.5 | 28.5 |" and "| L | 23.0 | 29.5 |" (Document 1, Size Chart)</td><td>The customer acts on the product-page instruction (Document 2, NB-KNT-003) expecting more chest room for layering; the chart shows that moving from M to L also lengthens Body length (HPS to hem) from 28.5 to 29.5 alongside Chest (flat) from 21.5 to 23.0, and the instruction mentions neither measurement by name.</td><td>Sizing / fit (73 rows)</td></tr><tr><td>4</td><td>"A slim, tailored sleeve that sits close to the arm." (Document 2, NB-TEE-002)</td><td>[NEEDS: sleeve measurement column] (Document 1, Size Chart carries only Chest and Body length)</td><td>The customer is on the NB-TEE-002 product page (Document 2) when they choose a size and trusts the sleeve promise; the chart has no sleeve column to let them verify it before ordering.</td><td>Sizing / fit (73 rows)</td></tr><tr><td>5</td><td>"Generous through the body with a neat sleeve." (Document 2, NB-KNT-001)</td><td>[NEEDS: sleeve measurement column] (Document 1, Size Chart carries only Chest and Body length)</td><td>The customer is on the NB-KNT-001 product page (Document 2) when they choose a size and trusts the sleeve promise; the chart has no sleeve column to let them verify it before ordering.</td><td>Sizing / fit (73 rows)</td></tr><tr><td>6</td><td>"Cable adds volume." (Document 2, NB-KNT-003)</td><td>[NEEDS: garment volume column] (Document 1, Size Chart carries only Chest and Body length)</td><td>The customer is on the NB-KNT-003 product page (Document 2) when they choose a size and must judge how much volume the cable adds; the chart has no column to quantify it.</td><td>Sizing / fit (73 rows)</td></tr><tr><td>7</td><td>"Designed to layer over a knit. Take your normal size." (Document 2, NB-OUT-001)</td><td>"Tees and knitwear, all styles." (Document 1, Size Chart)</td><td>The customer is on the NB-OUT-001 product page (Document 2) when they choose a size and follows "Take your normal size"; the chart explicitly covers only tees and knitwear, leaving the outerwear instruction unsupported.</td><td>Sizing / fit (73 rows)</td></tr><tr><td>8</td><td>"We recommend sizing down for a closer fit." (Document 2, NB-TEE-007)</td><td>"the line is graded S to XXL. NB-TEE-001 is the one style graded down to XS." (Document 2, grading note)</td><td>The customer is on the NB-TEE-007 product page (Document 2) and follows the size-down instruction; a customer whose usual size is S finds S is the smallest size this product offers.</td><td>Sizing / fit (73 rows)</td></tr></tbody></table>
+<p>Contradictions considered and dropped:</p>
+<ul><li>NB-KNT-001 "True to size" vs 34.1% return rate: no per-SKU reason breakdown</li><li>NB-TEE-002 "Take your normal size" vs 36.2% return rate: no per-SKU reason breakdown</li><li>"Free ground shipping" vs $8 label fee: outbound and return differ</li><li>"Do the knits shrink?" (Document 5): customer question, not a claim</li><li>NB-TEE-001 "classic length" vs chart: body length column exists</li><li>NB-KNT-001 "generous through the body" vs chart: chest column exists</li><li>NB-TEE-001 XS only: not two conflicting quotes</li><li>Store header "30-day returns window" vs $8 label fee: outside fit scope</li></ul>
+<h3>Prompt 3 returned the chart gap, by SKU</h3>
+<p><b>1. Missing measurement columns</b></p>
+<p>[NEEDS: sleeve length by size] SKUs: NB-TEE-002, NB-KNT-001</p>
+<p>"A slim, tailored sleeve that sits close to the arm." (Document 2, NB-TEE-002) "Generous through the body with a neat sleeve." (Document 2, NB-KNT-001)</p>
+<p>[NEEDS: sleeve circumference (bicep) by size] SKUs: NB-TEE-002, NB-KNT-001</p>
+<p>"A slim, tailored sleeve that sits close to the arm." (Document 2, NB-TEE-002) "Generous through the body with a neat sleeve." (Document 2, NB-KNT-001)</p>
+<p>[NEEDS: garment volume by size] SKU: NB-KNT-003</p>
+<p>"Cable adds volume." (Document 2, NB-KNT-003)</p>
+<p>[NEEDS: chest by size for NB-OUT-001] [NEEDS: body length by size for NB-OUT-001] SKU: NB-OUT-001</p>
+<p>"Designed to layer over a knit. Take your normal size." (Document 2, NB-OUT-001) The chart is scoped to "Tees and knitwear, all styles." (Document 1); NB-OUT-001 has no chart entry.</p>
+<p><b>2. Size grading flags</b></p>
+<p>XS appears in the chart:</p>
+<p>"| XS | 18.5 | 26.5 |" (Document 1, Size Chart)</p>
+<p>The grading note reads:</p>
+<p>"the line is graded S to XXL. NB-TEE-001 is the one style graded down to XS." (Document 2, grading note)</p>
+<p>XS is in the chart but is graded only for NB-TEE-001. For the five remaining styles (NB-TEE-002, NB-TEE-007, NB-KNT-001, NB-KNT-003, NB-OUT-001) the XS row has no graded product behind it.</p>
+<p>No size is graded but absent from the chart. Grading runs S to XXL for five styles and XS to XXL for NB-TEE-001; all those sizes have a chart row.</p>
+<p><b>3. Per-SKU verification table</b></p>
+<table><thead><tr><th>SKU</th><th>Fit promise made (verbatim)</th><th>Chart columns that would verify it</th><th>Present or [NEEDS:]</th></tr></thead><tbody><tr><td>NB-TEE-001</td><td>"Cut straight through the body with a classic length. Take your normal size."</td><td>Chest (flat, double for full circumference); Body length (HPS to hem)</td><td>Both PRESENT</td></tr><tr><td>NB-TEE-002</td><td>"A slim, tailored sleeve that sits close to the arm. Take your normal size."</td><td>Sleeve length; Sleeve circumference (bicep)</td><td class="ans">[NEEDS: sleeve length by size]; [NEEDS: sleeve circumference (bicep) by size]</td></tr><tr><td>NB-TEE-007</td><td>"Relaxed and boxy. We recommend sizing down for a closer fit."</td><td>Chest (flat, double for full circumference); Body length (HPS to hem)</td><td>Both PRESENT</td></tr><tr><td>NB-KNT-001</td><td>"Generous through the body with a neat sleeve. True to size."</td><td>Chest (flat, double for full circumference); Sleeve length; Sleeve circumference (bicep)</td><td>Chest PRESENT; [NEEDS: sleeve length by size]; [NEEDS: sleeve circumference (bicep) by size]</td></tr><tr><td>NB-KNT-003</td><td>"Cable adds volume. Consider your usual size for a close fit, or size up to layer."</td><td>Garment volume; Chest (flat, double for full circumference)</td><td>[NEEDS: garment volume by size]; Chest PRESENT</td></tr><tr><td>NB-OUT-001</td><td>"Designed to layer over a knit. Take your normal size."</td><td>Chest (flat, double for full circumference); Body length (HPS to hem)</td><td>[NEEDS: chest by size]; [NEEDS: body length by size]</td></tr></tbody></table>
+<p><b>4.</b> 2 SKUs (NB-TEE-002 and NB-OUT-001) have fit promises that cannot be checked against the chart at all.</p>
+<h3>Prompt 4 read the policy</h3>
+<p><b>1.</b></p>
+<p>"Start your return in the returns portal with your order number and email." (step)</p>
+<p>"Print the label." (step)</p>
+<p>"Drop it at any carrier point." (step)</p>
+<p>"We charge a flat $8 label fee, deducted from your refund or from your exchange." (cost)</p>
+<p>"This applies to returns and to exchanges." (cost)</p>
+<p>"Choose your new size in the portal." (step)</p>
+<p>"We ship the new item once the original is scanned by the carrier." (delay)</p>
+<p>"The $8 fee applies." (cost)</p>
+<p><b>2.</b></p>
+<p>"Start your return in the returns portal with your order number and email." A customer who wants a different size must locate their order number and email address and open the portal before the process can begin.</p>
+<p>[trimmed: two more quote-and-sentence pairs, on the printing step and the carrier trip.]</p>
+<p>"We charge a flat $8 label fee, deducted from your refund or from your exchange." A customer deciding whether to fix a size problem must weigh $8 against keeping the wrong item.</p>
+<p>"This applies to returns and to exchanges." A customer choosing between a refund and an exchange faces the same $8 on both paths, leaving no price reason to choose the exchange over the refund; 28% of 348 monthly returns become exchanges.</p>
+<p>"Choose your new size in the portal." A customer must commit to a specific replacement size at the moment of initiating the return, before the store can confirm that size is available.</p>
+<p>"We ship the new item once the original is scanned by the carrier." A customer cannot receive the replacement until they have dropped off the return and the carrier has scanned it, so the new item's ship date depends entirely on when they act on the return.</p>
+<p>"The $8 fee applies." A customer completing the exchange flow sees the fee again at the final confirmation step, creating a last moment to choose a refund instead.</p>
+<p><b>3.</b></p>
+<p>"Original shipping is not refunded." (Document 3, Refunds)</p>
+<p>"Free ground shipping on every order, no threshold." (Store header)</p>
+<p>The store charges no outbound shipping, so no customer has paid an original shipping fee; this clause withholds a cost that does not exist in any order.</p>
+<p><b>4.</b></p>
+<p>Cost per return (paste): $11.50 Fee collected per return (paste): $8.00 Gap: $11.50 - $8.00 = $3.50 per return Monthly: 348 × $3.50 = $1,218.00</p>
+<p><b>5.</b></p>
+<p>"Exchanges. Choose your new size in the portal. We ship the new item once the original is scanned by the carrier. The label fee for an exchange is [NEEDS: exchange label fee]."</p>
+<p>0.28 × 348 = 97 exchanges per month Fee given up per exchange: $8.00 minus [NEEDS: exchange label fee] Monthly cost: 97 × ($8.00 minus [NEEDS: exchange label fee]) = [NEEDS: monthly cost of exchange incentive]</p>
+<h3>Prompt 5 named the three SKUs and handed off</h3>
+<p><b>1. Three SKUs ranked for page rewrite</b></p>
+<p><b>1. NB-TEE-002 (Harbor Heavyweight Long Sleeve)</b> Contradictions: 1 (Row 4). Chart verification: cannot be checked at all; 2 columns missing ([NEEDS: sleeve length by size], [NEEDS: sleeve circumference (bicep) by size]). Return rate: 36.2% (100 returned on 276 sold) against store average of 24%.</p>
+<p><b>2. NB-KNT-001 (Fathom Lambswool Crew)</b> Contradictions: 1 (Row 5). Chart verification: partially verifiable; chest column present, 2 sleeve columns missing ([NEEDS: sleeve length by size], [NEEDS: sleeve circumference (bicep) by size]). Return rate: 34.1% (46 returned on 135 sold) against store average of 24%.</p>
+<p><b>3. NB-TEE-007 (Union Boxy Tee)</b> Contradictions: 3 (Rows 1, 2, 8). Chart verification: both existing columns present (chest, body length). Return rate: [NEEDS: return rate for NB-TEE-007]; dropped to position 3 for missing return rate.</p>
+<p><b>2. Fix list in order</b></p>
+<p>1. Size chart: add sleeve length by size, sleeve circumference (bicep) by size, garment volume by size; add outerwear rows for NB-OUT-001 (chest by size, body length by size); clarify that the XS row applies to NB-TEE-001 only.</p>
+<p>2. Policy page: remove or rewrite "Original shipping is not refunded" to reflect that outbound shipping is free on every order; insert the updated exchange paragraph once [NEEDS: exchange label fee] is set.</p>
+<p>3. Returns portal tag list: split the "Sizing / fit" tag to capture sleeve fit and body fit separately, and add a per-SKU field so future exports resolve the open [NEEDS:] return rate items.</p>
+<p>4. PDPs: rewrite NB-TEE-002, then NB-KNT-001, then NB-TEE-007, in that order, once the size chart additions are final.</p>
+<p><b>3. All [NEEDS:] from this chat, deduplicated</b></p>
+<p>1. [NEEDS: sleeve length by size] 2. [NEEDS: sleeve circumference (bicep) by size] 3. [NEEDS: garment volume by size] 4. [NEEDS: chest by size for NB-OUT-001] 5. [NEEDS: body length by size for NB-OUT-001] 6. [NEEDS: exchange label fee] 7. [NEEDS: monthly cost of exchange incentive] 8. [NEEDS: return rate for NB-TEE-007]</p>
+<p>Items 1 and 2 absorb [NEEDS: sleeve measurement column] from the contradiction table. Item 3 absorbs [NEEDS: garment volume column] from the same table. All others are distinct.</p>
+<p><b>4.</b></p>
+<p>Run rise-pdp-doctor on NB-TEE-002 with "Are the sleeves slim on the long sleeve tee?", on NB-KNT-001 with "Do the knits shrink?", and on NB-TEE-007 with "Is the boxy tee shorter than the regular tee?", one at a time, using each question from Document 5 as the return reason input.</p>
+<p><b>Rule confirmation</b></p>
+<p>Every message in this chat holds to the standing rules from Prompt 1; no line broke any of them.</p>
+<div class="sm-note">
+<p><b>Verification: where every number in this sample came from</b></p>
+<p>This pack computes almost nothing. Its output is quotes, and its honesty mechanic is that a finding needs two verbatim lines side by side or it does not ship. So the check runs on two axes: every number, and every quote.</p>
+<p><b>Every number</b></p>
+<p><b>INPUT</b> means the figure is in the paste shown above. <b>DATASET</b> means it also appears in the demo store's data sheet. <b>ARITH</b> means it is arithmetic on those, with the working printed in the sample.</p>
+<table style="font-size:.82rem"><thead><tr><th>Figure in the sample</th><th>Source</th><th>The trace</th></tr></thead><tbody><tr><td>18.5, 26.5 (the XS chart row)</td><td>INPUT</td><td>Document 1, quoted verbatim as <code>| XS | 18.5 | 26.5 |</code></td></tr><tr><td>20.0, 27.5 (size S) and 21.5, 28.5 (size M)</td><td>INPUT</td><td>Document 1, quoted verbatim in contradiction row 2</td></tr><tr><td>21.5, 28.5 (size M) and 23.0, 29.5 (size L)</td><td>INPUT</td><td>Document 1, quoted verbatim in contradiction row 3</td></tr><tr><td>73 rows, "Sizing / fit"</td><td>INPUT and DATASET</td><td>Document 4; the data sheet's fit section</td></tr><tr><td>36.2%, 100 returned on 276 sold</td><td>INPUT and DATASET</td><td>the per-SKU block; the data sheet, SKU NB-TEE-002</td></tr><tr><td>34.1%, 46 returned on 135 sold</td><td>INPUT and DATASET</td><td>the per-SKU block; the data sheet, SKU NB-KNT-001</td></tr><tr><td>24% store average</td><td>INPUT and DATASET</td><td>the paste; the data sheet's topline constants</td></tr><tr><td>28% of 348 monthly returns</td><td>INPUT and DATASET</td><td>the paste header; the data sheet derives 348 as 1,450 x 24%</td></tr><tr><td>$8.00 label fee</td><td>INPUT</td><td>Document 3, quoted verbatim</td></tr><tr><td>$11.50 handling cost</td><td>INPUT and DATASET</td><td>the paste header; the data sheet's return handling cost</td></tr><tr><td>$3.50 gap per return</td><td>ARITH</td><td>$11.50 minus $8.00, printed with the working</td></tr><tr><td>$1,218.00 a month</td><td>ARITH and DATASET</td><td>348 x $3.50, printed with the working; the data sheet reaches the same figure</td></tr><tr><td>97 exchanges per month</td><td>ARITH</td><td>0.28 x 348 = 97.44, printed with the working</td></tr><tr><td>6 SKUs, 2 SKUs, 5 remaining styles</td><td>ARITH</td><td>counted off the paste, each one named</td></tr><tr><td>30 days</td><td>INPUT</td><td>Document 3, quoted verbatim</td></tr></tbody></table>
+<p><b>There is no other number anywhere in this sample.</b> No garment measurement was invented. No sleeve length, no bicep, no cuff, no model height, no fabric weight, no shrinkage figure. Every missing measurement came back as <code>[NEEDS: ...]</code>, which is the kit's own convention.</p>
+</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>All five prompts, the paste specs and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The prompts are printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this audit on live product pages and returns data, then rewrite the pages it names until the sizing returns move. Book a 30 minute intro call and we will read your fit promise together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-fit-promise-audit" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/fit-promise-audit/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"The Fit Promise Audit: find your sizing contradictions with Claude",
+  "description":"Five Claude prompts that read your size chart, product copy and returns policy side by side and quote every place they contradict each other.",
+  "url":"https://resources.risedtc.com/tools/claude/fit-promise-audit/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'fit-promise-audit', type: 'prompts' });
+})();
+</script>
+</body>
+</html>

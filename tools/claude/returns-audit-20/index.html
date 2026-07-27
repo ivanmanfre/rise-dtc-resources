@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Run a returns audit in 20 minutes: three calculators into one ranked leak list | RISE DTC</title>
+<meta name="description" content="Nine steps we run on three of our calculators and one Claude prompt. You supply eight Shopify numbers and a returns export; out comes a ranked list of returns leaks in dollars. Free, runs in Claude." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/returns-audit-20/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="Run a returns audit in 20 minutes: three calculators into one ranked leak list" />
+<meta property="og:description" content="Go from returns feeling bad to a ranked, dollar-sized fix list in one sitting. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/returns-audit-20/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Run a returns audit in 20 minutes: three calculators into one ranked leak list" />
+<meta name="twitter:description" content="Go from returns feeling bad to a ranked, dollar-sized fix list in one sitting. Free, runs in Claude." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-returns-audit-20";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the steps</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-returns-audit-20" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-returns-audit-20" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-returns-audit-20" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 07 of 09 &middot; Tutorial &middot; free, runs in Claude</p>
+    <h1>Run a returns audit in <span class="gold-word">20 minutes</span></h1>
+    <p class="job">Go from returns feeling bad to a ranked, dollar-sized fix list in one sitting.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>20 minutes</b></span>
+      <span>New data needed <b>A returns export</b></span>
+      <span>Steps <b>Nine</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>Run a returns audit in 20 minutes</span></p>
+</section>
+
+<!-- ============================ the steps ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The walkthrough</p>
+    <h2>Nine steps, three calculators, one Claude prompt</h2>
+    <p class="sec-sub">You pull your numbers out of Shopify, run three calculators on them, and paste the result blocks into one Claude chat.</p>
+
+    <div class="prose">
+      <p>Your returns feel expensive and you have never put a number on them. The refund total sits in one report, the shipping you already paid sits in another, the product that came back damaged sits in a spreadsheet nobody opens, and the reason tags sit in your returns app where the top tag is "sizing / fit" and swallows most of the volume. You have twenty minutes and eight numbers you can look up today. This walkthrough turns those eight numbers into a ranked list of what returns cost you per order and per year, sorted by dollars, with each leak labelled as a copy fix, a product fix or a policy fix.</p>
+      <p>Every screenshot below is a real run on <b>Northbay Supply, a sample store</b>. Northbay is a synthetic apparel brand built for this walkthrough and labelled a sample store everywhere it appears. With your own eight numbers, the twenty minutes below end on your own ranked leak list.</p>
+    </div>
+
+    <div class="psteps">
+
+      <div class="pstep">
+        <span class="numeral">01</span>
+        <div>
+          <span class="st-t">Pull eight numbers from Shopify</span>
+          <p>Open your Shopify analytics for the last 90 days and write these down. Nothing here needs an export.</p>
+          <ul>
+            <li>Average order value, gross, before refunds</li>
+            <li>Product cost as a share of price</li>
+            <li>What you pay to ship one order</li>
+            <li>Return rate, share of orders returned</li>
+            <li>What it costs you to process one return, label plus inspection plus repack</li>
+            <li>The share of returned goods that goes back on the shelf at full price</li>
+            <li>Blended customer acquisition cost, total ad spend divided by total orders</li>
+            <li>Your card processing rate</li>
+          </ul>
+          <p>Northbay: $84.00, 32%, $7.40, 24%, $11.50, 80%, $31.00, 2.9%.</p>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">02</span>
+        <div>
+          <span class="st-t">Enter them in True Profit Per Order</span>
+          <p>Enter all eight into <a href="../../true-profit-per-order/">True Profit Per Order</a>, then switch on the repeat purchase dial and enter your repeat rate.</p>
+          <div class="st-shot"><img src="assets/01-true-profit-per-order.png" alt="True Profit Per Order, run on Northbay Supply" width="1440" height="3225" loading="lazy" decoding="async" /></div>
+          <p>Northbay comes back at <b>minus $1.78 per order</b>, verdict tier FIX FIRST, and the line that matters sits underneath it: <b>returns cost $17.76 per order shipped</b>. That is $17.76 of refunded revenue, unrecovered product cost and handling, charged against every order the store ships, including the ones nobody sends back. Write down both figures.</p>
+          <p>If you want to know what other stores publish on return rates, the published figures block further down that page cites its sources. Nothing in this walkthrough uses them. Your own arithmetic is the only comparator here.</p>
+          <a class="st-go" href="../../true-profit-per-order/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">03</span>
+        <div>
+          <span class="st-t">Pull your per-unit costs and your monthly fixed cost</span>
+          <p>Same 90 days, four more numbers, all of them in dollars this time:</p>
+          <ul>
+            <li>Selling price per unit</li>
+            <li>Product cost per unit, landed, in dollars</li>
+            <li>Outbound shipping per unit</li>
+            <li>Other variable cost per unit, card fees plus pick, pack and packaging</li>
+            <li>Monthly fixed cost: rent, salaries, software, the 3PL base fee</li>
+          </ul>
+          <p>Northbay: $84.00, $26.88, $7.40, $2.44, $38,000.</p>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">04</span>
+        <div>
+          <span class="st-t">Enter them in Contribution Margin</span>
+          <p>Enter those into <a href="../../contribution-margin/">Contribution Margin</a>, with the same return rate, return cost and resellable share from step 1.</p>
+          <div class="st-shot"><img src="assets/02-contribution-margin.png" alt="Contribution Margin, run on Northbay Supply" width="1440" height="3250" loading="lazy" decoding="async" /></div>
+          <p>Northbay keeps <b>$29.52 per unit</b> after returns, against $47.28 if returns did not exist. The page then prints the sentence that settles it: Northbay has to sell <b>1,288 units a month to cover fixed cost, against 804 if nothing came back. Returns force 484 extra units a month.</b></p>
+          <a class="st-go" href="../../contribution-margin/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">05</span>
+        <div>
+          <span class="st-t">Pull your repeat numbers, with exchanges separated</span>
+          <p>From your customer report and your returns app, over the trailing 12 months:</p>
+          <ul>
+            <li>Customers in the window</li>
+            <li>Customers with two or more orders</li>
+            <li>The share of those second orders that are exchanges, meaning a replacement created by a size swap</li>
+          </ul>
+          <p>Northbay: 13,100 customers, 3,400 repeat, 26% of the repeat orders are exchanges.</p>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">06</span>
+        <div>
+          <span class="st-t">Enter them in Repeat Purchase Rate</span>
+          <p>Enter those into <a href="../../repeat-purchase-rate/">Repeat Purchase Rate</a> along with your net average order value and contribution margin.</p>
+          <div class="st-shot"><img src="assets/03-repeat-purchase-rate.png" alt="Repeat Purchase Rate, run on Northbay Supply" width="1440" height="3311" loading="lazy" decoding="async" /></div>
+          <p>Northbay's dashboard reports <b>26.0%</b>. Once the size swaps come out, the true repeat rate is <b>19.2%</b>, so 6.7 points of what looked like retention were exchanges. Size swaps get counted as second orders, which is why the dashboard number reads high.</p>
+          <a class="st-go" href="../../repeat-purchase-rate/">Open the calculator</a>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">07</span>
+        <div>
+          <span class="st-t">Pull your top three tagged return reasons</span>
+          <p>Export your returns for a closed window, a cohort where the return window has already shut, and count the tags. Write down row counts. Half-remembered percentages will not reconcile against anything.</p>
+          <p>Northbay's export: 120 returns from 500 orders. Sizing / fit 73 rows, changed mind 16 rows, quality or defect 11 rows, colour not as pictured 9, wrong item sent 6, arrived late 5.</p>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">08</span>
+        <div>
+          <span class="st-t">Paste all four into Claude</span>
+          <p>Copy the arithmetic card off each of the three calculator pages, the block headed "Every line, with your numbers written into it", and paste them under the headers below. Then paste this whole thing into Claude.</p>
+          <div class="pblock">
+            <div class="pb-top">
+              <span class="numeral">01</span>
+              <p class="pb-t">The returns audit prompt</p>
+            </div>
+            <p class="pb-why">One prompt, one chat. Every rule in it limits what the answer is allowed to call a leak.</p>
+            <pre class="pcode" id="pk-p1">I run a US apparel store on Shopify. <b>[ORDERS]</b> orders a month, <b>[ORDERS x 12]</b> a year,
+average order value $<b>[AOV]</b>. Below are three result blocks I copied off the RISE DTC
+calculators, plus my top three tagged return reasons.
+
+Work only from the numbers below. Rules I need you to hold to:
+- Never introduce a number I did not give you. Every figure in your answer must be one
+  of mine or arithmetic on mine, with the arithmetic shown.
+- Never quote an industry benchmark, a typical rate, or what other stores do.
+- Never predict what a fix would deliver. If I ask what something is worth, compute it
+  from a number I supplied and label it as arithmetic on my input, not a forecast.
+- If something you need is missing, name the exact report or calculator to go and pull.
+  Do not fill the gap.
+- If you split one of my totals across categories using a share, say in one line that
+  you are allocating by share of return rows and that this treats every return as
+  costing the same, then carry on.
+- Plain text. No em dashes.
+
+BLOCK 1: TRUE PROFIT PER ORDER
+<b>[paste the headline, the verdict tier, the range line and the whole arithmetic card
+from resources.risedtc.com/tools/true-profit-per-order/]</b>
+
+BLOCK 2: CONTRIBUTION MARGIN
+<b>[paste the same from resources.risedtc.com/tools/contribution-margin/]</b>
+
+BLOCK 3: REPEAT PURCHASE RATE, EXCHANGE-ADJUSTED
+<b>[paste the same from resources.risedtc.com/tools/repeat-purchase-rate/]</b>
+
+BLOCK 4: MY RETURN REASON TAGS
+Export of <b>[N]</b> returns from a closed cohort of <b>[M]</b> orders.
+  <b>[tag]</b>: <b>[rows]</b> rows, <b>[share]</b>%
+  <b>[tag]</b>: <b>[rows]</b> rows, <b>[share]</b>%
+  <b>[tag]</b>: <b>[rows]</b> rows, <b>[share]</b>%
+  Remaining tags: <b>[list them with row counts]</b>
+
+Give me back, in this order:
+1. A ranked leak table. Columns: leak, dollars per order, dollars per year at
+   <b>[ORDERS x 12]</b> orders, which block the figure came from. Rank by dollars per year.
+2. For each leak, whether the fix is copy, product or policy, and one sentence saying
+   why on my numbers.
+3. The one thing to do before Friday, in one sentence, naming the dollar figure it is
+   aimed at.
+A leak is money I could recover, not a whole cost line. If you rank a cost line, rank
+the gap between it and the break-even level printed in the blocks, not the full cost.
+Under 450 words.</pre>
+            <div class="pspec">
+              <span class="ps-k">Paste this under it</span>
+              <ul>
+                <li>The arithmetic card from <a href="../../true-profit-per-order/">True Profit Per Order</a>, under BLOCK 1.</li>
+                <li>The arithmetic card from <a href="../../contribution-margin/">Contribution Margin</a>, under BLOCK 2.</li>
+                <li>The arithmetic card from <a href="../../repeat-purchase-rate/">Repeat Purchase Rate</a>, under BLOCK 3.</li>
+                <li>Your return reason tags from step 7, with row counts, under BLOCK 4.</li>
+              </ul>
+            </div>
+            <div class="pbar">
+              <button class="pbtn" type="button" data-copy="pk-p1" data-block="01">Copy the prompt</button>
+              <span class="pb-note">The full run it produced is printed further down this page.</span>
+            </div>
+          </div>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">09</span>
+        <div>
+          <span class="st-t">The artifact, and where it goes next</span>
+          <p>You now have one page you can hand to anyone: a ranked list of returns leaks in dollars per order and dollars per year, each one labelled copy, product or policy, and one action for this week with the dollar figure it is aimed at.</p>
+          <p>Two jobs sit outside this walkthrough on purpose: the annual returns leak as one audited figure, and a sequenced plan for closing it. Both belong to <b><code>rise-return-rate-rescue</code></b>, the returns skill in the RISE Claude kit. It takes eight aggregate Shopify numbers, sizes the leak for the year, and returns a three-move plan against it. You already have every number it asks for, because you pulled them in steps 1, 3 and 5.</p>
+          <p><b>Get the kit:</b> <a href="/rise-dtc-ai-kit/">the RISE DTC AI kit</a>. Run <code>rise-return-rate-rescue</code> first, then <code>rise-pdp-doctor</code> on the three styles your tag export puts at the top.</p>
+          <a class="st-go" href="/rise-dtc-ai-kit/">Get the RISE DTC AI kit</a>
+          <span class="st-min">About 1 minute</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="srcnote">You supply every number in this audit, and every figure in the Claude answer is one of yours or arithmetic on yours, with the arithmetic printed beside it. No benchmark appears on this page and nothing in the output is a forecast.</p>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend twenty minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+        <p><b>What came back on the sample store</b> (verbatim, trimmed for length):</p>
+        <p><b>1. Ranked leak table</b></p>
+        <p>Allocating the $17.76 return drag (Blocks 1 and 2) by share of return rows; this treats every return as costing the same.</p>
+        <div class="tblwrap"><table>
+          <thead>
+            <tr><th>Leak</th><th>$/order</th><th>$/year at 17,400</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sizing/fit return drag</td><td>$10.80</td><td class="ans">$187,920</td><td>Block 4: 0.608 x $17.76 (Block 1)</td></tr>
+            <tr><td>Changed mind return drag</td><td>$2.36</td><td>$41,064</td><td>Block 4: 0.133 x $17.76 (Block 1)</td></tr>
+            <tr><td>CAC over break-even</td><td>$1.78</td><td>$30,972</td><td>Block 1: $31.00 - $29.22</td></tr>
+            <tr><td>Quality/defect return drag</td><td>$1.63</td><td>$28,362</td><td>Block 4: 0.092 x $17.76 (Block 1)</td></tr>
+          </tbody>
+        </table></div>
+        <p>Arithmetic:<br />
+        0.608 x $17.76 = $10.80; x 17,400 = $187,920<br />
+        0.133 x $17.76 = $2.36; x 17,400 = $41,064<br />
+        $31.00 - $29.22 = $1.78; x 17,400 = $30,972<br />
+        0.092 x $17.76 = $1.63; x 17,400 = $28,362</p>
+        <p><b>2. Fix type and reason</b> [trimmed to two of four]</p>
+        <p>Sizing/fit | Copy + Product. 73 of 120 return rows point to a fit expectation gap, making this the source of $10.80 of the $17.76 return drag; a richer size guide and on-page measurement table close the expectation gap before the product itself needs to change.</p>
+        <p>CAC over break-even | Copy. Your blended $31.00 CAC sits $1.78 above the $29.22 break-even printed in Block 1; ad creative and channel mix are the levers, and closing this gap turns every order from a loss to flat before any repeat purchase counts.</p>
+        <p><b>3. One thing before Friday</b></p>
+        <p>Rewrite the size guide and add a body-measurement table to product pages, aimed at the $187,920 annual sizing/fit return drag, which is 4.6x the next-largest leak ($187,920 / $41,064 = 4.6).</p>
+        <p>Every figure in that answer is one of the three calculators' outputs or arithmetic on them, printed next to the arithmetic. The allocation line at the top is doing real work: return rows get split by tag share, which treats every return as costing the same $17.76. It is the honest way to split a total you have not measured per reason, and the answer states it up front.</p>
+        <p class="sm-note">Where every figure in the answer comes from:</p>
+        <div class="tblwrap"><table class="small">
+          <thead>
+            <tr><th>Figure in the answer</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$17.76 return drag</td><td><code>true-profit-per-order.returns_drag_per_order</code> = 17.759040, on screen as "Returns cost per order shipped: $17.76" in <code>assets/01-true-profit-per-order.png</code>, and again as "Returns drag per unit: $17.76" in <code>assets/02-contribution-margin.png</code></td></tr>
+            <tr><td>0.608 / 0.133 / 0.092</td><td>Return tag shares supplied in Block 4: 73, 16 and 11 rows of 120</td></tr>
+            <tr><td>$10.80 and $187,920</td><td>Arithmetic, printed in the answer: 0.608 x $17.76, then x 17,400 orders</td></tr>
+            <tr><td>$2.36 and $41,064</td><td>Arithmetic: 0.133 x $17.76, then x 17,400</td></tr>
+            <tr><td>$1.63 and $28,362</td><td>Arithmetic: 0.092 x $17.76, then x 17,400</td></tr>
+            <tr><td>$31.00</td><td>Blended CAC, an input, on screen in the Acquisition legend row of <code>assets/01</code></td></tr>
+            <tr><td>$29.22</td><td><code>true-profit-per-order.contribution_before_cac</code> = 29.224960, on screen as "Contribution before acquisition: $29.22"</td></tr>
+            <tr><td>$1.78 and $30,972</td><td>$31.00 - $29.22, the same magnitude as <code>true_profit_per_order</code> = -1.775040; annualised x 17,400</td></tr>
+            <tr><td>17,400 orders</td><td>Operator input in the prompt, 1,450 orders a month x 12</td></tr>
+            <tr><td>4.6x</td><td>Arithmetic: $187,920 / $41,064</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+
+    <p class="srcnote">Northbay Supply is a sample store built for this walkthrough. Every screenshot on this page is a live run of the calculator linked above it, and every number in the text is the number on the screenshot.</p>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>Every step, the prompt and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The steps are printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this audit on live Shopify and returns data, then work the biggest leak on the list until the dollars per order move. Book a 30 minute intro call and we will walk your returns together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-returns-audit-20" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/returns-audit-20/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Run a returns audit in 20 minutes: three calculators into one ranked leak list",
+  "description":"Nine steps we run on three of our calculators and one Claude prompt. You supply eight Shopify numbers and a returns export; out comes a ranked list of returns leaks in dollars.",
+  "url":"https://resources.risedtc.com/tools/claude/returns-audit-20/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'returns-audit-20', type: 'tutorial' });
+})();
+</script>
+</body>
+</html>

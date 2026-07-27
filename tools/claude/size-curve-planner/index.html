@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>rise-size-curve-planner: place the next buy on returns-adjusted demand | RISE DTC</title>
+<meta name="description" content="A free Claude skill from our DTC pack. You supply one style's per-size sales, returns and stock; Claude computes returns-adjusted demand, the reorder quantity per size, and the cash the buy needs." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/size-curve-planner/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="rise-size-curve-planner: place the next buy on returns-adjusted demand" />
+<meta property="og:description" content="Turn sell-through and per-size return rates into the next buy quantity, size by size. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/size-curve-planner/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="rise-size-curve-planner: place the next buy on returns-adjusted demand" />
+<meta name="twitter:description" content="Turn sell-through and per-size return rates into the next buy quantity, size by size. Free, runs in Claude." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-size-curve-planner";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the skill file</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-size-curve-planner" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-size-curve-planner" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-size-curve-planner" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 06 of 09 &middot; Claude skill &middot; free, runs in Claude</p>
+    <h1>Buy the curve your customers <span class="gold-word">kept.</span></h1>
+    <p class="job">Turn sell-through and per-size return rates into the next buy quantity, size by size.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>About 2 minutes per style</b></span>
+      <span>New data needed <b>A size table</b></span>
+      <span>File <b>SKILL.md</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>rise-size-curve-planner</span></p>
+</section>
+
+<!-- ============================ the skill file ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The skill file</p>
+    <h2>The whole skill, printed in full</h2>
+    <p class="sec-sub">Download SKILL.md or copy it whole, paste one style's size table underneath it in any Claude chat, and read the buy it hands back.</p>
+
+    <div class="pspec">
+      <span class="ps-k">You paste, you get back, the time it takes</span>
+      <ul>
+        <li><b>You paste:</b> per size for one style, units sold, units returned and units on hand, plus lead time in weeks, target weeks of cover, unit cost, and the share of returned goods you resell.</li>
+        <li><b>You get back:</b> returns-adjusted demand per size, the reorder quantity per size with the arithmetic, the over-buy the raw sell-through curve would have caused in units and dollars, the sizes sitting under your supplier minimum, and the cash the buy needs.</li>
+        <li><b>Time:</b> about 2 minutes per style.</li>
+      </ul>
+    </div>
+
+    <div class="skillmd">
+      <div class="sk-head">
+        <span class="sk-file">SKILL.md</span>
+        <span class="sk-where">Drop it in ~/.claude/skills/rise-size-curve-planner/</span>
+      </div>
+      <pre class="pcode" id="pk-skill">---
+name: rise-size-curve-planner
+description: Use when an apparel brand is placing a reorder on a style and needs the quantity per size. Paste units sold, units returned and units on hand per size, plus lead time, target weeks of cover and unit cost, and Claude computes returns-adjusted demand per size, the size curve against the curve sell-through implies, the reorder quantity with the arithmetic, the sizes sitting under your minimum order quantity, the cash the buy needs, and the size whose return rate points at the fit itself. Run it once per style, as many times as the buy has styles. Not for forecasting a new style with no sales history, and not for aggregate inventory planning across a catalogue.
+---
+
+# Size Curve Planner
+
+**You paste:** per size for one style, units sold, units returned, units on hand, plus lead time in weeks, target weeks of cover, unit cost, and the share of returned goods you resell.
+**You get back:** returns-adjusted demand per size, the reorder quantity per size with the arithmetic, the over-buy the raw sell-through curve would have caused in units and dollars, the sizes under your minimum order quantity, and the cash the buy needs.
+**Time:** about 2 minutes per style. Run it once per style and every output has the same shape.
+
+Part of the RISE DTC Claude pack, RISE Method, Financial Health pillar.
+
+## What this does
+
+Sell-through says size L is a third of your sales, so the buy sheet says L is a
+third of the order. Then the L units come back at the highest rate on the
+style, and you have paid for a season of stock in the one size that keeps
+returning.
+
+You paste one style's sizes. Claude subtracts the units that came back and
+stayed back, converts kept demand into a weekly rate, covers the lead time and
+the weeks of cover you asked for, subtracts what is already on the shelf, and
+hands back a quantity per size with the arithmetic printed next to it. The raw
+sell-through buy sits in the same table, so the gap between the two is a number
+you can take to the supplier.
+
+The procedure below is frozen: the resellable adjustment, the cover math, the
+lead-time cushion, the bounded scenarios when the resellable share is unknown,
+and the ban on seasonality multipliers. Every style in the buy comes back in
+the same output shape, which is what makes them add up into one purchase
+order.
+
+This works two ways: installed as a Claude Code skill, or pasted into a Claude
+chat with your size table underneath it.
+
+## Step 1: Collect the inputs
+
+**Per size, one row:** units sold in the window, units returned in the window,
+units on hand today.
+
+**Per style, six numbers:**
+
+| Field | What it is | Where to find it |
+|---|---|---|
+| Sales window | The length of the sales window in days | Whatever window the sold and returned columns cover. 90 days is the common one |
+| Lead time (weeks) | Order placed to stock received | Your supplier, the last PO's actual dates |
+| Target weeks of cover | Weeks of stock you want on hand after the goods land | Your call. 8 to 16 is the usual band |
+| Unit cost ($) | Landed cost of one unit | Your cost sheet |
+| Resellable share (%) | Of returned units, the share that goes back on the shelf at full price | Your returns grading. If you do not measure it, say so and read Step 4 |
+| Minimum order quantity per size | The smallest run the supplier will take per size | Your supplier terms. Optional |
+
+Optional and useful: **last season's buy curve** as a percentage per size. If it
+is missing, say so in the output and use the sell-through curve as the
+comparator.
+
+If the sold or returned column is missing for any size, do not fill it in. Name
+the size and the missing field, leave that size unplanned, and plan the rest.
+
+## Step 2: The resellable adjustment
+
+A returned unit that grades back to the shelf is stock you already own, so it
+lowers what you need to buy. A returned unit that grades out is gone.
+
+```
+resellable = resellable share / 100
+
+net demand (size)  =  units sold  -  ( units returned x resellable )
+```
+
+Print this per size and print the style total. Print the raw sold column next to
+it so the difference is visible on the same line.
+
+Do the same at style level and report both curves as percentages:
+
+```
+sell-through curve (size)      = units sold (size)  / units sold (style)
+returns-adjusted curve (size)  = net demand (size)  / net demand (style)
+```
+
+The gap between the two, in percentage points, per size, is the finding. Name
+the size with the widest gap and say what the gap costs in units.
+
+## Step 3: Cover math and the lead-time cushion
+
+```
+weeks in window = sales window days / 7
+
+weekly demand (size) = net demand (size) / weeks in window
+
+coverage horizon = lead time weeks + target weeks of cover
+```
+
+The horizon carries the lead-time cushion: goods ordered today land after the
+lead time, so the buy has to feed demand for every week of the lead time and
+then hold the target cover once it arrives. Never plan a horizon shorter than
+lead time plus cover, and never add a safety factor the operator did not name.
+
+```
+target position (size) = weekly demand (size) x coverage horizon
+
+reorder (size) = target position (size) - units on hand (size)
+```
+
+Round to the nearest whole unit. A negative reorder is 0, and the size is
+reported as covered with the surplus units printed.
+
+Run the same three lines on the raw sold column to produce the sell-through
+buy, and print both quantities per size. The difference between the two totals
+is the over-buy the returns-adjusted curve removes, in units and in dollars at
+unit cost.
+
+```
+cash the buy needs = total reorder units x unit cost
+```
+
+## Step 4: When the resellable share is missing
+
+Never pick a number for it. Compute both ends and print both:
+
+```
+Scenario A, every return goes back on the shelf:  net demand = sold - returned
+Scenario B, no return goes back on the shelf:     net demand = sold
+```
+
+Run Step 3 twice and print the two reorder quantities per size as a range, plus
+the two cash figures. State plainly that the real answer sits between them and
+that one week of grading the returns bin closes the range. Never present the
+midpoint as the answer.
+
+## Step 5: The size whose return rate points at the fit
+
+```
+return rate (size)  = units returned (size) / units sold (size)
+return rate (style) = total returned / total sold
+```
+
+**Fixed threshold: a size whose return rate sits 10 or more percentage points
+above the style's own rate is a fit problem in that size.** Name it, print both
+rates, and say the quantity is the smaller half of the decision on that size.
+Route it: run `rise-return-note-miner` on that SKU's return notes to find which
+measurement is wrong, then `rise-pdp-doctor` on the page.
+
+If no size clears the threshold, say so in one line.
+
+## Step 6: Sizes under the minimum order quantity
+
+If an MOQ was given, name every size whose reorder falls under it, print the
+gap, and print the cash cost of buying up to the MOQ at unit cost. The call
+belongs to the operator: buy up to the minimum, or drop the size from the buy.
+Print both numbers and hand the decision over.
+
+If no MOQ was given, say so in one line and skip the block. Never assume a
+minimum.
+
+## Output format
+
+Produce exactly this, in order:
+
+```
+SIZE CURVE, [style name], [window] window
+
+DEMAND PER SIZE
+| Size | Sold | Returned | Return rate | Resellable back | Net demand | On hand |
+[one row per size, plus a totals row]
+
+THE TWO CURVES
+| Size | Sell-through curve | Returns-adjusted curve | Gap (pts) |
+[one row per size, plus a totals row]
+[One line naming the widest gap and what it costs in units.]
+
+THE BUY
+Weeks in window: [days] / 7 = [weeks]
+Coverage horizon: [lead time] + [cover] = [N] weeks
+
+| Size | Weekly demand | Target position | On hand | Reorder | Sell-through buy | Difference |
+[one row per size, plus a totals row]
+
+Cash the buy needs: [units] x $[unit cost] = $[total]
+Cash the sell-through buy would have needed: [units] x $[unit cost] = $[total]
+Over-buy removed: [units] units, $[amount]
+
+THE SIZE TO LOOK AT
+[Size], [return rate]% against the style's [rate]%, [gap] points above.
+[One line on what that means for the buy and the routing.]
+
+UNDER THE MINIMUM
+[Size], reorder [N] against an MOQ of [M]. Buying up to the minimum costs
+$[amount] for [N] extra units. [One line handing the call over.]
+
+WHAT THIS DOES NOT TELL YOU
+[one or two lines naming what the pasted table cannot answer]
+
+RUN NEXT
+[routing lines]
+```
+
+## Hard guardrails
+
+- **Never invent a seasonality multiplier.** No autumn uplift, no holiday
+  factor, no trend adjustment, no "L usually runs heavier in Q4". The pasted
+  window is the only demand signal in this output. If the operator names a
+  multiplier, apply it and label it as their scenario, with the unadjusted
+  number printed next to it.
+- **Resellable share is an input.** When it is missing, print both bounded
+  scenarios per Step 4 and never pick a value inside the range.
+- **Never forecast a return rate.** The per-size return rates in the output are
+  the ones in the pasted rows, over the pasted window.
+- **Show the arithmetic on every quantity.** Weekly demand, horizon, target
+  position, on hand, reorder. The buyer signs a purchase order off this, so
+  every line has to be checkable by hand.
+- **Never plan a size with a missing column.** Name the size and the field and
+  leave it out of the totals, with the exclusion stated.
+- **No industry benchmark anywhere.** No standard apparel size curve, no
+  category return rate, no typical weeks of cover. The style's own numbers are
+  the only comparator.
+- **No em dashes and no double hyphens, including inside tables.** When a
+  sentence reaches for one, split it into two sentences at that point, or use a
+  comma. "L returns at 37.8% - well above the style" becomes "L returns at
+  37.8%. The style runs 25.3%."
+- **No corrective-contrast phrasing.** Never write "X, not Y", "isn't X, it's
+  Y", "not just X", "rather than", or "instead of" to hold two claims against
+  each other. This includes the comma form. Write the claim that is true and
+  stop. "That gap is a fit signal, not a demand signal" becomes "That gap points
+  at fit." "The table shows CPA by creative, not by product" becomes "The table
+  shows CPA by creative. Product is outside it." "The rules apply per ceiling,
+  not per account average" becomes "The rules apply per ceiling." "Read the
+  notes rather than the tag" becomes "Read the notes."
+- **Never use:** leverage, seamless, robust, elevate, unlock, delve, streamline,
+  empower, game-changer, transformative.
+- Units and dollars first on every line. Plain buyer-desk tone, no hype, no
+  sign-off.</pre>
+      <div class="pbar">
+        <button class="pbtn" type="button" data-download="pk-skill" data-filename="SKILL.md">Download SKILL.md</button>
+        <button class="pbtn" type="button" data-copy="pk-skill" data-block="skill">Copy the whole file</button>
+        <span class="pb-note">Works pasted straight into claude.ai as well.</span>
+      </div>
+    </div>
+
+    <p class="srcnote">The resellable share is an input you supply. When you cannot, the skill computes both ends, prints the reorder as a range, and says the answer sits between them. No seasonality multiplier and no forecast return rate appears unless you name one, and every quantity shows its arithmetic.</p>
+  </div>
+</section>
+
+<!-- ============================ why a skill file ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Why a skill file</p>
+    <h2>What the file freezes</h2>
+    <div class="prose">
+      <p>You run this once per style, as many times as the buy has styles. Runs that all produce the same table add up into one purchase order. A format that drifts run to run means retyping every one of them.</p>
+      <p>It also carries a real procedure, and it is the part that gets retyped wrong: subtract the returns that go back on the shelf from the ones that do not, turn kept demand into a weekly rate, cover the lead time and then the weeks of cover on top of it, subtract what is already in the warehouse. Miss the lead-time half of that and you have bought short by your whole lead time on every size. The skill file holds the order of operations so the buyer holds the decision.</p>
+      <p>One more thing it holds: what to do when you do not know your resellable share. It computes both ends, every return goes back on the shelf and none of them do, prints the reorder as a range, and says the answer sits between the two. It never picks a number in the middle and never applies a seasonality multiplier you did not give it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend two minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+        <p><b>The input:</b> one style, NB-TEE-001 Harbor Heavyweight Tee, XS to XXL, 90 days of units sold, units returned and units on hand. 9-week lead time, 12 weeks of cover, $15.36 unit cost, 80% of returned units grade back to the shelf, supplier minimum 50 units per size.</p>
+        <p class="sm-note">What Claude sent back. Verbatim from the run. Trimmed where marked.</p>
+
+<pre class="pcode">SIZE CURVE, NB-TEE-001 Harbor Heavyweight Tee, 90-day window</pre>
+
+        <p><b>DEMAND PER SIZE</b></p>
+        <p class="sm-note">Resellable share: 80%. Resellable back = returned x 0.80. Net demand = sold - resellable back.</p>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Size</th><th>Sold</th><th>Returned</th><th>Return rate</th><th>Resellable back</th><th>Net demand</th><th>On hand</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>34</td><td>6</td><td>17.6%</td><td>6 x 0.80 = 4.8</td><td>34 - 4.8 = 29.2</td><td>18</td></tr>
+            <tr><td>S</td><td>96</td><td>17</td><td>17.7%</td><td>17 x 0.80 = 13.6</td><td>96 - 13.6 = 82.4</td><td>42</td></tr>
+            <tr><td>M</td><td>148</td><td>29</td><td>19.6%</td><td>29 x 0.80 = 23.2</td><td>148 - 23.2 = 124.8</td><td>61</td></tr>
+            <tr><td>L</td><td>196</td><td>74</td><td class="ans">37.8%</td><td>74 x 0.80 = 59.2</td><td>196 - 59.2 = 136.8</td><td>44</td></tr>
+            <tr><td>XL</td><td>102</td><td>21</td><td>20.6%</td><td>21 x 0.80 = 16.8</td><td>102 - 16.8 = 85.2</td><td>39</td></tr>
+            <tr><td>XXL</td><td>36</td><td>8</td><td>22.2%</td><td>8 x 0.80 = 6.4</td><td>36 - 6.4 = 29.6</td><td>22</td></tr>
+            <tr><td><b>Total</b></td><td><b>612</b></td><td><b>155</b></td><td><b>25.3%</b></td><td><b>124.0</b></td><td><b>488.0</b></td><td><b>226</b></td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p><b>THE TWO CURVES</b></p>
+        <p class="sm-note">Gap = sell-through curve minus returns-adjusted curve. Positive = raw curve over-weights that size.</p>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Size</th><th>Sell-through curve</th><th>Returns-adjusted curve</th><th>Gap (pts)</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>34 / 612 = 5.6%</td><td>29.2 / 488.0 = 6.0%</td><td>-0.4</td></tr>
+            <tr><td>S</td><td>96 / 612 = 15.7%</td><td>82.4 / 488.0 = 16.9%</td><td>-1.2</td></tr>
+            <tr><td>M</td><td>148 / 612 = 24.2%</td><td>124.8 / 488.0 = 25.6%</td><td>-1.4</td></tr>
+            <tr><td>L</td><td>196 / 612 = 32.0%</td><td>136.8 / 488.0 = 28.0%</td><td class="ans">+4.0</td></tr>
+            <tr><td>XL</td><td>102 / 612 = 16.7%</td><td>85.2 / 488.0 = 17.5%</td><td>-0.8</td></tr>
+            <tr><td>XXL</td><td>36 / 612 = 5.9%</td><td>29.6 / 488.0 = 6.1%</td><td>-0.2</td></tr>
+            <tr><td><b>Total</b></td><td><b>100.0%</b></td><td><b>100.0%</b></td><td></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>L carries the widest gap at +4.0 points. The sell-through curve directs 276 units to L; the returns-adjusted curve directs 179 units. That is 97 units and $1,490 sitting in the one size with the high return rate.</p>
+
+        <p><b>THE BUY</b></p>
+<pre class="pcode">Weeks in window: 90 / 7 = 12.86 weeks
+Coverage horizon: 9 + 12 = 21 weeks
+
+Formula: weekly demand = net demand / 12.86; target position = weekly demand x 21; reorder = target position - on hand.
+Sell-through buy uses the same formula with raw units sold in place of net demand: (sold / 12.86) x 21 - on hand.</pre>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Size</th><th>Weekly demand</th><th>Target position</th><th>On hand</th><th>Reorder</th><th>Sell-through buy</th><th>Difference</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>29.2 / 12.86 = 2.27</td><td>2.27 x 21 = 47.7 &rarr; 48</td><td>18</td><td>48 - 18 = <b>30</b></td><td>38</td><td>+8</td></tr>
+            <tr><td>S</td><td>82.4 / 12.86 = 6.41</td><td>6.41 x 21 = 134.6 &rarr; 135</td><td>42</td><td>135 - 42 = <b>93</b></td><td>115</td><td>+22</td></tr>
+            <tr><td>M</td><td>124.8 / 12.86 = 9.71</td><td>9.71 x 21 = 203.8 &rarr; 204</td><td>61</td><td>204 - 61 = <b>143</b></td><td>181</td><td>+38</td></tr>
+            <tr><td>L</td><td>136.8 / 12.86 = 10.64</td><td>10.64 x 21 = 223.4 &rarr; 223</td><td>44</td><td>223 - 44 = <b>179</b></td><td>276</td><td>+97</td></tr>
+            <tr><td>XL</td><td>85.2 / 12.86 = 6.63</td><td>6.63 x 21 = 139.2 &rarr; 139</td><td>39</td><td>139 - 39 = <b>100</b></td><td>128</td><td>+28</td></tr>
+            <tr><td>XXL</td><td>29.6 / 12.86 = 2.30</td><td>2.30 x 21 = 48.3 &rarr; 48</td><td>22</td><td>48 - 22 = <b>26</b></td><td>37</td><td>+11</td></tr>
+            <tr><td><b>Total</b></td><td>488.0 / 12.86 = 37.95</td><td>37.95 x 21 = 796.9 &rarr; 797</td><td>226</td><td class="ans">571</td><td><b>775</b></td><td><b>+204</b></td></tr>
+          </tbody>
+        </table>
+        </div>
+<pre class="pcode">Cash the buy needs: 571 x $15.36 = $8,770.56
+Cash the sell-through buy would have needed: 775 x $15.36 = $11,904.00
+Over-buy removed: 204 units, $3,133.44</pre>
+
+        <p><b>THE SIZE TO LOOK AT</b></p>
+<pre class="pcode">L, 37.8% against the style's 25.3%, 12.5 points above the style and clear of
+the 10-point threshold. The 179-unit reorder for L is the smaller half of the
+decision on that size until the fit picture clears. Run rise-return-note-miner
+on NB-TEE-001 L SKU return notes to find which measurement is driving the
+rate. Then run rise-pdp-doctor on the product page.</pre>
+        <p class="sm-note" style="font-size:.78rem;color:#777;">One label in the captured run is corrected here: it read "above the threshold" where the gap it names is measured against the style rate. No figure is changed. The full unedited output lives in the run archive.</p>
+
+        <p><b>UNDER THE MINIMUM</b></p>
+<pre class="pcode">XS: reorder 30 against an MOQ of 50. Buying up to 50 costs $307.20 for 20 extra units.
+XXL: reorder 26 against an MOQ of 50. Buying up to 50 costs $368.64 for 24 extra units.
+The call belongs to you on both sizes: buy up to the minimum, or drop the size
+from this order. The two together cost $675.84 to fill to the minimum; that is
+the premium for keeping both sizes active on the line.
+
+[trimmed: WHAT THIS DOES NOT TELL YOU, RUN NEXT.]</pre>
+
+        <p><b>The finding in one line.</b> $3,133.44 of the buy was about to go into stock the returns bin already covers, and $1,489.92 of that sits in size L alone. The run prints the L figure rounded to $1,490.</p>
+
+        <p class="sm-note"><b>Numbers source.</b> Every figure in the sample, and where it comes from. Nothing here is a benchmark, an estimate, or a forecast.</p>
+        <div style="overflow-x:auto">
+        <table style="font-size:.8rem">
+          <thead><tr><th>Figure in the output</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Sold, returned, on hand per size</td><td>Pasted rows of the demo store's size table</td></tr>
+            <tr><td>Return rate per size (17.6, 17.7, 19.6, 37.8, 20.6, 22.2%)</td><td>Pasted column, and reproducible as returned / sold</td></tr>
+            <tr><td>Style return rate 25.3%</td><td>155 / 612 = 25.33%, arithmetic on the totals</td></tr>
+            <tr><td>Resellable back per size (4.8, 13.6, 23.2, 59.2, 16.8, 6.4)</td><td>returned x 0.80, the operator's stated resellable share</td></tr>
+            <tr><td>Net demand per size (29.2, 82.4, 124.8, 136.8, 85.2, 29.6)</td><td>sold minus resellable back. Total 488.0</td></tr>
+            <tr><td>Sell-through curve</td><td>sold / 612</td></tr>
+            <tr><td>Returns-adjusted curve</td><td>net demand / 488.0</td></tr>
+            <tr><td>L gap of 4.0 points</td><td>32.0% minus 28.0%</td></tr>
+            <tr><td>Weeks in window 12.86</td><td>90 days / 7, the operator's stated window</td></tr>
+            <tr><td>Coverage horizon 21 weeks</td><td>9 lead time + 12 cover, both operator inputs</td></tr>
+            <tr><td>Weekly demand per size</td><td>net demand / 12.86</td></tr>
+            <tr><td>Target position per size</td><td>weekly demand x 21</td></tr>
+            <tr><td>Reorder per size (30, 93, 143, 179, 100, 26)</td><td>target position minus on hand. Total 571</td></tr>
+            <tr><td>Sell-through buy per size (38, 115, 181, 276, 128, 37)</td><td>the same three lines run on the raw sold column. Total 775</td></tr>
+            <tr><td>Cash $8,770.56</td><td>571 x $15.36</td></tr>
+            <tr><td>Cash $11,904.00</td><td>775 x $15.36</td></tr>
+            <tr><td>Over-buy removed $3,133.44</td><td>204 units x $15.36</td></tr>
+            <tr><td>L over-buy 97 units, $1,490 in the run</td><td>276 minus 179 = 97 units, x $15.36 = $1,489.92, printed rounded to the dollar</td></tr>
+            <tr><td>MOQ fill for both sizes $675.84</td><td>$307.20 + $368.64</td></tr>
+            <tr><td>Total weekly demand 37.95</td><td>488.0 / 12.86</td></tr>
+            <tr><td>Total target position 797</td><td>37.95 x 21 = 796.9, rounded</td></tr>
+            <tr><td>12.5 points above the style</td><td>37.8% minus 25.3%, against the skill's fixed 10-point threshold</td></tr>
+            <tr><td>MOQ gaps $307.20 and $368.64</td><td>(50 - 30) x $15.36 and (50 - 26) x $15.36, against the operator's stated MOQ of 50</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>The full SKILL.md and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The skill file is printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this curve on every style in your reorder, place the buy on the demand customers kept, and put the freed cash back to work. Book a 30 minute intro call and we will walk your next buy together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-size-curve-planner" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/size-curve-planner/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"rise-size-curve-planner: place the next buy on returns-adjusted demand",
+  "description":"A free Claude skill from our DTC pack. You supply one style's per-size sales, returns and stock; Claude computes returns-adjusted demand, the reorder quantity per size, and the cash the buy needs.",
+  "url":"https://resources.risedtc.com/tools/claude/size-curve-planner/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'size-curve-planner', type: 'skill' });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Price an apparel drop in 30 minutes: three price rungs, each with the return rate it survives | RISE DTC</title>
+<meta name="description" content="Nine steps we run on eight calculator runs and one Claude prompt. You supply a landed cost and a comparable return rate; the result is the return rate each price survives. Free, runs in Claude." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/price-a-drop-30/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="Price an apparel drop in 30 minutes: three price rungs, each with the return rate it survives" />
+<meta property="og:description" content="Set the price and the launch offer for a new style before it goes live, with returns inside the math. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/price-a-drop-30/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Price an apparel drop in 30 minutes: three price rungs, each with the return rate it survives" />
+<meta name="twitter:description" content="Set the price and the launch offer for a new style before it goes live, with returns inside the math. Free, runs in Claude." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-price-a-drop-30";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the steps</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-price-a-drop-30" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-price-a-drop-30" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-price-a-drop-30" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 09 of 09 &middot; Tutorial &middot; free, runs in Claude</p>
+    <h1>Price an apparel drop in <span class="gold-word">30 minutes</span></h1>
+    <p class="job">Set the price and the launch offer for a new style before it goes live, with returns inside the math.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>30 minutes</b></span>
+      <span>New data needed <b>One landed cost</b></span>
+      <span>Steps <b>Nine</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>Price an apparel drop in 30 minutes</span></p>
+</section>
+
+<!-- ============================ the steps ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The walkthrough</p>
+    <h2>Nine steps, eight calculator runs, one Claude prompt</h2>
+    <p class="sec-sub">You take one landed cost and three candidate prices through eight calculator runs, then paste the result blocks into one Claude chat.</p>
+
+    <div class="prose">
+      <p>The autumn drop is sampled, the landed cost is confirmed, and the price is still the number somebody picked because it sits nicely next to the rest of the collection. The style has no return history because it has never shipped, so every conversation about it ends in a guess about how much will come back. You have thirty minutes and one landed cost. This walkthrough replaces the guess with a ceiling: for each price you are considering, the maximum return rate that price can absorb and still hold your margin target, printed next to the return rate your closest comparable style actually runs.</p>
+      <p>Every screenshot below is a real run on <b>Northbay Supply, a sample store</b>. Northbay is a synthetic apparel brand built for this walkthrough and labelled a sample store everywhere it appears. Put your own landed cost and candidate prices through the same eight runs to get your own ceilings.</p>
+    </div>
+
+    <div class="psteps">
+
+      <div class="pstep">
+        <span class="numeral">01</span>
+        <div>
+          <span class="st-t">Pull five numbers before you open anything</span>
+          <ul>
+            <li>Landed cost per unit for the new style, delivered to your warehouse, before markup</li>
+            <li>Fulfilment cost per unit at each price you are considering: outbound shipping plus card fees on that price</li>
+            <li>What it costs you to process one return</li>
+            <li>The share of returned goods that goes back on the shelf at full price</li>
+            <li>The trailing-year return rate of the closest comparable style you already sell</li>
+          </ul>
+          <p>Northbay's new style is a merino crew. Landed cost $43.52. Return handling $11.50. Resellable share 80%. The comparable, a lambswool crew already in the line, returns <b>27%</b> on the trailing year. Target margin 40%, measured net of returns.</p>
+          <p>That comparable rate is the only return figure in this whole walkthrough, and it never gets applied to the new style as a forecast. It is a marker to put next to the ceilings.</p>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">02</span>
+        <div>
+          <span class="st-t">Write down your three candidate prices</span>
+          <p>Pick the three you are genuinely arguing between. Northbay: <b>$118, $128, $138</b>. Fulfilment cost moves with price because card fees do: $10.82, $11.11, $11.40.</p>
+          <span class="st-min">About 2 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">03</span>
+        <div>
+          <span class="st-t">Run Pricing and Margin at each rung, at the comparable's return rate</span>
+          <p>Enter landed cost, the rung price, that rung's fulfilment cost, the comparable's return rate, your return handling cost, resellable share and target margin into <a href="../../pricing-margin/">Pricing and Margin</a>. Leave the target margin measured on "net of returns". Run it three times, once per rung.</p>
+          <div class="st-shot"><img src="assets/01-pricing-margin-118.png" alt="Pricing and Margin at $118, 27% return rate" width="1440" height="3481" loading="lazy" decoding="async" /></div>
+          <div class="st-pair" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px;margin:4px 0 14px">
+            <figure style="margin:0">
+              <div class="st-shot" style="margin:0;max-height:none"><img src="assets/02-pricing-margin-128-crop.png" alt="Pricing and Margin at $128, 27% return rate" width="736" height="172" loading="lazy" decoding="async" /></div>
+              <figcaption style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:7px">Pricing and Margin at $128, 27% return rate</figcaption>
+            </figure>
+            <figure style="margin:0">
+              <div class="st-shot" style="margin:0;max-height:none"><img src="assets/03-pricing-margin-138-crop.png" alt="Pricing and Margin at $138, 27% return rate" width="736" height="172" loading="lazy" decoding="async" /></div>
+              <figcaption style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:7px">Pricing and Margin at $138, 27% return rate</figcaption>
+            </figure>
+          </div>
+          <p>At the comparable's 27%, Northbay's three rungs bank <b>$38.10, $45.11 and $52.12 of realized profit per unit</b>, at realized margins net of returns of <b>44.2%, 48.3% and 51.7%</b>. All three clear the 40% target at 27%. So the decision lives above 27%, in how much return each rung absorbs before the target breaks.</p>
+          <a class="st-go" href="../../pricing-margin/">Open the calculator</a>
+          <span class="st-min">About 6 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">04</span>
+        <div>
+          <span class="st-t">Find each rung's ceiling by dialling the return rate up</span>
+          <p>Go back to the same page, leave every other dial where it is, and drag the return rate up until the arithmetic card row <b>"Realized margin, net of returns"</b> crosses your target. The rate where it crosses is that rung's ceiling: the most return this price can absorb before your margin target breaks. Do it once per rung and write down three numbers.</p>
+          <div class="st-shot"><img src="assets/04-pricing-margin-118-ceiling.png" alt="$118 at its ceiling, 34.66%" width="1440" height="3481" loading="lazy" decoding="async" /></div>
+          <div class="st-pair" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px;margin:4px 0 14px">
+            <figure style="margin:0">
+              <div class="st-shot" style="margin:0;max-height:none"><img src="assets/05-pricing-margin-128-ceiling-crop.png" alt="$128 at its ceiling, 41.45%" width="736" height="288" loading="lazy" decoding="async" /></div>
+              <figcaption style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:7px">$128 at its ceiling, 41.45%</figcaption>
+            </figure>
+            <figure style="margin:0">
+              <div class="st-shot" style="margin:0;max-height:none"><img src="assets/06-pricing-margin-138-ceiling-crop.png" alt="$138 at its ceiling, 46.87%" width="736" height="288" loading="lazy" decoding="async" /></div>
+              <figcaption style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:7px">$138 at its ceiling, 46.87%</figcaption>
+            </figure>
+          </div>
+          <p>Northbay's ceilings: <b>$118 runs out at 34.66%. $128 holds to 41.45%. $138 holds to 46.87%.</b> Against a comparable running 27%, that is 7.66 points of cushion at $118, 14.45 at $128 and 19.87 at $138. The cheapest rung carries the least room to be wrong, and pricing down is the instinct when a style has no history behind it.</p>
+          <a class="st-go" href="../../pricing-margin/">Open the calculator</a>
+          <span class="st-min">About 8 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">05</span>
+        <div>
+          <span class="st-t">Check what your cart threshold does to the same math</span>
+          <p>A launch is usually where somebody suggests a free shipping threshold. Enter your current average order value, contribution margin, what one shipment costs you, the threshold multiplier you are considering, the share of orders you think will grow to hit it, how much you think they will grow, the return rate on those threshold-driven orders and your return handling cost into <a href="../../free-shipping-threshold/">Free Shipping Threshold</a>.</p>
+          <div class="st-shot"><img src="assets/07-free-shipping-threshold.png" alt="Free Shipping Threshold, run on Northbay Supply" width="1440" height="3446" loading="lazy" decoding="async" /></div>
+          <p>The tool suggests a <b>$110</b> threshold for Northbay and then rules against it at the lift entered: <b>minus $1.77 per order</b>. The qualifying cart has to grow by <b>$27.53</b>, which is 32.8% of the store's average order value, before the threshold breaks even. The line worth reading twice is the bracketing leak of <b>$167.34 per 100 orders</b>: a returns-blind calculator shows this threshold costing $9.19 per 100 orders, and the real figure is $176.53, because the run was entered with a higher return rate on threshold-driven orders, which is a scenario dial you set yourself.</p>
+          <a class="st-go" href="../../free-shipping-threshold/">Open the calculator</a>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">06</span>
+        <div>
+          <span class="st-t">Check the price your ads can carry</span>
+          <p>Enter your store's average order value, contribution margin before returns, return rate, return handling cost and your target net margin after ad spend into <a href="../../break-even-roas/">Break-Even ROAS</a>.</p>
+          <div class="st-shot"><img src="assets/08-break-even-roas.png" alt="Break-Even ROAS, run on Northbay Supply" width="1440" height="3252" loading="lazy" decoding="async" /></div>
+          <p>Northbay needs <b>2.53x to break even</b> once returns are inside the number, against <b>1.78x</b> if you leave them out, and the most it can pay to acquire one order is <b>$33.18</b>. A price is only real if the ads that sell it clear this floor.</p>
+          <p>If you want an outside figure to sanity check a return rate against, the published figures block further down each calculator page carries cited sources. Nothing on this page uses them. The comparable style in your own catalogue is the honest comparator.</p>
+          <a class="st-go" href="../../break-even-roas/">Open the calculator</a>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">07</span>
+        <div>
+          <span class="st-t">Paste all eight runs into Claude</span>
+          <p>Copy the arithmetic card off each run, the block headed "Every line, with your numbers written into it", and paste them under the headers below.</p>
+          <div class="pblock">
+            <div class="pb-top">
+              <span class="numeral">01</span>
+              <p class="pb-t">The drop pricing prompt</p>
+            </div>
+            <p class="pb-why">One prompt, one chat. Its last rule bans the one thing everyone wants here, a guess at the new style's return rate.</p>
+            <pre class="pcode" id="pk-p1">I am pricing a new apparel style before it goes live: a <b>[STYLE]</b>, landed cost $<b>[COST]</b>,
+going into an autumn drop. My store runs <b>[ORDERS]</b> orders a month at an $<b>[AOV]</b> average
+order value and a <b>[R]</b>% return rate. The closest comparable style I already sell returns
+<b>[C]</b>% on the trailing year. The new style has no return history at all.
+
+Work only from the numbers below. Rules I need you to hold to:
+- Never introduce a number I did not give you. Every figure in your answer must be one
+  of mine or arithmetic on mine, with the arithmetic shown.
+- Never quote an industry benchmark, a typical rate, or what other stores do.
+- Never predict what a fix would deliver. If I ask what something is worth, compute it
+  from a number I supplied and label it as arithmetic on my input, not a forecast.
+- If something you need is missing, name the exact report or calculator to go and pull.
+  Do not fill the gap.
+- Plain text. No em dashes.
+- Never estimate the new style's return rate. I want the maximum return rate each price
+  can absorb, with the comparable's <b>[C]</b>% printed next to it.
+
+BLOCK 1: PRICING AND MARGIN at $<b>[LOW]</b>, run at the comparable style <b>[C]</b>% return rate
+<b>[paste the headline, the verdict tier, the range line and the whole arithmetic card
+from resources.risedtc.com/tools/pricing-margin/]</b>
+
+BLOCK 2: PRICING AND MARGIN at $<b>[MID]</b>, same <b>[C]</b>% return rate
+BLOCK 3: PRICING AND MARGIN at $<b>[HIGH]</b>, same <b>[C]</b>% return rate
+BLOCK 4: PRICING AND MARGIN at $<b>[LOW]</b>, return rate dialled up to <b>[L]</b>%, where realized
+margin net of returns crosses my target
+BLOCK 5: PRICING AND MARGIN at $<b>[MID]</b>, dialled up to <b>[M]</b>%, where it crosses the same
+target
+BLOCK 6: PRICING AND MARGIN at $<b>[HIGH]</b>, dialled up to <b>[H]</b>%, where it crosses the same
+target
+<b>[paste each block the same way]</b>
+
+BLOCK 7: FREE SHIPPING THRESHOLD, store level
+<b>[paste from resources.risedtc.com/tools/free-shipping-threshold/]</b>
+
+BLOCK 8: BREAK-EVEN ROAS, store level
+<b>[paste from resources.risedtc.com/tools/break-even-roas/]</b>
+
+Give me back, in this order:
+1. A three rung price ladder for $<b>[LOW]</b>, $<b>[MID]</b> and $<b>[HIGH]</b>. Columns: price, realized
+   profit per unit at the comparable <b>[C]</b>%, realized margin net of returns at <b>[C]</b>% (use
+   the arithmetic card row labelled "Realized margin, net of returns", never the "on
+   sticker price" row), the maximum return rate that still holds my 40% target, and the
+   headroom in points over the comparable's <b>[C]</b>%.
+2. One sentence on which rung has least room and why, using the three ceilings.
+3. The launch offer question: I want a cart threshold and an opening offer. Use block 7
+   to tell me what the store level threshold does today, and if you cannot price a
+   launch offer from what I gave you, say exactly which calculator run to go and do
+   instead of estimating it.
+4. The price to walk away from, with the reason in dollars.
+Under 500 words.</pre>
+            <div class="pspec">
+              <span class="ps-k">Paste this under it</span>
+              <ul>
+                <li>The three arithmetic cards from <a href="../../pricing-margin/">Pricing and Margin</a> at your rungs, run at the comparable's rate, under BLOCKS 1 to 3.</li>
+                <li>The same three runs at each rung's ceiling rate from step 4, under BLOCKS 4 to 6.</li>
+                <li>The arithmetic card from <a href="../../free-shipping-threshold/">Free Shipping Threshold</a>, under BLOCK 7.</li>
+                <li>The arithmetic card from <a href="../../break-even-roas/">Break-Even ROAS</a>, under BLOCK 8.</li>
+              </ul>
+            </div>
+            <div class="pbar">
+              <button class="pbtn" type="button" data-copy="pk-p1" data-block="01">Copy the prompt</button>
+              <span class="pb-note">The full run it produced is printed further down this page.</span>
+            </div>
+          </div>
+          <span class="st-min">About 3 minutes</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">08</span>
+        <div>
+          <span class="st-t">Decide, in three lines</span>
+          <p>Write these down before you close the tab:</p>
+          <ul>
+            <li>The price you are entering in Shopify, and the ceiling it carries.</li>
+            <li>The threshold decision, with the cart growth it would need to break even.</li>
+            <li>The rung you walked away from, and the dollars per unit that decided it.</li>
+          </ul>
+          <p>Northbay's version: launch at $128 with a 41.45% ceiling against a comparable running 27%. No threshold at launch, because the cart has to grow $27.53 before it pays. Walked away from $118, where the buffer to the ceiling is $7.26 a unit against $15.13 at $128.</p>
+          <span class="st-min">About 1 minute</span>
+        </div>
+      </div>
+
+      <div class="pstep">
+        <span class="numeral">09</span>
+        <div>
+          <span class="st-t">Where it goes next</span>
+          <p>Price is set. The next thing that moves the return rate on this style is the product page: the fit sentence, the measurements a customer can check, the size chart column your category needs. That is <b><code>rise-pdp-doctor</code></b> in the RISE Claude kit, which takes one product page and its stated return reason and returns a rewritten title, description, fit block and FAQ, plus three tests. This walkthrough never touches page copy, on purpose, so the boundary between them stays clean.</p>
+          <p>Then, once the style has shipped for a quarter and has a return rate of its own, run the ceilings again with the real number in place of the comparable's.</p>
+          <p><b>Get the kit:</b> <a href="/rise-dtc-ai-kit/">the RISE DTC AI kit</a>. Run <code>rise-pdp-doctor</code> on the new style's page before launch, and <code>rise-return-rate-rescue</code> on the store once the first quarter of returns has landed.</p>
+          <a class="st-go" href="/rise-dtc-ai-kit/">Get the RISE DTC AI kit</a>
+          <span class="st-min">About 1 minute</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="srcnote">The comparable style's trailing-year return rate is the only return figure in this walkthrough, it never gets applied to the new style as a forecast, and every ceiling is a number the calculator printed at dials you set yourself.</p>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend thirty minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+        <p><b>What came back on the sample store</b> (verbatim):</p>
+        <p><b>1. Price ladder</b></p>
+        <div class="tblwrap"><table>
+          <thead>
+            <tr><th>Price</th><th>Realized profit/unit at 27%</th><th>Realized margin, net of returns, at 27%</th><th>Max return rate (40% floor)</th><th>Comparable at 27%</th><th>Headroom</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$118</td><td>$38.10</td><td>44.2%</td><td>34.66%</td><td>27%</td><td>7.66 pts</td></tr>
+            <tr><td>$128</td><td>$45.11</td><td>48.3%</td><td class="ans">41.45%</td><td>27%</td><td>14.45 pts</td></tr>
+            <tr><td>$138</td><td>$52.12</td><td>51.7%</td><td>46.87%</td><td>27%</td><td>19.87 pts</td></tr>
+          </tbody>
+        </table></div>
+        <p>Headroom arithmetic: 34.66 - 27 = 7.66 pts / 41.45 - 27 = 14.45 pts / 46.87 - 27 = 19.87 pts.</p>
+        <p><b>2. Tightest rung</b></p>
+        <p>$118 has least room: its ceiling is 34.66%, only 7.66 points above the comparable's 27%, compared with 14.45 points at $128 and 19.87 points at $138.</p>
+        <p><b>3. Launch offer</b></p>
+        <p>The store-level free shipping threshold from Block 7 costs $1.77 per order in the as-entered scenario. The qualifying cart has to grow by $27.53 (32.8% of your $84 AOV) before it breaks even, and it does not break even at 15% cart growth. Arithmetic: $148.97 contribution - $103.50 return handling - $222.00 shipping given away = -$176.53 across 100 orders, or -$1.77 per order. Running this threshold as a launch mechanic means you are paying $1.77 per order on top of whatever you give away on the new style.</p>
+        <p>For the opening offer itself: no launch-price calculator run is in what you gave me. Go and run the pricing-margin tool at resources.risedtc.com/tools/pricing-margin/ with the discounted launch price as the sticker price and 27% as the return rate, then check whether the realized margin, net of returns, still clears 40%. That run is the one to pull before you set the offer.</p>
+        <p><b>4. Price to walk away from</b></p>
+        <p>$118, because of what the 7.66-point buffer costs in dollars. At 27% returns, realized profit is $38.10 per unit (Block 1). The margin target breaks at 34.66%. At that ceiling, realized profit falls to $30.84 (Block 4). That is a $7.26-per-unit drop: $38.10 - $30.84 = $7.26. You lose $7.26 before you are below your floor, with no return history on the new style and a comparable already sitting at 27%. $128 gives you $15.13 of realized-profit drop to the ceiling ($45.11 - $29.98 = $15.13, Blocks 2 and 5). $118 does not give you enough distance from where the comparable already lands.</p>
+        <p>Section 3 is the refusal. Asked for a launch offer it had no price for, it named the run to go and do, and declined to invent a discount that clears the target. That is the same discipline the ceiling table is built on: the walkthrough never says what the merino crew will return, only how much return each price survives.</p>
+        <p class="sm-note">Where every figure in the answer comes from:</p>
+        <div class="tblwrap"><table class="small">
+          <thead>
+            <tr><th>Figure in the answer</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$38.10 / 44.2% at $118</td><td>The Pricing and Margin run at $118, held at the comparable's 27% return rate, returns 38.09532 and 44.2249; on screen in <code>assets/01-pricing-margin-118.png</code> as "Realized profit per unit $38.10" and "Realized margin, net of returns 44.2%"</td></tr>
+            <tr><td>$45.11 / 48.3% at $128</td><td>The same run at $128 returns 45.10532 and 48.2720; on screen in <code>assets/02-pricing-margin-128.png</code></td></tr>
+            <tr><td>$52.12 / 51.7% at $138</td><td>The same run at $138 returns 52.11532 and 51.7325; on screen in <code>assets/03-pricing-margin-138.png</code></td></tr>
+            <tr><td>34.66% ceiling</td><td>The maximum return rate that still holds the 40% net margin target at $118 is 34.664308; on screen in <code>assets/04-pricing-margin-118-ceiling.png</code>, where a 34.66% return rate prints "Realized margin, net of returns 40.0%"</td></tr>
+            <tr><td>41.45% ceiling</td><td>The same ceiling at $128 is 41.451649; on screen in <code>assets/05-pricing-margin-128-ceiling.png</code>, same 40.0% crossing</td></tr>
+            <tr><td>46.87% ceiling</td><td>The same ceiling at $138 is 46.869746; on screen in <code>assets/06-pricing-margin-138-ceiling.png</code>, same 40.0% crossing</td></tr>
+            <tr><td>7.66 / 14.45 / 19.87 pts</td><td>Arithmetic the answer shows: each ceiling minus the comparable's 27%</td></tr>
+            <tr><td>$30.84 at the $118 ceiling</td><td>Live tool output at the recorded ceiling rate, on screen in <code>assets/04</code> as "Realized profit per unit $30.84"</td></tr>
+            <tr><td>$29.98 at the $128 ceiling</td><td>Same, on screen in <code>assets/05</code></td></tr>
+            <tr><td>$7.26 and $15.13</td><td>Arithmetic the answer shows: $38.10 - $30.84, and $45.11 - $29.98</td></tr>
+            <tr><td>$1.77 per order</td><td><code>free-shipping-threshold.net_impact_per_order</code> = -1.765302, on screen in <code>assets/07-free-shipping-threshold.png</code> as the headline "-$1.77 per order"</td></tr>
+            <tr><td>$27.53 and 32.8%</td><td><code>break_even_lift_dollars</code> = 27.5311 and <code>break_even_lift_pct</code> = 32.7751, on screen as "Lift needed to break even"</td></tr>
+            <tr><td>$148.97, $103.50, $222.00, -$176.53</td><td><code>incremental_contribution_per_100</code>, <code>returns_cost_per_100</code>, <code>shipping_absorbed_per_100</code>, <code>net_impact_per_100</code>; all four on screen in the same arithmetic card</td></tr>
+            <tr><td>$84 AOV, 27% comparable, 40% target</td><td>Operator inputs, visible in the dials on every screenshot</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+
+    <p class="srcnote">Northbay Supply is a sample store built for this walkthrough. Every screenshot on this page is a live run of the calculator linked above it, and every number in the text is the number on the screenshot.</p>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>Every step, the prompt and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The steps are printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this ladder on live landed costs and return data, then set each drop's price at the rung whose ceiling holds. Book a 30 minute intro call and we will walk your next drop together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-price-a-drop-30" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/price-a-drop-30/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"Price an apparel drop in 30 minutes: three price rungs, each with the return rate it survives",
+  "description":"Nine steps we run on eight calculator runs and one Claude prompt. You supply a landed cost and a comparable return rate; the result is the return rate each price survives.",
+  "url":"https://resources.risedtc.com/tools/claude/price-a-drop-30/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'price-a-drop-30', type: 'tutorial' });
+})();
+</script>
+</body>
+</html>

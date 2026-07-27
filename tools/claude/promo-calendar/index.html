@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Promo Calendar That Survives Returns: compute the lift each promo needs with Claude | RISE DTC</title>
+<meta name="description" content="Four Claude prompts that compute the order lift each promo in your next 12 weeks needs before it pays, then replace the ones that cannot clear it. Free, runs in Claude, six numbers you already have." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/claude/promo-calendar/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="The Promo Calendar That Survives Returns: compute the lift each promo needs with Claude" />
+<meta property="og:description" content="Four prompts that compute the order lift each promo needs before it pays, then replace the ones that cannot clear it. Free, runs in Claude." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/claude/promo-calendar/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Promo Calendar That Survives Returns: compute the lift each promo needs with Claude" />
+<meta name="twitter:description" content="Four prompts that compute the lift each promo needs before it pays, then replace the ones that cannot clear it. Free." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="stylesheet" href="../../assets/tools.css" />
+<link rel="stylesheet" href="../../assets/pack.css" />
+<script>window.__lm_slug = "rise-dtc-tools-claude-promo-calendar";</script>
+</head>
+<body>
+<a class="skip" href="#prompts">Skip to the prompts</a>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-promo-calendar" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="../../">All 25 tools</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-promo-calendar" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-promo-calendar" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ hero ============================ -->
+<section class="inkband on-ink tool">
+  <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark pk-eyebrow">Pack 03 of 09 &middot; Prompt pack &middot; free, runs in Claude</p>
+    <h1>Which of your promos <span class="gold-word">survives returns?</span></h1>
+    <p class="job">Compute the order lift each of your next 12 weeks of promos needs before it pays, then replace the ones that cannot clear it.</p>
+    <p class="runline">
+      <span>Runs in <b>Claude</b></span>
+      <span>Time <b>About 15 minutes</b></span>
+      <span>New data needed <b>Your promo sketch</b></span>
+      <span>Prompts <b>Four, in order</b></span>
+    </p>
+  </div>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>The Promo Calendar That Survives Returns</span></p>
+</section>
+
+<!-- ============================ the prompts ============================ -->
+<section class="blk" id="prompts">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">The prompts</p>
+    <h2>Four prompts, run in order, in one Claude chat</h2>
+    <p class="sec-sub">You paste your 12-week sketch and six numbers once, then run the four prompts in one Claude chat in this order, because each answer is the input to the next one. Every prompt is printed in full, and the copy button puts it on your clipboard.</p>
+
+    <div class="pstack">
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">01</span>
+          <p class="pb-t">Set the bar</p>
+        </div>
+        <p class="pb-why">Computes a full-price baseline per window AOV and the discounted contribution per order for every promo in your sketch.</p>
+        <pre class="pcode" id="pk-p1">You are auditing my Q4 promo calendar. Work only from the numbers I paste.
+
+STANDING RULES for every line you write in this chat, from this message to the last one:
+- Plain markdown only. Headings, tables and fenced code blocks. Write no LaTeX and no math
+  delimiters.
+- Zero em dashes. Split at the dash into two sentences, or use a comma.
+- Write no "it's not X, it's Y" phrasing and no "X, not Y" pairs. State the claim directly.
+- Quote no lift figure, no return rate, no discount depth and no seasonal pattern from any store
+  other than mine. There is no typical BFCM lift in this chat and no category average. My own last
+  year is the only comparator you have.
+- Anything you need and did not get is written as [NEEDS: &lt;the field&gt;]. Never fill it with a
+  plausible figure.
+- Every dollar figure shows its arithmetic on the same line or directly under it.
+- Carry every intermediate figure at full precision, five decimal places or better. Round only the
+  figure you print. Print dollars to the cent and percentages to two decimal places. A rounded
+  contribution per order feeds a wrong lift on every row below it.
+- Put no dash between a heading and its qualifier. Use a comma.
+- Never use these words: leverage, seamless, robust, elevate, unlock, delve, streamline, empower,
+  game-changer, transformative.
+- Dollars lead every line.
+
+Step 1. Compute a full-price baseline contribution per order for every promo window, and print the
+arithmetic for each:
+
+  baseline contribution per order for this window
+    = (this window's AOV x contribution margin %) x (1 - my base return rate)
+    - (my base return rate x cost of one return)
+
+Run this once per distinct window AOV. Where I gave a promo its own AOV, that promo's baseline runs
+on that same AOV at my base return rate. A bundle window sells a bigger basket, and comparing a
+bigger basket against a single-item baseline reads as a win that the arithmetic did not produce.
+Print one line naming which promos share which baseline.
+
+Step 2. For each promo in my sketch, compute the contribution per discounted order on that same
+window AOV:
+
+  discounted contribution per order
+    = ((this window's AOV x contribution margin %) - (this window's AOV x discount %))
+      x (1 - discounted return rate)
+    - (discounted return rate x cost of one return)
+
+Step 3. Handle a missing discounted return rate this exact way, and say so on the row: run the promo
+at my base return rate, write [NEEDS: return rate on discounted orders for this promo], and add one
+sentence stating that the real bar sits above what you printed by an amount neither of us knows.
+Never estimate the uplift. Never say discounted orders return more often at any particular rate.
+
+Step 4. Print one table with a row per promo:
+
+  | promo | window | discount used | baseline contribution/order | discounted contribution/order |
+
+Stop at that table. Compute no lift, rule on no overlap between windows, and propose no replacement
+offer in this message. Prompts 2, 3 and 4 ask for those three things in that order.
+
+--- MY CALENDAR AND MY NUMBERS ---
+<b>[paste your promo sketch and your six numbers]</b></pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Your 12-week promo sketch: date, offer, discount depth, channel, window length.</li>
+            <li>What each promo actually produced last time, as orders against the baseline, from Shopify, Analytics, filtered to the window.</li>
+            <li>Your full-price AOV, from <a href="../../aov/">Average Order Value</a>.</li>
+            <li>Your full-price contribution margin before returns, as a percentage, from <a href="../../contribution-margin/">Contribution Margin</a>.</li>
+            <li>Your normal return rate, and your return rate on discounted orders if you have one, from Shopify, Analytics, Returns.</li>
+            <li>The all-in cost of one return: label, warehouse time, inspection, restock.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p1" data-block="01">Copy prompt 01</button>
+          <span class="pb-note">Nothing here asks for data you have not already got.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">02</span>
+          <p class="pb-t">The required lift, in percent and in orders</p>
+        </div>
+        <p class="pb-why">Turns each promo into the lift it must produce before it pays, in percent and in orders, and marks it PASS or FAIL against last year's actual.</p>
+        <pre class="pcode" id="pk-p2">Now compute what each promo has to produce before it pays.
+
+For each promo:
+
+  baseline contribution for the window = baseline orders x baseline contribution per order
+  orders needed at the discount        = baseline contribution for the window / discounted contribution per order
+  required lift %                      = (orders needed / baseline orders - 1) x 100
+  required lift in orders              = orders needed - baseline orders
+
+Then compute the same required lift a second time with returns switched off, using
+(AOV x contribution margin %) on both sides and no return cost at all. Call that column "required
+lift if returns did not exist". It shows how much of the bar my return rate is carrying.
+
+Print one table, sorted by required lift, largest first:
+
+  | promo | discount | required lift | required lift if returns did not exist | last year's actual | PASS or FAIL |
+
+Rules for the verdict column, all four binding:
+- PASS only where last year's actual lift is at or above the required lift. Everything else is FAIL.
+- Last year's actual is my figure. Never adjust it, never smooth it, never call it an outlier.
+- Where I gave you no figure for last time, write [NEEDS: last year's lift for this promo] and
+  leave the verdict blank. A promo with no history gets no verdict.
+- Under the table, print the arithmetic in full for the promo with the highest required lift, line
+  by line, so I can check it by hand.
+
+Then print one line per promo naming the net profit impact in dollars if the promo runs and repeats
+last year's lift exactly:
+
+  net profit impact = (baseline orders x (1 + last year's lift) x discounted contribution/order)
+                      - baseline contribution for the window</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It runs on the table prompt 01 printed.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p2" data-block="02">Copy prompt 02</button>
+          <span class="pb-note">Runs on the table prompt 01 printed.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">03</span>
+          <p class="pb-t">The windows that eat each other, and the riders that do nothing</p>
+        </div>
+        <p class="pb-why">Rules on the windows that overlap and prices every rider against what your store already gives everyone.</p>
+        <pre class="pcode" id="pk-p3">Two more passes over the same calendar.
+
+1. Overlap. List every pair of promos whose windows touch or sit inside each other. For each pair,
+   print both windows, both discount depths, and one sentence on what a customer who was going to
+   buy in the shallower window does when the deeper one is visible. Rule on the pairs I flagged and
+   on any pair I missed. Where the ruling needs a number I did not paste, write [NEEDS: &lt;the field&gt;]
+   and give the ruling as a question I have to answer.
+
+2. Riders. For every promo carrying a rider on top of the discount, a free-shipping offer, a gift,
+   a spend threshold that opens a benefit, check the rider against what my store already does. If
+   my store already gives that thing to everyone, print: this rider costs $0 and buys $0, the
+   discount carries the promo alone. Show the store fact from my paste that proves it. If the
+   rider has a landed cost I gave you, print the cost per order and fold it into the effective
+   discount, showing the arithmetic.
+
+Add no advice in this step.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It makes two more passes over the same calendar.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p3" data-block="03">Copy prompt 03</button>
+          <span class="pb-note">Rules only. The advice waits for prompt 04.</span>
+        </div>
+      </div>
+
+      <div class="pblock">
+        <div class="pb-top">
+          <span class="numeral">04</span>
+          <p class="pb-t">The replacements, sized on your numbers</p>
+        </div>
+        <p class="pb-why">Replaces every FAIL with an offer from four margin-safe shapes and closes with the calendar, promo by promo, marked RUN, REPLACE or CUT.</p>
+        <pre class="pcode" id="pk-p4">Close the audit.
+
+For every promo that came back FAIL, propose one margin-safe replacement. Pick from these four
+shapes and no others: a spend threshold that opens a benefit, a bundle at a fixed basket price, a
+gift with purchase at a stated landed cost, early access with no discount at all.
+
+For each replacement print:
+
+  REPLACES: [promo name], which needed a [X]% lift and produced [Y]% last year
+  THE OFFER: [one line, with the number in it]
+  COST PER ORDER: $[Z], with the arithmetic
+  EFFECTIVE DISCOUNT: [%], with the arithmetic
+  REQUIRED LIFT: [%], computed the same way as Prompt 2
+  WHAT I DO NOT KNOW: [every [NEEDS:] this replacement depends on]
+
+Rules:
+- Never claim a replacement will produce any lift. You have no data on offers that have not run.
+  Print its required lift and stop there.
+- Every cost figure comes from a number I pasted. Where a replacement needs a landed cost I did not
+  give you, write [NEEDS: landed cost of &lt;the item&gt;] and print the required lift as a formula with
+  that term left in it.
+- Never quote a figure from another store, another category, or another year.
+
+Finish with the calendar as I should run it: one ordered list, promo by promo, each marked RUN,
+REPLACE or CUT, with the dollar reason on the line.
+
+Then re-read the standing rules from Prompt 1 and confirm in one line that every message in this
+chat holds to them. Name any line that broke one.</pre>
+        <div class="pspec">
+          <span class="ps-k">Paste this under it</span>
+          <ul>
+            <li>Nothing. It closes the run on what the chat already holds.</li>
+          </ul>
+        </div>
+        <div class="pbar">
+          <button class="pbtn" type="button" data-copy="pk-p4" data-block="04">Copy prompt 04</button>
+          <span class="pb-note">Closes the run with the calendar, promo by promo.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="srcnote">You supply every number these prompts work with, and your own last year is the only comparator in the chat: no typical BFCM lift, no category average, and no predicted lift on any replacement offer. A missing figure comes back as a [NEEDS:] line, with the bar printed as a formula that keeps the term in it. When the survivors are set, the Discount ROI calculator prices each one with its low and high bands.</p>
+  </div>
+</section>
+
+<!-- ============================ the sample run ============================ -->
+<section class="blk grey">
+  <div class="wrap narrow">
+    <p class="sec-eyebrow">Proof it runs</p>
+    <h2>One full run, on a store we made up</h2>
+    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend fifteen minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+
+    <details class="sample">
+      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <div class="sm-body">
+        <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
+<h3>Prompt 1 set the bar</h3>
+<h4>Step 1. Baseline contribution per order</h4>
+<p>Two distinct window AOVs produce two baselines.</p>
+<p><b>$84.00 AOV baseline</b></p>
+<p>Labour Day, BFCM, Cyber Monday, and December share this baseline.</p>
+<pre class="pcode">$84.00  × 0.56300  = $47.29200
+$47.29200 × (1 − 0.24000) = $47.29200 × 0.76000 = $35.94192
+0.24000 × $11.50  = $2.76000
+$35.94192 − $2.76000 = $33.18192  →  rounds to $33.18</pre>
+<p><b>$126.00 AOV baseline</b></p>
+<p>October Bundle is the only promo on this baseline.</p>
+<pre class="pcode">$126.00 × 0.56300  = $70.93800
+$70.93800 × (1 − 0.24000) = $70.93800 × 0.76000 = $53.91288
+0.24000 × $11.50  = $2.76000
+$53.91288 − $2.76000 = $51.15288  →  rounds to $51.15</pre>
+<h4>Step 2. Discounted contribution per order</h4>
+<p><b>Labour Day, 20% off, $84.00 AOV, 26% return rate</b></p>
+<pre class="pcode">$84.00 × 0.56300 = $47.29200
+$84.00 × 0.20000 = $16.80000
+$47.29200 − $16.80000 = $30.49200
+$30.49200 × (1 − 0.26000) = $30.49200 × 0.74000 = $22.56408
+0.26000 × $11.50 = $2.99000
+$22.56408 − $2.99000 = $19.57408  →  rounds to $19.57</pre>
+<p><b>October Bundle, 15% effective discount, $126.00 AOV, 25% return rate</b></p>
+<pre class="pcode">$126.00 × 0.56300 = $70.93800
+$126.00 × 0.15000 = $18.90000
+$70.93800 − $18.90000 = $52.03800
+$52.03800 × (1 − 0.25000) = $52.03800 × 0.75000 = $39.02850
+0.25000 × $11.50 = $2.87500
+$39.02850 − $2.87500 = $36.15350  →  rounds to $36.15</pre>
+<p><b>BFCM, 30% off, $84.00 AOV, 28% return rate</b></p>
+<pre class="pcode">$84.00 × 0.56300 = $47.29200
+$84.00 × 0.30000 = $25.20000
+$47.29200 − $25.20000 = $22.09200
+$22.09200 × (1 − 0.28000) = $22.09200 × 0.72000 = $15.90624
+0.28000 × $11.50 = $3.22000
+$15.90624 − $3.22000 = $12.68624  →  rounds to $12.69</pre>
+<p><b>Cyber Monday, 35% off, $84.00 AOV, 30% return rate</b></p>
+<pre class="pcode">$84.00 × 0.56300 = $47.29200
+$84.00 × 0.35000 = $29.40000
+$47.29200 − $29.40000 = $17.89200
+$17.89200 × (1 − 0.30000) = $17.89200 × 0.70000 = $12.52440
+0.30000 × $11.50 = $3.45000
+$12.52440 − $3.45000 = $9.07440  →  rounds to $9.07</pre>
+<p><b>December, 15% off plus $6.20 gift, $84.00 AOV, 25% return rate</b></p>
+<p>Your stated 7.4% for the gift rounds from $6.20 / $84.00 = 7.38095%, making the precise effective discount 22.38095%, not 22.4%. I carry the exact dollar components below. The $0.016 gap is small but feeds all rows below it, so I use the exact figures.</p>
+<p>The formula treats the gift cost as a deduction on kept orders. That is the equivalent of folding it into the effective discount %, which produces the same result as the approach your arithmetic implies.</p>
+<pre class="pcode">$84.00 × 0.56300  = $47.29200
+$84.00 × 0.15000  = $12.60000   (price discount)
+$6.20000                         (gift cost, kept orders)
+$47.29200 − $12.60000 − $6.20000 = $28.49200
+$28.49200 × (1 − 0.25000) = $28.49200 × 0.75000 = $21.36900
+0.25000 × $11.50 = $2.87500
+$21.36900 − $2.87500 = $18.49400  →  rounds to $18.49</pre>
+<h4>Step 3. Missing return rates</h4>
+<p>All five promos supplied discounted return rates. No [NEEDS] flags required.</p>
+<h4>Step 4. Summary table</h4>
+<table><thead><tr><th>Promo</th><th>Window</th><th>Discount used</th><th>Baseline contribution/order</th><th>Discounted contribution/order</th></tr></thead><tbody><tr><td>Labour Day</td><td>4-7 Sep</td><td>20% off sitewide</td><td>$33.18 (on $84.00 AOV)</td><td>$19.57</td></tr><tr><td>October Bundle</td><td>8-14 Oct</td><td>15% effective (3-for-2.5 on tees)</td><td>$51.15 (on $126.00 AOV)</td><td>$36.15</td></tr><tr><td>BFCM</td><td>27 Nov-1 Dec</td><td>30% off sitewide</td><td>$33.18 (on $84.00 AOV)</td><td>$12.69</td></tr><tr><td>Cyber Monday</td><td>30 Nov</td><td>35% off sitewide</td><td>$33.18 (on $84.00 AOV)</td><td class="ans">$9.07</td></tr><tr><td>December</td><td>1-10 Dec</td><td>15% off + $6.20 gift (22.38095% effective)</td><td>$33.18 (on $84.00 AOV)</td><td>$18.49</td></tr></tbody></table>
+<h3>Prompt 2 computed the required lift</h3>
+<h4>Intermediate computations</h4>
+<p>[trimmed: the same four-line intermediate block for Labour Day, October Bundle and BFCM. The table below carries every figure they produced.]</p>
+<p><b>Cyber Monday</b></p>
+<pre class="pcode">Baseline contribution for window:
+48 × $33.18192 = $1,592.73216
+
+Orders needed:
+$1,592.73216 / $9.07440 = 175.51928
+
+Required lift %:
+(175.51928 / 48 − 1) × 100 = 265.67%
+
+Required lift in orders:
+175.51928 − 48 = 127.52
+
+Returns-off:
+Baseline per order:   $84.00 × 0.56300 = $47.29200
+Discounted per order: $47.29200 − $29.40000 = $17.89200
+Window baseline:      48 × $47.29200 = $2,270.01600
+Orders needed:        $2,270.01600 / $17.89200 = 126.87325
+(126.87325 / 48 − 1) × 100 = 164.32%</pre>
+<p><b>December</b></p>
+<pre class="pcode">Baseline contribution for window:
+483 × $33.18192 = $16,026.86736
+
+Orders needed:
+$16,026.86736 / $18.49400 = 866.59821
+
+Required lift %:
+(866.59821 / 483 − 1) × 100 = 79.42%
+
+Required lift in orders:
+866.59821 − 483 = 383.60
+
+Returns-off:
+Baseline per order:   $84.00 × 0.56300 = $47.29200
+Discounted per order: $47.29200 − $18.80000 = $28.49200
+  (where $18.80000 = $84.00 × 0.15000 + $6.20000, exact gift component)
+Window baseline:      483 × $47.29200 = $22,842.03600
+Orders needed:        $22,842.03600 / $28.49200 = 801.69982
+(801.69982 / 483 − 1) × 100 = 65.98%</pre>
+<h4>Table, sorted by required lift, largest first</h4>
+<table><thead><tr><th>Promo</th><th>Discount</th><th>Required lift</th><th>Required lift if returns did not exist</th><th>Last year's actual</th><th>PASS or FAIL</th></tr></thead><tbody><tr><td>Cyber Monday</td><td>35% off</td><td class="ans">265.67%</td><td>164.32%</td><td>152.10%</td><td>FAIL</td></tr><tr><td>BFCM</td><td>30% off</td><td>161.56%</td><td>114.07%</td><td>152.50%</td><td>FAIL</td></tr><tr><td>December</td><td>15% off + $6.20 gift</td><td>79.42%</td><td>65.98%</td><td>21.10%</td><td>FAIL</td></tr><tr><td>Labour Day</td><td>20% off</td><td>69.52%</td><td>55.10%</td><td>38.90%</td><td>FAIL</td></tr><tr><td>October Bundle</td><td>15% effective</td><td>41.49%</td><td>36.32%</td><td>18.90%</td><td>FAIL</td></tr></tbody></table>
+<h4>Cyber Monday, full arithmetic by hand</h4>
+<p><b>Baseline contribution per order</b></p>
+<pre class="pcode">$84.00 × 0.56300 = $47.29200
+$47.29200 × (1 − 0.24000) = $47.29200 × 0.76000 = $35.94192
+0.24000 × $11.50 = $2.76000
+$35.94192 − $2.76000 = $33.18192</pre>
+<p><b>Baseline orders and window contribution</b></p>
+<pre class="pcode">48 × $33.18192 = $1,592.73216</pre>
+<p><b>Discounted contribution per order</b></p>
+<pre class="pcode">$84.00 × 0.56300 = $47.29200
+$84.00 × 0.35000 = $29.40000
+$47.29200 − $29.40000 = $17.89200
+$17.89200 × (1 − 0.30000) = $17.89200 × 0.70000 = $12.52440
+0.30000 × $11.50 = $3.45000
+$12.52440 − $3.45000 = $9.07440</pre>
+<p><b>Orders needed</b></p>
+<pre class="pcode">$1,592.73216 / $9.07440 = 175.51928</pre>
+<p><b>Required lift</b></p>
+<pre class="pcode">(175.51928 / 48 − 1) × 100
+= (3.65665 − 1) × 100
+= 265.67%
+
+Required lift in orders: 175.51928 − 48 = 127.52</pre>
+<p><b>Returns-off required lift</b></p>
+<pre class="pcode">$47.29200 − $29.40000 = $17.89200  (discounted per order, no return adjustment)
+48 × $47.29200 = $2,270.01600      (window baseline, returns-off)
+$2,270.01600 / $17.89200 = 126.87325
+(126.87325 / 48 − 1) × 100 = 164.32%
+
+Returns carry: 265.67% − 164.32% = 101.35 percentage points of the bar.</pre>
+<h4>Net profit impact if last year's lift repeats exactly</h4>
+<p>Formula: (baseline orders × (1 + last year's lift) × discounted contribution/order) − baseline contribution for window</p>
+<p><b>Labour Day</b></p>
+<pre class="pcode">193 × 1.38900 = 268.077
+268.077 × $19.57408 = $5,247.36064
+$5,247.36064 − $6,404.11056 = −$1,156.75</pre>
+<p><b>October Bundle</b></p>
+<pre class="pcode">338 × 1.18900 = 401.882
+401.882 × $36.15350 = $14,529.44089
+$14,529.44089 − $17,289.67344 = −$2,760.23</pre>
+<p><b>BFCM</b></p>
+<pre class="pcode">242 × 2.52500 = 611.050
+611.050 × $12.68624 = $7,751.92695
+$7,751.92695 − $8,030.02464 = −$278.10</pre>
+<p><b>Cyber Monday</b></p>
+<pre class="pcode">48 × 2.52100 = 121.008
+121.008 × $9.07440 = $1,098.07500
+$1,098.07500 − $1,592.73216 = −$494.66</pre>
+<p><b>December</b></p>
+<pre class="pcode">483 × 1.21100 = 584.913
+584.913 × $18.49400 = $10,817.38102
+$10,817.38102 − $16,026.86736 = −$5,209.49</pre>
+<p>Every promo destroys contribution at last year's actual lift. BFCM loses the least in dollar terms ($278.10) because last year's 152.50% comes within 9.06 percentage points of the 161.56% bar. December loses the most ($5,209.49) because the gift cost adds margin burden on top of the 15% price cut and last year's 21.10% lift trails the 79.42% bar by 58.32 points.</p>
+<h3>Prompt 3 ruled on the overlaps and the riders</h3>
+<h4>Part 1. Overlap</h4>
+<p>Three pairs qualify. The user flagged two. One was missed and is listed first.</p>
+<p><b>Missed pair: BFCM (27 Nov - 1 Dec, 30% off) and December (1 Dec - 10 Dec, 22.38% effective)</b></p>
+<p>Both windows name Tue 1 Dec. BFCM runs through Dec 1 (5 days: Nov 27, 28, 29, 30, Dec 1). December opens Dec 1.</p>
+<p>A customer on Dec 1 who holds both the BFCM 30% code and the December 15% code takes the BFCM code; the December gift does not close a 7.62-percentage-point gap.</p>
+<p>Ruling: [NEEDS: does the BFCM code expire at the end of Nov 30 or the end of Dec 1?] If it expires end of Dec 1, December's opening day runs at 30% cost (BFCM rate), not 22.38%, and the first ~48 of December's 483 baseline orders generate margin at $12.68624 per order, not $18.49400. If the BFCM code expires before Dec 1 opens, the windows do not share a live day.</p>
+<p><b>Flagged pair 1: BFCM (27 Nov - 1 Dec, 30% off) and Cyber Monday (30 Nov, 35% off)</b></p>
+<p>Nov 30 sits inside the BFCM window. BFCM runs 30% through the same day CM runs 35%.</p>
+<p>A customer arriving Nov 27, 28, or 29 at 30% off who knows Nov 30 brings 35% waits one to three days and buys on Cyber Monday instead.</p>
+<p>Ruling: [NEEDS: daily order breakdown for last year's BFCM window, Nov 27, 28, 29, 30, Dec 1 separately.] The question to answer is whether Nov 27-29 daily orders ran below the 48.33 baseline while Nov 30 ran well above it. If so, last year's +152.5% BFCM lift and +152.1% CM lift are not independent measurements. Orders that migrated from Nov 27-29 to Nov 30 inflate the CM count and deflate the pre-CM BFCM count, and the two figures cannot be added as separate contributions to Q4.</p>
+<p><b>Flagged pair 2: Cyber Monday (30 Nov, 35% off) and December (1 Dec - 10 Dec, 22.38% effective)</b></p>
+<p>Dec 1 opens the day after the deepest day of the year closes. The step-down from 35% to 22.38% is 12.62 percentage points.</p>
+<p>A customer who received Cyber Monday at 35% and did not buy sees Dec 1 open at 22.38% effective, a shallower offer than the one they passed on the previous day.</p>
+<p>Ruling: [NEEDS: of last year's 585 December orders, what share came from customers who had also opened or clicked the Cyber Monday campaign?] That split determines whether December's +21.1% was driven by a fresh cohort (gift shoppers, late arrivals, customers outside the CM send) or by customers already price-anchored at 35%. The two populations face a different bar and the audit cannot separate them from the single lift figure supplied.</p>
+<h4>Part 2. Riders</h4>
+<p><b>Labour Day, 20% off sitewide.</b> No rider. Discount alone.</p>
+<p><b>October Bundle, 3-for-2.5 on tees.</b> No rider. The bundle structure is the offer.</p>
+<p><b>BFCM, 30% off sitewide.</b> No rider. Discount alone.</p>
+<p><b>Cyber Monday, 35% off plus free shipping called out in the creative</b></p>
+<p>Rider: free shipping.</p>
+<p>Store fact from the paste: "Shipping: already free on every order, no threshold, no shipping revenue."</p>
+<p>This rider costs $0 and buys $0. The 35% discount carries the promo alone. The creative calls out something the store gives every customer on every order at full price.</p>
+<p><b>December, 15% off plus beanie on orders over $75, landed cost $6.20</b></p>
+<p>Rider: gift with purchase. The paste names no standard gift-with-purchase policy for the store. This is an incremental cost.</p>
+<p>The gift applies to orders over $75, not all orders.</p>
+<pre class="pcode">AOV for this window:                $84.00
+Gift landed cost:                    $6.20
+Gift threshold:                     $75.00
+[NEEDS: percentage of December orders at or above $75]</pre>
+<p>Two cases:</p>
+<pre class="pcode">Case A - 100% of orders are over $75 (assumption used in Steps 1 and 2):
+  Price discount per order:   $84.00 × 0.15000 = $12.60000
+  Gift cost per order:                             $6.20000
+  Total deduction per order:                      $18.80000
+  Effective discount %:       $18.80000 / $84.00 = 22.38095%
+
+Case B - Q% of orders are over $75 (Q &lt; 100):
+  Price discount per order:   $84.00 × 0.15000  = $12.60000
+  Gift cost per order:        $6.20000 × (Q/100) = $6.20000 × (Q/100)
+  Total deduction per order:  $12.60000 + $6.20000 × (Q/100)
+  Effective discount %:       ($12.60000 + $6.20000 × (Q/100)) / $84.00</pre>
+<p>If Q is below 100, the effective discount used in Steps 1 and 2 (22.38095%) is overstated, the discounted contribution per order ($18.49400) is understated, and the required lift of 79.42% sits above the actual bar by an amount that depends on Q.</p>
+<h3>Prompt 4 replaced the failures</h3>
+<h4>Replacements</h4>
+<p><b>Labour Day</b></p>
+<pre class="pcode">REPLACES:          Labour Day, which needed a 69.52% lift and produced 38.90% last year
+THE OFFER:         Northbay beanie (landed cost $6.20) with every order, 4-7 Sep, no price cut
+COST PER ORDER:    $6.20 (beanie landed cost as given)
+EFFECTIVE DISCOUNT: 7.38%  ($6.20 / $84.00 = 7.38095%)
+REQUIRED LIFT:     16.55%
+WHAT I DO NOT KNOW: [NEEDS: return rate on GWP orders for this window].
+                   The real bar sits above 16.55% by an amount neither of us knows.</pre>
+<pre class="pcode">Baseline for window:
+193 × $33.18192 = $6,404.11056
+
+Discounted contribution per order (base return rate 24%, gift treated as effective discount):
+$84.00 × 0.56300 = $47.29200
+$47.29200 − $6.20000 = $41.09200
+$41.09200 × (1 − 0.24000) = $41.09200 × 0.76000 = $31.22992
+0.24000 × $11.50 = $2.76000
+$31.22992 − $2.76000 = $28.46992
+
+Orders needed:
+$6,404.11056 / $28.46992 = 224.94305
+
+Required lift:
+(224.94305 / 193 − 1) × 100 = 16.55%</pre>
+<p><b>October Bundle</b></p>
+<pre class="pcode">REPLACES:          October Bundle, which needed a 41.49% lift and produced 18.90% last year
+THE OFFER:         Orders at or above $100 receive a free Northbay beanie (landed cost $6.20),
+                   8-14 Oct, no price cut
+COST PER ORDER:    $6.20 × Q, where Q = fraction of October window orders at or above $100
+EFFECTIVE DISCOUNT: (6.20 × Q) / 84.00 = 7.38095% × Q
+REQUIRED LIFT:     ($4.71200 × Q / ($33.18192 − $4.71200 × Q)) × 100
+WHAT I DO NOT KNOW: [NEEDS: % of October window orders at or above $100].
+                   [NEEDS: return rate on threshold-qualifying orders for this window].
+                   The real bar sits above each Q-row below by an amount neither of us knows.</pre>
+<pre class="pcode">Baseline for window (AOV returns to $84.00, no bundle incentive in this replacement):
+338 × $33.18192 = $11,215.48896
+
+Discounted contribution per order (base return rate 24%):
+$84.00 × 0.56300 = $47.29200
+$47.29200 − ($6.20000 × Q) = $47.29200 − $6.20000Q
+($47.29200 − $6.20000Q) × 0.76000 − $2.76000
+  = $35.94192 − $4.71200Q − $2.76000
+  = $33.18192 − $4.71200Q
+
+Orders needed:
+$11,215.48896 / ($33.18192 − $4.71200Q)
+
+Required lift:
+($11,215.48896 / (($33.18192 − $4.71200Q) × 338) − 1) × 100
+= ($4.71200Q / ($33.18192 − $4.71200Q)) × 100
+
+Q = 1.00 (100% of orders qualify):   $4.71200 / $28.46992 × 100 = 16.55%
+Q = 0.80  (80% qualify):             $3.76960 / $29.41232 × 100 = 12.82%
+Q = 0.50  (50% qualify):             $2.35600 / $30.82592 × 100 =  7.64%</pre>
+<p>[trimmed: the BFCM replacement block. It reuses the Labour Day replacement's $28.46992 contribution per order, and its figures are in the calendar list below.]</p>
+<p><b>Cyber Monday</b></p>
+<pre class="pcode">REPLACES:          Cyber Monday, which needed a 265.67% lift and produced 152.10% last year
+THE OFFER:         Email-list early access from 00:01 30 Nov, 1 day, 0% discount, no code
+COST PER ORDER:    $0.00 (no gift, no price reduction)
+EFFECTIVE DISCOUNT: 0.00%
+REQUIRED LIFT:     0.00%
+WHAT I DO NOT KNOW: none from the given data. Every order covers baseline at full margin.</pre>
+<pre class="pcode">Baseline for window:
+48 × $33.18192 = $1,592.73216
+
+Contribution per order at 0% discount equals baseline contribution per order:
+$33.18192
+
+Orders needed:
+$1,592.73216 / $33.18192 = 48.00000
+
+Required lift:
+(48.00000 / 48 − 1) × 100 = 0.00%</pre>
+<p><b>December</b></p>
+<pre class="pcode">REPLACES:          December, which needed a 79.42% lift and produced 21.10% last year
+THE OFFER:         Orders at or above $75 receive a free Northbay beanie (landed cost $6.20),
+                   1-10 Dec, no price cut
+COST PER ORDER:    $6.20 (at 100% qualification rate, same assumption carried from Prompt 2)
+EFFECTIVE DISCOUNT: 7.38%  ($6.20 / $84.00 = 7.38095%)
+REQUIRED LIFT:     16.55%
+WHAT I DO NOT KNOW: [NEEDS: % of December orders at or above $75] (same unknown from Prompt 2).
+                   The real bar sits above 16.55% by an amount neither of us knows.</pre>
+<pre class="pcode">Baseline for window:
+483 × $33.18192 = $16,026.86736
+
+Discounted contribution per order: $28.46992 (same arithmetic as Labour Day replacement)
+
+Orders needed:
+$16,026.86736 / $28.46992 = 562.94038
+
+Required lift:
+(562.94038 / 483 − 1) × 100 = 16.55%</pre>
+<h4>Calendar as it should run</h4>
+<p>1. <b>Labour Day, 4-7 Sep: REPLACE.</b> Ran at $19.57 contribution per order against a $33.18 baseline; destroyed $1,156.75 at last year's lift. 2. <b>October Bundle, 8-14 Oct: REPLACE.</b> Ran at $36.15 contribution per order against a $51.15 baseline; destroyed $2,760.23 at last year's lift. 3. <b>BFCM, 27 Nov-1 Dec: REPLACE.</b> Ran at $12.69 contribution per order against a $33.18 baseline; destroyed $278.10 at last year's lift. 4. <b>Cyber Monday, 30 Nov: REPLACE.</b> Ran at $9.07 contribution per order against a $33.18 baseline; destroyed $494.66 at last year's lift. 5. <b>December, 1-10 Dec: REPLACE.</b> Ran at $18.49 contribution per order against a $33.18 baseline; destroyed $5,209.49 at last year's lift.</p>
+<h4>Standing rules confirmation</h4>
+<p>All messages in this conversation hold to the ten standing rules. No violations found. Intermediate arithmetic lines in fenced code blocks (e.g., "193 × 1.389 = 268.077") do not begin with a dollar sign because they are multiplier steps, not dollar outputs; the dollar sign leads when the result is a monetary figure, which holds throughout.</p>
+<p class="sm-note" style="font-size:.78rem;color:#777;">On that self-check: the run missed three of its own lines. The discount reconciliation in Prompt 1 and both parts of Prompt 3 each carry a sentence built on the comparison form standing rule 3 bans. The prompt above lists nine standing rules; the run counted ten. Every figure and every verdict in the sample is unaffected.</p>
+<div class="sm-note">
+<p><b>Verification: where every number in this sample came from</b></p>
+<p>Three sources are legal. <b>INPUT</b> means the figure is in the paste shown above. <b>CALC</b> means it matches the printed output of the hub's own Discount ROI calculator, run on those same inputs. <b>ARITH</b> means it is arithmetic on those two, with the working printed in the sample itself. Nothing here came from a fourth source.</p>
+<p><b>The inputs, restated</b></p>
+<table style="font-size:.82rem"><thead><tr><th>Figure</th><th>Source</th></tr></thead><tbody><tr><td>$84.00 AOV, $126.00 bundle AOV</td><td>INPUT</td></tr><tr><td>56.3% contribution margin before returns</td><td>INPUT</td></tr><tr><td>24% base return rate</td><td>INPUT</td></tr><tr><td>$11.50 per return</td><td>INPUT</td></tr><tr><td>26%, 25%, 28%, 30%, 25% discounted return rates</td><td>INPUT, one per promo, the operator's own read</td></tr><tr><td>193, 338, 242, 48, 483 baseline orders</td><td>INPUT, and each is its window length x 48.33</td></tr><tr><td>38.9%, 18.9%, 152.5%, 152.1%, 21.1% last year's lifts</td><td>INPUT, the operator's own figures</td></tr><tr><td>$6.20 gift landed cost, $75 gift threshold</td><td>INPUT</td></tr></tbody></table>
+<p><b>The computed figures</b></p>
+<table style="font-size:.82rem"><thead><tr><th>Figure in the sample</th><th>Source</th><th>The trace</th></tr></thead><tbody><tr><td>$47.29200</td><td>ARITH</td><td>$84.00 x 0.563</td></tr><tr><td>$35.94192, $2.76000</td><td>ARITH</td><td>$47.29200 x 0.76, and 0.24 x $11.50</td></tr><tr><td><b>$33.18192</b> baseline contribution per order</td><td>CALC and ARITH</td><td>CALC 10a <code>baseline_contribution_per_order</code> = 33.18192</td></tr><tr><td>$70.93800, $53.91288</td><td>ARITH</td><td>$126.00 x 0.563, then x 0.76</td></tr><tr><td><b>$51.15288</b> bundle baseline</td><td>CALC and ARITH</td><td>CALC 10b <code>baseline_contribution_per_order</code> = 51.15288</td></tr><tr><td>$19.57408 Labour Day</td><td>CALC and ARITH</td><td>CALC 10a <code>promo_contribution_per_order</code> = 19.57408</td></tr><tr><td>$36.15350 October Bundle</td><td>CALC and ARITH</td><td>CALC 10b <code>promo_contribution_per_order</code> = 36.1535</td></tr><tr><td>$12.68624 BFCM</td><td>CALC and ARITH</td><td>CALC 10c <code>promo_contribution_per_order</code> = 12.68624</td></tr><tr><td><b>$9.07440 Cyber Monday</b></td><td>CALC and ARITH</td><td>CALC 10d <code>promo_contribution_per_order</code> = 9.0744</td></tr><tr><td>$18.49400 December</td><td>ARITH</td><td>$47.292 - $12.60 - $6.20 = $28.492, x 0.75, minus $2.875. <b>Differs from CALC 10e, see the note below</b></td></tr><tr><td>$6,404.11056</td><td>CALC and ARITH</td><td>CALC 10a <code>baseline_contribution_total</code>; 193 x $33.18192</td></tr><tr><td>$17,289.67344</td><td>CALC and ARITH</td><td>CALC 10b <code>baseline_contribution_total</code>; 338 x $51.15288</td></tr><tr><td>$8,030.02464</td><td>CALC and ARITH</td><td>CALC 10c <code>baseline_contribution_total</code>; 242 x $33.18192</td></tr><tr><td><b>$1,592.73216</b></td><td>CALC and ARITH</td><td>CALC 10d <code>baseline_contribution_total</code>; 48 x $33.18192</td></tr><tr><td>$16,026.86736</td><td>CALC and ARITH</td><td>CALC 10e <code>baseline_contribution_total</code>; 483 x $33.18192</td></tr><tr><td>69.52% required lift</td><td>CALC and ARITH</td><td>CALC 10a <code>required_lift_pct</code> = 69.5196913469</td></tr><tr><td>41.49%</td><td>CALC and ARITH</td><td>CALC 10b <code>required_lift_pct</code> = 41.4880440345</td></tr><tr><td>161.56%</td><td>CALC and ARITH</td><td>CALC 10c <code>required_lift_pct</code> = 161.558349834</td></tr><tr><td><b>265.67%</b></td><td>CALC and ARITH</td><td>CALC 10d <code>required_lift_pct</code> = 265.665167945; $1,592.73216 / $9.07440 = 175.51928 orders, / 48 - 1</td></tr><tr><td>55.10%, 36.32%, 114.07%</td><td>CALC and ARITH</td><td>CALC <code>naive_required_lift_pct</code> on 10a, 10b, 10c</td></tr><tr><td><b>164.32%</b> returns-off</td><td>CALC and ARITH</td><td>CALC 10d <code>naive_required_lift_pct</code> = 164.319248826</td></tr><tr><td>79.42% and 65.98% December</td><td>ARITH</td><td>Computed off $18.49400. <b>Differs from CALC 10e, see the note</b></td></tr><tr><td>175.51928 orders needed</td><td>ARITH</td><td>$1,592.73216 / $9.07440</td></tr><tr><td>127.52 orders of lift</td><td>ARITH</td><td>175.51928 minus 48</td></tr><tr><td>101.35 percentage points</td><td>ARITH</td><td>265.67 minus 164.32</td></tr><tr><td>-$1,156.75</td><td>CALC and ARITH</td><td>CALC 10a <code>net_profit_impact</code> = -1156.74991584</td></tr><tr><td>-$2,760.23</td><td>CALC and ARITH</td><td>CALC 10b <code>net_profit_impact</code> = -2760.232553</td></tr><tr><td>-$278.10</td><td>CALC and ARITH</td><td>CALC 10c <code>net_profit_impact</code> = -278.097688</td></tr><tr><td><b>-$494.66</b></td><td>CALC and ARITH</td><td>CALC 10d <code>net_profit_impact</code> = -494.6571648</td></tr><tr><td>-$5,209.49 December</td><td>ARITH</td><td>584.913 x $18.49400 minus $16,026.86736. <b>Differs from CALC 10e</b></td></tr><tr><td>9.06 points, 58.32 points</td><td>ARITH</td><td>161.56 minus 152.50; 79.42 minus 21.10</td></tr><tr><td>22.38095% effective December discount</td><td>ARITH</td><td>($84 x 0.15 + $6.20) / $84</td></tr><tr><td>7.38095% gift-only discount</td><td>ARITH</td><td>$6.20 / $84.00</td></tr><tr><td>7.62 and 12.62 percentage points</td><td>ARITH</td><td>30 minus 22.38; 35 minus 22.38</td></tr><tr><td>$28.46992 replacement contribution</td><td>ARITH</td><td>($47.292 - $6.20) x 0.76 - $2.76</td></tr><tr><td>16.55% replacement required lift</td><td>ARITH</td><td>224.94305 / 193 - 1, and the same figure on 242 and 483</td></tr><tr><td>12.82% and 7.64% at Q = 0.8 and Q = 0.5</td><td>ARITH</td><td>$4.712Q / ($33.18192 - $4.712Q), where $4.712 = $6.20 x 0.76</td></tr><tr><td>0.00% early-access required lift</td><td>ARITH</td><td>$1,592.73216 / $33.18192 = 48.00000 orders, which is the baseline</td></tr></tbody></table>
+<p><b>The December rows, which differ from the calculator output, and why</b></p>
+<p>The operator's paste states a 22.4% effective discount for December, and the Discount ROI calculator was run at 22.4%, producing $18.482 per discounted order, a 79.54% required lift and a -$5,216.51 impact.</p>
+<p>Claude checked that figure against its components and found $84.00 x 0.15 + $6.20 = $18.80, which is 22.38095% of $84.00. It printed the $0.016 per-order gap, said in the run that the gap feeds every row below it, and carried the exact figures. That produces $18.494, 79.42% and -$5,209.49.</p>
+<p>Both are arithmetic on the pasted inputs, the difference is 0.12 points of required lift on a promo that fails by 58 points either way, and the run disclosed the choice on the line. The verdict does not move.</p>
+<p>Claude also flagged a second December unknown the sketch does not answer: the gift lands on orders over $75 and the window's AOV is $84, so some share of orders sit below the threshold and carry no gift cost. It printed <code>[NEEDS: percentage of December orders at or above $75]</code> and gave the parameterised formula, which is the honest handling.</p>
+</div>
+<p class="sm-note">Em and en dashes in the captured run are normalized to hyphens for house style.</p>
+      </div>
+    <p class="sm-note" style="font-size:.78rem;color:#777;">Two arithmetic slips in the captured run are corrected against the division printed beside them: the December returns-off lift (65.98, printed as 66.00) and one intermediate order count (224.94305, printed as 224.94588). No verdict changes.</p>
+</details>
+  </div>
+</section>
+
+<!-- ============================ email me this pack ============================ -->
+<section class="blk">
+  <div class="wrap narrow">
+    <form class="score" id="packForm" novalidate>
+      <p class="sec-eyebrow">Take it with you</p>
+      <h3>Email me this pack</h3>
+      <p>All four prompts, the paste specs and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <div class="row">
+        <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn-gold" type="button" id="packSend">Send the pack</button>
+      </div>
+      <p class="msg" id="packMsg"></p>
+      <p class="note">Everything on this page stays open either way. The prompts are printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ final CTA ============================ -->
+<section class="blk grey">
+  <div class="wrap">
+    <div class="finalcta on-ink mcard">
+      <img class="mcard-bg" src="../../assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-veil" aria-hidden="true"></div>
+      <div class="mcard-in">
+        <h2>Want this run on <span class="hl">your numbers?</span></h2>
+        <p>From week one we run this bar on live promo and returns data, then rebuild the calendar around the offers that clear it. Book a 30 minute intro call and we will price your Q4 together.</p>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-promo-calendar" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <p class="mcard-plate">
+          <b>Mattan Danino</b>
+          <span class="role">CEO, RISE DTC</span>
+          <span class="note">Direct with the team. No pitch deck.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>Every number computed from what you enter, with the math shown.</p>
+    </div>
+    <div class="hf-meta">
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      <a href="../../">All 25 tools</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/tools/claude/promo-calendar/</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"The Promo Calendar That Survives Returns: compute the lift each promo needs with Claude",
+  "description":"Four Claude prompts that compute the order lift each promo in your next 12 weeks needs before it pays, then replace the ones that cannot clear it.",
+  "url":"https://resources.risedtc.com/tools/claude/promo-calendar/",
+  "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
+  "isAccessibleForFree":true,
+  "inLanguage":"en-US",
+  "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+}
+</script>
+
+<script src="../../assets/pack.js"></script>
+<script>
+(function () {
+  "use strict";
+  window.RisePack.init({ slug: 'promo-calendar', type: 'prompts' });
+})();
+</script>
+</body>
+</html>

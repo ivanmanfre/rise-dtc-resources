@@ -514,6 +514,18 @@ h3{font-size:1.2rem;font-weight:700;letter-spacing:-.02em;margin:0 0 8px;color:v
   .t-cap{display:none}
 }
 
+/* ---------------------------------------- the pack shelf, three per band --
+   A family band carries one rail and one wall. The Claude pack carries three
+   named shelves in one band, so each shelf reuses the family rail's own
+   eyebrow and range grammar as a header above its own .wall. No new type
+   scale, no new colour: the h3 and the eyebrow are the sheet's. */
+.shelf{margin:0 0 40px}
+.shelf:last-of-type{margin-bottom:0}
+.shelf-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:0 0 16px}
+.shelf-h h3{font-size:1.32rem;letter-spacing:var(--track);margin:0}
+.shelf-h .fam-eyebrow{margin:0}
+.shelf-note{margin:0 0 18px;font-size:.9rem;color:var(--muted);line-height:1.6;max-width:70ch}
+
 /* ==========================================================================
    HUB: the run bay. The honest gate sentence, on ink, between the families.
    ========================================================================== */
@@ -647,6 +659,9 @@ h3{font-size:1.2rem;font-weight:700;letter-spacing:-.02em;margin:0 0 8px;color:v
   font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:var(--ink);
   background:transparent;border:0;outline:0;padding:0;width:56px;text-align:right;
   font-variant-numeric:tabular-nums;-moz-appearance:textfield;
+  /* six-digit dollar figures clip at 56px; browsers with field-sizing grow
+     the box to the value, everything else keeps the fixed width. */
+  field-sizing:content;min-width:56px;max-width:112px;
 }
 .pill.w input{width:64px}
 .pill input::-webkit-outer-spin-button,
@@ -900,6 +915,9 @@ footer.rise .meta a:hover{color:var(--gold)}
 .hf-meta a{color:var(--gold);text-decoration:none}
 .hf-rule{border-top:1px solid #2a2a2a;margin:30px auto 0;max-width:1240px;padding:16px 24px 0;
   font-size:11.5px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* stacked mobile footer: the meta block joins the left edge instead of
+   keeping its desktop right-column offset. */
+@media (max-width:640px){.hf-meta{margin-left:0}}
 
 /* ==========================================================================
    Sticky mobile verdict bar. tools.js sets body padding-bottom to the bar
@@ -920,6 +938,10 @@ footer.rise .meta a:hover{color:var(--gold)}
 /* the AI pages keep the bar hidden until there is a result to put in it. The
    class rule would beat the UA [hidden] rule, so it is restated here. */
 .mbar[hidden]{display:none}
+/* same trap as .mbar: any display-setting class beats UA [hidden]. Every
+   class a page toggles with the hidden attribute needs the restatement. */
+.mrow[hidden]{display:none}
+.scen[hidden]{display:none}
 @media (min-width:980px){.mbar{display:none}}
 
 /* ==========================================================================
@@ -1049,4 +1071,106 @@ body.gate-email_to_see:not(.gate-unlocked) .gatemsg{display:block}
   .tile{padding:14px}
   .rw{grid-template-columns:1fr;gap:10px}
   .rw .rw-c{justify-self:start}
+}
+
+/* ==========================================================================
+   THE BOOKING CARD. A person closes the page.
+   Two constructions, one photograph, no new tokens and no new hex.
+
+   .mcard      the photo BECOMES the band. Extends the .inkband construction
+               verbatim in shape: a covered layer at z-index -2, a linear veil
+               at -1, content at 2. Ships on the 25 tool pages, where the card
+               lands after the scorecard and the cross-links as the closing
+               beat. The veil is pure --ink-band at varying alpha, so the
+               photograph stays full colour and never prints a toned seam.
+   .mcard-sig  the signature row. One hairline-ruled row carrying a 66px
+               rounded-square crop, the name, the role and the button. Ships on
+               the hub, which already runs a photo masthead, a photo-quote band
+               and the case gallery: ink is punctuation, so the hub gets the
+               person without a fourth photographic band.
+
+   Nothing here collides with a selector tools.js queries. data-cta is
+   untouched, so the CTA beacon keeps firing on the same value.
+   ========================================================================== */
+.finalcta.mcard{position:relative;overflow:hidden;isolation:isolate;padding:0}
+.mcard .mcard-bg{
+  position:absolute;z-index:-2;display:block;
+  inset:0 0 auto 0;width:100%;height:216px;
+  object-fit:cover;object-position:50% 12%;
+}
+.mcard .mcard-veil{
+  position:absolute;z-index:-1;inset:0 0 auto 0;height:246px;
+  background:linear-gradient(180deg,rgba(31,31,31,0) 0%,rgba(31,31,31,.34) 44%,rgba(31,31,31,.9) 80%,rgba(31,31,31,1) 100%);
+}
+.mcard .mcard-in{position:relative;z-index:2;padding:236px 24px 32px}
+.finalcta.mcard h2{margin:0 0 12px}
+@media (min-width:860px){
+  .finalcta.mcard{min-height:404px;display:flex;align-items:center}
+  /* the photograph occupies the right of the band and bleeds off two edges. A
+     full-width layer would centre the face under the paragraph: cover on a 1.4
+     landscape inside a 3.0 box leaves no horizontal freedom, so the crop is
+     what puts the face right of the copy column. */
+  .mcard .mcard-bg{inset:0 0 0 auto;width:72%;height:100%;object-position:48% 14%}
+  /* opaque well past the layer's left edge at 28 percent, so the photograph's
+     own near-black corner never prints a vertical seam on ink */
+  .mcard .mcard-veil{
+    inset:0;height:auto;
+    background:linear-gradient(90deg,rgba(31,31,31,1) 0%,rgba(31,31,31,1) 40%,rgba(31,31,31,.94) 50%,rgba(31,31,31,.5) 62%,rgba(31,31,31,.1) 82%,rgba(31,31,31,0) 100%);
+  }
+  .mcard .mcard-in{padding:44px 40px;max-width:620px}
+}
+@media (min-width:1180px){
+  .mcard .mcard-bg{width:68%;object-position:46% 14%}
+  .mcard .mcard-in{max-width:660px}
+}
+.mcard-plate{
+  display:flex;align-items:baseline;gap:8px 16px;flex-wrap:wrap;
+  margin:32px 0 0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.16);
+}
+.mcard-plate b{font-family:'Sora',sans-serif;font-weight:700;font-size:1.02rem;letter-spacing:var(--track);color:#fff}
+.mcard-plate .role{
+  font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);
+}
+.mcard-plate .note{margin:0;font-size:.84rem;color:rgba(255,255,255,.55);flex:1 1 100%;line-height:1.6}
+@media (min-width:640px){.mcard-plate .note{flex:0 1 auto;margin-left:auto}}
+@media (max-width:520px){
+  .finalcta.mcard{padding:0}
+  .finalcta.mcard .btn-gold{width:100%;justify-content:center}
+  .mcard .mcard-bg{height:196px}
+  .mcard .mcard-veil{height:224px}
+  .mcard .mcard-in{padding:214px 20px 26px}
+}
+
+/* ------------------------------------------------ the signature row ------ */
+/* Radius 18 rather than a circle, so the crop reads as the same family as .rw
+   and .t-fig instead of a foreign avatar chip. The sheet has no circular
+   elements except the .cv chevron and the range thumb. */
+.mcard-sig{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;text-align:left;
+  margin:30px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.16);
+}
+.mcard-sig .mcard-av{
+  width:66px;height:66px;flex:none;border-radius:18px;object-fit:cover;object-position:48% 18%;
+  border:1px solid rgba(255,255,255,.18);
+}
+.mcard-sig .mcard-who{flex:1 1 auto;min-width:0}
+.mcard-sig .mcard-who b{display:block;font-family:'Sora',sans-serif;font-weight:700;font-size:1.04rem;
+  letter-spacing:var(--track);color:#fff;line-height:1.25}
+.mcard-sig .mcard-who span{
+  display:block;margin:6px 0 0;font-family:'Sora',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);
+}
+.mcard-sig .btn-gold{margin-left:auto;flex:none;white-space:nowrap}
+/* on the hub the band is centred, so the row is a left-set plate centred in
+   the column rather than a full-width rule under centred type */
+.ctaband .mcard-sig{max-width:620px;margin:34px auto 0}
+/* the plain line rides with the copy, above the rule, so it never reads as a
+   caption to the photograph */
+.mcard-note{margin:12px 0 0;font-size:.84rem;color:rgba(255,255,255,.55);line-height:1.6}
+.ctaband .mcard-note{margin:0 auto;max-width:52ch}
+@media (max-width:640px){
+  .mcard-sig{gap:14px}
+  .mcard-sig .btn-gold{margin-left:0;flex:1 1 100%;width:100%;justify-content:center}
+  .mcard-sig .mcard-av{width:58px;height:58px;border-radius:16px}
 }

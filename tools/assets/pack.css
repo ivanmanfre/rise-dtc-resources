@@ -1,0 +1,185 @@
+/* ==========================================================================
+   RISE DTC free tools, the Claude pack pages.
+
+   A THIN extension of tools.css, which every pack page loads first. Nothing
+   here re-declares a token, a font, a button or a band: the shell, the nav,
+   the ink hero, the scorecard capture, the booking card and the footer all
+   come from the parent sheet unchanged. This file adds only the three things
+   a pack page has that a calculator page does not:
+
+     .pblock   a numbered prompt block, with its paste-this-under-it spec
+     .skillmd  a SKILL.md printed in full, with download and copy
+     .pstep    a numbered tutorial step that links the real calculator
+
+   plus the sample-run disclosure and the pack series marker. Grammar rules
+   inherited and never broken here: gold marks the answer and nothing else,
+   ink is punctuation, captions are Sora small-caps, radius is --r-card.
+   ========================================================================== */
+
+/* ------------------------------------------------------- the series mark */
+/* "Pack 01 of 09" rides in the hero eyebrow slot. The calculator series
+   "Tool NN of 25" is a different series and is never touched by these pages. */
+.pk-eyebrow .numeral{font-size:inherit;letter-spacing:.04em}
+
+/* the one-line job, printed once under the title, in the lede slot */
+.inkband.tool .job{color:rgba(255,255,255,.82);max-width:56ch;margin:0;
+  font-size:clamp(.95rem,2vw,1.08rem);line-height:1.6}
+
+/* the run line: where it runs, what it costs, what is on the page */
+.runline{
+  display:flex;flex-wrap:wrap;gap:8px 26px;margin:20px 0 0;padding:16px 0 0;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+.runline span{
+  font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);
+}
+.runline span b{color:#fff;font-weight:700}
+
+/* ------------------------------------------------------- the prompt block */
+.pstack{display:grid;gap:18px}
+.pblock{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-card);
+  padding:22px 24px;box-shadow:var(--shadow-soft);
+}
+section.grey .pblock{border-color:#dfe3e7}
+.pb-top{display:flex;align-items:baseline;gap:14px;margin:0 0 4px}
+.pb-top .numeral{font-size:26px;line-height:1;flex:none}
+.pb-t{font-family:'Sora',sans-serif;font-weight:700;font-size:1.12rem;letter-spacing:-.025em;
+  color:var(--ink);line-height:1.3;margin:0}
+.pb-why{margin:0 0 16px;padding-left:40px;font-size:.9rem;color:var(--muted);line-height:1.6;max-width:66ch}
+@media (max-width:520px){.pb-why{padding-left:0}}
+
+/* the prompt itself, printed on ink so it reads as a thing you take away
+   rather than a thing you read. Monospace at the sheet's 12.5px floor. */
+.pcode{
+  margin:0;background:var(--ink-2);color:#fff;border-radius:18px;padding:18px 20px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12.5px;line-height:1.72;white-space:pre-wrap;word-break:break-word;
+  overflow-wrap:anywhere;max-height:none;
+}
+.pcode b{color:var(--gold);font-weight:700}
+
+/* the paste-this-under-it spec: the exact thing the operator supplies */
+.pspec{
+  margin:14px 0 0;border-left:4px solid var(--gold);background:var(--gold-pale);
+  border-radius:0 8px 8px 0;padding:14px 18px;
+}
+.pspec .ps-k{
+  display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 8px;
+}
+.pspec p{margin:0;font-size:.92rem;color:var(--sub);line-height:1.65}
+.pspec ul{margin:0;padding-left:18px;font-size:.92rem;color:var(--sub);line-height:1.65}
+.pspec ul li{margin:0 0 6px}
+.pspec ul li:last-child{margin-bottom:0}
+.pspec a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--gold)}
+.pspec a:hover{background:var(--gold)}
+
+/* the action bar under a block */
+.pbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0 0}
+.pbtn{
+  font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-pill);padding:10px 18px;cursor:pointer;
+  transition:border-color .16s,color .16s;
+}
+.pbtn:hover{border-color:var(--ink);color:var(--ink)}
+.pbtn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.pbtn.is-done{border-color:var(--gold);color:var(--gold-deep)}
+.pbar .pb-note{font-size:.8rem;color:var(--faint);line-height:1.5}
+
+/* ------------------------------------------------------------ the SKILL.md */
+.skillmd{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);
+  padding:8px 22px 22px;box-shadow:var(--shadow-soft)}
+.skillmd .sk-head{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;
+  padding:18px 0 14px;border-bottom:1px solid var(--hair)}
+.skillmd .sk-file{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:13px;font-weight:700;color:var(--ink)}
+.skillmd .sk-where{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.skillmd .pcode{margin:18px 0 0}
+
+/* ------------------------------------------------------- the tutorial step */
+.psteps{display:grid;gap:14px;counter-reset:pstep}
+.pstep{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:20px 22px;
+}
+section.grey .pstep{border-color:#dfe3e7}
+.pstep .numeral{font-size:26px;line-height:1}
+.pstep .st-t{font-family:'Sora',sans-serif;font-weight:700;font-size:1.04rem;letter-spacing:-.025em;
+  color:var(--ink);line-height:1.32;margin:0 0 6px;display:block}
+.pstep p{margin:0 0 10px;font-size:.92rem;color:var(--sub);line-height:1.66;max-width:66ch}
+.pstep p:last-child{margin-bottom:0}
+.pstep ul{margin:0 0 10px;padding-left:18px;font-size:.92rem;color:var(--sub);line-height:1.66;max-width:66ch}
+.pstep ul li{margin:0 0 6px}
+.pstep .pblock{margin:6px 0 12px}
+.pstep .st-go{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:2px;
+}
+.pstep .st-go:hover{background:var(--gold)}
+.pstep .st-min{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin-left:12px;white-space:nowrap}
+@media (max-width:520px){
+  .pstep{grid-template-columns:1fr;gap:8px}
+  .pstep .st-min{display:block;margin:8px 0 0}
+}
+
+/* the step's screenshot: a full-page clip of the live calculator, tall by
+   nature, so it sits in its own scroll frame and the step keeps its rhythm */
+.pstep .st-shot{margin:4px 0 14px;border:1px solid var(--line);border-radius:12px;
+  max-height:520px;overflow:auto;background:#fff}
+.pstep .st-shot img{display:block;width:100%;height:auto}
+section.grey .pstep .st-shot{border-color:#dfe3e7}
+
+/* --------------------------------------------------------- the sample run */
+/* Collapsed by default: the sample is proof the thing runs, not the point of
+   the page. Same disclosure grammar as .faq, one panel instead of six. */
+.sample{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0}
+.sample summary{
+  cursor:pointer;list-style:none;padding:20px 0;font-family:'Sora',sans-serif;font-weight:700;
+  font-size:1.06rem;color:var(--ink);display:flex;gap:14px;align-items:center;
+}
+.sample summary::-webkit-details-marker{display:none}
+.sample summary::after{content:"+";margin-left:auto;color:var(--gold-deep);font-weight:700;flex:none}
+.sample[open] summary::after{content:"\2212"}
+.sample summary .sm-k{
+  font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);
+}
+/* at 390 the store label drops to its own line under the disclosure title, so
+   the plus sign stays pinned right and neither string squeezes */
+@media (max-width:560px){
+  .sample summary{flex-wrap:wrap;gap:6px 14px}
+  .sample summary .sm-k{flex:1 1 100%;order:3}
+}
+.sample .sm-body{padding:0 0 24px}
+.sample .sm-body p{font-size:.96rem;color:var(--sub);line-height:1.7;margin:0 0 14px;max-width:68ch}
+.sample .sm-note{margin:0 0 18px;font-size:.86rem;color:var(--muted);max-width:70ch}
+.sample table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:.9rem}
+.sample th{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);text-align:left;padding:0 14px 10px 0;
+  border-bottom:1px solid var(--line)}
+.sample td{padding:11px 14px 11px 0;border-bottom:1px solid var(--hair);color:var(--sub);
+  font-variant-numeric:tabular-nums;vertical-align:top}
+.sample td.ans{color:var(--gold-deep);font-family:'Sora',sans-serif;font-weight:700}
+/* a wide sample table scrolls inside its own frame at phone widths */
+.sample .tblwrap{overflow-x:auto;margin:0 0 18px}
+.sample .tblwrap table{margin:0}
+/* the numbers-source table: small print, so provenance never outranks the run */
+.sample table.small{font-size:.8rem}
+.sample table.small code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95em}
+
+/* the demo store label. Printed wherever a sample number appears, so nobody
+   reads a synthetic figure as a client's. */
+.storelab{
+  margin:0 0 18px;font-family:'Sora',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+}
+
+/* -------------------------------------------------------- pack cross links */
+.pklinks{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:760px){.pklinks{grid-template-columns:1fr 1fr}}
