@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The ChatGPT Shopping Checklist for DTC Brands | RISE DTC</title>
+<meta name="description" content="Six steps that trace back to OpenAI's own merchant docs, and eight that do not. Every claim on this page carries the quote and the link, so you can check it yourself. Free, no email required." />
+<link rel="canonical" href="https://resources.risedtc.com/guides/chatgpt-visibility/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="The ChatGPT Shopping Checklist for DTC Brands" />
+<meta property="og:description" content="Six steps from OpenAI's own merchant docs, eight you can skip, every claim with its source link. No email required." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/guides/chatgpt-visibility/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The ChatGPT Shopping Checklist for DTC Brands" />
+<meta name="twitter:description" content="Six steps from OpenAI's own merchant docs, eight you can skip, every claim with its source link." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../tools/assets/favicon-32.png" />
+<link rel="stylesheet" href="../../tools/assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-chatgpt-visibility-guide";</script>
+<style>
+/* per-page addition: this is the first prose guide on the sheet, so it needs a
+   step column and visible links inside body copy. Everything below composes the
+   existing tokens. No new colour, no new type scale. */
+.gstep{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+@media (min-width:900px){.gstep{grid-template-columns:210px minmax(0,1fr);gap:44px}}
+.gs-rail .gnum{font-size:clamp(54px,9vw,88px);line-height:.86;display:block;margin:0 0 12px}
+.gs-rail .t-fig{max-width:210px}
+@media (max-width:899px){.gs-rail{display:flex;align-items:center;gap:18px}.gs-rail .gnum{margin:0}.gs-rail .t-fig{flex:1 1 auto;max-width:220px}}
+.prose a,.rule-c p a,.byline a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
+.prose a:hover,.rule-c p a:hover{background:var(--gold);color:var(--ink);text-decoration:none}
+/* the one ink step: body copy and its plate invert the same way a tile does */
+.on-ink .prose p{color:rgba(255,255,255,.78)}
+.on-ink .prose a{color:var(--gold)}
+.on-ink .gs-rail .t-fig{background-color:transparent;background-image:none;border-color:rgba(255,255,255,.18)}
+.byline{margin:0 0 22px;font-size:.86rem;color:var(--muted);line-height:1.6}
+.byline b{color:var(--ink);font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-.02em}
+.rules.four{grid-template-columns:1fr}
+@media (min-width:760px){.rules.four{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.rules.four{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#steps">Skip to the checklist</a>
+
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=guide&amp;utm_medium=cta&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../tools/assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=nav&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="nav_home">Home</a>
+      <a href="https://risedtc.com/projects/?utm_source=guide&amp;utm_medium=nav&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+      <a href="#steps">The steps</a>
+      <a href="/tools/" data-cta="nav_tools">Free tools</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=guide&amp;utm_medium=nav&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ ink photo masthead ============================ -->
+<section class="inkband on-ink">
+  <div class="bg bg-tsh" style="background-image:url('../../tools/assets/case-gobi-heat.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../../tools/assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">The checklist, free and ungated</p>
+    <h1>How a DTC store gets picked inside <span class="gold-word">ChatGPT</span>.</h1>
+    <p class="lede">Six steps that trace back to a document OpenAI or Shopify published, and eight that trace back to nothing. Every claim below carries its quote and its link, so you can check the whole page yourself in about ten minutes.</p>
+    <div class="cta-row">
+      <a class="btn-gold shelf" href="#steps" data-cta="start_checklist"><span class="cv" aria-hidden="true">&rsaquo;</span>Start at step 01</a>
+      <a class="btn-out" href="#skip">The skip list</a>
+    </div>
+    <div class="statrow">
+      <div class="st"><span class="numeral">92.8%</span><span class="lab">Of shopping tasks ended with no meaningful click out</span></div>
+      <div class="st"><span class="numeral">87.3%</span><span class="lab">Of product cards were retrieved from the web crawl</span></div>
+      <div class="st"><span class="numeral">06</span><span class="lab">Steps that trace to a published document</span></div>
+    </div>
+  </div>
+  <p class="crumb"><a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=crumb&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="crumb_home">RISE DTC</a> / <span>ChatGPT visibility</span></p>
+</section>
+
+<!-- ============================ why this matters now ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="hubgrid">
+      <div>
+        <p class="sec-eyebrow">Why this matters now</p>
+        <h2>The decision happens inside the chat</h2>
+        <p class="byline">Written by <b>Mattan Danino</b>, CEO of RISE DTC &middot; 30 July 2026 &middot; No email, no form, nothing gated.</p>
+        <div class="prose">
+          <p>A study published on 14 July 2026 watched 56 people compare products inside ChatGPT across 221 codable shopping tasks. 92.8% of those tasks ended with no meaningful click out to the open web. Whatever ChatGPT put on the screen was the entire set of options those shoppers considered.</p>
+          <p>The same study matched what people chose against how often ChatGPT cited each brand, and found the two move together at 0.57. That is a correlation on a screened sample of 56 people. It does not prove that a citation causes a sale, and the authors flag the sample size themselves. Read it as directional.</p>
+          <p>The direction is still worth acting on. Your buyer is running the comparison inside a chat window, and your store either shows up in it or does not. So the job changes shape. ChatGPT has to be able to read your product page at all, and your data has to survive the comparison against every other seller carrying the same thing.</p>
+          <p>Everything below traces back to something OpenAI or Shopify published. Where a step came from a blog post instead of a document, it is in <a href="#skip">the skip list</a> with the reason.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">The receipt</span>
+          <p class="quote">"92.8% of all tasks ended with no meaningful click to the open web, and 3.2% verified a claim on an outside site."</p>
+          <span class="cite">Profound with Kevin Indig and Eric Van Buskirk of Clickstream Solutions &middot; 56 participants, 221 codable tasks, published 14 July 2026 &middot; <a href="https://www.tryprofound.com/blog/the-shortlist-is-the-new-shelf" target="_blank" rel="noopener">tryprofound.com</a></span>
+        </div>
+      </div>
+
+      <a class="rescard" href="https://risedtc.com/projects/gobi-heat/?utm_source=guide&amp;utm_medium=proof&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="case_gobi_heat">
+        <img src="../../tools/assets/case-gobi-heat.jpg" alt="Gobi Heat, a RISE DTC client" />
+        <span class="rc-in">
+          <span class="rc-k">Published result</span>
+          <span class="rc-stat">"251% increase in orders YoY"</span>
+          <span class="rc-meta">Gobi Heat, apparel. Quoted from the case page on <u>risedtc.com/projects/gobi-heat</u>, which also publishes "61% decrease in cost per order".</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ what you are aiming at ============================ -->
+<section class="famband grey">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">00</span>
+        <span class="t-fig" data-grid="b">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A chat answer holding a row of three product cards, one marked in gold, with a separate labelled ad unit sitting below it">
+            <rect class="k" x="8" y="5" width="104" height="34" rx="3"/>
+            <rect class="f6" x="14" y="10" width="52" height="2.8"/>
+            <rect class="k2" x="14" y="18" width="28" height="16" rx="1.4"/>
+            <rect class="k2" x="46" y="18" width="28" height="16" rx="1.4"/>
+            <rect class="g" x="78" y="18" width="28" height="16" rx="1.4"/>
+            <rect class="k2" x="8" y="48" width="104" height="16" rx="3"/>
+            <rect class="h" x="8" y="48" width="104" height="16"/>
+            <text class="lb" x="14" y="59">AD</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">What you are aiming at</p>
+        <h2>The product carousel is organic, and the ads sit beside it</h2>
+        <div class="prose">
+          <p>Two different units share that screen. OpenAI's help article on shopping results says the product results are selected independently by ChatGPT and are not ads. ChatGPT does carry advertising, and OpenAI documents it in <a href="https://help.openai.com/en/articles/20001047-ads-in-chatgpt" target="_blank" rel="noopener">a separate help article</a>, in a separate slot.</p>
+          <p>Everything in this checklist is about the organic unit. That is the one your product data and your product pages can move.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">How product results are selected</span>
+          <p class="quote">"Product results are selected independently by ChatGPT and are not ads, nor influenced by any OpenAI partnerships."</p>
+          <span class="cite">OpenAI Help Center, Shopping with ChatGPT search &middot; article updated July 2026 &middot; <a href="https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search" target="_blank" rel="noopener">help.openai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ step 01 ============================ -->
+<section class="blk" id="steps">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">01</span>
+        <span class="t-fig" data-grid="a">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A robots file with two rules, the search crawler passing through an open gold gate and the training crawler stopped at a closed one">
+            <rect class="k" x="6" y="8" width="46" height="52" rx="2.4"/>
+            <rect class="f6" x="12" y="15" width="30" height="3"/>
+            <rect class="f6" x="12" y="23" width="24" height="3"/>
+            <rect class="g" x="12" y="33" width="34" height="4.2"/>
+            <rect class="f6" x="12" y="45" width="27" height="3"/>
+            <rect class="f6" x="12" y="52" width="20" height="3"/>
+            <path class="gk" d="M58 22 H88"/>
+            <path class="g" d="M88 18.4 l7 3.6 -7 3.6z"/>
+            <line class="gd" x1="100" y1="10" x2="100" y2="34"/>
+            <path class="k2" d="M58 48 H84"/>
+            <line class="k" x1="100" y1="38" x2="100" y2="62"/>
+            <path class="k2" d="M88 44 l8 8 M96 44 l-8 8"/>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Step 01 &middot; The crawler</p>
+        <h2>Let OpenAI's search crawler in</h2>
+        <div class="prose">
+          <p>ChatGPT search runs its own crawler, OAI-SearchBot. OpenAI's crawler documentation is blunt about what happens to a site that opts out of it, and the quote is below.</p>
+          <p>Open yourstore.com/robots.txt in a browser right now and search the page for OAI-SearchBot. No rule at all means allowed, which is where most Shopify stores sit. The ones that get burned are the stores where an SEO app or a hand-edited robots.txt.liquid added a block nobody remembers writing.</p>
+          <p>GPTBot is a different bot with a different job, model training, and OpenAI states that each setting is independent of the others. You can allow the search crawler and still disallow the training crawler. The same doc notes it can take around 24 hours from a robots.txt change for OpenAI's systems to adjust, so check it, fix it, and look again tomorrow.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">OAI-SearchBot</span>
+          <p class="quote">"Sites that are opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links."</p>
+          <span class="cite">OpenAI, Overview of OpenAI Crawlers &middot; fetched 30 July 2026 &middot; <a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">developers.openai.com/api/docs/bots</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ step 02 ============================ -->
+<section class="famband grey">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">02</span>
+        <span class="t-fig" data-grid="c">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A catalog of product records feeding a channel switch, with the switch drawn on in gold">
+            <rect class="k" x="6" y="12" width="44" height="44" rx="2.4"/>
+            <line class="k2" x1="6" y1="24" x2="50" y2="24"/>
+            <line class="k2" x1="6" y1="36" x2="50" y2="36"/>
+            <line class="k2" x1="6" y1="48" x2="50" y2="48"/>
+            <rect class="f6" x="11" y="16" width="22" height="3.4"/>
+            <rect class="f6" x="11" y="28" width="30" height="3.4"/>
+            <rect class="f6" x="11" y="40" width="18" height="3.4"/>
+            <rect class="f6" x="11" y="51" width="26" height="3.4"/>
+            <path class="d" d="M54 34 H64"/>
+            <rect class="g" x="68" y="24" width="44" height="20" rx="10"/>
+            <circle class="f" cx="102" cy="34" r="7"/>
+            <text class="lb" x="70" y="18">AGENTIC</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Step 02 &middot; The setting</p>
+        <h2>On Shopify, check the setting instead of assuming</h2>
+        <div class="prose">
+          <p>OpenAI says that for merchants on Shopify, product data is already integrated into ChatGPT through Shopify Catalog, and that no additional work is required from individual merchants. Read the eligibility inside that sentence. Shopify Catalog is described by Shopify as a catalog of <i>eligible</i> products sold by merchants on Shopify, so a lot of stores are already in and some are not.</p>
+          <p>Shopify's own help doc says agentic storefronts are active by default, and that you control which channels offer direct selling from your admin. Shopify also states, separately and clearly, that this setting does not change how your products get discovered on those channels. Discovery runs through Shopify Catalog, web crawling and indexing, or feeds you share yourself.</p>
+          <p>So this is a five minute job in your admin. Open the settings, read what is switched on, and write down what you find. Settings get switched by people who never read the doc.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">Shopify, agentic storefronts</span>
+          <p class="quote">"Agentic storefronts are active by default, but you can control on which channels to offer direct selling in your Shopify admin settings under Agentic storefronts."</p>
+          <span class="cite">Shopify Help Center, Shopify agentic storefronts &middot; the same page states "Your agentic storefront settings don't impact how your products are discovered on AI channels" &middot; <a href="https://help.shopify.com/en/manual/online-sales-channels/agentic-storefronts" target="_blank" rel="noopener">help.shopify.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">OpenAI, on Shopify merchants</span>
+          <p class="quote">"For merchants on Shopify, product data is already integrated into ChatGPT through Shopify Catalog, helping products appear more accurately and completely in relevant user conversations. No additional work is required from individual merchants."</p>
+          <span class="cite">OpenAI, Powering product discovery in ChatGPT &middot; 24 March 2026 &middot; <a href="https://openai.com/index/powering-product-discovery-in-chatgpt/" target="_blank" rel="noopener">openai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ step 03 ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">03</span>
+        <span class="t-fig" data-grid="b">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A product record with its title, price and stock fields called out, the price row marked in gold">
+            <rect class="k" x="8" y="7" width="66" height="54" rx="2.4"/>
+            <rect class="f6" x="14" y="13" width="40" height="12" rx="1"/>
+            <rect class="f6" x="14" y="30" width="46" height="3.2"/>
+            <rect class="g" x="14" y="39" width="26" height="5"/>
+            <rect class="f6" x="14" y="50" width="34" height="3.2"/>
+            <path class="k2" d="M74 18 H92"/><text class="lb" x="94" y="20">TITLE</text>
+            <path class="gk" d="M74 41.5 H92"/><text class="lb" x="94" y="43.5">PRICE</text>
+            <path class="k2" d="M74 51.6 H92"/><text class="lb" x="94" y="53.6">STOCK</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Step 03 &middot; The data</p>
+        <h2>Your product data is doing the selling</h2>
+        <div class="prose">
+          <p>OpenAI publishes the list of what ChatGPT weighs when it decides which products to surface. Structured metadata is the first item on it, with price and product description named as the examples. The list also carries the model's own responses and OpenAI's safety standards and product policies, so metadata is one input among several.</p>
+          <p>On a Tuesday morning that means three things. Exact product titles. Live prices. True stock counts. A variant that is sold out in your store and in stock in somebody else's feed produces a bad answer with your brand's name on it.</p>
+          <p>OpenAI's own commerce documentation makes the same point about the feed side of it: <a href="https://developers.openai.com/commerce/guides/key-concepts" target="_blank" rel="noopener">required fields ensure correct display of price and availability</a>. Fields go missing and the product stops displaying correctly. That is the whole mechanism.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">What ChatGPT considers</span>
+          <p class="quote">"Structured metadata from first-party and third-party providers (e.g., price, product description) and other third-party content."</p>
+          <span class="cite">OpenAI Help Center, Shopping with ChatGPT search &middot; first of the three inputs listed under "When determining which products to surface, ChatGPT considers" &middot; <a href="https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search" target="_blank" rel="noopener">help.openai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ step 04, poster beat on ink ============================ -->
+<section class="famband ink on-ink">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum">04</span>
+        <span class="t-fig" data-grid="a">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="One bar split at eighty-seven point three per cent, the crawl share drawn in gold against the smaller feed share">
+            <rect class="g" x="8" y="14" width="91" height="22" rx="2"/>
+            <rect class="h" x="99" y="14" width="13" height="22"/>
+            <rect class="k" x="8" y="14" width="104" height="22" rx="2"/>
+            <line class="k" x1="99" y1="14" x2="99" y2="36"/>
+            <text class="lb" x="8" y="10">WEB CRAWL 87.3</text>
+            <line class="k2" x1="105" y1="36" x2="105" y2="44"/>
+            <text class="lb" x="60" y="51">FEEDS 12.7</text>
+            <line class="d" x1="8" y1="56" x2="112" y2="56"/>
+            <text class="lb" x="8" y="64">812,190 PRODUCT CARDS</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Step 04 &middot; The crawl</p>
+        <h2>Most product cards are read off a live product page</h2>
+        <div class="prose">
+          <p>Profound sampled 201,137 ChatGPT shopping prompt runs containing 812,190 product cards, over one week in June 2026. 707,752 of those cards, 87.3%, were retrieved from the web crawl. 102,523 of them, 12.7%, came from direct merchant product feeds.</p>
+          <p>That is one vendor's sample of one week, so treat the exact split as directional rather than a constant. The direction is hard to argue with, and OpenAI's own description of shopping research says the same thing in different words: results are organic and based on publicly available retail sites, read off product pages directly, with low-quality and spammy sites avoided.</p>
+          <p>Which makes your product page the artifact that matters. Specs, sizing, materials, care, dimensions, and a straight answer to the question your buyer actually types. The page is what gets read.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">Where the cards come from</span>
+          <p class="quote">"707,752 (87.3%) product cards are retrieved from web crawl. 102,523 (12.7%) are retrieved from direct merchant product feeds."</p>
+          <span class="cite">Profound, Breaking down how ChatGPT Shopping works behind the user experience &middot; 201,137 prompt runs sampled 18 to 25 June 2026, published 23 July 2026 &middot; <a href="https://www.tryprofound.com/blog/chatgpt-shopping-end-to-end-breakdown" target="_blank" rel="noopener">tryprofound.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">OpenAI, on shopping research</span>
+          <p class="quote">"Results are organic and based on publicly available retail sites" ... "reading product pages directly, citing sources, and avoiding low-quality or spammy sites."</p>
+          <span class="cite">OpenAI, Introducing shopping research &middot; <a href="https://openai.com/index/chatgpt-shopping-research/" target="_blank" rel="noopener">openai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ step 05 ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">05</span>
+        <span class="t-fig" data-grid="c">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Four ranking factors drawn as chips, with the maker or primary seller factor filled gold">
+            <rect class="k2" x="8" y="8" width="48" height="18" rx="9"/>
+            <text class="lb" x="16" y="19">AVAILABILITY</text>
+            <rect class="k2" x="64" y="8" width="48" height="18" rx="9"/>
+            <text class="lb" x="80" y="19">PRICE</text>
+            <rect class="k2" x="8" y="32" width="48" height="18" rx="9"/>
+            <text class="lb" x="24" y="43">QUALITY</text>
+            <rect class="g" x="64" y="32" width="48" height="18" rx="9"/>
+            <text class="lb" x="72" y="43">MAKER</text>
+            <line class="d" x1="8" y1="58" x2="112" y2="58"/>
+            <path class="gk" d="M64 62 h48"/>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Step 05 &middot; The ranking</p>
+        <h2>Same product, many sellers, four named factors</h2>
+        <div class="prose">
+          <p>Tap a product in ChatGPT and it can show a list of merchants offering that item. OpenAI's current help article names the factors it ranks that list on, and the fourth one is the interesting one for a DTC brand: whether the merchant is the maker or the primary seller.</p>
+          <p>If you manufacture your own line, you start that comparison ahead of every reseller carrying it. That advantage evaporates if your availability data is wrong or your price is stale, which is why step 03 sits above this one.</p>
+          <p>One housekeeping note. An older OpenAI launch post listed a fifth factor alongside these four. The current help article carries four. We print the current four and leave the fifth out.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">Merchant ranking</span>
+          <p class="quote">"Merchants are ranked based on factors like availability, price, quality, and whether they are the maker or primary seller of that item."</p>
+          <span class="cite">OpenAI Help Center, Shopping with ChatGPT search &middot; current list, read 30 July 2026 &middot; <a href="https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search" target="_blank" rel="noopener">help.openai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ step 06 ============================ -->
+<section class="famband grey">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">06</span>
+        <span class="t-fig" data-grid="b">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A catalog snapshot pushed over a gold arrow into an approved endpoint, with a daily cadence ruled underneath">
+            <rect class="k" x="6" y="16" width="34" height="34" rx="2.4"/>
+            <rect class="f6" x="11" y="22" width="24" height="3"/>
+            <rect class="f6" x="11" y="29" width="18" height="3"/>
+            <rect class="f6" x="11" y="36" width="22" height="3"/>
+            <rect class="f6" x="11" y="43" width="14" height="3"/>
+            <path class="gk" d="M46 33 H74"/>
+            <path class="g" d="M74 29 l7.4 4 -7.4 4z"/>
+            <text class="lb" x="48" y="27">SFTP</text>
+            <rect class="k" x="86" y="16" width="26" height="34" rx="2.4"/>
+            <path class="gk" d="M92 33 l4 4 L106 27"/>
+            <line class="d" x1="6" y1="56" x2="112" y2="56"/>
+            <g class="k2"><line x1="14" y1="53" x2="14" y2="59"/><line x1="38" y1="53" x2="38" y2="59"/><line x1="62" y1="53" x2="62" y2="59"/><line x1="86" y1="53" x2="86" y2="59"/><line x1="110" y1="53" x2="110" y2="59"/></g>
+            <text class="lb" x="6" y="66">AT LEAST DAILY</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Step 06 &middot; The feed</p>
+        <h2>The direct product feed, if you qualify</h2>
+        <div class="prose">
+          <p>There is a real application for sending OpenAI a structured product feed. Onboarding is currently available to approved partners, and the way in is a form at <a href="https://chatgpt.com/merchants" target="_blank" rel="noopener">chatgpt.com/merchants</a>. No self-serve switch, no shortcut.</p>
+          <p>The specification is public, so you can scope the work before you apply. Feeds are pushed to OpenAI over SFTP as a full catalog snapshot, with a <a href="https://developers.openai.com/commerce/specs/file-upload/overview" target="_blank" rel="noopener">recommended cadence of at least daily</a>. parquet is preferred, and jsonl.gz, csv.gz and tsv.gz are also supported. Required fields cover the correct display of price and availability. OpenAI names the optional attributes that pay off too, and the quote is below.</p>
+          <p>This one is an engineering job with a real maintenance cost. Read the spec, size it honestly, then decide. Steps 01 to 05 cost you an afternoon and cover the 87.3% either way.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">Access</span>
+          <p class="quote">"Onboarding product feeds in ChatGPT is currently available to approved partners. To apply for access, fill out this form here"</p>
+          <span class="cite">OpenAI commerce documentation, Get Started &middot; the form links to chatgpt.com/merchants &middot; <a href="https://developers.openai.com/commerce/guides/get-started" target="_blank" rel="noopener">developers.openai.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">What the feed rewards</span>
+          <p class="quote">"Required fields ensure correct display of price and availability, while recommended attributes ... improve ranking, relevance, and user trust."</p>
+          <span class="cite">OpenAI commerce documentation, Key Concepts &middot; the recommended attributes named are rich media, reviews and performance signals &middot; <a href="https://developers.openai.com/commerce/guides/key-concepts" target="_blank" rel="noopener">developers.openai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the skip list ============================ -->
+<section class="blk grey" id="skip">
+  <div class="wrap">
+    <p class="sec-eyebrow">Steps you can skip</p>
+    <h2>Eight things that are not in the documentation</h2>
+    <p class="sec-sub">Every one of these appears on a ChatGPT visibility checklist doing the rounds. We searched OpenAI's live commerce and shopping documentation for each one. Here is what turned up, and what we do instead.</p>
+    <div class="rules four">
+      <div class="rule-c">
+        <span class="nt">Bing Webmaster Tools</span>
+        <p>Bing does not appear as a mechanism anywhere in <a href="https://developers.openai.com/commerce" target="_blank" rel="noopener">OpenAI's commerce documentation</a> or its shopping help articles. The documented paths are the crawl and the product feed. Register with Bing for Bing's own reasons if you like. It is not a step in these docs.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">Google Search Console, for ChatGPT</span>
+        <p>Same absence. Nothing in OpenAI's shopping or commerce documentation names a search console of any kind as a route into ChatGPT's product results. Keep Search Console for Google, where it earns its keep.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">A schema markup project, as the ChatGPT lever</span>
+        <p>schema.org is not named in OpenAI's commerce or shopping docs, and the mechanism those docs describe is <a href="https://developers.openai.com/commerce/guides/get-started" target="_blank" rel="noopener">the product feed</a>. That is a statement about what those documents say. With 87.3% of product cards read off the web crawl, what sits on your product page carries real weight.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">Submitting your brand through a discovery form</span>
+        <p>No form of that description exists anywhere in OpenAI's documentation. The real route is the gated merchant application at <a href="https://chatgpt.com/merchants" target="_blank" rel="noopener">chatgpt.com/merchants</a>, covered in step 06.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">Building a brand GPT</span>
+        <p>OpenAI introduced workspace agents in April 2026 and <a href="https://openai.com/index/introducing-workspace-agents-in-chatgpt/" target="_blank" rel="noopener">described them as an evolution of GPTs</a>, aimed at organization accounts. Nothing in the merchant documentation treats the GPT Store as a route to product placement. Spend that week on your product pages.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">Rewriting the site to sound conversational</span>
+        <p>We went looking for a primary source or a study with a published method behind this one and came up with neither. It circulates on vendor blogs. Write your product pages for the person buying and you have already done the useful version.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">Chasing Instant Checkout as a ranking lever</span>
+        <p>An OpenAI launch post from 2025 listed it among the merchant ranking factors. The <a href="https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search" target="_blank" rel="noopener">current help article</a> lists four factors and Instant Checkout is not one of them. The four that survive are in step 05.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">Wikipedia trust-hierarchy claims</span>
+        <p>The claim that ChatGPT ranks brands off a Wikipedia trust hierarchy traces back to a study whose provenance we could not establish. It stays off the list until somebody can show the method.</p>
+      </div>
+    </div>
+    <p class="proofnote">Every source on this page was read at its live URL on 30 July 2026 and is linked in full. Two of the fourteen citations are secondary, both from Profound, and both are named and dated where they appear so you can weigh them accordingly. Where we could not verify a claim, this page prints the absence instead of the claim.</p>
+  </div>
+</section>
+
+<!-- ============================ the free tools ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <p class="sec-eyebrow">While you are here</p>
+    <h2>Price is a ranking factor, so know your floor</h2>
+    <p class="sec-sub">Availability and price sit in OpenAI's own list. Before you move a price to win a comparison inside a chat window, run the number that tells you what the move costs you. These are free, they run in your browser, and they ask for nothing.</p>
+    <div class="xgrid">
+      <a class="xl" href="/tools/true-profit-per-order/" data-cta="tool_true_profit">
+        <span class="g">01</span>
+        <span><span class="n">True Profit Per Order</span><span class="q">What one order leaves you after returns, shipping, card fees and acquisition.</span></span>
+      </a>
+      <a class="xl" href="/tools/pricing-margin/" data-cta="tool_pricing_margin">
+        <span class="g">11</span>
+        <span><span class="n">Pricing and Margin</span><span class="q">Markup, gross margin, realized margin after returns, and the price your target needs.</span></span>
+      </a>
+      <a class="xl" href="/tools/contribution-margin/" data-cta="tool_contribution_margin">
+        <span class="g">02</span>
+        <span><span class="n">Contribution Margin</span><span class="q">Your margin per unit after returns, and the extra units returns force you to sell.</span></span>
+      </a>
+      <a class="xl" href="/tools/" data-cta="tool_hub">
+        <span class="g">34</span>
+        <span><span class="n">All 34 free tools</span><span class="q">Twenty-five calculators and nine packs to run in Claude, every number computed in front of you.</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ closing CTA ============================ -->
+<section class="ctaband on-ink">
+  <img class="sunmark" src="../../tools/assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <div class="cb-in">
+    <p class="sec-eyebrow">Ready when you are</p>
+    <h2>Want this run on <span class="hl">your store?</span></h2>
+    <p>From week one we run this on live Shopify and ad data, from the product pages up through the order economics underneath them. Book a 30 minute intro call and we will walk your store together.</p>
+    <p class="mcard-note">Direct with the team. No pitch deck.</p>
+    <div class="mcard-sig">
+      <img class="mcard-av" src="../../tools/assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-who">
+        <b>Mattan Danino</b>
+        <span>CEO, RISE DTC</span>
+      </div>
+      <a class="btn-gold shelf" data-cta="booking_guide" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=guide&amp;utm_medium=cta&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../tools/assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>The World's 1st Performance-Only Agency for DTC Brands.</p>
+    </div>
+    <div class="hf-meta">
+      A free, ungated checklist for DTC operators, built from OpenAI's and Shopify's own published documentation, with every quote linked to the page it came from.<br />
+      <a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=footer&amp;utm_campaign=chatgpt-visibility-guide" target="_blank" rel="noopener" data-cta="brand_footer">risedtc.com</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/guides/chatgpt-visibility/</span>
+  </div>
+</footer>
+
+<script src="../../tools/assets/tools-config.js"></script>
+<script src="../../tools/assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+  /* Nothing on this page renders at runtime. The tools runtime is still started
+     so the view beacon and the CTA click beacons behave exactly the way they do
+     on the hub and on every tool page. */
+  window.RiseTools.init({ slug: null });
+})();
+</script>
+</body>
+</html>
