@@ -1,0 +1,2283 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RISE DTC · Content Desk · preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--ink2:#333;--mute:#5f5f59;--faint:#8a8f98;--line:#e0e0e0;--pap:#fff;
+ --soft:#f5f5f5;--y:#ffc71d;--ok:#2f7d4f;--down:#b8341f;--nav:224px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--pap)}
+body{font-family:Manrope,system-ui,-apple-system,sans-serif;color:var(--ink);line-height:1.55;
+ -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+/* ══════════ SHELL — RISE brand owns this ══════════ */
+.app{display:flex;min-height:100vh}
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--nav);background:var(--ink);color:#fff;
+ display:flex;flex-direction:column;z-index:20}
+.side .top{padding:24px 24px 20px}
+.side .wm{font-family:Sora;font-weight:700;font-size:17px}
+.side .wm i{font-style:normal;color:var(--y)}
+.side .desk{margin-top:4px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#7a7a72;font-weight:700}
+.side nav{flex:1;overflow-y:auto;padding:8px 12px 16px}
+.grp{margin-bottom:16px}
+.grp>b{display:block;padding:0 12px 6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+ color:#6d6d66;font-weight:800}
+.side button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;
+ padding:10px 14px;background:none;border:0;border-radius:999px;cursor:pointer;font-family:inherit;
+ font-size:13.5px;font-weight:600;color:#b9b9b1;text-align:left;transition:background .15s,color .15s}
+.side button:hover{background:rgba(255,255,255,.07);color:#fff}
+.side button.on{background:var(--y);color:var(--ink);font-weight:700}
+.side button.hero{font-family:Sora;font-size:15px}
+.badge{background:var(--y);color:var(--ink);font-size:11px;font-weight:800;padding:1px 9px;
+ border-radius:999px;font-variant-numeric:tabular-nums}
+.side button.on .badge{background:var(--ink);color:var(--y)}
+.side .foot{padding:16px 24px;border-top:1px solid #262626;font-size:12.5px;color:#8f8f88}
+.main{flex:1;margin-left:var(--nav);min-width:0}
+.demobar{background:var(--soft);border-bottom:1px solid var(--line);padding:8px 34px;
+ font-size:11.5px;color:var(--mute);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.demobar b{color:var(--ink);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+/* compact branded action bar — deliberately NOT a tall hero band */
+.sticky{position:sticky;top:0;z-index:15;background:var(--y);padding:16px 34px;
+ display:flex;align-items:center;justify-content:space-between;gap:18px}
+.sticky .t{font-family:Sora;font-weight:600;font-size:18px;line-height:1.28;max-width:62ch}
+.sticky .b{background:var(--ink);color:#fff;border-radius:999px;padding:12px 24px;font-weight:700;
+ font-size:14px;white-space:nowrap;cursor:pointer}
+.tab{display:none;padding:34px 34px 70px;max-width:1040px}
+.tab.on{display:block}
+/* ══════════ PRIMITIVES ══════════ */
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+h2{font-family:Sora;font-weight:300;font-size:30px;line-height:1.16;letter-spacing:-.015em;margin:10px 0 0}
+h2 b{font-weight:700}
+.sub{margin-top:12px;font-size:15px;color:var(--mute);max-width:74ch}
+.card{border:1px solid var(--line);border-radius:25px;padding:24px 26px;background:var(--pap)}
+.card h3{font-family:Sora;font-weight:600;font-size:19px;line-height:1.3}
+.card p{margin-top:8px;font-size:15px;color:var(--ink2)}
+.card.dark{background:var(--ink2);color:#fff;border-color:var(--ink2);padding:32px 36px}
+.card.dark h3,.card.dark h2{color:#fff}
+.card.dark p,.card.dark .sub{color:#c9c9c2}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 17px;
+ font-size:13px;font-weight:700;color:var(--mute);background:var(--pap);cursor:pointer}
+.pill.p{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pill.y{background:var(--y);color:var(--ink);border-color:var(--y)}
+.chip{display:inline-block;border-radius:999px;background:var(--soft);padding:5px 13px;
+ font-size:12.5px;font-weight:700;color:var(--mute)}
+.chip.y{background:var(--y);color:var(--ink)}
+.acts{margin-top:16px;display:flex;gap:9px;flex-wrap:wrap}
+.row{padding:22px 0;border-bottom:1px solid var(--line)}
+.row.now{border:1px solid var(--y);border-radius:25px;background:#fffdf3;padding:24px 26px;margin:18px 0}
+.stat b,.num{display:block;font-family:Sora;font-weight:700;font-size:34px;line-height:1}
+.stat i{display:block;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:600;margin-top:8px}
+.bandnums{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.bandnums .n{border-left:3px solid var(--y);padding-left:16px}
+.bandnums .n b{display:block;font-family:Sora;font-weight:700;font-size:38px;line-height:1}
+.bandnums .n i{display:block;font-style:normal;font-size:12.5px;font-weight:600;color:#c9c9c2;margin-top:8px}
+.bandnums .n u{display:block;text-decoration:none;font-size:12px;color:#96968f;margin-top:4px}
+/* ── trend primitives ── */
+.delta{display:inline-block;border-radius:999px;padding:3px 11px;font-size:12.5px;font-weight:800;
+ font-variant-numeric:tabular-nums}
+.delta.up{background:rgba(47,125,79,.14);color:var(--ok)}
+.delta.down{background:rgba(184,52,31,.12);color:var(--down)}
+.delta.flat{background:var(--soft);color:var(--mute)}
+.card.dark .delta.up{background:rgba(255,255,255,.14);color:#8fe0ac}
+.card.dark .delta.flat{background:rgba(255,255,255,.1);color:#c9c9c2}
+.cmp{width:100%;border-collapse:collapse}
+.cmp td,.cmp th{padding:13px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:15px;vertical-align:middle}
+.cmp th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:800}
+.cmp td.v{font-family:Sora;font-weight:700;font-size:21px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.card.dark .cmp td,.card.dark .cmp th{border-color:rgba(255,255,255,.16)}
+.card.dark .cmp th{color:#96968f}
+.spark{display:flex;align-items:flex-end;gap:10px;height:190px;padding-top:12px;overflow-x:auto}
+.spark i{flex:1 1 0;min-width:32px;display:flex;flex-direction:column;justify-content:flex-end;
+ height:100%;font-style:normal}
+.spark i span{display:block;background:var(--y);border-radius:6px 6px 0 0;width:100%}
+.spark i em{font-style:normal;display:block;font-size:11.5px;color:var(--faint);text-align:center;
+ margin-top:7px;font-variant-numeric:tabular-nums}
+.spark i u{text-decoration:none;display:block;font-size:12.5px;font-weight:700;text-align:center;margin-bottom:5px;
+ font-variant-numeric:tabular-nums}
+.bar{height:9px;background:var(--soft);border-radius:999px;overflow:hidden}
+.barfill{height:100%;background:var(--y);border-radius:999px}
+.empty{border:1px dashed var(--line);border-radius:25px;padding:30px 28px;background:var(--soft)}
+.empty b{font-family:Sora;font-size:19px;font-weight:600;display:block;margin-bottom:8px}
+.note{background:var(--soft);border-radius:20px;padding:16px 20px;margin:18px 0;font-size:14.5px;color:var(--mute)}
+.n2{font-size:12.5px;color:var(--faint);margin-top:8px}
+table.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+table.tbl th,table.tbl td{padding:11px 9px;border-bottom:1px solid var(--line);text-align:left}
+table.tbl th{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:800}
+table.tbl td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ── iteration: motion + drill-downs (shell-owned) ── */
+@media (prefers-reduced-motion: no-preference){
+ .tab.on{animation:tabin .28s ease-out}
+ @keyframes tabin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+ .card,.row.now,.empty{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+ .card:hover{transform:translateY(-2px);border-color:#c9c9c2}
+ .card.dark:hover{border-color:var(--ink2);box-shadow:0 8px 28px rgba(17,17,17,.16)}
+ .pill,.chip,.sticky .b{transition:transform .15s ease,background .15s ease}
+ .pill:hover,.sticky .b:hover{transform:translateY(-1px)}
+ .spark i span,.barfill{transform-origin:bottom;animation:grow .5s ease-out backwards}
+ @keyframes grow{from{transform:scaleY(.55);opacity:.4}}
+ .side button{transition:background .15s,color .15s,padding-left .15s}
+ .side button:hover{padding-left:18px}
+}
+details.drill{border-top:1px solid var(--line)}
+details.drill>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:4px 0}
+details.drill>summary::-webkit-details-marker{display:none}
+details.drill>summary .more{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+details.drill>summary .more::after{content:" +";color:var(--y)}
+details.drill[open]>summary .more::after{content:" −"}
+details.drill .din{padding:10px 0 16px;font-size:14px;color:var(--ink2)}
+details.drill .din img{border-radius:14px;max-width:220px;border:1px solid var(--line)}
+.diff{display:grid;gap:8px;font-size:13px}
+.diff .b4{background:#faf3f1;border-left:3px solid var(--down);border-radius:0 12px 12px 0;padding:8px 12px;color:#6b4a44}
+.diff .aft{background:#f1f7f2;border-left:3px solid var(--ok);border-radius:0 12px 12px 0;padding:8px 12px;color:#3c5c47}
+
+/* ══════════ MOBILE ══════════ */
+.mob,.sheet{display:none}
+@media(max-width:1023px){
+ .side{display:none}
+ .main{margin-left:0}
+ .demobar{padding:8px 18px}
+ .sticky{padding:14px 18px;flex-direction:column;align-items:flex-start;gap:12px}
+ .sticky .t{font-size:17px}
+ .sticky .b{width:100%;text-align:center}
+ .tab{padding:26px 18px calc(env(safe-area-inset-bottom) + 88px);overflow-x:clip}
+ h2{font-size:25px}
+ .grid2,.grid3{grid-template-columns:1fr}
+ .bandnums{grid-template-columns:1fr 1fr;gap:20px}
+ .bandnums .n b{font-size:30px}
+ .card{padding:20px 20px}
+ .card.dark{padding:24px 22px}
+ .row.now{padding:20px 20px}
+ .cmp td.v{font-size:18px}
+ .spark{height:150px;gap:7px}
+ .spark i{min-width:30px}
+ /* 4 primary + More sheet in ONE row. The audited product put 10 tabs in a 5-col grid,
+    which wrapped to two rows = 111px = 13.7% of the viewport, permanently. */
+ .mob{display:block;position:fixed;inset-inline:0;bottom:0;z-index:30;background:var(--ink);
+  padding-bottom:env(safe-area-inset-bottom)}
+ .mob nav{display:grid;grid-template-columns:repeat(5,1fr)}
+ .mob button{background:none;border:0;padding:10px 2px 9px;font-family:inherit;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:4px;color:#84847c;min-height:58px;justify-content:center}
+ .mob button.on{color:var(--y)}
+ .mob .ic{width:18px;height:18px;border:2px solid currentColor;border-radius:6px;position:relative}
+ .mob button.on .ic{background:var(--y);border-color:var(--y)}
+ .mob .lb{font-size:11px;font-weight:700}
+ .mob .bdg{position:absolute;top:-7px;right:-11px;background:var(--y);color:var(--ink);font-size:11px;
+  font-weight:800;padding:0 5px;border-radius:999px;line-height:15px}
+ .sheet{display:block;position:fixed;inset:0;z-index:40;background:rgba(17,17,17,.5);opacity:0;
+  pointer-events:none;transition:opacity .2s}
+ .sheet.on{opacity:1;pointer-events:auto}
+ .sheet .in{position:absolute;inset-inline:0;bottom:0;background:var(--pap);
+  border-radius:25px 25px 0 0;padding:8px 0 calc(env(safe-area-inset-bottom) + 16px);
+  transform:translateY(100%);transition:transform .24s cubic-bezier(.4,0,.2,1)}
+ .sheet.on .in{transform:none}
+ .sheet .hd{padding:14px 22px 12px;font-size:11.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint)}
+ .sheet button{display:block;width:100%;text-align:left;padding:15px 22px;background:none;border:0;
+  border-top:1px solid var(--line);font-family:inherit;font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer}
+}
+@media(min-width:1024px){.mob,.sheet{display:none!important}}
+</style></head><body>
+<div class="app">
+ <aside class="side">
+  <div class="top"><div class="wm">RISE DTC<i>.</i></div><div class="desk">Content desk</div></div>
+  <nav id="sidenav"></nav>
+  <div class="foot">Mattan Danino<br><span style="font-size:11.5px;color:#6d6d66">Account owner · <u style="cursor:pointer">Invite a teammate</u></span></div>
+ </aside>
+ <div class="main">
+  <div class="demobar"><b>Preview</b> New board design · data snapshot 31 Jul 2026 · the current board stays at <a href="/panel/" style="color:inherit">/panel/</a></div>
+  <div class="sticky"><div class="t" id="stickyT"></div><div class="b" id="stickyB"></div></div>
+  <div id="panel">
+<section class="tab" id="tab-week">
+ <div class="eyebrow">This week &middot; Thu 30 Jul to Wed 5 Aug</div>
+ <h2>One post ships today. <b>Twelve sit in the queue behind it.</b></h2>
+
+ <div class="card dark" style="margin-top:18px;padding:26px 26px 24px">
+  <div style="display:flex;flex-wrap:wrap;gap:20px 26px;align-items:flex-start">
+   <div style="flex:1 1 190px;min-width:0">
+    <div class="num" data-metric style="font-size:clamp(34px,9.4vw,54px);color:var(--y)">12</div>
+    <div style="font-size:12.5px;font-weight:700;color:#c9c9c2;margin-top:6px;line-height:1.35">in the queue behind it</div>
+    <div style="font-size:12px;font-weight:700;color:#96968f;margin-top:5px;line-height:1.4">1 today &middot; 5 scheduled &middot; 6 in buffer</div>
+    <div style="display:flex;align-items:center;gap:5px;margin-top:12px">
+     <span style="flex:1;border-top:1px dashed rgba(255,255,255,.5)"></span>
+     <span style="width:0;height:0;border-left:8px solid var(--y);border-top:5px solid transparent;border-bottom:5px solid transparent"></span>
+    </div>
+   </div>
+   <div style="flex:1 1 240px;min-width:0;border-left:3px solid var(--y);padding-left:16px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#96968f">Ships today</div>
+    <div style="font-family:Sora;font-weight:600;font-size:clamp(17px,4.6vw,21px);line-height:1.3;color:#fff;margin-top:8px">Carousel: ChatGPT Shopping Checklist</div>
+    <div style="margin-top:11px"><span class="chip y">scheduled, Fri 31 Jul</span></div>
+   </div>
+  </div>
+
+  <div data-viz style="margin-top:26px;display:flex;align-items:flex-end;gap:clamp(9px,2.6vw,24px)">
+   <div style="flex:1 1 0;min-width:0">
+    <div style="display:flex;gap:4px"><span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);background:var(--y);border-radius:7px"></span></div>
+    <div style="height:7px;border:1px solid rgba(255,255,255,.32);border-top:0;margin-top:10px"></div>
+    <div style="margin-top:8px;font-size:11.5px;font-weight:700;color:var(--y);text-align:center;line-height:1.35">1 today</div>
+   </div>
+   <div style="flex:5 1 0;min-width:0">
+    <div style="display:flex;gap:4px">
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px solid rgba(255,255,255,.55);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px solid rgba(255,255,255,.55);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px solid rgba(255,255,255,.55);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px solid rgba(255,255,255,.55);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px solid rgba(255,255,255,.55);border-radius:7px"></span>
+    </div>
+    <div style="height:7px;border:1px solid rgba(255,255,255,.32);border-top:0;margin-top:10px"></div>
+    <div style="margin-top:8px;font-size:11.5px;font-weight:700;color:#c9c9c2;text-align:center;line-height:1.35">5 scheduled, 3 to 7 Aug</div>
+   </div>
+   <div style="flex:6 1 0;min-width:0">
+    <div style="display:flex;gap:4px">
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px dashed rgba(255,255,255,.3);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px dashed rgba(255,255,255,.3);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px dashed rgba(255,255,255,.3);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px dashed rgba(255,255,255,.3);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px dashed rgba(255,255,255,.3);border-radius:7px"></span>
+     <span style="flex:1 1 0;min-width:0;height:clamp(54px,13vw,82px);border:1px dashed rgba(255,255,255,.3);border-radius:7px"></span>
+    </div>
+    <div style="height:7px;border:1px solid rgba(255,255,255,.32);border-top:0;margin-top:10px"></div>
+    <div style="margin-top:8px;font-size:11.5px;font-weight:700;color:#96968f;text-align:center;line-height:1.35">6 in buffer</div>
+   </div>
+  </div>
+ </div>
+
+ <div class="timeline" style="margin-top:28px;border-top:1px solid var(--line)">
+
+  <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Thu</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15">30 <span style="font-size:11.5px;font-weight:700;color:var(--faint)">Jul</span></div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-16px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--ink)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;line-height:1.35">The Profit Gap: 50% growth, $6,000 kept</div>
+    <div style="margin-top:8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+     <span class="chip">out</span>
+     <span class="num" data-metric style="display:inline;font-size:19px">149</span>
+     <span style="font-size:13px;font-weight:700;color:var(--mute)">reads</span>
+    </div>
+   </div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);background:#fffdf3">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)">Fri</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15">31</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-16px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:1px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--y);border:3px solid var(--ink)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;line-height:1.35">Carousel: ChatGPT Shopping Checklist</div>
+    <div style="margin-top:8px"><span class="chip y">ships today</span></div>
+   </div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Sat</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15;color:var(--faint)">1 <span style="font-size:11.5px;font-weight:700">Aug</span></div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-14px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:1px solid var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:var(--faint)">Open</div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Sun</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15;color:var(--faint)">2</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-14px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:1px solid var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:var(--faint)">Open</div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Mon</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15">3</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-16px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:2px dashed var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;line-height:1.35">Why We Don't Work With Dropshipping Brands</div>
+    <div style="margin-top:8px"><span class="chip">scheduled</span></div>
+   </div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Tue</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15">4</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-16px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:2px dashed var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;line-height:1.35">Apparel founders: returns are eating the growth your ads just bought</div>
+    <div style="margin-top:8px"><span class="chip">scheduled</span></div>
+   </div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Wed</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15">5</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-16px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:2px dashed var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;line-height:1.35">The margin check I run before touching a budget</div>
+    <div style="margin-top:8px"><span class="chip">in review</span></div>
+   </div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:6px 0 2px">
+   <div style="flex:none;width:68px"></div>
+   <div style="flex:none;width:20px;position:relative"><span style="position:absolute;left:9px;top:0;bottom:0;width:1px;background:var(--line)"></span></div>
+   <div style="flex:1;min-width:0;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Past this week</div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);opacity:.72">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Thu</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15;color:var(--mute)">6</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;bottom:-14px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:2px dashed var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15px;line-height:1.35;color:var(--mute)">Carousel: The $6k Meta teardown</div>
+    <div style="margin-top:8px"><span class="chip">scheduled</span></div>
+   </div>
+  </div>
+
+  <div style="display:flex;gap:14px;padding:14px 0;opacity:.72">
+   <div style="flex:none;width:68px;text-align:right">
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Fri</div>
+    <div style="font-family:Sora;font-weight:700;font-size:20px;line-height:1.15;color:var(--mute)">7</div>
+   </div>
+   <div style="flex:none;width:20px;position:relative">
+    <span style="position:absolute;left:9px;top:0;height:8px;width:1px;background:var(--line)"></span>
+    <span style="position:absolute;left:3.5px;top:8px;width:12px;height:12px;border-radius:50%;border:2px dashed var(--faint);background:var(--pap)"></span>
+   </div>
+   <div style="flex:1;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:15px;line-height:1.35;color:var(--mute)">The honest version of how we scaled a headwear brand</div>
+    <div style="margin-top:8px"><span class="chip">scheduled</span></div>
+   </div>
+  </div>
+
+ </div>
+
+ <div style="display:flex;gap:clamp(20px,4vw,40px);flex-wrap:wrap;align-items:flex-start;border-top:1px solid var(--line);margin-top:22px;padding-top:16px">
+  <div class="stat"><b style="font-size:22px">5</b><i>posts a week, one a working day</i></div>
+  <div class="stat"><b style="font-size:22px">8</b><i>out so far</i></div>
+
+  <div style="flex:1 1 258px;min-width:0;border-left:3px solid var(--line);padding-left:14px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)">Goal</div>
+   <div style="display:flex;align-items:baseline;gap:8px;margin-top:5px">
+    <span class="num" data-metric style="display:inline;font-family:Sora;font-weight:600;font-size:22px;color:var(--faint);border-bottom:2px dashed var(--faint);line-height:1.2">3,370</span>
+    <span style="font-size:12.5px;font-weight:600;color:var(--faint)">weekly reads to clear</span>
+   </div>
+   <div class="bar" style="margin-top:11px;height:10px;background:var(--soft);position:relative">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:55%;background:var(--y);border-radius:999px"></span>
+   </div>
+   <div style="display:flex;justify-content:space-between;gap:10px;margin-top:6px;font-size:11.5px;font-weight:700;color:var(--mute)">
+    <span>last week 1,852</span><span style="color:var(--faint)">goal 3,370</span>
+   </div>
+  </div>
+ </div>
+
+ <div class="n2" style="margin-top:14px">Dates past 7 Aug: <span style="color:var(--faint)">&mdash;</span> not set yet.</div>
+</section>
+<section class="tab" id="tab-review">
+ <div class="eyebrow">All content</div>
+ <h2>Twenty posts written. <b>Eight are out.</b></h2>
+
+ <div class="acts" style="margin-top:16px">
+  <span class="pill p">List</span>
+  <span class="pill">Calendar</span>
+ </div>
+
+ <div class="card dark" style="margin-top:18px;padding:24px 26px 22px">
+  <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.16)">
+   <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#96968f;flex:1 1 auto">Out</div>
+   <span class="num" data-metric style="display:inline;font-size:19px;color:#fff">8</span>
+   <span style="font-size:12.5px;font-weight:600;color:#96968f">posts</span>
+   <span class="num" data-metric style="display:inline;font-size:19px;color:#fff">2,579</span>
+   <span style="font-size:12.5px;font-weight:600;color:#96968f">reads</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+   <span style="flex:none;width:22px;border-top:2px dashed rgba(255,255,255,.55)"></span>
+   <span style="flex:1 1 auto;min-width:0;font-size:12.5px;font-weight:700;color:#c9c9c2">dashed mark: first-week average, 182</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;margin-top:10px;padding-bottom:2px">
+   <span style="flex:1 1 auto;min-width:0"></span>
+   <span style="flex:none;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#96968f">Reads</span>
+   <span style="flex:none;white-space:nowrap;text-align:right;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#96968f">Eng. rate</span>
+  </div>
+
+  <div style="padding:13px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">21 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">Don't run ads on broken tracking</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:13.8%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">187</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">4.8%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">Their purchase event was firing on add to cart instead of the real order. And every order passed the same flat value, no matter what the customer actually spent at checkout.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-stills/rise-quote/b6a25431-cfcc-4e8e-8ed4-39825d4ed540.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Their purchase event was firing on add to cart instead of the real order. And every order passed the same flat value, no matter what the customer actually spent at checkout.
+
+This brand came to us last month wanting to scale. Spend up, ROAS in the dashboard looking healthy, ready to push more budget and fresh creative that week.
+
+We didn&#x27;t touch the ads. We opened their Events Manager first.
+
+Meta learns who to go find from the value your pixel sends back. Feed it one flat number on every order and it can&#x27;t tell a $40 sale from a $400 one, so it spends your money chasing whoever converts cheapest. For weeks it had been optimizing toward a customer that didn&#x27;t exist, and they were about to fu</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">From your sales calls</span>
+   <a href="https://www.linkedin.com/posts/mattandanino_their-purchase-event-was-firing-on-add-to-activity-7485438561052221440-4qHR?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAEh0RwBKyf9ZFabIYQ7XuoNiiZpdVJ-EMo" style="font-size:13px;font-weight:800;color:#fff;text-decoration:none;border-bottom:2px solid var(--y);padding-bottom:1px">View on LinkedIn &rarr;</a>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:13px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">22 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">How to read your agency&rsquo;s incentive from its invoice</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:13.0%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">176</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">3.4%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">Look at your last agency invoice sitting next to the revenue you did that same month.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593207568-0-fa3249b1-22db-4239-bc97-e119fc98cb7a.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Look at your last agency invoice sitting next to the revenue you did that same month.
+
+Odds are the invoice held steady 🤯 and the revenue didn&#x27;t.
+
+Here&#x27;s a test you can run on any agency, including the one you&#x27;re paying right now.
+
+Read their fee structure and ask what has to be true for them to get paid.
+
+→ Monthly retainer? They get paid whether you grow or not.
+→ % of ad spend? They get paid more when they spend more of your money.
+→ Setup fees, creative fees on top? Paid on day one, before a single result.
+
+See the pattern?
+
+Almost every standard agency fee gets paid whether your business grows or not. That&#x27;s been the model for 25+ years, and it quietly parks all the risk on the founder.</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">From your sales calls</span>
+   <a href="https://www.linkedin.com/posts/mattandanino_look-at-your-last-agency-invoice-sitting-activity-7485707840918085632-NSSl?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAEh0RwBKyf9ZFabIYQ7XuoNiiZpdVJ-EMo" style="font-size:13px;font-weight:800;color:#fff;text-decoration:none;border-bottom:2px solid var(--y);padding-bottom:1px">View on LinkedIn &rarr;</a>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:13px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">23 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">The RISE DTC AI Kit launch post</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:14.8%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">201</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">2.5%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">I packaged the five things I check every DTC brand for into Claude skills, and I&#x27;m giving them away.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://resources.ivanmanfredi.com/rise-dtc-ai-kit/assets/cover.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">The Claude cheat code for DTC profit 👇
+
+In every store we audit, the money leaks from the same five spots, and almost nobody checks all five, because each one hides in a different report.
+
+So I turned the five checks my team runs into free Claude skills. Drop it into Claude, hand it your store&#x27;s numbers, and it tells you exactly where the money&#x27;s going. About ten minutes, no dashboard, no call.
+
+→ Return Rate Rescue: the exact dollars returns cost you, ranked by payback
+→ PDP Doctor: rewrites a product page to sell more and get returned less
+→ Ad-Angle Miner: pulls fresh ad angles straight from your real reviews
+→ Winback Flows: writes the retention emails off your repeat-buy cycle
+→ Weekly </div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">single image</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:13px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">24 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">Run this margin math before you hire any agency</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:12.0%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">163</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">4.3%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">&quot;Pay us only when we grow you.&quot;</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593209518-1-img_1863.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">&quot;Pay us only when we grow you.&quot;
+
+Founders love hearing that. Almost nobody checks whether their own numbers can even support it. 🤔
+
+So before you sign with any performance agency, run this math on yourself first.
+
+Start with what you keep on one order, not what you charge.
+
+Say you sell a product for $50 and it costs you $40 to make and land. That&#x27;s $10 of gross margin per order. Thin.
+
+Now an agency grows you from $20k to $30k a month. Sounds great. But that extra $10k in revenue only threw off maybe $2k in real profit once you subtract product cost, ad spend, discounts and returns.
+
+There&#x27;s almost nothing there to reinvest, let alone to share with a partner. Everyone ends up fighting over </div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">From your sales calls</span>
+   <a href="https://www.linkedin.com/posts/mattandanino_pay-us-only-when-we-grow-you-founders-activity-7486447718249230336-xCbb?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAEh0RwBKyf9ZFabIYQ7XuoNiiZpdVJ-EMo" style="font-size:13px;font-weight:800;color:#fff;text-decoration:none;border-bottom:2px solid var(--y);padding-bottom:1px">View on LinkedIn &rarr;</a>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:16px 0 10px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(255,199,29,.1);border-left:3px solid var(--y);padding-left:14px;border-radius:0 14px 14px 0;margin:6px 0">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:var(--y)">27 Jul</span>
+    <span style="flex:1 1 200px;min-width:0;font-size:15.5px;font-weight:700;color:#fff;line-height:1.35">Tearing Down a Top DTC Brand's Checkout Funnel</span>
+    <span class="chip y" style="flex:none">best</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:11px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:14px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--y);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(17,17,17,.7)"></span>
+    </span>
+    <span class="num" data-metric style="font-size:clamp(30px,8vw,42px);color:var(--y);flex:none;line-height:1">1,354</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#fff">2.0%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">Half the ad accounts I audit run the exact same broken setup.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593219213-8-img_8526.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">$6k into Meta last month. $1,900 came back.
+
+Then the client asked me what was wrong with the ads 🤯
+
+Nothing. The ads did their one job. They got a cold stranger to click.
+
+Then that stranger hit a product page.
+
+A product page is built to close someone who already knows the brand. Read the reviews last week, saw a friend wearing it, walked in half-decided.
+
+This buyer met the brand 4 seconds ago. And the first thing the page did was ask for $80 up front.
+
+And $80 from a stranger is not even $80 to you. Shopify takes 2.9% plus 30 cents on every order, so it nets $77.38 before you subtract product cost or the spend that dragged them in 💸
+
+Your traffic costs $6k. And it is landing on a page th</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">teardown</span>
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">Hand-picked</span>
+   <a href="https://www.linkedin.com/posts/mattandanino_6k-into-meta-last-month-1900-came-back-activity-7487605346904064000-YuF-?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAEh0RwBKyf9ZFabIYQ7XuoNiiZpdVJ-EMo" style="font-size:13px;font-weight:800;color:#fff;text-decoration:none;border-bottom:2px solid var(--y);padding-bottom:1px">View on LinkedIn &rarr;</a>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:13px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">28 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">Carousel: an apparel brand case study</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:16.0%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">217</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">2.8%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">Our client makes 75% of its year in a 4-month window.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/ig-slides/risedtc/casestudy-carousels/gobi-heat/slide-01-cover.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Our client makes 75% of its year in a 4-month window.
+
+Miss the window, miss the YEAR.
+
+When we opened the account, budget was scaling into ads nobody could read. Money out, orders in, no clean line between them.
+
+So before touching budget we traced every dollar back to a real order.
+
+Channels taking credit for sales they didn&#x27;t make? Cut ❌
+
+The ones that held up got the money.
+
+→ $100K of wasted spend, gone
+→ 251% more orders year over year
+→ 61% lower cost per order
+
+Ad spend went $5K → $400K+ a month. Profitably 💰
+
+Full breakdown in the carousel 👇</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">case study</span>
+   <span class="chip" style="font-size:12px">carousel</span>
+   <a href="https://www.linkedin.com/posts/mattandanino_case-study-wasted-ad-spendpdf-activity-7487927470239870977-bCnc?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAEh0RwBKyf9ZFabIYQ7XuoNiiZpdVJ-EMo" style="font-size:13px;font-weight:800;color:#fff;text-decoration:none;border-bottom:2px solid var(--y);padding-bottom:1px">View on LinkedIn &rarr;</a>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:13px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">29 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">Free calculator hub launch post</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:9.7%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">132</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">3.8%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">The audits we run at RISE DTC keep coming back to the same number. What one order actually leaves behind after COGS, shipping, fees and returns...</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-stills/rise-tools/f0b24394-audit-vault-cover-v4.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">I&#x27;m probably going to regret making this free...
+
+Everything we know about scaling DTC brands profitably, compressed into tools and prompts anyone can run.
+
+The audit system we run on client accounts behind $725M+ in attributed revenue. ALL of it, public, in one place 💰
+
+You&#x27;ll get:
+→ 25 ready-to-run tools plus a 9-piece Claude pack, from real audits
+→ How to see what one order actually leaves you, in 9 inputs
+→ How to budget next quarter&#x27;s Meta and Google spend off your numbers
+→ How to run our audit questions on your own P&amp;L, tonight
+
+This is perfect for:
+- DTC founders setting next quarter&#x27;s budgets
+- media buyers running Meta and Google in-house
+- anyone justifying ad spend to a partner
+</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">Tools hub elevation run 2026-07-26; Paxton u…</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:13px 0 8px;">
+   <div style="display:flex;gap:10px;align-items:baseline">
+    <span style="flex:none;width:46px;font-size:11.5px;font-weight:800;color:#96968f">30 Jul</span>
+    <span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:#fff;line-height:1.35">The Profit Gap: 50% growth, $6,000 kept</span>
+   </div>
+   <div style="display:flex;gap:12px;align-items:center;margin-top:9px">
+    <span class="bar" style="flex:1;min-width:0;background:rgba(255,255,255,.14);position:relative;height:8px">
+     <span style="position:absolute;left:0;top:0;bottom:0;width:11.0%;background:rgba(255,255,255,.5);border-radius:999px"></span>
+     <span style="position:absolute;left:13.4%;top:-7px;bottom:-7px;border-left:2px dashed rgba(255,255,255,.55);box-shadow:0 0 0 1.5px #333"></span>
+    </span>
+    <span class="num" data-metric style="display:inline;font-size:19px;color:#fff;flex:none">149</span>
+    <span style="flex:none;width:48px;text-align:right;font-size:13px;font-weight:700;color:#c9c9c2">4.0%</span>
+   </div>
+   <details class="drill" style="border-top:1px solid rgba(255,255,255,.14);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:#96968f">Open post</span></summary>
+   <div class="din" style="color:#c9c9c2;padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:#fff;line-height:1.4;margin-top:5px">$20,000 a month.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593243461-16-img_6478.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:rgba(255,255,255,.18)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#96968f">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:#c9c9c2;white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">$20,000 to $30,000 a month.
+
+A brand we grew last year.
+
+50% growth. Everyone felt good about it.
+
+Then I sat with the founder and ran the actual dollars, line by line.
+
+$10,000 more revenue every month, minus the extra ad spend, minus the discounts that pushed those orders through, minus the returns that came back with the volume... he kept $6,000.
+
+That math stung to run. We&#x27;re the ones who grew the account.
+
+Now look at how most agencies bill: a percentage of ad spend.
+
+The MORE of a founder&#x27;s money they spend, the more they get paid 🤯
+
+Whether he keeps any of it or not.
+
+That&#x27;s the Profit Gap: revenue climbing on the dashboard while the bank account barely moves.
+
+Before another dollar g</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">From your sales calls</span>
+   <a href="https://www.linkedin.com/posts/mattandanino_20000-to-30000-a-month-a-brand-we-grew-activity-7488601964516368384-iSk3?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAEh0RwBKyf9ZFabIYQ7XuoNiiZpdVJ-EMo" style="font-size:13px;font-weight:800;color:#fff;text-decoration:none;border-bottom:2px solid var(--y);padding-bottom:1px">View on LinkedIn &rarr;</a>
+   </div>
+   </div></details>
+  </div>
+
+ </div>
+
+ <div style="margin-top:16px"><span class="chip">2 weeks of data: direction, not a trend</span></div>
+
+ <div style="margin-top:26px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--ink)">
+  <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);flex:1 1 auto">Scheduled</div>
+  <span class="num" data-metric style="display:inline;font-size:19px">6</span>
+  <span style="font-size:12.5px;font-weight:600;color:var(--faint)">posts, dated and queued</span>
+ </div>
+
+  <div style="padding:16px 14px 10px;background:#fffdf3;border-left:3px solid var(--y);border-radius:0 14px 14px 0;margin-top:10px">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:11.5px;font-weight:800;color:var(--ink)">31 Jul</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:700;font-size:16.5px;line-height:1.35">Carousel: ChatGPT Shopping Checklist</span>
+    <span class="chip y" style="flex:none">ships today</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Your customers now ask ChatGPT what to buy 🤯</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/ig-slides/risedtc/tutorial-carousels/chatgpt-shopping-checklist/slide-01.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Open ChatGPT and ask it what to buy in your category 🤯
+
+If your store doesn&#x27;t show up, this is why.
+
+I ran a study here in July (ending today) that watched 221 real shopping AI experiences. 92.8% ended without a single visit to any website. INSANE!
+
+I then pulled OpenAI&#x27;s merchant docs and turned them into a checklist for DTC founders to crush this new AI-shopping era that&#x27;s approaching.
+
+Here&#x27;s the breakdown:
+
+1️⃣ Your robots.txt has to allow OAI-SearchBot. Stores that block it drop out of the answers.
+
+2️⃣ On Shopify? Likely in by default. Confirm under Sales channels → Agentic in your admin.
+
+3️⃣ Product data does the selling: exact titles, live prices, true stock counts.
+
+4️⃣ OpenAI runs</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">carousel</span>
+   <span class="chip" style="font-size:12px">Hand-picked</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line);border-top:1px solid var(--line);margin-top:8px">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:11.5px;font-weight:800;color:var(--faint)">3 Aug</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">Why We Don&#x27;t Work With Dropshipping Brands</span>
+    <span class="chip" style="flex:none">scheduled</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">We turn down most of the dropshippers who come to us. 🙅‍♂️</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593210816-3-img_4360.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">We turn down most of the dropshippers who come to us. 🙅‍♂️
+
+Their business is usually fine. The problem is margins, and our whole model runs on them.
+
+Most agencies don&#x27;t care about your margins at all. For 25+ years the model has been a base fee plus a percentage of ad spend plus setup and creative fees, and whether your revenue actually moves that month or not, the agency still gets paid on the 1st.
+
+We flipped it at RISE DTC. We only get paid when we actually grow you, and we take a cut of the incremental growth, nothing off the top.
+
+Run the numbers with me, because this is exactly where dropshipping falls apart.
+
+Say we grow a brand from $20k to $30k a month. That&#x27;s $10k in new revenue.</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">From your sales calls</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:11.5px;font-weight:800;color:var(--faint)">4 Aug</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">Apparel founders: returns are eating the growth your ads just bought</span>
+    <span class="chip" style="flex:none">scheduled</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Nearly 1 in 4 apparel orders gets returned.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593216756-7-img_7667.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Nearly 1 in 4 apparel orders gets returned.
+
+24%. Put that number next to your ad spend and the picture changes fast. It&#x27;s the one costing you the most.
+
+Here&#x27;s how it plays out on 100 orders of a $60 product.
+
+On paper:
+100 × $60 = $6,000 in revenue. Looks great.
+
+Then 24 come back.
+
+→ $1,440 in &quot;sales&quot; reversed (24 × $60)
+→ return shipping you eat, call it $9 a unit = $216
+→ inspect, process, restock, ~$5 a unit = $120 more
+→ and you already paid to acquire all 24. At a $25 CAC that&#x27;s another $600 gone
+
+So before a single markdown, roughly one out of every four orders COSTS you money instead of making it.
+
+ROAS never shows you this.
+
+It counts the order the second the ad fires. It has no i</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">authority</span>
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">Picked by Ivan</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:11.5px;font-weight:800;color:var(--faint)">5 Aug</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">The margin check I run before touching a budget</span>
+    <span class="chip" style="flex:none">in review</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Revenue is up, the bank account is flat</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593219213-8-img_8526.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">I see brands add revenue every month whose bank balance hasn&#x27;t grown since January. The instinct is to pour more into Meta and chase the next revenue number.
+
+At broken unit economics, more spend only grows the loss faster.
+
+Take a brand doing $60 average order value. Pull out product cost, payment fees, and shipping, and you keep maybe $27 on a sale. That $27 is the only money the business ever actually sees.
+
+Now the cost to get that sale. Spend $18k a month on Meta, land 550 orders, and you&#x27;re paying about $33 to win a single buyer.
+
+Put them side by side. $27 in against $33 out means every new order loses around $6. Across 550 orders that&#x27;s roughly $3,300 leaving the business every month</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">authority</span>
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">Picked by Ivan</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:11.5px;font-weight:800;color:var(--faint)">6 Aug</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">Carousel: The $6k Meta teardown</span>
+    <span class="chip" style="flex:none">scheduled</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">$6k into Meta. $1,900 back 💸</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/ig-slides/risedtc/teardown-carousels/meta-6k-teardown/slide-01.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">$6k into Meta. $1,900 back 💸
+
+I posted this math two weeks back and it was my most-read post of the month.
+
+The carousel version goes page by page, with the checkout math on its own slide.
+
+Short version: the ads did their one job. They got a cold stranger to click. Then a product page asked that stranger for $80, four seconds into meeting the brand.
+
+And $80 was NEVER $80. Shopify&#x27;s cut takes it to $77.38 before product cost, before ad spend.
+
+The $77.38 slide is the one to run on your own numbers 👇
+
+What does your landing page do in the first 4 seconds? Look at it as a stranger and tell me.</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">carousel</span>
+   <span class="chip" style="font-size:12px">Hand-picked</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:11.5px;font-weight:800;color:var(--faint)">7 Aug</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">The honest version of how we scaled a headwear brand</span>
+    <span class="chip" style="flex:none">scheduled</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Somewhere on your last agency invoice there&#x27;s a line that says &quot;management fee.&quot; Usually 10 to 15% of whatever you spent on ads that month.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593221269-9-img_9318.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Somewhere on your last agency invoice there&#x27;s a line that says &quot;management fee.&quot; Usually 10 to 15% of whatever you spent on ads that month.
+
+Spend $10k, they bill on $10k. Spend $20k, they bill more.
+
+Your actual profit doesn&#x27;t show up anywhere on that page.
+
+So the invoice only pays for one thing: more spend. The account can bleed margin all month and that fee still clears.
+
+That&#x27;s the standard model, and I billed that way for years too.
+
+Then we flipped it at RISE DTC.
+
+For brands we believe we can grow, we don&#x27;t charge a base fee up front. We take roughly 20% of the net new growth we create, after ad spend, discounts and returns come out. No growth, we make close to nothing. The risk sits</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   </div>
+   </div></details>
+  </div>
+
+ <div style="margin-top:26px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--ink)">
+  <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);flex:1 1 auto">In buffer</div>
+  <span class="num" data-metric style="display:inline;font-size:19px">6</span>
+  <span style="font-size:12.5px;font-weight:600;color:var(--faint)">written, no date yet</span>
+ </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line);border-top:1px solid var(--line);margin-top:8px">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:15px;font-weight:800;color:var(--line)">&mdash;</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">Your agency invoice is the only line item in your P&amp;L that never changes with results</span>
+    <span class="chip" style="flex:none">in buffer</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Pull up last month&#x27;s P&amp;L and run your finger down the cost side.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593214885-6-img_6782.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Pull up last month&#x27;s P&amp;L and run your finger down the cost side.
+
+Rent moved. Ad spend moved. COGS moved. Payroll moved the second things got tight.
+
+Every line on that sheet breathes with the business except one, and that one is the agency retainer sitting at the exact same number whether you just posted the best month you&#x27;ve ever run or you lost money on every single order that shipped.
+
+Think about how strange that is.
+
+The one partner you brought in specifically to grow your bottom line is the only cost you carry that has nothing to do with your bottom line.
+
+And in fairness, that&#x27;s how almost every good agency in this space has run for 25+ years. A base fee plus a percentage of whatever</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">authority</span>
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">Picked by Ivan</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:15px;font-weight:800;color:var(--line)">&mdash;</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">The best thing we ever did was get a whole lot pickier</span>
+    <span class="chip" style="flex:none">in buffer</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">18 years in the agency space.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593213054-4-img_4373.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">For most of my career, I said yes to every kind of client.
+
+Mostly B2B. SaaS, lead gen, services, inbound, paid media. If a business wanted growth, we took it.
+
+I thought saying yes to everything was the smart play. More clients, more revenue, more logos on the site.
+
+(I thought that was good.)
+
+What it actually got us: decent at a lot of things, great at almost nothing.
+
+A couple of years ago I made a call that scared me.
+
+We cut most of what we did.
+
+Every B2B service line we&#x27;d spent years building. Gone. On purpose.
+
+We kept ONE thing:
+
+→ Growing DTC brands, profitably.
+
+That&#x27;s the whole business now.
+
+And no, I didn&#x27;t blow up the team to get there. The whole team stayed. We just pointed </div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">authority</span>
+   <span class="chip" style="font-size:12px">text post</span>
+   <span class="chip" style="font-size:12px">From your own posts</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:15px;font-weight:800;color:var(--line)">&mdash;</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">The Return Rate Rescue launch post</span>
+    <span class="chip" style="flex:none">in buffer</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">You know your ROAS down to the decimal.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593213850-5-img_4379.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">You know your ROAS down to the decimal.
+Ask about returns and it gets quiet. 🤦‍♂️
+
+Returns don&#x27;t show up on the ads dashboard, so they never get the same attention as ad spend. But they&#x27;re a real leak, every single month, whether anyone&#x27;s watching or not.
+
+We built a free tool at RISE DTC for exactly this.
+
+Put in eight numbers straight from your own Shopify data: orders, AOV, return rate, category, top return reason, exchange share, shipping, handling cost.
+
+It sizes your actual annual dollar leak, tells you which tier you&#x27;re in, and hands back a 3-move rescue plan ranked by dollar recovery. Every number traces back to your own math. No industry averages standing in for your business.
+
+→ Fr</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">text post</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:15px;font-weight:800;color:var(--line)">&mdash;</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">Carousel: a coffee brand case study</span>
+    <span class="chip" style="flex:none">in buffer</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Our client was moving serious coffee volume through a big-box retailer.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/ig-slides/risedtc/casestudy-carousels/don-pablo/slide-01-cover.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Serious volume through a big-box retailer. And zero customers to show for it. 🤯
+
+A coffee brand came to us sitting in exactly that spot.
+
+Great for the top line.
+
+But every bag sold on a shelf they didn&#x27;t own, to a buyer they&#x27;d never meet again.
+
+No email list. No way back to that customer.
+
+That&#x27;s renting revenue. You move REAL product and build someone else&#x27;s asset.
+
+They wanted a .com that carried the business.
+
+So here&#x27;s what we ran 👇
+
+1️⃣ Caught the buyer already Googling their next bag.
+2️⃣ Meta retargeting to push past the subscription hesitation.
+3️⃣ Shoppable TikTok dropped straight into the scroll.
+
+132% more revenue on their own store.
+66% better conversion 💰
+
+Now every sale on th</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">case study</span>
+   <span class="chip" style="font-size:12px">carousel</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:15px;font-weight:800;color:var(--line)">&mdash;</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">ROAS vs cash conversion</span>
+    <span class="chip" style="flex:none">in buffer</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">🚨 4x ROAS on Meta, revenue climbing every month, and the owner still couldn&#x27;t make payroll.</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/client-photos/risedtc-com/1784593223846-10-3f109d9c-5e96-4def-abb4-7a77e7879f66.jpg" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">🚨 4x ROAS on Meta, revenue climbing every month, and the owner still couldn&#x27;t make payroll.
+
+This account came to us this year looking like a winner on paper.
+
+The audit found it fast.
+
+They sell to their retail accounts on 60-day terms.
+
+The ad spend? Goes out TODAY.
+
+The cash for those sales lands two months later.
+
+So the dashboard books a sale the bank account hasn&#x27;t seen yet.
+
+At $80k/month in ad spend, that&#x27;s about $160k stuck in the gap at any given moment. Spent on ads, sitting uncollected, floated on a credit line.
+
+ROAS counts the sale the second the pixel fires.
+
+It has no idea the money won&#x27;t hit the account for another 60 days.
+
+Run the math on your own store this week. The ad s</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">teardown</span>
+   <span class="chip" style="font-size:12px">text post</span>
+   </div>
+   </div></details>
+  </div>
+
+  <div style="padding:14px 14px 8px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:52px;font-size:15px;font-weight:800;color:var(--line)">&mdash;</span>
+    <span style="flex:1 1 200px;min-width:0;font-family:Sora;font-weight:600;font-size:15px;line-height:1.35">Carousel: The AI Aisle Field Guide</span>
+    <span class="chip" style="flex:none">in buffer</span>
+   </div>
+   <details class="drill" style="border-top:1px solid var(--line);margin-top:2px">
+   <summary style="padding:9px 0"><span class="more" style="color:var(--faint)">Open post</span></summary>
+   <div class="din" style="color:var(--mute);padding-top:4px">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Hook</div>
+   <div style="font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-top:5px">Ask ChatGPT what to buy in your category. Your store either shows up or it doesn&#x27;t 🤯</div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+   <img src="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/ig-slides/risedtc/tutorial-carousels/ai-aisle-field-guide/slide-01.png" loading="lazy" alt="" style="flex:none;width:180px;height:auto;border-color:var(--line)">
+   <div style="flex:1 1 260px;min-width:0">
+   <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">The copy</div>
+   <div style="font-size:13.5px;line-height:1.55;color:var(--mute);white-space:pre-line;margin-top:5px;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden">Ask ChatGPT what to buy in your category. Your store either shows up or it doesn&#x27;t 🤯
+
+I went through what OpenAI, Google and Anthropic actually publish for merchants. All three, doc by doc.
+
+Two of them run merchant programs you have to APPLY to. Waitlists, approvals, the whole thing.
+
+Anthropic&#x27;s crawler docs? Three bots. Zero merchant pages.
+
+Which means the one lever you fully control today, on all three, is your own site: robots.txt and a product page worth quoting.
+
+One number stuck with me. In a July study of ~812k ChatGPT product cards, 87.3% came from the open web crawl. The feeds everyone is fighting to join fed the other 12.7%.
+
+The carousel walks the three doors one at a time, wit</div>
+   </div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px">
+   <span class="chip" style="font-size:12px">carousel</span>
+   <span class="chip" style="font-size:12px">Hand-picked</span>
+   </div>
+   </div></details>
+  </div>
+
+ <div style="margin-top:30px;border-top:1px solid var(--line);padding-top:22px">
+  <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+   <div class="eyebrow" style="flex:1 1 auto">Calendar view &middot; 20 Jul to 9 Aug</div>
+   <div style="flex:none;display:flex;gap:8px">
+    <span class="pill" style="padding:5px 13px;font-size:12px">List</span>
+    <span class="pill p" style="padding:5px 13px;font-size:12px">Calendar</span>
+   </div>
+  </div>
+
+  <div style="max-width:620px;margin-top:14px">
+   <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;font-size:11.5px;font-weight:800;letter-spacing:.08em;color:var(--faint);text-align:center">
+    <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+   </div>
+   <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:6px;font-size:12px;font-weight:700">
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">20</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">21</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">22</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">23</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">24</div>
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">25</div>
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">26</div>
+
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">27</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">28</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">29</div>
+    <div style="border:1px solid var(--y);background:var(--y);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">30</div>
+    <div style="border:2px solid var(--ink);background:#fffdf3;border-radius:10px;height:58px;padding:6px 8px;color:var(--ink)">31<span style="display:block;width:9px;height:9px;border-radius:50%;background:var(--y);border:1px solid var(--ink);margin-top:5px"></span></div>
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">1</div>
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">2</div>
+
+    <div style="border:1px dashed var(--faint);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">3</div>
+    <div style="border:1px dashed var(--faint);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">4</div>
+    <div style="border:1px dashed var(--faint);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">5</div>
+    <div style="border:1px dashed var(--faint);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">6</div>
+    <div style="border:1px dashed var(--faint);border-radius:10px;height:58px;padding:7px 9px;color:var(--ink)">7</div>
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">8</div>
+    <div style="border:1px solid var(--line);border-radius:10px;height:58px;padding:7px 9px;color:var(--faint)">9</div>
+   </div>
+   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;align-items:center;font-size:12.5px;font-weight:700;color:var(--mute)">
+    <span style="display:flex;align-items:center;gap:7px"><span style="width:15px;height:15px;border-radius:5px;background:var(--y)"></span>out</span>
+    <span style="display:flex;align-items:center;gap:7px"><span style="width:15px;height:15px;border-radius:5px;border:2px solid var(--ink);background:#fffdf3"></span>today</span>
+    <span style="display:flex;align-items:center;gap:7px"><span style="width:15px;height:15px;border-radius:5px;border:1px dashed var(--faint)"></span>scheduled</span>
+   </div>
+  </div>
+ </div>
+
+ <div style="margin-top:30px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--ink)">
+  <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);flex:1 1 auto">Changes log</div>
+  <span class="num" data-metric style="display:inline;font-size:19px">40</span>
+  <span style="font-size:12.5px;font-weight:600;color:var(--faint)">changes on this board</span>
+ </div>
+ <div style="margin-top:12px;font-size:13px;font-weight:700;color:var(--mute)">Who touched a post, when, and what moved.</div>
+
+  <div style="padding:16px 14px 12px;background:#fffdf3;border-left:3px solid var(--y);border-radius:0 14px 14px 0;margin-top:10px">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--ink);white-space:nowrap">31 Jul 04:45</span>
+    <span class="chip y" style="flex:none">Mattan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Copy edited</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Carousel: ChatGPT Shopping Checklist</span>
+   </div>
+   <details class="drill" style="border-top:0;margin-top:6px">
+    <summary style="padding:6px 0"><span class="more">See the edit</span></summary>
+    <div class="din" style="padding-top:2px">
+     <div class="diff">
+      <div class="b4"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Before</b><span style="white-space:pre-line">Open ChatGPT and ask it what to buy in your category 🤯
+
+If your store doesn&#x27;t show up, this is why.
+
+One July study watched 221 real shopping runs inside it. 92.8% ended without a single visit to any website.
+
+So I pulled OpenAI&#x27;s merchant docs and turned them&hellip;</span></div>
+      <div class="aft"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">After</b><span style="white-space:pre-line">Open ChatGPT and ask it what to buy in your category 🤯
+
+If your store doesn&#x27;t show up, this is why.
+
+I ran a study here in July (ending today) that watched 221 real shopping AI experiences. 92.8% ended without a single visit to any website. INSANE!
+
+I then pul&hellip;</span></div>
+     </div>
+     <div style="margin-top:9px"><span class="delta flat">+152 characters</span></div>
+    </div>
+   </details>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">30 Jul 22:56</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Copy edited</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Carousel: ChatGPT Shopping Checklist</span>
+   </div>
+   <details class="drill" style="border-top:0;margin-top:6px">
+    <summary style="padding:6px 0"><span class="more">See the edit</span></summary>
+    <div class="din" style="padding-top:2px">
+     <div class="diff">
+      <div class="b4"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Before</b><span style="white-space:pre-line">Your customers now ask ChatGPT what to buy 🤯
+
+One July study watched 221 real shopping runs inside it. 92.8% ended without a single visit to any website.
+
+So I pulled OpenAI&#x27;s merchant docs and turned them into a checklist for DTC founders.
+
+The short version:&hellip;</span></div>
+      <div class="aft"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">After</b><span style="white-space:pre-line">Open ChatGPT and ask it what to buy in your category 🤯
+
+If your store doesn&#x27;t show up, this is why.
+
+One July study watched 221 real shopping runs inside it. 92.8% ended without a single visit to any website.
+
+So I pulled OpenAI&#x27;s merchant docs and turned them&hellip;</span></div>
+     </div>
+     <div style="margin-top:9px"><span class="delta flat">+55 characters</span></div>
+    </div>
+   </details>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">30 Jul 21:58</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Copy edited</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Carousel: ChatGPT Shopping Checklist</span>
+   </div>
+   <details class="drill" style="border-top:0;margin-top:6px">
+    <summary style="padding:6px 0"><span class="more">See the edit</span></summary>
+    <div class="din" style="padding-top:2px">
+     <div class="diff">
+      <div class="b4"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Before</b><span style="white-space:pre-line">Your customers now ask ChatGPT what to buy 🤯
+
+One July study watched 221 real shopping runs inside it. 92.8% ended without a single visit to any website.
+
+So I pulled OpenAI&#x27;s merchant docs and turned them into a checklist for DTC founders.
+
+The short version:&hellip;</span></div>
+      <div class="aft"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">After</b><span style="white-space:pre-line">Your customers now ask ChatGPT what to buy 🤯
+
+One July study watched 221 real shopping runs inside it. 92.8% ended without a single visit to any website.
+
+So I pulled OpenAI&#x27;s merchant docs and turned them into a checklist for DTC founders.
+
+The short version:&hellip;</span></div>
+     </div>
+     <div style="margin-top:9px"><span class="delta flat">-227 characters</span></div>
+    </div>
+   </details>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">30 Jul 21:53</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Rescheduled</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Carousel: ChatGPT Shopping Checklist</span>
+   </div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums">31 Jul 13:30 &rarr; 16:30</div>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">28 Jul 21:55</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Rescheduled</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Free calculator hub launch post</span>
+   </div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums">29 Jul 14:00 &rarr; 15:00</div>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">28 Jul 14:46</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Rescheduled</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Carousel: an apparel brand case study</span>
+   </div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums">28 Jul 15:50 &rarr; 17:50</div>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">28 Jul 13:16</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Rescheduled</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Carousel: an apparel brand case study</span>
+   </div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums">28 Jul 13:50 &rarr; 15:50</div>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">28 Jul 00:50</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Image changed</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">The Profit Gap: 50% growth, $6,000 kept</span>
+   </div>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">27 Jul 20:10</span>
+    <span class="chip" style="flex:none">RISE desk</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Copy edited</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Tearing Down a Top DTC Brand&#x27;s Checkout Funnel</span>
+   </div>
+   <details class="drill" style="border-top:0;margin-top:6px">
+    <summary style="padding:6px 0"><span class="more">See the edit</span></summary>
+    <div class="din" style="padding-top:2px">
+     <div class="diff">
+      <div class="b4"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Before</b><span style="white-space:pre-line">$6k into Meta last month. $1,900 came back.
+
+Then the founder asked me what was wrong with the ads 🤯
+
+Nothing. The ads did their one job. They got a cold stranger to click.
+
+Then that stranger hit a product page.
+
+A product page is built to close someone who a&hellip;</span></div>
+      <div class="aft"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">After</b><span style="white-space:pre-line">$6k into Meta last month. $1,900 came back.
+
+Then the client asked me what was wrong with the ads 🤯
+
+Nothing. The ads did their one job. They got a cold stranger to click.
+
+Then that stranger hit a product page.
+
+A product page is built to close someone who al&hellip;</span></div>
+     </div>
+     <div style="margin-top:9px"><span class="delta flat">-77 characters</span></div>
+    </div>
+   </details>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">27 Jul 20:03</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Rescheduled</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Tearing Down a Top DTC Brand&#x27;s Checkout Funnel</span>
+   </div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums">27 Jul 22:05 &rarr; 20:30</div>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">27 Jul 20:03</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Copy edited</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Tearing Down a Top DTC Brand&#x27;s Checkout Funnel</span>
+   </div>
+   <details class="drill" style="border-top:0;margin-top:6px">
+    <summary style="padding:6px 0"><span class="more">See the edit</span></summary>
+    <div class="din" style="padding-top:2px">
+     <div class="diff">
+      <div class="b4"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Before</b><span style="white-space:pre-line">$6k into Meta last month. $1,900 came back.
+
+Then the founder asked me what was wrong with the ads 🤯
+
+Nothing. The ads did their one job. They got a cold stranger to click.
+
+Then that stranger hit a product page.
+
+A product page is built to close someone who a&hellip;</span></div>
+      <div class="aft"><b style="display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">After</b><span style="white-space:pre-line">$6k into Meta last month. $1,900 came back.
+
+Then the founder asked me what was wrong with the ads 🤯
+
+Nothing. The ads did their one job. They got a cold stranger to click.
+
+Then that stranger hit a product page.
+
+A product page is built to close someone who a&hellip;</span></div>
+     </div>
+     <div style="margin-top:9px"><span class="delta flat">-56 characters</span></div>
+    </div>
+   </details>
+  </div>
+
+  <div style="padding:14px 14px 10px;border-bottom:1px solid var(--line)">
+   <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+    <span style="flex:none;width:88px;font-size:11.5px;font-weight:800;color:var(--faint);white-space:nowrap">27 Jul 19:21</span>
+    <span class="chip" style="flex:none">Ivan</span>
+    <span style="flex:none;font-size:13px;font-weight:800;color:var(--ink)">Rescheduled</span>
+    <span style="flex:1 1 190px;min-width:0;font-size:14px;font-weight:600;color:var(--mute);line-height:1.35">Tearing Down a Top DTC Brand&#x27;s Checkout Funnel</span>
+   </div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums">27 Jul 20:05 &rarr; 22:05</div>
+  </div>
+
+ <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:14px">
+  <span class="chip">9 copy edits</span>
+  <span class="chip">13 reschedules</span>
+  <span class="chip">12 most recent shown</span>
+ </div>
+
+ <div style="display:flex;gap:clamp(20px,4vw,44px);flex-wrap:wrap;border-top:1px solid var(--line);margin-top:26px;padding-top:16px">
+  <div class="stat"><b style="font-size:22px">20</b><i>written</i></div>
+  <div class="stat"><b style="font-size:22px">8</b><i>out</i></div>
+  <div class="stat"><b style="font-size:22px">6</b><i>scheduled</i></div>
+  <div class="stat"><b style="font-size:22px">6</b><i>in buffer</i></div>
+  <div class="stat"><b style="font-size:22px">2,579</b><i>reads all time</i></div>
+  <div class="stat"><b style="font-size:22px">14</b><i>ideas banked, ready to write</i></div>
+ </div>
+
+</section>
+<section class="tab" id="tab-lm">
+ <div class="eyebrow">Lead magnets</div>
+ <h2>Five tools live on your site. <b>Two more drawn up.</b></h2>
+
+ <div class="card dark" style="margin-top:18px;padding:30px 28px 28px">
+  <div style="display:flex;align-items:flex-end;gap:18px">
+   <div style="flex:0 0 auto">
+    <div class="num" data-metric style="font-size:clamp(34px,9.4vw,54px);color:var(--y)">5</div>
+    <div style="font-size:12.5px;font-weight:700;color:#c9c9c2;margin-top:6px;line-height:1.35">live right now</div>
+   </div>
+   <div style="flex:1 1 0;min-width:0;display:flex;align-items:center;gap:5px;margin-bottom:16px">
+    <span style="flex:1;border-top:1px dashed rgba(255,255,255,.45)"></span>
+    <span style="width:0;height:0;border-top:9px solid var(--y);border-left:6px solid transparent;border-right:6px solid transparent"></span>
+   </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:22px">
+
+   <div style="flex:1 1 260px;display:flex;flex-direction:column;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:15px 15px 8px">
+    <div style="border-radius:14px;overflow:hidden;background:#f2f2f0;aspect-ratio:1.88/1;flex:none">
+     <img src="https://resources.risedtc.com/rise-dtc-true-profit-x-ray/assets/cover.jpg" alt="Cover: what one order really keeps" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top">
+    </div>
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;color:#fff;margin-top:12px;line-height:1.3">True Profit Per Order X-Ray</div>
+    <div style="font-size:12.5px;color:#c9c9c2;margin-top:5px;line-height:1.4">Seven numbers in, a written diagnosis of where profit leaks.</div>
+    <div style="margin-top:11px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <span class="chip y" style="font-size:11.5px;padding:2px 9px">Live</span>
+     <span style="font-size:12px;color:#b6b6ae;font-weight:600">Opt-ins not tracked yet</span>
+    </div>
+    <details class="drill" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.16)">
+     <summary><span class="more" style="color:#b0b0a8">Details</span></summary>
+     <div class="din" style="color:#c9c9c2;padding:8px 0 10px">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;line-height:1.45">
+       <span style="color:#96968f;font-weight:700">Format</span><span>Calculator</span>
+       <span style="color:#96968f;font-weight:700">Inside</span><span>Seven numbers from your store in, a written diagnosis of where profit leaks per order out.</span>
+       <span style="color:#96968f;font-weight:700">Lives at</span><span style="word-break:break-word">resources.risedtc.com/rise-dtc-true-profit-x-ray</span>
+      </div>
+     </div>
+    </details>
+   </div>
+
+   <div style="flex:1 1 260px;display:flex;flex-direction:column;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:15px 15px 8px">
+    <div style="border-radius:14px;overflow:hidden;background:#f2f2f0;aspect-ratio:1.88/1;flex:none">
+     <img src="https://resources.risedtc.com/rise-dtc-ai-kit/assets/cover.jpg" alt="Cover: stop losing profit to returns" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top">
+    </div>
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;color:#fff;margin-top:12px;line-height:1.3">RISE DTC AI Kit</div>
+    <div style="font-size:12.5px;color:#c9c9c2;margin-top:5px;line-height:1.4">Five skills a founder runs, from returns rescue to Monday triage.</div>
+    <div style="margin-top:11px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <span class="chip y" style="font-size:11.5px;padding:2px 9px">Live</span>
+     <span style="font-size:12px;color:#b6b6ae;font-weight:600">Opt-ins not tracked yet</span>
+    </div>
+    <details class="drill" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.16)">
+     <summary><span class="more" style="color:#b0b0a8">Details</span></summary>
+     <div class="din" style="color:#c9c9c2;padding:8px 0 10px">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;line-height:1.45">
+       <span style="color:#96968f;font-weight:700">Format</span><span>Skill kit</span>
+       <span style="color:#96968f;font-weight:700">Inside</span><span>Five AI skills a DTC founder installs and runs, from returns rescue to Monday triage.</span>
+       <span style="color:#96968f;font-weight:700">Lives at</span><span style="word-break:break-word">resources.risedtc.com/rise-dtc-ai-kit</span>
+      </div>
+     </div>
+    </details>
+   </div>
+
+   <div style="flex:1 1 260px;display:flex;flex-direction:column;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:15px 15px 8px">
+    <div style="border-radius:14px;overflow:hidden;background:#f2f2f0;aspect-ratio:1.88/1;flex:none">
+     <img src="https://resources.risedtc.com/rise-dtc-ad-account-report-card/assets/cover.jpg" alt="Cover: your Meta ads, graded A to F" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top">
+    </div>
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;color:#fff;margin-top:12px;line-height:1.3">Ad Account Report Card</div>
+    <div style="font-size:12.5px;color:#c9c9c2;margin-top:5px;line-height:1.4">A letter grade on every line of the ad account.</div>
+    <div style="margin-top:11px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <span class="chip y" style="font-size:11.5px;padding:2px 9px">Live</span>
+     <span style="font-size:12px;color:#b6b6ae;font-weight:600">Opt-ins not tracked yet</span>
+    </div>
+    <details class="drill" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.16)">
+     <summary><span class="more" style="color:#b0b0a8">Details</span></summary>
+     <div class="din" style="color:#c9c9c2;padding:8px 0 10px">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;line-height:1.45">
+       <span style="color:#96968f;font-weight:700">Format</span><span>Skill kit</span>
+       <span style="color:#96968f;font-weight:700">Inside</span><span>A letter grade on every line of your Meta account, graded on your own numbers.</span>
+       <span style="color:#96968f;font-weight:700">Lives at</span><span style="word-break:break-word">resources.risedtc.com/rise-dtc-ad-account-report-card</span>
+      </div>
+     </div>
+    </details>
+   </div>
+
+   <div style="flex:1 1 260px;display:flex;flex-direction:column;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:15px 15px 8px">
+    <div style="border-radius:14px;overflow:hidden;background:#111;aspect-ratio:3.08/1;flex:none">
+     <img src="https://resources.risedtc.com/tools/assets/og-tools.png" alt="Cover: free DTC calculators, returns adjusted" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top">
+    </div>
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;color:#fff;margin-top:12px;line-height:1.3">34 Free DTC Tools</div>
+    <div style="font-size:12.5px;color:#c9c9c2;margin-top:5px;line-height:1.4">25 calculators plus 9 Claude packs, every number shows its math.</div>
+    <div style="margin-top:11px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <span class="chip y" style="font-size:11.5px;padding:2px 9px">Live</span>
+     <span style="font-size:12px;color:#b6b6ae;font-weight:600">Opt-ins not tracked yet</span>
+    </div>
+    <details class="drill" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.16)">
+     <summary><span class="more" style="color:#b0b0a8">Details</span></summary>
+     <div class="din" style="color:#c9c9c2;padding:8px 0 10px">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;line-height:1.45">
+       <span style="color:#96968f;font-weight:700">Format</span><span>Tools hub</span>
+       <span style="color:#96968f;font-weight:700">Inside</span><span>Twenty-five browser calculators for unit economics, paid ads and email, plus nine packs to run in Claude.</span>
+       <span style="color:#96968f;font-weight:700">Source</span><span>The live page description.</span>
+       <span style="color:#96968f;font-weight:700">Lives at</span><span style="word-break:break-word">resources.risedtc.com/tools/</span>
+      </div>
+     </div>
+    </details>
+   </div>
+
+   <div style="flex:1 1 260px;display:flex;flex-direction:column;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:15px 15px 8px">
+    <div style="border-radius:14px;overflow:hidden;background:#111;aspect-ratio:3.08/1;flex:none">
+     <img src="assets/chatgpt-cover.png" alt="Cover: how a DTC store gets picked inside ChatGPT" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 37.5%">
+    </div>
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;color:#fff;margin-top:12px;line-height:1.3">The ChatGPT Shopping Checklist</div>
+    <div style="font-size:12.5px;color:#c9c9c2;margin-top:5px;line-height:1.4">What OpenAI&rsquo;s merchant docs actually require, as a checklist.</div>
+    <div style="margin-top:11px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <span class="chip y" style="font-size:11.5px;padding:2px 9px">Live</span>
+     <span style="font-size:12px;color:#b6b6ae;font-weight:600">Opt-ins not tracked yet</span>
+    </div>
+    <details class="drill" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.16)">
+     <summary><span class="more" style="color:#b0b0a8">Details</span></summary>
+     <div class="din" style="color:#c9c9c2;padding:8px 0 10px">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;line-height:1.45">
+       <span style="color:#96968f;font-weight:700">Format</span><span>Guide</span>
+       <span style="color:#96968f;font-weight:700">Inside</span><span>Built from OpenAI&rsquo;s merchant docs: robots.txt must allow OAI-SearchBot, Shopify Agentic channel check, exact titles and live prices, the merchant feed application.</span>
+       <span style="color:#96968f;font-weight:700">Carousel</span><span>Launch carousel ships today, 31 Jul.</span>
+       <span style="color:#96968f;font-weight:700">Lives at</span><span style="word-break:break-word">resources.risedtc.com/chatgpt/</span>
+      </div>
+     </div>
+    </details>
+   </div>
+
+  </div>
+ </div>
+
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px">
+
+  <div style="border:1px dashed var(--line);border-radius:20px;padding:13px 13px 15px;background:var(--pap)">
+   <div style="background:var(--soft);border-radius:14px;padding:10px 8px;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 168 96" width="100%" height="64" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ranked bars against a peer line">
+     <g fill="none" stroke="#111" stroke-width="3"><rect x="14" y="18" width="92" height="16" rx="5"/><rect x="14" y="64" width="66" height="16" rx="5"/></g>
+     <rect x="14" y="41" width="120" height="16" rx="5" fill="#ffc71d" stroke="#111" stroke-width="3"/>
+     <path d="M104 8 V90" stroke="#111" stroke-width="3" stroke-dasharray="5 5"/>
+    </svg>
+   </div>
+   <div style="font-family:Sora;font-weight:600;font-size:15.5px;margin-top:12px;line-height:1.3">The Apparel Growth Benchmark</div>
+   <div style="font-size:12.5px;color:var(--mute);margin-top:5px;line-height:1.4">Six numbers, read against apparel peers.</div>
+   <div style="margin-top:11px"><span class="chip">Drawn up</span></div>
+  </div>
+
+  <div style="border:1px dashed var(--line);border-radius:20px;padding:13px 13px 15px;background:var(--pap)">
+   <div style="background:var(--soft);border-radius:14px;padding:10px 8px;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 168 96" width="100%" height="64" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A decaying curve crossing a threshold">
+     <path d="M14 60 H154" stroke="#111" stroke-width="2" stroke-dasharray="5 4" opacity=".55"/>
+     <path d="M16 20 C52 24, 62 44, 86 52 S132 74, 154 80" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+     <circle cx="101" cy="60" r="8" fill="#ffc71d" stroke="#111" stroke-width="3"/>
+    </svg>
+   </div>
+   <div style="font-family:Sora;font-weight:600;font-size:15.5px;margin-top:12px;line-height:1.3">Creative Fatigue X-Ray</div>
+   <div style="font-size:12.5px;color:var(--mute);margin-top:5px;line-height:1.4">Reads creative decay before the dashboard does.</div>
+   <div style="margin-top:11px"><span class="chip">Drawn up</span></div>
+  </div>
+
+ </div>
+
+ <div class="card" style="margin-top:20px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+   <h3>RISE Weekly</h3>
+   <span class="chip">first issue not sent yet</span>
+  </div>
+  <div style="margin-top:6px;font-size:12.5px;font-weight:600;color:var(--faint)">Sends from itsmattan@risedtc.com, weekly.</div>
+  <div data-viz style="position:relative;margin-top:16px">
+   <div style="position:absolute;left:8px;top:12px;bottom:26px;border-left:2px dashed var(--line)"></div>
+   <div style="position:relative;display:grid;grid-template-columns:32px 1fr;align-items:start;padding-bottom:16px">
+    <div style="width:18px;height:18px;border-radius:50%;background:var(--y);border:2px solid var(--ink);margin-top:2px"></div>
+    <div><div style="font-size:14.5px;font-weight:700;line-height:1.35">Assessment completed</div><div style="font-size:12.5px;color:var(--faint);margin-top:2px;line-height:1.4">Email captured and scored.</div></div>
+   </div>
+   <div style="position:relative;display:grid;grid-template-columns:32px 1fr;align-items:start;padding-bottom:16px">
+    <div style="width:18px;height:18px;border-radius:50%;background:var(--y);border:2px solid var(--ink);margin-top:2px"></div>
+    <div><div style="font-size:14.5px;font-weight:700;line-height:1.35">Welcome email, same hour</div><div style="font-size:12.5px;color:var(--faint);margin-top:2px;line-height:1.4">Score breakdown and one fix.</div></div>
+   </div>
+   <div style="position:relative;display:grid;grid-template-columns:32px 1fr;align-items:start;padding-bottom:16px">
+    <div style="width:18px;height:18px;border-radius:50%;background:var(--y);border:2px solid var(--ink);margin-top:2px"></div>
+    <div><div style="font-size:14.5px;font-weight:700;line-height:1.35">Weekly memo</div><div style="font-size:12.5px;color:var(--faint);margin-top:2px;line-height:1.4">One idea a week.</div></div>
+   </div>
+   <div style="position:relative;display:grid;grid-template-columns:32px 1fr;align-items:start">
+    <div style="width:0;height:0;border-left:14px solid var(--ink);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-top:2px;margin-left:2px"></div>
+    <div><div style="font-size:14.5px;font-weight:700;line-height:1.35">Call ask</div><div style="font-size:12.5px;color:var(--faint);margin-top:2px;line-height:1.4">After three opens, a calendar link.</div></div>
+   </div>
+  </div>
+ </div>
+
+ <div style="display:flex;gap:clamp(20px,4vw,44px);flex-wrap:wrap;border-top:1px solid var(--line);margin-top:22px;padding-top:16px">
+  <div class="stat"><b style="font-size:22px">5</b><i>tools live</i></div>
+  <div class="stat"><b style="font-size:22px">2</b><i>drawn up next</i></div>
+  <div class="stat"><b style="font-size:22px">&mdash;</b><i>opt-ins, not tracked yet</i></div>
+ </div>
+</section>
+<section class="tab" id="tab-outreach">
+ <div class="eyebrow">Outreach</div>
+ <h2>153 reached. <b>Nine wrote back.</b></h2>
+
+ <div class="card dark" style="margin-top:18px;padding:26px 26px 22px">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#96968f">
+   <div>The funnel, as rates</div>
+   <div style="letter-spacing:.04em">as of 31 Jul, 02:05</div>
+  </div>
+
+  <div data-viz style="margin-top:18px">
+
+   <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+    <div class="num" data-metric style="font-size:clamp(30px,8.4vw,44px);color:#fff">153</div>
+    <div style="font-size:13.5px;font-weight:700;color:#c9c9c2">Invites and first messages</div>
+   </div>
+   <div style="margin-top:9px;height:14px;border-radius:999px;background:rgba(255,255,255,.09)">
+    <div style="height:100%;width:100%;border-radius:999px;background:rgba(255,255,255,.34)"></div>
+   </div>
+
+   <div style="height:20px;margin-left:11px;border-left:1px dashed rgba(255,255,255,.4)"></div>
+   <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+    <div class="num" data-metric style="font-size:clamp(30px,8.4vw,44px);color:#fff">28</div>
+    <div style="font-size:13.5px;font-weight:700;color:#c9c9c2">Accepted</div>
+    <span class="delta flat">&rarr; 18% of 153</span>
+   </div>
+   <div style="margin-top:9px;height:14px;border-radius:999px;background:rgba(255,255,255,.09)">
+    <div style="height:100%;width:18.3%;border-radius:999px;background:rgba(255,255,255,.34)"></div>
+   </div>
+
+   <div style="height:20px;margin-left:11px;border-left:1px dashed rgba(255,255,255,.4)"></div>
+   <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+    <div class="num" data-metric style="font-size:clamp(30px,8.4vw,44px);color:var(--y)">9</div>
+    <div style="font-size:13.5px;font-weight:700;color:#fff">Wrote back</div>
+    <span class="delta flat">&rarr; 32% of accepts</span>
+   </div>
+   <div style="margin-top:9px;height:14px;border-radius:999px;background:rgba(255,255,255,.09)">
+    <div style="height:100%;width:5.9%;min-width:14px;border-radius:999px;background:var(--y)"></div>
+   </div>
+
+   <div style="height:20px;margin-left:11px;border-left:1px dashed rgba(255,255,255,.4)"></div>
+   <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+    <div class="num" style="font-size:clamp(30px,8.4vw,44px);color:#7f7f78">&mdash;</div>
+    <div style="font-size:13.5px;font-weight:700;color:#96968f">Calls booked</div>
+    <span style="font-size:13.5px;font-weight:700;color:#96968f">not tracked yet</span>
+   </div>
+   <div style="margin-top:9px;height:14px;border-radius:999px;border:1px dashed rgba(255,255,255,.22)"></div>
+
+  </div>
+ </div>
+
+ <div class="eyebrow" style="margin-top:28px">The bar</div>
+ <div class="card" data-viz style="margin-top:12px;padding:22px 26px 6px">
+  <div style="font-family:Sora;font-weight:600;font-size:19px;line-height:1.3">Who gets a message from your name</div>
+  <div style="font-size:13.5px;font-weight:600;color:var(--faint);margin-top:6px">Six gates. Miss one and the machine never writes.</div>
+
+  <div style="margin-top:15px">
+
+   <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)">
+    <span style="flex:none;width:26px;height:26px;border-radius:9px;background:var(--y);display:flex;align-items:center;justify-content:center">
+     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.4 7.4 5.6 10.6 11.6 3.8" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span style="flex:none;font-family:Sora;font-weight:700;font-size:12.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums">01</span>
+    <span style="font-size:15px;font-weight:600;min-width:0">Founder, co-founder or CEO</span>
+   </div>
+
+   <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)">
+    <span style="flex:none;width:26px;height:26px;border-radius:9px;background:var(--y);display:flex;align-items:center;justify-content:center">
+     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.4 7.4 5.6 10.6 11.6 3.8" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span style="flex:none;font-family:Sora;font-weight:700;font-size:12.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums">02</span>
+    <span style="font-size:15px;font-weight:600;min-width:0">Shopify DTC brand, e-commerce only</span>
+   </div>
+
+   <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)">
+    <span style="flex:none;width:26px;height:26px;border-radius:9px;background:var(--y);display:flex;align-items:center;justify-content:center">
+     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.4 7.4 5.6 10.6 11.6 3.8" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span style="flex:none;font-family:Sora;font-weight:700;font-size:12.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums">03</span>
+    <span style="font-size:15px;font-weight:600;min-width:0">Food, apparel, skincare and accessories lead the mix</span>
+   </div>
+
+   <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)">
+    <span style="flex:none;width:26px;height:26px;border-radius:9px;background:var(--y);display:flex;align-items:center;justify-content:center">
+     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.4 7.4 5.6 10.6 11.6 3.8" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span style="flex:none;font-family:Sora;font-weight:700;font-size:12.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums">04</span>
+    <span style="font-size:15px;font-weight:600;min-width:0">Actively running Meta ads, not yet locked into a big agency</span>
+   </div>
+
+   <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)">
+    <span style="flex:none;width:26px;height:26px;border-radius:9px;background:var(--y);display:flex;align-items:center;justify-content:center">
+     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.4 7.4 5.6 10.6 11.6 3.8" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span style="flex:none;font-family:Sora;font-weight:700;font-size:12.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums">05</span>
+    <span style="font-size:15px;font-weight:600;min-width:0">Active on LinkedIn in the last month</span>
+   </div>
+
+   <div style="display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)">
+    <span style="flex:none;width:26px;height:26px;border-radius:9px;background:var(--y);display:flex;align-items:center;justify-content:center">
+     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.4 7.4 5.6 10.6 11.6 3.8" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span style="flex:none;font-family:Sora;font-weight:700;font-size:12.5px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums">06</span>
+    <span style="font-size:15px;font-weight:600;min-width:0">Established store with real customer reviews</span>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="eyebrow" style="margin-top:28px">Happening now</div>
+ <div class="card" style="margin-top:12px;padding:4px 26px">
+
+  <div class="row" style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+   <div style="flex:1 1 230px;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:16px">Warm</div>
+    <div style="font-size:14px;color:var(--ink2);margin-top:3px">People who engage your posts get a personal note from your account.</div>
+   </div>
+   <span class="chip">connect + 2 DMs</span>
+   <span class="chip y">Weekdays</span>
+   <div style="text-align:right;margin-left:auto">
+    <span class="num" style="display:inline-block;font-size:22px;line-height:1;color:var(--faint)">&mdash;</span>
+    <div style="font-size:12px;font-weight:700;color:var(--faint);margin-top:4px">lane count: not tracked yet</div>
+   </div>
+  </div>
+
+  <div class="row" style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+   <div style="flex:1 1 230px;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:16px">Around your clients</div>
+    <div style="font-size:14px;color:var(--ink2);margin-top:3px">The people engaging your two clients&rsquo; posts.</div>
+   </div>
+   <span class="chip">connect + 2 DMs</span>
+   <div style="text-align:right;margin-left:auto">
+    <div style="display:flex;align-items:baseline;gap:7px;justify-content:flex-end;flex-wrap:wrap">
+     <span class="num" data-metric style="display:inline;font-size:20px;color:var(--mute)">444</span>
+     <span style="font-size:12.5px;font-weight:700;color:var(--faint)">looked at</span>
+     <span style="color:var(--faint);font-weight:800">&rarr;</span>
+     <span class="num" data-metric style="display:inline;font-size:22px">4</span>
+     <span style="font-size:12.5px;font-weight:700;color:var(--faint)">queued</span>
+    </div>
+   </div>
+  </div>
+
+  <div class="row" style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-bottom:0">
+   <div style="flex:1 1 230px;min-width:0">
+    <div style="font-family:Sora;font-weight:600;font-size:16px">New founders</div>
+    <div style="font-size:14px;color:var(--ink2);margin-top:3px">Store-verified DTC founders, matched to your fit.</div>
+   </div>
+   <span class="chip">connect + 2 DMs</span>
+   <div style="text-align:right;margin-left:auto">
+    <span class="num" data-metric style="display:inline;font-size:22px">75</span>
+    <div style="font-size:12px;font-weight:700;color:var(--faint);margin-top:4px">waiting in the queue</div>
+   </div>
+  </div>
+
+  <details class="drill" style="margin-bottom:6px">
+   <summary style="padding:14px 0;flex-wrap:wrap">
+    <span style="font-size:14px;font-weight:600;color:var(--ink2);flex:1 1 240px;min-width:0">The current list: <b>75</b> store-verified founders + <b>4</b> from client orbits</span>
+    <span class="more" style="margin-left:auto;white-space:nowrap">open it</span>
+   </summary>
+   <div class="din" style="padding-top:0">
+
+    <div style="font-family:Sora;font-weight:600;font-size:15.5px;border-left:3px solid var(--y);padding-left:12px;margin-bottom:16px">Strike a name and it never gets a message.</div>
+
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">First 10 of the 75</div>
+
+    <div style="margin-top:6px">
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">01</span>
+      <span style="font-size:14px;font-weight:700">Cole Haith</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Founder &amp; CEO &middot; BeSomething Clothing</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; apparel</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">02</span>
+      <span style="font-size:14px;font-weight:700">Dhruv Rajpal</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">CEO &amp; Founder &middot; Waverunnrs</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; apparel</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">03</span>
+      <span style="font-size:14px;font-weight:700">Elizabeth Anderson</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">CEO &amp; Founder &middot; Kazoom Kids</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; kids apparel</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">04</span>
+      <span style="font-size:14px;font-weight:700">Jenn Harper</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Founder and CEO &middot; Cheekbone Beauty Cosmetics</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; cosmetics</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">05</span>
+      <span style="font-size:14px;font-weight:700">Leo Yang</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Co-Founder &amp; CEO &middot; Wythe</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; apparel</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">06</span>
+      <span style="font-size:14px;font-weight:700">Lisa Binderow</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Founder / CEO &middot; nicepipes apparel</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; apparel</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">07</span>
+      <span style="font-size:14px;font-weight:700">Mark Freeman</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Founder / CEO &middot; beautymark.</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; beauty</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">08</span>
+      <span style="font-size:14px;font-weight:700">Michelle Yallum</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">CEO &amp; Founder &middot; Etela Petite</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; apparel</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">09</span>
+      <span style="font-size:14px;font-weight:700">Nina Zilka</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Co-Founder and CEO &middot; Alder New York</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; skincare</span>
+     </div>
+     <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)">
+      <span style="flex:none;width:20px;font-size:12px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums">10</span>
+      <span style="font-size:14px;font-weight:700">Ramatu Fofanah</span>
+      <span style="font-size:13px;color:var(--mute);flex:1 1 190px;min-width:0">Founder, CEO &middot; Viva Emerie</span>
+      <span style="flex:none;font-size:12.5px;font-weight:700;color:var(--mute);background:var(--soft);border-radius:999px;padding:3px 10px">Shopify &#10003; &middot; fashion</span>
+     </div>
+    </div>
+
+    <div style="font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:22px">From your clients&rsquo; orbits &middot; 4, each with what the check found</div>
+
+    <div style="margin-top:6px">
+     <div style="padding:11px 0;border-top:1px solid var(--line)">
+      <div style="display:flex;gap:9px;align-items:baseline;flex-wrap:wrap">
+       <span style="font-size:14px;font-weight:700">Heather Chan</span>
+       <span style="font-size:13px;color:var(--mute)">Co-founder &middot; Moonbow</span>
+      </div>
+      <div style="font-size:13px;color:var(--mute);margin-top:4px">A client&rsquo;s orbit: the one clean brand-cofounder in Brook&rsquo;s engager pool.</div>
+      <div style="font-size:12.5px;font-weight:600;color:var(--mute);border-left:2px solid var(--y);padding-left:10px;margin-top:7px">Fit low to medium. Store scale unverified, needs a site check before any touch.</div>
+     </div>
+     <div style="padding:11px 0;border-top:1px solid var(--line)">
+      <div style="display:flex;gap:9px;align-items:baseline;flex-wrap:wrap">
+       <span style="font-size:14px;font-weight:700">Sophia Yen, MD</span>
+       <span style="font-size:13px;color:var(--mute)">Co-founder, CEO &middot; Pandia Health</span>
+      </div>
+      <div style="font-size:13px;color:var(--mute);margin-top:4px">A client&rsquo;s orbit, reverse find: Brook commented on her post.</div>
+      <div style="font-size:12.5px;font-weight:600;color:var(--mute);border-left:2px solid var(--y);padding-left:10px;margin-top:7px">Outside the Shopify bar. Telehealth, not a physical-product store. In only if you stretch it.</div>
+     </div>
+     <div style="padding:11px 0;border-top:1px solid var(--line)">
+      <div style="display:flex;gap:9px;align-items:baseline;flex-wrap:wrap">
+       <span style="font-size:14px;font-weight:700">Eric Berman</span>
+       <span style="font-size:13px;color:var(--mute)">CEO / Co-founder &middot; Lil Snack</span>
+      </div>
+      <div style="font-size:13px;color:var(--mute);margin-top:4px">A headwear brand&rsquo;s orbit: live DTC store, reacted to Carson.</div>
+      <div style="font-size:12.5px;font-weight:600;color:var(--mute);border-left:2px solid var(--y);padding-left:10px;margin-top:7px">Stale engagement. Carson&rsquo;s posts are ~3 years old.</div>
+     </div>
+     <div style="padding:11px 0;border-top:1px solid var(--line)">
+      <div style="display:flex;gap:9px;align-items:baseline;flex-wrap:wrap">
+       <span style="font-size:14px;font-weight:700">Case Bakker</span>
+       <span style="font-size:13px;color:var(--mute)">Co-founder / President &middot; Pokoloko</span>
+      </div>
+      <div style="font-size:13px;color:var(--mute);margin-top:4px">A headwear brand&rsquo;s orbit: Shopify apparel, reacted to Carson.</div>
+      <div style="font-size:12.5px;font-weight:600;color:var(--mute);border-left:2px solid var(--y);padding-left:10px;margin-top:7px">Stale engagement. Carson&rsquo;s posts are ~3 years old.</div>
+     </div>
+    </div>
+
+   </div>
+  </details>
+
+ </div>
+
+ <div style="border-top:1px solid var(--line);margin-top:22px;padding-top:14px;font-size:12.5px;font-weight:600;color:var(--faint)">Totals to date, not a weekly count. Calls booked are not tracked yet.</div>
+</section>
+<section class="tab" id="tab-leads">
+ <div class="eyebrow">Leads</div>
+ <h2>Nine replies in play. <b>The pipeline is drawn and waiting.</b></h2>
+
+ <div class="card dark" style="margin-top:18px;padding:28px 26px 24px">
+  <div data-viz style="position:relative;height:36px">
+   <div style="position:absolute;left:16.67%;right:16.67%;top:17px;border-top:2px dashed rgba(255,255,255,.38)"></div>
+   <div style="position:absolute;left:0;width:16.67%;top:17px;border-top:2px solid var(--y)"></div>
+   <div style="position:absolute;left:16.67%;top:9px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--y)"></div>
+   <div style="position:absolute;left:50%;top:9px;width:20px;height:20px;margin-left:-10px;border-radius:50%;border:2px dashed rgba(255,255,255,.5)"></div>
+   <div style="position:absolute;left:83.33%;top:9px;width:20px;height:20px;margin-left:-10px;border-radius:50%;border:2px dashed rgba(255,255,255,.5)"></div>
+   <div style="position:absolute;left:38%;top:13px;width:0;height:0;border-left:9px solid rgba(255,255,255,.45);border-top:5px solid transparent;border-bottom:5px solid transparent"></div>
+   <div style="position:absolute;left:71.5%;top:13px;width:0;height:0;border-left:9px solid rgba(255,255,255,.45);border-top:5px solid transparent;border-bottom:5px solid transparent"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;text-align:center">
+   <div>
+    <div class="num" data-metric style="font-size:clamp(34px,9.4vw,54px);color:var(--y)">9</div>
+    <div style="font-size:12.5px;font-weight:700;color:#fff;margin-top:6px;line-height:1.3">Replies in play</div>
+    <div style="font-size:11.5px;color:#96968f;margin-top:3px;line-height:1.35">as of 31 Jul, 02:05</div>
+   </div>
+   <div>
+    <div style="height:clamp(34px,9.4vw,54px);display:flex;align-items:center;justify-content:center">
+     <div style="width:100%;max-width:82px;height:clamp(27px,6.8vw,38px);border:2px dashed rgba(255,255,255,.5);border-radius:9px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.11) 0 4px,rgba(255,255,255,0) 4px 9px);display:flex;align-items:center;justify-content:center;font-family:Sora;font-weight:700;font-size:clamp(15px,3.6vw,20px);line-height:1;color:#adada5">&mdash;</div>
+    </div>
+    <div style="font-size:12.5px;font-weight:700;color:#c9c9c2;margin-top:6px;line-height:1.3">Conversations</div>
+    <div style="font-size:12.5px;font-weight:700;color:#b6b6ae;margin-top:3px;line-height:1.35">not tracked yet</div>
+   </div>
+   <div>
+    <div style="height:clamp(34px,9.4vw,54px);display:flex;align-items:center;justify-content:center">
+     <div style="width:100%;max-width:82px;height:clamp(27px,6.8vw,38px);border:2px dashed rgba(255,255,255,.5);border-radius:9px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.11) 0 4px,rgba(255,255,255,0) 4px 9px);display:flex;align-items:center;justify-content:center;font-family:Sora;font-weight:700;font-size:clamp(15px,3.6vw,20px);line-height:1;color:#adada5">&mdash;</div>
+    </div>
+    <div style="font-size:12.5px;font-weight:700;color:#c9c9c2;margin-top:6px;line-height:1.3">Calls booked</div>
+    <div style="font-size:12.5px;font-weight:700;color:#b6b6ae;margin-top:3px;line-height:1.35">not tracked yet</div>
+   </div>
+  </div>
+ </div>
+
+ <div style="margin-top:16px"><span class="chip">Replies are worked in the Outreach tab</span></div>
+
+ <div class="empty" style="margin-top:18px">
+  <b>This tab fills as leads arrive</b>
+  <div style="font-size:14.5px;color:var(--mute);line-height:1.5">Replies, opt-ins and booked calls land here as they come in.</div>
+ </div>
+
+ <div style="display:flex;gap:clamp(20px,4vw,44px);flex-wrap:wrap;border-top:1px solid var(--line);margin-top:22px;padding-top:16px">
+  <div class="stat"><b style="font-size:22px">9</b><i>replies in play</i></div>
+  <div class="stat"><b style="font-size:22px">&mdash;</b><i>calls: not tracked yet</i></div>
+ </div>
+</section>
+<section class="tab" id="tab-performance">
+ <div class="eyebrow">Performance</div>
+ <h2>Eight posts out. <b>One broke out.</b></h2>
+
+ <div class="card dark" style="margin-top:18px;padding:26px 26px 22px">
+  <div style="position:relative">
+   <div class="spark" data-viz style="height:clamp(250px,62vw,330px);gap:clamp(4px,1.2vw,14px);padding-top:0;overflow:visible">
+    <i style="min-width:0"><span style="height:11.3%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">21</em></i>
+    <i style="min-width:0"><span style="height:10.7%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">22</em></i>
+    <i style="min-width:0"><span style="height:12.2%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">23</em></i>
+    <i style="min-width:0"><span style="height:9.9%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">24</em></i>
+    <i style="min-width:0;margin-left:clamp(8px,3vw,26px)"><span style="height:82%;background:var(--y)"></span><em style="color:var(--y);font-weight:800;border-top:1px solid var(--y);padding-top:6px">27</em></i>
+    <i style="min-width:0"><span style="height:13.1%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">28</em></i>
+    <i style="min-width:0"><span style="height:8%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">29</em></i>
+    <i style="min-width:0"><span style="height:9%;background:rgba(255,255,255,.32)"></span><em style="color:#c9c9c2;border-top:1px solid rgba(255,255,255,.28);padding-top:6px">30</em></i>
+   </div>
+   <div style="position:absolute;left:0;width:47.5%;bottom:calc(32px + 11.02%);border-top:1px dashed rgba(255,255,255,.45)">
+    <div style="position:absolute;right:0;bottom:4px;font-size:12.5px;font-weight:800;color:#efefe9;white-space:nowrap">avg 182</div>
+   </div>
+   <div style="position:absolute;left:52.5%;right:0;bottom:calc(32px + 28.04%);border-top:1px dashed rgba(255,255,255,.45)">
+    <div style="position:absolute;right:0;bottom:4px;font-size:12.5px;font-weight:800;color:#efefe9;white-space:nowrap">avg 463</div>
+   </div>
+   <div style="position:absolute;left:0;top:0;width:51%">
+    <div class="num" data-metric style="font-size:clamp(34px,9.4vw,54px);color:var(--y)">1,354</div>
+    <div style="font-size:12.5px;font-weight:700;color:#c9c9c2;margin-top:6px;line-height:1.35">reads on the checkout teardown, 27 Jul <span class="chip y" style="font-size:11.5px;padding:2px 9px;margin-left:4px">best post</span></div>
+    <div style="display:flex;align-items:center;gap:5px;margin-top:10px">
+     <span style="flex:1;border-top:1px dashed rgba(255,255,255,.5)"></span>
+     <span style="width:0;height:0;border-left:8px solid var(--y);border-top:5px solid transparent;border-bottom:5px solid transparent"></span>
+    </div>
+   </div>
+  </div>
+  <div style="display:flex;margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#96968f">
+   <div style="flex:1">Week of 20 Jul</div>
+   <div style="flex:1;margin-left:clamp(8px,3vw,26px)">Week of 27 Jul, Mon&ndash;Thu</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px;font-weight:700;color:#c9c9c2">Take the teardown out</span><span class="num" data-metric style="display:inline;font-size:20px;color:#fff">182</span><span style="color:#96968f;font-weight:800">&rarr;</span><span class="num" data-metric style="display:inline;font-size:20px;color:#fff">166</span><span style="font-size:12.5px;font-weight:600;color:#c9c9c2">reads per post</span><span class="delta flat">flat</span></div>
+ </div>
+
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:22px">
+  <div style="border-left:3px solid var(--y);padding-left:14px">
+   <div class="num" style="font-size:clamp(26px,7vw,32px)">1,852</div>
+   <div style="font-size:12.5px;font-weight:700;color:var(--faint);margin-top:6px">Reads</div>
+   <div style="margin-top:8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span class="delta up">+155%</span><span style="font-size:12px;color:var(--faint);font-weight:600">from 727</span></div>
+  </div>
+  <div style="border-left:3px solid var(--y);padding-left:14px">
+   <div class="num" style="font-size:clamp(26px,7vw,32px)">463</div>
+   <div style="font-size:12.5px;font-weight:700;color:var(--faint);margin-top:6px">Reads per post</div>
+   <div style="margin-top:8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span class="delta up">+154%</span><span style="font-size:12px;color:var(--faint);font-weight:600">from 182</span></div>
+  </div>
+  <div style="border-left:3px solid var(--y);padding-left:14px">
+   <div class="num" style="font-size:clamp(26px,7vw,32px)">44</div>
+   <div style="font-size:12.5px;font-weight:700;color:var(--faint);margin-top:6px">Engagements</div>
+   <div style="margin-top:8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span class="delta up">+63%</span><span style="font-size:12px;color:var(--faint);font-weight:600">from 27</span></div>
+  </div>
+  <div style="border-left:3px solid var(--line);padding-left:14px">
+   <div class="num" style="font-size:clamp(26px,7vw,32px);color:var(--mute)">2.38%</div>
+   <div style="font-size:12.5px;font-weight:700;color:var(--faint);margin-top:6px">Engagement rate</div>
+   <div style="margin-top:8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span class="delta flat">&minus;36%</span><span style="font-size:12px;color:var(--faint);font-weight:600">from 3.71%</span></div>
+   <div style="margin-top:7px;font-size:12.5px;font-weight:700;color:var(--ink2)">wider reach, not a drop</div>
+  </div>
+ </div>
+
+ <div style="margin-top:16px"><span class="chip">2 weeks of data: direction, not a trend</span></div>
+
+ <div style="display:flex;gap:clamp(20px,4vw,44px);flex-wrap:wrap;border-top:1px solid var(--line);margin-top:22px;padding-top:16px">
+  <div class="stat"><b style="font-size:22px">8</b><i>posts published</i></div>
+  <div class="stat"><b style="font-size:22px">2,579</b><i>reads all time</i></div>
+  <div class="stat"><b style="font-size:22px">1,354</b><i>best post</i></div>
+ </div>
+</section>
+<section class="tab" id="tab-strategy">
+ <div class="eyebrow">Strategy</div>
+ <h2>Teardowns are a quarter of the mix. <b>One of them broke out.</b></h2>
+
+ <div class="card dark" style="margin-top:18px;padding:26px 26px 22px">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#96968f">
+   <div style="font-size:12.5px">Posts per pillar, July</div>
+   <div style="font-size:13px;letter-spacing:.04em;color:#c9c9c2">24 posts</div>
+  </div>
+
+  <div style="margin-top:16px">
+   <div class="num" data-metric style="font-size:clamp(34px,9.4vw,54px);color:var(--y)">1,354</div>
+   <div style="font-size:12.5px;font-weight:700;color:#c9c9c2;margin-top:6px;line-height:1.35">reads on the July teardown <span class="chip y" style="font-size:11.5px;padding:2px 9px;margin-left:2px">7.4&times; the average post</span></div>
+  </div>
+
+  <div style="position:relative;height:18px;margin-top:12px">
+   <div style="position:absolute;left:0;right:10%;top:8px;border-top:1px dashed rgba(255,255,255,.5)"></div>
+   <div style="position:absolute;right:10%;top:9px;transform:translateX(50%);width:0;height:0;border-top:9px solid var(--y);border-left:5px solid transparent;border-right:5px solid transparent"></div>
+  </div>
+
+  <div class="spark" data-viz style="height:clamp(200px,50vw,260px);gap:clamp(6px,1.4vw,18px);padding-top:0;overflow:visible">
+   <i style="min-width:0;padding:0 clamp(0px,1.9vw,28px)"><u data-metric style="font-size:20px;color:#c9c9c2;margin-bottom:7px">3</u><span style="height:42%;background:rgba(255,255,255,.3)"></span></i>
+   <i style="min-width:0;padding:0 clamp(0px,1.9vw,28px)"><u data-metric style="font-size:20px;color:#c9c9c2;margin-bottom:7px">5</u><span style="height:70%;background:rgba(255,255,255,.3)"></span></i>
+   <i style="min-width:0;padding:0 clamp(0px,1.9vw,28px)"><u data-metric style="font-size:20px;color:#c9c9c2;margin-bottom:7px">5</u><span style="height:70%;background:rgba(255,255,255,.3)"></span></i>
+   <i style="min-width:0;padding:0 clamp(0px,1.9vw,28px)"><u data-metric style="font-size:20px;color:#c9c9c2;margin-bottom:7px">5</u><span style="height:70%;background:rgba(255,255,255,.3)"></span></i>
+   <i style="min-width:0;padding:0 clamp(0px,1.9vw,28px)"><u data-metric style="font-size:20px;color:var(--y);margin-bottom:7px">6</u><span style="height:84%;background:var(--y)"></span></i>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(6px,1.4vw,18px);border-top:1px solid rgba(255,255,255,.28);padding-top:8px">
+   <div style="font-size:11.5px;font-weight:700;color:#c9c9c2;text-align:center;line-height:1.25">Authority</div>
+   <div style="font-size:11.5px;font-weight:700;color:#c9c9c2;text-align:center;line-height:1.25">Case studies</div>
+   <div style="font-size:11.5px;font-weight:700;color:#c9c9c2;text-align:center;line-height:1.25">Demand</div>
+   <div style="font-size:11.5px;font-weight:700;color:#c9c9c2;text-align:center;line-height:1.25">Personal</div>
+   <div style="font-size:11.5px;font-weight:800;color:var(--y);text-align:center;line-height:1.25">Teardown</div>
+  </div>
+
+  <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14)">
+   <div style="font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#96968f">The week it broke out &middot; reads per post</div>
+   <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-top:9px"><span style="display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap"><span class="num" data-metric style="display:inline;font-size:20px;color:#fff">182</span><span style="font-size:12.5px;font-weight:600;color:#c9c9c2">the week before</span></span><span style="color:#96968f;font-weight:800">&rarr;</span><span style="display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap"><span class="num" data-metric style="display:inline;font-size:20px;color:#fff">166</span><span style="font-size:12.5px;font-weight:600;color:#c9c9c2">that week&rsquo;s other three posts</span></span><span class="delta flat">flat</span></div>
+  </div>
+ </div>
+
+ <p class="sub">The chart counts posts. Reads are in for eight of the 24.</p>
+ <div style="margin-top:14px"><span class="chip">Two weeks of reach data: direction, not a trend</span></div>
+
+ <div class="card" style="margin-top:22px;display:flex;align-items:center;gap:clamp(18px,3vw,32px);flex-wrap:wrap">
+  <div style="display:flex;gap:7px">
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;background:var(--y)"></div><div style="font-size:11.5px;font-weight:800;color:var(--mute);margin-top:6px">M</div></div>
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;background:var(--y)"></div><div style="font-size:11.5px;font-weight:800;color:var(--mute);margin-top:6px">T</div></div>
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;background:var(--y)"></div><div style="font-size:11.5px;font-weight:800;color:var(--mute);margin-top:6px">W</div></div>
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;background:var(--y)"></div><div style="font-size:11.5px;font-weight:800;color:var(--mute);margin-top:6px">T</div></div>
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;background:var(--y)"></div><div style="font-size:11.5px;font-weight:800;color:var(--mute);margin-top:6px">F</div></div>
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;border:1px dashed var(--line)"></div><div style="font-size:11.5px;font-weight:800;color:var(--faint);margin-top:6px">S</div></div>
+   <div style="text-align:center"><div style="width:19px;height:38px;border-radius:6px;border:1px dashed var(--line)"></div><div style="font-size:11.5px;font-weight:800;color:var(--faint);margin-top:6px">S</div></div>
+  </div>
+  <div style="flex:1 1 260px;min-width:0;font-size:14.5px;font-weight:600;color:var(--ink2)">Five posts a week, one per working day: a second same-day post costs both posts reach.</div>
+ </div>
+</section>
+  </div>
+ </div>
+</div>
+<div class="mob"><nav id="mobnav"></nav></div>
+<div class="sheet" id="sheet"><div class="in"><div class="hd">More</div><div id="sheetlist"></div></div></div>
+<script>
+var TABS=[
+ {id:'week',label:'This week',grp:'Content',hero:1,badge:12,primary:1,
+  sticky:['One post ships today. 12 more sit in the queue behind it.','Open the queue →']},
+ {id:'review',label:'All content',grp:'Content',primary:1,
+  sticky:['20 posts in the system: 8 out, 6 scheduled, 6 in the buffer.','See all 20 →']},
+ {id:'lm',label:'Lead magnets',grp:'Content',
+  sticky:['Five tools live on your site. Two more drawn up.','See the shelf →']},
+ {id:'outreach',label:'Outreach',grp:'Outreach',primary:1,
+  sticky:['153 first messages out, 28 accepted, 9 wrote back.','See replies →']},
+ {id:'leads',label:'Leads',grp:'Leads',
+  sticky:['Nine replies in play.','See replies →']},
+ {id:'performance',label:'Performance',grp:'Reports',primary:1,
+  sticky:['Reach up 155% on last week: one post did it, not a trend yet.','Read the week →']},
+ {id:'strategy',label:'Strategy',grp:'Reports',
+  sticky:['24 posts this month. Teardowns are carrying the reach.','See the mix →']}];
+var GRPS=['Content','Outreach','Leads','Reports','Settings'],side=document.getElementById('sidenav');
+GRPS.forEach(function(g){var t=TABS.filter(function(x){return x.grp===g});if(!t.length)return;
+ var d=document.createElement('div');d.className='grp';d.innerHTML='<b>'+g+'</b>';
+ t.forEach(function(x){var b=document.createElement('button');b.dataset.id=x.id;if(x.hero)b.className='hero';
+  b.innerHTML='<span>'+x.label+'</span>'+(x.badge?'<span class="badge">'+x.badge+'</span>':'');
+  b.onclick=function(){go(x.id)};d.appendChild(b)});side.appendChild(d)});
+var mob=document.getElementById('mobnav'),sheet=document.getElementById('sheet'),sl=document.getElementById('sheetlist');
+TABS.filter(function(x){return x.primary}).forEach(function(x){
+ var b=document.createElement('button');b.dataset.id=x.id;
+ b.innerHTML='<span style="position:relative"><span class="ic"></span>'+(x.badge?'<span class="bdg">'+x.badge+'</span>':'')+'</span><span class="lb">'+x.label.split(' ')[0]+'</span>';
+ b.onclick=function(){go(x.id)};mob.appendChild(b)});
+var mb=document.createElement('button');mb.dataset.id='__more';
+mb.innerHTML='<span class="ic"></span><span class="lb">More</span>';
+mb.onclick=function(){sheet.classList.add('on')};mob.appendChild(mb);
+TABS.filter(function(x){return !x.primary}).forEach(function(x){
+ var b=document.createElement('button');b.textContent=x.label;
+ b.onclick=function(){sheet.classList.remove('on');go(x.id)};sl.appendChild(b)});
+sheet.onclick=function(e){if(e.target===sheet)sheet.classList.remove('on')};
+function go(id){var t=TABS.filter(function(x){return x.id===id})[0];if(!t)return;
+ document.querySelectorAll('.tab').forEach(function(s){s.classList.toggle('on',s.id==='tab-'+id)});
+ document.querySelectorAll('.side button').forEach(function(b){b.classList.toggle('on',b.dataset.id===id)});
+ document.querySelectorAll('.mob button').forEach(function(b){
+  b.classList.toggle('on',b.dataset.id===id||(b.dataset.id==='__more'&&!t.primary))});
+ document.getElementById('stickyT').textContent=t.sticky[0];
+ document.getElementById('stickyB').textContent=t.sticky[1];
+ window.scrollTo(0,0);if(history.replaceState)history.replaceState(null,'','#'+id)}
+window.go=go;go((location.hash||'#week').slice(1));
+</script>
+</body></html>
