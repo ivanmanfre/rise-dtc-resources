@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>RISE DTC &middot; The AI Aisle Field Guide, PDF</title>
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://resources.risedtc.com/guides/ai-visibility/" />
+<script>
+(function () {
+  "use strict";
+  /* PDF download shim. Unlike /aisle, this one BEACONS before it forwards, because
+     a click straight to Supabase storage is invisible to lm_events otherwise.
+
+     Contract copied from tools/assets/tools.js, deliberately, so the row this
+     writes is shaped exactly like every other lm_events row:
+       - same edge function, same anon key
+       - keepalive fetch WITH the apikey header is the primary send. sendBeacon
+         cannot set headers, so it silently 401s; it stays only as the fallback
+         when fetch itself throws.
+       - same session id, read from the same localStorage key the tools use
+     🔴 event_type is cta_click. The lm_events CHECK constraint rejects "download".
+
+     No meta refresh on this page: the forward has to happen after the beacon has
+     had its moment, so the redirect is script-driven with a 400ms ceiling. */
+
+  var BEACON_URL = 'https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon';
+  var SUPABASE_ANON_KEY = 'sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h';
+  var PDF_URL = 'https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-downloads/risedtc/carousels/The-AI-Aisle-Field-Guide-For-DTC-Brands.pdf';
+
+  function sessionId() {
+    var id = {};
+    try { id = JSON.parse(localStorage.getItem('ivan.reader') || '{}') || {}; } catch (e) {}
+    if (!id.session_id) {
+      id.session_id = 's_' + Math.random().toString(36).slice(2, 10) + '_' + Date.now().toString(36);
+      try { localStorage.setItem('ivan.reader', JSON.stringify(id)); } catch (e) {}
+    }
+    return id.session_id;
+  }
+
+  var went = false;
+  function go() {
+    if (went) return;
+    went = true;
+    location.replace(PDF_URL);
+  }
+
+  try {
+    var q = new URLSearchParams(location.search);
+    var body = {
+      event_type: 'cta_click',
+      tool_type: 'guide',
+      lm_slug: 'rise-dtc-ai-aisle-field-guide',
+      src: q.get('src') || 'direct',
+      utm: {
+        source: q.get('utm_source') || 'linkedin',
+        medium: q.get('utm_medium') || 'carousel',
+        campaign: q.get('utm_campaign') || 'ai-aisle-2026-08-12',
+        term: q.get('utm_term'),
+        content: 'pdf-download'
+      },
+      prospect_id: q.get('pid') || null,
+      referrer: document.referrer || '',
+      session_id: sessionId()
+    };
+    var json = JSON.stringify(body);
+    fetch(BEACON_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+      },
+      body: json,
+      keepalive: true
+    }).then(go, function () {
+      if (navigator.sendBeacon) {
+        try { navigator.sendBeacon(BEACON_URL, new Blob([json], { type: 'application/json' })); } catch (e) {}
+      }
+      go();
+    });
+  } catch (e) { go(); }
+
+  /* the ceiling: the reader never waits on telemetry */
+  setTimeout(go, 400);
+})();
+</script>
+</head>
+<body>
+<p>Starting your download: <a href="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-downloads/risedtc/carousels/The-AI-Aisle-Field-Guide-For-DTC-Brands.pdf">The AI Aisle Field Guide for DTC Brands (PDF)</a></p>
+</body>
+</html>

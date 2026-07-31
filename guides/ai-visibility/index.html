@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The AI Aisle Field Guide for DTC Brands | RISE DTC</title>
+<meta name="description" content="What a DTC store has to do to get read by ChatGPT, Gemini and Claude, taken from what OpenAI, Google, Anthropic and Shopify have published. Every claim carries its quote and its link. Free, no email required." />
+<link rel="canonical" href="https://resources.risedtc.com/guides/ai-visibility/" />
+<meta name="theme-color" content="#1f1f1f" />
+<meta property="og:title" content="The AI Aisle Field Guide for DTC Brands" />
+<meta property="og:description" content="Three platforms, two gated merchant programs, one file you control today. Every claim with its source link. No email required." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="RISE DTC" />
+<meta property="og:url" content="https://resources.risedtc.com/guides/ai-visibility/" />
+<meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The AI Aisle Field Guide for DTC Brands" />
+<meta name="twitter:description" content="Three platforms, two gated merchant programs, one file you control today. Every claim with its source link." />
+<meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../tools/assets/favicon-32.png" />
+<link rel="stylesheet" href="../../tools/assets/tools.css" />
+<script>window.__lm_slug = "rise-dtc-ai-aisle-field-guide";</script>
+<style>
+/* Per-page additions only. Same tokens, same type scale, no new colour.
+   The step column, the visible in-body links and the capture plates are
+   carried over byte-for-byte from guides/chatgpt-visibility so the two
+   guides read as one sheet. Everything after the DOIT block is new, and
+   exists because this page takes a pasted file instead of a domain. */
+.gstep{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+@media (min-width:900px){.gstep{grid-template-columns:210px minmax(0,1fr);gap:44px}}
+.gs-rail .gnum{font-size:clamp(54px,9vw,88px);line-height:.86;display:block;margin:0 0 12px}
+.gs-rail .t-fig{max-width:210px}
+@media (max-width:899px){.gs-rail{display:flex;align-items:center;gap:18px}.gs-rail .gnum{margin:0}.gs-rail .t-fig{flex:1 1 auto;max-width:220px}}
+.prose a,.rule-c p a,.byline a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
+.prose a:hover,.rule-c p a:hover{background:var(--gold);color:var(--ink);text-decoration:none}
+.on-ink .prose p{color:rgba(255,255,255,.78)}
+.on-ink .prose a{color:var(--gold)}
+.on-ink .gs-rail .t-fig{background-color:transparent;background-image:none;border-color:rgba(255,255,255,.18)}
+.byline{margin:0 0 22px;font-size:.86rem;color:var(--muted);line-height:1.6}
+.byline b{color:var(--ink);font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-.02em}
+.rules.four{grid-template-columns:1fr}
+@media (min-width:760px){.rules.four{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.rules.four{grid-template-columns:repeat(4,1fr)}}
+/* A screenshot is evidence, so it sits on a plate with its provenance
+   underneath, exactly the way a source quote does. Never a floating image.
+   The tall doc capture keeps its full height inside a scrolling plate, so
+   nothing is cropped away and nobody has to trust a crop. */
+.shot{margin:22px 0 0;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:#fff}
+.shot .vp{max-height:560px;overflow:auto;-webkit-overflow-scrolling:touch}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{padding:11px 14px;border-top:1px solid var(--line);font-size:.79rem;color:var(--muted);line-height:1.55}
+.shot figcaption b{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.on-ink .shot{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+.on-ink .shot figcaption{border-top-color:rgba(255,255,255,.18);color:rgba(255,255,255,.62)}
+.on-ink .shot figcaption b{color:#fff}
+/* Run-it-yourself: the same plate as a source block, but it takes input.
+   Gold left rule marks the place on the page where the reader does something
+   instead of reading. */
+.doit{margin:22px 0 0;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r-card);background:var(--paper);padding:16px 18px 18px}
+.doit .dt{display:block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 10px}
+.doit p{font-size:.87rem;color:var(--muted);line-height:1.62;margin:0 0 12px}
+.doit .row{display:flex;gap:9px;flex-wrap:wrap;align-items:stretch}
+.doit textarea{width:100%;min-height:190px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.7;resize:vertical}
+.doit textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.doit button{flex:0 0 auto;font-family:'Sora',sans-serif;font-weight:700;font-size:.87rem;padding:12px 18px;border-radius:var(--r-pill);border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.doit button:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.doit button.ghost{background:transparent;color:var(--ink)}
+.doit pre{margin:12px 0 0;padding:13px 15px;background:var(--ink);color:#fff;border-radius:12px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.75;white-space:pre}
+.doit .said{font-size:.79rem;color:var(--gold-deep);font-weight:700;min-height:1.15em;margin:10px 0 0}
+.doit .foot{font-size:.79rem;color:var(--faint);line-height:1.6;margin:13px 0 0}
+/* The verdict table. One row per agent, a state chip, and the sentence that
+   says what the state means according to the doc that defines the agent. */
+.verd{margin:16px 0 0;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:#fff}
+.verd .vrow{display:grid;grid-template-columns:1fr;gap:4px 14px;padding:13px 15px;border-bottom:1px solid var(--hair)}
+.verd .vrow:last-child{border-bottom:none}
+@media (min-width:720px){.verd .vrow{grid-template-columns:168px 96px minmax(0,1fr);align-items:start;gap:0 14px}}
+.verd .va{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.83rem;color:var(--ink);font-weight:600;word-break:break-word}
+.verd .vs{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:var(--r-pill);border:1px solid var(--line);color:var(--muted);justify-self:start;white-space:nowrap}
+.verd .vs.ok{border-color:rgba(138,109,0,.4);background:rgba(255,199,29,.18);color:#6b5500}
+.verd .vs.no{border-color:var(--ink);background:var(--ink);color:#fff}
+.verd .vm{font-size:.83rem;color:var(--muted);line-height:1.6}
+.verd .vm i{font-style:normal;color:var(--faint)}
+.verd .vhead{background:var(--band);border-bottom:1px solid var(--line);padding:10px 15px;font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.linkrow{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+</style>
+</head>
+<body>
+<a class="skip" href="#platforms">Skip to the three platforms</a>
+
+<!-- the hatch patterns every schematic shares. Once per page, never twice. -->
+<svg class="schdefs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="hx" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#1F1F1F" stroke-width="1.15" opacity=".5"/></pattern>
+<pattern id="hxw" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4.6" stroke="#FFFFFF" stroke-width="1.15" opacity=".5"/></pattern>
+</defs></svg>
+
+<!-- ============================ nav ============================ -->
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=guide&amp;utm_medium=cta&amp;utm_campaign=ai-visibility-guide" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../tools/assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <nav class="rnav-links" aria-label="RISE DTC">
+      <a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=nav&amp;utm_campaign=ai-visibility-guide" target="_blank" rel="noopener" data-cta="nav_home">Home</a>
+      <a href="#platforms">The three platforms</a>
+      <a href="#checker">Robots.txt checker</a>
+      <a href="/tools/" data-cta="nav_tools">Free tools</a>
+    </nav>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=guide&amp;utm_medium=nav&amp;utm_campaign=ai-visibility-guide" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+  </div>
+</header>
+
+<!-- ============================ ink photo masthead ============================ -->
+<section class="inkband on-ink">
+  <div class="bg bg-tsh" style="background-image:url('../../tools/assets/case-gobi-heat.jpg')"></div>
+  <div class="veil"></div>
+  <img class="sunmark" src="../../tools/assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <span class="edgemark" aria-hidden="true">RISE</span>
+  <div class="wrap hero-in">
+    <p class="eyebrow on-dark">The field guide, free and ungated</p>
+    <h1>The AI aisle: <span class="gold-word">ChatGPT</span>, Gemini and Claude.</h1>
+    <p class="lede">What a DTC store has to do to get read by all three, taken only from what OpenAI, Google, Anthropic and Shopify have published themselves. Two of the three run a merchant program you have to be let into. One file on your own server is the part nobody has to approve.</p>
+    <div class="cta-row">
+      <a class="btn-gold shelf" href="#platforms" data-cta="start_guide"><span class="cv" aria-hidden="true">&rsaquo;</span>Start with OpenAI</a>
+      <a class="btn-out" href="#checker">Check your robots.txt</a>
+    </div>
+    <div class="statrow">
+      <div class="st"><span class="numeral">92.8%</span><span class="lab">Of shopping tasks ended with no meaningful click out</span></div>
+      <div class="st"><span class="numeral">87.3%</span><span class="lab">Of product cards were retrieved from the web crawl</span></div>
+      <div class="st"><span class="numeral">07</span><span class="lab">Crawler switches that live in one file you own</span></div>
+    </div>
+  </div>
+  <p class="crumb"><a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=crumb&amp;utm_campaign=ai-visibility-guide" target="_blank" rel="noopener" data-cta="crumb_home">RISE DTC</a> / <span>AI visibility</span></p>
+</section>
+
+<!-- ============================ the receipts ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <p class="sec-eyebrow">Why this matters now</p>
+    <h2>The comparison happens before anyone reaches your website</h2>
+    <p class="byline">Written by <b>Mattan Danino</b>, CEO of RISE DTC &middot; 31 July 2026 &middot; No email, no form, nothing gated.</p>
+    <div class="prose" style="max-width:74ch">
+      <p>A study published on 14 July 2026 watched 56 people compare products inside ChatGPT across 221 codable shopping tasks. 92.8% of those tasks ended with no meaningful click out to the open web. Whatever the chat window put on the screen was the whole set of options those shoppers weighed.</p>
+      <p>A second study from the same vendor sampled 201,137 ChatGPT shopping prompt runs containing 812,190 product cards over one week in June 2026. 707,752 of those cards, 87.3%, were retrieved from the web crawl. 102,523 of them, 12.7%, came from direct merchant product feeds.</p>
+      <p>Both numbers are secondary sources, both are one vendor's sample, and both are named and dated below so you can weigh them yourself. The 92.8% is a screened panel of 56 people. The 87.3% is one week. Read the exact figures as directional and the direction as real.</p>
+      <p>Here is where the three platforms actually sit as of early August 2026. OpenAI gates product-feed ingestion behind an application. Google gates direct buying on AI Mode and Gemini behind a UCP waitlist and an approval, on top of your existing Merchant Center feed. Anthropic's crawler documentation contains no merchant program at all. The one lever all three of them document, and the only one you control today without anyone's approval, is your own site: robots.txt access for their bots, and a live product page good enough to be the answer they fetch. Crawl here means both the scheduled crawl and the fetch a chat product makes at question time.</p>
+      <p>Everything below traces to a document one of those four companies published. Where a page is silent on something, this guide prints the silence instead of filling it in.</p>
+    </div>
+    <div class="src">
+      <span class="src-t">The receipt on the click</span>
+      <p class="quote">"92.8% of all tasks ended with no meaningful click to the open web, and 3.2% verified a claim on an outside site."</p>
+      <span class="cite">Profound with Kevin Indig and Eric Van Buskirk of Clickstream Solutions &middot; 56 participants, 221 codable tasks, published 14 July 2026 &middot; <a href="https://www.tryprofound.com/blog/the-shortlist-is-the-new-shelf" target="_blank" rel="noopener">tryprofound.com</a></span>
+    </div>
+    <div class="src">
+      <span class="src-t">The receipt on the crawl</span>
+      <p class="quote">"707,752 (87.3%) product cards are retrieved from web crawl. 102,523 (12.7%) are retrieved from direct merchant product feeds."</p>
+      <span class="cite">Profound, Breaking down how ChatGPT Shopping works behind the user experience &middot; 201,137 prompt runs sampled 18 to 25 June 2026, published 23 July 2026 &middot; <a href="https://www.tryprofound.com/blog/chatgpt-shopping-end-to-end-breakdown" target="_blank" rel="noopener">tryprofound.com</a></span>
+    </div>
+    <figure class="shot" style="max-width:860px">
+      <img src="img/chatgpt-real-cards-us.png" alt="A ChatGPT product carousel showing three insulated water bottles with names, prices and one line descriptions" width="1568" height="868" loading="lazy" decoding="async" />
+      <figcaption><b>A real capture, not a mockup.</b> The organic product carousel inside ChatGPT, captured 30 July 2026 in a logged out window over a United States connection. Three products, three prices, three one line descriptions, and no visit to any of those three websites. Nothing in this image has been redrawn or composited.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ platform 01, OpenAI ============================ -->
+<section class="famband grey" id="platforms">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">01</span>
+        <span class="t-fig" data-grid="a">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Two OpenAI crawlers drawn as separate paths, the search crawler passing through an open gold gate and the training crawler through its own gate, with a locked feed door below">
+            <rect class="k" x="6" y="6" width="40" height="24" rx="2.4"/>
+            <rect class="f6" x="11" y="12" width="26" height="3"/>
+            <rect class="g" x="11" y="20" width="18" height="4"/>
+            <path class="gk" d="M50 18 H80"/>
+            <path class="g" d="M80 14.4 l7 3.6 -7 3.6z"/>
+            <text class="lb" x="52" y="12">SEARCH</text>
+            <rect class="k" x="6" y="38" width="40" height="24" rx="2.4"/>
+            <rect class="f6" x="11" y="44" width="22" height="3"/>
+            <rect class="f6" x="11" y="52" width="28" height="3"/>
+            <path class="k2" d="M50 50 H80"/>
+            <path class="k2" d="M80 46.4 l7 3.6 -7 3.6z"/>
+            <text class="lb" x="52" y="44">TRAINING</text>
+            <line class="d" x1="96" y1="4" x2="96" y2="64"/>
+            <rect class="k2" x="100" y="30" width="14" height="12" rx="1.6"/>
+            <path class="gk" d="M104 30 v-4 a3 3 0 0 1 6 0 v4"/>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Platform 01 &middot; OpenAI</p>
+        <h2>Two crawlers, one gated feed, and an ad slot beside the answer</h2>
+        <div class="prose">
+          <p>OpenAI runs two robots.txt tokens that matter to a store, and they do different jobs. OAI-SearchBot is the search crawler. GPTBot is the training crawler. OpenAI's crawler documentation states that each setting is independent of the others, so allowing one commits you to nothing about the other. The same page notes it can take around 24 hours from a robots.txt change for OpenAI's systems to adjust.</p>
+          <p>The block-side wording is the part worth reading twice, and it is quoted below. Open yourstore.com/robots.txt and look for OAI-SearchBot. No rule at all means allowed, which is where most Shopify stores sit. The ones that get burned are stores where an SEO app or a hand-edited robots.txt.liquid added a block nobody remembers writing. The <a href="#checker">checker further down this page</a> reads a pasted file and tells you which of the two you have.</p>
+          <p>The direct product feed is a real program and it is gated. As of early August 2026, OpenAI's commerce documentation says onboarding product feeds is currently available to approved partners, and the application is a form at <a href="https://chatgpt.com/merchants" target="_blank" rel="noopener">chatgpt.com/merchants</a>. There is no self serve switch behind it. The specification is public, so you can size the engineering before you apply: feeds go over SFTP as a full catalog snapshot, with a <a href="https://developers.openai.com/commerce/specs/file-upload/overview" target="_blank" rel="noopener">recommended cadence of at least daily</a>.</p>
+          <p>One scoping note before anyone quotes this page back at me. ChatGPT carries advertising. OpenAI began testing ads in ChatGPT on 9 February 2026, in the United States, on the Free and Go tiers, and OpenAI states that ads do not influence the answers ChatGPT gives you. Everything in this guide is about the organic product unit, which is the one your pages and your data can move.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">OAI-SearchBot, the block side</span>
+          <p class="quote">"Sites that are opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links."</p>
+          <span class="cite">OpenAI, Overview of OpenAI Crawlers &middot; read 31 July 2026 &middot; <a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">developers.openai.com/api/docs/bots</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">The two settings are independent</span>
+          <p class="quote">"Each setting is independent of the others &ndash; for example, a webmaster can allow OAI-SearchBot in order to appear in search results while disallowing GPTBot to indicate that crawled content should not be used for training OpenAI's generative AI foundation models."</p>
+          <span class="cite">OpenAI, Overview of OpenAI Crawlers &middot; the same page states search results can take around 24 hours to reflect a robots.txt update &middot; <a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">developers.openai.com/api/docs/bots</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">The feed is an application, as of early August 2026</span>
+          <p class="quote">"Onboarding product feeds in ChatGPT is currently available to approved partners. To apply for access, fill out this form here"</p>
+          <span class="cite">OpenAI commerce documentation, Get Started &middot; the form links to chatgpt.com/merchants &middot; <a href="https://developers.openai.com/commerce/guides/get-started" target="_blank" rel="noopener">developers.openai.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">The ad unit, scoped</span>
+          <p class="quote">"Ads do not influence the answers ChatGPT gives you, and we keep your conversations with ChatGPT private from advertisers."</p>
+          <span class="cite">OpenAI, Testing ads in ChatGPT &middot; originally published 9 February 2026, a test for logged in adult users on the Free and Go subscription tiers in the United States &middot; <a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener">openai.com</a></span>
+        </div>
+        <figure class="shot">
+          <div class="vp">
+            <img src="img/openai-bots-doc.png" alt="OpenAI's crawler documentation page listing OAI-SearchBot, OAI-AdsBot and GPTBot with their descriptions and user agent strings" width="2160" height="4500" loading="lazy" decoding="async" />
+          </div>
+          <figcaption><b>A real capture, not a mockup.</b> The full Overview of OpenAI Crawlers page on developers.openai.com, captured 30 July 2026. Scroll inside the plate to read the whole page as it was served. The independence sentence sits in the opening paragraph and the OAI-SearchBot block wording sits in the first table row. Nothing in this image has been cropped, redrawn or composited.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ platform 02, Google ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">02</span>
+        <span class="t-fig" data-grid="c">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A Merchant Center feed running into a waitlist gate marked in gold, and beside it a separate training switch that does not touch the search path">
+            <rect class="k" x="6" y="10" width="34" height="28" rx="2.4"/>
+            <rect class="f6" x="11" y="16" width="24" height="3"/>
+            <rect class="f6" x="11" y="23" width="18" height="3"/>
+            <rect class="f6" x="11" y="30" width="22" height="3"/>
+            <path class="gk" d="M44 24 H68"/>
+            <rect class="g" x="72" y="14" width="40" height="20" rx="3"/>
+            <text class="lb" x="76" y="27">WAITLIST</text>
+            <line class="d" x1="6" y1="46" x2="112" y2="46"/>
+            <rect class="k2" x="6" y="52" width="44" height="14" rx="7"/>
+            <text class="lb" x="12" y="61">TRAINING</text>
+            <path class="k2" d="M56 59 H74"/>
+            <path class="k2" d="M78 54 l8 10 M86 54 l-8 10"/>
+            <text class="lb" x="90" y="61">SEARCH</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Platform 02 &middot; Google</p>
+        <h2>UCP is a buying door, and Google-Extended is the switch people get wrong</h2>
+        <div class="prose">
+          <p>Google's merchant program here is the Universal Commerce Protocol. Google describes UCP as an open standard for turning AI interactions into instant sales, and says adopting it enables agentic actions on AI Mode in Google Search and Gemini, starting with direct buying. The surfaces named are AI Mode in Google Search and Gemini web, with the app listed as coming soon.</p>
+          <p>You do not build a new feed for it. Google says merchants use their existing Merchant Center account shopping feeds. What you do need is to be let in. As of early August 2026 the way in is a waitlist, and Google's UCP guides page states that your integration must be approved by Google before you can go live on AI Mode in Google Search and Gemini. Embedded checkout is described as available to specific, approved merchants. So UCP is a direct-buy capability with a queue in front of it, and it is worth applying for, not worth waiting on.</p>
+          <p>Now the switch people get wrong. Google-Extended is a robots.txt token, and Google's crawler documentation defines exactly what it governs: whether content Google crawls from your site may be used for training future generations of Gemini models, and for grounding, which the same page defines as providing content to the model at prompt time to improve factuality and relevancy. Those two things travel together in Google's own sentence. The same page states that Google-Extended does not impact a site's inclusion in Google Search nor is it used as a ranking signal in Google Search.</p>
+          <p>That page does not name AI Overviews or AI Mode anywhere in connection with Google-Extended. So this guide will not tell you what blocking it does or does not do to those surfaces, in either direction. The documentation does not say, and inventing the answer is how a founder ends up making an expensive change on a sentence nobody wrote. Googlebot is a separate token, and Google states that preferences addressed to Googlebot affect Google Search including Discover and all Search features, as well as Google Images, Video and News. Leave Googlebot alone.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">What UCP is for</span>
+          <p class="quote">"Adopt UCP to enable agentic actions on AI Mode in Google Search and Gemini, starting with direct buying."</p>
+          <span class="cite">Google, Universal Commerce Protocol &middot; the same page names the surfaces as "AI Mode in Google Search and Gemini web (app coming soon)" and says merchants "use your existing Merchant Center account shopping feeds" &middot; read 31 July 2026 &middot; <a href="https://developers.google.com/merchant/ucp" target="_blank" rel="noopener">developers.google.com/merchant/ucp</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">The approval, as of early August 2026</span>
+          <p class="quote">"Your integration must be approved by Google before you can go live on AI Mode in Google Search and Gemini."</p>
+          <span class="cite">Google, UCP guides &middot; this sentence is on the guides page, not the UCP overview &middot; <a href="https://developers.google.com/merchant/ucp/guides" target="_blank" rel="noopener">developers.google.com/merchant/ucp/guides</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">What Google-Extended governs</span>
+          <p class="quote">"Google-Extended is a standalone product token that web publishers can use to manage whether content Google crawls from their sites may be used for training future generations of Gemini models that power Gemini Apps and Vertex AI API for Gemini and for grounding (providing content from the Google Search index to the model at prompt time to improve factuality and relevancy) in Gemini Apps and Grounding with Google Search on Vertex AI."</p>
+          <span class="cite">Google Search Central, Google common crawlers &middot; the same page states "Google-Extended does not impact a site's inclusion in Google Search nor is it used as a ranking signal in Google Search" &middot; read 31 July 2026 &middot; <a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener">developers.google.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">Googlebot, for contrast</span>
+          <p class="quote">"Crawling preferences addressed to the Googlebot user agent affect Google Search (including Discover and all Google Search features), as well as other products such as Google Images, Google Video, Google News, and Discover."</p>
+          <span class="cite">Google Search Central, Google common crawlers &middot; <a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener">developers.google.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ platform 03, Anthropic, poster beat on ink ======= -->
+<section class="famband ink on-ink">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum">03</span>
+        <span class="t-fig" data-grid="b">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="Three Anthropic crawler lanes drawn in gold, and beneath them a ruled empty line labelled no merchant program in the documentation">
+            <path class="gk" d="M8 11 H72"/>
+            <path class="g" d="M72 7.6 l7 3.4 -7 3.4z"/>
+            <text class="lb" x="8" y="7">CLAUDEBOT</text>
+            <path class="gk" d="M8 25 H72"/>
+            <path class="g" d="M72 21.6 l7 3.4 -7 3.4z"/>
+            <text class="lb" x="8" y="21">CLAUDE-USER</text>
+            <path class="gk" d="M8 39 H72"/>
+            <path class="g" d="M72 35.6 l7 3.4 -7 3.4z"/>
+            <text class="lb" x="8" y="35">CLAUDE-SEARCHBOT</text>
+            <line class="d" x1="8" y1="48" x2="86" y2="48"/>
+            <text class="lb" x="8" y="58">NO MERCHANT PROGRAM</text>
+            <text class="lb" x="8" y="66">IN THE DOCUMENTATION</text>
+            <rect class="k2" x="94" y="4" width="18" height="42" rx="2.4"/>
+            <rect class="h" x="94" y="4" width="18" height="42"/>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Platform 03 &middot; Anthropic</p>
+        <h2>Three crawlers, and a merchant program the documentation does not contain</h2>
+        <div class="prose">
+          <p>Anthropic publishes one page for site owners, and it documents three user agents. ClaudeBot collects web content that could potentially contribute to training. Claude-User is the agent that may access websites when individuals ask Claude questions. Claude-SearchBot navigates the web to improve search result quality. All three are quoted below in Anthropic's own words.</p>
+          <p>Read Claude-User again, because it is the one operators miss. Claude already reads and cites live pages at the moment a person asks a question. If your robots.txt blocks Claude-User, that is the fetch you are turning down.</p>
+          <p>Here is the part that makes this platform different, and here is exactly how far I will take it. That documentation contains no product feed, no merchant program, no shopping surface and no product carousel for retailers. I re-grepped it on 31 July 2026 for merchant, feed, shopping, product, carousel and retail, and the article text returns nothing commerce related. That is a statement about what the documentation contains as of early August 2026, and it is not a statement about what Anthropic is planning or partnering on. Do not let anyone stretch it into one.</p>
+          <p>What it means for a store this week is simple. There is nothing to apply to. The only thing you can do for Claude is the same thing that pays on the other two: let the crawlers in, and have a product page worth quoting.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">ClaudeBot</span>
+          <p class="quote">"helps enhance the utility and safety of our generative AI models by collecting web content that could potentially contribute to their training."</p>
+          <span class="cite">Anthropic support, Does Anthropic crawl data from the web &middot; read 31 July 2026 &middot; <a href="https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.claude.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">Claude-User</span>
+          <p class="quote">"supports Claude AI users. When individuals ask questions to Claude, it may access websites using a Claude-User agent."</p>
+          <span class="cite">Anthropic support, same page &middot; <a href="https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.claude.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">Claude-SearchBot</span>
+          <p class="quote">"navigates the web to improve search result quality for users. It analyzes online content specifically to enhance the relevance and accuracy of search responses."</p>
+          <span class="cite">Anthropic support, same page &middot; the page also publishes the robots.txt forms for these agents &middot; <a href="https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.claude.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the Shopify console ============================ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">04</span>
+        <span class="t-fig" data-grid="c">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="One admin panel feeding a catalog, which fans out to four labelled AI channels">
+            <rect class="k" x="6" y="18" width="34" height="32" rx="2.4"/>
+            <rect class="g" x="11" y="24" width="24" height="5"/>
+            <rect class="f6" x="11" y="34" width="20" height="3"/>
+            <rect class="f6" x="11" y="41" width="24" height="3"/>
+            <path class="gk" d="M44 34 H60"/>
+            <line class="k2" x1="60" y1="10" x2="60" y2="58"/>
+            <path class="k2" d="M60 10 H80"/><text class="lb" x="82" y="12">CHATGPT</text>
+            <path class="k2" d="M60 26 H80"/><text class="lb" x="82" y="28">AI MODE</text>
+            <path class="k2" d="M60 42 H80"/><text class="lb" x="82" y="44">COPILOT</text>
+            <path class="k2" d="M60 58 H80"/><text class="lb" x="82" y="60">META</text>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">The console &middot; Shopify</p>
+        <h2>One admin section decides which AI channels can sell your products</h2>
+        <div class="prose">
+          <p>If you are on Shopify, there is a single place in your admin that governs this. Shopify's help documentation says agentic storefronts let customers discover and purchase your products in AI channels, that your products are made available to those channels through Shopify Catalog, and that you manage which AI channels you want to sell your products on under Sales channels then Agentic.</p>
+          <p>The live help doc names ChatGPT, Google AI Mode and Gemini, Microsoft Copilot, and Meta, the last one through the Facebook and Instagram by Meta sales channel. Treat that as what Shopify names today rather than a closed list. It grew by one channel in the week this guide was written, which is the whole reason I am telling you to open the page and read it rather than trust a screenshot.</p>
+          <p>Shopify says agentic storefronts is active by default for eligible stores. Eligible is doing real work in that sentence. Open the toggle, read what is switched on for your store, and write down what you find. Do not assume you are in, and do not assume you are out.</p>
+          <p>This console is about selling and purchasing through Shopify Catalog. It is a different mechanism from the robots.txt switches in the next section, and turning one on does nothing to the other.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">What the console does</span>
+          <p class="quote">"Shopify agentic storefronts let customers discover and purchase your products in AI channels, such as ChatGPT, Google AI Mode and Gemini, and Microsoft Copilot."</p>
+          <span class="cite">Shopify Help Center, Shopify agentic storefronts &middot; the live page family also names Meta, through "the Facebook and Instagram by Meta sales channel", re-read 31 July 2026 &middot; <a href="https://help.shopify.com/en/manual/online-sales-channels/agentic-storefronts" target="_blank" rel="noopener">help.shopify.com</a></span>
+        </div>
+        <div class="src">
+          <span class="src-t">Default on, for eligible stores</span>
+          <p class="quote">"Agentic storefronts is active by default for eligible stores."</p>
+          <span class="cite">Shopify Help Center, agentic storefronts setup &middot; the same page family describes managing channels in "Sales channels&gt;Agentic in your Shopify admin" &middot; <a href="https://help.shopify.com/en/manual/online-sales-channels/agentic-storefronts/setup" target="_blank" rel="noopener">help.shopify.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the seven switches + the checker ================ -->
+<section class="famband grey" id="checker">
+  <div class="wrap">
+    <div class="gstep">
+      <div class="gs-rail">
+        <span class="numeral gnum light">05</span>
+        <span class="t-fig" data-grid="a">
+          <svg class="sch" viewBox="0 0 120 68" role="img" aria-label="A single robots file holding seven switch rows, four drawn open in gold and the rest closed">
+            <rect class="k" x="18" y="4" width="84" height="60" rx="2.4"/>
+            <line class="k2" x1="18" y1="14" x2="102" y2="14"/>
+            <rect class="f6" x="24" y="7" width="30" height="4"/>
+            <rect class="g" x="24" y="19" width="40" height="4"/><circle class="g" cx="94" cy="21" r="3"/>
+            <rect class="f6" x="24" y="28" width="34" height="4"/><circle class="k2" cx="94" cy="30" r="3"/>
+            <rect class="g" x="24" y="37" width="44" height="4"/><circle class="g" cx="94" cy="39" r="3"/>
+            <rect class="f6" x="24" y="46" width="30" height="4"/><circle class="k2" cx="94" cy="48" r="3"/>
+            <rect class="g" x="24" y="55" width="38" height="4"/><circle class="g" cx="94" cy="57" r="3"/>
+            <path class="gk" d="M6 34 H14"/>
+          </svg>
+        </span>
+      </div>
+      <div>
+        <p class="sec-eyebrow">The file &middot; robots.txt</p>
+        <h2>Seven switches, one file, and nobody has to approve it</h2>
+        <div class="prose">
+          <p>Everything above needs somebody's permission except this. OpenAI documents OAI-SearchBot and GPTBot. Google documents Google-Extended and Googlebot. Anthropic documents ClaudeBot, Claude-User and Claude-SearchBot. That is seven tokens, and all seven are read from one file at yourstore.com/robots.txt.</p>
+          <p>Paste your file into the checker below and it will tell you, token by token, whether the root path is blocked or allowed and what each state means according to the company that defined that token. It runs entirely in this page. Nothing is uploaded and nothing is stored.</p>
+          <p>One footnote that belongs here rather than in the tool. OpenAI documents an eighth agent, ChatGPT-User, for user initiated fetches, and states that because those actions are initiated by a user, robots.txt rules may not apply. The same page points site owners at OAI-SearchBot for managing search opt outs. So ChatGPT-User is worth knowing about and it is not a robots.txt lever, which is why the checker does not print a verdict for it.</p>
+          <p>Two rules I will state flatly. Never block Googlebot. And a change here takes time to land, so read your file, fix it, then look again tomorrow.</p>
+        </div>
+        <div class="src">
+          <span class="src-t">The ChatGPT-User footnote</span>
+          <p class="quote">"ChatGPT-User is not used for crawling the web in an automatic fashion. Because these actions are initiated by a user, robots.txt rules may not apply. ChatGPT-User is not used to determine whether content may appear in Search. Please use OAI-SearchBot in robots.txt for managing Search opt outs and automatic crawl."</p>
+          <span class="cite">OpenAI, Overview of OpenAI Crawlers &middot; read 31 July 2026 &middot; <a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">developers.openai.com/api/docs/bots</a></span>
+        </div>
+
+        <div class="doit">
+          <span class="dt">Robots.txt checker</span>
+          <p>Open yourstore.com/robots.txt in a browser, select all, and paste the whole thing here. The checker parses the User-agent groups and the Allow and Disallow rules, then reports the verdict for the root path for each of the seven tokens plus the catch-all group.</p>
+          <div class="linkrow" style="margin:0 0 11px">
+            <a href="#checker" id="loadsample" data-cta="tool_robots_sample" style="font-family:'Sora',sans-serif;font-weight:700;font-size:.82rem;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px">Load a sample file</a>
+          </div>
+          <label for="rtxt" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Paste your robots.txt</label>
+          <textarea id="rtxt" spellcheck="false" autocomplete="off" placeholder="User-agent: *&#10;Disallow: /admin&#10;Disallow: /cart&#10;Disallow: /checkout"></textarea>
+          <div class="row" style="margin-top:11px">
+            <button type="button" id="rtgo" data-cta="tool_robots_check">Check my file</button>
+            <button type="button" class="ghost" id="rtclear">Clear</button>
+          </div>
+          <p class="said" id="rtsaid" role="status" aria-live="polite"></p>
+          <div id="rtout" hidden></div>
+          <p class="foot">Paste only. This runs in your browser, nothing is sent anywhere, nothing is saved, and there is no email field on this page. The verdict is for the root path only, which is the one that decides whether a crawler can read your store at all. Path level rules on specific URLs are a separate question and this tool does not answer it.</p>
+        </div>
+
+        <div class="doit" style="margin-top:18px">
+          <span class="dt">The lines most stores end up wanting</span>
+          <p>This is the combination most DTC brands land on once they have read the four documents above: search and question-time fetching allowed everywhere, model training kept out. Every one of these settings is independent of the others, so take the half you want and leave the rest.</p>
+          <pre id="snip">User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Disallow: /</pre>
+          <div class="row" style="margin-top:11px">
+            <button type="button" class="ghost" id="snipcopy" data-cta="tool_robots_copy">Copy these lines</button>
+          </div>
+          <p class="foot">Google-Extended is deliberately not in that block. It is a training and grounding switch, and which way you set it is a judgment call about Gemini, not a fix. Googlebot is not in it either, and it should stay out of your robots.txt as a block under any circumstances.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ do this week ============================ -->
+<section class="blk" id="week">
+  <div class="wrap">
+    <p class="sec-eyebrow">Do this week</p>
+    <h2>Four jobs, in the order they pay</h2>
+    <p class="sec-sub">The first two cost you an afternoon and need nobody's approval. The third is a five minute check most founders assume they have already done. The fourth is a queue, so join it and get back to work.</p>
+    <div class="rules four">
+      <div class="rule-c">
+        <span class="nt">01 &middot; Read your robots.txt</span>
+        <p>Open yourstore.com/robots.txt, paste the whole file into <a href="#checker">the checker above</a>, and look at the seven verdicts. If a crawler you want is blocked, the fix is a few lines and it is yours to make. Check again tomorrow, because OpenAI's own doc says search results can take around 24 hours to reflect the change.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">02 &middot; Make the product page the answer</span>
+        <p>87.3% of product cards in that June sample were retrieved from the web crawl. Specs, sizing, materials, care, dimensions, and a straight answer to the question your buyer types. That page is what gets fetched, quoted and compared, on all three platforms.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">03 &middot; Open Sales channels then Agentic</span>
+        <p>In your Shopify admin. Read which AI channels are switched on for your store and write it down. Shopify says it is active by default for eligible stores, and eligible is the word that decides whether that sentence is about you.</p>
+      </div>
+      <div class="rule-c">
+        <span class="nt">04 &middot; Join the two queues</span>
+        <p>Apply for the OpenAI product feed at <a href="https://chatgpt.com/merchants" target="_blank" rel="noopener">chatgpt.com/merchants</a> and join the <a href="https://developers.google.com/merchant/ucp" target="_blank" rel="noopener">Google UCP waitlist</a>. Both are gated as of early August 2026, so neither is a thing you can finish this week. Jobs 01 to 03 are, and they cover the crawl either way.</p>
+      </div>
+    </div>
+    <p class="proofnote">Every source on this page was read at its live URL on 31 July 2026 and is linked in full. Two of the citations are secondary, both from Profound, and both are named and dated where they appear so you can weigh them accordingly. Where a document is silent, this page prints the silence. Program status can change quickly: the Shopify channel list gained a channel in the week this was written, so re-read the pages before you act on a program claim.</p>
+    <div class="linkrow">
+      <a class="btn-out" href="/aisle-pdf/" data-cta="pdf_download">Download the deck as a PDF</a>
+      <a class="btn-out" href="/guides/chatgpt-visibility/">The ChatGPT shopping checklist</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ the free tools ============================ -->
+<section class="famband grey">
+  <div class="wrap">
+    <p class="sec-eyebrow">While you are here</p>
+    <h2>Price and availability are named factors, so know your floor</h2>
+    <p class="sec-sub">OpenAI's help article names availability and price among the factors it ranks merchants on. Before you move a price to win a comparison inside a chat window, run the number that tells you what the move costs you. These are free, they run in your browser, and they ask for nothing.</p>
+    <div class="xgrid">
+      <a class="xl" href="/tools/true-profit-per-order/" data-cta="tool_true_profit">
+        <span class="g">01</span>
+        <span><span class="n">True Profit Per Order</span><span class="q">What one order leaves you after returns, shipping, card fees and acquisition.</span></span>
+      </a>
+      <a class="xl" href="/tools/pricing-margin/" data-cta="tool_pricing_margin">
+        <span class="g">11</span>
+        <span><span class="n">Pricing and Margin</span><span class="q">Markup, gross margin, realized margin after returns, and the price your target needs.</span></span>
+      </a>
+      <a class="xl" href="/tools/contribution-margin/" data-cta="tool_contribution_margin">
+        <span class="g">02</span>
+        <span><span class="n">Contribution Margin</span><span class="q">Your margin per unit after returns, and the extra units returns force you to sell.</span></span>
+      </a>
+      <a class="xl" href="/tools/" data-cta="tool_hub">
+        <span class="g">34</span>
+        <span><span class="n">All 34 free tools</span><span class="q">Twenty-five calculators and nine packs to run in Claude, every number computed in front of you.</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ closing CTA ============================ -->
+<section class="ctaband on-ink">
+  <img class="sunmark" src="../../tools/assets/rise-sun-wht.png" alt="" aria-hidden="true" />
+  <div class="cb-in">
+    <p class="sec-eyebrow">Ready when you are</p>
+    <h2>Want this run on <span class="hl">your store?</span></h2>
+    <p>From week one we run this on live Shopify and ad data, from the product pages up through the order economics underneath them. Book a 30 minute intro call and we will walk your store together.</p>
+    <p class="mcard-note">Direct with the team. No pitch deck.</p>
+    <div class="mcard-sig">
+      <img class="mcard-av" src="../../tools/assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
+      <div class="mcard-who">
+        <b>Mattan Danino</b>
+        <span>CEO, RISE DTC</span>
+      </div>
+      <a class="btn-gold shelf" data-cta="booking_guide" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=guide&amp;utm_medium=cta&amp;utm_campaign=ai-visibility-guide" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+    </div>
+  </div>
+</section>
+
+<footer class="hubfoot">
+  <div class="hf-in">
+    <div class="hf-copy">
+      <img class="hf-logo" src="../../tools/assets/rise-dtc-logo-wht.png" alt="RISE DTC" />
+      <p>The World's 1st Performance-Only Agency for DTC Brands.</p>
+    </div>
+    <div class="hf-meta">
+      A free, ungated field guide for DTC operators, built from what OpenAI, Google, Anthropic and Shopify published themselves, with every quote linked to the page it came from.<br />
+      <a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=footer&amp;utm_campaign=ai-visibility-guide" target="_blank" rel="noopener" data-cta="brand_footer">risedtc.com</a>
+    </div>
+  </div>
+  <div class="hf-rule">
+    <span>&copy;2026 RISE DTC. All rights reserved.</span>
+    <span>resources.risedtc.com/guides/ai-visibility/</span>
+  </div>
+</footer>
+
+<script src="../../tools/assets/tools-config.js"></script>
+<script src="../../tools/assets/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+  /* Nothing on this page renders at runtime. The tools runtime is still started
+     so the view beacon and the CTA click beacons behave exactly the way they do
+     on the hub and on every tool page. */
+  window.RiseTools.init({ slug: null });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  /* The checker. Entirely client side: no fetch, no storage, no email field.
+     A pasted file is parsed here and thrown away when the tab closes.
+
+     Parsing follows the robots.txt grammar the four documents assume:
+       - a group is one or more consecutive User-agent lines followed by rules
+       - agent matching is case insensitive
+       - a specific agent group overrides the wildcard group completely
+       - an empty Disallow value means allow everything
+       - longest matching pattern wins, and Allow wins a tie of equal length
+     The verdict is scoped to the root path, which is the switch that decides
+     whether a crawler may read the store at all. */
+  var $ = function (id) { return document.getElementById(id); };
+
+  var AGENTS = [
+    { t: 'OAI-SearchBot', owner: 'OpenAI',
+      no: 'Per OpenAI, sites opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links.',
+      ok: 'The OpenAI search crawler can read the site. OpenAI recommends allowing it in robots.txt to help your site appear in search results.' },
+    { t: 'GPTBot', owner: 'OpenAI',
+      no: 'The OpenAI training crawler is kept out. OpenAI states each setting is independent, so this on its own says nothing about ChatGPT search.',
+      ok: 'The OpenAI training crawler can read the site. This is the model training bot, and it is a separate setting from the search one.' },
+    { t: 'Google-Extended', owner: 'Google',
+      no: 'Per Google, this token manages whether crawled content may be used for training future Gemini models and for grounding at prompt time. Google states it does not impact inclusion in Google Search nor act as a ranking signal.',
+      ok: 'Per Google, content may be used for training future Gemini models and for grounding at prompt time. Google states this token does not impact inclusion in Google Search nor act as a ranking signal.' },
+    { t: 'Googlebot', owner: 'Google',
+      no: 'Google states preferences addressed to Googlebot affect Google Search, including Discover and all Search features, plus Images, Video and News. Blocking it at the root is not something to leave in place.',
+      ok: 'Google Search can crawl the site. This is the state you want.' },
+    { t: 'ClaudeBot', owner: 'Anthropic',
+      no: 'Anthropic describes ClaudeBot as collecting web content that could potentially contribute to training its models. That collection is disallowed.',
+      ok: 'Anthropic describes ClaudeBot as collecting web content that could potentially contribute to training its models.' },
+    { t: 'Claude-User', owner: 'Anthropic',
+      no: 'Anthropic describes Claude-User as the agent that may access websites when individuals ask Claude questions. Blocked means those question-time fetches are disallowed.',
+      ok: 'Anthropic describes Claude-User as the agent that may access websites when individuals ask Claude questions. Those fetches are allowed.' },
+    { t: 'Claude-SearchBot', owner: 'Anthropic',
+      no: 'Anthropic describes Claude-SearchBot as navigating the web to improve search result quality. That is disallowed.',
+      ok: 'Anthropic describes Claude-SearchBot as navigating the web to improve search result quality.' },
+    { t: '*', owner: 'catch-all',
+      no: 'The catch-all group blocks the root path. Every agent above with no group of its own inherits this.',
+      ok: 'The catch-all group leaves the root path open. Every agent above with no group of its own inherits this.' }
+  ];
+
+  var SAMPLE = [
+    '# we use Shopify as our ecommerce platform and require certain pages',
+    '# to not be crawled',
+    'User-agent: *',
+    'Disallow: /admin',
+    'Disallow: /cart',
+    'Disallow: /orders',
+    'Disallow: /checkout',
+    'Disallow: /account',
+    'Disallow: /carts',
+    'Disallow: /search',
+    'Sitemap: https://example.com/sitemap.xml'
+  ].join('\n');
+
+  /* ---- parse ------------------------------------------------------------- */
+  function parse(text) {
+    var groups = {};          /* lowercase agent -> [rules] */
+    var pending = [];         /* agents collected before the first rule line  */
+    var startedRules = false;
+    var lines = String(text || '').split(/\r?\n/);
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      var hash = line.indexOf('#');
+      if (hash !== -1) line = line.slice(0, hash);
+      line = line.trim();
+      if (!line) continue;
+      var colon = line.indexOf(':');
+      if (colon === -1) continue;
+      var field = line.slice(0, colon).trim().toLowerCase();
+      var value = line.slice(colon + 1).trim();
+      if (field === 'user-agent') {
+        if (startedRules) { pending = []; startedRules = false; }
+        var name = value.toLowerCase();
+        if (name) {
+          pending.push(name);
+          if (!groups[name]) groups[name] = [];
+        }
+        continue;
+      }
+      if (field === 'allow' || field === 'disallow') {
+        startedRules = true;
+        if (!pending.length) continue;               /* a rule with no group  */
+        for (var a = 0; a < pending.length; a++) {
+          groups[pending[a]].push({ type: field, path: value });
+        }
+      }
+      /* sitemap, crawl-delay and anything else are read and ignored on purpose */
+    }
+    return groups;
+  }
+
+  /* ---- match a rule pattern against a path -------------------------------- */
+  function matches(pattern, path) {
+    if (pattern === '') return false;                /* empty Disallow = allow */
+    var endAnchored = false;
+    var p = pattern;
+    if (p.charAt(p.length - 1) === '$') { endAnchored = true; p = p.slice(0, -1); }
+    var rx = '';
+    for (var i = 0; i < p.length; i++) {
+      var c = p.charAt(i);
+      rx += (c === '*') ? '.*' : c.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+    }
+    try {
+      return new RegExp('^' + rx + (endAnchored ? '$' : '')).test(path);
+    } catch (e) { return false; }
+  }
+
+  function verdictFor(groups, token) {
+    var key = token.toLowerCase();
+    var own = Object.prototype.hasOwnProperty.call(groups, key);
+    var rules = own ? groups[key] : (groups['*'] || null);
+    var source = own ? 'own' : (groups['*'] ? 'wildcard' : 'none');
+    if (!rules || !rules.length) {
+      return { blocked: false, source: rules ? 'empty' : source, rule: null };
+    }
+    var best = null;
+    for (var i = 0; i < rules.length; i++) {
+      var r = rules[i];
+      if (!matches(r.path, '/')) continue;
+      if (!best ||
+          r.path.length > best.path.length ||
+          (r.path.length === best.path.length && r.type === 'allow')) {
+        best = r;
+      }
+    }
+    if (!best) return { blocked: false, source: source, rule: null };
+    return { blocked: best.type === 'disallow', source: source, rule: best };
+  }
+
+  function sourceNote(v, token) {
+    if (v.source === 'own') {
+      return v.rule
+        ? 'Matched its own group, on ' + (v.rule.type === 'allow' ? 'Allow: ' : 'Disallow: ') + v.rule.path + '.'
+        : 'Has its own group, and no rule in it covers the root path.';
+    }
+    if (v.source === 'wildcard') {
+      return v.rule
+        ? 'No group of its own, so it inherits User-agent: *, on ' + (v.rule.type === 'allow' ? 'Allow: ' : 'Disallow: ') + v.rule.path + '.'
+        : 'No group of its own, so it inherits User-agent: *, where no rule covers the root path.';
+    }
+    if (v.source === 'empty') return 'A group exists with no Allow or Disallow rules in it.';
+    return 'No rule anywhere in the file names ' + token + ', and no rule means allowed.';
+  }
+
+  function render(text) {
+    var groups = parse(text);
+    var out = $('rtout');
+    var html = '<div class="verd"><div class="vhead">Verdict for the root path</div>';
+    var blocked = 0;
+    for (var i = 0; i < AGENTS.length; i++) {
+      var a = AGENTS[i];
+      var v = verdictFor(groups, a.t);
+      /* the wildcard row reports its own group directly, never an inherited one */
+      if (a.t === '*') {
+        v = groups['*'] ? verdictFor(groups, '*') : { blocked: false, source: 'none', rule: null };
+      }
+      if (v.blocked) blocked++;
+      html += '<div class="vrow">'
+        + '<span class="va">' + a.t + '</span>'
+        + '<span class="vs ' + (v.blocked ? 'no' : 'ok') + '">' + (v.blocked ? 'Blocked' : 'Allowed') + '</span>'
+        + '<span class="vm">' + (v.blocked ? a.no : a.ok) + ' <i>' + sourceNote(v, a.t) + '</i></span>'
+        + '</div>';
+    }
+    html += '</div>';
+    out.innerHTML = html;
+    out.hidden = false;
+    $('rtsaid').textContent = blocked === 0
+      ? 'Read ' + Object.keys(groups).length + ' User-agent group(s). Nothing on this list is blocked at the root path.'
+      : 'Read ' + Object.keys(groups).length + ' User-agent group(s). ' + blocked + ' of ' + AGENTS.length + ' blocked at the root path.';
+  }
+
+  if ($('rtgo')) $('rtgo').addEventListener('click', function () {
+    var t = $('rtxt').value;
+    if (!String(t).trim()) {
+      $('rtsaid').textContent = 'Paste the contents of your robots.txt first, or load the sample.';
+      $('rtout').hidden = true;
+      return;
+    }
+    render(t);
+  });
+  if ($('rtclear')) $('rtclear').addEventListener('click', function () {
+    $('rtxt').value = '';
+    $('rtout').hidden = true;
+    $('rtout').innerHTML = '';
+    $('rtsaid').textContent = '';
+  });
+  if ($('loadsample')) $('loadsample').addEventListener('click', function (e) {
+    e.preventDefault();
+    $('rtxt').value = SAMPLE;
+    render(SAMPLE);
+  });
+
+  /* ---- copy button --------------------------------------------------------- */
+  function flash(btn, msg) {
+    var old = btn.textContent;
+    btn.textContent = msg;
+    setTimeout(function () { btn.textContent = old; }, 1500);
+  }
+  if ($('snipcopy')) $('snipcopy').addEventListener('click', function () {
+    var btn = this, text = $('snip').textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { flash(btn, 'Copied'); },
+                                               function () { flash(btn, 'Press Cmd C'); });
+    } else { flash(btn, 'Press Cmd C'); }
+  });
+})();
+</script>
+</body>
+</html>
