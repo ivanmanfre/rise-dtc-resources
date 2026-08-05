@@ -34,11 +34,31 @@
 .gs-rail .gnum{font-size:clamp(54px,9vw,88px);line-height:.86;display:block;margin:0 0 12px}
 .gs-rail .t-fig{max-width:210px}
 @media (max-width:899px){.gs-rail{display:flex;align-items:center;gap:18px}.gs-rail .gnum{margin:0}.gs-rail .t-fig{flex:1 1 auto;max-width:220px}}
+/* Readability, measured rather than guessed. Before this block the body ran at
+   16px over an 83-character measure, figcaptions at 12.6px, and the hero stat
+   labels at 9px on a phone. Long-form wants 60-75 characters a line and type a
+   reader does not have to lean into. Scoped to this page only: tools.css is
+   shared by 25+ pages and is not this page's to retune. */
+.prose p{font-size:1.09rem;line-height:1.68}
+@media (min-width:900px){.prose p{font-size:1.13rem;line-height:1.7}}
+.prose{max-width:64ch}
+.lrow .lk{font-size:1rem}
+.lrow .lk i{font-size:.9rem}
+.statrow .st .lab{font-size:.72rem;line-height:1.5}
+@media (max-width:639px){.statrow .st .lab{font-size:.7rem}}
+
+/* Which figures are drawn and which are photographed, said as a tag rather than
+   as a sentence. Carries the same information without a corrective contrast. */
+.ftag{display:inline-block;margin-right:9px;padding:2px 8px;border-radius:4px;
+  font-family:'Sora',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;background:#efefe9;color:var(--muted);vertical-align:1px}
+.ftag.shot-tag{background:var(--gold);color:var(--ink)}
+
 .prose a,.byline a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
 .prose a:hover{background:var(--gold);color:var(--ink);text-decoration:none}
 .on-ink .prose p{color:rgba(255,255,255,.78)}
 .on-ink .prose a{color:var(--gold)}
-.byline{margin:0 0 22px;font-size:.86rem;color:var(--muted);line-height:1.6}
+.byline{margin:0 0 22px;font-size:.94rem;color:var(--muted);line-height:1.6}
 .byline b{color:var(--ink);font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-.02em}
 
 /* The ledger. An order is a stack of subtractions, so it is set as one:
@@ -55,21 +75,21 @@
 .lrow.tot{border-top:2px solid var(--ink);margin-top:2px;padding-top:14px;padding-bottom:16px}
 .lrow.tot .lk{font-family:'Sora',sans-serif;font-weight:700}
 .lrow.tot .lv{font-size:1.9rem;color:var(--gold-deep)}
-.oledger-n{padding:12px 18px;border-top:1px solid var(--line);font-size:.79rem;color:var(--muted);line-height:1.55;background:var(--paper,#f6f6f4)}
+.oledger-n{padding:14px 18px;border-top:1px solid var(--line);font-size:.875rem;color:var(--muted);line-height:1.62;background:var(--paper,#f6f6f4)}
 .oledger-n b{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink)}
 
 /* Four checks, four plates. Each is a thing the reader does, not a thing
    they read, so the label is an instruction and the plate is a checkbox. */
 .doit{margin:20px 0 0;border-left:3px solid var(--gold);background:#fffdf5;border-radius:0 var(--r-card) var(--r-card) 0;padding:15px 18px}
 .doit .dt{font-family:'Sora',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);display:block;margin-bottom:7px}
-.doit p{margin:0;font-size:.95rem;line-height:1.6;color:var(--ink)}
+.doit p{margin:0;font-size:1.04rem;line-height:1.62;color:var(--ink)}
 
 /* Figure plates, carried over from guides/ai-visibility byte-for-byte so a
    capture on this page is framed exactly like a capture on that one. */
 .shot{margin:22px 0 0;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:#fff}
 .shot .vp{max-height:560px;overflow:auto;-webkit-overflow-scrolling:touch}
 .shot img{display:block;width:100%;height:auto}
-.shot figcaption{padding:11px 14px;border-top:1px solid var(--line);font-size:.79rem;color:var(--muted);line-height:1.55}
+.shot figcaption{padding:13px 16px;border-top:1px solid var(--line);font-size:.875rem;color:var(--muted);line-height:1.62}
 .shot figcaption b{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.01em}
 .on-ink .shot{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
 .on-ink .shot figcaption{border-top-color:rgba(255,255,255,.18);color:rgba(255,255,255,.62)}
@@ -88,9 +108,9 @@
 .dgram .dg-in{padding:20px 16px 6px}
 @media (min-width:700px){.dgram .dg-in{padding:26px 30px 10px}}
 .dgram .sch{max-width:640px;margin:0 auto}
-.dgram figcaption{padding:11px 14px;border-top:1px solid var(--line);font-size:.79rem;color:var(--muted);line-height:1.55;margin-top:14px}
+.dgram figcaption{padding:13px 16px;border-top:1px solid var(--line);font-size:.875rem;color:var(--muted);line-height:1.62;margin-top:14px}
 .dgram figcaption b{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.01em}
-.dg-hint{display:none;margin:0;padding:0 14px 10px;font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+.dg-hint{display:none;margin:0;padding:0 16px 10px;font-size:.8rem;color:var(--muted);letter-spacing:.04em}
 
 /* tools.css hides every .sch label below 640px. That is right for the small
    rail icons, where the label is decoration, and wrong for these diagrams,
@@ -134,17 +154,16 @@
   <img class="sunmark" src="../../tools/assets/rise-sun-wht.png" alt="" aria-hidden="true" />
   <span class="edgemark" aria-hidden="true">RISE</span>
   <div class="wrap hero-in">
-    <p class="eyebrow on-dark">The teardown sheet, free and ungated</p>
     <h1>The first four seconds, from a <span class="gold-word">stranger's</span> side of the screen.</h1>
-    <p class="lede">Four seconds is the timer we run these checks against. We picked it because it is roughly how long a stranger looks at a page they have never seen, and because it is short enough to be unfair to the page. Below are the four checks we run on a store before we touch a budget, and the order arithmetic underneath them. All four take an afternoon.</p>
+    <p class="lede">Four checks we run on a store before we touch a budget, and the order arithmetic underneath them. Four seconds is the timer, because that is about what a stranger gives a page they have never seen. All four take an afternoon.</p>
     <div class="cta-row">
       <a class="btn-gold shelf" href="#checks" data-cta="start_guide"><span class="cv" aria-hidden="true">&rsaquo;</span>Start with check 01</a>
       <a class="btn-out" href="/tools/?utm_source=guide&amp;utm_medium=hero&amp;utm_campaign=four-seconds-guide">Open the calculators</a>
     </div>
     <div class="statrow">
-      <div class="st"><span class="numeral">04</span><span class="lab">Checks you can run on your own store today</span></div>
-      <div class="st"><span class="numeral">25</span><span class="lab">Free sheets on the hub, 23 with no email at all</span></div>
-      <div class="st"><span class="numeral">4s</span><span class="lab">The timer every check on this page is run against</span></div>
+      <div class="st"><span class="numeral">04</span><span class="lab">Checks you can run today</span></div>
+      <div class="st"><span class="numeral">25</span><span class="lab">Free sheets on the hub, 23 need no email</span></div>
+      <div class="st"><span class="numeral">4s</span><span class="lab">The timer on every check here</span></div>
     </div>
   </div>
   <p class="crumb"><a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=crumb&amp;utm_campaign=four-seconds-guide" target="_blank" rel="noopener" data-cta="crumb_home">RISE DTC</a> / <span>The first four seconds</span></p>
@@ -154,13 +173,13 @@
 <section class="blk">
   <div class="wrap">
     <p class="sec-eyebrow">Why this sheet exists</p>
-    <h2>Your product page has two audiences and it was written for the one that already knows you</h2>
-    <p class="byline">Written by <b>Mattan Danino</b>, CEO of RISE DTC &middot; 5 August 2026 &middot; No email, no form, nothing gated.</p>
-    <div class="prose" style="max-width:74ch">
-      <p>A product page is written for someone who already knows the brand. They read the reviews last week, or they have been meaning to order since March. For that reader the page shows a price and gets out of the way, which is correct.</p>
-      <p>Paid traffic sends someone else to that same page. They have never heard of you. They arrived because something in the feed was interesting enough to tap, and four seconds later they are being asked for a card number by a brand they met on the way in.</p>
-      <p>By that point the ad has usually done what it was paid to do. Somebody tapped. The next four seconds belong to a page that carries no introduction at all.</p>
-      <p>Nothing below needs a developer, a new tool, or a login you do not already have. Four checks, in the order we run them, then the arithmetic that tells you what one of those visitors is actually worth.</p>
+    <h2>Your product page was written for people who already know you</h2>
+    <p class="byline"><b>Mattan Danino</b>, CEO of RISE DTC &middot; 5 August 2026</p>
+    <div class="prose">
+      <p>A product page is written for someone who already knows the brand. They read the reviews last week. For that reader it shows a price and gets out of the way, which is right.</p>
+      <p>Paid traffic sends someone else to the same page. They have never heard of you. Something in the feed was interesting enough to tap, and four seconds later they are being asked for a card number.</p>
+      <p>The ad has usually done its job by then. Somebody tapped. The next four seconds belong to a page with no introduction in it.</p>
+      <p>Nothing below needs a developer or a new tool. Four checks, in the order we run them, then the arithmetic underneath.</p>
     </div>
 
     <figure class="dgram">
@@ -202,7 +221,7 @@
         </svg>
       </div>
       <p class="dg-hint">Scroll the drawing sideways &rsaquo;</p>
-      <figcaption><b>A drawing, not a screenshot.</b> Both arrivals land on the same page. The dashed slot above the price is the only thing that separates them: the returning customer does not need a line there because they walked in already knowing the answer, and the paid visitor needs it and finds nothing. Check 02 is about filling that slot.</figcaption>
+      <figcaption><span class="ftag">Diagram</span><b>Two arrivals, one page.</b> The dashed slot above the price is the only thing between them. The returning customer does not need a line there. The paid visitor does, and finds nothing. Check 02 fills that slot.</figcaption>
     </figure>
   </div>
 </section>
@@ -229,9 +248,9 @@
       <div>
         <p class="sec-eyebrow">Check 01 &middot; the arrival</p>
         <h2>Click your own ad from your phone</h2>
-        <div class="prose" style="max-width:74ch">
-          <p>Find the ad in your own feed, on the phone you actually carry, and tap it the way a customer would. A desktop preview inside Ads Manager loads a different page over a different connection, so it is not the same test and it will not show you the same thing.</p>
-          <p>You are looking for the gap between what the ad promised and what the screen delivers. If the ad sells relief from sore feet and the page opens on a grid of twelve colourways, the visitor has to do that translation themselves, inside the four seconds they were going to give you anyway.</p>
+        <div class="prose">
+          <p>Find the ad in your own feed, on the phone you actually carry, and tap it the way a customer would. A desktop preview inside Ads Manager loads a different page over a different connection, so it is not the same test.</p>
+          <p>You are looking for the gap between what the ad promised and what the screen delivers. If the ad sells relief from sore feet and the page opens on a grid of twelve colourways, the visitor has to do that translation themselves.</p>
         </div>
         <div class="doit">
           <span class="dt">Run it</span>
@@ -263,9 +282,9 @@
       <div>
         <p class="sec-eyebrow">Check 02 &middot; the opening line</p>
         <h2>Read the first screen out loud</h2>
-        <div class="prose" style="max-width:74ch">
-          <p>Read only what is visible before you scroll, and read it as a sentence you are saying to a person standing in front of you. When we run this, the sentence usually comes out as a product name, a price, and the word Add.</p>
-          <p>Say that to somebody standing in front of you and you have asked for money before saying who you are. Fixing it costs one line of copy: a sentence above the price naming who the product is for and what it does, in the words a customer would use rather than the ones on your packaging.</p>
+        <div class="prose">
+          <p>Read only what is visible before you scroll, and read it as a sentence you are saying to a person in front of you. When we run this, the sentence usually comes out as a product name, a price, and the word Add.</p>
+          <p>Said to a person, that is asking for money before saying who you are. The fix is one line above the price: who the product is for and what it does, in the words a customer would use.</p>
         </div>
 
         <figure class="dgram">
@@ -296,7 +315,7 @@
             </svg>
           </div>
           <p class="dg-hint">Scroll the drawing sideways &rsaquo;</p>
-          <figcaption><b>A drawing, not a screenshot.</b> Both boxes are the first screen, meaning everything visible before a scroll. The only edit on the right is the gold pair of lines, and it pushes the price and the button down by about a centimetre. That is the whole intervention. On a Shopify theme it is usually a text field somebody inside the business can edit this afternoon.</figcaption>
+          <figcaption><span class="ftag">Diagram</span><b>The same first screen, twice.</b> Both boxes are everything visible before a scroll. The gold pair of lines is the only edit, and it pushes the price down about a centimetre. On a Shopify theme that is usually a text field somebody inside the business can change this afternoon.</figcaption>
         </figure>
 
         <div class="doit">
@@ -331,13 +350,13 @@
       <div>
         <p class="sec-eyebrow">Check 03 &middot; the outside read</p>
         <h2>Hand your phone to someone who has never heard of you</h2>
-        <div class="prose" style="max-width:74ch">
+        <div class="prose">
           <p>Anyone outside the business will do. Open the page, hand over the phone, count four seconds, take it back. Then ask what this brand sells, and why they would give it their card.</p>
-          <p>You already know every answer, which is why this check cannot be run on yourself. Watch which questions stall them and how long the pause runs before they guess.</p>
+          <p>You already know every answer, which is why this one cannot be run on yourself. Watch where they stall.</p>
         </div>
         <div class="doit">
           <span class="dt">Run it</span>
-          <p>Write down every question they could not answer. Work through that list in the order the pauses were longest, starting at the first screen.</p>
+          <p>Write down every question they could not answer. Work through that list starting at the first screen.</p>
         </div>
       </div>
     </div>
@@ -368,10 +387,10 @@
       <div>
         <p class="sec-eyebrow">Check 04 &middot; the other door</p>
         <h2>Give the ones who came too early somewhere else to go</h2>
-        <div class="prose" style="max-width:74ch">
-          <p>The visitors who buy on a first visit are a small share of the ones you paid to bring over, and your own analytics will tell you how small. The rest arrived before they were ready to spend anything.</p>
+        <div class="prose">
+          <p>The visitors who buy on a first visit are a small share of the ones you paid for. Your analytics will tell you how small. The rest arrived before they were ready to spend.</p>
           <p>A product page offers those people exactly one action, and it happens to be the one they are not ready to take. They leave, the traffic gets blamed, and next month the same page gets a bigger budget pointed at it.</p>
-          <p>Give them a second thing to do that costs them nothing. Something genuinely worth reading, or one email that earns the right to send a second one. Ask for the card on a later visit, once they have read something of yours.</p>
+          <p>Give them a second thing to do that costs them nothing. Something worth reading, or one email that earns the right to send another. Ask for the card on a later visit.</p>
         </div>
 
         <figure class="dgram">
@@ -394,7 +413,7 @@
             </svg>
           </div>
           <p class="dg-hint">Scroll the drawing sideways &rsaquo;</p>
-          <figcaption><b>A drawing, not a screenshot.</b> The gold block is deliberately unlabelled, because the size of it is your figure and not ours. Read it out of your own analytics. Then look at how much of the bar is currently being handed one action it was never going to take, and what that share is being offered instead.</figcaption>
+          <figcaption><span class="ftag">Diagram</span><b>Where the bar splits.</b> The gold block is left unlabelled because the size of it is your figure. Read it out of your analytics, then look at what the rest of the bar is being offered.</figcaption>
         </figure>
 
         <div class="doit">
@@ -411,10 +430,10 @@
   <div class="wrap">
     <p class="sec-eyebrow">The arithmetic underneath</p>
     <h2>What one of those orders is actually worth to you</h2>
-    <div class="prose" style="max-width:74ch">
-      <p>The four checks are about the page. This part is about the order, and it is where the dashboard misleads, because the figure it reports is the one before anyone has been paid.</p>
-      <p>An order arrives at your listed price. Your payment processor takes a percentage and a flat fee off every one. What is left is the number your ad spend, your product cost and your shipping all come out of afterwards.</p>
-      <p>Below is the shape of that subtraction on an $80 order. <b>Treat the rate row as an input you replace.</b> Processing rates differ by processor, by plan and by country, and they change. Read your own off a real payout in your payments dashboard rather than trusting any number printed on a page, including this one.</p>
+    <div class="prose">
+      <p>The four checks are about the page. This part is about the order, and it is where the dashboard misleads: the figure it reports is the one before anyone has been paid.</p>
+      <p>An order arrives at your listed price. Your processor takes a percentage and a flat fee off every one. What is left is what your ad spend, product cost and shipping come out of.</p>
+      <p>Below is that subtraction on an $80 order. <b>Treat the rate row as an input you replace.</b> Rates differ by processor, by plan and by country. Read yours off a real payout rather than any number printed on a page, including this one.</p>
     </div>
 
     <div class="oledger">
@@ -455,22 +474,22 @@
         </svg>
       </div>
       <p class="dg-hint">Scroll the drawing sideways &rsaquo;</p>
-      <figcaption><b>A drawing, not a screenshot.</b> The 30 cents never moves, so its weight is decided entirely by basket size. Divide 0.30 by your average order value and you have your own point on this curve. At $10 it takes 3.00% off the top, which is more than the 2.9% percentage fee takes. At $80 it takes 0.375%, marked here with the dashed line. Every doubling of the basket halves it.</figcaption>
+      <figcaption><span class="ftag">Diagram</span><b>30 cents against basket size.</b> The fee never moves, so its weight is decided by the basket. Divide 0.30 by your average order value for your own point on the curve. At $10 it takes 3.00%, more than the 2.9% rate takes. At $80 it takes 0.375%, marked by the dashed line.</figcaption>
     </figure>
 
-    <div class="prose" style="max-width:74ch;margin-top:26px">
-      <p>Processing is only the first subtraction. Product cost, shipping, returns and what you paid to acquire the order all come out of the same $77.38, and the sheet below does that whole stack at once.</p>
-      <p>Here it is running on an $80 order at 2.9%, with every other dial left on the sheet's own worked apparel example: 35% product cost, $7.50 shipping, a 22% return rate, $6 to process a return, 80% of returns resellable, and $28 blended acquisition.</p>
+    <div class="prose" style="margin-top:26px">
+      <p>Processing is only the first subtraction. Product cost, shipping, returns and acquisition all come out of the same $77.38, and the sheet below does the whole stack at once.</p>
+      <p>Here it is on an $80 order at 2.9%, every other dial left on its own worked apparel example: 35% product cost, $7.50 shipping, a 22% return rate, $6 to process a return, 80% of returns resellable, $28 blended acquisition.</p>
     </div>
 
     <figure class="shot">
       <img src="img/true-profit-live.png" alt="The True Profit Per Order calculator on the RISE DTC hub, with average order value set to 80 dollars and payment processing at 2.9 percent, showing a verdict of minus 11 cents per order and a payment processing line of 2 dollars 62" width="1800" height="1326" loading="lazy" decoding="async" />
-      <figcaption><b>A real capture, not a mockup.</b> The sheet as it was served on 5 August 2026, on the inputs listed above. Payment processing reads <b>$2.62</b>, which is the $2.32 and the $0.30 from the ledger added together. On those numbers the order finishes 11 cents short. Move any dial and the verdict moves with it. Nothing in this image has been redrawn or composited.</figcaption>
+      <figcaption><span class="ftag shot-tag">Screen capture &middot; 5 Aug 2026</span><b>The sheet as it was served,</b> on the inputs listed above. Payment processing reads <b>$2.62</b>, which is the $2.32 and the $0.30 from the ledger added together. On those numbers the order finishes 11 cents short. Move any dial and the verdict moves with it.</figcaption>
     </figure>
 
     <div class="doit">
       <span class="dt">Run it on your numbers</span>
-      <p>The sheet in that capture is free and it runs in the browser with no email. Put your own rate, product cost, shipping and acquisition into it and read the number at the top. <a href="/tools/true-profit-per-order/?utm_source=guide&amp;utm_medium=ledger&amp;utm_campaign=four-seconds-guide" data-cta="tools_ledger">Open the sheet</a>, or <a href="/tools/?utm_source=guide&amp;utm_medium=ledger_hub&amp;utm_campaign=four-seconds-guide" data-cta="tools_hub_ledger">browse the other 24</a> across unit economics, paid ads and email.</p>
+      <p>That sheet runs in the browser with no email. Put your own rate, product cost, shipping and acquisition into it and read the number at the top. <a href="/tools/true-profit-per-order/?utm_source=guide&amp;utm_medium=ledger&amp;utm_campaign=four-seconds-guide" data-cta="tools_ledger">Open the sheet</a>, or <a href="/tools/?utm_source=guide&amp;utm_medium=ledger_hub&amp;utm_campaign=four-seconds-guide" data-cta="tools_hub_ledger">browse the other 24</a>.</p>
     </div>
   </div>
 </section>
@@ -481,7 +500,7 @@
   <div class="cb-in">
     <p class="sec-eyebrow">Ready when you are</p>
     <h2>Want this run on <span class="hl">your store?</span></h2>
-    <p>From week one we run this on live Shopify and ad data, from the product pages up through the order economics underneath them. Book a 30 minute intro call and we will walk your store together.</p>
+    <p>From week one we run this on live Shopify and ad data, from the product pages through the order economics underneath. Book a 30 minute intro call and we will walk your store together.</p>
     <p class="mcard-note">Direct with the team. No pitch deck.</p>
     <div class="mcard-sig">
       <img class="mcard-av" src="../../tools/assets/mattan.jpg" alt="Mattan Danino" width="900" height="639" loading="lazy" decoding="async" />
@@ -501,7 +520,7 @@
       <p>The World's 1st Performance-Only Agency for DTC Brands.</p>
     </div>
     <div class="hf-meta">
-      A free, ungated sheet for DTC operators: four checks you can run on your own store in an afternoon, and the order arithmetic underneath them. Nothing here needs a developer or an email address.<br />
+      Four checks you can run on your own store in an afternoon, and the order arithmetic underneath them. No developer, no email address.<br />
       <a href="https://risedtc.com/?utm_source=guide&amp;utm_medium=footer&amp;utm_campaign=four-seconds-guide" target="_blank" rel="noopener" data-cta="brand_footer">risedtc.com</a>
     </div>
   </div>
