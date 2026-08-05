@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>rise-return-note-miner: sort raw return notes into a SKU by reason matrix | RISE DTC</title>
-<meta name="description" content="A free Claude skill from our DTC pack. You supply 50 to 300 return rows with customer notes; Claude sorts every note into a fixed taxonomy, builds the SKU by reason matrix, and routes each cluster." />
-<link rel="canonical" href="https://resources.risedtc.com/tools/claude/return-note-miner/" />
+<title>rise-return-note-miner, ChatGPT edition: sort raw return notes into a SKU by reason matrix | RISE DTC</title>
+<meta name="description" content="A free ChatGPT prompt from our DTC pack. You paste 50 to 300 return rows with customer notes, or attach the CSV; ChatGPT sorts every note into a fixed taxonomy, builds the SKU by reason matrix, and routes each cluster." />
+<link rel="canonical" href="https://resources.risedtc.com/tools/gpt/return-note-miner/" />
 <meta name="theme-color" content="#1f1f1f" />
-<meta property="og:title" content="rise-return-note-miner: sort raw return notes into a SKU by reason matrix" />
-<meta property="og:description" content="Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics. Free, runs in Claude." />
+<meta property="og:title" content="rise-return-note-miner, ChatGPT edition: sort raw return notes into a SKU by reason matrix" />
+<meta property="og:description" content="Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics. Free, runs in ChatGPT." />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="RISE DTC" />
-<meta property="og:url" content="https://resources.risedtc.com/tools/claude/return-note-miner/" />
+<meta property="og:url" content="https://resources.risedtc.com/tools/gpt/return-note-miner/" />
 <meta property="og:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="rise-return-note-miner: sort raw return notes into a SKU by reason matrix" />
-<meta name="twitter:description" content="Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics. Free, runs in Claude." />
+<meta name="twitter:title" content="rise-return-note-miner, ChatGPT edition: sort raw return notes into a SKU by reason matrix" />
+<meta name="twitter:description" content="Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics. Free, runs in ChatGPT." />
 <meta name="twitter:image" content="https://resources.risedtc.com/tools/assets/og-tools.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,20 +23,20 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
 <link rel="stylesheet" href="../../assets/tools.css" />
 <link rel="stylesheet" href="../../assets/pack.css" />
-<script>window.__lm_slug = "rise-dtc-tools-claude-return-note-miner";</script>
+<script>window.__lm_slug = "rise-dtc-tools-gpt-return-note-miner";</script>
 </head>
 <body>
-<a class="skip" href="#prompts">Skip to the skill file</a>
+<a class="skip" href="#prompts">Skip to the prompt</a>
 
 <!-- ============================ nav ============================ -->
 <header class="rnav">
   <div class="rnav-in">
-    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
+    <a class="rnav-logo" href="https://risedtc.com/?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=gpt-return-note-miner" target="_blank" rel="noopener" data-cta="brand_home" aria-label="RISE DTC"><img src="../../assets/rise-dtc-logo-blk.png" alt="RISE DTC" /></a>
     <nav class="rnav-links" aria-label="RISE DTC">
       <a href="../../">All 25 tools</a>
-      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
+      <a href="https://risedtc.com/projects/?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=gpt-return-note-miner" target="_blank" rel="noopener" data-cta="nav_cases">Case studies</a>
     </nav>
-    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
+    <a class="btn-gold" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=nav&amp;utm_campaign=gpt-return-note-miner" target="_blank" rel="noopener" data-cta="booking_nav">Get in touch</a>
   </div>
 </header>
 
@@ -45,52 +45,47 @@
   <img class="sunmark" src="../../assets/rise-sun-wht.png" alt="" aria-hidden="true" />
   <span class="edgemark" aria-hidden="true">RISE</span>
   <div class="wrap hero-in">
-    <p class="eyebrow on-dark pk-eyebrow">Pack 04 of 09 &middot; Claude skill &middot; free, runs in Claude</p>
+    <p class="eyebrow on-dark pk-eyebrow">Pack 04 of 09 &middot; ChatGPT prompt &middot; free, runs in ChatGPT</p>
     <h1>The return reason is already <span class="gold-word">in the note box.</span></h1>
     <p class="job">Turn raw return notes into a SKU by reason matrix that says which returns are copy, sizing, quality or logistics.</p>
     <p class="runline">
-      <span>Runs in <b>Claude</b></span>
+      <span>Runs in <b>ChatGPT</b></span>
       <span>Time <b>About 4 minutes</b></span>
       <span>New data needed <b>A returns export</b></span>
-      <span>File <b>SKILL.md</b></span>
+      <span>Format <b>One saved prompt</b></span>
     </p>
   </div>
-  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The Claude pack</a> / <span>rise-return-note-miner</span></p>
+  <p class="crumb"><a href="../../">Tools</a> / <a href="../../#claude-pack">The pack, ChatGPT edition</a> / <span>rise-return-note-miner</span></p>
 </section>
 
-<!-- ============================ the skill file ============================ -->
+<!-- ============================ the master prompt ============================ -->
 <section class="blk" id="prompts">
   <div class="wrap narrow">
-    <p class="sec-eyebrow">The skill file</p>
-    <h2>The whole skill, printed in full</h2>
-    <p class="sec-sub">Download SKILL.md or copy it whole, paste your return rows underneath it in any Claude chat, and read the matrix it hands back.</p>
+    <p class="sec-eyebrow">The master prompt</p>
+    <h2>The whole prompt, printed in full</h2>
+    <p class="sec-sub">Copy the prompt whole into a new ChatGPT chat, paste your return rows underneath it or attach the CSV export, and read the matrix it hands back.</p>
 
     <div class="pspec">
       <span class="ps-k">You paste, you get back, the time it takes</span>
       <ul>
-        <li><b>You paste:</b> 50 to 300 return rows, each with SKU, size, the tagged reason, and the customer's free-text note. Straight out of Shopify returns, Loop, Returnly or AfterShip.</li>
+        <li><b>You paste:</b> 50 to 300 return rows, each with SKU, size, the tagged reason, and the customer's free-text note. Straight out of Shopify returns, Loop, Returnly or AfterShip. Paste the rows as text or attach the CSV in the chat.</li>
         <li><b>You get back:</b> every note sorted into a fixed taxonomy, a SKU by reason matrix with counts, and each cluster classified as a copy fix, a sizing fix, a QC ticket or a logistics fix, with row-numbered quotes.</li>
-        <li><b>Time:</b> about 4 minutes in any Claude chat.</li>
+        <li><b>Time:</b> about 4 minutes in any ChatGPT chat.</li>
       </ul>
     </div>
 
     <div class="skillmd">
       <div class="sk-head">
-        <span class="sk-file">SKILL.md</span>
-        <span class="sk-where">Drop it in ~/.claude/skills/rise-return-note-miner/</span>
+        <span class="sk-file">rise-return-note-miner-prompt.txt</span>
+        <span class="sk-where">Paste it whole at the top of a new ChatGPT chat</span>
       </div>
-      <pre class="pcode" id="pk-skill">---
-name: rise-return-note-miner
-description: Use when you have a pile of raw return records with the customer's own free-text note attached (Shopify returns, Loop, Returnly, AfterShip, a support export) and you want to know what is actually causing the returns. Paste 50 to 300 rows and Claude sorts every note into a fixed reason taxonomy, builds a SKU by reason matrix with counts, and says which clusters are a copy problem, a sizing problem, a QC problem, or a logistics problem, with row-numbered quotes behind every one. Not for aggregate return numbers with no notes attached, and not for writing product copy.
----
-
-# Return Note Miner
+      <pre class="pcode" id="pk-skill"># Return Note Miner
 
 **You paste:** 50 to 300 return rows, each with SKU, size, the tagged reason, and the customer's free-text note.
 **You get back:** every note sorted into a fixed taxonomy, a SKU by reason matrix with counts, and each cluster classified as a copy fix, a sizing fix, a QC ticket, or a logistics fix, with row-numbered quotes.
-**Time:** about 4 minutes in any Claude chat. Counts are counted, never estimated.
+**Time:** about 4 minutes in any ChatGPT chat. Counts are counted, never estimated.
 
-Part of the RISE DTC Claude pack, RISE Method, Financial Health pillar.
+Part of the RISE DTC prompt pack, RISE Method, Financial Health pillar.
 
 ## What this does
 
@@ -99,24 +94,25 @@ bin most returns apps default to, and inside that bin sit four different
 problems with four different owners. The customer already told you
 which one it is. They typed it into the note box and nobody read it.
 
-You paste the rows. Claude reads every note, sorts it into one of nine fixed
+You paste the rows. ChatGPT reads every note, sorts it into one of nine fixed
 categories, counts the clusters, and hands back the matrix plus the routing.
 Every count is a count of rows you pasted. Every quote carries the row number
 it came from, so you can check any line in your own export in seconds.
 
 The taxonomy below is fixed on purpose. Run this in August and again in
 September and the categories mean the same thing both times, so the two matrices
-can sit next to each other. That is the whole reason this is a skill file and
-not a prompt you retype.
+can sit next to each other. That is the whole reason this prompt is saved
+and pasted whole, never retyped.
 
-This works two ways: installed as a Claude Code skill, or pasted straight into a
-Claude chat with your rows underneath it. Same taxonomy, same counts, same
-output either way.
+This runs pasted at the top of a ChatGPT chat with your rows underneath it, or
+saved as the instructions of a ChatGPT Project you reuse every month. Same
+taxonomy, same counts, same output either way.
 
 ## Step 1: Take the rows and number them
 
-Ask for the export if it is not already pasted. Each row needs four fields at a
-minimum:
+Ask for the export if it is not already pasted or attached. The rows can arrive
+pasted as text or attached as a CSV file; read an attached file and treat its
+rows exactly like pasted rows. Each row needs four fields at a minimum:
 
 | Field | What it is | Where to find it |
 |---|---|---|
@@ -134,7 +130,7 @@ quote in the output refers to, so it never changes mid-run.
 
 If fewer than 50 rows are pasted, run anyway and print the row count at the top
 of the output next to the words "thin sample". If no notes are attached at all,
-stop and say so: this skill reads notes, and aggregate return numbers belong in
+stop and say so: this prompt reads notes, and aggregate return numbers belong in
 `rise-return-rate-rescue`.
 
 ## Step 2: Apply the fixed reason taxonomy
@@ -289,7 +285,7 @@ own data.
 - **No industry benchmark anywhere.** No "typical sizing share", no category
   average, no outside return-rate figure. The pasted rows are the only evidence
   in this output.
-- **No dollar figures.** This skill diagnoses cause. `rise-return-rate-rescue`
+- **No dollar figures.** This prompt diagnoses cause. `rise-return-rate-rescue`
   owns the dollars, and it says so in the routing line.
 - **No em dashes and no double hyphens, including inside tables.** When a
   sentence reaches for one, split it into two sentences at that point, or use a
@@ -313,25 +309,25 @@ own data.
 - Plain operator tone. Counts first, then the quote, then the owner. No hype, no
   sign-off.</pre>
       <div class="pbar">
-        <button class="pbtn" type="button" data-download="pk-skill" data-filename="SKILL.md">Download SKILL.md</button>
-        <button class="pbtn" type="button" data-copy="pk-skill" data-block="skill">Copy the whole file</button>
-        <span class="pb-note">Works pasted straight into claude.ai as well.</span>
+        <button class="pbtn" type="button" data-download="pk-skill" data-filename="rise-return-note-miner-prompt.txt">Download the prompt</button>
+        <button class="pbtn" type="button" data-copy="pk-skill" data-block="skill">Copy the whole prompt</button>
+        <span class="pb-note">Works as the saved instructions of a ChatGPT Project as well.</span>
       </div>
     </div>
 
     <p class="srcnote">Every quote in the output carries the row number it came from, every cluster carries its count, clusters of one row stay in a too-thin block, and an empty note is counted as an empty note. No benchmark and no dollar figure appears anywhere in the output.</p>
-    <p class="srcnote">This pack item also has a <a href="../../gpt/return-note-miner/">ChatGPT edition</a>: the same math and rules, in a paste-into-ChatGPT flow.</p>
+    <p class="srcnote">This is the ChatGPT edition of this pack item. The <a href="../../claude/return-note-miner/">Claude edition</a> carries the same math and the captured sample run on its own page.</p>
   </div>
 </section>
 
-<!-- ============================ why a skill file ============================ -->
+<!-- ============================ why a saved prompt ============================ -->
 <section class="blk">
   <div class="wrap narrow">
-    <p class="sec-eyebrow">Why a skill file</p>
-    <h2>What the file freezes</h2>
+    <p class="sec-eyebrow">Why a saved prompt</p>
+    <h2>What the prompt freezes</h2>
     <div class="prose">
       <p>Your returns app has one big "Sizing / fit" bucket and stops there. On the sample store below it swallowed 73 of 120 rows. Inside that one bin sit four different problems with four different owners and four different costs, and the customer already told you which one they hit. They typed it into the note box. Nobody read the rows.</p>
-      <p>The taxonomy has to mean the same thing every month. If Claude invents its own categories on a Tuesday in August and different ones in September, the two matrices cannot sit next to each other and you have no trend, only two snapshots. So the skill file freezes three things: the nine reason categories and the order they get applied in, the floor of 2 independent rows before anything is called a cluster, and the rule that every quote in the output carries the row number it came from. Freeze those and the run is repeatable by you, by your ops lead, and by whoever does this after both of you.</p>
+      <p>The taxonomy has to mean the same thing every month. If a fresh chat invents its own categories on a Tuesday in August and different ones in September, the two matrices cannot sit next to each other and you have no trend, only two snapshots. So the saved prompt freezes three things: the nine reason categories and the order they get applied in, the floor of 2 independent rows before anything is called a cluster, and the rule that every quote in the output carries the row number it came from. Freeze those and the run is repeatable by you, by your ops lead, and by whoever does this after both of you.</p>
       <p>Twelve months of runs in the same shape is what turns a chat answer into a buy sheet.</p>
     </div>
   </div>
@@ -342,10 +338,10 @@ own data.
   <div class="wrap narrow">
     <p class="sec-eyebrow">Proof it runs</p>
     <h2>One full run, on a store we made up</h2>
-    <p class="sec-sub">Every pack page on this site prints the whole output of a real run, so you can read what you are going to get before you spend four minutes on it. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
+    <p class="sec-sub">The sample below is the Claude run captured for the original pack page, printed whole so you can read the shape of the result before you spend four minutes on it. A ChatGPT capture is not printed here yet. The store below is synthetic, built so the arithmetic is checkable by anyone.</p>
 
     <details class="sample">
-      <summary><span>Read the full sample run</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
+      <summary><span>Read the full sample run, captured in Claude</span><span class="sm-k">Northbay Supply, a sample store</span></summary>
       <div class="sm-body">
         <p class="storelab">Northbay Supply is a sample store. Every figure below is synthetic and none of it belongs to a client.</p>
         <p><b>The input:</b> 120 return rows from a closed cohort, every return arising from the 500 orders placed 8 to 18 June 2026 and logged through 20 July. SKU, style, size, the tag the returns app recorded, the resolution, and the customer's own note. Typos left in. 15 notes blank.</p>
@@ -512,13 +508,13 @@ SIZE-PART / BACK (NB-KNT-004), 1 row (row 100)
     <form class="score" id="packForm" novalidate>
       <p class="sec-eyebrow">Take it with you</p>
       <h3>Email me this pack</h3>
-      <p>The full SKILL.md and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
+      <p>The full prompt and the sample run, sent as one email you can forward or keep in a folder with the rest of the pack.</p>
       <div class="row">
         <input type="email" id="packEmail" placeholder="you@yourbrand.com" aria-label="Email address" autocomplete="email" />
         <button class="btn-gold" type="button" id="packSend">Send the pack</button>
       </div>
       <p class="msg" id="packMsg"></p>
-      <p class="note">Everything on this page stays open either way. The skill file is printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
+      <p class="note">Everything on this page stays open either way. The prompt is printed in full above and the copy buttons work without the form. The email is only how the take-away copy reaches you.</p>
     </form>
   </div>
 </section>
@@ -532,7 +528,7 @@ SIZE-PART / BACK (NB-KNT-004), 1 row (row 100)
       <div class="mcard-in">
         <h2>Want this run on <span class="hl">your numbers?</span></h2>
         <p>From week one we run this read on your live returns feed, route every cluster to its owner, and work the sizing and copy fixes until the rate moves. Book a 30 minute intro call and we will read your notes together.</p>
-        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=claude-return-note-miner" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
+        <a class="btn-gold shelf" data-cta="booking_flagship" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=tools&amp;utm_medium=cta&amp;utm_campaign=gpt-return-note-miner" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
         <p class="mcard-plate">
           <b>Mattan Danino</b>
           <span class="role">CEO, RISE DTC</span>
@@ -550,13 +546,13 @@ SIZE-PART / BACK (NB-KNT-004), 1 row (row 100)
       <p>Every number computed from what you enter, with the math shown.</p>
     </div>
     <div class="hf-meta">
-      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine Claude pack items, every one of them returns adjusted.<br />
+      RISE DTC free tools for ecommerce operators. Twenty-five calculators and nine pack items in Claude and ChatGPT editions, every one of them returns adjusted.<br />
       <a href="../../">All 25 tools</a>
     </div>
   </div>
   <div class="hf-rule">
     <span>&copy;2026 RISE DTC. All rights reserved.</span>
-    <span>resources.risedtc.com/tools/claude/return-note-miner/</span>
+    <span>resources.risedtc.com/tools/gpt/return-note-miner/</span>
   </div>
 </footer>
 
@@ -564,14 +560,14 @@ SIZE-PART / BACK (NB-KNT-004), 1 row (row 100)
 {
   "@context":"https://schema.org",
   "@type":"Article",
-  "headline":"rise-return-note-miner: sort raw return notes into a SKU by reason matrix",
-  "description":"A free Claude skill from our DTC pack. You supply 50 to 300 return rows with customer notes; Claude sorts every note into a fixed taxonomy, builds the SKU by reason matrix, and routes each cluster.",
-  "url":"https://resources.risedtc.com/tools/claude/return-note-miner/",
+  "headline":"rise-return-note-miner, ChatGPT edition: sort raw return notes into a SKU by reason matrix",
+  "description":"A free ChatGPT prompt from our DTC pack. You paste 50 to 300 return rows with customer notes, or attach the CSV; ChatGPT sorts every note into a fixed taxonomy, builds the SKU by reason matrix, and routes each cluster.",
+  "url":"https://resources.risedtc.com/tools/gpt/return-note-miner/",
   "image":"https://resources.risedtc.com/tools/assets/og-tools.png",
   "isAccessibleForFree":true,
   "inLanguage":"en-US",
   "publisher":{"@type":"Organization","name":"RISE DTC","url":"https://risedtc.com/"},
-  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC Claude pack","url":"https://resources.risedtc.com/tools/#claude-pack"}
+  "isPartOf":{"@type":"CreativeWorkSeries","name":"The RISE DTC pack, ChatGPT edition","url":"https://resources.risedtc.com/tools/#claude-pack"}
 }
 </script>
 
@@ -579,7 +575,7 @@ SIZE-PART / BACK (NB-KNT-004), 1 row (row 100)
 <script>
 (function () {
   "use strict";
-  window.RisePack.init({ slug: 'return-note-miner', type: 'skill' });
+  window.RisePack.init({ slug: 'gpt-return-note-miner', type: 'skill' });
 })();
 </script>
 </body>

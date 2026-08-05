@@ -65,6 +65,11 @@ const PACK_PAGES = [
   'price-a-drop-30'
 ];
 
+/* The ChatGPT editions of the same nine items live under tools/gpt/<slug>/,
+   hand-owned HTML like the Claude pages. Same rule: adding one means adding
+   its slug here. */
+const GPT_PACK_PAGES = PACK_PAGES.slice();
+
 function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -141,6 +146,14 @@ const sitemap = [
     '    <priority>0.7</priority>',
     '  </url>'
   ])),
+  ...GPT_PACK_PAGES.flatMap((s) => ([
+    '  <url>',
+    `    <loc>https://resources.risedtc.com/tools/gpt/${s}/</loc>`,
+    `    <lastmod>2026-08-05</lastmod>`,
+    '    <changefreq>monthly</changefreq>',
+    '    <priority>0.7</priority>',
+    '  </url>'
+  ])),
   '</urlset>',
   ''
 ].join('\n');
@@ -155,4 +168,4 @@ if (CHECK) {
 fs.writeFileSync(hubPath, baked);
 fs.writeFileSync(smPath, sitemap);
 console.log('baked ' + slugs.length + ' tiles into index.html, ' +
-  (slugs.length + PACK_PAGES.length + 1) + ' urls into sitemap.xml');
+  (slugs.length + PACK_PAGES.length + GPT_PACK_PAGES.length + 1) + ' urls into sitemap.xml');
