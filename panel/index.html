@@ -34,14 +34,34 @@
     src="https://ivanmanfredi.com/client/risedtc-com"
     allow="clipboard-write"></iframe>
   <script>
-    // Deep-link support: /panel/?cat=personal (and the /panel/content/<cat>/ pages)
-    // forward the category into the framed board, which reads ?cat= on load.
+    // Deep-link support: /panel/?cat=post&topic=personal (and the /panel/content/<x>/
+    // pages) forward the filters into the framed board, which reads them on load.
+    // cat = format (post/carousel/video/lm), topic = pillar (personal/teardown/...).
     (function () {
-      var cat = new URLSearchParams(location.search).get('cat');
-      if (cat && /^[a-z]+$/.test(cat)) {
-        document.getElementById('frame').src = 'https://ivanmanfredi.com/client/risedtc-com?cat=' + cat;
-      }
+      var p = new URLSearchParams(location.search);
+      var q = [];
+      ['cat', 'topic'].forEach(function (k) {
+        var v = p.get(k);
+        if (v && /^[a-z_]+$/.test(v)) q.push(k + '=' + v);
+      });
+      if (q.length) document.getElementById('frame').src = 'https://ivanmanfredi.com/client/risedtc-com?' + q.join('&');
     })();
+    // The board reports filter clicks (cb-filter) so the address bar tracks the view:
+    // pretty path when one exists, query params on /panel/ otherwise.
+    window.addEventListener('message', function (e) {
+      if (e.origin !== 'https://ivanmanfredi.com') return;
+      var d = e.data || {};
+      if (d.type !== 'cb-filter') return;
+      var FORMAT_PATH = { post: 'posts', carousel: 'carousels', video: 'videos', lm: 'lead-magnets' };
+      var cat = (typeof d.cat === 'string' && /^[a-z_]+$/.test(d.cat)) ? d.cat : 'all';
+      var topic = (typeof d.topic === 'string' && /^[a-z_]+$/.test(d.topic)) ? d.topic : 'all';
+      var url;
+      if (cat === 'all' && topic === 'all') url = '/panel/';
+      else if (cat === 'all' && topic === 'personal') url = '/panel/content/personal/';
+      else if (topic === 'all' && FORMAT_PATH[cat]) url = '/panel/content/' + FORMAT_PATH[cat] + '/';
+      else url = '/panel/?' + (cat !== 'all' ? 'cat=' + cat : '') + (cat !== 'all' && topic !== 'all' ? '&' : '') + (topic !== 'all' ? 'topic=' + topic : '');
+      history.replaceState(null, '', url);
+    });
   </script>
   <script>
     var f = document.getElementById('frame'), s = document.getElementById('splash');
