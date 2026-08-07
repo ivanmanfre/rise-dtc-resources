@@ -40,7 +40,7 @@
     (function () {
       var p = new URLSearchParams(location.search);
       var q = [];
-      ['cat', 'topic'].forEach(function (k) {
+      ['cat', 'topic', 'aim'].forEach(function (k) {
         var v = p.get(k);
         if (v && /^[a-z_]+$/.test(v)) q.push(k + '=' + v);
       });
@@ -53,13 +53,19 @@
       var d = e.data || {};
       if (d.type !== 'cb-filter') return;
       var FORMAT_PATH = { post: 'posts', carousel: 'carousels', video: 'videos', lm: 'lead-magnets' };
-      var cat = (typeof d.cat === 'string' && /^[a-z_]+$/.test(d.cat)) ? d.cat : 'all';
-      var topic = (typeof d.topic === 'string' && /^[a-z_]+$/.test(d.topic)) ? d.topic : 'all';
+      var ok = function (v) { return (typeof v === 'string' && /^[a-z_]+$/.test(v)) ? v : 'all'; };
+      var cat = ok(d.cat), topic = ok(d.topic), aim = ok(d.aim);
       var url;
-      if (cat === 'all' && topic === 'all') url = '/panel/';
-      else if (cat === 'all' && topic === 'personal') url = '/panel/content/personal/';
-      else if (topic === 'all' && FORMAT_PATH[cat]) url = '/panel/content/' + FORMAT_PATH[cat] + '/';
-      else url = '/panel/?' + (cat !== 'all' ? 'cat=' + cat : '') + (cat !== 'all' && topic !== 'all' ? '&' : '') + (topic !== 'all' ? 'topic=' + topic : '');
+      if (cat === 'all' && topic === 'all' && aim === 'all') url = '/panel/';
+      else if (cat === 'all' && topic === 'personal' && aim === 'all') url = '/panel/content/personal/';
+      else if (topic === 'all' && aim === 'all' && FORMAT_PATH[cat]) url = '/panel/content/' + FORMAT_PATH[cat] + '/';
+      else {
+        var q = [];
+        if (cat !== 'all') q.push('cat=' + cat);
+        if (topic !== 'all') q.push('topic=' + topic);
+        if (aim !== 'all') q.push('aim=' + aim);
+        url = '/panel/?' + q.join('&');
+      }
       history.replaceState(null, '', url);
     });
   </script>
