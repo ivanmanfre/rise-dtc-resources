@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RISE DTC · Content Desk</title>
+<title>RISE DTC · Content Desk · carousels</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#ffc71d">
 <style>
@@ -31,18 +31,8 @@
     <div class="sub">Loading your content desk…</div>
   </div>
   <iframe id="frame" title="RISE DTC Content Desk"
-    src="https://ivanmanfredi.com/client/risedtc-com"
+    src="https://ivanmanfredi.com/client/risedtc-com?cat=carousel"
     allow="clipboard-write"></iframe>
-  <script>
-    // Deep-link support: /panel/?cat=personal (and the /panel/content/<cat>/ pages)
-    // forward the category into the framed board, which reads ?cat= on load.
-    (function () {
-      var cat = new URLSearchParams(location.search).get('cat');
-      if (cat && /^[a-z]+$/.test(cat)) {
-        document.getElementById('frame').src = 'https://ivanmanfredi.com/client/risedtc-com?cat=' + cat;
-      }
-    })();
-  </script>
   <script>
     var f = document.getElementById('frame'), s = document.getElementById('splash');
     f.addEventListener('load', function () { s.classList.add('hide'); });
