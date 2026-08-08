@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Check your inbox | RISE DTC</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#111111" />
+<link rel="icon" type="image/png" sizes="32x32" href="/tools/assets/favicon-32.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --gold:#ffc71d;
+  --gold-deep:#8a6d00;
+  --ink:#111111;
+  --ink-2:#1f1f1f;
+  --text:#f2f0ea;
+  --sub:rgba(242,240,234,.78);
+  --muted:rgba(242,240,234,.58);
+  --line:rgba(255,255,255,.12);
+  --r-card:25px;
+  --r-pill:9999px;
+  --track:-.03em;
+  --sora:'Sora',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --manrope:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--text);font-family:var(--manrope);
+  min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+.rnav{position:relative;z-index:40;padding:14px 20px 0}
+.rnav-in{
+  display:flex;align-items:center;gap:18px;background:#fff;border-radius:20px;
+  padding:12px 14px 12px 22px;max-width:1400px;margin:0 auto;box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+.rnav-mark{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.rnav-mark svg{width:26px;height:26px;flex:none}
+.rnav-word{font-family:var(--sora);font-weight:700;font-size:16px;letter-spacing:var(--track);color:#111;white-space:nowrap}
+
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:3rem 1.5rem}
+.card{max-width:560px;text-align:center;background:#181818;border:1px solid var(--line);border-radius:var(--r-card);padding:2.6rem 2.2rem;box-shadow:0 18px 48px rgba(0,0,0,.4)}
+.mark{font-family:var(--sora);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 1.2rem}
+h1{font-family:var(--sora);font-weight:800;font-size:clamp(2.1rem,5vw,2.9rem);line-height:1.08;letter-spacing:var(--track);margin:0 0 1.1rem;color:#fff}
+.sub{font-size:1.08rem;line-height:1.6;color:var(--sub);margin:0 auto 1.4rem;max-width:30em}
+.note{font-size:.92rem;color:var(--muted);line-height:1.55;margin:0 auto 2rem;max-width:30em}
+.btn-line{
+  display:inline-block;text-decoration:none;font-family:var(--sora);font-weight:700;font-size:.95rem;
+  padding:14px 26px;border-radius:var(--r-pill);border:1.5px solid var(--line);color:#fff;background:transparent;
+  transition:border-color .13s,color .13s;letter-spacing:-.01em;
+}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.hubfoot{background:#000;color:#fff;padding:32px 24px;text-align:center;font-size:12px;letter-spacing:.05em;color:rgba(255,255,255,.55)}
+.hubfoot a{color:rgba(255,255,255,.8);text-decoration:none}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>
+<g id="sunrise">
+  <path d="M22 5 v8"/><path d="M11.6 8.6 l3.9 6.4"/><path d="M32.4 8.6 l-3.9 6.4"/>
+  <path d="M4.6 16.8 l6.9 3.7"/><path d="M39.4 16.8 l-6.9 3.7"/>
+  <path d="M10.5 31 a11.5 11.5 0 0 1 23 0"/><path d="M3.5 35.6 h37"/>
+</g>
+</defs></svg>
+
+<header class="rnav">
+  <div class="rnav-in">
+    <a class="rnav-mark" href="https://resources.risedtc.com/tools/" aria-label="RISE DTC">
+      <svg viewBox="0 0 44 44" aria-hidden="true" focusable="false"><g fill="none" stroke="#1F1F1F" stroke-width="2.1" stroke-linecap="round"><use href="#sunrise"/></g></svg>
+      <span class="rnav-word">RISE DTC</span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <p class="mark">You're in</p>
+    <h1>Check your inbox</h1>
+    <p class="sub">The pack is on its way to your email.</p>
+    <p class="note">If it is not there in a couple of minutes, check spam.</p>
+    <a class="btn-line" href="https://resources.risedtc.com/tools/">Browse the free tools while you wait</a>
+  </div>
+</main>
+
+<footer class="hubfoot">&copy;2026 RISE DTC. All rights reserved.</footer>
+</body>
+</html>

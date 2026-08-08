@@ -1,0 +1,21 @@
+{
+  "slug": "the-dtc-growth-team",
+  "format_label": "Claude Pack",
+  "category": "DTC paid growth",
+  "headline": "Introducing The DTC Growth Team, 30 Claude Agents for Paid Growth",
+  "headline_emphasis": "The DTC Growth Team",
+  "subhead": "Five stages of paid growth, TRACK, SPEND, CREATIVE, CONVERT, DECIDE. Six Claude agents in each, one file per agent, free to keep.",
+  "subhead_secondary": "Paste the screen you already have open underneath the agent and it answers, or it names the exact field it's missing.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-dtc-growth-team-grid-v2-2026-08-07.png",
+  "inside": [
+    "Attribution and tracking checks, six Track agents",
+    "Ad spend scaling and budget shift plans",
+    "Creative angles, hooks, and ad brief writers",
+    "Landing page conversion and message match checks",
+    "Scale or kill verdicts, named per ad"
+  ],
+  "proof": "<b>Built by the team that runs paid growth for DTC brands.</b> RISE buys media for DTC brands and gets paid on the growth it adds. These agents are the same audit questions, packaged as one file each.",
+  "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+  "cta_label": "Email me all 30 agents",
+  "error_help": "That didn't send. Try again in a minute."
+}
