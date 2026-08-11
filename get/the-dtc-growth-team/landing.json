@@ -18,5 +18,12 @@
   "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
   "cta_label": "Email me all 30 agents",
   "error_help": "That didn't send. Try again in a minute.",
-  "proof_avatar_alt": "Mattan from RISE DTC"
+  "proof_avatar_alt": "Mattan from RISE DTC",
+  "gate_mode": "never",
+  "resource_url": "https://resources.risedtc.com/the-dtc-growth-team/",
+  "cta_open_label": "Open all 30 agents",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want them in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
 }
