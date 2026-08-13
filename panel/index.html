@@ -44,6 +44,10 @@
         var v = p.get(k);
         if (v && /^[a-z_]+$/.test(v)) q.push(k + '=' + v);
       });
+      // post = a draft id (full uuid or >=6-char prefix): the board opens that post's
+      // window on load, so /panel/?post=1f5d865a is a shareable direct link.
+      var post = p.get('post');
+      if (post && /^[0-9a-fA-F-]{6,36}$/.test(post)) q.push('post=' + post);
       if (q.length) document.getElementById('frame').src = 'https://ivanmanfredi.com/client/risedtc-com?' + q.join('&');
     })();
     // The board reports filter clicks (cb-filter) so the address bar tracks the view:
@@ -51,6 +55,16 @@
     window.addEventListener('message', function (e) {
       if (e.origin !== 'https://ivanmanfredi.com') return;
       var d = e.data || {};
+      // cb-post: the board reports the opened post window so the address bar becomes a
+      // shareable /panel/?post=<id> link; null id (window closed) returns to /panel/.
+      if (d.type === 'cb-post') {
+        if (typeof d.id === 'string' && /^[0-9a-fA-F-]{6,36}$/.test(d.id)) {
+          history.replaceState(null, '', '/panel/?post=' + d.id.slice(0, 8));
+        } else {
+          history.replaceState(null, '', '/panel/');
+        }
+        return;
+      }
       if (d.type !== 'cb-filter') return;
       var FORMAT_PATH = { post: 'posts', carousel: 'carousels', video: 'videos', lm: 'lead-magnets' };
       var ok = function (v) { return (typeof v === 'string' && /^[a-z_]+$/.test(v)) ? v : 'all'; };
