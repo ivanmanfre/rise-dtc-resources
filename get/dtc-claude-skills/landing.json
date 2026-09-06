@@ -1,0 +1,29 @@
+{
+  "slug": "dtc-claude-skills",
+  "format_label": "Claude skills",
+  "category": "DTC paid growth",
+  "headline": "Introducing 15 DTC Skills for Claude, Free for Media Buyers and Creative Strategists",
+  "headline_emphasis": "15 DTC Skills for Claude",
+  "subhead": "Five groups of DTC paid growth work: research, creative, media buying, conversion, and the money. Fifteen Claude skills, one file per skill, free to keep.",
+  "subhead_secondary": "Paste the screen you already have open underneath the skill and it answers, or it names the exact field it's missing.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/dtc-claude-skills-cover-2026-09-06.png",
+  "inside": [
+    "Research: read competitor ads and customer language before you write anything",
+    "Creative: turn one angle into a brief, a hook set, a script, or the next round of tests",
+    "Media buying: tracking, account hygiene, and budget steps checked before you touch spend",
+    "Conversion: the ad's promise checked against what the page actually says",
+    "The money: break-even, affordable CPA, ROAS against MER, and a scale-or-kill call on every ad"
+  ],
+  "proof": "<b>Built by the team that runs paid growth for DTC brands.</b> RISE buys media for DTC brands and gets paid on the growth it adds. These skills are the same checks, packaged as one file each.",
+  "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+  "cta_label": "Email me all 15 skills",
+  "error_help": "That didn't send. Try again in a minute.",
+  "proof_avatar_alt": "Mattan from RISE DTC",
+  "gate_mode": "never",
+  "resource_url": "https://resources.risedtc.com/dtc-claude-skills/",
+  "cta_open_label": "Open all 15 skills",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want them in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
+}
