@@ -546,6 +546,38 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
 @media (max-width:700px){.code.wide{font-size:11.5px}}
 .verified{display:inline-block;margin-top:16px;padding:6px 12px;border:1px solid rgba(0,0,0,.18);border-radius:999px;font:600 12.5px/1.2 Manrope,system-ui,sans-serif}
 @media (max-width:560px){.facts li{grid-template-columns:1fr;gap:4px}}
+
+/* v2: tiles, phases, details */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.tl{border:1px solid rgba(0,0,0,.1);border-radius:18px;padding:20px 18px;background:#fff}
+.tl .n{font:800 34px/1 Sora,system-ui,sans-serif;letter-spacing:-.02em}
+.tl .l{margin-top:8px;font:500 14.5px/1.4 Manrope,system-ui,sans-serif;color:#5a5a5a}
+.tl a{color:inherit}
+.seegrid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center;margin-top:30px;padding:26px 30px;border:1px solid rgba(0,0,0,.09);border-radius:26px;background:#fff}
+.seegrid img{width:100%;border-radius:20px;display:block}
+.cap{font:500 12.5px/1.4 Manrope,system-ui,sans-serif;color:#8b8b8b;margin-top:8px}
+.chk{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:9px}
+.chk li{position:relative;padding-left:30px;font:500 16px/1.45 Manrope,system-ui,sans-serif}
+.chk li:before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:6px;background:#ffc71d}
+.chk li:after{content:"";position:absolute;left:6px;top:6px;width:5px;height:9px;border:solid #111;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.phase{display:grid;grid-template-columns:1.08fr 1fr;gap:34px;align-items:center;padding:30px;border:1px solid rgba(0,0,0,.09);border-radius:26px;background:#fff;margin-top:20px}
+.phase.flip .ph-img{order:2}
+.phase img{width:100%;border-radius:16px;display:block;border:1px solid rgba(0,0,0,.06)}
+.ph-k{display:flex;align-items:center;gap:12px}
+.ph-n{font:800 15px/1 Sora,system-ui,sans-serif;background:#111;color:#ffc71d;width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+.ph-t{font:700 12px/1 Sora,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8a6d00}
+.phase h3{font:700 25px/1.15 Sora,system-ui,sans-serif;letter-spacing:-.015em;margin-top:12px}
+.run{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 14px;border-radius:999px;background:#fff7dd;border:1px solid #f4dc8a;font:600 13.5px/1.2 Manrope,system-ui,sans-serif}
+.run code{background:none;padding:0;font-size:12.5px}
+.warn{margin-top:12px;padding:12px 14px;border-radius:14px;background:#f5f5f5;font:500 14px/1.45 Manrope,system-ui,sans-serif;color:#444}
+.warn b{color:#111}
+details.more{margin-top:18px;border:1px solid rgba(0,0,0,.1);border-radius:18px;background:#fff}
+details.more>summary{cursor:pointer;list-style:none;padding:16px 20px;font:700 15.5px/1.2 Sora,system-ui,sans-serif;display:flex;justify-content:space-between;align-items:center}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary:after{content:"+";font:400 24px/1 Sora,system-ui,sans-serif}
+details.more[open]>summary:after{content:"2"}
+details.more .in{padding:0 20px 20px}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}.seegrid,.phase{grid-template-columns:1fr;gap:20px}.phase{padding:20px}.phase.flip .ph-img{order:0}.seegrid img{max-width:360px}}
 </style>
 </head>
 <body>
@@ -575,7 +607,6 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
 </defs></svg>
 
 
-<!-- ============================ nav ============================ -->
 <header class="rnav">
   <div class="rnav-in">
     <a class="rnav-mark" href="#top" aria-label="RISE DTC">
@@ -585,7 +616,7 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
     <nav class="rnav-links" aria-label="On this page">
       <a href="#changed">What changed</a>
       <a href="#skills">The skills</a>
-      <a href="#setup">The setup path</a>
+      <a href="#setup">Setup</a>
       <a href="#how">How to install</a>
             <a href="#meet">Talk to RISE</a>
     </nav>
@@ -593,7 +624,6 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
   </div>
 </header>
 
-<!-- ============================ ink masthead ============================ -->
 <section class="inkband on-ink" id="top">
   <div class="bg"></div>
   <div class="veil"></div>
@@ -603,11 +633,10 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
   <div class="wrap hero-in">
     <p class="eyebrow on-dark">Five skills, all free</p>
     <h1>The ChatGPT Ads <span class="gold-word">Launch Kit</span>.</h1>
-    <p class="lede">OpenAI opened ChatGPT Ads to Shopify stores. This is five <code>SKILL.md</code> files for the DTC brand setting it up: check the store is ready, run the math on a click before you fund it, and write the catalog, the answers and the ad copy from facts your own store already states. Paste what you have underneath a skill and it answers, or it names the exact field it is missing.</p>
+    <p class="lede">OpenAI opened ChatGPT Ads to Shopify stores. Five skills to set it up right: check the store, run the math on a click, write the copy from your own facts.</p>
     <div class="cta-row">
       <a class="btn-gold shelf" href="assets/chatgpt-ads-launch-kit.zip" download data-cta="download_hero"><span class="cv" aria-hidden="true">&rsaquo;</span>Download all 5 skills</a>
-      <a class="btn-out" href="#changed">What changed</a>
-      <a class="btn-out" href="#how">How to install</a>
+      <a class="btn-out" href="#setup">The setup, step by step</a>
     </div>
     <p class="dl-note">Free. No email needed.</p>
     <div class="statrow">
@@ -618,53 +647,49 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
   <p class="crumb"><b>RISE DTC</b> / <span>The ChatGPT Ads Launch Kit</span></p>
 </section>
 
-<!-- ============================ what changed ============================ -->
 <section class="blk" id="changed">
   <div class="wrap">
     <p class="sec-eyebrow">What changed</p>
     <h2>Shopify is OpenAI's first ecommerce partner for ads</h2>
-    <p class="sec-sub">OpenAI built a ChatGPT Ads app for the Shopify App Store. It syncs your product catalog into ChatGPT Ads Manager, sets up a Shopify pixel for conversions, and lets you build and launch a campaign without leaving Shopify. Every line below links to where OpenAI or Shopify says it.</p>
-    <ul class="facts">
-      <li><span class="fk">The partner</span><span>OpenAI calls Shopify "our first ecommerce partner" for ChatGPT Ads. <a href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener">OpenAI announcement</a></span></li>
-      <li><span class="fk">Live now</span><span>The app has been in the Shopify App Store since September 3, 2026. Developer: OpenAI. Price: free. Open to US-based merchants. <a href="https://apps.shopify.com/chatgptads" target="_blank" rel="noopener">App Store listing</a></span></li>
-      <li><span class="fk">September 23</span><span>"The app will be available internationally in markets where ChatGPT Ads are available starting September 23." <a href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener">OpenAI announcement</a></span></li>
-      <li><span class="fk">Where</span><span>Self-serve Ads Manager is listed for 56 countries. The company that is billed has to be based in one of them. <a href="https://help.openai.com/en/articles/20001245-ads-manager-availability" target="_blank" rel="noopener">Availability list</a></span></li>
-      <li><span class="fk">The floor</span><span>The minimum daily budget is $25 in USD, 15 in EUR or GBP. For clicks, OpenAI suggests starting with a maximum bid of $3 to $5. <a href="https://help.openai.com/en/articles/20001210-create-campaigns-for-chatgpt-ads" target="_blank" rel="noopener">Campaign setup</a> and <a href="https://help.openai.com/en/articles/20001207-ads-in-chatgpt-the-basics" target="_blank" rel="noopener">the basics</a></span></li>
-      <li><span class="fk">Who sees ads</span><span>Ads appear below a response. They are not shown to Plus, Pro or Business accounts, or to accounts identified as under 18. <a href="https://help.openai.com/en/articles/20001207-ads-in-chatgpt-the-basics" target="_blank" rel="noopener">The basics</a></span></li>
-      <li><span class="fk">What can run</span><span>Lifestyle and household goods are in. Alcohol, nicotine, THC and products sold on a health claim are out or reviewed case by case. <a href="https://openai.com/policies/ad-policies/" target="_blank" rel="noopener">Ad policies</a></span></li>
-      <li><span class="fk">Returns</span><span>OpenAI says the channel "does not yet have performance benchmarks". Nobody can tell you what it returns, and this kit does not try. <a href="https://help.openai.com/en/articles/20001220-frequently-asked-questions" target="_blank" rel="noopener">OpenAI FAQ</a></span></li>
-    </ul>
+    <p class="sec-sub">OpenAI built the app. It syncs your catalog, sets up the pixel, and launches campaigns from inside Shopify. <a href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener">OpenAI's announcement</a></p>
+    <div class="tiles">
+      <div class="tl"><div class="n">Sep 3</div><div class="l">Live in the App Store for US stores. Free. <a href="https://apps.shopify.com/chatgptads" target="_blank" rel="noopener">Listing</a></div></div>
+      <div class="tl"><div class="n">Sep 23</div><div class="l">Opens to the other ChatGPT Ads markets. <a href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener">Source</a></div></div>
+      <div class="tl"><div class="n">$25</div><div class="l">Minimum daily budget in USD. 15 in EUR or GBP. <a href="https://help.openai.com/en/articles/20001210-create-campaigns-for-chatgpt-ads" target="_blank" rel="noopener">Source</a></div></div>
+      <div class="tl"><div class="n">56</div><div class="l">Countries with self-serve Ads Manager. <a href="https://help.openai.com/en/articles/20001245-ads-manager-availability" target="_blank" rel="noopener">List</a></div></div>
+    </div>
+    <div class="seegrid">
+      <div>
+        <h3 style="font:700 24px/1.2 Sora,system-ui,sans-serif;letter-spacing:-.01em">What the shopper sees</h3>
+        <ul class="chk">
+          <li>The ad sits below ChatGPT's answer, marked Sponsored.</li>
+          <li>OpenAI's guide: aim for a 16 character headline and a 32 character description.</li>
+          <li>Plus, Pro and Business accounts never see ads. Neither do under-18s.</li>
+          <li>OpenAI suggests a $3 to $5 starting bid for clicks.</li>
+        </ul>
+        <p class="cap"><a href="https://help.openai.com/en/articles/20001207-ads-in-chatgpt-the-basics" target="_blank" rel="noopener">OpenAI Help: Ads in ChatGPT, the basics</a></p>
+      </div>
+      <div><img src="assets/ad-unit.png" alt="OpenAI's example of an ad in ChatGPT, with headline, description and image labelled" loading="lazy" /><p class="cap">Image: OpenAI Help Center</p></div>
+    </div>
+    <details class="more"><summary>What can and can't run, and what nobody knows yet</summary><div class="in">
+      <ul class="chk">
+        <li>In: lifestyle and household goods, fitness gear, general nutrition.</li>
+        <li>Out: alcohol over 0.5% ABV, nicotine, THC, sexual health products.</li>
+        <li>Case by case: supplements and anything sold on a health claim. <a href="https://openai.com/policies/ad-policies/" target="_blank" rel="noopener">Ad policies</a></li>
+        <li>OpenAI says the channel "does not yet have performance benchmarks". This kit carries none. <a href="https://help.openai.com/en/articles/20001220-frequently-asked-questions" target="_blank" rel="noopener">FAQ</a></li>
+      </ul></div></details>
     <span class="verified">Last verified against OpenAI and Shopify: September 19, 2026</span>
-    <p class="srcline">ChatGPT Ads is in beta and these rules move. Each skill names the article its rule came from, so you can re-read it before you launch.</p>
   </div>
 </section>
 
-<!-- ============================ poster band ============================ -->
-<div class="startband on-ink">
-  <svg class="sunmark" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><g fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><use href="#sunrise"/></g></svg>
-  <span class="vertmark" aria-hidden="true">Rise DTC</span>
-  <div class="wrap">
-    <div class="sb-in">
-      <span class="numeral sb-n">01</span>
-      <div>
-        <p class="sb-k">Start here</p>
-        <h2>Run the readiness check before you install</h2>
-        <p>Two of its fourteen items take a minute to fix and block everything after them. A <code>robots.txt</code> that shuts out OpenAI's ad crawlers makes an ad ineligible to run, and OpenAI's setup guide names Chrome or Safari as the browsers to connect from. Paste your store details and your <code>robots.txt</code>, and read the list.</p>
-      </div>
-      <a class="btn-gold shelf" href="#skills"><span class="cv" aria-hidden="true">&rsaquo;</span>See the five</a>
-    </div>
-  </div>
-</div>
-
-<!-- ============================ before you spend ============================ -->
-<section class="famband white" id="before">
+<section class="famband grey" id="kit">
   <div class="wrap">
     <div class="famgrid">
       <div class="famrail">
-        <p class="fam-eyebrow">Group 01</p>
-        <h2>Before you spend</h2>
-        <p class="fam-note">Whether the store can run ads here at all, and whether a click at your bid can pay for itself on your own order economics. Run both before a budget exists.</p>
-        <p class="fam-range"><span class="numeral">01</span> to <span class="numeral">02</span></p>
+        <p class="fam-eyebrow">The kit</p>
+        <h2>Five skills</h2>
+        <p class="fam-note">Paste what you have under a skill. It answers, or it names the field it is missing. Nothing connects to your store.</p>
+        <p class="fam-range"><span class="numeral">01</span> to <span class="numeral">05</span></p>
       </div>
       <div class="wall" id="skills">
 
@@ -673,7 +698,7 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
           <span class="t-body">
             <span class="t-top"><span class="numeral t-n light">01</span><span class="t-tag">Start here</span></span>
             <span class="t-name">The Readiness Check</span>
-            <span class="t-promise">Paste where the company is based, what you sell, your <code>robots.txt</code>, your browser, your budget and any error on screen. Get PASS, FAIL, REVIEW or CANNOT CHECK on 14 setup items, each tied to the OpenAI rule behind it.</span>
+            <span class="t-promise">14 setup items marked PASS or FAIL, with the OpenAI rule behind each.</span>
             <span class="t-cap"><code>chatgpt-ads-readiness-check</code></span>
           </span>
         </div>
@@ -684,34 +709,18 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
           <span class="t-body">
             <span class="t-top"><span class="numeral t-n light">02</span></span>
             <span class="t-name">Click Math</span>
-            <span class="t-promise">Paste the cost per purchase you can afford, your bid, your daily budget and your own conversion rate. Get the rate a click has to hit, your cost per purchase at the bid, the most a day and a week can bill, and what a readable test costs.</span>
+            <span class="t-promise">The conversion rate a click at your bid has to hit, on your own margins.</span>
             <span class="t-cap"><code>chatgpt-ads-click-math</code></span>
           </span>
         </div>
 
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ the words ============================ -->
-<section class="famband grey" id="words">
-  <div class="wrap">
-    <div class="famgrid">
-      <div class="famrail">
-        <p class="fam-eyebrow">Group 02</p>
-        <h2>The words shoppers see</h2>
-        <p class="fam-note">The app builds product ads from your catalog, so the ad starts as your product row. These three run in order, and each one's output is the next one's input.</p>
-        <p class="fam-range"><span class="numeral">03</span> to <span class="numeral">05</span></p>
-      </div>
-      <div class="wall">
 
         <div class="tile">
           <span class="t-fig" data-grid="c"><svg class="sch" viewBox="0 0 120 68" aria-hidden="true" focusable="false"><use href="#pastein"/></svg></span>
           <span class="t-body">
             <span class="t-top"><span class="numeral t-n light">03</span></span>
             <span class="t-name">The Catalog Rewriter</span>
-            <span class="t-promise">Paste product rows from a Shopify export. Get a count out of seven of the facts each product states, a rewritten title and description built only from those facts, and a CSV ready to import.</span>
+            <span class="t-promise">Product titles and descriptions rebuilt from facts your rows already state.</span>
             <span class="t-cap"><code>catalog-rewriter-for-chatgpt</code></span>
           </span>
         </div>
@@ -722,7 +731,7 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
           <span class="t-body">
             <span class="t-top"><span class="numeral t-n light">04</span></span>
             <span class="t-name">The Shopper Question Bank</span>
-            <span class="t-promise">Paste one product page plus your FAQ, shipping and returns text. Get up to 30 pre-purchase questions, each answered with your own sentence quoted, or marked for you to answer.</span>
+            <span class="t-promise">Up to 30 buyer questions, answered in your store's own words.</span>
             <span class="t-cap"><code>shopper-question-bank</code></span>
           </span>
         </div>
@@ -733,7 +742,7 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
           <span class="t-body">
             <span class="t-top"><span class="numeral t-n light">05</span></span>
             <span class="t-name">Ad Variations and Context Hints</span>
-            <span class="t-promise">Paste one product's facts and your audience in a sentence. Get up to eight title and description pairs on eight different angles, plus context hints in the phrase shape OpenAI asks for.</span>
+            <span class="t-promise">Eight angles per product, sized to OpenAI's 16 and 32 character guide.</span>
             <span class="t-cap"><code>ad-variations-and-context-hints</code></span>
           </span>
         </div>
@@ -743,174 +752,118 @@ code{font-family:var(--mono);font-size:.86em;background:#eef0f3;padding:2px 6px;
   </div>
 </section>
 
-
-<!-- ============================ a real output ============================ -->
-<section class="blk" id="example">
+<section class="blk" id="setup">
   <div class="wrap">
-    <p class="sec-eyebrow">What comes back</p>
-    <h2>The readiness check, run on a made-up store</h2>
-    <p class="sec-sub">Brightwater Goods is invented: a German store selling candles, a hard kombucha and a sleep supplement, stuck on a connection error. This is the skill's output, trimmed to the table and the two lists you act on.</p>
-    <div class="gcard">
-      <span class="steptag">Output &middot; chatgpt-ads-readiness-check</span>
+    <p class="sec-eyebrow">The setup, step by step</p>
+    <h2>Four stops from install to live</h2>
+    <p class="sec-sub">OpenAI's own order, with the skill to run before each stop. <a href="https://help.openai.com/en/articles/20001523-set-up-chatgpt-ads-for-shopify" target="_blank" rel="noopener">OpenAI's setup article</a></p>
+
+    <div class="phase">
+      <div class="ph-img"><img src="assets/step-connect.png" alt="The ChatGPT Ads app inside Shopify showing the Connect Account button" loading="lazy" /><p class="cap">Screenshot: OpenAI</p></div>
+      <div>
+        <div class="ph-k"><span class="ph-n">1</span><span class="ph-t">Connect</span></div>
+        <h3>Install the app and connect your account</h3>
+        <ul class="chk"><li>Install from Chrome or Safari.</li><li>Select <b>Connect Account</b>.</li><li>Pick your Ads Manager account, or create one.</li><li>Have ready: website, industry, country, currency, time zone.</li></ul>
+        <span class="run">Run first: <code>chatgpt-ads-readiness-check</code></span>
+        <p class="cap" style="margin-top:6px">Catches a blocked robots.txt, the wrong browser and an ineligible category before you start.</p>
+        <p class="warn"><b>Watch out.</b> "Unable to verify this connection attempt" is a known error on the listing. Check the browser and the account, then write to ads-support@openai.com.</p>
+      </div>
+    </div>
+
+    <div class="phase flip">
+      <div class="ph-img"><img src="assets/step-sync.png" alt="The ChatGPT Ads app showing the product catalog syncing to Ads Manager" loading="lazy" /><p class="cap">Screenshot: OpenAI</p></div>
+      <div>
+        <div class="ph-k"><span class="ph-n">2</span><span class="ph-t">Sync</span></div>
+        <h3>Connect the pixel and let the catalog sync</h3>
+        <ul class="chk"><li>Select or create the OpenAI Pixel for Shopify.</li><li>Connect it so purchases reach Ads Manager.</li><li>Wait for the product sync. Bigger catalogs take longer.</li></ul>
+        <span class="run">Run first: <code>catalog-rewriter-for-chatgpt</code></span>
+        <p class="cap" style="margin-top:6px">The feed copies your product rows as they are at sync. Fix the thin ones first.</p>
+        <p class="warn"><b>Watch out.</b> The Products tab stays empty until a campaign has delivered. That is normal.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph-img"><img src="assets/step-campaign.png" alt="The ChatGPT Ads app showing campaign creation and performance" loading="lazy" /><p class="cap">Screenshot: OpenAI</p></div>
+      <div>
+        <div class="ph-k"><span class="ph-n">3</span><span class="ph-t">Launch</span></div>
+        <h3>Build the first campaign inside Shopify</h3>
+        <ul class="chk"><li><b>Create Campaign</b>: name, budget, optimization event, targeting.</li><li>Ad type: all products, single product or website.</li><li>Pick the products, check the preview, launch.</li></ul>
+        <span class="run">Run first: <code>chatgpt-ads-click-math</code></span>
+        <p class="cap" style="margin-top:6px">Tells you the conversion rate your bid needs before money moves.</p>
+        <p class="warn"><b>Watch out.</b> The objective, the billing model and the conversion event cannot be changed later. A different choice means a new campaign.</p>
+      </div>
+    </div>
+
+    <div class="phase flip">
+      <div class="ph-img"><img src="assets/budget-ui.png" alt="Ads Manager daily budget field showing the maximum daily and seven day spend" loading="lazy" /><p class="cap">Screenshot: OpenAI</p></div>
+      <div>
+        <div class="ph-k"><span class="ph-n">4</span><span class="ph-t">Budget</span></div>
+        <h3>Know what a daily budget can bill</h3>
+        <ul class="chk"><li>Minimum $25 a day in USD.</li><li>One day can bill up to 2x your daily budget.</li><li>A Sunday to Saturday week bills at most 7x.</li><li>In Shopify budgets move in $25 steps. Ads Manager takes any amount.</li></ul>
+        <span class="run">Run first: <code>chatgpt-ads-click-math</code></span>
+        <p class="cap" style="margin-top:6px">Prints both ceilings from your own budget.</p>
+        <p class="warn"><b>Watch out.</b> Give it 24 hours before calling zero impressions a fault. Reporting lags delivery by up to 7 hours.</p>
+      </div>
+    </div>
+    <details class="more"><summary>See a real output: the readiness check on a made-up store</summary><div class="in">
+      <p class="cap" style="margin:0 0 10px">Brightwater Goods is invented: a German store selling candles, a hard kombucha and a sleep supplement.</p>
       <pre class="code wide">| #  | item              | status       | what decided it
 |  1 | Billing country   | PASS         | Germany is in the list
 |  2 | App availability  | REVIEW       | listed country, availability begins September 23, 2026
 |  3 | Product category  | FAIL         | hard kombucha exceeds the 0.5% ABV alcohol limit
 |  4 | robots.txt        | PASS         | only /cart and /checkout disallowed
-|  5 | Browser           | PASS         | Chrome
 |  8 | Minimum budget    | PASS         | 15 EUR vs minimum 15 EUR
-|  9 | Budget covers bid | CANNOT CHECK | no bid pasted
 | 10 | Shopify increment | REVIEW       | 15 is not a multiple of 25
-| 12 | Spend ceiling     | PASS         | 2 x 15 EUR = 30 EUR in a day, 7 x 15 EUR = 105 EUR in a week
 | 14 | Error on screen   | REVIEW       | matches "Unable to verify this connection attempt"
-
-Item 3, by category
-  scented soy candles                  PASS    lifestyle and household goods
-  hard kombucha, 4.5% ABV              FAIL    policy excludes alcohol "over 0.5% ABV"
-  magnesium sleep supplement           REVIEW  supplement sold on a health claim, case by case
 
 PASS: 8 / 14    FAIL: 1 / 14    REVIEW: 4 / 14    CANNOT CHECK: 1 / 14
 
 Fix these first
-  Item 3, hard kombucha: keep this category out of the campaign. Choose
-  'single product' or select products by hand, and leave it out.</pre>
-      <p>Four rows are trimmed here for length. The full run prints all fourteen, the fix for every FAIL, and the items only OpenAI can settle.</p>
-    </div>
+  Item 3, hard kombucha: keep this category out of the campaign.</pre></div></details>
   </div>
 </section>
 
-<!-- ============================ the setup path ============================ -->
-<section class="blk" id="setup">
-  <div class="wrap">
-    <p class="sec-eyebrow">The setup path</p>
-    <h2>Seven steps, in OpenAI's order</h2>
-    <p class="sec-sub">This is the install as OpenAI's help center lists it, with the kit's skill beside the step it helps. <a href="https://help.openai.com/en/articles/20001523-set-up-chatgpt-ads-for-shopify" target="_blank" rel="noopener">Read OpenAI's article</a>.</p>
-    <div class="gcard">
-      <span class="steptag">Connect the store</span>
-      <h3>From install to a synced catalog</h3>
-      <ol class="plain">
-        <li>In Shopify, install or open the ChatGPT Ads app. Use Chrome or Safari.</li>
-        <li>Select <b>Connect Account</b>.</li>
-        <li>Choose an existing Ads Manager account, or create one: organization, account name, website, industry, country, currency and time zone.</li>
-        <li>Select or create the OpenAI Pixel for Shopify.</li>
-        <li>Connect the Pixel so your store's commerce events reach Ads Manager.</li>
-        <li>Wait for your product inventory to sync. OpenAI says sync time varies with catalog size.</li>
-        <li>In Ads Manager, use the synced product feed to create product ads.</li>
-      </ol>
-      <p>Run <code>chatgpt-ads-readiness-check</code> before step 1 and <code>catalog-rewriter-for-chatgpt</code> before step 6, because the feed is built from the rows you have at that moment.</p>
-    </div>
-    <div class="gcard">
-      <span class="steptag">Launch the first campaign</span>
-      <h3>Inside the Shopify app</h3>
-      <ol class="plain">
-        <li>Select <b>Create Campaign</b>, then enter a campaign name, budget, optimization event and targeting.</li>
-        <li>Choose the ad type: all products, single product or website.</li>
-        <li>Select the products, review the ad preview, then select <b>Create and Launch campaign</b>.</li>
-      </ol>
-      <p>Inside Shopify, budgets move in steps of $25. Ads Manager at ads.openai.com accepts other amounts. The campaign objective, the billing model and the conversion event cannot be changed after the campaign exists, so run <code>chatgpt-ads-click-math</code> first. A daily budget is a seven day average: one day can bill up to twice the budget, and a Sunday to Saturday week bills no more than seven times it.</p>
-    </div>
-    <div class="gcard">
-      <span class="steptag">After launch</span>
-      <h3>What is normal</h3>
-      <p>Allow 24 hours before treating zero impressions as a fault, and expect reporting to lag delivery by up to 7 hours. The Products tab stays empty until a product campaign has delivered. If the app will not connect, OpenAI's published checks are the browser and the account you connected. After that, write to ads-support@openai.com with the Ads Manager account you are trying to connect.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ how to install ============================ -->
-<section class="blk" id="how">
+<section class="blk" id="how" style="padding-top:0">
   <div class="wrap">
     <p class="sec-eyebrow">How to install</p>
-    <h2>You need a ChatGPT account and the folder</h2>
-    <p class="sec-sub">There is nothing to connect and no setup step that needs anyone technical. Three routes below. Route 1 is the real install and needs a Business, Enterprise or Edu seat. Route 2 works on every plan, Free included, and takes no setup at all.</p>
+    <h2>Three steps, any ChatGPT plan</h2>
     <div class="gcard">
-      <span class="steptag">Step 01 &middot; Download and unzip</span>
-      <h3>Get the folder, then open one skill in ChatGPT</h3>
-      <p>Start by downloading the kit and unzipping it. Inside are five skill folders, each holding one <code>SKILL.md</code> and a <code>fixtures/</code> folder of practice input. Every route below reads off that unzipped folder.</p>
-      <div class="cta-row">
+      <ul class="chk">
+        <li>Download the kit and unzip it.</li>
+        <li>Open a skill folder, copy its <code>SKILL.md</code>, paste it into a new chat.</li>
+        <li>Paste your own details underneath and send.</li>
+      </ul>
+      <div class="cta-row" style="margin-top:20px">
         <a class="btn-gold shelf" href="assets/chatgpt-ads-launch-kit.zip" download data-cta="download_guide"><span class="cv" aria-hidden="true">&rsaquo;</span>Download all 5 skills</a>
       </div>
-      <div class="paths">
-        <div class="path">
-          <h4>Route 1: ChatGPT Business, Enterprise or Edu</h4>
-          <ol class="plain">
-            <li>Unzip the kit.</li>
-            <li>In ChatGPT, open the sidebar, go to <b>Plugins</b>, open the <b>Skills</b> tab, then <b>Create</b>.</li>
-            <li>Choose <b>Upload from your computer</b> and upload one skill folder. Each folder is one skill, so upload them one at a time.</li>
-            <li>Type <code>@chatgpt-ads-readiness-check</code> in a chat, then paste your store details underneath.</li>
-          </ol>
-          <p>OpenAI's help center says Skills are available to eligible ChatGPT Business, Enterprise, Healthcare and Edu users. ChatGPT scans every upload, and some come back marked Needs Review. You can also just ask for the job in plain words: a skill triggers on its own when your request matches its description.</p>
-        </div>
-        <div class="path">
-          <h4>Route 2: any ChatGPT plan, Free included</h4>
-          <ol class="plain">
-            <li>Open the skill's folder and its <code>SKILL.md</code> file.</li>
-            <li>Copy the whole file and paste it into a new chat.</li>
-            <li>Paste your own details underneath it and send.</li>
-          </ol>
-          <p>No setup at all. Free, Plus and Pro accounts do not carry the Skills upload, so this is the route there, and it is where to start if you only want to try one skill first. On Plus and above you can paste the file into a Project's instructions instead, so every chat in that project carries the skill.</p>
-        </div>
-        <div class="path" style="grid-column:1/-1">
-          <h4>Route 3: Codex or Claude Code</h4>
-          <ol class="plain">
-            <li>Put the unzipped <code>chatgpt-ads-launch-kit</code> folder inside the project you work in.</li>
-            <li>For Codex, run: <code>cp -R chatgpt-ads-launch-kit/* ~/.agents/skills/</code></li>
-            <li>For Claude Code, run: <code>cp -R chatgpt-ads-launch-kit/* ~/.claude/skills/</code></li>
-          </ol>
-          <p>One command copies all five folders into place, and both tools pick them up on the next start. Codex invokes a skill with <code>$chatgpt-ads-readiness-check</code>.</p>
-        </div>
-      </div>
     </div>
-    <div class="gcard">
-      <span class="steptag">Step 02 &middot; Where things live</span>
-      <h3>The folder, and how it is laid out</h3>
-      <pre class="code">chatgpt-ads-launch-kit/
-  README.md
-  chatgpt-ads-readiness-check/
-  chatgpt-ads-click-math/
-  catalog-rewriter-for-chatgpt/
-  shopper-question-bank/
-  ad-variations-and-context-hints/
-    SKILL.md      the skill itself
-    fixtures/     practice input to run it on</pre>
-      <p>Every folder name is the skill's own name, so it is checkable against the list on this page: count the folders and you get five. The brands in the fixtures are invented. No client data is anywhere in the kit.</p>
-    </div>
+    <details class="more"><summary>On ChatGPT Business, Enterprise or Edu: install as real Skills</summary><div class="in">
+      <ol class="plain"><li>In ChatGPT, open the sidebar, go to <b>Plugins</b>, then <b>Skills</b>, then <b>Create</b>.</li><li>Choose <b>Upload from your computer</b> and upload one skill folder at a time.</li><li>Type <code>@chatgpt-ads-readiness-check</code> in a chat and paste your details.</li></ol>
+      <p class="cap">OpenAI's help center says the Skills upload is for Business, Enterprise, Healthcare and Edu seats. Free, Plus and Pro use the three steps above.</p></div></details>
+    <details class="more"><summary>In Codex or Claude Code</summary><div class="in">
+      <pre class="code">cp -R chatgpt-ads-launch-kit/* ~/.agents/skills/    # Codex
+cp -R chatgpt-ads-launch-kit/* ~/.claude/skills/    # Claude Code</pre></div></details>
   </div>
 </section>
 
-<!-- ============================ what it will not do ============================ -->
 <section class="runbay on-ink" id="wont">
   <svg class="sunbig" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><g fill="none" stroke="#ffc71d" stroke-width="1.1" stroke-linecap="round"><use href="#sunrise"/></g></svg>
   <div class="wrap">
     <div class="rb-in">
       <div>
-        <span class="rb-k">Worth knowing before you open it</span>
+        <span class="rb-k">Worth knowing</span>
         <h2>What these will not do</h2>
-        <p>Every one of these files works off the same rule. It reads what you paste, it prints what that supports, and it stops where the paste runs out.</p>
       </div>
       <ul class="rb-list">
-        <li class="rb-item">
-          <b>No store or ad account connection</b>
-          <p>Nothing here logs into Shopify or ChatGPT Ads Manager. There is no key to enter and no permission to grant.</p>
-        </li>
-        <li class="rb-item">
-          <b>No promise of approval</b>
-          <p>OpenAI reviews every advertiser and every ad. The readiness check reads the published rules and says which items pass on what you pasted. Only OpenAI decides the rest.</p>
-        </li>
-        <li class="rb-item">
-          <b>No benchmark, anywhere</b>
-          <p>OpenAI publishes none for this channel, so the kit carries none. The only conversion rate Click Math will use is one you supply, with the arithmetic shown.</p>
-        </li>
-        <li class="rb-item">
-          <b>Missing input, named</b>
-          <p>When a skill needs a fact or a figure that was not in your paste, it prints <span class="needs">[NEEDS:]</span> and names the exact field. It never writes a product fact your own store does not state.</p>
-        </li>
+        <li class="rb-item"><b>Connect to anything</b><p>You paste, they read. No key, no permission.</p></li>
+        <li class="rb-item"><b>Promise approval</b><p>OpenAI reviews every advertiser and every ad.</p></li>
+        <li class="rb-item"><b>Quote a benchmark</b><p>OpenAI publishes none, so the kit carries none.</p></li>
+        <li class="rb-item"><b>Guess</b><p>A missing input prints <span class="needs">[NEEDS:]</span> with the exact field.</p></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============================ meet the team ============================ -->
 <section class="meetband" id="meet">
   <svg class="sunbig" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><g fill="none" stroke="#1f1f1f" stroke-width="1.1" stroke-linecap="round"><use href="#sunrise"/></g></svg>
   <div class="mb-in">
@@ -922,7 +875,7 @@ Fix these first
     <div class="mb-copy">
       <span class="mb-k">From the team behind the kit</span>
       <h2>RISE runs paid growth for DTC brands</h2>
-      <p>My team buys media for DTC brands and we get paid on the growth we add. We built this kit from OpenAI's own documentation the week the Shopify app opened, so a brand can set the channel up once and set it up right. If you want to talk through where ChatGPT Ads sits next to the channels you already run, book a 30 minute intro call.</p>
+      <p>My team buys media for DTC brands and we get paid on the growth we add. Want to talk through where ChatGPT Ads sits next to the channels you already run? Book 30 minutes.</p>
       <div class="cta-row">
         <a class="btn-ink" data-cta="booking_lm" href="https://meetings.hubspot.com/mattan5/rise-intro-call--li?utm_source=resources&amp;utm_medium=cta&amp;utm_campaign=chatgpt-ads-launch-kit" target="_blank" rel="noopener"><span class="cv" aria-hidden="true">&rsaquo;</span>Book an intro call</a>
       </div>
@@ -930,13 +883,12 @@ Fix these first
   </div>
 </section>
 
-<!-- ============================ closing band ============================ -->
 <section class="ctaband on-ink">
   <svg class="sunbig" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><g fill="none" stroke="#ffc71d" stroke-width="1.1" stroke-linecap="round"><use href="#sunrise"/></g></svg>
   <div class="cb-in">
     <p class="sec-eyebrow">The unpaid side</p>
     <h2>Ads are <span class="hl">one way in</span></h2>
-    <p>Being recommended inside ChatGPT without paying for it is a different job, and we wrote a separate checklist for it. For the cost per purchase that Click Math asks for, the break-even skill in our 15 skills kit works it out from your order economics.</p>
+    <p>Getting recommended in ChatGPT without paying is a separate job, with its own checklist.</p>
     <div class="cta-row">
       <a class="btn-gold shelf" href="https://resources.risedtc.com/guides/chatgpt-visibility/"><span class="cv" aria-hidden="true">&rsaquo;</span>The ChatGPT shopping checklist</a>
       <a class="btn-out" href="https://resources.risedtc.com/dtc-chatgpt-skills/">15 DTC Skills for ChatGPT</a>
@@ -953,13 +905,11 @@ Fix these first
       </div>
       <p>The ChatGPT Ads Launch Kit.</p>
     </div>
-    <div class="hf-meta">
-      Five ChatGPT skills for DTC brands setting up ChatGPT Ads on Shopify. Platform rules read from OpenAI and Shopify on September 19, 2026. RISE DTC is not affiliated with OpenAI or Shopify.
-    </div>
+    <div class="hf-meta">Platform rules read from OpenAI and Shopify on September 19, 2026. Screenshots are OpenAI's. RISE DTC is not affiliated with OpenAI or Shopify.</div>
   </div>
   <div class="hf-rule">
     <span>&copy;2026 RISE DTC. All rights reserved.</span>
-    <span>5 skills &middot; 2 groups</span>
+    <span>5 skills</span>
   </div>
 </footer>
 
