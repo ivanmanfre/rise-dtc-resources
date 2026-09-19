@@ -1,0 +1,29 @@
+{
+  "slug": "chatgpt-ads-launch-kit",
+  "format_label": "ChatGPT skills",
+  "category": "ChatGPT Ads for Shopify",
+  "headline": "Introducing The ChatGPT Ads Launch Kit, Free for DTC Brands on Shopify",
+  "headline_emphasis": "The ChatGPT Ads Launch Kit",
+  "subhead": "OpenAI opened ChatGPT Ads to Shopify stores, with more countries from September 23. Five ChatGPT skills to set it up right, one file per skill, free to keep.",
+  "subhead_secondary": "Paste what you already have underneath a skill and it answers, or it names the exact field it's missing.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/chatgpt-ads-launch-kit-cover-2026-09-19.png",
+  "inside": [
+    "Readiness check: 14 setup items, each tied to the OpenAI rule behind it",
+    "Click math: the conversion rate a click at your bid has to hit, on your own numbers",
+    "Catalog rewriter: product titles and descriptions rebuilt from facts your rows already state",
+    "Shopper question bank: up to 30 pre-purchase questions, answered in your store's own words",
+    "Ad variations and context hints: eight angles, each resting on a fact about the product"
+  ],
+  "proof": "<b>Built by the team that runs paid growth for DTC brands.</b> RISE buys media for DTC brands and gets paid on the growth it adds. Every platform rule in the kit is sourced to OpenAI's own documentation, read September 19, 2026.",
+  "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+  "cta_label": "Email me all 5 skills",
+  "error_help": "That didn't send. Try again in a minute.",
+  "proof_avatar_alt": "Mattan from RISE DTC",
+  "gate_mode": "never",
+  "resource_url": "https://resources.risedtc.com/chatgpt-ads/",
+  "cta_open_label": "Open all 5 skills",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want them in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
+}
