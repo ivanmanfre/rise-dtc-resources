@@ -6,7 +6,6 @@ a dollar-sized returns plan, a rewritten product page, ad angles pulled from
 your reviews, a retention flow, and a Monday triage that tells you which of the
 other four to run first.
 
-<!-- PRICING-BALLOT: default = no-fee-named variant; retires the "performance-only" coined term -->
 Built by the RISE DTC team, paid on a lower fixed fee plus a share of the growth we create, for 150+
 DTC brands. Claude does the work on every one of these; you bring the numbers.
 
