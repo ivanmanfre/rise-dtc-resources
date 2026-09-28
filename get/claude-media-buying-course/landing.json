@@ -1,0 +1,29 @@
+{
+  "slug": "claude-media-buying-course",
+  "format_label": "Claude Course",
+  "category": "DTC media buying with Claude",
+  "headline": "Claude for DTC Media Buying: the 10 levels",
+  "headline_emphasis": "Claude for DTC Media Buying",
+  "subhead": "A free course in 10 levels, from one saved prompt to a complete system that keeps your ads testing and scaling. Prompts, project and skill templates, agent briefs and a 30-day plan.",
+  "subhead_secondary": "Every prompt, skill and agent uses only what you paste, shows its arithmetic, and names the exact input it is missing when something is not there.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/claude-media-buying-course-cover-2026-09-29.png",
+  "inside": [
+    "10 lessons, from The Saved Prompt to The Complete System",
+    "Copy-and-paste prompts for every stage, from customer research to performance reporting",
+    "Project, skill and agent templates, with guardrails, ready to fill in",
+    "A real media buying workflow in every level",
+    "A day-by-day 30-day implementation plan"
+  ],
+  "proof": "<b>Built by the team that runs paid growth for DTC brands.</b> RISE buys media for DTC brands and gets paid on the growth it adds. We used this same process on a brand that cut ad spend 40% and more than tripled profit in six months.",
+  "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+  "cta_label": "Email me the course",
+  "error_help": "That didn't send. Try again in a minute.",
+  "proof_avatar_alt": "Mattan from RISE DTC",
+  "gate_mode": "never",
+  "resource_url": "https://resources.risedtc.com/claude-media-buying-course/",
+  "cta_open_label": "Open the course",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want it in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
+}
