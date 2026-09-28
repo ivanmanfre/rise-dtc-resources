@@ -1,0 +1,29 @@
+{
+  "slug": "claude-agent-team",
+  "format_label": "Claude Agents",
+  "category": "DTC media buying with Claude",
+  "headline": "The Claude Agent Media Buying Team for DTC Brands",
+  "headline_emphasis": "The Claude Agent Media Buying Team",
+  "subhead": "Eight Claude agents, one job each. In one afternoon the first six turn your reviews, your competitors' ads and your product facts into a 24-ad set: 8 angles x 3 hooks, each with its copy and a shoot-ready brief. Free to keep.",
+  "subhead_secondary": "Every agent uses only what you paste, and names the exact input it is missing when something is not there.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/claude-agent-team-cover-2026-09-29.png",
+  "inside": [
+    "8 agents: ICP Finder, Ad Spy, Angle Builder, Hook Writer, Brief Writer, Copywriter, Scaling Master, Refresh",
+    "A run sheet that runs all eight in order and keeps three hooks per angle",
+    "A 24-ad set sheet: hook, primary text, headline, CTA and brief for every ad",
+    "A worked example in every agent, on an invented brand and labelled",
+    "Install steps for Claude.ai Projects and Claude Code"
+  ],
+  "proof": "<b>Built by the team that runs paid growth for DTC brands.</b> RISE buys media for DTC brands and gets paid on the growth it adds. We used this same process on a brand that cut ad spend 40% and more than tripled profit in six months.",
+  "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+  "cta_label": "Email me the agent team",
+  "error_help": "That didn't send. Try again in a minute.",
+  "proof_avatar_alt": "Mattan from RISE DTC",
+  "gate_mode": "never",
+  "resource_url": "https://resources.risedtc.com/claude-agent-team/",
+  "cta_open_label": "Open the agent team",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want it in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
+}
