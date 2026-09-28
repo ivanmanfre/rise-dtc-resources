@@ -1,0 +1,29 @@
+{
+  "slug": "claude-paid-ads-system",
+  "format_label": "Claude System",
+  "category": "DTC paid ads on Meta and Google",
+  "headline": "The Complete Claude Paid Ads System for DTC Brands",
+  "headline_emphasis": "The Complete Claude Paid Ads System",
+  "subhead": "18 playbooks, 15 skills, 50 prompts and 30 AI agents for running paid ads on Meta and Google with Claude, from the first customer interview to the monthly profit report. Free to keep.",
+  "subhead_secondary": "Every piece uses only what you paste, shows its arithmetic, and names the exact input it is missing when something is not there.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/claude-paid-ads-system-cover-2026-09-29.png",
+  "inside": [
+    "18 playbooks, one per stage, from customer research to margin and profit reporting",
+    "15 Claude skills, from break-even CPA to scale-or-kill verdicts on every live ad",
+    "50 copy-paste prompts, P01 to P50, across 20 categories",
+    "30 AI agents in five teams: Track, Spend, Creative, Convert, Decide",
+    "A start-here path: the three playbooks to run first on any account"
+  ],
+  "proof": "<b>Built by the team that runs paid growth for DTC brands.</b> RISE buys media for DTC brands and gets paid on the growth it adds. We used this same process on a brand that cut ad spend 40% and more than tripled profit in six months.",
+  "proof_avatar": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+  "cta_label": "Email me the full system",
+  "error_help": "That didn't send. Try again in a minute.",
+  "proof_avatar_alt": "Mattan from RISE DTC",
+  "gate_mode": "never",
+  "resource_url": "https://resources.risedtc.com/claude-paid-ads-system/",
+  "cta_open_label": "Open the full system",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want it in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
+}
