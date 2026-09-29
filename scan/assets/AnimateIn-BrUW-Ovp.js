@@ -1,1 +1,0 @@
-import{j as e}from"./vendor-motion-D4-50W0C.js";const n=({children:a,delay:s=0,className:t=""})=>e.jsx("div",{className:`animate-card-enter ${t}`,style:{animationDelay:`${s}ms`},children:a});export{n as A};
