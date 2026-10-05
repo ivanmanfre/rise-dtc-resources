@@ -10,53 +10,57 @@ ChatGPT ads are another place you could spend your store's money. I'd want the r
 
 Follow the research through to one complete test brief for your own store ↓
 
-### Slide 1: Should your store test ChatGPT ads?
+### Slide 1: I’d put a cap on ChatGPT ads.
 
-I’d put a spending limit beside the research.
-
-Build your first test brief →
+Before the first dollar leaves your store’s bank account.
 
 ### Slide 2: The click rate increased 112%.
 
-Graphite and Similarweb reported that relative rise worldwide from March 30 to September 20, 2026. They published no DTC profit benchmark.
+Graphite + Similarweb reported this relative rise worldwide. Next, I’d look at the ads.
 
-I’d check what advertisers wrote next.
+Graphite + Similarweb · Report p. 9
 
-### Slide 3: Advertisers wrote different headlines.
+Worldwide weekly CTR · Mar 30 to Sep 20, 2026
 
-Across ten advertisers, 1.9% of ChatGPT headlines exactly matched Google Search headlines. That comparison covers wording. We still need evidence of which ads convert.
+Source-reported relative increase
 
-The destination needs a decision too.
+### Slide 3: Only 1.9% of headlines matched exactly.
 
-### Slide 4: Choose the destination for the offer.
+The comparison covered ten US advertisers on ChatGPT and Google Search. I’d write fresh copy, then choose its destination.
 
-In the landing-page sample, 60% of advertisers used five pages or fewer. Your product and the buyer’s question should determine which page you test.
+Graphite + Similarweb · Report p. 21
 
-Then put a dollar limit on acquisition.
+10 US advertisers · Apr to Aug 2026
 
-### Slide 5: Set the acquisition limit in dollars.
+Exact headline match · Weighting undisclosed
 
-For a hypothetical order, $100 net sales minus $50 in variable costs leaves $50 before ads. Keeping $15 after ads leaves $35 for acquisition.
+### Slide 4: 60% used five pages or fewer.
 
-Put that $35 in the test brief.
+That was the report’s advertiser sample. I’d choose one relevant page and price the first test.
 
-### Slide 6: The test brief needs a review date.
+Graphite + Similarweb · Report p. 25
 
-Write down the offer, destination and acquisition limit. Add the approved spend and review date. Allow time for delayed orders and returns before calculating the result.
+400+ US advertisers · Jul 19 to Aug 15, 2026
 
-Decide what each result would change.
+Share using five landing pages or fewer
 
-### Slide 7: Each result needs a spending decision.
+### Slide 5: That leaves $35 to acquire a customer.
 
-A tracking failure means pausing. A clear page mismatch calls for a revision. A promising result can support another capped test. Too few mature orders can leave the decision unresolved.
+Hypothetical order
 
-Keep the unanswered questions in your brief.
+We keep $15 from $100 in net sales after $50 in variable costs.
 
-### Slide 8: Finish the brief with your store’s numbers.
+### Slide 6: I’d cap the spend before launch.
 
-The RISE DTC findings guide covers the research and its limits. Use the companion test kit to calculate your ceiling and write your review decision.
+And set the review date. Delayed orders and returns belong in that review.
 
-Open the guide and fill in your brief.
+### Slide 7: Put those limits in the test kit.
+
+Enter your costs, record the spend cap and set a review date. Download the brief with your answers.
+
+### Slide 8: Run your store’s numbers before you spend.
+
+The RISE DTC guide and test kit are ready.
 
 ## What would your backpack ad say?
 
@@ -64,53 +68,59 @@ A backpack buyer might be packing for the train or an overnight stay. I'd brief 
 
 Follow one fictional product through two buying situations, with example copy and the proof each page needs ↓
 
-### Slide 1: What would your backpack ad say?
+### Slide 1: I’d brief two ads for this backpack.
 
-The buyer’s plans give you a place to start.
+A commuter and an overnight traveller have different packing questions.
 
-Follow two buying situations →
+Fictional product exercise
 
-### Slide 2: Start with the headline research.
+### Slide 2: 1.9% of headlines matched exactly.
 
-Graphite and Similarweb compared ten advertisers. Only 1.9% of ChatGPT headlines exactly matched Google Search headlines. That leaves a practical question for your own product.
+Across ten US advertisers. The report measured wording. For our fictional bag, I’d start with the buyer’s plans.
 
-What is the buyer planning to do?
+Graphite + Similarweb · Report p. 21
 
-### Slide 3: 1. The buyer is taking the train.
+10 US advertisers · Apr to Aug 2026
 
-For our fictional backpack, I’d try “A backpack for the train commute.” The page would show how a laptop fits and where the commuter can reach everyday items.
+Exact headline match · Weighting undisclosed
 
-Show the laptop fit before making the claim.
+### Slide 3: “A backpack for the train commute.”
 
-### Slide 4: Laptop fit needs product evidence.
+Proposed ad copy · Untested
 
-Measure the sleeve and photograph it with a named laptop model. Use those details to check the ad’s claim. A buyer can then judge whether their own laptop will fit.
+An untested headline for our fictional bag. The product page needs to show the laptop fit.
 
-The overnight buyer has a different packing question.
+Generated illustration · Fictional product
 
-### Slide 5: 2. The buyer is staying overnight.
+### Slide 4: Show which laptop fits.
 
-I’d try “Pack for one night away.” For this same fictional backpack, photograph the exact contents packed inside. A buyer needs to see whether their things will fit.
+Measure the sleeve. Photograph a named laptop model inside it before making the claim.
 
-Make the packing example visible on the page.
+Illustrative scene · Product fit unverified
 
-### Slide 6: The page should show that packing example.
+### Slide 5: “Pack for one night away.”
 
-Put the packed contents near the offer, with the bag’s measurements and delivery details. If the ad points to a particular use, buyers should be able to inspect it there.
+Proposed ad copy · Untested
 
-Write down what changes between the two ads.
+Another untested headline. Photograph the exact contents packed into your product before using it.
 
-### Slide 7: Keep the changes readable in your test.
+Illustrative scene · Packing capacity unverified
 
-Hold the product and price fixed. Record the buying situation, headline and destination for each version. If you change several things together, you’re testing that whole combination.
+### Slide 6: Put that packing photo by the offer.
 
-Write each combination on its own card.
+Add the bag’s measurements and delivery details. Buyers should be able to check the promise on the page.
 
-### Slide 8: Complete the cards with your own product.
+Fictional product page concept
 
-The RISE DTC test kit has space for the buyer’s situation, proposed copy and product proof. Start with claims you can verify from the product in your store.
+### Slide 7: Keep a record of both versions.
 
-Fill one card for each buying situation.
+Hold product and price fixed. Record each headline and page. Changing both tests the whole combination.
+
+Illustrative test versions · Untested
+
+### Slide 8: Write two briefs for your own product.
+
+The RISE DTC kit has fields for the buyer’s situation, ad copy and product proof.
 
 ## Where should your ChatGPT ad send a buyer?
 
@@ -118,53 +128,51 @@ The page you choose for a ChatGPT ad changes what a buyer can check before order
 
 Use these three destination choices to pick the first page you'll test ↓
 
-### Slide 1: Where should your ChatGPT ad send a buyer?
+### Slide 1: Where would you send this buyer?
 
-Start with what they still need to check.
+The ad promises a backpack. The destination should answer what they need to check.
 
-Choose among three destinations →
+Fictional product example
 
-### Slide 2: The report found small sets of pages.
+### Slide 2: 60% used five pages or fewer.
 
-In Graphite and Similarweb’s sample, 60% of advertisers used five landing pages or fewer. That describes their activity. It leaves your first destination open.
+That’s the report’s finding across 400+ US advertisers. I’d choose the first page around the offer.
 
-Start with a buyer choosing one product.
+Graphite + Similarweb · Report p. 25
 
-### Slide 3: 1. Send a specific product to its product page.
+400+ US advertisers · Jul 19 to Aug 15, 2026
 
-When your ad offers a backpack, send buyers to that bag. Put the advertised version and price in view, with its size, delivery details and return terms.
+Share using five landing pages or fewer
 
-A buyer comparing bags needs to see the range.
+### Slide 3: 1. Buying this bag? Open its product page.
 
-### Slide 4: 2. A range can go to a collection.
+Show the advertised version and price, with size, delivery details and return terms close by.
 
-For a buyer comparing commuter bags, a relevant collection can help. Show the differences between products so they can choose. Keep the advertised options available and easy to find.
+1 of 3 destination choices · Fictional product
 
-Some buyers need a fit question answered first.
+### Slide 4: 2. Comparing bags? Open the collection.
 
-### Slide 5: 3. Answer a fit question on an explanation page.
+Show the options together, with the differences a buyer needs to choose.
 
-A buyer checking laptop fit needs measurements and an example. Put that answer on the page, with a visible route to the relevant product.
+2 of 3 destination choices · Illustrative range
 
-Check the route to that product on your phone.
+### Slide 5: 3. Checking laptop fit? Answer that first.
 
-### Slide 6: The phone check should reach checkout.
+An explanation page can show measurements and a named laptop example, with a clear link to the matching product.
 
-Open the ad’s destination on your phone. Find the promised item and choose its options. Check the price and delivery terms before reaching checkout. Record anything that blocks the order.
+3 of 3 destination choices · Fit unverified
 
-Record the page you checked before spending.
+### Slide 6: Follow that link through checkout.
 
-### Slide 7: Keep that page in the test record.
+On your phone, choose the item and its options. Record anything blocking the order.
 
-Save its address with the ad, offer and launch date. Record edits made during the test. Changing the offer and page together makes their separate effects harder to assess.
+### Slide 7: Give the page its own review date.
 
-Review orders from that version before the next change.
+Save its URL in the test kit. Set the spend cap and allow for delayed orders and returns.
 
-### Slide 8: Review the orders with the destination attached.
+### Slide 8: Choose the page. Write down the test.
 
-Use the RISE DTC test kit to record new customers and acquisition costs beside the page version. The findings guide includes the report’s landing-page comparisons and their sample limits.
-
-Pick the page that answers your buyer’s question.
+The RISE DTC kit keeps the destination, costs and review decision together.
 
 ## A $35 ceiling in a worked example
 
