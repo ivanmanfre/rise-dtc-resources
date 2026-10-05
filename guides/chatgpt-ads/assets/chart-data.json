@@ -1461,7 +1461,6 @@
         }
       ],
       "caveats": [
-        "Each bar shows the median number of distinct ads in an impression-share rank group.",
         "The source also prints percentages beside the rank groups without explaining how they are calculated.",
         "Advertisers with more creative also ranked higher by impressions in this sample. The study does not establish whether producing more ads caused that higher rank or improved sales."
       ]
@@ -1747,9 +1746,7 @@
           "subject": "SMS marketing"
         }
       ],
-      "caveats": [
-        "These examples illustrate page categories. The report does not provide their conversion results."
-      ]
+      "caveats": []
     },
     {
       "id": "landing-page-examples-b",
@@ -1781,8 +1778,7 @@
         }
       ],
       "caveats": [
-        "The brand in the category-page example cannot be identified from the source image.",
-        "These examples illustrate page categories. The report does not provide their conversion results."
+        "The brand in the category-page example cannot be identified from the source image."
       ]
     },
     {
