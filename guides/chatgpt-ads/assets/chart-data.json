@@ -1,0 +1,1876 @@
+{
+  "publisher": "Graphite + Similarweb",
+  "reportDate": "2026-09-28",
+  "source": "https://graphite.io/research/state-of-chatgpt-ads",
+  "charts": [
+    {
+      "id": "reach-by-market",
+      "pages": [
+        8
+      ],
+      "title": "Ad-eligible audience reach",
+      "unit": "percent of eligible users who saw an ad",
+      "geography": "Nine markets",
+      "period": "September 2026",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=8",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "UK",
+          "value": 45.7
+        },
+        {
+          "label": "US",
+          "value": 43.4
+        },
+        {
+          "label": "Australia",
+          "value": 43.3
+        },
+        {
+          "label": "Canada",
+          "value": 42.9
+        },
+        {
+          "label": "New Zealand",
+          "value": 40.9
+        },
+        {
+          "label": "Japan",
+          "value": 35.9
+        },
+        {
+          "label": "Brazil",
+          "value": 34.9
+        },
+        {
+          "label": "South Korea",
+          "value": 32.9
+        },
+        {
+          "label": "Mexico",
+          "value": 27.8
+        }
+      ],
+      "caveats": [
+        "These percentages count users eligible to see ads. The US figure is 43.4%; the report rounds it to 43% in its headline."
+      ]
+    },
+    {
+      "id": "worldwide-weekly-ctr",
+      "pages": [
+        9
+      ],
+      "title": "Worldwide weekly click-through rate",
+      "unit": "CTR percent",
+      "geography": "Worldwide",
+      "period": "March 30 to September 20, 2026",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=9",
+      "status": "source-excerpt",
+      "rows": [],
+      "caveats": [
+        "The report gives a 112% relative increase without disclosing the exact calculation. Individual weekly values are not listed in the PDF.",
+        "The companion playbook ends on August 17 and gives a different value for that week. This figure follows the PDF version."
+      ],
+      "reportedFinding": {
+        "relativeGrowthPercent": 112
+      }
+    },
+    {
+      "id": "worldwide-weekly-ctr-playbook",
+      "pages": [
+        9
+      ],
+      "title": "Worldwide weekly click-through rate: public playbook series",
+      "unit": "CTR percent",
+      "geography": "Worldwide",
+      "period": "March 30 to August 17, 2026",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=9",
+      "status": "verified-alternate-version",
+      "rows": [
+        {
+          "label": "Mar 30",
+          "value": 0.38
+        },
+        {
+          "label": "Apr 6",
+          "value": 0.63
+        },
+        {
+          "label": "Apr 13",
+          "value": 0.55
+        },
+        {
+          "label": "Apr 20",
+          "value": 0.52
+        },
+        {
+          "label": "Apr 27",
+          "value": 0.44
+        },
+        {
+          "label": "May 4",
+          "value": 0.46
+        },
+        {
+          "label": "May 11",
+          "value": 0.56
+        },
+        {
+          "label": "May 18",
+          "value": 0.53
+        },
+        {
+          "label": "May 25",
+          "value": 0.55
+        },
+        {
+          "label": "Jun 1",
+          "value": 0.45
+        },
+        {
+          "label": "Jun 8",
+          "value": 0.72
+        },
+        {
+          "label": "Jun 15",
+          "value": 0.82
+        },
+        {
+          "label": "Jun 22",
+          "value": 1.11
+        },
+        {
+          "label": "Jun 29",
+          "value": 0.91
+        },
+        {
+          "label": "Jul 6",
+          "value": 1.13
+        },
+        {
+          "label": "Jul 13",
+          "value": 1.09
+        },
+        {
+          "label": "Jul 20",
+          "value": 1.24
+        },
+        {
+          "label": "Jul 27",
+          "value": 1.33
+        },
+        {
+          "label": "Aug 3",
+          "value": 0.92
+        },
+        {
+          "label": "Aug 10",
+          "value": 0.8
+        },
+        {
+          "label": "Aug 17",
+          "value": 0.93
+        }
+      ],
+      "caveats": [
+        "This is the shorter series from the companion playbook. Its August 17 value differs from the PDF, so the two versions should be read separately."
+      ]
+    },
+    {
+      "id": "ctr-by-market",
+      "pages": [
+        10
+      ],
+      "title": "Click-through rate by market",
+      "unit": "CTR percent",
+      "geography": "Nine markets",
+      "period": "March 30 to September 16, 2026",
+      "sample": "Nine live markets; panel volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=10",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Brazil",
+          "value": 1.91
+        },
+        {
+          "label": "Mexico",
+          "value": 1.55
+        },
+        {
+          "label": "Japan",
+          "value": 1.53
+        },
+        {
+          "label": "South Korea",
+          "value": 1.21
+        },
+        {
+          "label": "Canada",
+          "value": 0.75
+        },
+        {
+          "label": "United Kingdom",
+          "value": 0.74
+        },
+        {
+          "label": "United States",
+          "value": 0.73
+        },
+        {
+          "label": "Australia",
+          "value": 0.67
+        },
+        {
+          "label": "New Zealand",
+          "value": 0.6
+        }
+      ],
+      "caveats": [
+        "These averages cover the stated measurement window. Ads launched on different dates in each market, so markets have different lengths of observed activity."
+      ]
+    },
+    {
+      "id": "weekly-ctr-by-market",
+      "pages": [
+        11
+      ],
+      "title": "Weekly click-through rates by market",
+      "unit": "CTR percent",
+      "geography": "Nine markets, plus the combined series",
+      "period": "Through September 2026; source date labels conflict",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=11",
+      "status": "source-excerpt",
+      "rows": [],
+      "caveats": [
+        "The PDF does not list the individual weekly values.",
+        "The caption names five markets, while the legend lists nine. The caption ends the period on September 7; the horizontal axis includes September 14."
+      ]
+    },
+    {
+      "id": "ctr-by-turn",
+      "pages": [
+        12
+      ],
+      "title": "Click-through rate by conversation turn",
+      "unit": "CTR percent",
+      "geography": "Worldwide",
+      "period": "March 30 to August 30, 2026",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=12",
+      "status": "source-excerpt",
+      "rows": [],
+      "caveats": [
+        "A turn consists of a user message and its reply. The PDF does not list exact click rates for each turn.",
+        "The report describes 48% higher click rates in the first four turns. This comparison cannot establish that moving an ad earlier would improve its performance, or that advertisers can choose the turn."
+      ],
+      "reportedFinding": {
+        "firstFourTurnsHigherCtrPercent": 48
+      }
+    },
+    {
+      "id": "impressions-by-turn",
+      "pages": [
+        13
+      ],
+      "title": "Distribution of ad impressions by conversation turn",
+      "unit": "percent of ad impressions",
+      "geography": "All countries",
+      "period": "March 30 to August 23, 2026",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=13",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "1",
+          "value": 28
+        },
+        {
+          "label": "2-3",
+          "value": 23
+        },
+        {
+          "label": "4-6",
+          "value": 16
+        },
+        {
+          "label": "7-12",
+          "value": 12
+        },
+        {
+          "label": "13-21",
+          "value": 9
+        },
+        {
+          "label": "22+",
+          "value": 12
+        }
+      ],
+      "caveats": [
+        "The first turn accounts for 28% of impressions. Turns two and three together account for 23%, bringing the first three to 51%.",
+        "This chart ends a week earlier than the click-rate-by-turn chart."
+      ]
+    },
+    {
+      "id": "top-advertisers-worldwide",
+      "pages": [
+        14
+      ],
+      "title": "Leading advertisers by impression share",
+      "unit": "percent of impressions",
+      "geography": "Worldwide",
+      "period": "May 4 to September 14, 2026, according to the footnote",
+      "sample": "Similarweb panel; volume undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=14",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Monday.com",
+          "value": 2.23
+        },
+        {
+          "label": "Jotform",
+          "value": 2.23
+        },
+        {
+          "label": "Resume.io",
+          "value": 2.16
+        },
+        {
+          "label": "Booking.com",
+          "value": 1.42
+        },
+        {
+          "label": "Design.com",
+          "value": 1.19
+        },
+        {
+          "label": "Cursor",
+          "value": 0.97
+        },
+        {
+          "label": "ManageEngine",
+          "value": 0.87
+        },
+        {
+          "label": "Shopify",
+          "value": 0.84
+        },
+        {
+          "label": "HubSpot",
+          "value": 0.83
+        },
+        {
+          "label": "Cloudflare",
+          "value": 0.67
+        }
+      ],
+      "caveats": [
+        "The chart labels these figures as shares of impressions. Its footnote describes weeks in the top ten, which is a different measure.",
+        "The authors suggest that purchases completed online help explain the advertiser mix. The ranking itself contains no purchase or profit results."
+      ]
+    },
+    {
+      "id": "advertiser-trajectories",
+      "pages": [
+        15
+      ],
+      "title": "Advertiser activity patterns",
+      "unit": "weekly impressions as share of each advertiser total",
+      "geography": "US",
+      "period": "March 30 to August 17, 2026",
+      "sample": "Top 100 US advertisers",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=15",
+      "status": "source-excerpt",
+      "rows": [
+        {
+          "label": "Growing",
+          "advertisers": [
+            "Resume.io",
+            "Expedia",
+            "Design.com",
+            "ZoomInfo"
+          ]
+        },
+        {
+          "label": "Fluctuating",
+          "advertisers": [
+            "Monday.com",
+            "Jotform",
+            "Envato",
+            "BestMoney"
+          ]
+        },
+        {
+          "label": "Burst",
+          "advertisers": [
+            "Shopify",
+            "HubSpot",
+            "Cursor",
+            "Canva"
+          ]
+        },
+        {
+          "label": "Gone",
+          "advertisers": [
+            "Zapier",
+            "Aikido",
+            "WSJ",
+            "SAP"
+          ]
+        }
+      ],
+      "caveats": [
+        "The chart shows the pattern of each advertiser\u2019s activity during this period. Exact impression values are not provided.",
+        "The group names describe the observed period. An advertiser labelled \u201cGone\u201d could have resumed activity later."
+      ]
+    },
+    {
+      "id": "advertiser-top-ten-tenure",
+      "pages": [
+        16
+      ],
+      "title": "Weeks in the top ten",
+      "unit": "weeks out of 20",
+      "geography": "Geography unclear in source",
+      "period": "20 weeks shown; source date labels conflict",
+      "sample": "12 advertisers displayed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=16",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Jotform",
+          "weeksActive": 20,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Resume.io",
+          "weeksActive": 20,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Cursor",
+          "weeksActive": 15,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "label": "Monday.com",
+          "weeksActive": 15,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "label": "Booking.com",
+          "weeksActive": 10,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "label": "Design.com",
+          "weeksActive": 8,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "label": "ManageEngine",
+          "weeksActive": 7,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "ZoomInfo",
+          "weeksActive": 7,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "label": "Cloudflare",
+          "weeksActive": 6,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "label": "Envato",
+          "weeksActive": 5,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "label": "Lovable",
+          "weeksActive": 5,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "label": "Variant Group",
+          "weeksActive": 5,
+          "weeksObserved": 20,
+          "activeByWeek": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      ],
+      "caveats": [
+        "The columns preserve the 20-week sequence shown in the report. Exact calendar dates for each column are not supplied.",
+        "The heatmap spans May to September on its axis. Its footnote gives March 30 to August 17 and describes a different measure.",
+        "The footer names the US; the adjacent advertiser ranking is worldwide. The report does not settle which geography applies to this heatmap."
+      ]
+    },
+    {
+      "id": "category-impression-share",
+      "pages": [
+        17
+      ],
+      "title": "US advertiser categories",
+      "unit": "percent of ChatGPT ad impressions",
+      "geography": "US",
+      "period": "March 30 to August 4, 2026",
+      "sample": "Top 10,000 US advertisers",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=17",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "B2B SaaS",
+          "value": 19.9,
+          "advertisers": 1210,
+          "leader": "Monday.com"
+        },
+        {
+          "label": "Retail & Consumer Brands",
+          "value": 10.4,
+          "advertisers": 1510,
+          "leader": "Home Depot"
+        },
+        {
+          "label": "Business & Professional Services",
+          "value": 8.5,
+          "advertisers": 2231,
+          "leader": "LegalZoom"
+        },
+        {
+          "label": "Career & Employment",
+          "value": 5.5,
+          "advertisers": 104,
+          "leader": "Resume.io"
+        },
+        {
+          "label": "Developer Tools & Infrastructure",
+          "value": 4.6,
+          "advertisers": 339,
+          "leader": "Cursor"
+        },
+        {
+          "label": "Education & Training",
+          "value": 4.3,
+          "advertisers": 414,
+          "leader": "Preply"
+        },
+        {
+          "label": "Ecommerce & Website Platforms",
+          "value": 4,
+          "advertisers": 76,
+          "leader": "Shopify"
+        },
+        {
+          "label": "Finance & Insurance",
+          "value": 3.8,
+          "advertisers": 222,
+          "leader": "Rocket Mortgage"
+        },
+        {
+          "label": "Travel & Hospitality",
+          "value": 3.5,
+          "advertisers": 232,
+          "leader": "Booking.com"
+        },
+        {
+          "label": "Electronics & Hardware",
+          "value": 3.4,
+          "advertisers": 198,
+          "leader": "Dell"
+        },
+        {
+          "label": "Affiliate & Comparison Sites",
+          "value": 3.1,
+          "advertisers": 59,
+          "leader": "Top10.com"
+        },
+        {
+          "label": "AI Tools & Platforms",
+          "value": 3.1,
+          "advertisers": 267,
+          "leader": "Speechify"
+        },
+        {
+          "label": "Design & Creative Tools",
+          "value": 3.1,
+          "advertisers": 95,
+          "leader": "Canva"
+        },
+        {
+          "label": "Industrial & Business Supply",
+          "value": 2.5,
+          "advertisers": 473,
+          "leader": "Vistaprint"
+        },
+        {
+          "label": "News & Publishing",
+          "value": 2,
+          "advertisers": 88,
+          "leader": "The Wall Street Journal"
+        },
+        {
+          "label": "Local Services",
+          "value": 1.6,
+          "advertisers": 662,
+          "leader": "Angi"
+        },
+        {
+          "label": "Cybersecurity",
+          "value": 1.6,
+          "advertisers": 32,
+          "leader": "Aikido Security"
+        },
+        {
+          "label": "Automotive",
+          "value": 1.6,
+          "advertisers": 249,
+          "leader": "Cars.com"
+        }
+      ],
+      "caveats": [
+        "Only selected categories are shown, so their shares do not total 100%.",
+        "The advertiser counts refer to businesses assigned to each category. The size of the user panel is not disclosed."
+      ]
+    },
+    {
+      "id": "category-advertiser-rankings",
+      "pages": [
+        18
+      ],
+      "title": "Advertiser rankings within categories",
+      "unit": "percent of total US ChatGPT ad impressions",
+      "geography": "US",
+      "period": "March 30 to August 4, 2026",
+      "sample": "Top 10,000 US advertisers; nine category panels",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=18",
+      "status": "verified",
+      "rows": [
+        {
+          "category": "B2B SaaS",
+          "advertisers": [
+            {
+              "label": "Monday.com",
+              "value": 1.68
+            },
+            {
+              "label": "Jotform",
+              "value": 1.35
+            },
+            {
+              "label": "HubSpot",
+              "value": 1.17
+            },
+            {
+              "label": "Attio",
+              "value": 0.79
+            },
+            {
+              "label": "Zapier",
+              "value": 0.64
+            },
+            {
+              "label": "Asana",
+              "value": 0.63
+            },
+            {
+              "label": "ZoomInfo",
+              "value": 0.52
+            },
+            {
+              "label": "Pylon",
+              "value": 0.45
+            },
+            {
+              "label": "Semrush",
+              "value": 0.43
+            },
+            {
+              "label": "Zoom",
+              "value": 0.32
+            }
+          ]
+        },
+        {
+          "category": "Career & Employment",
+          "advertisers": [
+            {
+              "label": "Resume.io",
+              "value": 2.72
+            },
+            {
+              "label": "Fiverr",
+              "value": 0.65
+            },
+            {
+              "label": "Toptal",
+              "value": 0.54
+            },
+            {
+              "label": "LinkedIn",
+              "value": 0.29
+            },
+            {
+              "label": "BeamJobs",
+              "value": 0.26
+            },
+            {
+              "label": "Indeed",
+              "value": 0.25
+            },
+            {
+              "label": "Careerminds",
+              "value": 0.15
+            },
+            {
+              "label": "Upwork",
+              "value": 0.1
+            },
+            {
+              "label": "JobCopilot",
+              "value": 0.09
+            },
+            {
+              "label": "Job Flow",
+              "value": 0.08
+            }
+          ]
+        },
+        {
+          "category": "Developer Tools & Infrastructure",
+          "advertisers": [
+            {
+              "label": "Cursor",
+              "value": 1.04
+            },
+            {
+              "label": "PostHog",
+              "value": 0.29
+            },
+            {
+              "label": "Cloudflare",
+              "value": 0.18
+            },
+            {
+              "label": "Twilio",
+              "value": 0.16
+            },
+            {
+              "label": "Oxylabs",
+              "value": 0.13
+            },
+            {
+              "label": "Apryse",
+              "value": 0.12
+            },
+            {
+              "label": "MongoDB",
+              "value": 0.11
+            },
+            {
+              "label": "Flox",
+              "value": 0.11
+            },
+            {
+              "label": "Greptile",
+              "value": 0.1
+            },
+            {
+              "label": "Datadog",
+              "value": 0.07
+            }
+          ]
+        },
+        {
+          "category": "Education & Training",
+          "advertisers": [
+            {
+              "label": "Preply",
+              "value": 0.46
+            },
+            {
+              "label": "Coursera",
+              "value": 0.38
+            },
+            {
+              "label": "Universal Technical Institute",
+              "value": 0.29
+            },
+            {
+              "label": "Post University",
+              "value": 0.19
+            },
+            {
+              "label": "University of Southern California",
+              "value": 0.12
+            },
+            {
+              "label": "DataCamp",
+              "value": 0.11
+            },
+            {
+              "label": "Purdue Global",
+              "value": 0.1
+            },
+            {
+              "label": "Sylvan Learning",
+              "value": 0.09
+            },
+            {
+              "label": "Grand Canyon University",
+              "value": 0.09
+            },
+            {
+              "label": "Concorde Career Colleges",
+              "value": 0.09
+            }
+          ]
+        },
+        {
+          "category": "Ecommerce & Website Platforms",
+          "advertisers": [
+            {
+              "label": "Shopify",
+              "value": 1.49
+            },
+            {
+              "label": "Framer",
+              "value": 0.76
+            },
+            {
+              "label": "Wix",
+              "value": 0.38
+            },
+            {
+              "label": "WooCommerce",
+              "value": 0.3
+            },
+            {
+              "label": "Hostinger",
+              "value": 0.28
+            },
+            {
+              "label": "WordPress.com",
+              "value": 0.21
+            },
+            {
+              "label": "Contentstack",
+              "value": 0.08
+            },
+            {
+              "label": "B12",
+              "value": 0.07
+            },
+            {
+              "label": "Tailor Brands",
+              "value": 0.06
+            },
+            {
+              "label": "Shop",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "category": "Finance & Insurance",
+          "advertisers": [
+            {
+              "label": "Rocket Mortgage",
+              "value": 0.34
+            },
+            {
+              "label": "Ramp",
+              "value": 0.3
+            },
+            {
+              "label": "Robinhood",
+              "value": 0.3
+            },
+            {
+              "label": "Capital One",
+              "value": 0.24
+            },
+            {
+              "label": "Chime",
+              "value": 0.22
+            },
+            {
+              "label": "Rocket Money",
+              "value": 0.21
+            },
+            {
+              "label": "Mastercard",
+              "value": 0.2
+            },
+            {
+              "label": "SoFi",
+              "value": 0.16
+            },
+            {
+              "label": "Lemonade",
+              "value": 0.15
+            },
+            {
+              "label": "Liberty Mutual Insurance",
+              "value": 0.13
+            }
+          ]
+        },
+        {
+          "category": "Travel & Hospitality",
+          "advertisers": [
+            {
+              "label": "Booking.com",
+              "value": 0.75
+            },
+            {
+              "label": "Expedia",
+              "value": 0.7
+            },
+            {
+              "label": "GetYourGuide",
+              "value": 0.43
+            },
+            {
+              "label": "Airbnb",
+              "value": 0.19
+            },
+            {
+              "label": "Viator",
+              "value": 0.15
+            },
+            {
+              "label": "Hyatt",
+              "value": 0.1
+            },
+            {
+              "label": "Priceline",
+              "value": 0.09
+            },
+            {
+              "label": "Choice Hotels",
+              "value": 0.08
+            },
+            {
+              "label": "Hilton",
+              "value": 0.06
+            },
+            {
+              "label": "Gate 1 Travel",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "category": "AI Tools & Platforms",
+          "advertisers": [
+            {
+              "label": "Speechify",
+              "value": 0.72
+            },
+            {
+              "label": "Fyxer",
+              "value": 0.3
+            },
+            {
+              "label": "ChatGPT",
+              "value": 0.17
+            },
+            {
+              "label": "HeyGen",
+              "value": 0.14
+            },
+            {
+              "label": "Lovable",
+              "value": 0.13
+            },
+            {
+              "label": "11x",
+              "value": 0.12
+            },
+            {
+              "label": "Runway",
+              "value": 0.11
+            },
+            {
+              "label": "Buildy",
+              "value": 0.08
+            },
+            {
+              "label": "Emergent",
+              "value": 0.07
+            },
+            {
+              "label": "Tripo AI",
+              "value": 0.06
+            }
+          ]
+        },
+        {
+          "category": "Design & Creative Tools",
+          "advertisers": [
+            {
+              "label": "Canva",
+              "value": 0.97
+            },
+            {
+              "label": "Adobe",
+              "value": 0.75
+            },
+            {
+              "label": "Figma",
+              "value": 0.56
+            },
+            {
+              "label": "Design.com",
+              "value": 0.49
+            },
+            {
+              "label": "Gamma",
+              "value": 0.08
+            },
+            {
+              "label": "Beautiful.ai",
+              "value": 0.03
+            },
+            {
+              "label": "Captions",
+              "value": 0.02
+            },
+            {
+              "label": "Facetune",
+              "value": 0.02
+            },
+            {
+              "label": "Kittl",
+              "value": 0.02
+            },
+            {
+              "label": "Movavi Software Inc",
+              "value": 0.01
+            }
+          ]
+        }
+      ],
+      "caveats": [
+        "Each advertiser\u2019s percentage uses total US ChatGPT ad impressions as the base. The entries within a category therefore do not add to 100%.",
+        "These US rankings use a different market and measurement window from the worldwide leaderboard."
+      ]
+    },
+    {
+      "id": "brand-mention-association",
+      "pages": [
+        19
+      ],
+      "title": "Brand mentions among exchanges with and without ads",
+      "unit": "percent of exchanges within each ad-presence group",
+      "geography": "Geography not stated",
+      "period": "September 2026",
+      "sample": "Similarweb panel; volumes undisclosed",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=19",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Ad appeared",
+          "namesBrand": 61,
+          "namesNoBrand": 39
+        },
+        {
+          "label": "No ad appeared",
+          "namesBrand": 36,
+          "namesNoBrand": 64
+        }
+      ],
+      "caveats": [
+        "Among exchanges where an ad appeared, 61% included a brand mention. That figure alone cannot tell you how often a brand mention leads to an ad.",
+        "The report describes this early analysis as directional. It does not establish that mentioning a brand triggers an ad or gives advertisers a competitor-targeting control."
+      ]
+    },
+    {
+      "id": "net-new-headlines",
+      "pages": [
+        21
+      ],
+      "title": "ChatGPT headlines without exact Google Search match",
+      "unit": "Headlines without an exact Google Search match (%)",
+      "geography": "US",
+      "period": "April to August 2026",
+      "sample": "10 US advertisers active on ChatGPT and Google Search",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=21",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Resume.io",
+          "value": 100
+        },
+        {
+          "label": "Jotform",
+          "value": 99.6
+        },
+        {
+          "label": "Shopify",
+          "value": 99.4
+        },
+        {
+          "label": "Monday.com",
+          "value": 99.3
+        },
+        {
+          "label": "Attio",
+          "value": 99.1
+        },
+        {
+          "label": "Envato",
+          "value": 98.2
+        },
+        {
+          "label": "Canva",
+          "value": 97.1
+        },
+        {
+          "label": "HubSpot",
+          "value": 96
+        },
+        {
+          "label": "BestMoney",
+          "value": 87.7
+        },
+        {
+          "label": "Cursor",
+          "value": 83.9
+        }
+      ],
+      "caveats": [
+        "Across the sample, the report states that 1.9% of ChatGPT headlines exactly matched Google Search headlines. It does not disclose individual headline counts or how the overall figure is weighted.",
+        "The comparison checks exact wording. It supplies no test of whether rewritten or reused headlines convert better."
+      ],
+      "reportedFinding": {
+        "overallExactMatchPercent": 1.9
+      }
+    },
+    {
+      "id": "creative-count-by-rank",
+      "pages": [
+        22
+      ],
+      "title": "Creative variety by impression-share rank",
+      "unit": "median distinct ads per advertiser",
+      "geography": "US",
+      "period": "April 1 to August 16, 2026",
+      "sample": "400+ US advertisers; rank groups extend to 496",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=22",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "1-50",
+          "value": 191,
+          "sourceParentheticalPercent": 0.54
+        },
+        {
+          "label": "51-100",
+          "value": 155,
+          "sourceParentheticalPercent": 0.23
+        },
+        {
+          "label": "101-200",
+          "value": 50,
+          "sourceParentheticalPercent": 0.12
+        },
+        {
+          "label": "201-300",
+          "value": 32,
+          "sourceParentheticalPercent": 0.07
+        },
+        {
+          "label": "301-400",
+          "value": 27,
+          "sourceParentheticalPercent": 0.05
+        },
+        {
+          "label": "401-496",
+          "value": 10,
+          "sourceParentheticalPercent": 0.04
+        }
+      ],
+      "caveats": [
+        "The source also prints percentages beside the rank groups without explaining how they are calculated.",
+        "Advertisers with more creative also ranked higher by impressions in this sample. The study does not establish whether producing more ads caused that higher rank or improved sales."
+      ]
+    },
+    {
+      "id": "resume-creative-examples",
+      "pages": [
+        23
+      ],
+      "title": "Resume.io creative patterns",
+      "unit": "qualitative examples",
+      "geography": "US",
+      "period": "Dates not stated",
+      "sample": "Six source ad examples",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=23",
+      "status": "qualitative",
+      "rows": [],
+      "caveats": [
+        "The report shows these ad examples without individual click rates or conversion results."
+      ],
+      "observations": [
+        "Several ads connect a ChatGPT-generated draft with a finished resume.",
+        "One example extends the purchase to a matching cover letter.",
+        "Repeated copy appears with different resume imagery."
+      ]
+    },
+    {
+      "id": "jotform-creative-examples",
+      "pages": [
+        24
+      ],
+      "title": "Jotform creative patterns",
+      "unit": "qualitative examples",
+      "geography": "US",
+      "period": "Dates not stated",
+      "sample": "Six source ad examples",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=24",
+      "status": "qualitative",
+      "rows": [
+        {
+          "label": "Pay stub"
+        },
+        {
+          "label": "Landlord verification"
+        },
+        {
+          "label": "Cleaning proposal"
+        },
+        {
+          "label": "Payroll receipt"
+        },
+        {
+          "label": "Award nomination"
+        },
+        {
+          "label": "Sponsorship letter"
+        }
+      ],
+      "caveats": [
+        "The report shows these ad examples without individual click rates or conversion results."
+      ],
+      "observations": [
+        "A repeated ad structure names a specific document task.",
+        "The action is to edit and download the requested document."
+      ]
+    },
+    {
+      "id": "landing-pages-per-advertiser",
+      "pages": [
+        25
+      ],
+      "title": "Number of landing pages per advertiser",
+      "unit": "percent of advertisers",
+      "geography": "US",
+      "period": "July 19 to August 15, 2026",
+      "sample": "400+ US advertisers versus top 50 by impression share",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=25",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "1",
+          "allAdvertisers": 23,
+          "top50": 13
+        },
+        {
+          "label": "2-5",
+          "allAdvertisers": 37,
+          "top50": 24
+        },
+        {
+          "label": "6-25",
+          "allAdvertisers": 28,
+          "top50": 29
+        },
+        {
+          "label": "26-100",
+          "allAdvertisers": 9,
+          "top50": 26
+        },
+        {
+          "label": "101+",
+          "allAdvertisers": 4,
+          "top50": 8
+        }
+      ],
+      "caveats": [
+        "The broader sample\u2019s percentages total 101% because of rounding in the source.",
+        "In the broader sample, 23% used one page and 37% used two to five pages, for a total of 60% using at most five. Among the top fifty advertisers, 63% used six pages or more."
+      ],
+      "examples": {
+        "500+": [
+          "Booking.com",
+          "Vistaprint"
+        ],
+        "20+": [
+          "Monday.com",
+          "Shopify",
+          "Canva"
+        ],
+        "7": [
+          "Figma"
+        ],
+        "11": [
+          "HubSpot"
+        ],
+        "1": [
+          "Shutterstock",
+          "MasterClass",
+          "Oura"
+        ]
+      }
+    },
+    {
+      "id": "ads-by-platform",
+      "pages": [
+        26
+      ],
+      "title": "Ads per advertiser across platforms",
+      "unit": "live ad count",
+      "geography": "US",
+      "period": "28-day window ending in August 2026; exact dates not stated",
+      "sample": "10 advertisers observed on all three platforms",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=26",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Jotform",
+          "chatgpt": 933,
+          "meta": 31,
+          "google": 371
+        },
+        {
+          "label": "Attio",
+          "chatgpt": 92,
+          "meta": 17,
+          "google": 110
+        },
+        {
+          "label": "BestMoney",
+          "chatgpt": 239,
+          "meta": 86,
+          "google": 1557
+        },
+        {
+          "label": "Resume.io",
+          "chatgpt": 38,
+          "meta": 27,
+          "google": 252
+        },
+        {
+          "label": "Envato",
+          "chatgpt": 179,
+          "meta": 157,
+          "google": 1111
+        },
+        {
+          "label": "HubSpot",
+          "chatgpt": 62,
+          "meta": 71,
+          "google": 218
+        },
+        {
+          "label": "Monday.com",
+          "chatgpt": 68,
+          "meta": 183,
+          "google": 1587
+        },
+        {
+          "label": "Cursor",
+          "chatgpt": 24,
+          "meta": 78,
+          "google": 204
+        },
+        {
+          "label": "Canva",
+          "chatgpt": 91,
+          "meta": 614,
+          "google": 942
+        },
+        {
+          "label": "Shopify",
+          "chatgpt": 48,
+          "meta": 324,
+          "google": 1375
+        }
+      ],
+      "caveats": [
+        "These ten advertisers were observed on all three platforms. The report does not establish that they represent advertisers generally.",
+        "The figures count live ads. Spend, audience reach and sales results are not provided.",
+        "Five of the ten had more ChatGPT ads than Meta ads during the measured window."
+      ]
+    },
+    {
+      "id": "landing-page-types",
+      "pages": [
+        27
+      ],
+      "title": "Landing-page types in the report",
+      "unit": "Percent reported; base unclear",
+      "geography": "US",
+      "period": "July 19 to August 15, 2026",
+      "sample": "400+ US advertisers",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=27",
+      "status": "verified-values-denominator-unresolved",
+      "rows": [
+        {
+          "label": "Feature / Solution / Pricing",
+          "value": 37
+        },
+        {
+          "label": "Signup / Demo / Campaign LP",
+          "value": 16
+        },
+        {
+          "label": "Homepage",
+          "value": 15
+        },
+        {
+          "label": "Product or Item",
+          "value": 14
+        },
+        {
+          "label": "Category / Collection / Location",
+          "value": 12
+        },
+        {
+          "label": "Article / Guide / Listicle",
+          "value": 5
+        }
+      ],
+      "caveats": [
+        "The headline calls these shares of landing pages. The axis and footnote call them shares of advertisers. The report and companion playbook leave that conflict unresolved.",
+        "The figures show the publisher\u2019s reported mix, but they cannot support a precise claim about the share of all pages or all advertisers.",
+        "The printed percentages total 99% because of rounding."
+      ]
+    },
+    {
+      "id": "landing-page-examples-a",
+      "pages": [
+        28
+      ],
+      "title": "Feature, product and solution destinations",
+      "unit": "qualitative examples",
+      "geography": "US",
+      "period": "Dates not stated",
+      "sample": "Three source page screenshots",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=28",
+      "status": "qualitative",
+      "rows": [
+        {
+          "label": "Feature",
+          "brand": "Canva",
+          "subject": "Docs"
+        },
+        {
+          "label": "Product",
+          "brand": "Peloton",
+          "subject": "Original Bike"
+        },
+        {
+          "label": "Solution",
+          "brand": "Twilio",
+          "subject": "SMS marketing"
+        }
+      ],
+      "caveats": []
+    },
+    {
+      "id": "landing-page-examples-b",
+      "pages": [
+        29
+      ],
+      "title": "Signup, item and category destinations",
+      "unit": "qualitative examples",
+      "geography": "US",
+      "period": "Dates not stated",
+      "sample": "Three source page screenshots",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=29",
+      "status": "qualitative",
+      "rows": [
+        {
+          "label": "Signup / Demo / Campaign",
+          "brand": "Wix",
+          "subject": "Website signup"
+        },
+        {
+          "label": "Product or Item",
+          "brand": "Coursera",
+          "subject": "Google Project Management Professional Certificate"
+        },
+        {
+          "label": "Category",
+          "brand": null,
+          "subject": "Custom banners"
+        }
+      ],
+      "caveats": [
+        "The brand in the category-page example cannot be identified from the source image."
+      ]
+    },
+    {
+      "id": "landing-pages-by-category",
+      "pages": [
+        30
+      ],
+      "title": "Median landing pages by industry",
+      "unit": "median landing pages per advertiser",
+      "geography": "US",
+      "period": "July 19 to August 15, 2026",
+      "sample": "350+ US advertisers across 17 categories",
+      "sourceUrl": "https://graphite.io/downloads/graphite-the-state-of-chatgpt-ads.pdf#page=30",
+      "status": "verified",
+      "rows": [
+        {
+          "label": "Affiliate & Comparison Sites",
+          "value": 30
+        },
+        {
+          "label": "Travel & Hospitality",
+          "value": 18
+        },
+        {
+          "label": "Retail & Consumer Brands",
+          "value": 14.5
+        },
+        {
+          "label": "Industrial & Business Supply",
+          "value": 13
+        },
+        {
+          "label": "Telecom",
+          "value": 4.5
+        },
+        {
+          "label": "Education & Training",
+          "value": 4
+        },
+        {
+          "label": "Developer Tools & Infrastructure",
+          "value": 4
+        },
+        {
+          "label": "Finance & Insurance",
+          "value": 4
+        },
+        {
+          "label": "Electronics & Hardware",
+          "value": 4
+        },
+        {
+          "label": "Ecommerce & Website Platforms",
+          "value": 4
+        },
+        {
+          "label": "Cybersecurity",
+          "value": 3.5
+        },
+        {
+          "label": "Career & Employment",
+          "value": 3.5
+        },
+        {
+          "label": "B2B SaaS",
+          "value": 3
+        },
+        {
+          "label": "Automotive",
+          "value": 3
+        },
+        {
+          "label": "Entertainment",
+          "value": 2.5
+        },
+        {
+          "label": "Business & Professional Services",
+          "value": 2
+        },
+        {
+          "label": "AI Tools & Platforms",
+          "value": 1
+        }
+      ],
+      "caveats": [
+        "The report gives an overall median of four landing pages per advertiser.",
+        "These category medians describe the sample. Your product range and the questions buyers need answered determine which pages are useful for your test.",
+        "A median can fall between two whole numbers, even though every advertiser uses a whole number of pages."
+      ],
+      "reportedFinding": {
+        "overallMedian": 4
+      }
+    }
+  ]
+}
