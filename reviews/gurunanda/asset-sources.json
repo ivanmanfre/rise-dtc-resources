@@ -1,0 +1,50 @@
+[
+  {
+    "file": "assets/brush-21.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0565/4265/8744/files/Artboard_13.jpg?v=1782430040",
+    "checked_at": "2026-10-18",
+    "sha256": "fce42a531b9bf5412eecb878e36ddb0f0b5ec246c5a42e05b8fe340cfe068ee4"
+  },
+  {
+    "file": "assets/brush-60.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0565/4265/8744/files/Artboard_19_6db8feb2-851f-4adb-820f-9e87dc6be260.jpg?v=1782430052",
+    "checked_at": "2026-10-18",
+    "sha256": "0313e645a9203ede57b96b0810a2484b23395d185b3bc0c21ff4eafca0371170"
+  },
+  {
+    "file": "assets/lion.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0565/4265/8744/files/Lion_Lamb_2.0_Lavender.jpg?v=1782430038",
+    "checked_at": "2026-10-18",
+    "sha256": "601a6fa368ca901ce454e7a38b7fa3ab7227109207739386de87c4ab89563fc2"
+  },
+  {
+    "file": "assets/refill.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0565/4265/8744/files/Artboard_22.jpg?v=1782430053",
+    "checked_at": "2026-10-18",
+    "sha256": "77e70b0a816a6a68456629e463dd75945c34940d578daa2e80c44ece53c1cbbc"
+  },
+  {
+    "file": "assets/whitening.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0565/4265/8744/files/Artboard8_7af4cd0a-6c94-45cc-9bcf-83dd4096d21e.jpg?v=1782426874",
+    "checked_at": "2026-10-18",
+    "sha256": "181faf2129a9ddd05dfecd2855b2a2c9fefe6dc1a87030263b8cb94ff2fbc917"
+  },
+  {
+    "file": "assets/routine.webp",
+    "source_url": "https://cdn.shopify.com/s/files/1/0565/4265/8744/files/ShineBrightStayFreshKit_fc02c308-288a-4e58-8df1-94b30fc87b40.jpg?v=1782418135",
+    "checked_at": "2026-10-18",
+    "sha256": "ff61cf17110db2847ee96d2f584d4f10ed4bc04dbeccc7841c8deb26d221c01a"
+  },
+  {
+    "file": "assets/mattan.webp",
+    "source_url": "https://resources.risedtc.com/tools/assets/mattan.jpg",
+    "checked_at": "2026-10-18",
+    "sha256": "7deae145a2a637552bf621c35f641ec34d097b12c4714ffd8c73876386dc8308"
+  },
+  {
+    "file": "assets/rise-logo.png",
+    "source_url": "https://risedtc.com/wp-content/uploads/2025/04/Rise-DTC-logo-blk-300-alt.png",
+    "checked_at": "2026-10-18",
+    "sha256": "7264bf242ae3e2d22b2966c79cec466c95d55f2a3bc55bfc919134a92e0dfe6c"
+  }
+]
