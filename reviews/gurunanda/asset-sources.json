@@ -40,5 +40,11 @@
     "source_url": "https://resources.risedtc.com/tools/assets/mattan.jpg",
     "checked_at": "2026-10-18",
     "sha256": "7deae145a2a637552bf621c35f641ec34d097b12c4714ffd8c73876386dc8308"
+  },
+  {
+    "file": "assets/rise-logo.png",
+    "source_url": "https://risedtc.com/wp-content/uploads/2025/04/Rise-DTC-logo-blk-300-alt.png",
+    "checked_at": "2026-10-18",
+    "sha256": "7264bf242ae3e2d22b2966c79cec466c95d55f2a3bc55bfc919134a92e0dfe6c"
   }
 ]
