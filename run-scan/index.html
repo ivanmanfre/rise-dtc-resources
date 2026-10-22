@@ -84,7 +84,7 @@
   };
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const line = (r) => r.status === 'ready' ? 'Ready'
-    : r.status === 'held' ? 'Ivan is checking this one before it goes out'
+    : r.status === 'held' ? (r.message && !r.message.includes('Ivan is checking') ? r.message : 'Automatic repair could not complete this scan. Try again.')
     : r.status === 'failed' ? (r.message || 'This one did not finish')
     : (r.message || 'Queued');
   const cls = (r) => r.status === 'queued' || r.status === 'working' ? 'working' : r.status;
