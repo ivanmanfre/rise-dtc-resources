@@ -509,8 +509,8 @@ details .inner{padding:0 20px 20px;display:flex;flex-direction:column;gap:12px;f
   </div>
   <div class="testbox" style="border-width:1px;border-color:var(--line)">
     <span class="chip prop">Proposed paid test · not yet run</span>
-    <p><strong>First a site change:</strong> set the Gift Sets page to list in-stock sets first, before any test starts, so every version lands on the same page.</p>
-    <p><strong>Then the test:</strong> a gifting ad linking only to in-stock sets against your current ad. Same audience, budget and dates. Winner: purchase revenue per dollar spent. In stock on 6 Nov: Versace Dylan Blue 4 piece ($99.98), Gucci Flora Gorgeous Gardenia 3 piece ($134.98), Paco Rabanne One Million 2 piece ($99.98) and 15 more.</p>
+    <p><strong>First a site change:</strong> set the Gift Sets page to list in-stock sets first, before the test starts.</p>
+    <p><strong>Then the test:</strong> version A is your current ad linking to Valentino; version B is a gifting ad linking to the Gift Sets page. Same audience, budget and dates. Winner: purchase revenue per dollar spent. This compares the creative, the products and the page together. In stock on 6 Nov: Versace Dylan Blue 4 piece ($99.98), Gucci Flora Gorgeous Gardenia 3 piece ($134.98), Paco Rabanne One Million 2 piece ($99.98) and 15 more.</p>
   </div>
   <p class="srcline">Sources: <a href="https://www.instagram.com/p/DDZzF7nxLAl/">10 Dec 2024 reel</a>, <a href="https://www.instagram.com/p/DEh39dXgZPM/">7 Jan 2025 reel</a>, <a href="https://reblscents.com/collections/gift-sets">Gift Sets page</a>, 6 Nov 2026</p>
 </div></section>
@@ -655,7 +655,7 @@ details .inner{padding:0 20px 20px;display:flex;flex-direction:column;gap:12px;f
   function reveal(e){if(e.classList.contains('in'))return;clearTimeout(e._t);
     requestAnimationFrame(function(){e.classList.add('in');if(e.classList.contains('pre'))[].forEach.call(e.querySelectorAll('[data-to]'),count);});}
   var show=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){show.unobserve(x.target);reveal(x.target);}});},{threshold:.15});
-  var arm=new IntersectionObserver(function(es){es.forEach(function(x){if(!x.isIntersecting)return;var e=x.target;arm.unobserve(e);
+  var arm=new IntersectionObserver(function(es){es.forEach(function(x){if(!x.isIntersecting)return;var e=x.target;arm.unobserve(e);if(e.classList.contains('in'))return;
     if(x.boundingClientRect.top<(window.innerHeight||0)){e.classList.add('in');return;}
     e.classList.add('pre');[].forEach.call(e.querySelectorAll('[data-to]'),function(n){n.textContent=fmt(n,0);});
     show.observe(e);e._t=setTimeout(function(){reveal(e);},3000);});},{rootMargin:'0px 0px 35% 0px'});
