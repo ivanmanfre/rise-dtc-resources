@@ -65,7 +65,7 @@
 <script>
 (() => {
   const SB = 'https://bjbvqvzbzczjbatgmccb.supabase.co/rest/v1/rpc/';
-  const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYnZxdnpiemN6amJhdGdtY2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgzMDUwODAsImV4cCI6MjA4Mzg4MTA4MH0.yqghcn-Rw5dIFadLhvUASIeUARPvu_CyPOGayI8KyTI';
+  const ANON = 'sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h';
   const fromHash = new URLSearchParams(location.hash.slice(1)).get('k');
   if (fromHash) { try { localStorage.setItem('rise_scan_key', fromHash); } catch (_) {} }
   let key = fromHash; try { key = key || localStorage.getItem('rise_scan_key'); } catch (_) {}
